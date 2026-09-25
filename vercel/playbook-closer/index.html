@@ -1,0 +1,1100 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Playbook do Closer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap">
+<style>
+:root{
+  --bg:#F2F5F8;--surface:#FFFFFF;--surface-2:#E7ECF2;--ink:#131B25;--ink-2:#4A5667;--ink-3:#6A7688;--line:#D2DAE4;
+  --accent:#1C4F8C;--accent-strong:#143B69;--accent-soft:#DEE8F5;--on-accent:#FFFFFF;
+  --yellow:#E2A400;--yellow-soft:#FFF3CF;--yellow-ink:#5E4300;
+  --red:#C7362E;--red-soft:#FBE4E1;--red-ink:#7A1D17;
+  --green:#1E7A4C;--green-soft:#DDEFE3;--green-ink:#155C39;
+  --shadow:0 1px 2px rgba(19,27,37,.05),0 6px 20px rgba(19,27,37,.05);
+  --f-display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-fala:"Literata",Georgia,"Times New Roman",serif;
+  --fs:16px;--main:780px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0D1219;--surface:#151C26;--surface-2:#1C2532;--ink:#E3E9F1;--ink-2:#A3AEBE;--ink-3:#808C9D;--line:#283241;
+    --accent:#74A7E8;--accent-strong:#A6C6F1;--accent-soft:#172B46;--on-accent:#06101E;
+    --yellow:#F0BE45;--yellow-soft:#33290C;--yellow-ink:#F5D586;
+    --red:#EE6F66;--red-soft:#3A1614;--red-ink:#F4A9A3;
+    --green:#4FC28A;--green-soft:#163A2A;--green-ink:#86DDB1;
+    --shadow:0 1px 2px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0D1219;--surface:#151C26;--surface-2:#1C2532;--ink:#E3E9F1;--ink-2:#A3AEBE;--ink-3:#808C9D;--line:#283241;
+  --accent:#74A7E8;--accent-strong:#A6C6F1;--accent-soft:#172B46;--on-accent:#06101E;
+  --yellow:#F0BE45;--yellow-soft:#33290C;--yellow-ink:#F5D586;
+  --red:#EE6F66;--red-soft:#3A1614;--red-ink:#F4A9A3;
+  --green:#4FC28A;--green-soft:#163A2A;--green-ink:#86DDB1;
+  --shadow:0 1px 2px rgba(0,0,0,.3);
+}
+html{font-size:var(--fs);scroll-behavior:smooth}
+html.apresentacao{--fs:19px;--main:920px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font:400 1rem/1.62 var(--f-body);-webkit-font-smoothing:antialiased}
+a{color:var(--accent-strong)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+p,ul,ol,dl,h1,h2,h3,h4,figure{margin:0}
+
+.topo{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.topo-in{max-width:1200px;margin:0 auto;padding-inline:16px;min-height:56px;display:flex;align-items:center;gap:12px;justify-content:space-between}
+.marca{display:flex;align-items:center;gap:10px;font:700 1.15rem/1 var(--f-display);letter-spacing:.02em;text-transform:uppercase}
+.marca .papel{font:600 .7rem/1 var(--f-body);letter-spacing:.08em;background:var(--accent);color:var(--on-accent);padding:5px 8px;border-radius:4px}
+.marca .v{font:500 .78rem/1 var(--f-body);color:var(--ink-3);text-transform:none;letter-spacing:0}
+.btn{font:600 .82rem/1 var(--f-body);color:var(--ink);background:var(--surface-2);border:1px solid var(--line);padding:9px 12px;border-radius:8px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+.btn[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+
+.wrap{max-width:1200px;margin:0 auto;padding-inline:16px}
+.shell{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+@media (min-width:1000px){.shell{grid-template-columns:230px minmax(0,1fr);gap:48px}}
+
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 57px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-16px;padding:8px 16px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex:none;display:flex;gap:6px;align-items:baseline;text-decoration:none;color:var(--ink-2);font:500 .84rem/1.2 var(--f-body);padding:7px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.toc a .n{font:700 .8rem/1 var(--f-display);color:var(--ink-3);font-variant-numeric:tabular-nums}
+.toc a.ativo{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.toc a.ativo .n{color:var(--on-accent)}
+@media (min-width:1000px){
+  .toc{top:calc(env(safe-area-inset-top,0px) + 80px);align-self:start;flex-direction:column;gap:2px;margin:0;padding:0;border:0;background:none;max-height:calc(100vh - 100px);overflow:auto;margin-top:40px}
+  .toc a{border:0;background:none;border-radius:6px;padding:7px 10px}
+  .toc a:hover{background:var(--surface-2)}
+}
+
+main{max-width:var(--main);padding-bottom:64px;min-width:0}
+.hero{padding-block:44px 36px;display:flex;flex-direction:column;gap:20px}
+.eyebrow{font:600 .75rem/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.hero h1{font:700 clamp(2.8rem,8vw,4.4rem)/.92 var(--f-display);text-transform:uppercase;letter-spacing:.005em;text-wrap:balance}
+.lede{font:400 1.18rem/1.55 var(--f-fala);max-width:62ch;color:var(--ink)}
+.meta{display:flex;flex-wrap:wrap;gap:10px 28px;font-size:.88rem}
+.meta div{display:flex;flex-direction:column;gap:2px}
+.meta dt{font:600 .7rem/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.meta dd{margin:0;color:var(--ink-2)}
+.legenda{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding:12px 14px;border:1px dashed var(--line);border-radius:10px;font-size:.85rem;color:var(--ink-2)}
+.legenda .item{display:inline-flex;align-items:center;gap:8px}
+.mini{display:inline-block;width:10px;height:14px;border-radius:2px;transform:rotate(-8deg)}
+.mini.am{background:var(--yellow)}.mini.vm{background:var(--red)}.mini.vd{background:var(--green)}
+.mini.card{width:16px;height:12px;transform:none;border:1.5px solid var(--ink-2);border-radius:2px}
+
+.fcard{position:relative;padding:12px 22px;display:flex;flex-direction:column;gap:6px;width:fit-content;max-width:100%}
+.fcard::before,.fcard::after{content:"";position:absolute;top:0;bottom:0;width:9px;border:2px solid var(--ink)}
+.fcard::before{left:0;border-right:0}
+.fcard::after{right:0;border-left:0}
+.fcard .fx{font:700 clamp(1.05rem,2.8vw,1.4rem)/1.15 var(--f-display);text-transform:uppercase;letter-spacing:.02em;text-wrap:balance}
+.fcard .fr{font-size:.92rem;color:var(--ink-2)}
+.fcard .fr u{text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:3px;color:var(--ink);font-weight:600}
+
+.ref{display:grid;grid-template-columns:minmax(0,210px) minmax(0,1fr);gap:16px;align-items:start;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+@media (max-width:600px){.ref{grid-template-columns:1fr}}
+.ref-img{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;border-radius:8px}
+.ref-img img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--line)}
+.ref figcaption{display:flex;flex-direction:column;gap:7px;min-width:0}
+.ref .tag{font:700 .68rem/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.ref .fx{font:700 1.12rem/1.15 var(--f-display);text-transform:uppercase;letter-spacing:.02em}
+.ref .fr{font-size:.86rem;color:var(--ink-2)}
+.ref .fr u{text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:3px;color:var(--ink);font-weight:600}
+.ref .o,.ref .p{font-size:.93rem}
+.ref .p{color:var(--ink-2)}
+.ref .o b,.ref .p b,.ref .x b{font-weight:700;color:var(--ink)}
+.ref .x{font-size:.86rem;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:7px}
+
+section{padding-block:40px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:18px;scroll-margin-top:118px}
+@media (min-width:1000px){section{scroll-margin-top:72px}}
+h2{display:flex;align-items:baseline;gap:12px;font:700 clamp(1.7rem,4.5vw,2.2rem)/1.05 var(--f-display);text-transform:uppercase;letter-spacing:.01em;text-wrap:balance}
+h2 .num{font-size:.8em;color:var(--accent);font-variant-numeric:tabular-nums}
+h3{font:600 1.12rem/1.3 var(--f-body);text-wrap:balance;margin-top:8px}
+h3 .num{color:var(--ink-3);font-weight:500;margin-right:6px;font-variant-numeric:tabular-nums}
+section > p{max-width:66ch}
+ul.lista,ol.lista{padding-left:1.25rem;display:flex;flex-direction:column;gap:8px;max-width:66ch}
+ul.lista li::marker{color:var(--accent)}
+ol.lista li::marker{color:var(--accent);font-weight:600}
+
+var{font-style:normal;font-family:var(--f-body);font-size:.84em;font-weight:600;color:var(--accent-strong);background:var(--accent-soft);padding:1px 6px;border-radius:4px;white-space:nowrap}
+.branco{display:inline-block;font:700 .95em/1.2 var(--f-body);font-style:normal;color:var(--ink);border-bottom:2px dashed var(--accent);padding:0 6px;white-space:nowrap}
+
+.gat{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.gat::before{content:"Gatilho";font:700 .66rem/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-right:4px}
+.gat span{font:600 .74rem/1 var(--f-body);color:var(--ink);background:var(--surface);border:1px solid var(--ink-3);padding:5px 9px;border-radius:999px}
+
+.falas{display:flex;flex-direction:column;gap:10px}
+.fala{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow)}
+.fala .quem{font:600 .68rem/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--on-accent);background:var(--accent);padding:5px 7px;border-radius:4px;margin-top:4px;white-space:nowrap}
+.fala.outro{box-shadow:none;background:transparent}
+.fala.outro .quem{background:var(--surface-2);color:var(--ink-2)}
+.fala.chave{border:2px solid var(--accent)}
+.fala p{font:400 1.06rem/1.55 var(--f-fala)}
+.nota{font-size:.9rem;color:var(--ink-2);max-width:66ch}
+
+.cartao{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;padding:16px 18px;border-radius:10px;background:var(--yellow-soft)}
+.cartao::before{content:"";width:13px;height:18px;border-radius:2px;background:var(--yellow);transform:rotate(-8deg);margin-top:3px;box-shadow:0 1px 2px rgba(0,0,0,.18)}
+.cartao .tit{display:block;font:700 .72rem/1.2 var(--f-body);letter-spacing:.09em;text-transform:uppercase;color:var(--yellow-ink);margin-bottom:4px}
+.cartao.vm{background:var(--red-soft)}.cartao.vm::before{background:var(--red)}.cartao.vm .tit{color:var(--red-ink)}
+.cartao.vd{background:var(--green-soft)}.cartao.vd::before{background:var(--green)}.cartao.vd .tit{color:var(--green-ink)}
+.cartao ul{padding-left:1.1rem;display:flex;flex-direction:column;gap:6px}
+
+.grade{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.grade.quatro{grid-template-columns:repeat(auto-fit,minmax(165px,1fr))}
+.peca{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.peca .k{font:700 1.9rem/1 var(--f-display);color:var(--accent);font-variant-numeric:tabular-nums}
+.peca h4{font:600 1rem/1.3 var(--f-body)}
+.peca p{font-size:.93rem;color:var(--ink-2)}
+
+.fluxo{list-style:none;padding:0;display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+.fluxo li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.fluxo .p{font:700 .7rem/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.fluxo strong{font:700 1.15rem/1.1 var(--f-display);text-transform:uppercase;letter-spacing:.02em}
+.fluxo span.d{font-size:.84rem;color:var(--ink-2)}
+
+.duas{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.coluna{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.coluna h4{font:700 1.2rem/1.1 var(--f-display);text-transform:uppercase;letter-spacing:.02em}
+.coluna.a{border-color:var(--green)}.coluna.a h4{color:var(--green-ink)}
+.coluna.b{border-color:var(--accent)}.coluna.b h4{color:var(--accent-strong)}
+.coluna.forte{border:2px solid var(--accent)}.coluna.forte h4{color:var(--accent-strong)}
+.coluna p{font-size:.95rem;color:var(--ink-2)}
+.coluna ul{padding-left:1.1rem;display:flex;flex-direction:column;gap:6px;font-size:.95rem}
+
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.93rem}
+th{font:600 .7rem/1.2 var(--f-body);text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2);text-align:left;padding:10px 14px;background:var(--surface-2)}
+td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top}
+td:first-child{font-weight:500}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600}
+table.largo{min-width:820px}
+
+.passo{display:flex;flex-direction:column;gap:12px;padding:18px;border:1px solid var(--line);border-radius:12px}
+.passo > h3{margin:0}
+
+.objecao{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.objecao h3{margin:0;font:400 1.35rem/1.3 var(--f-fala);font-style:italic}
+.objecao h3 .num{font:600 .8rem/1 var(--f-body);font-style:normal;color:var(--accent);display:block;margin-bottom:6px;letter-spacing:.06em}
+.rot{font:700 .72rem/1.2 var(--f-body);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+.camadas{list-style:none;padding:0;display:flex;flex-direction:column;gap:16px;counter-reset:c}
+.camadas > li{counter-increment:c;display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px}
+.camadas > li::before{content:counter(c);font:700 1.5rem/1 var(--f-display);color:var(--accent)}
+.camadas > li > div{display:flex;flex-direction:column;gap:10px;min-width:0}
+
+.metodo{list-style:none;padding:0;display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+.metodo li{background:var(--accent-soft);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:4px}
+.metodo strong{font:700 1.1rem/1 var(--f-display);text-transform:uppercase;color:var(--accent-strong);letter-spacing:.02em}
+.metodo span{font-size:.84rem;color:var(--ink-2)}
+
+.destaque{font:700 clamp(1.4rem,3.6vw,1.9rem)/1.15 var(--f-display);text-transform:uppercase;letter-spacing:.01em;max-width:32ch;text-wrap:balance}
+.destaque em{font-style:normal;color:var(--accent)}
+
+.preco{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));list-style:none;padding:0}
+.preco li{border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--surface);display:flex;flex-direction:column;gap:6px}
+.preco .p{font:700 .7rem/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.preco strong{font:700 1.2rem/1 var(--f-display);text-transform:uppercase}
+.preco span.d{font-size:.84rem;color:var(--ink-2)}
+.preco li.num-li{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.preco li.num-li .p,.preco li.num-li span.d{color:var(--bg);opacity:.8}
+
+.linha-tempo{list-style:none;padding:0;display:flex;flex-direction:column}
+.linha-tempo li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+.linha-tempo li:first-child{border-top:0}
+.linha-tempo .q{font:700 1.05rem/1.2 var(--f-display);text-transform:uppercase;color:var(--accent-strong);letter-spacing:.02em}
+.linha-tempo .c{display:flex;flex-direction:column;gap:10px;min-width:0}
+@media (max-width:520px){.linha-tempo li{grid-template-columns:1fr;gap:8px}}
+
+.glossario{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(165px,1fr))}
+.gl{display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px}
+.gl .ref-img img{aspect-ratio:4/3;object-fit:cover}
+.gl h4{font:700 1.02rem/1.1 var(--f-display);text-transform:uppercase;letter-spacing:.02em}
+.gl p{font-size:.82rem;color:var(--ink-2)}
+
+.pend{counter-reset:p;list-style:none;padding:0;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
+.pend li{counter-increment:p;display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;padding:14px 16px;border-top:1px solid var(--line)}
+.pend li:first-child{border-top:0}
+.pend li::before{content:counter(p);font:700 1.3rem/1 var(--f-display);color:var(--accent)}
+
+.lightbox{position:fixed;inset:0;z-index:50;background:rgba(5,8,14,.86);display:flex;align-items:center;justify-content:center;padding:56px 16px 24px}
+.lightbox[hidden]{display:none}
+.lightbox img{max-width:100%;max-height:100%;border-radius:10px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.lb-fechar{position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);right:16px;font:600 .85rem/1 var(--f-body);color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);padding:9px 14px;border-radius:8px;cursor:pointer}
+
+footer{border-top:1px solid var(--line);padding-block:24px 40px;font-size:.84rem;color:var(--ink-3);display:flex;flex-direction:column;gap:6px}
+</style>
+
+<div class="topo">
+  <div class="topo-in">
+    <div class="marca"><span class="papel">Closer</span>Playbook <span class="v">v5 · 25/09/2026</span></div>
+    <button class="btn" id="modo-apresentacao" type="button" aria-pressed="false">Modo apresentação</button>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="shell">
+<nav class="toc" id="toc" aria-label="Seções">
+  <a href="#missao"><span class="n">01</span>Missão</a>
+  <a href="#crm"><span class="n">02</span>Ler o CRM</a>
+  <a href="#postura"><span class="n">03</span>Quem escolhe somos nós</a>
+  <a href="#r2"><span class="n">04</span>R2 · Conexão e dor</a>
+  <a href="#cenarios"><span class="n">05</span>Cenários</a>
+  <a href="#diferencial"><span class="n">06</span>Diferencial e plano</a>
+  <a href="#valor"><span class="n">07</span>Ancoragem e valor</a>
+  <a href="#fechamento"><span class="n">08</span>Fechamento</a>
+  <a href="#objecoes"><span class="n">09</span>Objeções</a>
+  <a href="#sim"><span class="n">10</span>Depois do sim</a>
+  <a href="#ainda-nao"><span class="n">11</span>Depois do ainda não</a>
+  <a href="#numeros"><span class="n">12</span>Números</a>
+  <a href="#regras"><span class="n">13</span>Regras de ouro</a>
+  <a href="#casos"><span class="n">14</span>Casos e autoridade</a>
+  <a href="#glossario"><span class="n">15</span>Glossário dos cards</a>
+  <a href="#dados"><span class="n">16</span>Dados pra completar</a>
+</nav>
+
+<main>
+<header class="hero">
+  <p class="eyebrow">Operação comercial · Assessoria de atletas</p>
+  <h1>Playbook do Closer</h1>
+  <div class="fcard"><p class="fx">Closer = Diagnóstico + Proposta + Fechamento</p><p class="fr">↳ reunião qualificada + proposta + decisão = <u>venda</u></p></div>
+  <p class="lede">O Closer faz a R2. Chega sabendo o nome do pai, da mãe e do atleta, a dor da família e quanto ela já gastou, porque leu a ficha da R1 no CRM. Faz a família imaginar o depois, apresenta o que ninguém mais tem (um gerente de carreira todo dia e o Zyron), ancora o valor e conduz a decisão como quem escolhe. Quem precisa da vaga é a família.</p>
+  <dl class="meta">
+    <div><dt>Versão</dt><dd>v5, 25/09/2026</dd></div>
+    <div><dt>Entrada</dt><dd>Ficha da R1 do SDR no CRM</dd></div>
+    <div><dt>Planos</dt><dd>R$2997 (mais vendido) · R$1497 · R$497</dd></div>
+  </dl>
+  <div class="legenda" aria-label="Legenda">
+    <span class="item"><var>atleta</var> dado do CRM ou da empresa</span>
+    <span class="item"><span class="branco">R$ ____</span> valor do plano escolhido pro lead</span>
+    <span class="item"><span class="mini card"></span> card do treinamento: toque pra ampliar</span>
+    <span class="item"><span class="mini vd"></span> regra de ouro</span>
+    <span class="item"><span class="mini am"></span> tática</span>
+    <span class="item"><span class="mini vm"></span> proibido</span>
+  </div>
+</header>
+
+<section id="missao">
+  <h2><span class="num">01</span>Missão do Closer</h2>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/closer.png"><img src="cards/closer.png" alt="Card Closer: diagnóstico, proposta e fechamento" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · Closer</p>
+      <p class="fx">Closer = Diagnóstico + Proposta + Fechamento</p>
+      <p class="fr">↳ reunião qualificada + proposta + decisão = <u>venda</u></p>
+      <p class="o"><b>O que é:</b> o vendedor que conduz a negociação e busca o fechamento. Atua no meio e no fim do funil: conduz a reunião, contorna objeções e pede a decisão.</p>
+      <p class="p"><b>Aqui:</b> o Closer faz a R2, com a ficha da R1 na mão. Closer bom não improvisa: segue processo e sabe conduzir o próximo passo.</p>
+      <p class="x"><b>O card avisa:</b> closer sem qualificação sofre mais. Funil bom começa antes do fechamento.</p>
+    </figcaption>
+  </figure>
+  <div class="grade quatro">
+    <div class="peca"><span class="k">1</span><h4>Chega sabendo tudo</h4><p>Nomes, dor, gastos, avaliações e locomoção vêm do CRM. Não pergunta de novo o que o SDR já perguntou.</p></div>
+    <div class="peca"><span class="k">2</span><h4>Faz a família imaginar o depois</h4><p>Cenário certo pra cada tipo de dor. Quando a dor fica clara, o valor faz sentido.</p></div>
+    <div class="peca"><span class="k">3</span><h4>Empilha valor antes do número</h4><p>Gerente de carreira todo dia, Zyron, 95%, casos. Depois a conta do que gastariam sozinhos. Só então o valor.</p></div>
+    <div class="peca"><span class="k">4</span><h4>Conduz sem parecer vendedor</h4><p>Pessoas amam comprar e odeiam vendedor. Quem escolhe somos nós.</p></div>
+  </div>
+  <h3>Só existem dois finais de R2</h3>
+  <div class="duas">
+    <div class="coluna a"><h4>Venda</h4><p>Pagamento feito na call, venda registrada, boas-vindas pro atleta.</p></div>
+    <div class="coluna b"><h4>Retorno marcado</h4><p>Modo B: a equipe decide e o Closer volta com a vaga aprovada, em hora marcada.</p></div>
+  </div>
+  <h3>O caminho da R2</h3>
+  <ol class="fluxo">
+    <li><span class="p">Passo 1</span><strong>Ler o CRM</strong><span class="d">10 min antes.</span></li>
+    <li><span class="p">Passo 2</span><strong>Conexão</strong><span class="d">Cada um pelo nome.</span></li>
+    <li><span class="p">Passo 3</span><strong>Dor</strong><span class="d">Com as palavras deles.</span></li>
+    <li><span class="p">Passo 4</span><strong>Cenários</strong><span class="d">Imaginar o depois.</span></li>
+    <li><span class="p">Passo 5</span><strong>Compromisso</strong><span class="d">Filtro dos 95%.</span></li>
+    <li><span class="p">Passo 6</span><strong>Diferencial</strong><span class="d">Gerente e Zyron.</span></li>
+    <li><span class="p">Passo 7</span><strong>Valor</strong><span class="d">Ancoragem e R$ ____.</span></li>
+    <li><span class="p">Passo 8</span><strong>Decisão</strong><span class="d">Modo A ou modo B.</span></li>
+  </ol>
+</section>
+
+<section id="crm">
+  <h2><span class="num">02</span>Ler o CRM antes da R2</h2>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/r1.png"><img src="cards/r1.png" alt="Card R1: contato inicial, diagnóstico e próximo passo" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · R1</p>
+      <p class="fx">R1 = Contato inicial + Diagnóstico + Próximo passo</p>
+      <p class="fr">↳ entendeu cenário + mapeou dor + marcou avanço = <u>boa R1</u></p>
+      <p class="o"><b>O que é:</b> Reunião 1, o diagnóstico e a qualificação. Entende contexto, problema, urgência e aderência.</p>
+      <p class="p"><b>Aqui:</b> a R1 foi do SDR. Tudo o que ela descobriu tá na ficha do CRM. O Closer usa, não repete.</p>
+      <p class="x"><b>O card avisa:</b> R1 boa prepara a proposta certa. É por isso que você lê a ficha inteira.</p>
+    </figcaption>
+  </figure>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/sql.png"><img src="cards/sql.png" alt="Card SQL: lead, interesse real, perfil e momento" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · SQL</p>
+      <p class="fx">SQL = Lead + Interesse real + Perfil + Momento</p>
+      <p class="fr">↳ pediu contato + tem perfil ideal + quer avançar = <u>SQL</u></p>
+      <p class="o"><b>O que é:</b> Sales Qualified Lead. O lead qualificado e pronto pra conversa comercial.</p>
+      <p class="p"><b>Aqui:</b> quem chega na R2 é SQL: perfil aprovado, dor clara, decisores na call e pré-compromisso de decidir na conversa.</p>
+      <p class="x"><b>O card avisa:</b> SQL bem definido melhora a agenda e aumenta a chance de fechamento.</p>
+    </figcaption>
+  </figure>
+  <p>10 minutos antes de toda R2, o Closer lê a ficha e vê o vídeo do atleta. Cada informação tem um lugar certo na conversa:</p>
+  <div class="tbl"><table>
+    <thead><tr><th>O que ler na ficha</th><th>Onde usar na R2</th></tr></thead>
+    <tbody>
+      <tr><td>Nomes do pai, da mãe e do atleta</td><td>Chamar cada um pelo nome desde o primeiro minuto</td></tr>
+      <tr><td>Origem (Zyron ou Instagram) e dados do Zyron</td><td>Abertura: citar um dado da avaliação</td></tr>
+      <tr><td>Sonho do atleta e o que ele acha que falta</td><td>Conexão com o atleta e cenário emocional</td></tr>
+      <tr><td>Dor da família, com as palavras deles</td><td>Retomada da dor (4.3)</td></tr>
+      <tr><td>Tipo de dor (financeira, emocional, tempo)</td><td>Cenário certo (seção 05)</td></tr>
+      <tr><td>Quantas peneiras fez e em quantas se sentiu observado de verdade</td><td>Retomada da dor (4.3) e o contraste com os dados reais do Zyron (6.3)</td></tr>
+      <tr><td>Times e experiências</td><td>"O que faltou nas outras vezes"</td></tr>
+      <tr><td>Quanto já investiram</td><td>Régua do valor (seção 07)</td></tr>
+      <tr><td>Locomoção pra outro estado</td><td>Cenário: "quando ele for pro clube em..."</td></tr>
+      <tr><td>Decisores e como decidem</td><td>Confirmar todos na call</td></tr>
+      <tr><td>Sinais de budget</td><td>Escolher o plano: R$2997, R$1497 ou R$497</td></tr>
+      <tr><td>Resposta ao "faz sentido a gente lucrar em cima de vocês?"</td><td>Ancoragem: "vocês mesmos disseram que não faz sentido"</td></tr>
+      <tr><td>Pré-compromisso de decidir na R2</td><td>Fechamento: "vocês combinaram de decidir hoje"</td></tr>
+      <tr><td>Caso citado e se ouviram do gerente e do Zyron</td><td>Retomar e aprofundar</td></tr>
+      <tr><td>Objeções que já apareceram</td><td>Tratar antes que voltem</td></tr>
+    </tbody>
+  </table></div>
+  <div class="falas"><div class="fala"><span class="quem">Antes da R2</span><p><var>pai</var>, aqui é o <var>especialista</var>. Tô com a ficha do <var>atleta</var> aberta pra nossa conversa das <var>hora</var>. Você, a <var>mãe</var> e ele confirmados?</p></div></div>
+  <div class="cartao vd"><div><span class="tit">Regra de ouro</span>Closer que pergunta de novo o que já tá no CRM parece vendedor. Closer que chega sabendo parece especialista.</div></div>
+</section>
+
+<section id="postura">
+  <h2><span class="num">03</span>Quem escolhe somos nós</h2>
+  <p class="destaque">As pessoas amam comprar, mas <em>odeiam vendedor</em>.</p>
+  <p>O Closer não pede pra família entrar. Ele avalia se a família tá pronta pro que o atleta conquistou. Quem precisa da vaga é o atleta, e a gente escolhe atletas como ele.</p>
+  <ul class="lista">
+    <li>Fala de <strong>vaga</strong> e <strong>turma</strong>, nunca de produto ou pacote.</li>
+    <li>Pergunta se a família tá <strong>comprometida</strong>, em vez de perguntar se ela quer comprar.</li>
+    <li>Usa os 95%: quem não vai é por falta de disciplina e compromisso, então o compromisso é filtro.</li>
+    <li>Sentiu resistência a vendedor, recua: a equipe decide se abre a vaga (modo B, seção 08).</li>
+    <li>Nunca corre atrás. Volta com o retorno da equipe ou na hora combinada, nunca com "e aí, pensaram?".</li>
+  </ul>
+  <div class="gat"><span>Exclusividade</span><span>Escassez</span></div>
+  <div class="falas">
+    <div class="fala chave"><span class="quem">Closer</span><p>Eu não falo com toda família. Se o <var>atleta</var> chegou até aqui, é porque passou pela R1 e tem o perfil que a gente procura.</p></div>
+    <div class="fala"><span class="quem">Closer</span><p>Antes de te mostrar qualquer coisa, eu preciso entender se vocês estão prontos, porque essa vaga é disputada.</p></div>
+  </div>
+</section>
+
+<section id="r2">
+  <h2><span class="num">04</span>R2 · Conexão e dor</h2>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/r2.png"><img src="cards/r2.png" alt="Card R2: diagnóstico, proposta e tratativa de objeções" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · R2</p>
+      <p class="fx">R2 = Diagnóstico + Proposta + Tratativa de objeções</p>
+      <p class="fr">↳ entrou qualificado + viu a solução + alinhou investimento = <u>avanço</u></p>
+      <p class="o"><b>O que é:</b> Reunião 2, o encontro de avanço pra apresentar solução, proposta e decisão.</p>
+      <p class="p"><b>Aqui:</b> a R2 é do Closer. Retoma o diagnóstico da R1, apresenta o plano com gerente de carreira e Zyron, ancora o valor e trata as objeções. R2 forte reduz indecisão.</p>
+      <p class="x"><b>O card avisa:</b> R2 forte aumenta a clareza sobre valor, prazo e próximo passo.</p>
+    </figcaption>
+  </figure>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/sandler.png"><img src="cards/sandler.png" alt="Card Método Sandler: rapport, dor, impacto e compromisso" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · Método Sandler</p>
+      <p class="fx">Sandler = Rapport + Dor + Impacto + Compromisso</p>
+      <p class="fr">↳ entendeu a dor + mediu impacto + validou próximo passo = <u>avanço</u></p>
+      <p class="o"><b>O que é:</b> abordagem consultiva que explora dor, impacto e compromisso antes da proposta.</p>
+      <p class="p"><b>Aqui:</b> rapport pelo nome (4.1), dor com as palavras deles (4.3), impacto e cenários (4.4 e 05), compromisso no filtro dos 95% (6.1). Só depois o plano e o valor.</p>
+      <p class="x"><b>O card avisa:</b> não apresente proposta cedo demais. Primeiro o problema e o custo de não resolver.</p>
+    </figcaption>
+  </figure>
+  <p>45 a 60 minutos, com todos os decisores e o atleta.</p>
+
+  <div class="passo">
+    <h3><span class="num">4.1</span>Conexão pelo nome</h3>
+    <div class="gat"><span>Exclusividade</span></div>
+    <div class="falas">
+      <div class="fala"><span class="quem">Closer</span><p><var>pai</var>, <var>mãe</var>, <var>atleta</var>, prazer. <var>atleta</var>, parabéns: você foi escolhido. Eu li tudo o que você conversou com o <var>SDR</var>, e fiz questão de ver teu material. <var>ponto forte próprio</var>.</p></div>
+    </div>
+  </div>
+
+  <div class="passo">
+    <h3><span class="num">4.2</span>Combinado</h3>
+    <div class="gat"><span>Compromisso</span></div>
+    <div class="falas"><div class="fala"><span class="quem">Closer</span><p>Vocês combinaram com o <var>SDR</var> que, se o plano fizer sentido, decidem hoje, os dois juntos. Continua valendo? Pode ser não, tudo bem. Só não vale "vou pensar".</p></div></div>
+    <p class="nota">Reforça o pré-compromisso da R1. Combinado inicial do Sandler: fecha a porta do "vou pensar" antes de ela abrir.</p>
+  </div>
+
+  <div class="passo">
+    <h3><span class="num">4.3</span>Retomar a dor com as palavras deles</h3>
+    <div class="falas">
+      <div class="fala"><span class="quem">Closer</span><p><var>mãe</var>, você falou pro <var>SDR</var> que <var>dor literal do CRM</var>. Continua assim?</p></div>
+      <div class="fala"><span class="quem">Closer</span><p>E <var>atleta</var>, você disse que o que falta é <var>resposta do CRM</var>. Ainda sente isso?</p></div>
+      <div class="fala chave"><span class="quem">Closer</span><p><var>atleta</var>, você contou pro <var>SDR</var> que fez <var>nº de peneiras</var> peneiras e só se sentiu observado de verdade em <var>nº do CRM</var>. É isso?</p></div>
+      <div class="fala"><span class="quem">Closer</span><p>E sendo sincero: no olhômetro, com aquele monte de garoto e vinte minutos de coletivo, você acha que o avaliador conseguiu analisar o teu jogo com precisão?</p></div>
+      <div class="fala outro"><span class="quem">Atleta</span><p>Não.</p></div>
+      <div class="fala"><span class="quem">Closer</span><p><var>pai</var>, <var>mãe</var>, e quanto custou cada uma dessas peneiras pra vocês? Viagem, inscrição, dia de trabalho perdido?</p></div>
+    </div>
+    <div class="gat"><span>Empatia</span><span>Aversão à perda</span></div>
+    <p class="nota">A família confirma a própria dor em voz alta. Quem fala mais é o cliente. Esse é o gancho que o Closer usa em 6.3, quando apresenta o Zyron.</p>
+  </div>
+
+  <div class="passo">
+    <h3><span class="num">4.4</span>Impacto: o custo de não resolver</h3>
+    <div class="gat"><span>Aversão à perda</span></div>
+    <ul class="lista">
+      <li>"Vocês já investiram <var>valor do CRM</var> e ele ainda não foi visto por quem decide. Se continuar assim, onde ele vai estar daqui a um ano?"</li>
+      <li>"Com <var>idade</var> anos, quanto tempo de janela ele ainda tem pra entrar numa base?"</li>
+    </ul>
+    <div class="falas">
+      <div class="fala"><span class="quem">Closer</span><p>De 0 a 10, quanto vocês querem ver o <var>atleta</var> num clube profissional?</p></div>
+      <div class="fala outro"><span class="quem">Pai</span><p>Dez.</p></div>
+      <div class="fala"><span class="quem">Closer</span><p>E por que dez?</p></div>
+    </div>
+    <p class="nota">Quem justifica o próprio número se convence sozinho. Se a resposta for menor que 10, pergunta "por que não é menos?".</p>
+  </div>
+
+  <div class="passo">
+    <h3><span class="num">4.5</span>Necessidade explícita</h3>
+    <p class="nota">SPIN: sem Necessidade Explícita, não se fala do plano.</p>
+    <div class="falas"><div class="fala chave"><span class="quem">Closer</span><p>Vocês querem que eu mostre como seria o plano do <var>atleta</var>?</p></div></div>
+    <p>Espera o "quero". Resposta morna: volta pro impacto.</p>
+  </div>
+</section>
+
+<section id="cenarios">
+  <h2><span class="num">05</span>Cenários: trabalhar a imaginação</h2>
+  <p>Depois da dor, o Closer faz a família imaginar o depois. O cenário depende do tipo de dor que o SDR registrou no CRM. Depois de cada cenário, silêncio: quem descreve o futuro em voz alta já se vê nele.</p>
+
+  <div class="passo">
+    <h3>Dor financeira · mudança de vida</h3>
+    <div class="gat"><span>Futuro imaginado</span><span>Aversão à perda</span></div>
+    <div class="falas">
+      <div class="fala chave"><span class="quem">Closer</span><p>Olha, com média de 3 meses, a gente consegue colocar esses jogadores em times profissionais, e o <var>atleta</var> atende a essas características. Hoje eles ganham por volta de 20 a 30 mil reais, no mínimo.</p></div>
+      <div class="fala"><span class="quem">Closer</span><p><var>pai</var>, o que muda na vida de vocês quando o <var>atleta</var> estiver ganhando isso?</p></div>
+      <div class="fala"><span class="quem">Closer</span><p>Imagina ele te ligando do clube pra contar que assinou. Qual a primeira coisa que vocês fazem?</p></div>
+    </div>
+  </div>
+
+  <div class="passo">
+    <h3>Dor emocional · o sonho</h3>
+    <div class="gat"><span>Futuro imaginado</span></div>
+    <div class="falas">
+      <div class="fala"><span class="quem">Closer</span><p><var>atleta</var>, imagina você entrando em campo com a camisa do <var>clube dos sonhos do CRM</var>. Quem você quer ver na arquibancada?</p></div>
+      <div class="fala"><span class="quem">Closer</span><p><var>mãe</var>, depois de tanto "não" nas peneiras, como vai ser ver ele assim?</p></div>
+    </div>
+  </div>
+
+  <div class="passo">
+    <h3>Dor de tempo e idade · a janela</h3>
+    <div class="gat"><span>Urgência</span><span>Aversão à perda</span></div>
+    <div class="falas">
+      <div class="fala"><span class="quem">Closer</span><p>Com <var>idade</var>, a janela da base tá aberta agora. Em média, em 3 meses ele pode estar num clube. Um ano parado, com <var>idade + 1</var>, a conversa é outra.</p></div>
+    </div>
+  </div>
+
+  <div class="passo">
+    <h3>Locomoção · ele no clube</h3>
+    <div class="gat"><span>Futuro imaginado</span></div>
+    <div class="falas">
+      <div class="fala"><span class="quem">Closer</span><p>Quando ele for pro clube em <var>estado</var>, <var>quem acompanha, do CRM</var> vai junto, como vocês falaram pro <var>SDR</var>. E o gerente de carreira organiza essa ida com vocês. <var>como funciona a estrutura do clube na base</var>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="diferencial">
+  <h2><span class="num">06</span>Diferencial e plano</h2>
+
+  <div class="passo">
+    <h3><span class="num">6.1</span>O filtro dos 95%</h3>
+    <div class="gat"><span>Compromisso</span><span>Exclusividade</span></div>
+    <div class="falas">
+      <div class="fala chave"><span class="quem">Closer</span><p>95% dos atletas que entram com a gente são encaminhados. Os 5% que não vão é por falta de disciplina e de compromisso. Por isso eu te pergunto, <var>atleta</var>: você tá disposto a fazer a tua parte? Treinar, cumprir o que o teu gerente de carreira passar, dar o máximo?</p></div>
+      <div class="fala outro"><span class="quem">Atleta</span><p>Tô.</p></div>
+      <div class="fala"><span class="quem">Closer</span><p><var>pai</var>, <var>mãe</var>, e vocês? Tão dispostos a apoiar ele nesse processo?</p></div>
+    </div>
+    <p class="nota">O sim do atleta, na frente dos pais, pesa mais que qualquer argumento. E a família sente que está sendo avaliada, não vendida.</p>
+  </div>
+
+  <div class="passo">
+    <h3><span class="num">6.2</span>"Como vocês têm 95%?"</h3>
+    <div class="falas"><div class="fala"><span class="quem">Closer</span><p>Três coisas. Filtro: a gente não pega qualquer atleta, escolhe atletas como você, <var>atleta</var>, com base em dados reais e não no olhômetro. Gerente de carreira acompanhando todo dia. E o Zyron acompanhando o tempo todo. É por isso que a margem é essa.</p></div></div>
+  </div>
+
+  <div class="passo">
+    <h3><span class="num">6.3</span>O que ninguém mais tem</h3>
+    <p class="destaque">Escolinha treina. Peneira decide no olhômetro. <em>Aqui ele é analisado com dados reais e acompanhado todo dia.</em></p>
+    <div class="duas">
+      <div class="coluna forte"><h4>Gerente de carreira</h4><p>O <var>nome do gerente</var>, o responsável por revelar centenas de jogadores, acompanha o desenvolvimento do atleta todo dia: evolução, treino, próximos passos e a hora certa de levar ele pros clubes.</p></div>
+      <div class="coluna forte"><h4>Zyron, o mecanismo exclusivo</h4><p>Analisa o atleta com dados reais, não no olhômetro, que é o caminho que os clubes estão seguindo com a inteligência artificial. E coloca um agente específico só pro atleta, acompanhando a evolução e mantendo contato o tempo todo, pra ele ter sempre o melhor resultado possível. É por esse mecanismo que a gente revela os nossos jogadores.</p></div>
+    </div>
+    <div class="gat"><span>Mecanismo único</span><span>Autoridade</span><span>Exclusividade</span></div>
+    <div class="falas">
+      <div class="fala chave"><span class="quem">Closer</span><p>O <var>atleta</var> vai ter um gerente de carreira, o <var>nome do gerente</var>. Foi ele o responsável por revelar centenas de jogadores. E ele vai acompanhar o desenvolvimento do <var>atleta</var> todo dia.</p></div>
+      <div class="fala chave"><span class="quem">Closer</span><p>E vai ter o Zyron, o nosso mecanismo exclusivo. Um agente específico só pra ele, acompanhando e mantendo contato o tempo todo, pra ele ter sempre o melhor resultado possível. Isso não existe em escolinha, em peneira, em empresário, em lugar nenhum.</p></div>
+      <div class="fala chave"><span class="quem">Closer</span><p>Lembra do que você falou das peneiras? <var>nº de peneiras</var> peneiras, e observado de verdade em <var>nº do CRM</var>. Aquilo é olhômetro. Hoje, com inteligência artificial, os clubes estão cada vez mais escolhendo atleta com base em dados reais. O Zyron analisa o <var>atleta</var> exatamente assim, e é por esse mecanismo que a gente revela os nossos jogadores.</p></div>
+      <div class="fala"><span class="quem">Pro atleta</span><p><var>atleta</var>, gerente de carreira todo dia e um agente só teu. Isso é estrutura de atleta profissional. Você vai começar a viver como um.</p></div>
+    </div>
+  </div>
+
+  <div class="passo">
+    <h3><span class="num">6.4</span>O plano individual</h3>
+    <div class="falas"><div class="fala"><span class="quem">Closer</span><p>Com base no que vocês contaram, o plano do <var>atleta</var> é esse:</p></div></div>
+    <div class="tbl"><table>
+      <thead><tr><th>Dor que a família falou</th><th>O que o plano faz</th></tr></thead>
+      <tbody>
+        <tr><td>"Ele tá sem acompanhamento"</td><td>Gerente de carreira acompanhando o desenvolvimento todo dia</td></tr>
+        <tr><td>"Ninguém cobra ele, ninguém acompanha"</td><td>Agente do Zyron só dele, mantendo contato o tempo todo</td></tr>
+        <tr><td>"Nas peneiras ninguém olhou ele direito"</td><td>Zyron: análise por dados reais do jogo dele, do jeito que os clubes estão escolhendo</td></tr>
+        <tr><td>"Ninguém de clube vê ele"</td><td>Encaminhamento pra clubes, com a rede de mais de dez anos e a relação direta com a AGN Football</td></tr>
+        <tr><td>"Não sei o que ele precisa melhorar"</td><td>Módulos de desenvolvimento, com o gerente e o Zyron ajustando a rota</td></tr>
+        <tr><td>"Não sei se ele tá no nível"</td><td><var>como a equipe avalia e dá retorno</var></td></tr>
+      </tbody>
+    </table></div>
+    <div class="falas"><div class="fala"><span class="quem">Closer</span><p>É individual. Por isso cada turma tem só 10 atletas: é o máximo que o gerente de carreira acompanha de perto, todo dia.</p></div></div>
+  </div>
+
+  <div class="passo">
+    <h3><span class="num">6.5</span>Prova</h3>
+    <div class="gat"><span>Prova social</span><span>Comparação</span><span>Autoridade</span></div>
+    <div class="falas">
+      <div class="fala"><span class="quem">Closer</span><p>O <var>SDR</var> comentou com vocês do <var>caso</var>. Ele também era <var>posição</var>, entrou com <var>idade</var>, numa situação muito parecida com a do <var>atleta</var>. Em <var>tempo</var>, fechou com o <var>clube</var>.</p></div>
+      <div class="fala"><span class="quem">Closer</span><p>Foi assim com o Joãozinho, que hoje tá no Grêmio, com o Kaio e com vários outros. Mais de dez anos, centenas de atletas revelados, e relação direta com a AGN Football, com jogador nosso publicado lá.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="valor">
+  <h2><span class="num">07</span>Ancoragem e valor</h2>
+  <p>O número só aparece depois da conta do que a família gastaria sozinha, e sem certeza nenhuma. Nessa ordem:</p>
+  <ol class="preco">
+    <li><span class="p">1</span><strong>Régua</strong><span class="d">O que já gastaram</span></li>
+    <li><span class="p">2</span><strong>Conta</strong><span class="d">Gerente e profissionais</span></li>
+    <li><span class="p">3</span><strong>Sem certeza</strong><span class="d">E sem Zyron</span></li>
+    <li><span class="p">4</span><strong>Contrato</strong><span class="d">Nosso lucro vem de lá</span></li>
+    <li class="num-li"><span class="p">5</span><strong>R$ ____</strong><span class="d">Um valor, dito uma vez</span></li>
+    <li><span class="p">6</span><strong>Silêncio</strong><span class="d">A família fala primeiro</span></li>
+  </ol>
+  <div class="gat"><span>Ancoragem</span><span>Comparação</span><span>Aversão à perda</span><span>Mecanismo único</span></div>
+  <div class="falas">
+    <div class="fala"><span class="quem">Régua</span><p>Vocês já investiram <var>valor do CRM</var> nesse sonho, e ele continua sem ser visto por quem decide.</p></div>
+    <div class="fala"><span class="quem">Conta</span><p>Agora pensa comigo: se vocês fossem montar isso por conta, iam precisar de um gerente de carreira particular acompanhando ele todo dia, preparador físico, analista de desempenho, alguém pra montar o vídeo e levar pros clubes, e viagem pra cada avaliação. Só com profissionais dedicados, isso passa de <var>custo mensal de mercado</var> por mês.</p></div>
+    <div class="fala"><span class="quem">Sem certeza</span><p>E mesmo pagando tudo isso, ele ia continuar dependendo do olhômetro de um avaliador de peneira. Ninguém garante que ele seria encaminhado, e nenhum deles tem o Zyron. A gente encaminha 95%.</p></div>
+    <div class="fala"><span class="quem">Contrato</span><p>Vocês mesmos disseram pro <var>SDR</var>: não faz sentido a gente lucrar em cima de vocês. Nosso lucro vem do contrato profissional do <var>atleta</var>. Essa parte do investimento é por conta dos gastos com o gerente de carreira e os profissionais dedicados a ele.</p></div>
+    <div class="fala chave"><span class="quem">Número</span><p>O investimento no plano do <var>atleta</var> é de <span class="branco">R$ ____</span>.</p></div>
+  </div>
+  <div class="cartao vd"><div><span class="tit">Regra de ouro</span>Depois do número, silêncio. Nada de justificar, emendar desconto ou perguntar "o que achou?". Quem fala primeiro depois do preço perde.</div></div>
+  <p>Se a família falar em valor, quebra no prazo médio de 3 meses:</p>
+  <div class="falas"><div class="fala"><span class="quem">Quebra</span><p>No prazo médio de 3 meses, dá menos de <span class="branco">R$ __</span> por dia, com gerente de carreira todo dia e um agente do Zyron só dele.</p></div></div>
+
+  <h3>Qual plano apresentar</h3>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/bant.png"><img src="cards/bant.png" alt="Card Método BANT: budget, authority, need e timing" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · Método BANT</p>
+      <p class="fx">BANT = Budget + Authority + Need + Timing</p>
+      <p class="fr">↳ tem verba + decide + precisa + quer agora = <u>lead forte</u></p>
+      <p class="o"><b>O que é:</b> qualificar por orçamento, autoridade, necessidade e tempo.</p>
+      <p class="p"><b>Aqui:</b> o SDR anotou os sinais de Budget na ficha. É com eles que o Closer escolhe qual plano apresentar.</p>
+      <p class="x"><b>O card avisa:</b> BANT não é interrogatório. Ninguém pergunta "quanto você pode pagar?".</p>
+    </figcaption>
+  </figure>
+  <div class="tbl"><table>
+    <thead><tr><th>Plano</th><th>Valor</th><th>Por dia em 3 meses</th><th>Quando apresentar</th></tr></thead>
+    <tbody>
+      <tr><td>Principal</td><td class="num">R$2997</td><td class="num">menos de R$34</td><td>Padrão. O mais vendido. Primeiro sempre que o CRM não mostra aperto financeiro.</td></tr>
+      <tr><td>Intermediário</td><td class="num">R$1497</td><td class="num">menos de R$17</td><td>CRM com dor financeira forte, ou objeção de caixa real depois do principal.</td></tr>
+      <tr><td>Entrada</td><td class="num">R$497</td><td class="num">menos de R$6</td><td>Objeção de caixa real que os outros dois não resolvem.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="cartao"><div><span class="tit">Tática</span>Um valor por vez. Se precisar descer de plano, desce pelo escopo, nunca pelo desconto: "existe um formato mais enxuto, com <var>o que muda no plano</var>". Desconto derruba o "é só o custo".</div></div>
+</section>
+
+<section id="fechamento">
+  <h2><span class="num">08</span>Fechamento: dois modos</h2>
+  <p>Nem toda R2 fecha na hora, e nem toda deve. O Closer lê a família e escolhe o modo.</p>
+  <div class="duas">
+    <div class="coluna a">
+      <h4>Modo A · Fechar na call</h4>
+      <ul>
+        <li>Família pedindo pra começar</li>
+        <li>Perguntou de pagamento ou de início</li>
+        <li>Todos os decisores na call</li>
+        <li>Dor forte e cenário comprado</li>
+      </ul>
+    </div>
+    <div class="coluna b">
+      <h4>Modo B · A equipe decide</h4>
+      <ul>
+        <li>Família com pé atrás com vendedor</li>
+        <li>Pai que precisa sentir controle</li>
+        <li>Muita pergunta de preço, pouca de plano</li>
+        <li>Um decisor ausente</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Modo A · Fechar na call</h3>
+  <ol class="camadas">
+    <li><div><strong>Resumo dos sins</strong>
+      <div class="gat"><span>Compromisso</span></div>
+      <div class="falas"><div class="fala chave"><span class="quem">Closer</span><p>Deixa eu resumir o que vocês me falaram: <var>dor com as palavras deles</var>. Querem ver o <var>atleta</var> num clube, nota dez. Ele tá comprometido. E vocês mesmos disseram que não faz sentido a gente lucrar em cima de vocês. O plano tem gerente de carreira todo dia, o Zyron e 95% de encaminhamento. Faz sentido pra vocês?</p></div></div>
+    </div></li>
+    <li><div><strong>Pergunta de decisão</strong>
+      <div class="gat"><span>Escolha alternativa</span></div>
+      <div class="falas"><div class="fala chave"><span class="quem">Closer</span><p>Então eu confirmo a vaga do <var>atleta</var> agora. Fica melhor no Pix ou no cartão?</p></div></div>
+    </div></li>
+    <li><div><strong>Escassez e urgência</strong>
+      <div class="gat"><span>Escassez</span><span>Urgência</span></div>
+      <div class="falas">
+        <div class="fala"><span class="quem">Closer</span><p>Dessa turma de 10, restam <var>vagas restantes</var>. A próxima abre em <var>data da próxima turma</var>.</p></div>
+        <div class="fala"><span class="quem">Closer</span><p>E pro <var>atleta</var>, com <var>idade</var>, esperar a próxima turma é perder <var>tempo</var> de janela.</p></div>
+      </div>
+    </div></li>
+    <li><div><strong>Depois de tratar a objeção</strong>
+      <div class="falas"><div class="fala"><span class="quem">Closer</span><p>Resolvido isso, eu confirmo a vaga dele agora. Pix ou cartão?</p></div></div>
+    </div></li>
+    <li><div><strong>Lembrar o combinado</strong>
+      <div class="gat"><span>Compromisso</span></div>
+      <div class="falas"><div class="fala"><span class="quem">Closer</span><p>Vocês combinaram de decidir hoje, lembra? Pode ser não, tudo bem. O que tá faltando pro sim?</p></div></div>
+    </div></li>
+  </ol>
+
+  <h3>Modo B · A equipe decide</h3>
+  <p>O Closer recua de propósito. A família sai da call querendo uma vaga que ainda não é dela.</p>
+  <ol class="camadas">
+    <li><div><strong>Recuar</strong>
+      <div class="gat"><span>Exclusividade</span><span>Escassez</span></div>
+      <div class="falas"><div class="fala chave"><span class="quem">Closer</span><p>Olha, eu não vou te vender nada hoje. Antes de abrir a vaga, eu apresento o <var>atleta</var> pro <var>nome do gerente</var> e pra nossa equipe técnica, e são eles que decidem se ele entra nessa turma.</p></div></div>
+    </div></li>
+    <li><div><strong>Compromisso condicional</strong>
+      <div class="falas"><div class="fala"><span class="quem">Closer</span><p>Enquanto isso, conversem entre vocês e com o <var>atleta</var>. Se a equipe aprovar, vocês estão dentro?</p></div></div>
+    </div></li>
+    <li><div><strong>Data do retorno</strong>
+      <div class="falas"><div class="fala"><span class="quem">Closer</span><p>Amanhã até <var>hora</var> eu te dou o retorno da equipe. Fica de olho no telefone.</p></div></div>
+    </div></li>
+    <li><div><strong>Retorno no dia seguinte</strong>
+      <div class="gat"><span>Reciprocidade</span><span>Escassez</span></div>
+      <div class="falas"><div class="fala chave"><span class="quem">Closer</span><p><var>pai</var>, boa notícia: o <var>nome do gerente</var> e a equipe aprovaram o <var>atleta</var>. A vaga é dele até <var>hora</var>. Pra confirmar, é o investimento que eu te passei, <span class="branco">R$ ____</span>. Pix ou cartão?</p></div></div>
+    </div></li>
+  </ol>
+  <div class="cartao vd"><div><span class="tit">Regra de ouro</span>Modo A ou modo B, a R2 nunca termina sem data: ou a venda, ou o retorno da equipe marcado.</div></div>
+  <div class="cartao vm"><div><span class="tit">Proibido</span>Correr atrás da família. Quem liga depois é o Closer com o retorno da equipe, não com "e aí, pensaram?".</div></div>
+</section>
+
+<section id="objecoes">
+  <h2><span class="num">09</span>Matriz de objeções</h2>
+  <p>Método pra qualquer objeção:</p>
+  <ol class="metodo">
+    <li><strong>1 Acolher</strong><span>"Faz sentido você pensar nisso."</span></li>
+    <li><strong>2 Isolar</strong><span>"Tirando isso, tem mais alguma coisa?"</span></li>
+    <li><strong>3 Diagnosticar</strong><span>Pergunta antes de responder.</span></li>
+    <li><strong>4 Responder</strong><span>Com as palavras da própria família.</span></li>
+    <li><strong>5 Conduzir</strong><span>Toda objeção tratada volta pra decisão.</span></li>
+  </ol>
+  <p class="nota">Predictable Revenue: um "não" é informação. Descobre o porquê, porque muitas vezes a família só entendeu errado o que vocês fazem.</p>
+
+  <article class="objecao">
+    <h3><span class="num">9.1</span>"O valor tá muito alto"</h3>
+    <p><span class="rot">Prevenção</span><br>Cenário comprado, gerente de carreira e Zyron apresentados, e a conta dos profissionais antes do número. Objeção de preço logo depois do número quase sempre é valor mal empilhado.</p>
+    <p class="rot">Tratativa</p>
+    <ol class="camadas">
+      <li><div><strong>Acolher e isolar</strong>
+        <div class="falas"><div class="fala"><span class="quem">Closer</span><p>Entendo. Tirando o valor, tem mais alguma coisa que impede o <var>atleta</var> de começar?</p></div></div>
+      </div></li>
+      <li><div><strong>Retorno ou dinheiro agora?</strong>
+        <div class="falas"><div class="fala"><span class="quem">Closer</span><p>Quando você fala que tá alto: você não vê o retorno, ou é o dinheiro agora?</p></div></div>
+      </div></li>
+      <li><div><strong>Se for retorno: empilhar valor de novo</strong>
+        <div class="gat"><span>Mecanismo único</span><span>Ancoragem</span><span>Futuro imaginado</span></div>
+        <div class="falas">
+          <div class="fala chave"><span class="quem">Closer</span><p>Cada perfil é individual, e o do <var>atleta</var> tem um gerente de carreira que revelou centenas de jogadores olhando pra ele todo dia, e um agente do Zyron só dele. Sozinhos, vocês iam pagar mais que isso todo mês, e sem certeza nenhuma. Aqui são 95%.</p></div>
+          <div class="fala"><span class="quem">Closer</span><p>E lembra: os atletas que a gente coloca hoje ganham por volta de 20 a 30 mil por mês, no mínimo. O Joãozinho entrou numa situação parecida e hoje tá no Grêmio.</p></div>
+        </div>
+      </div></li>
+      <li><div><strong>Se for dinheiro agora</strong>
+        <div class="falas">
+          <div class="fala"><span class="quem">Closer</span><p>Se o dinheiro não fosse problema, o <var>atleta</var> começava hoje?</p></div>
+          <div class="fala"><span class="quem">Closer</span><p>Então vamos resolver a forma: dá pra fazer em <var>condição de pagamento</var>. E se precisar, existe um formato mais enxuto, com <var>o que muda no plano</var>, de <span class="branco">R$ ____</span>.</p></div>
+        </div>
+      </div></li>
+      <li><div><strong>Conduzir</strong>
+        <div class="falas"><div class="fala chave"><span class="quem">Closer</span><p>Então eu confirmo a vaga dele. Pix ou cartão?</p></div></div>
+      </div></li>
+    </ol>
+    <div class="cartao vm"><div><span class="tit">Proibido</span>Desconto, "vou ver com meu gerente", baixar valor sem mudar o escopo. Desconto depois de objeção ensina que o preço era mentira e derruba o "é só o custo".</div></div>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">9.2</span>"Preciso ver com minha esposa / meu marido"</h3>
+    <p><span class="rot">Prevenção</span><br>O SDR marca a R2 com os dois e com o pré-compromisso (Playbook do SDR, 6.15 e seção 09). O Closer confirma os dois antes (seção 02) e reforça o combinado (4.2).</p>
+    <p class="rot">Se aparecer mesmo assim</p>
+    <ol class="camadas">
+      <li><div><strong>Acolher e ver a posição</strong>
+        <div class="falas"><div class="fala"><span class="quem">Closer</span><p>Faz todo sentido, é decisão de família. E você, se dependesse só de você, o <var>atleta</var> começava?</p></div></div>
+        <p class="nota">Disse sim: virou aliado. Hesitou: a objeção real é outra, volta pro método.</p>
+      </div></li>
+      <li><div><strong>Fechamento condicional</strong>
+        <div class="falas"><div class="fala"><span class="quem">Closer</span><p>Então, se a <var>mãe</var> topar, vocês estão dentro?</p></div></div>
+      </div></li>
+      <li><div><strong>Trazer agora</strong>
+        <div class="falas"><div class="fala"><span class="quem">Closer</span><p>Liga pra ela agora e coloca no viva-voz. Em 10 minutos eu explico o gerente de carreira e o Zyron, e vocês decidem juntos.</p></div></div>
+      </div></li>
+      <li><div><strong>Antecipar a conversa do casal</strong>
+        <div class="falas"><div class="fala"><span class="quem">Closer</span><p>O que você acha que ela vai perguntar? Me fala que eu já te respondo.</p></div></div>
+      </div></li>
+      <li><div><strong>Virar modo B</strong>
+        <div class="falas"><div class="fala"><span class="quem">Closer</span><p>Então vamos fazer assim: eu apresento o <var>atleta</var> pra equipe hoje, e amanhã às <var>hora</var> eu falo com vocês dois com o retorno.</p></div></div>
+      </div></li>
+    </ol>
+    <div class="cartao vm"><div><span class="tit">Proibido</span>Mandar a proposta por WhatsApp "pra você mostrar pra ela". Quem não estava na call vê só o número, sem a dor, sem o cenário, sem o gerente e sem o Zyron.</div></div>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">9.3</span>"Vou pensar"</h3>
+    <div class="falas">
+      <div class="fala"><span class="quem">Closer</span><p>Claro. Pensar sobre o quê exatamente? O valor, conversar com mais alguém, ou alguma dúvida sobre o plano?</p></div>
+      <div class="fala"><span class="quem">Closer</span><p>O que vocês vão saber amanhã que não sabem agora?</p></div>
+      <div class="fala"><span class="quem">Closer</span><p>Vocês combinaram com o <var>SDR</var> de decidir hoje. O que tá faltando?</p></div>
+      <div class="fala"><span class="quem">Modo B</span><p>Então faz assim: pensem hoje, que eu levo o <var>atleta</var> pra equipe. Amanhã às <var>hora</var> eu te dou o retorno, e aí vocês me dizem se estão dentro.</p></div>
+    </div>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">9.4</span>"Mas vocês não ganham no contrato? Por que cobram?"</h3>
+    <div class="falas"><div class="fala"><span class="quem">Closer</span><p>Exatamente: nosso lucro vem do contrato. Isso aqui não é lucro, é o gasto com o gerente de carreira e os profissionais dedicados ao <var>atleta</var> até o contrato sair. Sem eles, não tem contrato pra ninguém ganhar.</p></div></div>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">9.5</span>"E se ele for dos 5%?"</h3>
+    <div class="gat"><span>Compromisso</span></div>
+    <div class="falas">
+      <div class="fala"><span class="quem">Closer</span><p>Os 5% são falta de disciplina e de compromisso. Isso depende dele, e é por isso que ele tem gerente de carreira e Zyron em cima todo dia.</p></div>
+      <div class="fala chave"><span class="quem">Closer</span><p><var>atleta</var>, você vai ser dos 5%?</p></div>
+    </div>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">9.6</span>"E se não der certo?" · "Tem garantia?"</h3>
+    <div class="gat"><span>Autoridade</span><span>Aversão à perda</span></div>
+    <div class="falas">
+      <div class="fala"><span class="quem">Closer</span><p>Quem te promete contrato tá mentindo. O que a gente tem é 95% de encaminhamento, gerente de carreira todo dia, o Zyron, e a gente só ganha quando ele ganha. Se ele não avançar, quem perde primeiro somos nós.</p></div>
+      <div class="fala"><span class="quem">Closer</span><p>O risco de verdade é ele ficar parado mais um ano.</p></div>
+    </div>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">9.7</span>"Não tenho o dinheiro agora"</h3>
+    <div class="falas">
+      <div class="fala"><span class="quem">Closer</span><p>Se tivesse, ele começava hoje?</p></div>
+      <div class="fala"><span class="quem">Closer</span><p>Então o problema é só a forma. Dá pra fazer em <var>condição de pagamento</var>, ou no formato mais enxuto de <span class="branco">R$ ____</span>. Qual cabe melhor?</p></div>
+    </div>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">9.8</span>"Ele não pode ir pra outro estado"</h3>
+    <div class="falas">
+      <div class="fala"><span class="quem">Closer</span><p>Hoje ele não precisa ir pra lugar nenhum. Isso só acontece quando o clube chamar, e o gerente de carreira organiza com vocês. <var>como funciona a estrutura do clube na base</var>.</p></div>
+      <div class="fala"><span class="quem">Closer</span><p>E vocês falaram pro <var>SDR</var> que <var>solução do CRM</var>. Então isso a gente resolve junto quando chegar a hora.</p></div>
+    </div>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">9.9</span>"Já tentamos peneira / empresário e não deu"</h3>
+    <div class="falas">
+      <div class="fala"><span class="quem">Closer</span><p>Quantos garotos tinham nessa peneira? E quanto tempo olharam pra ele? Vinte minutos de coletivo?</p></div>
+      <div class="fala chave"><span class="quem">Closer</span><p>Então não foi ele que não deu certo. Foi o olhômetro. Ninguém analisou o jogo dele de verdade, e ninguém acompanhou ele depois. É exatamente isso que o Zyron e o gerente de carreira fazem: dado real na análise e acompanhamento todo dia.</p></div>
+    </div>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">9.10</span>"Ele ainda é novo" · "Ano que vem a gente vê"</h3>
+    <div class="gat"><span>Urgência</span><span>Comparação</span></div>
+    <div class="falas">
+      <div class="fala"><span class="quem">Closer</span><p>Com <var>idade + 1</var>, a janela fica maior ou menor? O <var>caso</var> entrou com <var>idade do caso</var>. Esperar um ano é deixar a vaga de base pra outro menino.</p></div>
+    </div>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">9.11</span>"Isso é confiável?"</h3>
+    <div class="gat"><span>Autoridade</span><span>Prova social</span></div>
+    <div class="falas"><div class="fala"><span class="quem">Closer</span><p>Mais de dez anos, centenas de atletas revelados, 95% de encaminhamento e relação direta com a AGN Football, com jogador nosso publicado lá. O Joãozinho fechou com o Grêmio, o Kaio também passou por aqui. E aqui tá o nosso <var>site, Instagram ou CNPJ</var>.</p></div></div>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">9.12</span>"Manda por WhatsApp que eu vejo com calma"</h3>
+    <div class="falas"><div class="fala"><span class="quem">Closer</span><p>O plano é do <var>atleta</var>, não é folder. Explicado aqui, com vocês, é que ele faz sentido. O que você precisa ver pra decidir?</p></div></div>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">9.13</span>"Vou ver outras opções"</h3>
+    <div class="gat"><span>Mecanismo único</span><span>Escassez</span></div>
+    <div class="falas">
+      <div class="fala"><span class="quem">Closer</span><p>Compara mesmo. Pergunta pra eles: analisam o atleta com dados reais ou no olhômetro? Tem gerente de carreira acompanhando todo dia? Tem um agente como o Zyron? Quantos atletas encaminham? Têm relação direta com a AGN? Cobram mensalidade ou só ganham quando o atleta ganha?</p></div>
+      <div class="fala"><span class="quem">Closer</span><p>Só lembra que a vaga do <var>atleta</var> aqui não fica aberta pra sempre. A turma é de 10.</p></div>
+    </div>
+  </article>
+
+  <h3><span class="num">9.14</span>Linhas novas, vindas das calls gravadas</h3>
+  <div class="tbl"><table class="largo">
+    <thead><tr><th>Objeção (literal da call)</th><th>Call de origem</th><th>Diagnóstico</th><th>Script que fechou</th><th>O que travou</th></tr></thead>
+    <tbody><tr><td colspan="5" style="color:var(--ink-3);font-weight:400">Preenchido a cada call gravada e transcrita.</td></tr></tbody>
+  </table></div>
+</section>
+
+<section id="sim">
+  <h2><span class="num">10</span>Depois do sim</h2>
+  <ol class="lista">
+    <li><strong>Pagamento na própria call:</strong> "faz agora comigo na linha", no Pix ou no cartão.</li>
+    <li><strong>Registro:</strong> venda concluída no CRM e cadastro em Vendas, com o produto e o ticket do plano fechado. A venda entra pendente até a aprovação do Executive.</li>
+    <li><strong>Áudio de boas-vindas pro atleta:</strong> "Bem-vindo, <var>atleta</var>. Teu gerente de carreira e o Zyron começam contigo agora."</li>
+    <li><strong>Indicação na hora</strong>, enquanto a família tá no pico da empolgação.</li>
+    <li><strong>Próximo passo concreto:</strong> <var>quando o gerente de carreira faz o primeiro contato</var>.</li>
+  </ol>
+  <div class="gat"><span>Reciprocidade</span></div>
+  <div class="falas"><div class="fala"><span class="quem">Closer</span><p><var>atleta</var>, tem algum colega de time que joga no teu nível? A gente faz a avaliação dele também.</p></div></div>
+  <p class="nota">Vira lead pro SDR, já aquecido.</p>
+</section>
+
+<section id="ainda-nao">
+  <h2><span class="num">11</span>Depois do "ainda não"</h2>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/followup.png"><img src="cards/followup.png" alt="Card Follow Up: contato, continuidade e próximo passo" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · Follow up</p>
+      <p class="fx">Follow up = Contato + Continuidade + Próximo passo</p>
+      <p class="fr">↳ ligou + mandou mensagem + retomou a conversa = <u>avanço</u></p>
+      <p class="o"><b>O que é:</b> a sequência de contatos que mantém a oportunidade viva e leva o lead pra frente.</p>
+      <p class="p"><b>Aqui:</b> o Closer volta sempre com motivo (retorno da equipe, caso, cenário), nunca pedindo.</p>
+      <p class="x"><b>O card avisa:</b> não faça follow up solto. Muitas oportunidades são perdidas porque o vendedor desiste cedo demais.</p>
+    </figcaption>
+  </figure>
+  <ol class="linha-tempo">
+    <li><span class="q">Mesmo dia</span><div class="c">
+      <div class="falas"><div class="fala"><span class="quem">Closer</span><p><var>pai</var>, resumo da nossa conversa: vocês me falaram que <var>dor com as palavras deles</var>. O plano do <var>atleta</var> resolve isso, com gerente de carreira todo dia e o Zyron. Amanhã às <var>hora</var> eu te trago o retorno da equipe.</p></div></div>
+    </div></li>
+    <li><span class="q">Data combinada</span><div class="c"><p>Liga na hora marcada, com o retorno da equipe ou com todos os decisores. Retoma a dor e conduz a decisão.</p></div></li>
+    <li><span class="q">+1 dia</span><div class="c"><p>Caso parecido ou link da AGN Football.</p></div></li>
+    <li><span class="q">+3 dias</span><div class="c">
+      <div class="falas"><div class="fala"><span class="quem">Closer</span><p>A vaga do <var>atleta</var> ainda tá separada, mas a turma tá fechando.</p></div></div>
+    </div></li>
+    <li><span class="q">+7 dias</span><div class="c"><p>Cenário de novo: idade, janela, o que muda na vida da família.</p></div></li>
+    <li><span class="q">+14 dias</span><div class="c">
+      <div class="falas"><div class="fala"><span class="quem">Closer</span><p>A equipe vai liberar a vaga do <var>atleta</var> pros próximos aprovados amanhã. Se quiserem garantir, me responde hoje.</p></div></div>
+    </div></li>
+    <li><span class="q">Depois</span><div class="c"><p>Devolve pro SDR, que reaborda em 30 dias. O histórico fica no CRM.</p></div></li>
+  </ol>
+</section>
+
+<section id="numeros">
+  <h2><span class="num">12</span>Números</h2>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/win-rate.png"><img src="cards/win-rate.png" alt="Card Win Rate: 12 vendas em 40 oportunidades, 30%" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · Win rate</p>
+      <p class="fx">Win rate = vendas ganhas ÷ oportunidades × 100</p>
+      <p class="fr">↳ 12 vendas ganhas em 40 oportunidades = <u>30% de win rate</u></p>
+      <p class="o"><b>O que é:</b> a taxa de fechamento. Quantas oportunidades viraram cliente.</p>
+      <p class="p"><b>Aqui:</b> a métrica principal do Closer. Win rate baixo aponta qualificação ruim, proposta fraca ou objeção mal tratada.</p>
+      <p class="x"><b>O card manda:</b> não olhe win rate sozinho. Compare volume, ticket e ciclo de vendas.</p>
+    </figcaption>
+  </figure>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/inside-sales.png"><img src="cards/inside-sales.png" alt="Card Inside Sales: 40 reuniões, 12 propostas, 5 vendas" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · Inside Sales</p>
+      <p class="fx">Inside Sales = Qualificação + Apresentação + Fechamento</p>
+      <p class="fr">↳ 40 reuniões → 12 propostas → <u>5 vendas</u></p>
+      <p class="o"><b>O que é:</b> venda remota e consultiva, com processo, roteiro e acompanhamento.</p>
+      <p class="p"><b>Aqui:</b> SDR qualifica, Closer apresenta e fecha. Com processo e follow up, a operação ganha previsibilidade.</p>
+      <p class="x"><b>O card avisa:</b> sem processo e follow up, a conversão cai.</p>
+    </figcaption>
+  </figure>
+  <div class="tbl"><table>
+    <thead><tr><th>Sintoma</th><th>Provável causa</th><th>Onde mexer</th></tr></thead>
+    <tbody>
+      <tr><td>Muita objeção de preço</td><td>Valor mal empilhado: sem cenário, sem gerente e Zyron, sem a conta</td><td>Closer 05, 06 e 07</td></tr>
+      <tr><td>Muito "ver com a esposa"</td><td>Decisor fora da R2</td><td>SDR 09, Closer 02</td></tr>
+      <tr><td>Muito "vou pensar"</td><td>Sem pré-compromisso ou sem combinado</td><td>SDR 6.15, Closer 4.2</td></tr>
+      <tr><td>Closer perguntando o básico</td><td>Ficha da R1 incompleta</td><td>SDR 12</td></tr>
+      <tr><td>Família fria, "cara de vendedor"</td><td>Modo A forçado</td><td>Closer 03 e 08</td></tr>
+      <tr><td>Ticket caindo</td><td>Descendo de plano cedo demais</td><td>Closer 07</td></tr>
+    </tbody>
+  </table></div>
+  <p>Toda semana o Closer acompanha: win rate de R2, ticket médio, porcentagem de calls com todos os decisores e quantas R2 em modo B fecharam no retorno.</p>
+  <div class="cartao"><div><span class="tit">Tática</span>Se menos da metade das R2 vira venda, a proposta tá sendo dada fácil demais (Predictable Revenue).</div></div>
+</section>
+
+<section id="regras">
+  <h2><span class="num">13</span>Regras de ouro</h2>
+  <div class="cartao vd"><div><span class="tit">Sempre</span>
+    <ul>
+      <li>Ler o CRM inteiro antes da R2.</li>
+      <li>Chamar pai, mãe e atleta pelo nome.</li>
+      <li>Reforçar o pré-compromisso de decidir hoje.</li>
+      <li>Dor com as palavras deles antes de qualquer plano, com os números das peneiras.</li>
+      <li>Olhômetro contra dados reais na hora de apresentar o Zyron.</li>
+      <li>Cenário certo pro tipo de dor.</li>
+      <li>Filtro dos 95% e o sim do atleta antes do valor.</li>
+      <li>Gerente de carreira e Zyron no centro do plano e da ancoragem.</li>
+      <li>Ancoragem antes do número. Um valor por vez. Silêncio depois.</li>
+      <li>Terminar com venda ou com o retorno da equipe marcado.</li>
+    </ul>
+  </div></div>
+  <div class="cartao vm"><div><span class="tit">Proibido</span>
+    <ul>
+      <li>Perguntar de novo o que já tá no CRM.</li>
+      <li>Falar do plano antes da necessidade explícita.</li>
+      <li>Desconto.</li>
+      <li>Proposta por WhatsApp.</li>
+      <li>Correr atrás da família.</li>
+      <li>Colocar o perfil do atleta em dúvida.</li>
+    </ul>
+  </div></div>
+</section>
+
+<section id="casos">
+  <h2><span class="num">14</span>Casos e autoridade</h2>
+  <p>Mesma fonte do SDR, pra família ouvir a mesma história dos dois. O Closer retoma o caso que o SDR usou e pode somar mais um.</p>
+  <div class="tbl"><table class="largo">
+    <thead><tr><th>Atleta</th><th>Clube</th><th>Posição</th><th>Idade na entrada</th><th>Tempo até o resultado</th><th>Dúvida que a família teve</th></tr></thead>
+    <tbody>
+      <tr><td>Joãozinho</td><td>Grêmio</td><td><var>posição</var></td><td><var>idade</var></td><td><var>tempo</var></td><td><var>dúvida</var></td></tr>
+      <tr><td>Kaio</td><td><var>clube</var></td><td><var>posição</var></td><td><var>idade</var></td><td><var>tempo</var></td><td><var>dúvida</var></td></tr>
+      <tr><td><var>próximo caso</var></td><td><var>clube</var></td><td><var>posição</var></td><td><var>idade</var></td><td><var>tempo</var></td><td><var>dúvida</var></td></tr>
+    </tbody>
+  </table></div>
+  <h3>Frases prontas</h3>
+  <div class="passo">
+    <p class="eyebrow">Gerente de carreira e Zyron</p>
+    <div class="falas"><div class="fala"><span class="quem">Closer</span><p>Ele vai ter um gerente de carreira, o <var>nome do gerente</var>, que revelou centenas de jogadores, acompanhando o desenvolvimento dele todo dia. E o Zyron, o nosso mecanismo exclusivo, com um agente específico só pra ele.</p></div></div>
+  </div>
+  <div class="passo">
+    <p class="eyebrow">Olhômetro contra dados reais</p>
+    <div class="falas"><div class="fala"><span class="quem">Closer</span><p>No olhômetro, o avaliador de uma peneira não consegue analisar todos aqueles garotos com precisão. Hoje, com inteligência artificial, os clubes estão cada vez mais escolhendo atleta com base em dados reais. E é assim que a gente revela os nossos jogadores: pelo Zyron.</p></div></div>
+  </div>
+  <div class="passo">
+    <p class="eyebrow">Números da casa</p>
+    <div class="falas"><div class="fala"><span class="quem">Closer</span><p>Mais de dez anos, centenas de atletas revelados, 95% de encaminhamento. Os 5% que não vão é por falta de disciplina e de compromisso.</p></div></div>
+  </div>
+  <div class="passo">
+    <p class="eyebrow">Cenário de mudança de vida</p>
+    <div class="falas"><div class="fala"><span class="quem">Closer</span><p>Com média de 3 meses, a gente consegue colocar esses jogadores em times profissionais, e o <var>atleta</var> atende a essas características. Hoje eles ganham por volta de 20 a 30 mil reais, no mínimo.</p></div></div>
+  </div>
+  <div class="passo">
+    <p class="eyebrow">Comparação e sequência de prova</p>
+    <div class="falas"><div class="fala"><span class="quem">Closer</span><p>O perfil do <var>atleta</var> é muito parecido com o do <var>caso</var>, que a gente fechou recentemente. Foi assim com o Joãozinho, que fechou com o Grêmio, com o Kaio e com vários outros.</p></div></div>
+  </div>
+  <div class="passo">
+    <p class="eyebrow">AGN Football · relação direta</p>
+    <div class="falas"><div class="fala"><span class="quem">Closer</span><p>A gente tem relação direta com a AGN Football. Tem jogador nosso publicado lá, te mando o link.</p></div></div>
+  </div>
+  <div class="passo">
+    <p class="eyebrow">A gente só ganha quando ele ganha</p>
+    <div class="falas"><div class="fala"><span class="quem">Closer</span><p>Nosso lucro vem do contrato profissional do <var>atleta</var>. O que a família investe é por conta dos gastos com o gerente de carreira e os profissionais dedicados a ele.</p></div></div>
+  </div>
+</section>
+
+<section id="glossario">
+  <h2><span class="num">15</span>Glossário dos cards</h2>
+  <p>Todos os cards do treinamento num lugar só. Toque na imagem pra ampliar.</p>
+  <div class="glossario">
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/closer.png"><img src="cards/closer.png" alt="Card Closer" loading="lazy"></button><h4>Closer</h4><p>Conduz a negociação e o fechamento. Aqui faz a R2.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/sdr.png"><img src="cards/sdr.png" alt="Card SDR" loading="lazy"></button><h4>SDR</h4><p>Prospecta, qualifica e agenda. Aqui faz a R1.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/r2.png"><img src="cards/r2.png" alt="Card R2" loading="lazy"></button><h4>R2</h4><p>Reunião de proposta e decisão. Do Closer.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/r1.png"><img src="cards/r1.png" alt="Card R1" loading="lazy"></button><h4>R1</h4><p>Reunião de diagnóstico e qualificação. Do SDR.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/sql.png"><img src="cards/sql.png" alt="Card SQL" loading="lazy"></button><h4>SQL</h4><p>Lead qualificado: interesse real, perfil e momento.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/sandler.png"><img src="cards/sandler.png" alt="Card Sandler" loading="lazy"></button><h4>Sandler</h4><p>Rapport, dor, impacto e compromisso antes da proposta.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/bant.png"><img src="cards/bant.png" alt="Card BANT" loading="lazy"></button><h4>BANT</h4><p>Budget, authority, need, timing: lead forte.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/followup.png"><img src="cards/followup.png" alt="Card Follow Up" loading="lazy"></button><h4>Follow up</h4><p>Contato, continuidade e próximo passo.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/win-rate.png"><img src="cards/win-rate.png" alt="Card Win Rate" loading="lazy"></button><h4>Win rate</h4><p>Vendas ganhas ÷ oportunidades × 100.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/inside-sales.png"><img src="cards/inside-sales.png" alt="Card Inside Sales" loading="lazy"></button><h4>Inside sales</h4><p>Venda remota com processo. 40 → 12 → 5.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/noshow.png"><img src="cards/noshow.png" alt="Card No Show" loading="lazy"></button><h4>No show</h4><p>Faltas ÷ reuniões marcadas × 100.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/lead-speed.png"><img src="cards/lead-speed.png" alt="Card Lead Speed" loading="lazy"></button><h4>Lead speed</h4><p>Tempo até o primeiro contato. Meta: 7 minutos.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/lead-magnet.png"><img src="cards/lead-magnet.png" alt="Card Lead Magnet" loading="lazy"></button><h4>Lead magnet</h4><p>Material de valor em troca de dados. Aqui: o Zyron.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/social-selling.png"><img src="cards/social-selling.png" alt="Card Social Selling" loading="lazy"></button><h4>Social selling</h4><p>Relacionamento nas redes. Aqui: o Instagram.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/webinario.png"><img src="cards/webinario.png" alt="Card Webinário" loading="lazy"></button><h4>Webinário</h4><p>Aula ao vivo ou gravada que educa e converte.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/conversao-direta.png"><img src="cards/conversao-direta.png" alt="Card Conversão Direta" loading="lazy"></button><h4>Conversão direta</h4><p>Anúncio, página e compra. Não serve pra Assessoria.</p></div>
+  </div>
+</section>
+
+<section id="dados">
+  <h2><span class="num">16</span>Dados pra completar</h2>
+  <p>Entram nos roteiros no lugar das variáveis.</p>
+  <ol class="pend">
+    <li><div><strong>Nome do gerente de carreira</strong> que revelou centenas de jogadores.</div></li>
+    <li><div><strong>Como o agente do Zyron acompanha no dia a dia</strong> (canal, frequência de contato).</div></li>
+    <li><div><strong>O que muda entre os planos</strong> de R$2997, R$1497 e R$497, pra descer de plano pelo escopo.</div></li>
+    <li><div><strong>Custo mensal de mercado</strong> de um gerente de carreira particular e dos profissionais (preparador, analista, vídeo, viagens), pra conta da ancoragem.</div></li>
+    <li><div><strong>Condição de pagamento:</strong> parcelamento, Pix e cartão.</div></li>
+    <li><div><strong>Como funciona a estrutura do clube na base</strong> quando o atleta vai pra outro estado.</div></li>
+    <li><div><strong>Como a equipe avalia e dá retorno</strong>, e o restante dos entregáveis do plano.</div></li>
+    <li><div><strong>Vagas restantes e data da próxima turma</strong>, atualizadas toda semana.</div></li>
+    <li><div><strong>Primeiro contato do gerente de carreira</strong> depois do sim: quando acontece.</div></li>
+    <li><div><strong>Provas que a família confere:</strong> site, Instagram, CNPJ e link da AGN.</div></li>
+    <li><div><strong>Casos:</strong> posição, idade, tempo e dúvida da família do Joãozinho e do Kaio, e os próximos casos.</div></li>
+  </ol>
+</section>
+
+<footer>
+  <span>Base: cards do treinamento (seção 15); livros SPIN Selling e Predictable Revenue.</span>
+  <span>Arquivo-fonte: PLAYBOOK_CLOSER.md v5 · Casos: CASOS.md v5</span>
+</footer>
+</main>
+</div>
+</div>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Card ampliado">
+  <button class="lb-fechar" id="lb-fechar" type="button">Fechar</button>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<script>
+(function(){
+  var raiz=document.documentElement;
+  var btn=document.getElementById('modo-apresentacao');
+  var CHAVE='pb-closer-apresentacao';
+  function aplicar(on){
+    raiz.classList.toggle('apresentacao',on);
+    btn.setAttribute('aria-pressed',on?'true':'false');
+    btn.textContent=on?'Sair da apresentação':'Modo apresentação';
+  }
+  var salvo=false;
+  try{salvo=localStorage.getItem(CHAVE)==='1'}catch(e){}
+  aplicar(salvo);
+  btn.addEventListener('click',function(){
+    var on=!raiz.classList.contains('apresentacao');
+    aplicar(on);
+    try{localStorage.setItem(CHAVE,on?'1':'0')}catch(e){}
+  });
+
+  var lb=document.getElementById('lightbox');
+  var lbImg=document.getElementById('lb-img');
+  var lbFechar=document.getElementById('lb-fechar');
+  var origem=null;
+  function abrir(b){
+    var img=b.querySelector('img');
+    lbImg.src=b.getAttribute('data-full');
+    lbImg.alt=img?img.alt:'';
+    origem=b;lb.hidden=false;lbFechar.focus();
+  }
+  function fechar(){lb.hidden=true;lbImg.src='';if(origem)origem.focus();}
+  document.querySelectorAll('.ref-img').forEach(function(b){b.addEventListener('click',function(){abrir(b)})});
+  lbFechar.addEventListener('click',fechar);
+  lb.addEventListener('click',function(e){if(e.target===lb)fechar()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!lb.hidden)fechar()});
+
+  var toc=document.getElementById('toc');
+  var links=[].slice.call(toc.querySelectorAll('a'));
+  var mapa={};links.forEach(function(a){mapa[a.getAttribute('href').slice(1)]=a});
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entradas){
+      entradas.forEach(function(e){
+        if(!e.isIntersecting)return;
+        var a=mapa[e.target.id];if(!a)return;
+        links.forEach(function(l){l.classList.remove('ativo')});
+        a.classList.add('ativo');
+        if(toc.scrollWidth>toc.clientWidth+4){
+          toc.scrollTo({left:a.offsetLeft-toc.clientWidth/2+a.clientWidth/2,behavior:'smooth'});
+        }
+      });
+    },{rootMargin:'-30% 0px -60% 0px'});
+    document.querySelectorAll('main section[id]').forEach(function(s){obs.observe(s)});
+  }
+})();
+</script>
+
+</body></html>

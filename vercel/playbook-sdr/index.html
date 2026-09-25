@@ -1,0 +1,1096 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Playbook do SDR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap">
+<style>
+:root{
+  --bg:#F3F6F1;--surface:#FFFFFF;--surface-2:#E9EEE6;--ink:#15211B;--ink-2:#4B5B52;--ink-3:#6B7A71;--line:#D4DCD2;
+  --accent:#1E7A4C;--accent-strong:#155C39;--accent-soft:#DDEFE3;--on-accent:#FFFFFF;
+  --yellow:#E2A400;--yellow-soft:#FFF3CF;--yellow-ink:#5E4300;
+  --red:#C7362E;--red-soft:#FBE4E1;--red-ink:#7A1D17;
+  --shadow:0 1px 2px rgba(20,33,27,.05),0 6px 20px rgba(20,33,27,.05);
+  --f-display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-fala:"Literata",Georgia,"Times New Roman",serif;
+  --fs:16px;--main:780px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0D1411;--surface:#141E19;--surface-2:#1B2822;--ink:#E4ECE6;--ink-2:#A2B3A9;--ink-3:#809288;--line:#28372F;
+    --accent:#4FC28A;--accent-strong:#86DDB1;--accent-soft:#163A2A;--on-accent:#05130C;
+    --yellow:#F0BE45;--yellow-soft:#33290C;--yellow-ink:#F5D586;
+    --red:#EE6F66;--red-soft:#3A1614;--red-ink:#F4A9A3;
+    --shadow:0 1px 2px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0D1411;--surface:#141E19;--surface-2:#1B2822;--ink:#E4ECE6;--ink-2:#A2B3A9;--ink-3:#809288;--line:#28372F;
+  --accent:#4FC28A;--accent-strong:#86DDB1;--accent-soft:#163A2A;--on-accent:#05130C;
+  --yellow:#F0BE45;--yellow-soft:#33290C;--yellow-ink:#F5D586;
+  --red:#EE6F66;--red-soft:#3A1614;--red-ink:#F4A9A3;
+  --shadow:0 1px 2px rgba(0,0,0,.3);
+}
+html{font-size:var(--fs);scroll-behavior:smooth}
+html.apresentacao{--fs:19px;--main:920px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font:400 1rem/1.62 var(--f-body);-webkit-font-smoothing:antialiased}
+a{color:var(--accent-strong)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+p,ul,ol,dl,h1,h2,h3,h4,figure{margin:0}
+
+.topo{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.topo-in{max-width:1200px;margin:0 auto;padding-inline:16px;min-height:56px;display:flex;align-items:center;gap:12px;justify-content:space-between}
+.marca{display:flex;align-items:center;gap:10px;font:700 1.15rem/1 var(--f-display);letter-spacing:.02em;text-transform:uppercase}
+.marca .papel{font:600 .7rem/1 var(--f-body);letter-spacing:.08em;background:var(--accent);color:var(--on-accent);padding:5px 8px;border-radius:4px}
+.marca .v{font:500 .78rem/1 var(--f-body);color:var(--ink-3);text-transform:none;letter-spacing:0}
+.btn{font:600 .82rem/1 var(--f-body);color:var(--ink);background:var(--surface-2);border:1px solid var(--line);padding:9px 12px;border-radius:8px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+.btn[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+
+.wrap{max-width:1200px;margin:0 auto;padding-inline:16px}
+.shell{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+@media (min-width:1000px){.shell{grid-template-columns:230px minmax(0,1fr);gap:48px}}
+
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 57px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-16px;padding:8px 16px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex:none;display:flex;gap:6px;align-items:baseline;text-decoration:none;color:var(--ink-2);font:500 .84rem/1.2 var(--f-body);padding:7px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.toc a .n{font:700 .8rem/1 var(--f-display);color:var(--ink-3);font-variant-numeric:tabular-nums}
+.toc a.ativo{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.toc a.ativo .n{color:var(--on-accent)}
+@media (min-width:1000px){
+  .toc{top:calc(env(safe-area-inset-top,0px) + 80px);align-self:start;flex-direction:column;gap:2px;margin:0;padding:0;border:0;background:none;max-height:calc(100vh - 100px);overflow:auto;margin-top:40px}
+  .toc a{border:0;background:none;border-radius:6px;padding:7px 10px}
+  .toc a:hover{background:var(--surface-2)}
+}
+
+main{max-width:var(--main);padding-bottom:64px;min-width:0}
+.hero{padding-block:44px 36px;display:flex;flex-direction:column;gap:20px}
+.eyebrow{font:600 .75rem/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.hero h1{font:700 clamp(2.8rem,8vw,4.4rem)/.92 var(--f-display);text-transform:uppercase;letter-spacing:.005em;text-wrap:balance}
+.lede{font:400 1.18rem/1.55 var(--f-fala);max-width:62ch;color:var(--ink)}
+.meta{display:flex;flex-wrap:wrap;gap:10px 28px;font-size:.88rem}
+.meta div{display:flex;flex-direction:column;gap:2px}
+.meta dt{font:600 .7rem/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.meta dd{margin:0;color:var(--ink-2)}
+.legenda{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding:12px 14px;border:1px dashed var(--line);border-radius:10px;font-size:.85rem;color:var(--ink-2)}
+.legenda .item{display:inline-flex;align-items:center;gap:8px}
+.mini{display:inline-block;width:10px;height:14px;border-radius:2px;transform:rotate(-8deg)}
+.mini.am{background:var(--yellow)}.mini.vm{background:var(--red)}.mini.vd{background:var(--accent)}
+.mini.card{width:16px;height:12px;transform:none;border:1.5px solid var(--ink-2);border-radius:2px}
+
+.fcard{position:relative;padding:12px 22px;display:flex;flex-direction:column;gap:6px;width:fit-content;max-width:100%}
+.fcard::before,.fcard::after{content:"";position:absolute;top:0;bottom:0;width:9px;border:2px solid var(--ink)}
+.fcard::before{left:0;border-right:0}
+.fcard::after{right:0;border-left:0}
+.fcard .fx{font:700 clamp(1.05rem,2.8vw,1.4rem)/1.15 var(--f-display);text-transform:uppercase;letter-spacing:.02em;text-wrap:balance}
+.fcard .fr{font-size:.92rem;color:var(--ink-2)}
+.fcard .fr u{text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:3px;color:var(--ink);font-weight:600}
+
+.ref{display:grid;grid-template-columns:minmax(0,210px) minmax(0,1fr);gap:16px;align-items:start;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+@media (max-width:600px){.ref{grid-template-columns:1fr}}
+.ref-img{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;border-radius:8px}
+.ref-img img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--line)}
+.ref figcaption{display:flex;flex-direction:column;gap:7px;min-width:0}
+.ref .tag{font:700 .68rem/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.ref .fx{font:700 1.12rem/1.15 var(--f-display);text-transform:uppercase;letter-spacing:.02em}
+.ref .fr{font-size:.86rem;color:var(--ink-2)}
+.ref .fr u{text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:3px;color:var(--ink);font-weight:600}
+.ref .o,.ref .p{font-size:.93rem}
+.ref .p{color:var(--ink-2)}
+.ref .o b,.ref .p b,.ref .x b{font-weight:700;color:var(--ink)}
+.ref .x{font-size:.86rem;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:7px}
+
+section{padding-block:40px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:18px;scroll-margin-top:118px}
+@media (min-width:1000px){section{scroll-margin-top:72px}}
+h2{display:flex;align-items:baseline;gap:12px;font:700 clamp(1.7rem,4.5vw,2.2rem)/1.05 var(--f-display);text-transform:uppercase;letter-spacing:.01em;text-wrap:balance}
+h2 .num{font-size:.8em;color:var(--accent);font-variant-numeric:tabular-nums}
+h3{font:600 1.12rem/1.3 var(--f-body);text-wrap:balance;margin-top:8px}
+h3 .num{color:var(--ink-3);font-weight:500;margin-right:6px;font-variant-numeric:tabular-nums}
+.bloco{font:700 1.3rem/1.1 var(--f-display);text-transform:uppercase;letter-spacing:.03em;color:var(--accent-strong);border-bottom:2px solid var(--accent);padding-bottom:6px;margin-top:12px}
+section > p{max-width:66ch}
+ul.lista,ol.lista{padding-left:1.25rem;display:flex;flex-direction:column;gap:8px;max-width:66ch}
+ul.lista li::marker{color:var(--accent)}
+ol.lista li::marker{color:var(--accent);font-weight:600}
+
+var{font-style:normal;font-family:var(--f-body);font-size:.84em;font-weight:600;color:var(--accent-strong);background:var(--accent-soft);padding:1px 6px;border-radius:4px;white-space:nowrap}
+
+.gat{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.gat::before{content:"Gatilho";font:700 .66rem/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-right:4px}
+.gat span{font:600 .74rem/1 var(--f-body);color:var(--ink);background:var(--surface);border:1px solid var(--ink-3);padding:5px 9px;border-radius:999px}
+
+.falas{display:flex;flex-direction:column;gap:10px}
+.fala{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow)}
+.fala .quem{font:600 .68rem/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--on-accent);background:var(--accent);padding:5px 7px;border-radius:4px;margin-top:4px;white-space:nowrap}
+.fala.outro{box-shadow:none;background:transparent}
+.fala.outro .quem{background:var(--surface-2);color:var(--ink-2)}
+.fala.chave{border:2px solid var(--accent)}
+.fala p{font:400 1.06rem/1.55 var(--f-fala)}
+.nota{font-size:.9rem;color:var(--ink-2);max-width:66ch}
+
+.cartao{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;padding:16px 18px;border-radius:10px;background:var(--yellow-soft)}
+.cartao::before{content:"";width:13px;height:18px;border-radius:2px;background:var(--yellow);transform:rotate(-8deg);margin-top:3px;box-shadow:0 1px 2px rgba(0,0,0,.18)}
+.cartao .tit{display:block;font:700 .72rem/1.2 var(--f-body);letter-spacing:.09em;text-transform:uppercase;color:var(--yellow-ink);margin-bottom:4px}
+.cartao.vm{background:var(--red-soft)}.cartao.vm::before{background:var(--red)}.cartao.vm .tit{color:var(--red-ink)}
+.cartao.vd{background:var(--accent-soft)}.cartao.vd::before{background:var(--accent)}.cartao.vd .tit{color:var(--accent-strong)}
+.cartao ul{padding-left:1.1rem;display:flex;flex-direction:column;gap:6px}
+
+.grade{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.grade.mini4{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.peca{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.peca .k{font:700 1.9rem/1 var(--f-display);color:var(--accent);font-variant-numeric:tabular-nums}
+.peca h4{font:600 1rem/1.3 var(--f-body)}
+.peca p{font-size:.93rem;color:var(--ink-2)}
+
+.fluxo{list-style:none;padding:0;display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.fluxo li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.fluxo .p{font:700 .7rem/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.fluxo strong{font:700 1.15rem/1.1 var(--f-display);text-transform:uppercase;letter-spacing:.02em}
+.fluxo span.d{font-size:.84rem;color:var(--ink-2)}
+
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.93rem}
+th{font:600 .7rem/1.2 var(--f-body);text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2);text-align:left;padding:10px 14px;background:var(--surface-2)}
+td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top}
+td:first-child{font-weight:500}
+table.largo{min-width:820px}
+
+.duas{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.coluna{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.coluna h4{font:700 1.2rem/1.1 var(--f-display);text-transform:uppercase;letter-spacing:.02em;color:var(--accent-strong)}
+.coluna ul{padding-left:1.1rem;display:flex;flex-direction:column;gap:6px;font-size:.95rem}
+.coluna p{font-size:.95rem;color:var(--ink-2)}
+.coluna.forte{border:2px solid var(--accent)}
+
+.placar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;background:var(--ink);color:var(--bg);border-radius:12px;padding:16px 20px;width:fit-content;max-width:100%}
+.placar .h{font:700 2.3rem/1 var(--f-display);font-variant-numeric:tabular-nums}
+.placar .l{font:600 .68rem/1.2 var(--f-body);letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+.placar .seta{font:700 1.4rem/1 var(--f-display);opacity:.6}
+.placar .res{font:700 1.3rem/1 var(--f-display);text-transform:uppercase;color:var(--accent-soft)}
+
+.passo{display:flex;flex-direction:column;gap:12px;padding:18px;border:1px solid var(--line);border-radius:12px}
+.passo > h3{margin:0}
+
+.objecao{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.objecao h3{margin:0;font:400 1.35rem/1.3 var(--f-fala);font-style:italic}
+.objecao h3 .num{font:600 .8rem/1 var(--f-body);font-style:normal;color:var(--accent);display:block;margin-bottom:6px;letter-spacing:.06em}
+.rot{font:700 .72rem/1.2 var(--f-body);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font:600 .8rem/1 var(--f-body);background:var(--accent-soft);color:var(--accent-strong);padding:8px 12px;border-radius:999px}
+
+.destaque{font:700 clamp(1.4rem,3.6vw,1.9rem)/1.15 var(--f-display);text-transform:uppercase;letter-spacing:.01em;max-width:32ch;text-wrap:balance}
+.destaque em{font-style:normal;color:var(--accent)}
+
+.linha-tempo{list-style:none;padding:0;display:flex;flex-direction:column}
+.linha-tempo li{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+.linha-tempo li:first-child{border-top:0}
+.linha-tempo .q{font:700 1.05rem/1.2 var(--f-display);text-transform:uppercase;color:var(--accent-strong);letter-spacing:.02em}
+.linha-tempo .c{display:flex;flex-direction:column;gap:10px;min-width:0}
+@media (max-width:520px){.linha-tempo li{grid-template-columns:1fr;gap:8px}}
+
+.modelo{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.modelo-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;background:var(--surface-2);border-bottom:1px solid var(--line);font:600 .75rem/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.modelo pre{margin:0;padding:16px;overflow-x:auto;font:400 .88rem/1.65 ui-monospace,"Cascadia Mono",Consolas,monospace;color:var(--ink)}
+
+.glossario{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(165px,1fr))}
+.gl{display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px}
+.gl .ref-img img{aspect-ratio:4/3;object-fit:cover}
+.gl h4{font:700 1.02rem/1.1 var(--f-display);text-transform:uppercase;letter-spacing:.02em}
+.gl p{font-size:.82rem;color:var(--ink-2)}
+
+.pend{counter-reset:p;list-style:none;padding:0;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
+.pend li{counter-increment:p;display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;padding:14px 16px;border-top:1px solid var(--line)}
+.pend li:first-child{border-top:0}
+.pend li::before{content:counter(p);font:700 1.3rem/1 var(--f-display);color:var(--accent)}
+
+.lightbox{position:fixed;inset:0;z-index:50;background:rgba(5,10,8,.86);display:flex;align-items:center;justify-content:center;padding:56px 16px 24px}
+.lightbox[hidden]{display:none}
+.lightbox img{max-width:100%;max-height:100%;border-radius:10px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.lb-fechar{position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);right:16px;font:600 .85rem/1 var(--f-body);color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);padding:9px 14px;border-radius:8px;cursor:pointer}
+
+footer{border-top:1px solid var(--line);padding-block:24px 40px;font-size:.84rem;color:var(--ink-3);display:flex;flex-direction:column;gap:6px}
+</style>
+
+<div class="topo">
+  <div class="topo-in">
+    <div class="marca"><span class="papel">SDR</span>Playbook <span class="v">v5 · 25/09/2026</span></div>
+    <button class="btn" id="modo-apresentacao" type="button" aria-pressed="false">Modo apresentação</button>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="shell">
+<nav class="toc" id="toc" aria-label="Seções">
+  <a href="#missao"><span class="n">01</span>Missão</a>
+  <a href="#diferencial"><span class="n">02</span>Gerente e Zyron</a>
+  <a href="#origem"><span class="n">03</span>Zyron ou Instagram</a>
+  <a href="#velocidade"><span class="n">04</span>Lead speed</a>
+  <a href="#contato"><span class="n">05</span>Primeiro contato</a>
+  <a href="#r1"><span class="n">06</span>R1 · Qualificação</a>
+  <a href="#atleta"><span class="n">07</span>O atleta como aliado</a>
+  <a href="#objecoes"><span class="n">08</span>Objeções</a>
+  <a href="#decisores"><span class="n">09</span>Decisores na R2</a>
+  <a href="#no-show"><span class="n">10</span>Anti no show</a>
+  <a href="#follow-up"><span class="n">11</span>Follow up</a>
+  <a href="#crm"><span class="n">12</span>CRM e repasse</a>
+  <a href="#casos"><span class="n">13</span>Casos e autoridade</a>
+  <a href="#glossario"><span class="n">14</span>Glossário dos cards</a>
+  <a href="#regras"><span class="n">15</span>Regras de ouro</a>
+  <a href="#dados"><span class="n">16</span>Dados pra completar</a>
+</nav>
+
+<main>
+<header class="hero">
+  <p class="eyebrow">Operação comercial · Assessoria de atletas</p>
+  <h1>Playbook do SDR</h1>
+  <div class="fcard"><p class="fx">SDR = Prospecção + Qualificação + Agendamento</p><p class="fr">↳ lista + contato + reunião marcada = <u>trabalho do SDR</u></p></div>
+  <p class="lede">O SDR faz a R1, a call de qualificação. Mapeia contexto, dor, experiências, avaliações, gastos e locomoção, e apresenta o que ninguém mais tem: um gerente de carreira todo dia e o Zyron. No final, entrega ao especialista uma família que já sabe duas coisas: o atleta foi escolhido, e nós só ganhamos quando ele ganha.</p>
+  <dl class="meta">
+    <div><dt>Versão</dt><dd>v5, 25/09/2026</dd></div>
+    <div><dt>Reuniões</dt><dd>R1 é do SDR · R2 é do Closer</dd></div>
+    <div><dt>Regra da casa</dt><dd>A gente só ganha quando o atleta ganha</dd></div>
+  </dl>
+  <div class="legenda" aria-label="Legenda">
+    <span class="item"><var>atleta</var> dado da conversa ou da empresa</span>
+    <span class="item"><span class="mini card"></span> card do treinamento: toque pra ampliar</span>
+    <span class="item"><span class="mini vd"></span> regra de ouro</span>
+    <span class="item"><span class="mini am"></span> tática</span>
+    <span class="item"><span class="mini vm"></span> proibido</span>
+  </div>
+</header>
+
+<section id="missao">
+  <h2><span class="num">01</span>Missão do SDR</h2>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/sdr.png"><img src="cards/sdr.png" alt="Card SDR: SDR = Prospecção + Qualificação + Agendamento" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · SDR</p>
+      <p class="fx">SDR = Prospecção + Qualificação + Agendamento</p>
+      <p class="fr">↳ lista + contato + reunião marcada = <u>trabalho do SDR</u></p>
+      <p class="o"><b>O que é:</b> Sales Development Representative. É quem prospecta, qualifica e agenda. Fica no começo do processo e filtra quem segue pro Closer.</p>
+      <p class="p"><b>Aqui:</b> o SDR faz o primeiro contato, a R1 inteira e marca a R2 com o especialista. SDR forte enche a agenda do Closer de família pronta.</p>
+      <p class="x"><b>O card avisa:</b> SDR não é só volume. Qualidade de abordagem também define resultado.</p>
+    </figcaption>
+  </figure>
+  <p>O SDR não vende a Assessoria. Ele faz a R1 e entrega pro Closer uma família que já falou da própria dor, já conhece o gerente de carreira e o Zyron, já sabe que o atleta foi escolhido e já quer ouvir o plano.</p>
+  <div class="grade">
+    <div class="peca"><span class="k">1</span><h4>Fazer o atleta se sentir escolhido</h4><p>A gente escolhe atletas como ele. Toda mensagem e toda ligação reforçam isso.</p></div>
+    <div class="peca"><span class="k">2</span><h4>Mapear tudo e mostrar o diferencial</h4><p>Contexto, dor, experiências, avaliações, gastos, locomoção e decisores. E o que ninguém mais tem: gerente de carreira e Zyron.</p></div>
+    <div class="peca"><span class="k">3</span><h4>Marcar a R2 com todos os decisores</h4><p>Pai, mãe e atleta com o especialista, já combinados de decidir na conversa.</p></div>
+  </div>
+  <h3>O caminho do lead</h3>
+  <ol class="fluxo">
+    <li><span class="p">Passo 1</span><strong>Contato em 7 min</strong><span class="d">Zyron: aprovação. Instagram: seleção.</span></li>
+    <li><span class="p">Passo 2</span><strong>R1</strong><span class="d">Call de qualificação completa.</span></li>
+    <li><span class="p">Passo 3</span><strong>Diferencial</strong><span class="d">Gerente de carreira e Zyron.</span></li>
+    <li><span class="p">Passo 4</span><strong>Perfil aprovado</strong><span class="d">"A gente escolhe atletas como você."</span></li>
+    <li><span class="p">Passo 5</span><strong>Pré-compromisso</strong><span class="d">Decidir na R2, os dois juntos.</span></li>
+    <li><span class="p">Passo 6</span><strong>R2 marcada</strong><span class="d">Com o especialista e todos os decisores.</span></li>
+    <li><span class="p">Passo 7</span><strong>CRM e repasse</strong><span class="d">Ficha completa pro Closer.</span></li>
+  </ol>
+  <h3>Por que agenda é tudo</h3>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/inside-sales.png"><img src="cards/inside-sales.png" alt="Card Inside Sales: 40 reuniões, 12 propostas, 5 vendas" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · Inside Sales</p>
+      <p class="fx">Inside Sales = Qualificação + Apresentação + Fechamento</p>
+      <p class="fr">↳ 40 reuniões → 12 propostas → <u>5 vendas</u></p>
+      <p class="o"><b>O que é:</b> venda remota e consultiva, por telefone, vídeo ou WhatsApp, com processo, roteiro e acompanhamento.</p>
+      <p class="p"><b>Aqui:</b> é o modelo da operação inteira. O Closer só fecha o que o SDR qualifica e agenda. Mais R2 com família pronta, mais venda.</p>
+      <p class="x"><b>O card avisa:</b> Inside Sales não é só fazer ligação. Sem processo e follow up, a conversão cai.</p>
+    </figcaption>
+  </figure>
+  <div class="cartao"><div><span class="tit">Tática</span>As pessoas amam comprar, mas odeiam vendedor. O SDR fala como quem seleciona, não como quem oferece. Quem precisa da vaga é o atleta.</div></div>
+</section>
+
+<section id="diferencial">
+  <h2><span class="num">02</span>O que ninguém mais tem</h2>
+  <p class="destaque">Escolinha treina. Peneira decide no olhômetro. Empresário liga quando dá. <em>Aqui o atleta é analisado com dados reais e acompanhado todo dia.</em></p>
+  <div class="duas">
+    <div class="coluna forte">
+      <h4>Gerente de carreira</h4>
+      <p>Cada atleta tem um gerente de carreira: o <var>nome do gerente</var>, o responsável por revelar centenas de jogadores. Ele acompanha o desenvolvimento do atleta todo dia: evolução, treino, próximos passos e a hora certa de levar ele pros clubes.</p>
+    </div>
+    <div class="coluna forte">
+      <h4>Zyron, o mecanismo exclusivo</h4>
+      <p>O Zyron analisa o atleta com dados reais, não no olhômetro, que é o caminho que os clubes estão seguindo com a inteligência artificial. Depois que ele entra, coloca um agente específico só pra ele, que vai acompanhando a evolução e mantendo contato o tempo todo, pra ele ter sempre o melhor resultado possível. Nada passa batido. É por esse mecanismo que a gente revela os nossos jogadores.</p>
+    </div>
+  </div>
+  <div class="cartao vd"><div><span class="tit">Regra de ouro</span>Filtro na entrada, gerente de carreira todo dia e o Zyron acompanhando o tempo todo. É assim que a casa chega nos 95% de encaminhamento. O SDR fala disso em toda R1 e em todo "quanto custa?".</div></div>
+  <h3>Como falar disso</h3>
+  <div class="gat"><span>Mecanismo único</span><span>Autoridade</span><span>Exclusividade</span></div>
+  <div class="falas">
+    <div class="fala chave"><span class="quem">SDR</span><p>Aqui o <var>atleta</var> não fica solto. Ele vai ter um gerente de carreira, o <var>nome do gerente</var>, que já revelou centenas de jogadores, acompanhando o desenvolvimento dele todo dia.</p></div>
+    <div class="fala chave"><span class="quem">SDR</span><p>E vai ter o Zyron, o nosso mecanismo exclusivo: um agente específico só pra ele, acompanhando e mantendo contato o tempo todo, pra ele ter sempre o melhor resultado possível. Isso não existe em escolinha, em peneira, em lugar nenhum.</p></div>
+    <div class="fala chave"><span class="quem">SDR</span><p>Peneira é olhômetro: um avaliador, um monte de garoto e vinte minutos de coletivo. Hoje, com inteligência artificial, os clubes estão cada vez mais escolhendo atleta por dados reais. O Zyron analisa o <var>atleta</var> assim, e é por esse mecanismo que a gente revela os nossos jogadores.</p></div>
+    <div class="fala"><span class="quem">Lead do Zyron</span><p>É o mesmo Zyron que avaliou o <var>atleta</var>. A diferença é que, dentro da assessoria, ele passa a acompanhar ele todo dia.</p></div>
+    <div class="fala"><span class="quem">Pro atleta</span><p><var>atleta</var>, gerente de carreira te acompanhando todo dia e um agente só teu no Zyron. Isso é estrutura de atleta profissional.</p></div>
+  </div>
+  <p class="nota">Onde entra: na R1 (6.11), no "quanto custa?" (8.1), no follow up e sempre que a família comparar com escolinha ou peneira.</p>
+</section>
+
+<section id="origem">
+  <h2><span class="num">03</span>Zyron ou Instagram</h2>
+  <p>Nem todo atleta chega com avaliação. O SDR abre de um jeito pra cada origem, e nos dois casos a R1 termina com o atleta aprovado.</p>
+  <div class="duas">
+    <div class="coluna">
+      <h4>Veio do Zyron</h4>
+      <p>O atleta já passou pela avaliação do app e o SDR tem os dados dele. Abre com a notícia da aprovação e cita um dado específico da avaliação. A R1 aprofunda dor, gastos, locomoção e decisores.</p>
+    </div>
+    <div class="coluna">
+      <h4>Veio do formulário do Instagram</h4>
+      <p>Chega sem informação prévia. O SDR abre pela seleção ("teu cadastro chegou pra mim") e a própria R1 vira a avaliação: coleta tudo e, no fim, devolve o perfil aprovado.</p>
+    </div>
+  </div>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/lead-magnet.png"><img src="cards/lead-magnet.png" alt="Card Lead Magnet: oferta de valor, formulário e captura de lead" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · Lead magnet</p>
+      <p class="fx">Lead magnet = Oferta de valor + Formulário + Captura de lead</p>
+      <p class="fr">↳ 1.000 visitas → 220 leads = <u>22% de conversão</u></p>
+      <p class="o"><b>O que é:</b> um material gratuito e de valor oferecido em troca dos dados do lead.</p>
+      <p class="p"><b>Aqui:</b> a avaliação do Zyron é o nosso lead magnet. O atleta ganha a avaliação, a gente ganha os dados e o primeiro "sim". Por isso a abertura já vem com resultado.</p>
+      <p class="x"><b>O card avisa:</b> lead magnet genérico atrai lead fraco. Foque em um problema real e uma promessa clara.</p>
+    </figcaption>
+  </figure>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/social-selling.png"><img src="cards/social-selling.png" alt="Card Social Selling: conteúdo, relacionamento e oportunidades" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · Social selling</p>
+      <p class="fx">Social selling = Conteúdo + Relacionamento + Oportunidades</p>
+      <p class="fr">↳ conteúdo frequente + conversa no direct + confiança = <u>oportunidade qualificada</u></p>
+      <p class="o"><b>O que é:</b> usar as redes pra criar relacionamento e gerar oportunidade. A venda vem da confiança e da autoridade.</p>
+      <p class="p"><b>Aqui:</b> o lead do formulário do Instagram. Ele já viu nosso conteúdo. O SDR continua a conversa como gente, sem script frio.</p>
+      <p class="x"><b>O card avisa:</b> social selling não é só postar. É preciso conversar, nutrir e conduzir pro próximo passo.</p>
+    </figcaption>
+  </figure>
+  <h3>Munição antes do primeiro contato</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>O que separar</th><th>Zyron</th><th>Instagram</th></tr></thead>
+    <tbody>
+      <tr><td>Um ponto forte específico</td><td>Dado da avaliação do app</td><td>Posts e vídeos do perfil, se houver</td></tr>
+      <tr><td>Nome do atleta e do responsável</td><td>Cadastro do Zyron</td><td>Formulário</td></tr>
+      <tr><td>Caso mais parecido</td><td>Seção 13</td><td>Seção 13, depois da R1</td></tr>
+      <tr><td>Link da publicação na AGN Football</td><td colspan="2">Seção 13</td></tr>
+    </tbody>
+  </table></div>
+  <div class="cartao vd"><div><span class="tit">Regra de ouro</span>Com ou sem Zyron, a R1 termina com o atleta aprovado. Nenhuma frase coloca o perfil dele em dúvida.</div></div>
+  <p class="nota">Webinário e conversão direta estão no glossário (seção 14). Conversão direta não serve pra Assessoria: aqui a venda sempre passa pela R1 e pela R2.</p>
+</section>
+
+<section id="velocidade">
+  <h2><span class="num">04</span>Lead speed</h2>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/lead-speed.png"><img src="cards/lead-speed.png" alt="Card Lead Speed: lead entrou 10:00, contato 10:07, 7 minutos" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · Lead speed</p>
+      <p class="fx">Lead speed = tempo entre o lead entrar e o time responder</p>
+      <p class="fr">↳ lead entrou 10:00 e recebeu contato 10:07 = <u>7 minutos</u></p>
+      <p class="o"><b>O que é:</b> a velocidade do primeiro contato. Quanto menor o tempo, maior a chance de conexão e de conversa.</p>
+      <p class="p"><b>Aqui:</b> meta de 7 minutos. O atleta que acabou de fazer a avaliação ou mandar o formulário tá no pico da vontade.</p>
+      <p class="x"><b>O card manda:</b> não deixe lead novo parado. Velocidade é parte da performance comercial.</p>
+    </figcaption>
+  </figure>
+  <div class="placar" aria-label="Lead entrou 10:00, primeiro contato 10:07">
+    <div><div class="l">Lead entrou</div><div class="h">10:00</div></div>
+    <div class="seta">→</div>
+    <div><div class="l">Primeiro contato</div><div class="h">10:07</div></div>
+    <div class="res">7 min</div>
+  </div>
+  <div class="cartao vd"><div><span class="tit">Regra de ouro</span>Primeiro contato em até 7 minutos. Se atender, a R1 começa na hora. Não atendeu: áudio e mensagem, e nova ligação em 2 horas.</div></div>
+</section>
+
+<section id="contato">
+  <h2><span class="num">05</span>Primeiro contato</h2>
+  <p>Mensagem curta, uma pergunta por vez. O primeiro contato tem um objetivo só: começar a R1, agora ou num dos dois horários.</p>
+
+  <h3>Lead do Zyron</h3>
+  <div class="gat"><span>Exclusividade</span><span>Escolha alternativa</span></div>
+  <div class="falas">
+    <div class="fala"><span class="quem">SDR</span><p>Oi <var>responsável</var>, tudo bem? Aqui é o <var>SDR</var>, da <var>empresa</var>. Tenho uma notícia boa: o <var>atleta</var> passou na avaliação do Zyron.</p></div>
+    <div class="fala"><span class="quem">SDR</span><p>O Zyron analisa dados reais do jogo, não é olhômetro de peneira. E o que mais chamou atenção foi <var>dado específico da avaliação</var>. É exatamente o perfil que a gente procura.</p></div>
+    <div class="fala"><span class="quem">SDR</span><p>Agora eu preciso de uns 20 minutos com vocês pra fechar a ficha dele antes de passar pro especialista. Consegue agora, ou fica melhor <var>hora</var> ou <var>hora</var>?</p></div>
+  </div>
+
+  <h3>Lead do formulário do Instagram</h3>
+  <div class="gat"><span>Exclusividade</span><span>Curiosidade</span></div>
+  <div class="falas">
+    <div class="fala"><span class="quem">SDR</span><p>Oi <var>nome</var>, tudo bem? Aqui é o <var>SDR</var>, da <var>empresa</var>. Teu cadastro pelo nosso Instagram chegou pra mim.</p></div>
+    <div class="fala"><span class="quem">SDR</span><p>A gente faz assessoria individual de atletas e escolhe com quem trabalha. Pra levar teu perfil pro especialista, eu preciso de uns 20 minutos contigo e com teu responsável. Consegue agora, ou fica melhor <var>hora</var> ou <var>hora</var>?</p></div>
+    <div class="fala"><span class="quem">SDR</span><p>Se tiver, já me manda um vídeo teu jogando.</p></div>
+  </div>
+  <div class="cartao vd"><div><span class="tit">Regra de ouro</span>Sempre dois horários. Nunca "quando vocês podem?". Sem resposta em 2 horas: liga.</div></div>
+</section>
+
+<section id="r1">
+  <h2><span class="num">06</span>R1 · Call de qualificação</h2>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/r1.png"><img src="cards/r1.png" alt="Card R1: contato inicial, diagnóstico e próximo passo" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · R1</p>
+      <p class="fx">R1 = Contato inicial + Diagnóstico + Próximo passo</p>
+      <p class="fr">↳ entendeu cenário + mapeou dor + marcou avanço = <u>boa R1</u></p>
+      <p class="o"><b>O que é:</b> Reunião 1, o primeiro encontro comercial, pra diagnóstico e qualificação. Serve pra entender contexto, problema, urgência e aderência. Não é apresentação, é investigação.</p>
+      <p class="p"><b>Aqui:</b> a R1 é do SDR. Sai dela com a dor mapeada, o perfil aprovado, o pré-compromisso e a R2 marcada.</p>
+      <p class="x"><b>O card avisa:</b> R1 não deve virar monólogo. Quem fala mais é o cliente, não o vendedor.</p>
+    </figcaption>
+  </figure>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/sandler.png"><img src="cards/sandler.png" alt="Card Método Sandler: rapport, dor, impacto e compromisso" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · Método Sandler</p>
+      <p class="fx">Sandler = Rapport + Dor + Impacto + Compromisso</p>
+      <p class="fr">↳ entendeu a dor + mediu impacto + validou próximo passo = <u>avanço</u></p>
+      <p class="o"><b>O que é:</b> abordagem consultiva que explora dor, impacto e compromisso antes da proposta. Quando a dor fica clara, o valor da solução faz sentido.</p>
+      <p class="p"><b>Aqui:</b> é a ordem da R1. Rapport na abertura, dor no diagnóstico, impacto no "se continuar assim", compromisso no pré-compromisso e na R2 marcada.</p>
+      <p class="x"><b>O card avisa:</b> não apresente proposta cedo demais. Primeiro entenda o problema e o custo de não resolver.</p>
+    </figcaption>
+  </figure>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/sql.png"><img src="cards/sql.png" alt="Card SQL: lead, interesse real, perfil e momento" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · SQL</p>
+      <p class="fx">SQL = Lead + Interesse real + Perfil + Momento</p>
+      <p class="fr">↳ pediu contato + tem perfil ideal + quer avançar = <u>SQL</u></p>
+      <p class="o"><b>O que é:</b> Sales Qualified Lead. O lead qualificado e pronto pra conversa comercial.</p>
+      <p class="p"><b>Aqui:</b> perfil o atleta já tem. A R1 confirma interesse real, momento e decisores. Quem sai da R1 assim vira R2.</p>
+      <p class="x"><b>O card avisa:</b> passe pra vendas só quem realmente está pronto. SQL bem definido aumenta a chance de fechamento.</p>
+    </figcaption>
+  </figure>
+  <p>20 a 30 minutos, com o atleta e pelo menos um responsável. Tudo o que a família responde vai pro CRM (seção 12).</p>
+
+  <h3>O que a R1 precisa descobrir</h3>
+  <div class="grade mini4">
+    <div class="peca"><h4>Nomes</h4><p>Pai, mãe, atleta e quem mais decide.</p></div>
+    <div class="peca"><h4>Contexto</h4><p>Idade, cidade, onde treina, rotina.</p></div>
+    <div class="peca"><h4>Experiências</h4><p>Times, federação, posição.</p></div>
+    <div class="peca"><h4>Avaliações</h4><p>Quantas peneiras fez e em quantas foi visto de verdade.</p></div>
+    <div class="peca"><h4>Dor</h4><p>O porquê real, e o tipo: financeira, emocional ou tempo.</p></div>
+    <div class="peca"><h4>Gastos</h4><p>Quanto já investiram no sonho.</p></div>
+    <div class="peca"><h4>Locomoção</h4><p>Como ele vai pra outro estado quando o clube chamar.</p></div>
+    <div class="peca"><h4>Decisores</h4><p>Quem decide, como decide, telefone.</p></div>
+  </div>
+
+  <p class="bloco">Abertura · Rapport</p>
+  <div class="passo">
+    <h3><span class="num">6.1</span>Pedir licença e dar o motivo</h3>
+    <div class="falas">
+      <div class="fala"><span class="quem">SDR</span><p>Oi <var>responsável</var>, aqui é o <var>SDR</var>, da <var>empresa</var>. Te peguei numa hora ruim?</p></div>
+      <div class="fala"><span class="quem">Zyron</span><p>Rapidinho: o <var>atleta</var> passou na avaliação do Zyron, e antes de passar a ficha dele pro especialista eu preciso conhecer vocês.</p></div>
+      <div class="fala"><span class="quem">Instagram</span><p>Rapidinho: o cadastro do <var>atleta</var> chegou pra mim, e antes de levar o perfil dele pro especialista eu preciso conhecer vocês.</p></div>
+    </div>
+    <p class="nota">Pedir licença tira a defensiva (Predictable Revenue). Hora ruim: "Te ligo às <var>hora</var> ou às <var>hora</var>?" Nunca "te ligo depois".</p>
+  </div>
+  <div class="passo">
+    <h3><span class="num">6.2</span>Trazer o atleta</h3>
+    <div class="gat"><span>Exclusividade</span></div>
+    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>O <var>atleta</var> tá aí? Coloca ele no viva-voz, que eu quero falar com ele também.</p></div></div>
+  </div>
+
+  <p class="bloco">Diagnóstico · Dor</p>
+  <div class="passo">
+    <h3><span class="num">6.3</span>Contexto e experiências</h3>
+    <ul class="lista">
+      <li>"<var>atleta</var>, quantos anos você tem e onde você mora?"</li>
+      <li>"Joga em que posição? Qual teu pé bom?"</li>
+      <li>"Onde você treina hoje? Quantas vezes por semana?"</li>
+      <li>"Já jogou em quais times? Chegou a ser federado?"</li>
+    </ul>
+  </div>
+  <div class="passo">
+    <h3><span class="num">6.4</span>Avaliações: a dor de não ser visto</h3>
+    <p>Essa é a dor mais forte do atleta: fazer peneira atrás de peneira e nunca ser visto de verdade. O SDR entra fundo aqui, sem pressa.</p>
+    <div class="gat"><span>Empatia</span><span>Aversão à perda</span></div>
+    <ol class="lista">
+      <li>"Quantas peneiras ou avaliações você já fez?"</li>
+      <li>"Em quais clubes?"</li>
+      <li>"E em quantas delas você sentiu que alguém te observou de verdade?"</li>
+      <li>"Quantos garotos tinham lá com você?"</li>
+      <li>"Quanto tempo você jogou pra ser avaliado? Um coletivo de 20 minutos?"</li>
+      <li>"O que te disseram na saída?"</li>
+    </ol>
+    <p class="rot">Conexão</p>
+    <div class="falas">
+      <div class="fala"><span class="quem">SDR</span><p>Eu sei exatamente como é. Eu já passei por isso: dar o meu melhor numa peneira e sair sem saber se alguém sequer me viu.</p></div>
+      <div class="fala outro"><span class="quem">Se nunca jogou</span><p>Aqui na equipe a gente vê isso toda semana. Centenas de atletas chegaram até a gente com essa mesma história.</p></div>
+    </div>
+    <p class="rot">A pergunta óbvia</p>
+    <div class="falas">
+      <div class="fala chave"><span class="quem">SDR</span><p>Me fala uma coisa, com sinceridade: você acha que, no olhômetro, o avaliador de uma peneira consegue analisar todos aqueles garotos com precisão?</p></div>
+      <div class="fala outro"><span class="quem">Atleta</span><p>Não.</p></div>
+      <div class="fala"><span class="quem">SDR</span><p>Não consegue. Se ele olhou pro outro lado na hora do teu melhor lance, pra ele esse lance não existiu.</p></div>
+    </div>
+    <p class="rot">A virada</p>
+    <div class="gat"><span>Mecanismo único</span><span>Autoridade</span></div>
+    <div class="falas">
+      <div class="fala chave"><span class="quem">SDR</span><p>Hoje, com inteligência artificial, os clubes estão cada vez mais escolhendo atleta com base em dados reais, e não no olhômetro. E é assim que a gente revela os nossos jogadores: pelo Zyron.</p></div>
+    </div>
+    <p class="nota">Anota no CRM quantas avaliações ele fez e em quantas se sentiu observado de verdade. O Closer usa esses dois números na R2.</p>
+  </div>
+  <div class="passo">
+    <h3><span class="num">6.5</span>Sonho e dor do atleta</h3>
+    <ul class="lista">
+      <li>"Em que time você sonha jogar?"</li>
+      <li>"O que você sente que tá faltando pra você chegar lá?"</li>
+      <li>"Se a oportunidade aparecer amanhã, você tá pronto?"</li>
+    </ul>
+    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Isso que você falou de <var>resposta dele</var> bate com o que eu vi aqui: <var>observação real</var>.</p></div></div>
+  </div>
+  <div class="passo">
+    <h3><span class="num">6.6</span>Dor da família e impacto</h3>
+    <div class="gat"><span>Aversão à perda</span></div>
+    <ul class="lista">
+      <li>"Na visão de vocês, o que falta pra ele?"</li>
+      <li>"E por que isso é importante pra vocês agora?" Pergunta "por quê?" até chegar na dor real.</li>
+      <li>"Se continuar assim, onde vocês acham que ele vai estar daqui a um ano?"</li>
+      <li>"E quanto tempo mais vocês estão dispostos a esperar?"</li>
+      <li>"O que mudaria pra família se ele virasse profissional?"</li>
+    </ul>
+    <p>Anota a dor com as palavras deles e marca o tipo no CRM:</p>
+    <div class="grade">
+      <div class="peca"><h4>Financeira</h4><p>"Seria a mudança de vida da família." O Closer trabalha o cenário de salário e mudança de vida.</p></div>
+      <div class="peca"><h4>Emocional</h4><p>"Ele tá desanimado, já ouviu muito não." O Closer trabalha o sonho.</p></div>
+      <div class="peca"><h4>Tempo e idade</h4><p>"Tá ficando tarde pra ele." O Closer trabalha a janela da base.</p></div>
+    </div>
+  </div>
+  <div class="passo">
+    <h3><span class="num">6.7</span>Gastos</h3>
+    <div class="falas"><div class="fala chave"><span class="quem">Obrigatória</span><p>Quanto vocês já investiram nesse sonho até hoje? Escolinha, chuteira, viagem pra peneira, avaliação?</p></div></div>
+    <p class="nota">Esse número é a régua do preço na R2. Quem dá a comparação é a própria família.</p>
+  </div>
+  <div class="passo">
+    <h3><span class="num">6.8</span>Locomoção</h3>
+    <div class="gat"><span>Futuro imaginado</span></div>
+    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Quando o <var>atleta</var> for pro clube, pode ser em outro estado. Ele tem condição de ir? Alguém da família acompanha, ou ele vai sozinho?</p></div></div>
+    <p class="nota">Pergunta com "quando", nunca com "se". A família já começa a imaginar ele no clube.</p>
+  </div>
+  <div class="passo">
+    <h3><span class="num">6.9</span>Decisores</h3>
+    <figure class="ref">
+      <button class="ref-img" type="button" data-full="cards/bant.png"><img src="cards/bant.png" alt="Card Método BANT: budget, authority, need e timing" loading="lazy"></button>
+      <figcaption>
+        <p class="tag">Card · Método BANT</p>
+        <p class="fx">BANT = Budget + Authority + Need + Timing</p>
+        <p class="fr">↳ tem verba + decide + precisa + quer agora = <u>lead forte</u></p>
+        <p class="o"><b>O que é:</b> um jeito de qualificar por orçamento, autoridade, necessidade e tempo. Com os quatro mapeados, a previsão de venda fica confiável.</p>
+        <p class="p"><b>Aqui:</b> Need e Timing saem da dor (6.6). Authority é esta etapa: quem decide e como. Budget não se pergunta, só se anota pelos sinais.</p>
+        <p class="x"><b>O card avisa:</b> BANT não é interrogatório. Faça perguntas com contexto e escuta real.</p>
+      </figcaption>
+    </figure>
+    <ul class="lista">
+      <li>"Qual o nome do pai e da mãe do <var>atleta</var>?"</li>
+      <li>"Além de você, quem mais participa dessa decisão em casa?"</li>
+      <li>"Quando vocês decidem uma coisa importante pro <var>atleta</var>, como costuma ser? Os dois juntos?"</li>
+      <li>"Me passa o número dele(a), que eu mando a confirmação pros dois."</li>
+    </ul>
+    <p class="nota">Pro Predictable Revenue, o processo de decisão importa mais que o decisor.</p>
+  </div>
+
+  <p class="bloco">Impacto · Posicionamento e prova</p>
+  <div class="passo">
+    <h3><span class="num">6.10</span>A gente só ganha quando ele ganha</h3>
+    <div class="gat"><span>Compromisso</span><span>Reciprocidade</span></div>
+    <div class="falas">
+      <div class="fala chave"><span class="quem">SDR</span><p>Deixa eu te fazer uma pergunta: faz algum sentido pra gente, que já revelou centenas de atletas, querer lucrar em cima da senhora, do senhor ou de você, sendo que a gente ganha no contrato profissional do <var>atleta</var>?</p></div>
+      <div class="fala outro"><span class="quem">Família</span><p>Não.</p></div>
+      <div class="fala"><span class="quem">SDR</span><p>Pois é. A gente só ganha quando ele ganha. Por isso a gente escolhe muito bem com quem trabalha, e por isso cuida de cada um todo dia.</p></div>
+    </div>
+    <p class="nota">Quem responde "não" em voz alta passa a defender essa ideia. Na R2, o Closer ancora o valor em cima disso.</p>
+  </div>
+  <div class="passo">
+    <h3><span class="num">6.11</span>O diferencial</h3>
+    <div class="gat"><span>Mecanismo único</span><span>Autoridade</span></div>
+    <div class="falas">
+      <div class="fala"><span class="quem">SDR</span><p>Lembra do olhômetro da peneira? Aqui é o contrário: o <var>atleta</var> é analisado com dados reais, e acompanhado todo dia.</p></div>
+      <div class="fala chave"><span class="quem">SDR</span><p>E aqui o <var>atleta</var> não fica solto. Ele vai ter um gerente de carreira, o <var>nome do gerente</var>, que já revelou centenas de jogadores, acompanhando o desenvolvimento dele todo dia.</p></div>
+      <div class="fala chave"><span class="quem">SDR</span><p>E vai ter o Zyron, o nosso mecanismo exclusivo: um agente específico só pra ele, acompanhando e mantendo contato o tempo todo, pra ele ter sempre o melhor resultado possível. Isso não existe em escolinha, em peneira, em lugar nenhum.</p></div>
+    </div>
+  </div>
+  <div class="passo">
+    <h3><span class="num">6.12</span>Prova</h3>
+    <div class="gat"><span>Prova social</span><span>Comparação</span><span>Autoridade</span></div>
+    <div class="falas">
+      <div class="fala"><span class="quem">SDR</span><p>95% dos atletas que entram com a gente são encaminhados. Os 5% que não vão é por falta de disciplina e de compromisso.</p></div>
+      <div class="fala"><span class="quem">SDR</span><p>O perfil do <var>atleta</var> é muito parecido com o do <var>caso</var>, que a gente fechou recentemente. Foi assim com o Joãozinho, que fechou com o Grêmio, com o Kaio e com vários outros.</p></div>
+      <div class="fala"><span class="quem">SDR</span><p>A gente tá há mais de dez anos nisso e tem relação direta com a AGN Football. Tem jogador nosso publicado lá, te mando o link.</p></div>
+    </div>
+  </div>
+
+  <p class="bloco">Compromisso · Fechamento da R1</p>
+  <div class="passo">
+    <h3><span class="num">6.13</span>Perfil aprovado</h3>
+    <div class="gat"><span>Exclusividade</span></div>
+    <div class="falas">
+      <div class="fala chave"><span class="quem">SDR</span><p>Pelo que eu vi e pelo que vocês me contaram, o <var>atleta</var> tem exatamente o perfil que a gente procura. <var>atleta</var>, a gente escolhe atletas como você.</p></div>
+    </div>
+  </div>
+  <div class="passo">
+    <h3><span class="num">6.14</span>Missão do atleta</h3>
+    <div class="gat"><span>Compromisso</span></div>
+    <div class="falas"><div class="fala"><span class="quem">SDR</span><p><var>atleta</var>, na conversa com o especialista eu quero você lá, junto com teu pai e tua mãe. E quero que você fale pra eles o que me falou agora, do <var>sonho dele</var>. Combinado?</p></div></div>
+  </div>
+  <div class="passo">
+    <h3><span class="num">6.15</span>Pré-compromisso</h3>
+    <div class="gat"><span>Compromisso</span><span>Escassez</span></div>
+    <div class="falas">
+      <div class="fala chave"><span class="quem">SDR</span><p>Na conversa, o especialista vai mostrar o plano do <var>atleta</var>, com o gerente de carreira e o Zyron, e o investimento. Se fizer sentido, vocês decidem ali mesmo, os dois juntos?</p></div>
+      <div class="fala outro"><span class="quem">Família</span><p>Sim.</p></div>
+      <div class="fala"><span class="quem">SDR</span><p>Perfeito. Por isso é importante estarem os dois: é nessa conversa que a vaga dele na turma é definida.</p></div>
+    </div>
+    <p class="nota">Esse "sim" fecha a porta do "vou pensar" antes da R2. Vai pro CRM.</p>
+  </div>
+  <div class="passo">
+    <h3><span class="num">6.16</span>Agendar a R2</h3>
+    <figure class="ref">
+      <button class="ref-img" type="button" data-full="cards/r2.png"><img src="cards/r2.png" alt="Card R2: diagnóstico, proposta e tratativa de objeções" loading="lazy"></button>
+      <figcaption>
+        <p class="tag">Card · R2</p>
+        <p class="fx">R2 = Diagnóstico + Proposta + Tratativa de objeções</p>
+        <p class="fr">↳ entrou qualificado + viu a solução + alinhou investimento = <u>avanço</u></p>
+        <p class="o"><b>O que é:</b> Reunião 2, o encontro de avanço pra apresentar solução, proposta e decisão.</p>
+        <p class="p"><b>Aqui:</b> a R2 é do especialista (Closer). O SDR marca, com todos os decisores e o atleta.</p>
+        <p class="x"><b>O card avisa:</b> não marque R2 sem sair da R1 com dor clara e compromisso do lead.</p>
+      </figcaption>
+    </figure>
+    <div class="gat"><span>Exclusividade</span><span>Escolha alternativa</span></div>
+    <div class="falas">
+      <div class="fala"><span class="quem">SDR</span><p>Vou levar a ficha do <var>atleta</var> pro nosso especialista. Ele só recebe atleta que passou pela R1, e monta o plano individual em cima do que vocês me contaram.</p></div>
+      <div class="fala"><span class="quem">SDR</span><p>Tem que ser com <var>pai</var>, <var>mãe</var> e o <var>atleta</var> juntos. Ele tem <var>dia/hora</var> ou <var>dia/hora</var>. Qual fica melhor?</p></div>
+    </div>
+    <p class="nota">Só desliga depois do "confirmo". Os dois nomes e os dois telefones vão pro CRM.</p>
+  </div>
+
+  <h3>R1 por mensagem</h3>
+  <p>Quando o lead não atende ligação de jeito nenhum, a R1 acontece por WhatsApp: as mesmas perguntas, na mesma ordem, uma por mensagem, com áudio do SDR entre elas. Termina igual: perfil aprovado, pré-compromisso e R2 marcada.</p>
+  <div class="cartao"><div><span class="tit">Tática</span>Quem responde áudio atende ligação. Depois de três respostas: "Te ligo 5 minutinhos pra fechar tua ficha?"</div></div>
+</section>
+
+<section id="atleta">
+  <h2><span class="num">07</span>O atleta como aliado</h2>
+  <p class="destaque">Quem mais quer isso é o atleta. Saindo empolgado da R1, <em>ele mesmo cobra a família</em> até o dia da R2.</p>
+  <p>É o princípio do Predictable Revenue: ganhe primeiro o aliado de dentro, depois quem decide. E o do social selling: pessoas compram de pessoas.</p>
+  <ol class="lista">
+    <li><strong>Falar direto com ele</strong> e dizer que ele foi escolhido.</li>
+    <li><strong>Fazer ele falar do sonho e do que falta.</strong> Quem fala se compromete.</li>
+    <li><strong>Devolver algo específico do jogo dele.</strong> Ele precisa sentir que alguém olhou de verdade.</li>
+    <li><strong>Mostrar a estrutura:</strong> gerente de carreira e agente do Zyron só dele. Isso é coisa de profissional.</li>
+    <li><strong>Dar a missão:</strong> estar na R2 e falar pros pais o que falou pro SDR.</li>
+    <li><strong>Áudio depois da R1</strong>, se o contato for dele.</li>
+  </ol>
+  <div class="falas"><div class="fala"><span class="quem">Áudio</span><p>Parabéns de novo, <var>atleta</var>. Te espero <var>dia</var> às <var>hora</var> com teu pai e tua mãe. Leva a vontade que você me mostrou hoje.</p></div></div>
+  <div class="cartao"><div><span class="tit">Tática</span>Família esfriou? Se o contato for do próprio atleta, é com ele que o SDR retoma primeiro. O entusiasmo dele reabre a conversa dentro de casa.</div></div>
+</section>
+
+<section id="objecoes">
+  <h2><span class="num">08</span>Objeções no SDR</h2>
+  <p>O SDR não negocia. Ele contorna com valor e volta pro próximo passo: começar a R1 ou marcar a R2, sempre com dois horários.</p>
+  <div class="chips"><span>1. Acolher</span><span>2. Responder com valor</span><span>3. Voltar pro próximo passo</span></div>
+
+  <article class="objecao">
+    <h3><span class="num">8.1</span>"Quanto custa?"</h3>
+    <div class="gat"><span>Mecanismo único</span><span>Autoridade</span><span>Reciprocidade</span></div>
+    <div class="falas">
+      <div class="fala"><span class="quem">SDR</span><p>Cada perfil é individual, então o plano do <var>atleta</var> é montado pra ele, e o investimento vem junto com o plano.</p></div>
+      <div class="fala chave"><span class="quem">SDR</span><p>Mas olha o que entra nisso: ele vai ter um gerente de carreira, o <var>nome do gerente</var>, que já revelou centenas de jogadores, acompanhando o desenvolvimento dele todo dia. E o Zyron, o nosso mecanismo exclusivo, com um agente específico só pra ele, acompanhando e mantendo contato pra ele ter sempre o melhor resultado possível.</p></div>
+      <div class="fala"><span class="quem">SDR</span><p>E pensa comigo: faz algum sentido pra gente querer lucrar em cima de vocês, sendo que a gente ganha no contrato profissional dele?</p></div>
+      <div class="fala"><span class="quem">SDR</span><p>O especialista te mostra o plano e o valor juntos, na conversa. Fica melhor <var>dia/hora</var> ou <var>dia/hora</var>?</p></div>
+    </div>
+    <p class="rot">Se insistir</p>
+    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Te passar um número solto agora seria injusto com o <var>atleta</var>. Sem ver o plano, você compara com mensalidade de escolinha, e aqui ele tem gerente de carreira todo dia e um agente do Zyron só dele. Não tem nada a ver. Em 30 minutos você vê tudo e decide. <var>dia/hora</var>?</p></div></div>
+    <p class="nota">O SDR nunca passa valor. Proposta tem que ser conquistada (Predictable Revenue).</p>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">8.2</span>"Preciso ver com meu marido / minha esposa"</h3>
+    <p>No SDR isso é ótimo: é a deixa pra colocar os dois na R2.</p>
+    <div class="falas">
+      <div class="fala"><span class="quem">SDR</span><p>Perfeito, é exatamente por isso que a conversa com o especialista é com vocês dois. Qual horário vocês dois conseguem juntos?</p></div>
+      <div class="fala"><span class="quem">SDR</span><p>Me passa o número dele(a)? Mando a confirmação pros dois.</p></div>
+    </div>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">8.3</span>"Isso é golpe?" · "É peneira paga?"</h3>
+    <div class="gat"><span>Autoridade</span><span>Prova social</span></div>
+    <div class="falas">
+      <div class="fala"><span class="quem">SDR</span><p>Pergunta justa. Tem muita coisa errada nesse meio, e é por isso que a gente trabalha diferente. Mais de dez anos, centenas de atletas revelados, 95% de encaminhamento e relação direta com a AGN Football. O Joãozinho fechou com o Grêmio, o Kaio também passou por aqui.</p></div>
+      <div class="fala"><span class="quem">SDR</span><p>Peneira paga cobra pra olhar o menino um dia, no olhômetro. Aqui ele é analisado com dados reais pelo Zyron, tem gerente de carreira todo dia, e a gente só ganha quando ele assina contrato.</p></div>
+    </div>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">8.4</span>"Vou pensar" · "Agora não é o momento"</h3>
+    <div class="gat"><span>Aversão à perda</span><span>Urgência</span></div>
+    <div class="falas">
+      <div class="fala"><span class="quem">SDR</span><p>Pensar sobre o quê exatamente? A conversa com o especialista é justamente pra vocês decidirem com o plano do <var>atleta</var> na mão.</p></div>
+      <div class="fala"><span class="quem">Se for momento</span><p>Com <var>idade</var> anos, cada mês conta. O <var>caso</var> entrou com <var>idade do caso</var> e em <var>tempo</var> tava no <var>clube</var>.</p></div>
+    </div>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">8.5</span>"Me manda as informações por aqui"</h3>
+    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Não tem folder porque não é pacote: o plano é montado pro <var>atleta</var>, com gerente de carreira e agente do Zyron dele. Por isso a conversa. <var>dia/hora</var> ou <var>dia/hora</var>?</p></div></div>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">8.6</span>"Não tenho tempo"</h3>
+    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>É rápido e no horário de vocês. Pode ser à noite ou no fim de semana. Qual fica melhor?</p></div></div>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">8.7</span>"Ele já tem empresário" · "Já tá num clube"</h3>
+    <div class="gat"><span>Mecanismo único</span></div>
+    <div class="falas">
+      <div class="fala"><span class="quem">SDR</span><p>Ótimo, isso mostra que ele tem nível. Me diz uma coisa: tem alguém acompanhando o desenvolvimento dele todo dia? Nesse último ano, em quantos testes ele foi levado?</p></div>
+      <div class="fala"><span class="quem">SDR</span><p>Aqui ele teria gerente de carreira todo dia e um agente do Zyron só dele. O especialista te mostra o que muda.</p></div>
+    </div>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">8.8</span>"Ele é muito novo" · "Ele já tá velho"</h3>
+    <div class="gat"><span>Urgência</span><span>Comparação</span></div>
+    <div class="falas">
+      <div class="fala"><span class="quem">Novo</span><p>Novo é vantagem. O <var>caso</var> entrou com <var>idade do caso</var> e hoje tá no <var>clube</var>. Quanto antes começa, mais janela ele tem.</p></div>
+      <div class="fala"><span class="quem">Velho</span><p>É exatamente por isso que não dá pra esperar. O especialista te mostra como aproveitar a janela que ele tem agora.</p></div>
+    </div>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">8.9</span>"Ele não pode ir pra outro estado"</h3>
+    <div class="falas">
+      <div class="fala"><span class="quem">SDR</span><p>Hoje ele não precisa ir pra lugar nenhum. Isso só acontece quando o clube chamar, e o gerente de carreira cuida disso junto com vocês.</p></div>
+      <div class="fala"><span class="quem">SDR</span><p>Me conta o que pesa mais: ele ir sozinho, ou a família não conseguir acompanhar?</p></div>
+    </div>
+    <p class="nota">A resposta vai pro CRM. O Closer trata com o cenário certo.</p>
+  </article>
+
+  <article class="objecao">
+    <h3><span class="num">8.10</span>"Vocês são tipo uma escolinha?"</h3>
+    <div class="gat"><span>Mecanismo único</span><span>Autoridade</span></div>
+    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Escolinha treina. A gente leva pro clube. Gerente de carreira todo dia, agente do Zyron só dele, 95% de encaminhamento e relação direta com a AGN Football.</p></div></div>
+  </article>
+</section>
+
+<section id="decisores">
+  <h2><span class="num">09</span>Todos os decisores na R2</h2>
+  <p class="destaque">O "preciso ver com minha esposa" nasce <em>no SDR</em>, não no Closer.</p>
+  <p>Ele aparece quando o SDR agenda a R2 com uma pessoa só e a outra fica de fora.</p>
+  <div class="cartao vd"><div><span class="tit">Regra de ouro</span>R2 só com todos os decisores e o atleta, e com o pré-compromisso de decidir na conversa. O SDR pega o nome e o número do outro responsável e manda a confirmação pros dois. Agendar com um só é exceção, e o motivo vai pro CRM.</div></div>
+</section>
+
+<section id="no-show">
+  <h2><span class="num">10</span>Anti no show</h2>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/noshow.png"><img src="cards/noshow.png" alt="Card No Show: 3 faltas em 10 reuniões, 30%" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · No show</p>
+      <p class="fx">No show = faltas ÷ reuniões marcadas × 100</p>
+      <p class="fr">↳ 3 faltas em 10 reuniões marcadas = <u>30% de no show</u></p>
+      <p class="o"><b>O que é:</b> quando o lead marca a reunião e não aparece. Esse número derruba a produtividade do time.</p>
+      <p class="p"><b>Aqui:</b> R2 que não acontece é venda perdida antes de começar. Confirmação, lembrete e valor antes da call derrubam o no show.</p>
+      <p class="x"><b>O card avisa:</b> agendar reunião sem compromisso claro aumenta muito a taxa de no show.</p>
+    </figcaption>
+  </figure>
+  <ol class="linha-tempo">
+    <li><span class="q">Ao agendar</span><div class="c">
+      <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Fechado: <var>dia</var> às <var>hora</var>, <var>pai</var>, <var>mãe</var> e o <var>atleta</var>, com o <var>especialista</var>. O horário fica reservado só pro <var>atleta</var>. Me confirma com um "confirmo"?</p></div></div>
+      <p class="nota">Sem "confirmo", não conta como agendado.</p>
+    </div></li>
+    <li><span class="q">Logo depois</span><div class="c">
+      <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Tá confirmado: <var>dia</var> às <var>hora</var>. Link da conversa: <var>link da sala</var>. E aqui o link da AGN que eu te falei: <var>link AGN</var>.</p></div></div>
+    </div></li>
+    <li><span class="q">Véspera</span><div class="c">
+      <div class="falas"><div class="fala"><span class="quem">SDR</span><p><var>responsável</var>, amanhã às <var>hora</var> é a conversa do <var>atleta</var> com o <var>especialista</var>. Ele já tá com a ficha do <var>atleta</var> e vai apresentar o plano com o gerente de carreira e o Zyron. <var>pai</var>, <var>mãe</var> e ele confirmados?</p></div></div>
+    </div></li>
+    <li><span class="q">1 hora antes</span><div class="c">
+      <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Daqui a 1 hora. Link: <var>link da sala</var>. O <var>atleta</var> tá pronto?</p></div></div>
+    </div></li>
+    <li><span class="q">Se faltar</span><div class="c">
+      <p>Liga em até 5 minutos.</p>
+      <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Aconteceu alguma coisa? O especialista tá com a ficha do <var>atleta</var> aberta. Conseguem entrar agora? Se não, hoje às <var>hora</var> ou amanhã às <var>hora</var>?</p></div></div>
+    </div></li>
+  </ol>
+</section>
+
+<section id="follow-up">
+  <h2><span class="num">11</span>Follow up</h2>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/followup.png"><img src="cards/followup.png" alt="Card Follow Up: contato, continuidade e próximo passo" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · Follow up</p>
+      <p class="fx">Follow up = Contato + Continuidade + Próximo passo</p>
+      <p class="fr">↳ ligou + mandou mensagem + retomou a conversa = <u>avanço</u></p>
+      <p class="o"><b>O que é:</b> a sequência de contatos que mantém a oportunidade viva e leva o lead pra frente.</p>
+      <p class="p"><b>Aqui:</b> a cadência abaixo. Cada toque traz algo novo: AGN, caso, diferencial, turma.</p>
+      <p class="x"><b>O card avisa:</b> não faça follow up solto. Sempre retome contexto, valor e próximo passo. Muita oportunidade se perde porque o vendedor desiste cedo demais.</p>
+    </figcaption>
+  </figure>
+  <div class="gat"><span>Aversão à perda</span><span>Escassez</span><span>Prova social</span><span>Mecanismo único</span></div>
+  <ol class="linha-tempo">
+    <li><span class="q">D0 · +2 h</span><div class="c">
+      <div class="falas"><div class="fala"><span class="quem">Áudio</span><p><var>responsável</var>, é o <var>SDR</var>. Liguei pra falar do perfil do <var>atleta</var>. Me chama aqui que eu te explico em 1 minuto.</p></div></div>
+    </div></li>
+    <li><span class="q">D1</span><div class="c">
+      <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Separei pra você ver o nível dos atletas nossos publicados na AGN Football, com quem a gente tem relação direta: <var>link AGN</var>.</p></div></div>
+    </div></li>
+    <li><span class="q">D2</span><div class="c"><p>Liga à noite, em outro horário.</p></div></li>
+    <li><span class="q">D3</span><div class="c">
+      <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Lembrei do <var>atleta</var> hoje. O <var>caso</var> tinha a mesma idade quando entrou com a gente e hoje tá no <var>clube</var>.</p></div></div>
+    </div></li>
+    <li><span class="q">D5</span><div class="c">
+      <p>Pro atleta, se o contato for dele. Senão, áudio pro responsável.</p>
+      <div class="falas"><div class="fala"><span class="quem">SDR</span><p><var>atleta</var>, tua ficha tá aqui comigo. Chega de peneira no olhômetro: aqui é dado real, gerente de carreira e agente do Zyron só teu. Fala com teu pai pra gente marcar a conversa.</p></div></div>
+    </div></li>
+    <li><span class="q">D7</span><div class="c">
+      <div class="falas"><div class="fala"><span class="quem">SDR</span><p>A turma fecha com 10 atletas. Ainda consigo levar o <var>atleta</var> pro especialista, mas tem que ser essa semana. <var>dia/hora</var> ou <var>dia/hora</var>?</p></div></div>
+    </div></li>
+    <li><span class="q">D10</span><div class="c"><p>Liga.</p></div></li>
+    <li><span class="q">D14</span><div class="c">
+      <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Vou arquivar a ficha do <var>atleta</var> amanhã. Se ainda quiserem seguir, me responde hoje que eu seguro um horário.</p></div></div>
+    </div></li>
+    <li><span class="q">Depois</span><div class="c"><p>Volta pra nutrição e é reabordado em 30 dias, com estado "reabordado" no CRM.</p></div></li>
+  </ol>
+</section>
+
+<section id="crm">
+  <h2><span class="num">12</span>CRM e repasse</h2>
+  <figure class="ref">
+    <button class="ref-img" type="button" data-full="cards/closer.png"><img src="cards/closer.png" alt="Card Closer: diagnóstico, proposta e fechamento" loading="lazy"></button>
+    <figcaption>
+      <p class="tag">Card · Closer</p>
+      <p class="fx">Closer = Diagnóstico + Proposta + Fechamento</p>
+      <p class="fr">↳ reunião qualificada + proposta + decisão = <u>venda</u></p>
+      <p class="o"><b>O que é:</b> quem conduz a negociação e busca o fechamento, no meio e no fim do funil.</p>
+      <p class="p"><b>Aqui:</b> o Closer lê a ficha da R1 antes da R2 e chega sabendo o nome de cada um, a dor, os gastos e a locomoção. Ficha incompleta obriga ele a perguntar de novo, e aí ele parece vendedor.</p>
+      <p class="x"><b>O card avisa:</b> closer sem qualificação sofre mais. Funil bom começa antes do fechamento.</p>
+    </figcaption>
+  </figure>
+  <p><strong>Critério de repasse:</strong> R1 feita, perfil aprovado, dor clara, pré-compromisso, R2 marcada com todos os decisores. No CRM: "Agendar call e enviar".</p>
+  <div class="modelo">
+    <div class="modelo-top"><span>Ficha da R1</span><button class="btn" id="copiar-repasse" type="button">Copiar modelo</button></div>
+<pre id="modelo-repasse">Origem: [Zyron / formulário do Instagram / outro]
+Dados do Zyron: [se houver]
+Atleta: [nome], [idade], [posição], pé [dominante]
+Mora em: [cidade/estado]
+Pai: [nome] | Mãe: [nome] | Outro responsável: [nome]
+Decisores e como decidem: [...]
+Telefones dos decisores: [...]
+Treina hoje: [onde, quantas vezes por semana]
+Times e experiências: [...]
+Peneiras e avaliações: [quantas, em quais clubes, o que disseram]
+Se sentiu observado de verdade em: [quantas]
+Sonho do atleta: [...]
+O que ele acha que falta: [...]
+Dor da família (palavras deles): [...]
+Tipo de dor: [financeira / emocional / tempo e idade]
+Já investiram: [R$ e em quê]
+Locomoção pra outro estado: [vai sozinho / família acompanha / ...]
+Respondeu "não faz sentido lucrar em cima"? [sim/não]
+Apresentou gerente de carreira e Zyron? [sim/não]
+Pré-compromisso de decidir na R2? [sim/não]
+Empolgação do atleta (0 a 10): [...]
+Missão dada ao atleta? [sim/não]
+Caso citado: [...]
+Link da AGN enviado? [sim/não]
+Objeções que apareceram: [...]
+Sinais de budget: [...]
+R2: [dia/hora] | Todos os decisores confirmados? [sim/não]</pre>
+  </div>
+</section>
+
+<section id="casos">
+  <h2><span class="num">13</span>Casos e autoridade</h2>
+  <p>Fonte única: SDR e Closer contam o mesmo caso do mesmo jeito. Na R1 vai um caso principal comparado com o atleta, mais a sequência Joãozinho, Kaio e vários outros.</p>
+  <div class="tbl"><table class="largo">
+    <thead><tr><th>Atleta</th><th>Clube</th><th>Posição</th><th>Idade na entrada</th><th>Tempo até o resultado</th><th>Gancho pronto</th></tr></thead>
+    <tbody>
+      <tr><td>Joãozinho</td><td>Grêmio</td><td><var>posição</var></td><td><var>idade</var></td><td><var>tempo</var></td><td>"O perfil dele é muito parecido com o do Joãozinho, que fechou com o Grêmio."</td></tr>
+      <tr><td>Kaio</td><td><var>clube</var></td><td><var>posição</var></td><td><var>idade</var></td><td><var>tempo</var></td><td>"Foi assim com o Kaio também."</td></tr>
+      <tr><td><var>próximo caso</var></td><td><var>clube</var></td><td><var>posição</var></td><td><var>idade</var></td><td><var>tempo</var></td><td><var>gancho</var></td></tr>
+    </tbody>
+  </table></div>
+  <h3>Frases prontas</h3>
+  <div class="passo">
+    <p class="eyebrow">Gerente de carreira e Zyron</p>
+    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Ele vai ter um gerente de carreira, o <var>nome do gerente</var>, que já revelou centenas de jogadores, acompanhando o desenvolvimento dele todo dia. E o Zyron, o nosso mecanismo exclusivo, com um agente específico só pra ele.</p></div></div>
+  </div>
+  <div class="passo">
+    <p class="eyebrow">Olhômetro contra dados reais</p>
+    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Você acha que, no olhômetro, o avaliador de uma peneira consegue analisar todos aqueles garotos com precisão? Hoje, com inteligência artificial, os clubes estão cada vez mais escolhendo atleta com base em dados reais. E é assim que a gente revela os nossos jogadores: pelo Zyron.</p></div></div>
+  </div>
+  <div class="passo">
+    <p class="eyebrow">A gente só ganha quando ele ganha</p>
+    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Faz algum sentido pra gente, que já revelou centenas de atletas, querer lucrar em cima de vocês, sendo que a gente ganha no contrato profissional do <var>atleta</var>?</p></div></div>
+  </div>
+  <div class="passo">
+    <p class="eyebrow">95% de encaminhamento</p>
+    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>95% dos atletas que entram com a gente são encaminhados. Os 5% que não vão é por falta de disciplina e de compromisso.</p></div></div>
+    <p class="nota">"Como vocês têm essa margem?" Filtro na entrada, gerente de carreira todo dia e o Zyron: "a gente escolhe atletas como você".</p>
+  </div>
+  <div class="passo">
+    <p class="eyebrow">Comparação e sequência de prova</p>
+    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>O perfil dele é muito parecido com o do <var>caso</var>, que a gente fechou recentemente. Foi assim com o Joãozinho, que fechou com o Grêmio, com o Kaio e com vários outros.</p></div></div>
+  </div>
+  <div class="passo">
+    <p class="eyebrow">AGN Football · relação direta · em toda conversa</p>
+    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>A gente tem relação direta com a AGN Football. Tem jogador nosso publicado lá, te mando o link.</p></div></div>
+    <p class="nota">Se perguntarem o que é: "um canal do mercado do futebol que divulga atleta, e a gente tem relação direta com eles".</p>
+  </div>
+  <div class="passo">
+    <p class="eyebrow">Institucional</p>
+    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>A gente tá há mais de dez anos nisso, já revelou centenas de atletas e encaminhou jogador pro Brasil afora e pra fora.</p></div></div>
+  </div>
+</section>
+
+<section id="glossario">
+  <h2><span class="num">14</span>Glossário dos cards</h2>
+  <p>Todos os cards do treinamento num lugar só. Toque na imagem pra ampliar.</p>
+  <div class="glossario">
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/sdr.png"><img src="cards/sdr.png" alt="Card SDR" loading="lazy"></button><h4>SDR</h4><p>Prospecta, qualifica e agenda. Aqui faz a R1.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/closer.png"><img src="cards/closer.png" alt="Card Closer" loading="lazy"></button><h4>Closer</h4><p>Conduz a negociação e o fechamento. Aqui faz a R2.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/sql.png"><img src="cards/sql.png" alt="Card SQL" loading="lazy"></button><h4>SQL</h4><p>Lead qualificado: interesse real, perfil e momento.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/r1.png"><img src="cards/r1.png" alt="Card R1" loading="lazy"></button><h4>R1</h4><p>Reunião de diagnóstico e qualificação. Do SDR.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/r2.png"><img src="cards/r2.png" alt="Card R2" loading="lazy"></button><h4>R2</h4><p>Reunião de proposta e decisão. Do Closer.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/bant.png"><img src="cards/bant.png" alt="Card BANT" loading="lazy"></button><h4>BANT</h4><p>Budget, authority, need, timing: lead forte.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/sandler.png"><img src="cards/sandler.png" alt="Card Sandler" loading="lazy"></button><h4>Sandler</h4><p>Rapport, dor, impacto e compromisso antes da proposta.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/lead-speed.png"><img src="cards/lead-speed.png" alt="Card Lead Speed" loading="lazy"></button><h4>Lead speed</h4><p>Tempo até o primeiro contato. Meta: 7 minutos.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/noshow.png"><img src="cards/noshow.png" alt="Card No Show" loading="lazy"></button><h4>No show</h4><p>Faltas ÷ reuniões marcadas × 100.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/followup.png"><img src="cards/followup.png" alt="Card Follow Up" loading="lazy"></button><h4>Follow up</h4><p>Contato, continuidade e próximo passo.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/inside-sales.png"><img src="cards/inside-sales.png" alt="Card Inside Sales" loading="lazy"></button><h4>Inside sales</h4><p>Venda remota com processo. 40 → 12 → 5.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/win-rate.png"><img src="cards/win-rate.png" alt="Card Win Rate" loading="lazy"></button><h4>Win rate</h4><p>Vendas ganhas ÷ oportunidades × 100.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/lead-magnet.png"><img src="cards/lead-magnet.png" alt="Card Lead Magnet" loading="lazy"></button><h4>Lead magnet</h4><p>Material de valor em troca de dados. Aqui: o Zyron.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/social-selling.png"><img src="cards/social-selling.png" alt="Card Social Selling" loading="lazy"></button><h4>Social selling</h4><p>Relacionamento nas redes. Aqui: o Instagram.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/webinario.png"><img src="cards/webinario.png" alt="Card Webinário" loading="lazy"></button><h4>Webinário</h4><p>Aula ao vivo ou gravada que educa e converte.</p></div>
+    <div class="gl"><button class="ref-img" type="button" data-full="cards/conversao-direta.png"><img src="cards/conversao-direta.png" alt="Card Conversão Direta" loading="lazy"></button><h4>Conversão direta</h4><p>Anúncio, página e compra. Não serve pra Assessoria.</p></div>
+  </div>
+</section>
+
+<section id="regras">
+  <h2><span class="num">15</span>Regras de ouro</h2>
+  <div class="cartao vd"><div><span class="tit">Sempre</span>
+    <ul>
+      <li>Primeiro contato em até 7 minutos.</li>
+      <li>R1 completa: nomes, contexto, experiências, avaliações, dor, gastos, locomoção, decisores.</li>
+      <li>Gerente de carreira e Zyron em toda R1 e em todo "quanto custa?".</li>
+      <li>A pergunta do olhômetro e a virada pros dados reais em toda R1.</li>
+      <li>A pergunta "faz sentido a gente lucrar em cima de vocês?" em toda R1.</li>
+      <li>95%, caso parecido e relação direta com a AGN em toda R1.</li>
+      <li>R1 termina com o perfil aprovado e o pré-compromisso.</li>
+      <li>R2 com todos os decisores e o atleta, com "confirmo".</li>
+      <li>Ficha completa no CRM antes do repasse.</li>
+    </ul>
+  </div></div>
+  <div class="cartao vm"><div><span class="tit">Proibido</span>
+    <ul>
+      <li>Colocar o perfil do atleta em dúvida.</li>
+      <li>Falar valor.</li>
+      <li>Falar como quem oferece. Quem precisa da vaga é o atleta.</li>
+      <li>Marcar R2 sem dor clara e compromisso.</li>
+      <li>Repassar com a ficha incompleta.</li>
+      <li>"Te ligo depois" sem hora.</li>
+      <li>Deixar lead novo parado.</li>
+    </ul>
+  </div></div>
+</section>
+
+<section id="dados">
+  <h2><span class="num">16</span>Dados pra completar</h2>
+  <p>Entram nos roteiros no lugar das variáveis.</p>
+  <ol class="pend">
+    <li><div><strong>Nome do gerente de carreira</strong> que revelou centenas de jogadores.</div></li>
+    <li><div><strong>Como o agente do Zyron acompanha no dia a dia</strong> (canal, frequência de contato), pro SDR descrever com detalhe.</div></li>
+    <li><div><strong>Nome da empresa</strong> como a família conhece.</div></li>
+    <li><div><strong>Quais dados do Zyron</strong> o SDR enxerga, pra citar na abertura.</div></li>
+    <li><div><strong>Link da publicação na AGN Football.</strong></div></li>
+    <li><div><strong>Casos:</strong> posição, idade na entrada e tempo até o resultado do Joãozinho e do Kaio, e os próximos casos.</div></li>
+    <li><div><strong>Nome do especialista</strong> e link da sala.</div></li>
+  </ol>
+</section>
+
+<footer>
+  <span>Base: cards do treinamento (seção 14); livros Predictable Revenue e SPIN Selling.</span>
+  <span>Arquivo-fonte: PLAYBOOK_SDR.md v5 · Casos: CASOS.md v5</span>
+</footer>
+</main>
+</div>
+</div>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Card ampliado">
+  <button class="lb-fechar" id="lb-fechar" type="button">Fechar</button>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<script>
+(function(){
+  var raiz=document.documentElement;
+  var btn=document.getElementById('modo-apresentacao');
+  var CHAVE='pb-sdr-apresentacao';
+  function aplicar(on){
+    raiz.classList.toggle('apresentacao',on);
+    btn.setAttribute('aria-pressed',on?'true':'false');
+    btn.textContent=on?'Sair da apresentação':'Modo apresentação';
+  }
+  var salvo=false;
+  try{salvo=localStorage.getItem(CHAVE)==='1'}catch(e){}
+  aplicar(salvo);
+  btn.addEventListener('click',function(){
+    var on=!raiz.classList.contains('apresentacao');
+    aplicar(on);
+    try{localStorage.setItem(CHAVE,on?'1':'0')}catch(e){}
+  });
+
+  var cb=document.getElementById('copiar-repasse');
+  var pre=document.getElementById('modelo-repasse');
+  function selecionar(){
+    var r=document.createRange();r.selectNodeContents(pre);
+    var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+    cb.textContent='Selecionado, use Ctrl+C';
+  }
+  cb.addEventListener('click',function(){
+    try{
+      navigator.clipboard.writeText(pre.innerText).then(function(){
+        cb.textContent='Copiado';
+        setTimeout(function(){cb.textContent='Copiar modelo'},1800);
+      },selecionar);
+    }catch(e){selecionar()}
+  });
+
+  var lb=document.getElementById('lightbox');
+  var lbImg=document.getElementById('lb-img');
+  var lbFechar=document.getElementById('lb-fechar');
+  var origem=null;
+  function abrir(b){
+    var img=b.querySelector('img');
+    lbImg.src=b.getAttribute('data-full');
+    lbImg.alt=img?img.alt:'';
+    origem=b;lb.hidden=false;lbFechar.focus();
+  }
+  function fechar(){lb.hidden=true;lbImg.src='';if(origem)origem.focus();}
+  document.querySelectorAll('.ref-img').forEach(function(b){b.addEventListener('click',function(){abrir(b)})});
+  lbFechar.addEventListener('click',fechar);
+  lb.addEventListener('click',function(e){if(e.target===lb)fechar()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!lb.hidden)fechar()});
+
+  var toc=document.getElementById('toc');
+  var links=[].slice.call(toc.querySelectorAll('a'));
+  var mapa={};links.forEach(function(a){mapa[a.getAttribute('href').slice(1)]=a});
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entradas){
+      entradas.forEach(function(e){
+        if(!e.isIntersecting)return;
+        var a=mapa[e.target.id];if(!a)return;
+        links.forEach(function(l){l.classList.remove('ativo')});
+        a.classList.add('ativo');
+        if(toc.scrollWidth>toc.clientWidth+4){
+          toc.scrollTo({left:a.offsetLeft-toc.clientWidth/2+a.clientWidth/2,behavior:'smooth'});
+        }
+      });
+    },{rootMargin:'-30% 0px -60% 0px'});
+    document.querySelectorAll('main section[id]').forEach(function(s){obs.observe(s)});
+  }
+})();
+</script>
+
+</body></html>
