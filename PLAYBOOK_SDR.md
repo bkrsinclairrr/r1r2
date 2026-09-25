@@ -1,0 +1,703 @@
+# PLAYBOOK_SDR.md
+
+Versão: v5 (25/09/2026)
+Espelho em texto de `playbook-sdr.html`. Casos e frases: `CASOS.md`.
+Imagens dos cards: pasta `cards/`.
+Tudo entre colchetes é variável: dado da conversa ou da empresa.
+
+Changelog:
+- v5: dor de não ser visto aprofundada na R1 (quantas peneiras, em quantas
+  foi observado de verdade, conexão, pergunta do olhômetro e virada pros
+  dados reais e o Zyron). Zyron descrito como análise por dados reais.
+- v4: gerente de carreira e Zyron na R1 e no "quanto custa?". AGN Football
+  como relação direta. Pré-compromisso de decidir na R2. Cards do
+  treinamento explicados junto de cada conceito, e glossário.
+- v3: R1 vira a call de qualificação do SDR (R2 é do Closer). Abertura pra
+  lead do Zyron e do Instagram. Pergunta do lucro, 95% e postura de quem
+  seleciona.
+- v2: tom agressivo, sem ressalvas.
+- v1: primeira versão.
+
+---
+
+## Regras da casa
+
+- A R1 sempre termina com o atleta aprovado. Nenhuma frase coloca o perfil
+  em dúvida.
+- Nós só ganhamos quando o atleta ganha, no contrato profissional.
+- O SDR fala como quem seleciona, não como quem oferece. Quem precisa da
+  vaga é o atleta.
+- O SDR nunca passa valor.
+
+O SDR faz a R1, a call de qualificação. Mapeia contexto, dor, experiências,
+avaliações, gastos e locomoção, e apresenta o que ninguém mais tem: um
+gerente de carreira todo dia e o Zyron. No final, entrega ao especialista
+uma família que já sabe duas coisas: o atleta foi escolhido, e nós só
+ganhamos quando ele ganha.
+
+---
+
+## 01. Missão do SDR
+
+Card SDR (`cards/sdr.png`): SDR = Prospecção + Qualificação + Agendamento.
+↳ lista + contato + reunião marcada = trabalho do SDR.
+- O que é: Sales Development Representative. Prospecta, qualifica e agenda.
+  Fica no começo do processo e filtra quem segue pro Closer.
+- Aqui: faz o primeiro contato, a R1 inteira e marca a R2 com o
+  especialista.
+- O card avisa: SDR não é só volume. Qualidade de abordagem também define
+  resultado.
+
+O SDR não vende a Assessoria. Ele faz a R1 e entrega pro Closer uma família
+que já falou da própria dor, já conhece o gerente de carreira e o Zyron, já
+sabe que o atleta foi escolhido e já quer ouvir o plano.
+
+Três objetivos:
+1. Fazer o atleta se sentir escolhido. A gente escolhe atletas como ele.
+2. Mapear tudo e mostrar o diferencial: contexto, dor, experiências,
+   avaliações, gastos, locomoção, decisores, e o gerente de carreira e o
+   Zyron.
+3. Marcar a R2 com todos os decisores, já combinados de decidir na
+   conversa.
+
+Caminho do lead: contato em 7 min → R1 → diferencial → perfil aprovado →
+pré-compromisso → R2 marcada → CRM e repasse.
+
+Card Inside Sales (`cards/inside-sales.png`): Inside Sales = Qualificação +
+Apresentação + Fechamento. ↳ 40 reuniões → 12 propostas → 5 vendas.
+- O que é: venda remota e consultiva, por telefone, vídeo ou WhatsApp, com
+  processo, roteiro e acompanhamento.
+- Aqui: o Closer só fecha o que o SDR qualifica e agenda.
+- O card avisa: Inside Sales não é só fazer ligação. Sem processo e follow
+  up, a conversão cai.
+
+Tática: as pessoas amam comprar, mas odeiam vendedor. O SDR fala como quem
+seleciona, não como quem oferece.
+
+## 02. O que ninguém mais tem
+
+Escolinha treina. Peneira decide no olhômetro. Empresário liga quando dá.
+Aqui o atleta é analisado com dados reais e acompanhado todo dia.
+
+- Gerente de carreira: cada atleta tem um, o [nome do gerente], o
+  responsável por revelar centenas de jogadores. Acompanha o
+  desenvolvimento do atleta todo dia: evolução, treino, próximos passos e a
+  hora certa de levar ele pros clubes.
+- Zyron, o mecanismo exclusivo: analisa o atleta com dados reais, não no
+  olhômetro, que é o caminho que os clubes estão seguindo com a
+  inteligência artificial. Depois que ele entra, coloca um agente
+  específico só pra ele, que vai acompanhando a evolução e mantendo contato
+  o tempo todo, pra ele ter sempre o melhor resultado possível. É por esse
+  mecanismo que a gente revela os nossos jogadores.
+
+Regra de ouro: filtro na entrada, gerente de carreira todo dia e o Zyron
+acompanhando o tempo todo. É assim que a casa chega nos 95% de
+encaminhamento. O SDR fala disso em toda R1 e em todo "quanto custa?".
+
+Como falar disso (gatilhos: mecanismo único, autoridade, exclusividade):
+> "Aqui o [atleta] não fica solto. Ele vai ter um gerente de carreira, o
+> [nome do gerente], que já revelou centenas de jogadores, acompanhando o
+> desenvolvimento dele todo dia."
+> "E vai ter o Zyron, o nosso mecanismo exclusivo: um agente específico só
+> pra ele, acompanhando e mantendo contato o tempo todo, pra ele ter sempre
+> o melhor resultado possível. Isso não existe em escolinha, em peneira, em
+> lugar nenhum."
+> "Peneira é olhômetro: um avaliador, um monte de garoto e vinte minutos de
+> coletivo. Hoje, com inteligência artificial, os clubes estão cada vez mais
+> escolhendo atleta por dados reais. O Zyron analisa o [atleta] assim, e é
+> por esse mecanismo que a gente revela os nossos jogadores."
+> Lead do Zyron: "É o mesmo Zyron que avaliou o [atleta]. A diferença é
+> que, dentro da assessoria, ele passa a acompanhar ele todo dia."
+> Pro atleta: "[atleta], gerente de carreira te acompanhando todo dia e um
+> agente só teu no Zyron. Isso é estrutura de atleta profissional."
+
+Onde entra: na R1 (6.11), no "quanto custa?" (8.1), no follow up e sempre
+que a família comparar com escolinha ou peneira.
+
+## 03. Zyron ou Instagram
+
+Nem todo atleta chega com avaliação. Nos dois casos, a R1 termina com o
+atleta aprovado.
+
+| | Veio do Zyron | Veio do formulário do Instagram |
+| --- | --- | --- |
+| O que chega | Avaliação e dados do atleta | Só o cadastro |
+| Abertura | Notícia da aprovação, com um dado específico | Seleção: "teu cadastro chegou pra mim" |
+| R1 | Aprofunda dor, gastos, locomoção, decisores | Vira a própria avaliação e coleta tudo |
+| Fim da R1 | Perfil aprovado | Perfil aprovado |
+
+Card Lead magnet (`cards/lead-magnet.png`): Oferta de valor + Formulário +
+Captura de lead. ↳ 1.000 visitas → 220 leads = 22% de conversão.
+- O que é: material gratuito e de valor em troca dos dados do lead.
+- Aqui: a avaliação do Zyron é o nosso lead magnet. Por isso a abertura já
+  vem com resultado.
+- O card avisa: lead magnet genérico atrai lead fraco.
+
+Card Social selling (`cards/social-selling.png`): Conteúdo +
+Relacionamento + Oportunidades. ↳ conteúdo frequente + conversa no direct +
+confiança = oportunidade qualificada.
+- O que é: usar as redes pra criar relacionamento e gerar oportunidade.
+- Aqui: o lead do formulário do Instagram. O SDR continua a conversa como
+  gente, sem script frio.
+- O card avisa: social selling não é só postar. É preciso conversar,
+  nutrir e conduzir pro próximo passo.
+
+Munição antes do primeiro contato:
+
+| O que separar | Zyron | Instagram |
+| --- | --- | --- |
+| Um ponto forte específico | Dado da avaliação do app | Posts e vídeos do perfil |
+| Nome do atleta e do responsável | Cadastro do Zyron | Formulário |
+| Caso mais parecido | `CASOS.md` | `CASOS.md`, depois da R1 |
+| Link da publicação na AGN Football | `CASOS.md` | `CASOS.md` |
+
+Regra de ouro: com ou sem Zyron, a R1 termina com o atleta aprovado.
+
+Webinário e conversão direta estão no glossário. Conversão direta não serve
+pra Assessoria: aqui a venda sempre passa pela R1 e pela R2.
+
+## 04. Lead speed
+
+Card Lead speed (`cards/lead-speed.png`): tempo entre o lead entrar e o
+time responder. ↳ lead entrou 10:00 e recebeu contato 10:07 = 7 minutos.
+- O que é: a velocidade do primeiro contato. Quanto menor, maior a chance
+  de conexão e conversa.
+- Aqui: meta de 7 minutos. O atleta tá no pico da vontade.
+- O card manda: não deixe lead novo parado.
+
+Regra de ouro: primeiro contato em até 7 minutos. Se atender, a R1 começa
+na hora. Não atendeu: áudio e mensagem, e nova ligação em 2 horas.
+
+## 05. Primeiro contato
+
+Mensagem curta, uma pergunta por vez. Objetivo único: começar a R1, agora
+ou num dos dois horários.
+
+Lead do Zyron (gatilhos: exclusividade, escolha alternativa):
+> "Oi [responsável], tudo bem? Aqui é o [SDR], da [empresa]. Tenho uma
+> notícia boa: o [atleta] passou na avaliação do Zyron."
+> "O Zyron analisa dados reais do jogo, não é olhômetro de peneira. E o que
+> mais chamou atenção foi [dado específico da avaliação]. É exatamente o
+> perfil que a gente procura."
+> "Agora eu preciso de uns 20 minutos com vocês pra fechar a ficha dele
+> antes de passar pro especialista. Consegue agora, ou fica melhor [hora]
+> ou [hora]?"
+
+Lead do formulário do Instagram (gatilhos: exclusividade, curiosidade):
+> "Oi [nome], tudo bem? Aqui é o [SDR], da [empresa]. Teu cadastro pelo
+> nosso Instagram chegou pra mim."
+> "A gente faz assessoria individual de atletas e escolhe com quem
+> trabalha. Pra levar teu perfil pro especialista, eu preciso de uns 20
+> minutos contigo e com teu responsável. Consegue agora, ou fica melhor
+> [hora] ou [hora]?"
+> "Se tiver, já me manda um vídeo teu jogando."
+
+Regra de ouro: sempre dois horários. Nunca "quando vocês podem?". Sem
+resposta em 2 horas: liga.
+
+## 06. R1: call de qualificação
+
+Card R1 (`cards/r1.png`): R1 = Contato inicial + Diagnóstico + Próximo
+passo. ↳ entendeu cenário + mapeou dor + marcou avanço = boa R1.
+- O que é: Reunião 1, diagnóstico e qualificação. Não é apresentação, é
+  investigação.
+- Aqui: a R1 é do SDR. Sai dela com a dor mapeada, o perfil aprovado, o
+  pré-compromisso e a R2 marcada.
+- O card avisa: R1 não deve virar monólogo. Quem fala mais é o cliente.
+
+Card Método Sandler (`cards/sandler.png`): Sandler = Rapport + Dor +
+Impacto + Compromisso. ↳ entendeu a dor + mediu impacto + validou próximo
+passo = avanço.
+- O que é: abordagem consultiva que explora dor, impacto e compromisso
+  antes da proposta.
+- Aqui: é a ordem da R1. Rapport na abertura, dor no diagnóstico, impacto
+  no "se continuar assim", compromisso no pré-compromisso e na R2 marcada.
+- O card avisa: não apresente proposta cedo demais.
+
+Card SQL (`cards/sql.png`): SQL = Lead + Interesse real + Perfil + Momento.
+↳ pediu contato + tem perfil ideal + quer avançar = SQL.
+- O que é: Sales Qualified Lead, pronto pra conversa comercial.
+- Aqui: perfil o atleta já tem. A R1 confirma interesse real, momento e
+  decisores. Quem sai da R1 assim vira R2.
+- O card avisa: passe pra vendas só quem realmente está pronto.
+
+20 a 30 minutos, com o atleta e pelo menos um responsável. Tudo vai pro CRM
+(seção 12).
+
+O que a R1 precisa descobrir:
+- Nomes: pai, mãe, atleta e quem mais decide.
+- Contexto: idade, cidade, onde treina, rotina.
+- Experiências: times, federação, posição.
+- Avaliações: quantas peneiras fez e em quantas foi visto de verdade.
+- Dor: o porquê real, e o tipo (financeira, emocional ou tempo).
+- Gastos: quanto já investiram no sonho.
+- Locomoção: como ele vai pra outro estado quando o clube chamar.
+- Decisores: quem decide, como decide, telefone.
+
+### Abertura (rapport)
+
+6.1 Pedir licença e dar o motivo:
+> "Oi [responsável], aqui é o [SDR], da [empresa]. Te peguei numa hora
+> ruim?"
+> Zyron: "Rapidinho: o [atleta] passou na avaliação do Zyron, e antes de
+> passar a ficha dele pro especialista eu preciso conhecer vocês."
+> Instagram: "Rapidinho: o cadastro do [atleta] chegou pra mim, e antes de
+> levar o perfil dele pro especialista eu preciso conhecer vocês."
+Pedir licença tira a defensiva (Predictable Revenue). Hora ruim: "Te ligo
+às [hora] ou às [hora]?" Nunca "te ligo depois".
+
+6.2 Trazer o atleta:
+> "O [atleta] tá aí? Coloca ele no viva-voz, que eu quero falar com ele
+> também."
+
+### Diagnóstico (dor)
+
+6.3 Contexto e experiências:
+- "[atleta], quantos anos você tem e onde você mora?"
+- "Joga em que posição? Qual teu pé bom?"
+- "Onde você treina hoje? Quantas vezes por semana?"
+- "Já jogou em quais times? Chegou a ser federado?"
+
+6.4 Avaliações: a dor de não ser visto (gatilhos: empatia, aversão à
+perda). Essa é a dor mais forte do atleta: fazer peneira atrás de peneira
+e nunca ser visto de verdade. O SDR entra fundo aqui, sem pressa.
+1. "Quantas peneiras ou avaliações você já fez?"
+2. "Em quais clubes?"
+3. "E em quantas delas você sentiu que alguém te observou de verdade?"
+4. "Quantos garotos tinham lá com você?"
+5. "Quanto tempo você jogou pra ser avaliado? Um coletivo de 20 minutos?"
+6. "O que te disseram na saída?"
+
+Conexão:
+> "Eu sei exatamente como é. Eu já passei por isso: dar o meu melhor numa
+> peneira e sair sem saber se alguém sequer me viu."
+> Se nunca jogou: "Aqui na equipe a gente vê isso toda semana. Centenas de
+> atletas chegaram até a gente com essa mesma história."
+
+A pergunta óbvia:
+> "Me fala uma coisa, com sinceridade: você acha que, no olhômetro, o
+> avaliador de uma peneira consegue analisar todos aqueles garotos com
+> precisão?"
+> Atleta: "Não."
+> "Não consegue. Se ele olhou pro outro lado na hora do teu melhor lance,
+> pra ele esse lance não existiu."
+
+A virada (gatilhos: mecanismo único, autoridade):
+> "Hoje, com inteligência artificial, os clubes estão cada vez mais
+> escolhendo atleta com base em dados reais, e não no olhômetro. E é assim
+> que a gente revela os nossos jogadores: pelo Zyron."
+
+Anota no CRM quantas avaliações ele fez e em quantas se sentiu observado
+de verdade. O Closer usa esses dois números na R2.
+
+6.5 Sonho e dor do atleta:
+- "Em que time você sonha jogar?"
+- "O que você sente que tá faltando pra você chegar lá?"
+- "Se a oportunidade aparecer amanhã, você tá pronto?"
+> "Isso que você falou de [resposta dele] bate com o que eu vi aqui:
+> [observação real]."
+
+6.6 Dor da família e impacto (gatilho: aversão à perda):
+- "Na visão de vocês, o que falta pra ele?"
+- "E por que isso é importante pra vocês agora?" (por quê até a dor real)
+- "Se continuar assim, onde vocês acham que ele vai estar daqui a um ano?"
+- "E quanto tempo mais vocês estão dispostos a esperar?"
+- "O que mudaria pra família se ele virasse profissional?"
+Marca o tipo no CRM:
+- Financeira ("seria a mudança de vida da família"): o Closer trabalha o
+  cenário de salário e mudança de vida.
+- Emocional ("ele tá desanimado, já ouviu muito não"): o Closer trabalha o
+  sonho.
+- Tempo e idade ("tá ficando tarde pra ele"): o Closer trabalha a janela
+  da base.
+
+6.7 Gastos (obrigatória):
+> "Quanto vocês já investiram nesse sonho até hoje? Escolinha, chuteira,
+> viagem pra peneira, avaliação?"
+Esse número é a régua do preço na R2.
+
+6.8 Locomoção (gatilho: futuro imaginado):
+> "Quando o [atleta] for pro clube, pode ser em outro estado. Ele tem
+> condição de ir? Alguém da família acompanha, ou ele vai sozinho?"
+Pergunta com "quando", nunca com "se".
+
+6.9 Decisores.
+Card Método BANT (`cards/bant.png`): BANT = Budget + Authority + Need +
+Timing. ↳ tem verba + decide + precisa + quer agora = lead forte.
+- O que é: qualificar por orçamento, autoridade, necessidade e tempo.
+- Aqui: Need e Timing saem da dor (6.6). Authority é esta etapa. Budget não
+  se pergunta, só se anota pelos sinais.
+- O card avisa: BANT não é interrogatório.
+Perguntas:
+- "Qual o nome do pai e da mãe do [atleta]?"
+- "Além de você, quem mais participa dessa decisão em casa?"
+- "Quando vocês decidem uma coisa importante pro [atleta], como costuma
+  ser? Os dois juntos?"
+- "Me passa o número dele(a), que eu mando a confirmação pros dois."
+Pro Predictable Revenue, o processo de decisão importa mais que o decisor.
+
+### Impacto (posicionamento e prova)
+
+6.10 A gente só ganha quando ele ganha (gatilhos: compromisso,
+reciprocidade):
+> "Deixa eu te fazer uma pergunta: faz algum sentido pra gente, que já
+> revelou centenas de atletas, querer lucrar em cima da senhora, do senhor
+> ou de você, sendo que a gente ganha no contrato profissional do
+> [atleta]?"
+> Família: "Não."
+> "Pois é. A gente só ganha quando ele ganha. Por isso a gente escolhe
+> muito bem com quem trabalha, e por isso cuida de cada um todo dia."
+Quem responde "não" em voz alta passa a defender essa ideia. Na R2, o
+Closer ancora o valor em cima disso.
+
+6.11 O diferencial (gatilhos: mecanismo único, autoridade):
+> "Lembra do olhômetro da peneira? Aqui é o contrário: o [atleta] é
+> analisado com dados reais, e acompanhado todo dia."
+> "E aqui o [atleta] não fica solto. Ele vai ter um gerente de carreira, o
+> [nome do gerente], que já revelou centenas de jogadores, acompanhando o
+> desenvolvimento dele todo dia."
+> "E vai ter o Zyron, o nosso mecanismo exclusivo: um agente específico só
+> pra ele, acompanhando e mantendo contato o tempo todo, pra ele ter sempre
+> o melhor resultado possível. Isso não existe em escolinha, em peneira, em
+> lugar nenhum."
+
+6.12 Prova (gatilhos: prova social, comparação, autoridade):
+> "95% dos atletas que entram com a gente são encaminhados. Os 5% que não
+> vão é por falta de disciplina e de compromisso."
+> "O perfil do [atleta] é muito parecido com o do [caso], que a gente fechou
+> recentemente. Foi assim com o Joãozinho, que fechou com o Grêmio, com o
+> Kaio e com vários outros."
+> "A gente tá há mais de dez anos nisso e tem relação direta com a AGN
+> Football. Tem jogador nosso publicado lá, te mando o link."
+
+### Compromisso (fechamento da R1)
+
+6.13 Perfil aprovado (gatilho: exclusividade):
+> "Pelo que eu vi e pelo que vocês me contaram, o [atleta] tem exatamente o
+> perfil que a gente procura. [atleta], a gente escolhe atletas como você."
+
+6.14 Missão do atleta (gatilho: compromisso):
+> "[atleta], na conversa com o especialista eu quero você lá, junto com teu
+> pai e tua mãe. E quero que você fale pra eles o que me falou agora, do
+> [sonho dele]. Combinado?"
+
+6.15 Pré-compromisso (gatilhos: compromisso, escassez):
+> "Na conversa, o especialista vai mostrar o plano do [atleta], com o
+> gerente de carreira e o Zyron, e o investimento. Se fizer sentido, vocês
+> decidem ali mesmo, os dois juntos?"
+> Família: "Sim."
+> "Perfeito. Por isso é importante estarem os dois: é nessa conversa que a
+> vaga dele na turma é definida."
+Esse "sim" fecha a porta do "vou pensar" antes da R2. Vai pro CRM.
+
+6.16 Agendar a R2.
+Card R2 (`cards/r2.png`): R2 = Diagnóstico + Proposta + Tratativa de
+objeções. ↳ entrou qualificado + viu a solução + alinhou investimento =
+avanço.
+- O que é: Reunião 2, apresentar solução, proposta e decisão.
+- Aqui: a R2 é do especialista (Closer). O SDR marca, com todos os
+  decisores e o atleta.
+- O card avisa: não marque R2 sem sair da R1 com dor clara e compromisso.
+> "Vou levar a ficha do [atleta] pro nosso especialista. Ele só recebe
+> atleta que passou pela R1, e monta o plano individual em cima do que
+> vocês me contaram."
+> "Tem que ser com [pai], [mãe] e o [atleta] juntos. Ele tem [dia/hora] ou
+> [dia/hora]. Qual fica melhor?"
+Só desliga depois do "confirmo". Os dois nomes e os dois telefones vão pro
+CRM.
+
+R1 por mensagem: quando o lead não atende ligação, as mesmas perguntas, na
+mesma ordem, uma por mensagem, com áudio entre elas. Termina igual: perfil
+aprovado, pré-compromisso e R2 marcada. Tática: quem responde áudio atende
+ligação. Depois de três respostas: "Te ligo 5 minutinhos pra fechar tua
+ficha?"
+
+## 07. O atleta como aliado
+
+Quem mais quer isso é o atleta. Saindo empolgado da R1, ele mesmo cobra a
+família até o dia da R2. Predictable Revenue: ganhe primeiro o aliado de
+dentro, depois quem decide. Social selling: pessoas compram de pessoas.
+
+1. Falar direto com ele e dizer que ele foi escolhido.
+2. Fazer ele falar do sonho e do que falta. Quem fala se compromete.
+3. Devolver algo específico do jogo dele.
+4. Mostrar a estrutura: gerente de carreira e agente do Zyron só dele.
+5. Dar a missão: estar na R2 e falar pros pais o que falou pro SDR.
+6. Áudio depois da R1, se o contato for dele:
+> "Parabéns de novo, [atleta]. Te espero [dia] às [hora] com teu pai e tua
+> mãe. Leva a vontade que você me mostrou hoje."
+
+Tática: família esfriou e o contato é do atleta? O SDR retoma com ele
+primeiro.
+
+## 08. Objeções no SDR
+
+O SDR não negocia. Acolher, responder com valor, voltar pro próximo passo
+(começar a R1 ou marcar a R2), sempre com dois horários.
+
+8.1 "Quanto custa?" (gatilhos: mecanismo único, autoridade, reciprocidade)
+> "Cada perfil é individual, então o plano do [atleta] é montado pra ele, e
+> o investimento vem junto com o plano."
+> "Mas olha o que entra nisso: ele vai ter um gerente de carreira, o [nome
+> do gerente], que já revelou centenas de jogadores, acompanhando o
+> desenvolvimento dele todo dia. E o Zyron, o nosso mecanismo exclusivo,
+> com um agente específico só pra ele, acompanhando e mantendo contato pra
+> ele ter sempre o melhor resultado possível."
+> "E pensa comigo: faz algum sentido pra gente querer lucrar em cima de
+> vocês, sendo que a gente ganha no contrato profissional dele?"
+> "O especialista te mostra o plano e o valor juntos, na conversa. Fica
+> melhor [dia/hora] ou [dia/hora]?"
+Se insistir:
+> "Te passar um número solto agora seria injusto com o [atleta]. Sem ver o
+> plano, você compara com mensalidade de escolinha, e aqui ele tem gerente
+> de carreira todo dia e um agente do Zyron só dele. Não tem nada a ver. Em
+> 30 minutos você vê tudo e decide. [dia/hora]?"
+O SDR nunca passa valor. Proposta tem que ser conquistada (Predictable
+Revenue).
+
+8.2 "Preciso ver com meu marido / minha esposa"
+> "Perfeito, é exatamente por isso que a conversa com o especialista é com
+> vocês dois. Qual horário vocês dois conseguem juntos?"
+> "Me passa o número dele(a)? Mando a confirmação pros dois."
+
+8.3 "Isso é golpe?" / "É peneira paga?" (gatilhos: autoridade, prova
+social)
+> "Pergunta justa. Tem muita coisa errada nesse meio, e é por isso que a
+> gente trabalha diferente. Mais de dez anos, centenas de atletas
+> revelados, 95% de encaminhamento e relação direta com a AGN Football. O
+> Joãozinho fechou com o Grêmio, o Kaio também passou por aqui."
+> "Peneira paga cobra pra olhar o menino um dia, no olhômetro. Aqui ele é
+> analisado com dados reais pelo Zyron, tem gerente de carreira todo dia, e
+> a gente só ganha quando ele assina contrato."
+
+8.4 "Vou pensar" / "Agora não é o momento" (gatilhos: aversão à perda,
+urgência)
+> "Pensar sobre o quê exatamente? A conversa com o especialista é
+> justamente pra vocês decidirem com o plano do [atleta] na mão."
+> Se for momento: "Com [idade] anos, cada mês conta. O [caso] entrou com
+> [idade do caso] e em [tempo] tava no [clube]."
+
+8.5 "Me manda as informações por aqui"
+> "Não tem folder porque não é pacote: o plano é montado pro [atleta], com
+> gerente de carreira e agente do Zyron dele. Por isso a conversa.
+> [dia/hora] ou [dia/hora]?"
+
+8.6 "Não tenho tempo"
+> "É rápido e no horário de vocês. Pode ser à noite ou no fim de semana.
+> Qual fica melhor?"
+
+8.7 "Ele já tem empresário" / "Já tá num clube" (gatilho: mecanismo único)
+> "Ótimo, isso mostra que ele tem nível. Me diz uma coisa: tem alguém
+> acompanhando o desenvolvimento dele todo dia? Nesse último ano, em
+> quantos testes ele foi levado?"
+> "Aqui ele teria gerente de carreira todo dia e um agente do Zyron só dele.
+> O especialista te mostra o que muda."
+
+8.8 "Ele é muito novo" / "Ele já tá velho" (gatilhos: urgência,
+comparação)
+> Novo: "Novo é vantagem. O [caso] entrou com [idade do caso] e hoje tá no
+> [clube]. Quanto antes começa, mais janela ele tem."
+> Velho: "É exatamente por isso que não dá pra esperar. O especialista te
+> mostra como aproveitar a janela que ele tem agora."
+
+8.9 "Ele não pode ir pra outro estado"
+> "Hoje ele não precisa ir pra lugar nenhum. Isso só acontece quando o
+> clube chamar, e o gerente de carreira cuida disso junto com vocês."
+> "Me conta o que pesa mais: ele ir sozinho, ou a família não conseguir
+> acompanhar?"
+A resposta vai pro CRM.
+
+8.10 "Vocês são tipo uma escolinha?" (gatilhos: mecanismo único,
+autoridade)
+> "Escolinha treina. A gente leva pro clube. Gerente de carreira todo dia,
+> agente do Zyron só dele, 95% de encaminhamento e relação direta com a AGN
+> Football."
+
+## 09. Todos os decisores na R2
+
+O "preciso ver com minha esposa" nasce no SDR, não no Closer.
+
+Regra de ouro: R2 só com todos os decisores e o atleta, e com o
+pré-compromisso de decidir na conversa. O SDR pega o nome e o número do
+outro responsável e manda a confirmação pros dois. Agendar com um só é
+exceção, e o motivo vai pro CRM.
+
+## 10. Anti no show
+
+Card No show (`cards/noshow.png`): faltas ÷ reuniões marcadas × 100. ↳ 3
+faltas em 10 reuniões marcadas = 30% de no show.
+- O que é: quando o lead marca e não aparece.
+- Aqui: R2 que não acontece é venda perdida antes de começar.
+- O card avisa: agendar sem compromisso claro aumenta muito o no show.
+
+- Ao agendar: "Fechado: [dia] às [hora], [pai], [mãe] e o [atleta], com o
+  [especialista]. O horário fica reservado só pro [atleta]. Me confirma com
+  um 'confirmo'?" Sem "confirmo", não conta como agendado.
+- Logo depois: "Tá confirmado: [dia] às [hora]. Link da conversa: [link da
+  sala]. E aqui o link da AGN que eu te falei: [link AGN]."
+- Véspera: "[responsável], amanhã às [hora] é a conversa do [atleta] com o
+  [especialista]. Ele já tá com a ficha do [atleta] e vai apresentar o
+  plano com o gerente de carreira e o Zyron. [pai], [mãe] e ele
+  confirmados?"
+- 1 hora antes: "Daqui a 1 hora. Link: [link da sala]. O [atleta] tá
+  pronto?"
+- Se faltar: liga em até 5 minutos. "Aconteceu alguma coisa? O
+  especialista tá com a ficha do [atleta] aberta. Conseguem entrar agora?
+  Se não, hoje às [hora] ou amanhã às [hora]?"
+
+## 11. Follow up
+
+Card Follow up (`cards/followup.png`): Contato + Continuidade + Próximo
+passo. ↳ ligou + mandou mensagem + retomou a conversa = avanço.
+- O que é: a sequência de contatos que mantém a oportunidade viva.
+- Aqui: cada toque traz algo novo (AGN, caso, diferencial, turma).
+- O card avisa: não faça follow up solto. Muita oportunidade se perde
+  porque o vendedor desiste cedo demais.
+
+| Quando | Toque |
+| --- | --- |
+| D0 +2h | Áudio: "[responsável], é o [SDR]. Liguei pra falar do perfil do [atleta]. Me chama aqui que eu te explico em 1 minuto." |
+| D1 | "Separei pra você ver o nível dos atletas nossos publicados na AGN Football, com quem a gente tem relação direta: [link AGN]." |
+| D2 | Liga à noite, em outro horário |
+| D3 | "Lembrei do [atleta] hoje. O [caso] tinha a mesma idade quando entrou com a gente e hoje tá no [clube]." |
+| D5 | Pro atleta (se o contato for dele): "[atleta], tua ficha tá aqui comigo. Chega de peneira no olhômetro: aqui é dado real, gerente de carreira e agente do Zyron só teu. Fala com teu pai pra gente marcar a conversa." |
+| D7 | "A turma fecha com 10 atletas. Ainda consigo levar o [atleta] pro especialista, mas tem que ser essa semana. [dia/hora] ou [dia/hora]?" |
+| D10 | Liga |
+| D14 | "Vou arquivar a ficha do [atleta] amanhã. Se ainda quiserem seguir, me responde hoje que eu seguro um horário." |
+| Depois | Nutrição e reabordagem em 30 dias, estado "reabordado" no CRM |
+
+## 12. CRM e repasse
+
+Card Closer (`cards/closer.png`): Closer = Diagnóstico + Proposta +
+Fechamento. ↳ reunião qualificada + proposta + decisão = venda.
+- Aqui: o Closer lê a ficha da R1 antes da R2. Ficha incompleta obriga ele
+  a perguntar de novo, e aí ele parece vendedor.
+- O card avisa: closer sem qualificação sofre mais.
+
+Critério de repasse: R1 feita, perfil aprovado, dor clara, pré-compromisso,
+R2 marcada com todos os decisores. No CRM: "Agendar call e enviar".
+
+```
+Origem: [Zyron / formulário do Instagram / outro]
+Dados do Zyron: [se houver]
+Atleta: [nome], [idade], [posição], pé [dominante]
+Mora em: [cidade/estado]
+Pai: [nome] | Mãe: [nome] | Outro responsável: [nome]
+Decisores e como decidem: [...]
+Telefones dos decisores: [...]
+Treina hoje: [onde, quantas vezes por semana]
+Times e experiências: [...]
+Peneiras e avaliações: [quantas, em quais clubes, o que disseram]
+Se sentiu observado de verdade em: [quantas]
+Sonho do atleta: [...]
+O que ele acha que falta: [...]
+Dor da família (palavras deles): [...]
+Tipo de dor: [financeira / emocional / tempo e idade]
+Já investiram: [R$ e em quê]
+Locomoção pra outro estado: [vai sozinho / família acompanha / ...]
+Respondeu "não faz sentido lucrar em cima"? [sim/não]
+Apresentou gerente de carreira e Zyron? [sim/não]
+Pré-compromisso de decidir na R2? [sim/não]
+Empolgação do atleta (0 a 10): [...]
+Missão dada ao atleta? [sim/não]
+Caso citado: [...]
+Link da AGN enviado? [sim/não]
+Objeções que apareceram: [...]
+Sinais de budget: [...]
+R2: [dia/hora] | Todos os decisores confirmados? [sim/não]
+```
+
+## 13. Casos e autoridade
+
+Fonte única: `CASOS.md`. Na R1 vai um caso principal comparado com o
+atleta, mais a sequência Joãozinho, Kaio e vários outros.
+
+| Atleta | Clube | Posição | Idade na entrada | Tempo até o resultado | Gancho pronto |
+| --- | --- | --- | --- | --- | --- |
+| Joãozinho | Grêmio | [posição] | [idade] | [tempo] | "O perfil dele é muito parecido com o do Joãozinho, que fechou com o Grêmio." |
+| Kaio | [clube] | [posição] | [idade] | [tempo] | "Foi assim com o Kaio também." |
+| [próximo caso] | [clube] | [posição] | [idade] | [tempo] | [gancho] |
+
+Frases prontas:
+- Gerente de carreira e Zyron: "Ele vai ter um gerente de carreira, o
+  [nome do gerente], que já revelou centenas de jogadores, acompanhando o
+  desenvolvimento dele todo dia. E o Zyron, o nosso mecanismo exclusivo,
+  com um agente específico só pra ele."
+- Olhômetro contra dados reais: "Você acha que, no olhômetro, o avaliador
+  de uma peneira consegue analisar todos aqueles garotos com precisão?
+  Hoje, com inteligência artificial, os clubes estão cada vez mais
+  escolhendo atleta com base em dados reais. E é assim que a gente revela
+  os nossos jogadores: pelo Zyron."
+- A gente só ganha quando ele ganha: "Faz algum sentido pra gente, que já
+  revelou centenas de atletas, querer lucrar em cima de vocês, sendo que a
+  gente ganha no contrato profissional do [atleta]?"
+- 95%: "95% dos atletas que entram com a gente são encaminhados. Os 5% que
+  não vão é por falta de disciplina e de compromisso." Se perguntarem como:
+  filtro na entrada, gerente de carreira todo dia e o Zyron.
+- Comparação: "O perfil dele é muito parecido com o do [caso], que a gente
+  fechou recentemente. Foi assim com o Joãozinho, que fechou com o Grêmio,
+  com o Kaio e com vários outros."
+- AGN Football, em toda conversa: "A gente tem relação direta com a AGN
+  Football. Tem jogador nosso publicado lá, te mando o link." Se
+  perguntarem o que é: "um canal do mercado do futebol que divulga atleta,
+  e a gente tem relação direta com eles".
+- Institucional: "A gente tá há mais de dez anos nisso, já revelou centenas
+  de atletas e encaminhou jogador pro Brasil afora e pra fora."
+
+## 14. Glossário dos cards
+
+Imagens na pasta `cards/`.
+
+| Card | Arquivo | Resumo |
+| --- | --- | --- |
+| SDR | sdr.png | Prospecta, qualifica e agenda. Aqui faz a R1. |
+| Closer | closer.png | Conduz a negociação e o fechamento. Aqui faz a R2. |
+| SQL | sql.png | Lead qualificado: interesse real, perfil e momento. |
+| R1 | r1.png | Reunião de diagnóstico e qualificação. Do SDR. |
+| R2 | r2.png | Reunião de proposta e decisão. Do Closer. |
+| BANT | bant.png | Budget, authority, need, timing: lead forte. |
+| Sandler | sandler.png | Rapport, dor, impacto e compromisso antes da proposta. |
+| Lead speed | lead-speed.png | Tempo até o primeiro contato. Meta: 7 minutos. |
+| No show | noshow.png | Faltas ÷ reuniões marcadas × 100. |
+| Follow up | followup.png | Contato, continuidade e próximo passo. |
+| Inside sales | inside-sales.png | Venda remota com processo. 40 → 12 → 5. |
+| Win rate | win-rate.png | Vendas ganhas ÷ oportunidades × 100. |
+| Lead magnet | lead-magnet.png | Material de valor em troca de dados. Aqui: o Zyron. |
+| Social selling | social-selling.png | Relacionamento nas redes. Aqui: o Instagram. |
+| Webinário | webinario.png | Aula ao vivo ou gravada que educa e converte. |
+| Conversão direta | conversao-direta.png | Anúncio, página e compra. Não serve pra Assessoria. |
+
+## 15. Regras de ouro
+
+Sempre:
+- Primeiro contato em até 7 minutos.
+- R1 completa: nomes, contexto, experiências, avaliações, dor, gastos,
+  locomoção, decisores.
+- Gerente de carreira e Zyron em toda R1 e em todo "quanto custa?".
+- A pergunta do olhômetro e a virada pros dados reais em toda R1.
+- A pergunta "faz sentido a gente lucrar em cima de vocês?" em toda R1.
+- 95%, caso parecido e relação direta com a AGN em toda R1.
+- R1 termina com o perfil aprovado e o pré-compromisso.
+- R2 com todos os decisores e o atleta, com "confirmo".
+- Ficha completa no CRM antes do repasse.
+
+Proibido:
+- Colocar o perfil do atleta em dúvida.
+- Falar valor.
+- Falar como quem oferece. Quem precisa da vaga é o atleta.
+- Marcar R2 sem dor clara e compromisso.
+- Repassar com a ficha incompleta.
+- "Te ligo depois" sem hora.
+- Deixar lead novo parado.
+
+## 16. Dados pra completar
+
+1. Nome do gerente de carreira que revelou centenas de jogadores.
+2. Como o agente do Zyron acompanha no dia a dia (canal, frequência de
+   contato).
+3. Nome da empresa como a família conhece.
+4. Quais dados do Zyron o SDR enxerga, pra citar na abertura.
+5. Link da publicação na AGN Football.
+6. Casos: posição, idade na entrada e tempo até o resultado do Joãozinho e
+   do Kaio, e os próximos casos.
+7. Nome do especialista e link da sala.
