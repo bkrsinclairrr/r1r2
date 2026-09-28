@@ -1,11 +1,34 @@
 # PLAYBOOK_SDR.md
 
-Versão: v5 (25/09/2026)
+Versão: v8 (28/09/2026)
 Espelho em texto de `playbook-sdr.html`. Casos e frases: `CASOS.md`.
 Imagens dos cards: pasta `cards/`.
 Tudo entre colchetes é variável: dado da conversa ou da empresa.
 
 Changelog:
+- v8: terceiro caso na seção 03, lead muito frio sem vídeo (aquecimento
+  "frio" no CRM). A R1 não aprova na primeira ligação: o SDR mantém
+  controle e escassez, pede o "DVD" (vídeo do atleta), recua e só marca
+  a R1 depois de analisar, retornando com o relatório e a aprovação já
+  com a família ansiosa. Ficha do CRM (12) e dados pra completar (16)
+  atualizados. Não contradiz a regra de ouro (R1 sempre termina
+  aprovado): só adia quando ela acontece, pra ganhar escassez de verdade
+  em vez de aprovar sem nunca ter visto o atleta jogar.
+- v7: os 4 cards do framework de oferta imperdível (Probabilidade de
+  sucesso, Tempo de execução inicial, Esforço percebido, Valor percebido)
+  encaixados como card de verdade (imagem + fórmula + "aqui" + "o card
+  avisa"), não só como texto solto: Probabilidade em 13, Valor percebido
+  em 6.5, e as 4 imagens no glossário (14). Rodapé do HTML simplificado
+  pra só versão e data, em letra pequena.
+- v6: caso citado sempre o mais parecido em posição, idade e nível (13);
+  reforço em "não tenho tempo" (8.6) de que depois que o atleta entra,
+  quem corre atrás é a assessoria, a família não precisa tirar tempo do
+  trabalho; virada de valor percebido na 6.5 (pintar o resultado final,
+  sem número de preço); "nunca passa valor" virou "nunca passa preço" nas
+  regras da casa, na 8.1 e na 15 (o SDR sempre trabalhou valor percebido
+  via sonho/dor/diferencial, a palavra "valor" só estava ambígua com
+  preço). Base: `oferta-imperdivel.md`, mesma adaptação de registro do
+  `PLAYBOOK_CLOSER.md` v6 (nunca linguagem de onboarding/processo).
 - v5: dor de não ser visto aprofundada na R1 (quantas peneiras, em quantas
   foi observado de verdade, conexão, pergunta do olhômetro e virada pros
   dados reais e o Zyron). Zyron descrito como análise por dados reais.
@@ -27,7 +50,9 @@ Changelog:
 - Nós só ganhamos quando o atleta ganha, no contrato profissional.
 - O SDR fala como quem seleciona, não como quem oferece. Quem precisa da
   vaga é o atleta.
-- O SDR nunca passa valor.
+- O SDR nunca passa preço (o R$ do plano, isso é do Closer na R2). Valor
+  percebido é outra história: pintar o resultado final e a transformação
+  é papel do SDR também, o tempo todo, só nunca com número de R$ junto.
 
 O SDR faz a R1, a call de qualificação. Mapeia contexto, dor, experiências,
 avaliações, gastos e locomoção, e apresenta o que ninguém mais tem: um
@@ -116,15 +141,15 @@ que a família comparar com escolinha ou peneira.
 
 ## 03. Zyron ou Instagram
 
-Nem todo atleta chega com avaliação. Nos dois casos, a R1 termina com o
-atleta aprovado.
+Nem todo atleta chega com avaliação. Em todos os casos, a R1 termina com
+o atleta aprovado, mesmo quando isso só acontece numa segunda ligação.
 
-| | Veio do Zyron | Veio do formulário do Instagram |
-| --- | --- | --- |
-| O que chega | Avaliação e dados do atleta | Só o cadastro |
-| Abertura | Notícia da aprovação, com um dado específico | Seleção: "teu cadastro chegou pra mim" |
-| R1 | Aprofunda dor, gastos, locomoção, decisores | Vira a própria avaliação e coleta tudo |
-| Fim da R1 | Perfil aprovado | Perfil aprovado |
+| | Veio do Zyron | Veio do formulário do Instagram | Veio muito frio, sem vídeo |
+| --- | --- | --- | --- |
+| O que chega | Avaliação e dados do atleta | Só o cadastro | Só o contato, sem vídeo e sem avaliação |
+| Abertura | Notícia da aprovação, com um dado específico | Seleção: "teu cadastro chegou pra mim" | Escassez e controle: "a gente é seletivo, e antes preciso ver ele jogando" |
+| R1 | Aprofunda dor, gastos, locomoção, decisores | Vira a própria avaliação e coleta tudo | Não acontece ainda: primeiro pede o vídeo (o "DVD") e recua |
+| Fim da R1 | Perfil aprovado | Perfil aprovado | Perfil aprovado, na ligação de retorno, depois do vídeo analisado |
 
 Card Lead magnet (`cards/lead-magnet.png`): Oferta de valor + Formulário +
 Captura de lead. ↳ 1.000 visitas → 220 leads = 22% de conversão.
@@ -144,14 +169,51 @@ confiança = oportunidade qualificada.
 
 Munição antes do primeiro contato:
 
-| O que separar | Zyron | Instagram |
-| --- | --- | --- |
-| Um ponto forte específico | Dado da avaliação do app | Posts e vídeos do perfil |
-| Nome do atleta e do responsável | Cadastro do Zyron | Formulário |
-| Caso mais parecido | `CASOS.md` | `CASOS.md`, depois da R1 |
-| Link da publicação na AGN Football | `CASOS.md` | `CASOS.md` |
+| O que separar | Zyron | Instagram | Frio, sem vídeo |
+| --- | --- | --- | --- |
+| Um ponto forte específico | Dado da avaliação do app | Posts e vídeos do perfil | Ainda não tem, só depois do vídeo |
+| Nome do atleta e do responsável | Cadastro do Zyron | Formulário | O que veio no contato |
+| Caso mais parecido | `CASOS.md` | `CASOS.md`, depois da R1 | `CASOS.md`, no retorno com o vídeo |
+| Link da publicação na AGN Football | `CASOS.md` | `CASOS.md` | `CASOS.md` |
 
-Regra de ouro: com ou sem Zyron, a R1 termina com o atleta aprovado.
+Lead muito frio, sem vídeo (aquecimento "frio" no CRM, ver `NEGOCIO.md`):
+chega sem avaliação do Zyron e sem nem um vídeo do atleta jogando. Aqui a
+R1 não acontece na primeira ligação: o SDR mantém o controle, pede o
+vídeo (o "DVD") e só marca a R1 depois de analisar. Regra: nunca falar de
+plano, de R2 ou de aprovação antes do vídeo chegar e ser analisado pelo
+Zyron e pelo especialista.
+
+Abertura (gatilhos: escassez, controle, autoridade):
+> "Oi [responsável], tudo bem? Aqui é o [SDR], da [empresa]."
+> "Olha, a gente não pega qualquer atleta: a gente é seletivo com quem
+> entra pra avaliação, porque a turma é fechada. Pelo que me passaram, o
+> [atleta] tem potencial, mas antes de qualquer coisa eu preciso ver ele
+> jogando de verdade, não só ouvir falar."
+> "Me manda o DVD dele: um vídeo do [atleta] jogando, de jogo ou de
+> treino, uns [minutos] minutos. Assim que eu tiver isso em mãos, eu levo
+> pro Zyron e pro nosso especialista analisarem."
+
+Recuo controlado (gatilhos: escassez, autoridade):
+> "Assim que eu receber o vídeo, eu levo pro Zyron analisar com dados
+> reais, não no olhômetro, e pro especialista dar o parecer dele. Isso
+> leva uns [prazo]. Eu te chamo assim que sair o resultado."
+Sem vídeo, o SDR não avança: nada de marcar R1, nada de falar de plano.
+Quem fica na expectativa aqui é a família, não o SDR.
+
+Retorno com o relatório (gatilhos: reciprocidade, escassez, prova,
+autoridade), depois do prazo, com a família já ansiosa pelo resultado:
+> "[responsável], boa notícia: o Zyron analisou o jogo do [atleta] e o
+> especialista também deu o parecer. Ele passou: é exatamente o perfil
+> que a gente procura."
+> "Agora eu preciso de uns 20 minutos com vocês pra fechar a ficha dele
+> antes de passar pro especialista. Consegue agora, ou fica melhor
+> [hora] ou [hora]?"
+Daqui em diante segue o mesmo caminho do lead do Zyron: R1 com o atleta
+já aprovado, terminando do mesmo jeito que qualquer outra (perfil
+aprovado, pré-compromisso, R2 marcada).
+
+Regra de ouro: com ou sem Zyron, ou depois do retorno do vídeo, a R1
+termina com o atleta aprovado.
 
 Webinário e conversão direta estão no glossário. Conversão direta não serve
 pra Assessoria: aqui a venda sempre passa pela R1 e pela R2.
@@ -296,6 +358,24 @@ de verdade. O Closer usa esses dois números na R2.
 - "Se a oportunidade aparecer amanhã, você tá pronto?"
 > "Isso que você falou de [resposta dele] bate com o que eu vi aqui:
 > [observação real]."
+
+Card Valor percebido (`cards/valor-percebido.png`): Valor percebido =
+Solução + Transformação + Resultado final. ↳ menos foco no que a gente
+faz + mais foco em quem ele vira = oferta mais valiosa.
+- O que é: o quanto a família entende que o resultado vale mais do que
+  qualquer objeção.
+- Aqui: o SDR nunca fala de entregável (relatório, acesso, chamada). Fala
+  do atleta vestindo a camisa do clube do sonho, do resultado final, sem
+  citar preço.
+- O card avisa: quem vende só entregável enfraquece a percepção de valor
+  da oferta.
+
+Virada de valor percebido (gatilho: futuro imaginado): sem citar preço,
+o SDR pinta o resultado final, nunca o meio do caminho.
+> "[atleta], imagina você entrando em campo com a camisa do [clube dos
+> sonhos], sabendo que teve um gerente de carreira e o Zyron cuidando de
+> cada detalhe até ali. É isso que a gente constrói, não só mais um
+> treino."
 
 6.6 Dor da família e impacto (gatilho: aversão à perda):
 - "Na visão de vocês, o que falta pra ele?"
@@ -452,7 +532,7 @@ Se insistir:
 > plano, você compara com mensalidade de escolinha, e aqui ele tem gerente
 > de carreira todo dia e um agente do Zyron só dele. Não tem nada a ver. Em
 > 30 minutos você vê tudo e decide. [dia/hora]?"
-O SDR nunca passa valor. Proposta tem que ser conquistada (Predictable
+O SDR nunca passa preço. Proposta tem que ser conquistada (Predictable
 Revenue).
 
 8.2 "Preciso ver com meu marido / minha esposa"
@@ -485,6 +565,8 @@ urgência)
 8.6 "Não tenho tempo"
 > "É rápido e no horário de vocês. Pode ser à noite ou no fim de semana.
 > Qual fica melhor?"
+> "E depois que o [atleta] entra, quem corre atrás é a gente. Vocês não
+> vão precisar tirar tempo do trabalho pra tocar isso."
 
 8.7 "Ele já tem empresário" / "Já tá num clube" (gatilho: mecanismo único)
 > "Ótimo, isso mostra que ele tem nível. Me diz uma coisa: tem alguém
@@ -578,8 +660,9 @@ Critério de repasse: R1 feita, perfil aprovado, dor clara, pré-compromisso,
 R2 marcada com todos os decisores. No CRM: "Agendar call e enviar".
 
 ```
-Origem: [Zyron / formulário do Instagram / outro]
+Origem: [Zyron / formulário do Instagram / frio sem vídeo / outro]
 Dados do Zyron: [se houver]
+Se frio sem vídeo: DVD solicitado em [data] | recebido em [data] | retorno agendado em [data]
 Atleta: [nome], [idade], [posição], pé [dominante]
 Mora em: [cidade/estado]
 Pai: [nome] | Mãe: [nome] | Outro responsável: [nome]
@@ -609,8 +692,23 @@ R2: [dia/hora] | Todos os decisores confirmados? [sim/não]
 
 ## 13. Casos e autoridade
 
+Card Probabilidade de sucesso (`cards/probabilidade-sucesso.png`):
+Probabilidade percebida de sucesso = Case semelhante + Prova + Contexto.
+↳ mesma posição + idade parecida + resultado real = mais confiança pra
+aprovar.
+- O que é: o quanto a família acredita que esse caminho realmente vai
+  funcionar pro atleta dela.
+- Aqui: o caso citado (Joãozinho, Kaio ou o próximo da lista) é sempre o
+  mais parecido em posição, idade e nível com o atleta da call, nunca um
+  caso genérico só por ser o mais famoso.
+- O card avisa: sem prova e sem caso parecido, a família tende a duvidar
+  mais e adiar a decisão.
+
 Fonte única: `CASOS.md`. Na R1 vai um caso principal comparado com o
-atleta, mais a sequência Joãozinho, Kaio e vários outros.
+atleta, mais a sequência Joãozinho, Kaio e vários outros. O caso
+principal é sempre o mais parecido em posição, idade e nível, nunca
+escolhido só pelo mais famoso: é a semelhança que faz o atleta se
+enxergar ali.
 
 | Atleta | Clube | Posição | Idade na entrada | Tempo até o resultado | Gancho pronto |
 | --- | --- | --- | --- | --- | --- |
@@ -650,6 +748,10 @@ Imagens na pasta `cards/`.
 
 | Card | Arquivo | Resumo |
 | --- | --- | --- |
+| Probabilidade de sucesso | probabilidade-sucesso.png | Case semelhante + prova + contexto. Aqui: o caso mais parecido em posição, idade e nível. |
+| Tempo de execução inicial | tempo-execucao.png | Em quanto tempo o acompanhamento começa. Aqui: gerente liga hoje, Zyron amanhã. |
+| Esforço percebido | esforco-percebido.png | Quanto a família acha que vai precisar se envolver. Aqui: quase nada, o resto é com a gente. |
+| Valor percebido | valor-percebido.png | Solução, transformação e resultado final. Aqui: nunca falar de entregável. |
 | SDR | sdr.png | Prospecta, qualifica e agenda. Aqui faz a R1. |
 | Closer | closer.png | Conduz a negociação e o fechamento. Aqui faz a R2. |
 | SQL | sql.png | Lead qualificado: interesse real, perfil e momento. |
@@ -677,13 +779,17 @@ Sempre:
 - A pergunta do olhômetro e a virada pros dados reais em toda R1.
 - A pergunta "faz sentido a gente lucrar em cima de vocês?" em toda R1.
 - 95%, caso parecido e relação direta com a AGN em toda R1.
+- Virada de valor percebido (o resultado final, nunca o meio do caminho,
+  nunca com número de preço) em toda R1.
 - R1 termina com o perfil aprovado e o pré-compromisso.
 - R2 com todos os decisores e o atleta, com "confirmo".
 - Ficha completa no CRM antes do repasse.
 
 Proibido:
 - Colocar o perfil do atleta em dúvida.
-- Falar valor.
+- Falar preço (R$). Valor percebido não é proibido, é o contrário: pintar
+  o resultado e a transformação é papel do SDR, só nunca com número
+  junto.
 - Falar como quem oferece. Quem precisa da vaga é o atleta.
 - Marcar R2 sem dor clara e compromisso.
 - Repassar com a ficha incompleta.
@@ -701,3 +807,6 @@ Proibido:
 6. Casos: posição, idade na entrada e tempo até o resultado do Joãozinho e
    do Kaio, e os próximos casos.
 7. Nome do especialista e link da sala.
+8. Prazo real de análise do vídeo (DVD) pelo Zyron e pelo especialista,
+   pro lead muito frio (seção 03): quanto tempo isso leva de verdade, pra
+   não prometer retorno que a operação não cumpre.

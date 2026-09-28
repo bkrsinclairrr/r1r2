@@ -1,6 +1,6 @@
 # PLAYBOOK_CLOSER.md
 
-Versão: v5 (25/09/2026)
+Versão: v7 (28/09/2026)
 Espelho em texto de `playbook-closer.html`. Casos e frases: `CASOS.md`.
 Imagens dos cards: pasta `cards/`. Entrada: ficha da R1
 (`PLAYBOOK_SDR.md`, seção 12).
@@ -8,6 +8,20 @@ Tudo entre colchetes é variável: dado do CRM ou da empresa. R$ ____ é o
 valor do plano escolhido pro lead.
 
 Changelog:
+- v7: os 4 cards do framework de oferta imperdível (Probabilidade de
+  sucesso, Tempo de execução inicial, Esforço percebido, Valor percebido)
+  encaixados como card de verdade (imagem + fórmula + "aqui" + "o card
+  avisa"), não só como texto solto: Probabilidade em 14, Esforço em 6.6,
+  Valor em 07, Tempo de execução em 10, e as 4 imagens no glossário (15).
+  Rodapé do HTML simplificado pra só versão e data, em letra pequena.
+- v6: tempo de execução inicial (o que acontece nas primeiras 48h depois
+  do sim) entra no plano (6.6), no fechamento (08) e na matriz de
+  objeções ("vou pensar", "não tenho o dinheiro agora"); esforço zero pra
+  família explícito antes do valor (6.6); tabela do plano individual
+  (6.4) reescrita pro resultado final, não pro entregável; caso citado
+  sempre o mais parecido em posição, idade e nível (14). Base:
+  `oferta-imperdivel.md`, adaptado pro registro emocional da família
+  (nunca linguagem de onboarding/processo).
 - v5: retomada da dor com os números das peneiras e a pergunta do
   olhômetro; Zyron apresentado como análise por dados reais; olhômetro na
   ancoragem e na objeção "já tentamos peneira".
@@ -276,14 +290,14 @@ Gatilhos: mecanismo único, autoridade, exclusividade.
 6.4 O plano individual:
 > "Com base no que vocês contaram, o plano do [atleta] é esse:"
 
-| Dor que a família falou | O que o plano faz |
+| Dor que a família falou | O que muda de verdade pro atleta |
 | --- | --- |
-| "Ele tá sem acompanhamento" | Gerente de carreira acompanhando o desenvolvimento todo dia |
-| "Ninguém cobra ele, ninguém acompanha" | Agente do Zyron só dele, mantendo contato o tempo todo |
-| "Nas peneiras ninguém olhou ele direito" | Zyron: análise por dados reais do jogo dele, do jeito que os clubes estão escolhendo |
-| "Ninguém de clube vê ele" | Encaminhamento pra clubes, com a rede de mais de dez anos e a relação direta com a AGN Football |
-| "Não sei o que ele precisa melhorar" | Módulos de desenvolvimento, com o gerente e o Zyron ajustando a rota |
-| "Não sei se ele tá no nível" | [como a equipe avalia e dá retorno] |
+| "Ele tá sem acompanhamento" | Ele para de estar sozinho: alguém enxerga a evolução dele todo dia e decide a hora certa de levar pro clube |
+| "Ninguém cobra ele, ninguém acompanha" | Ele nunca mais fica largado: tem alguém de olho nele o tempo todo, puxando ele pro melhor resultado |
+| "Nas peneiras ninguém olhou ele direito" | Ele para de depender do olhômetro: é analisado com dados reais, do jeito que os clubes de verdade estão escolhendo hoje |
+| "Ninguém de clube vê ele" | Ele deixa de ser invisível pros clubes: entra numa rede de mais de dez anos, com relação direta com a AGN Football |
+| "Não sei o que ele precisa melhorar" | Ele sabe exatamente o que fazer pra evoluir, com o gerente e o Zyron ajustando a rota dele |
+| "Não sei se ele tá no nível" | Ele passa a ter uma resposta real sobre o próprio nível, não mais achismo: [como a equipe avalia e dá retorno] |
 
 > "É individual. Por isso cada turma tem só 10 atletas: é o máximo que o
 > gerente de carreira acompanha de perto, todo dia."
@@ -296,7 +310,41 @@ Gatilhos: mecanismo único, autoridade, exclusividade.
 > vários outros. Mais de dez anos, centenas de atletas revelados, e relação
 > direta com a AGN Football, com jogador nosso publicado lá."
 
+Card Esforço percebido (`cards/esforco-percebido.png`): Esforço percebido
+= Etapas + Complexidade + Envolvimento da família. ↳ família só apoia em
+casa + resto é com a gente = menos esforço percebido.
+- O que é: o quanto a família acredita que vai precisar se envolver,
+  aprender ou mudar rotina pra isso funcionar.
+- Aqui: a família não muda rotina, não corre atrás de clube, não aprende
+  nada novo. Contato com clube, ajuste de treino e acompanhamento são com
+  o gerente de carreira e o Zyron.
+- O card avisa: se parecer trabalhoso ou complicado pra família, a chance
+  de fechar cai.
+
+6.6 O que fica com a gente, não com vocês (gatilho: redução de
+ansiedade, esforço percebido):
+> "E olha, a partir de agora isso não é mais um peso de vocês. Vocês não
+> precisam aprender nada novo, não precisam mudar a rotina, não precisam
+> sair correndo atrás de clube. Isso vira trabalho nosso: o gerente de
+> carreira cuida do contato com os clubes e do acompanhamento, o Zyron
+> cuida da análise. A única coisa que fica com vocês é continuar apoiando
+> o [atleta] em casa, do jeito que vocês já fazem."
+> "O que vocês tinham que fazer sozinhos até agora, ligar atrás de
+> peneira, pagar viagem, torcer pra alguém olhar, agora é a gente que
+> faz."
+
 ## 07. Ancoragem e valor
+
+Card Valor percebido (`cards/valor-percebido.png`): Valor percebido =
+Solução + Transformação + Resultado final. ↳ menos foco no que a gente
+faz + mais foco em quem ele vira = oferta mais valiosa.
+- O que é: o quanto a família entende que o resultado vale mais do que
+  qualquer objeção.
+- Aqui: o Closer empilha isso antes do número. Não é "o gerente de
+  carreira acompanha" (entregável), é "o atleta para de ser invisível
+  pros clubes" (resultado). A tabela do plano (6.4) já é escrita assim.
+- O card avisa: quem vende só entregável enfraquece a percepção de valor
+  da oferta.
 
 Ordem: régua, conta, sem certeza, contrato, número (R$ ____), silêncio.
 Gatilhos: ancoragem, comparação, aversão à perda, mecanismo único.
@@ -356,12 +404,17 @@ Modo A:
    todo dia, o Zyron e 95% de encaminhamento. Faz sentido pra vocês?"
 2. Pergunta de decisão (gatilho: escolha alternativa): "Então eu confirmo a
    vaga do [atleta] agora. Fica melhor no Pix ou no cartão?"
-3. Escassez e urgência: "Dessa turma de 10, restam [vagas restantes]. A
+3. Início imediato (gatilho: redução de ansiedade, tempo de execução
+   inicial): "Show. Assim que cair o pagamento, eu já aviso o [gerente de
+   carreira], e ele te chama ainda hoje. O Zyron já começa a olhar o jogo
+   do [atleta] amanhã. Vocês não esperam a próxima turma pra ver as coisas
+   andando."
+4. Escassez e urgência: "Dessa turma de 10, restam [vagas restantes]. A
    próxima abre em [data da próxima turma]." / "E pro [atleta], com
    [idade], esperar a próxima turma é perder [tempo] de janela."
-4. Depois de tratar a objeção: "Resolvido isso, eu confirmo a vaga dele
+5. Depois de tratar a objeção: "Resolvido isso, eu confirmo a vaga dele
    agora. Pix ou cartão?"
-5. Lembrar o combinado: "Vocês combinaram de decidir hoje, lembra? Pode ser
+6. Lembrar o combinado: "Vocês combinaram de decidir hoje, lembra? Pode ser
    não, tudo bem. O que tá faltando pro sim?"
 
 Modo B (o Closer recua de propósito; a família sai querendo uma vaga que
@@ -378,6 +431,11 @@ ainda não é dela):
    notícia: o [nome do gerente] e a equipe aprovaram o [atleta]. A vaga é
    dele até [hora]. Pra confirmar, é o investimento que eu te passei,
    R$ ____. Pix ou cartão?"
+
+Início imediato vale nos dois modos: assim que a venda é registrada, a
+mesma sequência da seção 10 entra em ação. É isso que tira o peso do "e
+agora, quanto tempo eu espero?" antes mesmo do preço aparecer na
+conversa.
 
 Regra de ouro: modo A ou modo B, a R2 nunca termina sem data: ou a venda,
 ou o retorno da equipe marcado.
@@ -429,6 +487,9 @@ Proibido: mandar a proposta por WhatsApp "pra você mostrar pra ela".
 > "Claro. Pensar sobre o quê exatamente? O valor, conversar com mais
 > alguém, ou alguma dúvida sobre o plano?"
 > "O que vocês vão saber amanhã que não sabem agora?"
+> "E enquanto vocês pensam, o relógio não para: se decidir hoje, o
+> [gerente de carreira] já liga ainda hoje e o Zyron já começa amanhã. Se
+> decidir daqui a uma semana, o [atleta] começa uma semana depois."
 > "Vocês combinaram com o [SDR] de decidir hoje. O que tá faltando?"
 > Modo B: "Pensem hoje, que eu levo o [atleta] pra equipe. Amanhã às [hora]
 > eu te dou o retorno, e aí vocês me dizem se estão dentro."
@@ -453,6 +514,8 @@ Proibido: mandar a proposta por WhatsApp "pra você mostrar pra ela".
 > "Se tivesse, ele começava hoje?"
 > "Então o problema é só a forma. Dá pra fazer em [condição de pagamento],
 > ou no formato mais enxuto de R$ ____. Qual cabe melhor?"
+> "Assim que resolver a forma, o gerente de carreira já liga no mesmo dia.
+> Isso não espera."
 
 9.8 "Ele não pode ir pra outro estado"
 > "Hoje ele não precisa ir pra lugar nenhum. Isso só acontece quando o
@@ -500,6 +563,17 @@ Proibido: mandar a proposta por WhatsApp "pra você mostrar pra ela".
 
 ## 10. Depois do sim
 
+Card Tempo de execução inicial (`cards/tempo-execucao.png`): Tempo de
+execução inicial = Início imediato + Primeiras 48h + Primeiro avanço. ↳
+gerente liga hoje + Zyron começa amanhã = execução mais rápida.
+- O que é: em quanto tempo a família vê o acompanhamento começar de
+  verdade, depois do sim.
+- Aqui: a dor da família não espera os 3 meses de resultado médio pra
+  começar a ser tratada: o gerente de carreira liga ainda hoje, o Zyron
+  começa a olhar o atleta amanhã.
+- O card avisa: início atrasado ou vago esfria a decisão e enfraquece a
+  venda.
+
 1. Pagamento na própria call: "faz agora comigo na linha", no Pix ou no
    cartão.
 2. Registro: venda concluída no CRM e cadastro em Vendas, com o produto e o
@@ -509,8 +583,17 @@ Proibido: mandar a proposta por WhatsApp "pra você mostrar pra ela".
    carreira e o Zyron começam contigo agora."
 4. Indicação na hora: "[atleta], tem algum colega de time que joga no teu
    nível? A gente faz a avaliação dele também." Vira lead pro SDR.
-5. Próximo passo concreto: [quando o gerente de carreira faz o primeiro
-   contato].
+5. Início imediato (gatilho: redução de ansiedade): a dor não espera 3
+   meses pra começar a ser tratada, começa no mesmo dia.
+   - Hoje: o [gerente de carreira] recebe a ficha do [atleta] e chama a
+     família ainda hoje ou no máximo até amanhã [confirmar prazo real em
+     "Dados pra completar", item 9].
+   - Nas primeiras 48h: o Zyron começa a acompanhar o [atleta] e o
+     gerente de carreira alinha os primeiros passos com a família.
+   Fala isso pro pai/mãe assim que a venda fecha: "[pai], [mãe], a partir
+   de agora quem corre atrás é a gente. O [gerente de carreira] entra em
+   contato com vocês ainda hoje, e o Zyron já começa a acompanhar o
+   [atleta]."
 
 ## 11. Depois do "ainda não"
 
@@ -563,7 +646,11 @@ Sempre:
 - Cenário certo pro tipo de dor.
 - Filtro dos 95% e o sim do atleta antes do valor.
 - Gerente de carreira e Zyron no centro do plano e da ancoragem.
+- Deixar claro que o esforço fica com a gente, não com a família, antes
+  do valor.
 - Ancoragem antes do número. Um valor por vez. Silêncio depois.
+- Início imediato (hoje/amanhã) assim que a venda fecha, nunca só o
+  resultado de 3 meses.
 - Terminar com venda ou com o retorno da equipe marcado.
 
 Proibido:
@@ -573,11 +660,29 @@ Proibido:
 - Proposta por WhatsApp.
 - Correr atrás da família.
 - Colocar o perfil do atleta em dúvida.
+- Linguagem de processo ("onboarding", "etapas", "acessos", "setup"): soa
+  vendedor corporativo. Início imediato e esforço zero se falam como
+  promessa pro pai e pra mãe, nunca como fluxo de produto.
 
 ## 14. Casos e autoridade
 
+Card Probabilidade de sucesso (`cards/probabilidade-sucesso.png`):
+Probabilidade percebida de sucesso = Case semelhante + Prova + Contexto.
+↳ mesma posição + idade parecida + resultado real = mais confiança pra
+decidir.
+- O que é: o quanto a família acredita que esse caminho realmente vai
+  funcionar pro atleta dela.
+- Aqui: o Closer retoma o caso que o SDR já citou na R1 (fica no CRM) e
+  pode somar mais um, sempre escolhido pela semelhança em posição, idade
+  e nível, nunca pela fama do caso.
+- O card avisa: sem prova e sem caso parecido, a família tende a duvidar
+  mais e adiar a decisão.
+
 Mesma fonte do SDR (`CASOS.md`). O Closer retoma o caso que o SDR usou e
-pode somar mais um.
+pode somar mais um. Sempre o caso mais parecido em posição, idade e nível
+com o atleta da call, nunca um caso genérico só por ser o mais conhecido:
+é a semelhança que faz a família se enxergar naquele resultado, não só
+ouvir uma história bonita.
 
 | Atleta | Clube | Posição | Idade na entrada | Tempo até o resultado | Dúvida que a família teve |
 | --- | --- | --- | --- | --- | --- |
@@ -613,11 +718,12 @@ Frases prontas:
 
 ## 15. Glossário dos cards
 
-Imagens na pasta `cards/`: closer.png, sdr.png, r2.png, r1.png, sql.png,
-sandler.png, bant.png, followup.png, win-rate.png, inside-sales.png,
-noshow.png, lead-speed.png, lead-magnet.png, social-selling.png,
-webinario.png, conversao-direta.png. Resumo de cada um no
-`PLAYBOOK_SDR.md`, seção 14.
+Imagens na pasta `cards/`: probabilidade-sucesso.png, tempo-execucao.png,
+esforco-percebido.png, valor-percebido.png, closer.png, sdr.png, r2.png,
+r1.png, sql.png, sandler.png, bant.png, followup.png, win-rate.png,
+inside-sales.png, noshow.png, lead-speed.png, lead-magnet.png,
+social-selling.png, webinario.png, conversao-direta.png. Resumo de cada
+um no `PLAYBOOK_SDR.md`, seção 14.
 
 ## 16. Dados pra completar
 
@@ -633,7 +739,10 @@ webinario.png, conversao-direta.png. Resumo de cada um no
    estado.
 7. Como a equipe avalia e dá retorno, e o restante dos entregáveis.
 8. Vagas restantes e data da próxima turma, atualizadas toda semana.
-9. Primeiro contato do gerente de carreira depois do sim: quando acontece.
+9. Primeiro contato do gerente de carreira depois do sim: confirmar se
+   acontece mesmo no mesmo dia ou em até 24h. Esse é o prazo assumido nos
+   scripts de início imediato (seções 06.6, 08 e 10); se na prática for
+   mais lento, ajustar os scripts antes que algum Closer prometa isso.
 10. Provas que a família confere: site, Instagram, CNPJ e link da AGN.
 11. Casos: posição, idade, tempo e dúvida da família do Joãozinho e do
     Kaio, e os próximos casos.

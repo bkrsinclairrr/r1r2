@@ -1,7 +1,10 @@
 # CASOS.md
 
-Versão: v5 (25/09/2026)
+Versão: v6 (28/09/2026)
 Changelog:
+- v6: reforçada em PLAYBOOK_SDR.md (13) e PLAYBOOK_CLOSER.md (14) a
+  regra de escolher sempre o caso mais parecido em posição, idade e
+  nível (já valia aqui desde a v1, item 1 abaixo).
 - v5: frase do olhômetro contra dados reais.
 - v4: AGN Football como relação direta; frase do gerente de carreira e do
   Zyron.
