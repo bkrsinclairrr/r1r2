@@ -1,5 +1,5 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Playbook do SDR</title>
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Playbook · Gerente de carreiras · R1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap">
@@ -212,875 +212,698 @@ table.largo{min-width:820px}
 
 footer{border-top:1px solid var(--line);padding-block:24px 40px;font-size:.84rem;color:var(--ink-3);display:flex;flex-direction:column;gap:6px}
 footer .versao{font-size:.68rem;color:var(--ink-3);opacity:.75}
-</style>
 
-<div class="topo">
-  <div class="topo-in">
-    <div class="marca"><span class="papel">SDR</span>Playbook <span class="v">v8 · 28/09/2026</span></div>
-    <button class="btn" id="modo-apresentacao" type="button" aria-pressed="false">Modo apresentação</button>
-  </div>
+.hero .resumo-editorial{display:flex;flex-direction:column;gap:12px;font-size:.88rem;color:var(--ink-2)}
+.fala .texto-fala{display:flex;flex-direction:column;gap:12px;min-width:0}
+.fala .quem{max-width:116px;white-space:normal;line-height:1.4}
+.lista p{margin-block:6px}
+section a{overflow-wrap:anywhere}
+.glossario .ref{display:flex;flex-direction:column;border:0;padding:0}
+.glossario .ref-img{max-width:240px}
+.glossario .ref figcaption{display:none}
+.glossario .gl h3{font:700 1.15rem/1.15 var(--f-display);text-transform:uppercase}
+.glossario .gl p{font-size:.87rem}
+@media(max-width:600px){
+.topo-in{gap:8px;align-items:center;min-height:72px}
+.marca{flex-wrap:wrap;gap:6px;font-size:.96rem}
+.marca .v{flex-basis:100%;font-size:.7rem}
+.topo .btn{flex:none;max-width:124px;line-height:1.25}
+.toc{top:calc(env(safe-area-inset-top,0px) + 73px)}
+.fala{grid-template-columns:1fr;gap:8px;padding:14px}
+.fala .quem{width:fit-content;max-width:none}
+.ref .ref-img{max-width:260px}
+}
+
+*{box-sizing:border-box}body{margin:0}
+.hero .resumo-editorial{display:flex;flex-direction:column;gap:12px;font-size:.88rem;color:var(--ink-2)}
+.fala .texto-fala{display:flex;flex-direction:column;gap:12px;min-width:0}
+.fala .quem{max-width:116px;white-space:normal;line-height:1.4}
+.lista p{margin-block:6px}
+section a{overflow-wrap:anywhere}
+.glossario .ref{display:flex;flex-direction:column;border:0;padding:0}
+.glossario .ref-img{max-width:240px}
+.glossario .ref figcaption{display:none}
+.glossario .gl h3{font:700 1.15rem/1.15 var(--f-display);text-transform:uppercase}
+.glossario .gl p{font-size:.87rem}
+@media(max-width:600px){
+.topo-in{gap:8px;align-items:center;min-height:72px}
+.marca{flex-wrap:wrap;gap:6px;font-size:.96rem}
+.marca .v{flex-basis:100%;font-size:.7rem}
+.topo .btn{flex:none;max-width:124px;line-height:1.25}
+.toc{top:calc(env(safe-area-inset-top,0px) + 73px)}
+.fala{grid-template-columns:1fr;gap:8px;padding:14px}
+.fala .quem{width:fit-content;max-width:none}
+.ref .ref-img{max-width:260px}
+}
+</style></head><body>
+<div class="topo"><div class="topo-in"><div class="marca"><span class="papel">R1</span>Gerente de carreiras <span class="v">v9 · 28/09/2026</span></div><button class="btn" id="modo-apresentacao" type="button" aria-pressed="false">Modo apresentação</button></div></div>
+<div class="wrap"><div class="shell"><nav class="toc" id="toc" aria-label="Seções"><a href="#missao"><span class="n">01</span>Missão</a>
+<a href="#diferencial"><span class="n">02</span>Gerente e Zyron</a>
+<a href="#origem"><span class="n">03</span>Jornada do DVD</a>
+<a href="#velocidade"><span class="n">04</span>Lead speed</a>
+<a href="#contato"><span class="n">05</span>Primeiro contato</a>
+<a href="#r1"><span class="n">06</span>R1 · Diagnóstico</a>
+<a href="#atleta"><span class="n">07</span>Atleta e família</a>
+<a href="#objecoes"><span class="n">08</span>Objeções</a>
+<a href="#decisores"><span class="n">09</span>Responsáveis</a>
+<a href="#no-show"><span class="n">10</span>Anti no show</a>
+<a href="#follow-up"><span class="n">11</span>Follow up</a>
+<a href="#crm"><span class="n">12</span>CRM e repasse</a>
+<a href="#casos"><span class="n">13</span>David e AGN</a>
+<a href="#glossario"><span class="n">14</span>Cards</a>
+<a href="#regras"><span class="n">15</span>Regras de ouro</a>
+<a href="#dados"><span class="n">16</span>Preparação</a></nav><main>
+<header class="hero"><p class="eyebrow">Assessoria de atletas · Diagnóstico e qualificação</p><h1>Gerente de carreiras · R1</h1><div class="resumo-editorial"><p>Versão: v9 (28/09/2026)
+Espelho em texto de playbook-sdr.html. Autoridade e casos: CASOS.md.
+Uso interno: este é o playbook da função SDR na dashboard. Para a família, a apresentação é sempre <strong>gerente de carreiras</strong>. Na devolutiva técnica, <strong>analista de carreiras</strong>.
+Tudo entre colchetes deve vir da conversa, do CRM ou da operação.</p>
+<p>Revisão v9: jornada do DVD, condução e objeções aprofundadas, explicação da Zyron, David Willer e AGN como braço complementar, prova demonstrada e continuidade entre R1 e R2. Substitui as orientações das versões anteriores.</p>
+</div></header>
+<section id="missao"><h2><span class="num">01</span>Missão: fazer a família querer entender o plano</h2>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/sdr.png" aria-label="Ampliar Card SDR: prospecção, qualificação e agendamento"><img data-card="cards/sdr.png" alt="Card SDR: prospecção, qualificação e agendamento" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">SDR: prospecção, qualificação e agendamento</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>O gerente de carreiras da R1 transforma interesse em uma conversa qualificada. Descobre o que trava o atleta, entrega clareza e prepara a família para avaliar o plano na R2. A força vem de conhecer o caso e conduzir o próximo passo.</p>
+<p><strong>Três resultados da R1:</strong></p>
+<ol class="lista">
+<li>Atleta ouvido: sabe dizer o que quer e o que precisa melhorar.</li>
+<li>Família esclarecida: entende análise, acompanhamento, proposta paga e quem decide.</li>
+<li>Repasse completo: avaliação disponível, necessidade real, responsáveis envolvidos e horário confirmado.</li>
+</ol>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Meu trabalho aqui é entender onde o [atleta] está, o que está travando o caminho dele e se a nossa assessoria consegue ajudar. Se fizer sentido, vocês vão conhecer o plano com tudo explicado.&quot;</p>
+</div></div>
+<p>Caminho: <strong>acolher → receber material → analisar → devolver resultado → R1 → R2 → CRM e repasse</strong>. Quem já chega com análise concluída pode entrar direto na R1. Cadastro e nota de aplicativo não são aprovação de clube.</p>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/inside-sales.png" aria-label="Ampliar Card Inside sales: venda remota com processo"><img data-card="cards/inside-sales.png" alt="Card Inside sales: venda remota com processo" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Inside sales: venda remota com processo</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p><strong>Aplicação do card:</strong> cada reunião tem objetivo, responsável e próximo passo. Agenda cheia sem família preparada aumenta faltas e objeções. Qualidade de repasse importa tanto quanto volume.</p>
+</section>
+<section id="diferencial"><h2><span class="num">02</span>O diferencial: análise que vira direção</h2>
+<p>A oferta junta <strong>Zyron + gerente de carreiras + experiência de mercado</strong>. David Willer entra como expert; a AGN Football amplia a atuação como braço complementar, inclusive para o exterior.</p>
+<h3>Explicação em 30 segundos</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;A Zyron é a nossa inteligência artificial: ela analisa automaticamente o material do atleta. A equipe de gestores de carreiras revisa o resultado, e um analista de carreiras explica isso pra vocês. O gerente de carreiras pega essa informação e orienta o que fazer a partir daí. A família passa a ter análise, direção e alguém responsável pelo acompanhamento.&quot;</p>
+</div></div>
+<h3>A ponte do olhômetro</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Na última peneira, quanto tempo ele jogou? Depois alguém explicou o que viu, ou vocês ficaram só com um sim ou não?&quot;</p>
+</div></div>
+<p>Escute a resposta. Não coloque uma resposta pronta na boca do atleta.</p>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Um olhar experiente tem valor. Mas você acha que aquele recorte mostrou tudo o que você joga? O que ficou de fora?&quot;</p>
+</div></div>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;É aí que a gente amplia a conversa: a Zyron analisa o material automaticamente, a equipe revisa e vocês recebem uma devolutiva. Quero te mostrar o que apareceu no teu vídeo e o que dá pra fazer com isso.&quot;</p>
+</div></div>
+<h3>Tornar a IA deglutível</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Pensa na diferença entre receber uma nota e saber o que fazer na segunda-feira. A tecnologia ajuda na análise. O gerente de carreiras liga o resultado à tua rotina e ao próximo passo.&quot;</p>
+</div></div>
+<p><strong>Exemplo ilustrativo:</strong> um lateral quer se apresentar a clubes. A análise do material, a posição, a categoria e o histórico ajudam a equipe a discutir o perfil e preparar sua apresentação. Uma possível oportunidade precisa ser compatível e confirmada; o aplicativo não assina contrato pelo atleta.</p>
+<p><strong>Demonstração de um minuto:</strong> abrir um resultado real e autorizado; apontar [achado do relatório]; relacionar ao trecho do vídeo quando possível; explicar [orientação da equipe]. Só nomear indicadores que existem no relatório.</p>
+<h3>Isso já faz parte do futebol profissional</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Tecnologia e análise de dados já fazem parte do futebol profissional no Brasil e fora há anos. Aqui vocês acessam a Zyron com acompanhamento de gente, para entender o resultado e agir.&quot;</p>
+</div></div>
+<p>Referências do setor: o <a href="https://botafogo.com.br/noticias/monitoramento-ampliado" target="_blank" rel="noopener noreferrer">Botafogo anunciou a SkillCorner em 2024</a>; o <a href="https://www.chelseafc.com/en/news/article/aiscout-announced-as-official-academy-research-partner" target="_blank" rel="noopener noreferrer">Chelsea anunciou a AiSCOUT em 2022, após dois anos de trabalho conjunto</a>. São exemplos de uso de IA no futebol, não parcerias da Zyron.</p>
+<p>Não datar o lançamento público da Zyron sem informação confirmada. O diferencial da nossa oferta é a combinação concreta de análise e acompanhamento, apresentada no plano.</p>
+</section>
+<section id="origem"><h2><span class="num">03</span>A jornada do DVD e o ritmo certo</h2>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/lead-magnet.png" aria-label="Ampliar Card Lead magnet: entregar valor antes de avançar"><img data-card="cards/lead-magnet.png" alt="Card Lead magnet: entregar valor antes de avançar" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Lead magnet: entregar valor antes de avançar</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/social-selling.png" aria-label="Ampliar Card Social selling: contexto e relacionamento"><img data-card="cards/social-selling.png" alt="Card Social selling: contexto e relacionamento" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Social selling: contexto e relacionamento</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p><strong>Aplicação:</strong> quem veio da avaliação quer uma devolutiva; quem veio do Instagram precisa entender por que enviar o material. O contato respeita a origem.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Situação</th>
+<th>Primeiro movimento</th>
+<th>O que permite avançar</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Resultado real da Zyron já disponível</td>
+<td>Conferir o material e convidar para a devolutiva</td>
+<td>Resultado explicado e interesse em entender o acompanhamento</td>
+</tr>
+<tr>
+<td>Cadastro, sem avaliação concluída</td>
+<td>Confirmar contexto e estado do DVD</td>
+<td>Material recebido, análise e retorno definidos</td>
+</tr>
+<tr>
+<td>Lead frio, sem vídeo</td>
+<td>Apresentar o trabalho e pedir o material com consentimento</td>
+<td>Família entende a análise e aceita o próximo contato</td>
+</tr>
+</tbody></table></div>
+<h3>Pedir o DVD</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Antes de falar em caminho pra clube, eu preciso conhecer o futebol do [atleta]. Me manda o DVD dele, aquele vídeo jogando em partida ou treino. Pode ser por [canal aceito], seguindo [orientação de duração e identificação].&quot;</p>
+</div></div>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Junto, manda posição, idade e como identificar ele nas imagens. O objetivo é olhar o material dele de verdade, não te dar uma resposta genérica.&quot;</p>
+</div></div>
+<h3>Confirmar recebimento e criar expectativa concreta</h3>
+<p>Só confirmar recebimento depois de verificar que o arquivo chegou e pode ser aberto.</p>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Recebi o DVD do [atleta] e consegui abrir. Agora ele segue para a análise automática da Zyron e para a revisão da nossa equipe de gestores de carreiras. Um analista de carreiras vai entrar em contato com o resultado.&quot;</p>
+</div></div>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Até [dia e hora] eu te atualizo. Na devolutiva, vamos conversar sobre o que apareceu no material e o próximo passo. [atleta], já separa uma pergunta que você quer fazer sobre teu jogo.&quot;</p>
+</div></div>
+<p>Se o prazo final ainda não puder ser dado:</p>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Vou confirmar a previsão com a equipe e te posiciono até [dia e hora]. Prefiro te dar um horário que a gente consiga cumprir.&quot;</p>
+</div></div>
+<p><strong>Ritmo:</strong> resposta rápida para acolher; tempo necessário para analisar; retorno no horário prometido. Não antecipar elogio técnico sem observar o material, nem criar demora só para aumentar ansiedade.</p>
+<h3>Enquanto a análise acontece</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;O material está em [etapa real]. Nosso combinado de te atualizar continua valendo. Assim que a revisão terminar, a gente organiza a conversa com o analista.&quot;</p>
+</div></div>
+<p>Se faltar material:</p>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Conseguimos ver [o que foi possível]. Para concluir [ponto], precisamos de [complemento]. Você consegue enviar até [data]? Depois confirmo a nova previsão.&quot;</p>
+</div></div>
+<h3>Voltar com substância</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;[responsável], a análise do [atleta] ficou pronta. Quero te explicar [ponto real] e ouvir dele sobre [contexto]. O analista de carreiras consegue falar com vocês [horário A] ou [horário B]?&quot;</p>
+</div></div>
+<p>Se a revisão indicar avanço:</p>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Pelo material e pelo contexto, identificamos espaço para trabalhar [necessidade específica]. Faz sentido abrir a conversa sobre acompanhamento.&quot;</p>
+</div></div>
+<p>Se não houver base para avançar, dizer o que falta e combinar se haverá nova avaliação. A R1 não termina em aprovação automática.</p>
+</section>
+<section id="velocidade"><h2><span class="num">04</span>Lead speed: presença desde o primeiro contato</h2>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/lead-speed.png" aria-label="Ampliar Card Lead speed: tempo até a primeira resposta"><img data-card="cards/lead-speed.png" alt="Card Lead speed: tempo até a primeira resposta" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Lead speed: tempo até a primeira resposta</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p><strong>Meta operacional:</strong> primeiro contato em até sete minutos durante a cobertura da equipe. Fora desse período, informar o próximo horário de atendimento.</p>
+<p>Rapidez transmite organização. Não confundir acolhimento imediato com análise instantânea.</p>
+<ol class="lista">
+<li>Ler origem, cadastro e histórico antes de chamar.</li>
+<li>Fazer contato curto, com motivo específico.</li>
+<li>Se não atender, deixar uma mensagem e oferecer retorno.</li>
+<li>Registrar tentativa e próxima ação no CRM.</li>
+</ol>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Oi, [responsável]. Aqui é o [nome], gerente de carreiras da [empresa]. Vi o cadastro do [atleta] e quero orientar o próximo passo da avaliação. Posso te explicar em um minuto?&quot;</p>
+</div></div>
+<p>Sem resposta, usar a cadência da seção 11 dentro do horário adequado. Não disparar várias mensagens em sequência.</p>
+</section>
+<section id="contato"><h2><span class="num">05</span>Primeiro contato: uma conversa com direção</h2>
+<h3>Quando veio da Zyron</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Aqui é o [nome], gerente de carreiras. Estou com [resultado disponível/material recebido] do [atleta]. Quero conversar sobre o que vocês buscam e explicar o próximo passo. Melhor agora ou [horário]?&quot;</p>
+</div></div>
+<p>Se já leu a análise, citar um achado específico. Se só recebeu cadastro, dizer cadastro.</p>
+<h3>Quando veio do Instagram</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Teu cadastro chegou pra gente. Você está buscando avaliação do teu futebol, acompanhamento ou uma oportunidade de clube? Quero entender isso antes de te orientar.&quot;</p>
+</div></div>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;A gente trabalha com assessoria de carreira, com análise da Zyron e acompanhamento. Vou te explicar como funciona e, se fizer sentido, a gente conversa com teu responsável.&quot;</p>
+</div></div>
+<h3>Quando o responsável entra desconfiado</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Você não precisa decidir nada nessa primeira conversa. Primeiro vamos entender o [atleta] e te mostrar quem está do outro lado. Se houver interesse no acompanhamento, o plano e o investimento ficam claros antes de qualquer contratação.&quot;</p>
+</div></div>
+<h3>Acordo de conversa</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Vou fazer algumas perguntas, te explicar o que a análise mostra e combinar um próximo passo. São uns 20 a 30 minutos com vocês. Funciona [horário A] ou [horário B]? Se nenhum servir, me diga uma alternativa.&quot;</p>
+</div></div>
+<p>Duas opções facilitam a agenda, sem transformar a escolha em obrigação.</p>
+<h3>Sagacidade na conversa: prender a atenção com relevância</h3>
+<p><strong>Pergunta que quebra a resposta automática:</strong></p>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Antes de eu te explicar qualquer coisa: qual foi a última orientação sobre o futebol do [atleta] que vocês conseguiram colocar em prática?&quot;</p>
+</div></div>
+<p><strong>Curiosidade com entrega:</strong> só usar quando o material tiver sido analisado.</p>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Separei um ponto do teu vídeo que vale a gente conversar. Vou te mostrar o trecho e explicar por que ele importa para o próximo passo. Consegue olhar comigo?&quot;</p>
+</div></div>
+<p><strong>Espelho e pausa:</strong> repetir as duas ou três palavras centrais da resposta e deixar a pessoa completar. Se disser &quot;ninguém dá retorno&quot;, perguntar &quot;Ninguém dá retorno?&quot; e ouvir o exemplo. Não transformar silêncio em ameaça.</p>
+<p><strong>Pequeno compromisso útil:</strong></p>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Me dá um minuto para mostrar como a devolutiva funciona. Depois você me diz se isso ajuda a resolver o que faltou nas outras avaliações.&quot;</p>
+</div></div>
+<p><strong>Resumo que conduz:</strong></p>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Então o que vocês querem entender é [dúvida]. Eu resolvo isso mostrando [prova]. Se ficar claro, o próximo passo é [ação]. Podemos seguir nessa ordem?&quot;</p>
+</div></div>
+</section>
+<section id="r1"><h2><span class="num">06</span>R1: diagnóstico que faz a família se reconhecer</h2>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/r1.png" aria-label="Ampliar Card R1: diagnóstico e próximo passo"><img data-card="cards/r1.png" alt="Card R1: diagnóstico e próximo passo" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">R1: diagnóstico e próximo passo</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/sandler.png" aria-label="Ampliar Card Sandler: conexão, dor, impacto e compromisso"><img data-card="cards/sandler.png" alt="Card Sandler: conexão, dor, impacto e compromisso" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Sandler: conexão, dor, impacto e compromisso</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/sql.png" aria-label="Ampliar Card SQL: perfil, interesse e momento"><img data-card="cards/sql.png" alt="Card SQL: perfil, interesse e momento" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">SQL: perfil, interesse e momento</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p><strong>Aplicação:</strong> SPIN para investigar; Sandler para combinar a conversa; qualificação para verificar se existe um próximo passo útil. Perguntar, escutar, resumir e confirmar. Não fazer um interrogatório.</p>
+<h3>6.1 Abertura e presença do atleta</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;[responsável], quero ouvir vocês e o [atleta]. Ele vive o futebol; vocês conhecem a rotina e participam da decisão. Cada visão importa.&quot;</p>
+</div></div>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;[atleta], o que fez você procurar a gente agora?&quot;</p>
+</div></div>
+<h3>6.2 Contexto sem repetir o cadastro</h3>
+<ul class="lista">
+<li>&quot;Vi que você tem [idade] e joga de [posição]. Continua assim?&quot;</li>
+<li>&quot;Onde treina hoje, com quem e quantas vezes por semana?&quot;</li>
+<li>&quot;Já passou por quais times ou competições? Foi federado?&quot;</li>
+<li>&quot;Quem acompanha teu desenvolvimento hoje?&quot;</li>
+<li>&quot;O que você já recebeu de orientação sobre o teu jogo?&quot;</li>
+</ul>
+<h3>6.3 A dor de tentar e não entender o resultado</h3>
+<ul class="lista">
+<li>&quot;Quantas avaliações você fez? Em quais clubes?&quot;</li>
+<li>&quot;Em quantas sentiu que conseguiram observar teu jogo?&quot;</li>
+<li>&quot;O que te disseram depois? Recebeu alguma orientação?&quot;</li>
+<li>&quot;O que mais te frustra: não chegar a quem decide, não saber o nível ou não saber o que melhorar?&quot;</li>
+</ul>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Então vocês se dedicam, gastam tempo e saem sem uma direção clara. Foi isso que eu entendi?&quot;</p>
+</div></div>
+<p>Empatia nasce de repetir corretamente a experiência. Só contar uma história pessoal se ela aconteceu.</p>
+<h3>6.4 Olhômetro e necessidade de explicação</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Na tua experiência, só aquele olhar rápido foi suficiente? O que você gostaria que tivessem observado melhor?&quot;</p>
+</div></div>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Se a gente conseguir explicar o material e apontar um próximo passo, isso resolve qual parte dessa dificuldade?&quot;</p>
+</div></div>
+<p>A família define o valor da análise com as próprias palavras.</p>
+<h3>6.5 Sonho, identidade e compromisso possível</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;[atleta], quando você fala em virar profissional, o que isso significa pra você? O que você quer viver dentro do futebol?&quot;</p>
+</div></div>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Qual parte depende de uma oportunidade e qual parte você sabe que precisa desenvolver?&quot;</p>
+</div></div>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Se tiver uma orientação clara para a próxima semana, o que você consegue se comprometer a fazer?&quot;</p>
+</div></div>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/valor-percebido.png" aria-label="Ampliar Card Valor percebido: entrega conectada à mudança desejada"><img data-card="cards/valor-percebido.png" alt="Card Valor percebido: entrega conectada à mudança desejada" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Valor percebido: entrega conectada à mudança desejada</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p><strong>Aplicação:</strong> ligar o sonho a uma mudança observável. A visão de futuro fica mais convincente quando há um caminho que a família entende.</p>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Guarda essa imagem de jogar no [clube dos sonhos]. Agora imagina teu próximo mês com uma direção: saber o que trabalhar, registrar evolução e conversar com alguém que conhece teu caso. É esse caminho que a gente precisa construir com você.&quot;</p>
+</div></div>
+<h3>6.6 Dor da família sem constrangimento</h3>
+<ul class="lista">
+<li>&quot;O que mais preocupa vocês hoje nessa caminhada?&quot;</li>
+<li>&quot;O que tentaram para resolver? O que funcionou e o que faltou?&quot;</li>
+<li>&quot;Quando vocês dizem [expressão da família], como isso aparece na rotina?&quot;</li>
+<li>&quot;O que precisaria mudar para vocês sentirem que estão no caminho certo?&quot;</li>
+</ul>
+<p>Se aparecer aperto financeiro:</p>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Entendi. Vamos separar o sonho dele da capacidade de assumir um compromisso agora. Preciso entender os dois para orientar direito.&quot;</p>
+</div></div>
+<p>Não usar pobreza, profissão dos pais ou medo de fracasso como argumento de cobrança. Registrar a prioridade nas palavras da família, sem rótulos humilhantes.</p>
+<h3>6.7 Gastos e critério para uma nova decisão</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Vocês já gastaram com viagens, inscrições e acompanhamento. O que esses gastos trouxeram? O que uma nova contratação precisaria entregar para fazer sentido?&quot;</p>
+</div></div>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Sem entrar no preço do plano agora: um serviço pago está dentro do que vocês querem avaliar, ou a busca hoje é só por oportunidade gratuita?&quot;</p>
+</div></div>
+<p>O gerente da R1 não negocia valores, mas deixa claro que a assessoria é paga. Se a família exigir preço para decidir se quer a reunião, encaminhar a dúvida ao responsável comercial; não segurar informação como isca.</p>
+<h3>6.8 Locomoção e vida fora de casa</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Se surgir uma avaliação compatível em outra cidade, o que precisaria estar resolvido para vocês considerarem? Companhia, custos, escola, trabalho?&quot;</p>
+</div></div>
+<p>Não pressupor mudança, alojamento ou despesas cobertas. A resposta define limites reais.</p>
+<h3>6.9 Quem participa da decisão</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/bant.png" aria-label="Ampliar Card BANT: necessidade, momento, decisão e orçamento"><img data-card="cards/bant.png" alt="Card BANT: necessidade, momento, decisão e orçamento" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">BANT: necessidade, momento, decisão e orçamento</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<ul class="lista">
+<li>&quot;Quem precisa participar para vocês avaliarem isso com tranquilidade?&quot;</li>
+<li>&quot;Como vocês costumam decidir um investimento importante?&quot;</li>
+<li>&quot;O que cada responsável precisa ver ou entender?&quot;</li>
+<li>&quot;Posso incluir [nome] na confirmação da próxima conversa?&quot;</li>
+</ul>
+<p>Não exigir pai e mãe quando a família tem outra configuração. Para menor, incluir o responsável legal.</p>
+<h3>6.10 Por que existe cobrança</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Uma coisa é a possível negociação com um clube. Outra é manter profissionais e tecnologia trabalhando no acompanhamento agora. O investimento na assessoria custeia esse trabalho. Na próxima conversa vocês vão ver o escopo, a duração e as condições, tudo junto.&quot;</p>
+</div></div>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Nosso interesse é desenvolver uma parceria que avance com a carreira dele. Isso começa com um trabalho que vocês conseguem entender e acompanhar.&quot;</p>
+</div></div>
+<h3>6.11 A oferta em três frases</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;A Zyron analisa automaticamente o material.&quot;</p>
+<p>&quot;A equipe explica o resultado, e o gerente de carreiras conduz o acompanhamento previsto no plano.&quot;</p>
+<p>&quot;A experiência do David Willer e o braço complementar da AGN ajudam a construir caminhos de mercado compatíveis com o atleta.&quot;</p>
+</div></div>
+<p>Pedir compreensão:</p>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Do que eu expliquei, o que mais muda a situação de vocês? E o que ainda ficou nebuloso?&quot;</p>
+</div></div>
+<h3>6.12 Prova com contexto</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Temos o trabalho do David Willer, com casos como Kaio no Internacional e Joãozinho profissionalmente no Grêmio. E o histórico vai além deles: centenas de atletas encaminhados no Brasil e no mundo. A AGN é um braço complementar, inclusive para o exterior.&quot;</p>
+</div></div>
+<p>Mostrar os <a href="#casos">perfis e casos da seção 13</a>, depois voltar ao atleta:</p>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Agora quero te mostrar a parte que conversa com o [atleta]: [fato comparável e documentado]. O que vocês gostariam de entender dessa trajetória?&quot;</p>
+</div></div>
+<h3>6.13 Resumo e elegibilidade</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Você quer [objetivo]. O que trava hoje é [necessidade]. A análise mostrou [achado real]. A família precisa de [critério]. Acertei?&quot;</p>
+</div></div>
+<p>Quando houver encaixe:</p>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Com esse cenário, vale conversar sobre um plano para [necessidade específica]. Eu vou levar esse contexto completo para o gerente de carreiras que faz a R2.&quot;</p>
+</div></div>
+<h3>6.14 O atleta participa com uma tarefa útil</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Pra próxima conversa, traz uma pergunta sobre teu jogo e duas coisas que você topa trabalhar. Quero que você entenda a proposta e fale o que faz sentido para você.&quot;</p>
+</div></div>
+<h3>6.15 Acordo de decisão</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Na R2 vocês vão conhecer o plano e o investimento. Se estiver claro e couber para vocês, podem decidir ali. Se faltar alguma informação, a gente identifica qual e combina como resolver. Podemos fazer assim?&quot;</p>
+</div></div>
+<h3>6.16 Agendamento</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/r2.png" aria-label="Ampliar Card R2: proposta e decisão"><img data-card="cards/r2.png" alt="Card R2: proposta e decisão" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">R2: proposta e decisão</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Tenho [dia/hora A] e [dia/hora B]. Qual funciona com [responsáveis] e [atleta]? O gerente de carreiras já vai receber a ficha para continuar de onde paramos.&quot;</p>
+</div></div>
+<p>Confirmar horário, participantes, canal, duração e link. A R2 é uma conversa comercial, não um teste ou contrato de clube.</p>
+<p><strong>R1 por mensagem:</strong> mesma lógica, uma pergunta de cada vez. Resumir o que entendeu e oferecer uma ligação curta quando facilitar, sem impor.</p>
+</section>
+<section id="atleta"><h2><span class="num">07</span>O atleta envolvido e a família alinhada</h2>
+<p>O entusiasmo deve vir de se enxergar no trabalho e ser ouvido. O atleta participa da decisão; não recebe a missão de pressionar os pais.</p>
+<ol class="lista">
+<li>Reconhecer um ponto real do material.</li>
+<li>Ouvir sonho e dificuldade.</li>
+<li>Mostrar uma entrega que ele compreenda.</li>
+<li>Pedir um compromisso de rotina possível.</li>
+<li>Trazer a família para a mesma conversa.</li>
+</ol>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;[atleta], gostei da clareza com que você falou de [objetivo]. Na R2 quero você presente, perguntando também. O plano precisa fazer sentido pra você e pra quem te apoia.&quot;</p>
+</div></div>
+<p>Se atleta e responsável discordarem:</p>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Vamos ouvir os dois. O que você quer construir, [atleta]? E o que vocês precisam resolver para considerar esse acompanhamento?&quot;</p>
+</div></div>
+<p>Se o contato for de menor, manter o responsável incluído. Uma recusa da família não vira uma conversa escondida com o atleta.</p>
+</section>
+<section id="objecoes"><h2><span class="num">08</span>Objeções: esclarecer e conduzir</h2>
+<p>Método: <strong>acolher → descobrir a dúvida real → responder com prova ou explicação → combinar um passo</strong>. Tratar uma objeção por vez.</p>
+<h3>8.1 &quot;Quanto custa?&quot;</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;É uma assessoria paga. O valor depende do plano e do acompanhamento contratado. O gerente de carreiras da R2 apresenta tudo junto para vocês avaliarem.&quot;</p>
+</div></div>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Antes de marcar: vocês querem entender um serviço de análise e acompanhamento, ou estão buscando somente um teste gratuito? Assim eu te direciono certo.&quot;</p>
+</div></div>
+<p>Se pedir informação por escrito, enviar o resumo aprovado. Se precisar do preço antes de agendar, buscar a resposta com quem faz a proposta.</p>
+<h3>8.2 &quot;Empresário não cobra&quot;</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Você está procurando alguém para negociar um contrato que já surgiu, ou alguém para analisar, orientar e acompanhar o caminho até as oportunidades? São trabalhos diferentes.&quot;</p>
+</div></div>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Aqui estamos falando de assessoria com profissionais e tecnologia. Vamos te mostrar exatamente o que é entregue para você comparar do jeito certo.&quot;</p>
+</div></div>
+<h3>8.3 &quot;Parece golpe&quot;</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Faz sentido conferir. Não quero que você decida só pela minha fala. Vou te mandar o David Willer e a AGN, explicar nosso papel e mostrar um caso e uma entrega.&quot;</p>
+</div></div>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;O que te deixaria mais seguro: conferir quem atende, entender o contrato ou ver como funciona a análise?&quot;</p>
+</div></div>
+<p>Responder ao receio concreto. Links: <a href="https://www.instagram.com/dwilleroliveira/" target="_blank" rel="noopener noreferrer">David Willer</a> e <a href="https://www.instagram.com/agnfootball/" target="_blank" rel="noopener noreferrer">AGN Football</a>.</p>
+<h3>8.4 &quot;Não quero pagar para fazer peneira&quot;</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Você quer uma oportunidade esportiva, entendi. A conversa aqui é sobre acompanhamento de carreira. Não é compra de aprovação nem ingresso em clube. Faz sentido conhecer essa diferença, ou hoje você quer só caminhos gratuitos?&quot;</p>
+</div></div>
+<p>Se a busca for exclusivamente gratuita, orientar dentro do que a operação oferece e encerrar sem perseguir o lead.</p>
+<h3>8.5 &quot;Não tenho interesse&quot;</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Certo. Só para eu registrar e não insistir no assunto errado: é falta de momento ou esse tipo de acompanhamento não faz sentido para vocês?&quot;</p>
+</div></div>
+<p>Aceitar a resposta. Uma pergunta de esclarecimento basta; recusa explícita encerra a cadência.</p>
+<h3>8.6 &quot;Manda tudo por aqui&quot;</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Mando sim: quem somos, como a análise funciona e o que acontece depois. Aí você me diz qual ponto quer aprofundar.&quot;</p>
+</div></div>
+<p>Enviar resumo e links. Retomar no horário combinado, com uma pergunta específica sobre o material.</p>
+<h3>8.7 &quot;Preciso falar com meu marido/minha esposa&quot;</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Perfeito. O que essa pessoa precisa entender para a conversa ser útil? Vamos incluir [nome] e evitar você ter que explicar tudo de segunda mão.&quot;</p>
+</div></div>
+<h3>8.8 &quot;Ele já tem empresário ou clube&quot;</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Ótimo. O que já está bem acompanhado e o que vocês sentem falta hoje? Só faz sentido discutir uma assessoria se houver um trabalho complementar.&quot;</p>
+</div></div>
+<p>Não orientar quebra de contrato ou prometer substituir um vínculo sem conhecer as condições.</p>
+<h3>8.9 &quot;Ele é muito novo / está tarde&quot;</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Idade muda o tipo de caminho possível. Vamos olhar categoria, histórico e rotina antes de falar em prazo ou clube. O que vocês estão buscando nesta fase?&quot;</p>
+</div></div>
+<h3>8.10 &quot;Não temos tempo&quot;</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Qual formato cabe melhor: uma conversa de [duração] em [horários reais] ou receber o resumo primeiro? Também vamos deixar claro quanto acompanhamento exige de vocês.&quot;</p>
+</div></div>
+<h3>8.11 &quot;Já mandei o DVD. Por que a demora?&quot;</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Você tem razão em cobrar o combinado. O material está em [etapa real]. O analista retorna até [prazo confirmado]. Se houver qualquer mudança, eu te aviso antes desse horário.&quot;</p>
+</div></div>
+<p>Não trocar cobrança por elogio vazio nem anunciar aprovação para acalmar.</p>
+<h3>8.12 &quot;Vai levar ele para fora?&quot;</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;A AGN é um braço complementar importante nesse caminho. A possibilidade depende do perfil e das oportunidades reais. Primeiro analisamos o [atleta], depois discutimos quais caminhos fazem sentido. Não vou te vender um destino sem olhar o caso.&quot;</p>
+</div></div>
+</section>
+<section id="decisores"><h2><span class="num">09</span>Todos os responsáveis entendem a R2</h2>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Na próxima conversa vocês vão ver a proposta completa. Quem precisa estar para analisar o plano, o investimento e os compromissos?&quot;</p>
+</div></div>
+<p>Confirmar nomes e disponibilidade, com autorização para contato. Se faltar uma pessoa indispensável, reagendar ou tratar a conversa como apresentação inicial, sem forçar pagamento.</p>
+<p><strong>No CRM:</strong> registrar quem decide, o que cada um precisa entender e se existe alguma divergência. Não inferir capacidade financeira pela profissão, aparência ou bairro.</p>
+</section>
+<section id="no-show"><h2><span class="num">10</span>Anti no show: dar motivo para aparecer</h2>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/noshow.png" aria-label="Ampliar Card No show: faltas entre reuniões agendadas"><img data-card="cards/noshow.png" alt="Card No show: faltas entre reuniões agendadas" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">No show: faltas entre reuniões agendadas</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p><strong>Aplicação:</strong> a família sabe o que vai receber, com quem vai falar e por que aquele horário importa.</p>
+<ul class="lista">
+<li>Ao agendar: &quot;[dia] às [hora], com [gerente de carreiras]. Vamos conversar sobre [necessidade] e ver o plano. Confirmam?&quot;</li>
+<li>Depois: enviar link, duração e participantes; incluir os perfis do David e da AGN quando ainda não enviados.</li>
+<li>Véspera: &quot;Separei [material real] para a conversa de amanhã. [responsáveis] e [atleta] confirmados?&quot;</li>
+<li>Uma hora antes: enviar o link e uma mensagem curta.</li>
+<li>Ausência: após cinco minutos, conferir se houve problema. Oferecer novo horário sem repreensão.</li>
+</ul>
+<p>Reunião marcada e reunião realizada são registros diferentes.</p>
+</section>
+<section id="follow-up"><h2><span class="num">11</span>Follow up: cada contato precisa valer a resposta</h2>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/followup.png" aria-label="Ampliar Card Follow up: continuidade com próximo passo"><img data-card="cards/followup.png" alt="Card Follow up: continuidade com próximo passo" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Follow up: continuidade com próximo passo</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Cadência de referência para quem demonstrou interesse e não recusou contato. Ajustar ao combinado, à etapa do DVD e à preferência de canal.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Quando</th>
+<th>Motivo útil e fala</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D0, após tentativa</td>
+<td>&quot;Sou [nome], gerente de carreiras. Te chamei sobre [motivo]. Posso te explicar em um minuto?&quot;</td>
+</tr>
+<tr>
+<td>D1</td>
+<td>&quot;Aqui estão o David Willer e a AGN que mencionei. Qual ponto você quer entender sobre o trabalho?&quot;</td>
+</tr>
+<tr>
+<td>D2</td>
+<td>Tentar o horário combinado ou outro horário adequado; registrar resultado</td>
+</tr>
+<tr>
+<td>D3</td>
+<td>Enviar um caso autorizado pertinente, explicando a relação concreta com a dúvida</td>
+</tr>
+<tr>
+<td>D5</td>
+<td>&quot;Conseguiu separar o DVD? Falta alguma orientação para enviar?&quot; Apenas se essa for a pendência</td>
+</tr>
+<tr>
+<td>D7</td>
+<td>&quot;Ficou faltando esclarecer análise, acompanhamento ou proposta? Posso resolver esse ponto contigo.&quot;</td>
+</tr>
+<tr>
+<td>D10</td>
+<td>Oferecer nova conversa se houver interesse ou informação nova</td>
+</tr>
+<tr>
+<td>D14</td>
+<td>&quot;Vou pausar os contatos por aqui. Se quiser retomar, a ficha fica com o histórico. Prefere combinar uma data?&quot;</td>
+</tr>
+<tr>
+<td>Depois</td>
+<td>Reabordar em data acordada, ou avaliar nutrição em 30 dias se houver consentimento; respeitar recusas</td>
+</tr>
+</tbody></table></div>
+<p>Nunca criar uma vaga que acaba amanhã só para justificar follow up. Se houver capacidade limitada real, informar dado, condição e prazo atuais.</p>
+</section>
+<section id="crm"><h2><span class="num">12</span>CRM e repasse: continuidade sem retrabalho</h2>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/closer.png" aria-label="Ampliar Card Closer: proposta que usa o diagnóstico"><img data-card="cards/closer.png" alt="Card Closer: proposta que usa o diagnóstico" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Closer: proposta que usa o diagnóstico</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Critério de repasse: necessidade clara, material e parecer disponíveis para a proposta, entendimento de que a assessoria é paga, interesse real e conversa confirmada com quem decide.</p>
+<p>Na dashboard, <strong>aquecimento</strong> (frio/morno/quente) é separado de <strong>estado de abordagem</strong> (não abordado/em abordagem/abordado/reabordado). O papel interno continua SDR; o destino é Closer. Usar <strong>Agendar call e enviar</strong> para o repasse explícito. Não duplicar lead.</p>
+<div class="modelo"><div class="modelo-top">Ficha de repasse <button type="button" class="btn" id="copiar-repasse">Copiar modelo</button></div><pre id="modelo-repasse"><code class="language-text">Origem: [Zyron / Instagram / frio sem vídeo / outro]
+Atleta: [nome / idade / posição / pé / cidade]
+Responsável legal e demais decisores: [nomes / contatos autorizados]
+Como decidem e o que cada pessoa precisa entender: [...]
+Rotina, time atual, federação e experiências: [...]
+DVD: [solicitado / recebido e acessível / pendente de complemento]
+Análise Zyron: [status / link interno / achado realmente disponível]
+Revisão da equipe: [responsável / data / conclusão]
+Devolutiva: [analista / data / realizada ou agendada]
+Próxima atualização prometida: [dia e hora / responsável]
+Avaliações: [quantidade / clubes / tempo observado / retorno recebido]
+Objetivo do atleta e compromisso de rotina: [...]
+Necessidade da família, nas palavras dela: [...]
+O que já tentaram e o que faltou: [...]
+Gastos citados e limite de orçamento, se informado: [...]
+Locomoção, escola e companhia: [...]
+Entende que a assessoria é paga? [...]
+Gerente de carreiras e Zyron explicados? [...]
+Caso mostrado e vínculo explicado: [...]
+Links David Willer e AGN enviados? [...]
+Objeções, respostas e dúvidas restantes: [...]
+R2: [dia/hora / participantes / link / confirmado]
+Aquecimento: [frio / morno / quente]
+Estado de abordagem: [não abordado / em abordagem / abordado / reabordado]
+</code></pre></div>
+<p>Antes de repassar, ler o resumo como se fosse a primeira vez: ele permite continuar a conversa sem obrigar a família a contar tudo de novo?</p>
+</section>
+<section id="casos"><h2><span class="num">13</span>Autoridade: David Willer, casos e AGN</h2>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/probabilidade-sucesso.png" aria-label="Ampliar Card Probabilidade de sucesso: caso, prova e contexto"><img data-card="cards/probabilidade-sucesso.png" alt="Card Probabilidade de sucesso: caso, prova e contexto" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Probabilidade de sucesso: caso, prova e contexto</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p><strong>Aplicação:</strong> mostrar experiência, explicar o vínculo e depois relacionar ao perfil. A trajetória de outra pessoa não substitui a análise do atleta da chamada.</p>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;O David Willer é o expert da operação. Entre os casos estão o Kaio, no Internacional, e o Joãozinho, profissionalmente no Grêmio. O trabalho vai além desses nomes: são centenas de jogadores encaminhados para times do Brasil e do mundo.&quot;</p>
+</div></div>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;A AGN Football é um braço complementar da nossa operação, com atuação no caminho para o exterior e dezenas de atletas pela AGN. Ela soma ao trabalho; quem acompanha o plano do [atleta] tem nome, responsabilidade e contato definidos aqui.&quot;</p>
+</div></div>
+<ul class="lista">
+<li><a href="https://www.instagram.com/dwilleroliveira/" target="_blank" rel="noopener noreferrer">Conhecer David Willer</a></li>
+<li><a href="https://www.instagram.com/agnfootball/" target="_blank" rel="noopener noreferrer">Conhecer a AGN Football</a></li>
+</ul>
+<h3>Roteiro da prova em quatro movimentos</h3>
+<ol class="lista">
+<li><strong>Pessoa:</strong> mostrar quem é o expert e quem acompanha o atleta.</li>
+<li><strong>Trajetória:</strong> abrir a publicação autorizada de um caso; explicar o que a equipe fez.</li>
+<li><strong>Conexão:</strong> apontar uma semelhança conhecida, sem inventar idade, posição ou prazo.</li>
+<li><strong>Volta ao atleta:</strong> &quot;O que desse trabalho faz sentido para a situação de vocês?&quot;</li>
+</ol>
+<p>A base e a origem das afirmações ficam em CASOS.md. Casos da AGN entram quando o vínculo com a operação é conhecido. Não atribuir automaticamente a nós todos os atletas do perfil.</p>
+<h3>Bastidor real que aumenta confiança</h3>
+<div class="fala chave"><span class="quem">Gerente de carreiras</span><div class="texto-fala">
+<p>&quot;Vou te mostrar um exemplo autorizado de como a equipe trabalha. Aqui está a análise; aqui, a orientação que veio depois.&quot;</p>
+</div></div>
+<p>Uma consulta rápida a um colega pode resolver uma dúvida real de prazo ou material, desde que ele esteja disponível. Avisar o que será conferido e voltar com a resposta. Contrato de outro atleta só é mostrado se real, autorizado e com dados pessoais protegidos. Não encenar conversa lateral, aprovação ou assinatura.</p>
+</section>
+<section id="glossario"><h2><span class="num">14</span>Glossário dos cards</h2>
+<p>Os nomes nos cards são conceitos de treinamento. Nas falas ao público, usar gerente de carreiras. Os números ilustrativos dos cards não são resultados da operação.</p>
+<div class="glossario"><div class="gl"><h3>Probabilidade de sucesso</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/probabilidade-sucesso.png" aria-label="Ampliar Card Probabilidade de sucesso"><img data-card="cards/probabilidade-sucesso.png" alt="Card Probabilidade de sucesso" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Probabilidade de sucesso</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Caso comparável, prova e contexto. Mostrar o trabalho e o resultado específico.</p>
 </div>
-
-<div class="wrap">
-<div class="shell">
-<nav class="toc" id="toc" aria-label="Seções">
-  <a href="#missao"><span class="n">01</span>Missão</a>
-  <a href="#diferencial"><span class="n">02</span>Gerente e Zyron</a>
-  <a href="#origem"><span class="n">03</span>Zyron ou Instagram</a>
-  <a href="#velocidade"><span class="n">04</span>Lead speed</a>
-  <a href="#contato"><span class="n">05</span>Primeiro contato</a>
-  <a href="#r1"><span class="n">06</span>R1 · Qualificação</a>
-  <a href="#atleta"><span class="n">07</span>O atleta como aliado</a>
-  <a href="#objecoes"><span class="n">08</span>Objeções</a>
-  <a href="#decisores"><span class="n">09</span>Decisores na R2</a>
-  <a href="#no-show"><span class="n">10</span>Anti no show</a>
-  <a href="#follow-up"><span class="n">11</span>Follow up</a>
-  <a href="#crm"><span class="n">12</span>CRM e repasse</a>
-  <a href="#casos"><span class="n">13</span>Casos e autoridade</a>
-  <a href="#glossario"><span class="n">14</span>Glossário dos cards</a>
-  <a href="#regras"><span class="n">15</span>Regras de ouro</a>
-  <a href="#dados"><span class="n">16</span>Dados pra completar</a>
-</nav>
-
-<main>
-<header class="hero">
-  <p class="eyebrow">Operação comercial · Assessoria de atletas</p>
-  <h1>Playbook do SDR</h1>
-  <div class="fcard"><p class="fx">SDR = Prospecção + Qualificação + Agendamento</p><p class="fr">↳ lista + contato + reunião marcada = <u>trabalho do SDR</u></p></div>
-  <p class="lede">O SDR faz a R1, a call de qualificação. Mapeia contexto, dor, experiências, avaliações, gastos e locomoção, e apresenta o que ninguém mais tem: um gerente de carreira todo dia e o Zyron. No final, entrega ao especialista uma família que já sabe duas coisas: o atleta foi escolhido, e nós só ganhamos quando ele ganha.</p>
-  <dl class="meta">
-    <div><dt>Versão</dt><dd>v8, 28/09/2026</dd></div>
-    <div><dt>Reuniões</dt><dd>R1 é do SDR · R2 é do Closer</dd></div>
-    <div><dt>Regra da casa</dt><dd>A gente só ganha quando o atleta ganha</dd></div>
-  </dl>
-  <div class="legenda" aria-label="Legenda">
-    <span class="item"><var>atleta</var> dado da conversa ou da empresa</span>
-    <span class="item"><span class="mini card"></span> card do treinamento: toque pra ampliar</span>
-    <span class="item"><span class="mini vd"></span> regra de ouro</span>
-    <span class="item"><span class="mini am"></span> tática</span>
-    <span class="item"><span class="mini vm"></span> proibido</span>
-  </div>
-</header>
-
-<section id="missao">
-  <h2><span class="num">01</span>Missão do SDR</h2>
-  <figure class="ref">
-    <button class="ref-img" type="button" data-full="cards/sdr.png"><img data-card="cards/sdr.png" alt="Card SDR: SDR = Prospecção + Qualificação + Agendamento" loading="lazy"></button>
-    <figcaption>
-      <p class="tag">Card · SDR</p>
-      <p class="fx">SDR = Prospecção + Qualificação + Agendamento</p>
-      <p class="fr">↳ lista + contato + reunião marcada = <u>trabalho do SDR</u></p>
-      <p class="o"><b>O que é:</b> Sales Development Representative. É quem prospecta, qualifica e agenda. Fica no começo do processo e filtra quem segue pro Closer.</p>
-      <p class="p"><b>Aqui:</b> o SDR faz o primeiro contato, a R1 inteira e marca a R2 com o especialista. SDR forte enche a agenda do Closer de família pronta.</p>
-      <p class="x"><b>O card avisa:</b> SDR não é só volume. Qualidade de abordagem também define resultado.</p>
-    </figcaption>
-  </figure>
-  <p>O SDR não vende a Assessoria. Ele faz a R1 e entrega pro Closer uma família que já falou da própria dor, já conhece o gerente de carreira e o Zyron, já sabe que o atleta foi escolhido e já quer ouvir o plano.</p>
-  <div class="grade">
-    <div class="peca"><span class="k">1</span><h4>Fazer o atleta se sentir escolhido</h4><p>A gente escolhe atletas como ele. Toda mensagem e toda ligação reforçam isso.</p></div>
-    <div class="peca"><span class="k">2</span><h4>Mapear tudo e mostrar o diferencial</h4><p>Contexto, dor, experiências, avaliações, gastos, locomoção e decisores. E o que ninguém mais tem: gerente de carreira e Zyron.</p></div>
-    <div class="peca"><span class="k">3</span><h4>Marcar a R2 com todos os decisores</h4><p>Pai, mãe e atleta com o especialista, já combinados de decidir na conversa.</p></div>
-  </div>
-  <h3>O caminho do lead</h3>
-  <ol class="fluxo">
-    <li><span class="p">Passo 1</span><strong>Contato em 7 min</strong><span class="d">Zyron: aprovação. Instagram: seleção.</span></li>
-    <li><span class="p">Passo 2</span><strong>R1</strong><span class="d">Call de qualificação completa.</span></li>
-    <li><span class="p">Passo 3</span><strong>Diferencial</strong><span class="d">Gerente de carreira e Zyron.</span></li>
-    <li><span class="p">Passo 4</span><strong>Perfil aprovado</strong><span class="d">"A gente escolhe atletas como você."</span></li>
-    <li><span class="p">Passo 5</span><strong>Pré-compromisso</strong><span class="d">Decidir na R2, os dois juntos.</span></li>
-    <li><span class="p">Passo 6</span><strong>R2 marcada</strong><span class="d">Com o especialista e todos os decisores.</span></li>
-    <li><span class="p">Passo 7</span><strong>CRM e repasse</strong><span class="d">Ficha completa pro Closer.</span></li>
-  </ol>
-  <h3>Por que agenda é tudo</h3>
-  <figure class="ref">
-    <button class="ref-img" type="button" data-full="cards/inside-sales.png"><img data-card="cards/inside-sales.png" alt="Card Inside Sales: 40 reuniões, 12 propostas, 5 vendas" loading="lazy"></button>
-    <figcaption>
-      <p class="tag">Card · Inside Sales</p>
-      <p class="fx">Inside Sales = Qualificação + Apresentação + Fechamento</p>
-      <p class="fr">↳ 40 reuniões → 12 propostas → <u>5 vendas</u></p>
-      <p class="o"><b>O que é:</b> venda remota e consultiva, por telefone, vídeo ou WhatsApp, com processo, roteiro e acompanhamento.</p>
-      <p class="p"><b>Aqui:</b> é o modelo da operação inteira. O Closer só fecha o que o SDR qualifica e agenda. Mais R2 com família pronta, mais venda.</p>
-      <p class="x"><b>O card avisa:</b> Inside Sales não é só fazer ligação. Sem processo e follow up, a conversão cai.</p>
-    </figcaption>
-  </figure>
-  <div class="cartao"><div><span class="tit">Tática</span>As pessoas amam comprar, mas odeiam vendedor. O SDR fala como quem seleciona, não como quem oferece. Quem precisa da vaga é o atleta.</div></div>
-</section>
-
-<section id="diferencial">
-  <h2><span class="num">02</span>O que ninguém mais tem</h2>
-  <p class="destaque">Escolinha treina. Peneira decide no olhômetro. Empresário liga quando dá. <em>Aqui o atleta é analisado com dados reais e acompanhado todo dia.</em></p>
-  <div class="duas">
-    <div class="coluna forte">
-      <h4>Gerente de carreira</h4>
-      <p>Cada atleta tem um gerente de carreira: o <var>nome do gerente</var>, o responsável por revelar centenas de jogadores. Ele acompanha o desenvolvimento do atleta todo dia: evolução, treino, próximos passos e a hora certa de levar ele pros clubes.</p>
-    </div>
-    <div class="coluna forte">
-      <h4>Zyron, o mecanismo exclusivo</h4>
-      <p>O Zyron analisa o atleta com dados reais, não no olhômetro, que é o caminho que os clubes estão seguindo com a inteligência artificial. Depois que ele entra, coloca um agente específico só pra ele, que vai acompanhando a evolução e mantendo contato o tempo todo, pra ele ter sempre o melhor resultado possível. Nada passa batido. É por esse mecanismo que a gente revela os nossos jogadores.</p>
-    </div>
-  </div>
-  <div class="cartao vd"><div><span class="tit">Regra de ouro</span>Filtro na entrada, gerente de carreira todo dia e o Zyron acompanhando o tempo todo. É assim que a casa chega nos 95% de encaminhamento. O SDR fala disso em toda R1 e em todo "quanto custa?".</div></div>
-  <h3>Como falar disso</h3>
-  <div class="gat"><span>Mecanismo único</span><span>Autoridade</span><span>Exclusividade</span></div>
-  <div class="falas">
-    <div class="fala chave"><span class="quem">SDR</span><p>Aqui o <var>atleta</var> não fica solto. Ele vai ter um gerente de carreira, o <var>nome do gerente</var>, que já revelou centenas de jogadores, acompanhando o desenvolvimento dele todo dia.</p></div>
-    <div class="fala chave"><span class="quem">SDR</span><p>E vai ter o Zyron, o nosso mecanismo exclusivo: um agente específico só pra ele, acompanhando e mantendo contato o tempo todo, pra ele ter sempre o melhor resultado possível. Isso não existe em escolinha, em peneira, em lugar nenhum.</p></div>
-    <div class="fala chave"><span class="quem">SDR</span><p>Peneira é olhômetro: um avaliador, um monte de garoto e vinte minutos de coletivo. Hoje, com inteligência artificial, os clubes estão cada vez mais escolhendo atleta por dados reais. O Zyron analisa o <var>atleta</var> assim, e é por esse mecanismo que a gente revela os nossos jogadores.</p></div>
-    <div class="fala"><span class="quem">Lead do Zyron</span><p>É o mesmo Zyron que avaliou o <var>atleta</var>. A diferença é que, dentro da assessoria, ele passa a acompanhar ele todo dia.</p></div>
-    <div class="fala"><span class="quem">Pro atleta</span><p><var>atleta</var>, gerente de carreira te acompanhando todo dia e um agente só teu no Zyron. Isso é estrutura de atleta profissional.</p></div>
-  </div>
-  <p class="nota">Onde entra: na R1 (6.11), no "quanto custa?" (8.1), no follow up e sempre que a família comparar com escolinha ou peneira.</p>
-</section>
-
-<section id="origem">
-  <h2><span class="num">03</span>Zyron ou Instagram</h2>
-  <p>Nem todo atleta chega com avaliação. O SDR abre de um jeito pra cada origem, e em todos os casos a R1 termina com o atleta aprovado, mesmo quando isso só acontece numa segunda ligação.</p>
-  <div class="duas">
-    <div class="coluna">
-      <h4>Veio do Zyron</h4>
-      <p>O atleta já passou pela avaliação do app e o SDR tem os dados dele. Abre com a notícia da aprovação e cita um dado específico da avaliação. A R1 aprofunda dor, gastos, locomoção e decisores.</p>
-    </div>
-    <div class="coluna">
-      <h4>Veio do formulário do Instagram</h4>
-      <p>Chega sem informação prévia. O SDR abre pela seleção ("teu cadastro chegou pra mim") e a própria R1 vira a avaliação: coleta tudo e, no fim, devolve o perfil aprovado.</p>
-    </div>
-    <div class="coluna">
-      <h4>Veio muito frio, sem vídeo</h4>
-      <p>Chega sem avaliação e sem nem um vídeo do atleta jogando. O SDR mantém o controle: abre pela escassez, pede o vídeo (o "DVD") e recua. A R1 só acontece depois, no retorno, já com o atleta aprovado.</p>
-    </div>
-  </div>
-  <figure class="ref">
-    <button class="ref-img" type="button" data-full="cards/lead-magnet.png"><img data-card="cards/lead-magnet.png" alt="Card Lead Magnet: oferta de valor, formulário e captura de lead" loading="lazy"></button>
-    <figcaption>
-      <p class="tag">Card · Lead magnet</p>
-      <p class="fx">Lead magnet = Oferta de valor + Formulário + Captura de lead</p>
-      <p class="fr">↳ 1.000 visitas → 220 leads = <u>22% de conversão</u></p>
-      <p class="o"><b>O que é:</b> um material gratuito e de valor oferecido em troca dos dados do lead.</p>
-      <p class="p"><b>Aqui:</b> a avaliação do Zyron é o nosso lead magnet. O atleta ganha a avaliação, a gente ganha os dados e o primeiro "sim". Por isso a abertura já vem com resultado.</p>
-      <p class="x"><b>O card avisa:</b> lead magnet genérico atrai lead fraco. Foque em um problema real e uma promessa clara.</p>
-    </figcaption>
-  </figure>
-  <figure class="ref">
-    <button class="ref-img" type="button" data-full="cards/social-selling.png"><img data-card="cards/social-selling.png" alt="Card Social Selling: conteúdo, relacionamento e oportunidades" loading="lazy"></button>
-    <figcaption>
-      <p class="tag">Card · Social selling</p>
-      <p class="fx">Social selling = Conteúdo + Relacionamento + Oportunidades</p>
-      <p class="fr">↳ conteúdo frequente + conversa no direct + confiança = <u>oportunidade qualificada</u></p>
-      <p class="o"><b>O que é:</b> usar as redes pra criar relacionamento e gerar oportunidade. A venda vem da confiança e da autoridade.</p>
-      <p class="p"><b>Aqui:</b> o lead do formulário do Instagram. Ele já viu nosso conteúdo. O SDR continua a conversa como gente, sem script frio.</p>
-      <p class="x"><b>O card avisa:</b> social selling não é só postar. É preciso conversar, nutrir e conduzir pro próximo passo.</p>
-    </figcaption>
-  </figure>
-  <h3>Munição antes do primeiro contato</h3>
-  <div class="tbl"><table>
-    <thead><tr><th>O que separar</th><th>Zyron</th><th>Instagram</th><th>Frio, sem vídeo</th></tr></thead>
-    <tbody>
-      <tr><td>Um ponto forte específico</td><td>Dado da avaliação do app</td><td>Posts e vídeos do perfil, se houver</td><td>Ainda não tem, só depois do vídeo</td></tr>
-      <tr><td>Nome do atleta e do responsável</td><td>Cadastro do Zyron</td><td>Formulário</td><td>O que veio no contato</td></tr>
-      <tr><td>Caso mais parecido</td><td>Seção 13</td><td>Seção 13, depois da R1</td><td>Seção 13, no retorno com o vídeo</td></tr>
-      <tr><td>Link da publicação na AGN Football</td><td colspan="3">Seção 13</td></tr>
-    </tbody>
-  </table></div>
-
-  <div class="passo">
-    <h3>Lead muito frio, sem vídeo</h3>
-    <p class="nota">Aquecimento "frio" no CRM (ver <code>NEGOCIO.md</code>): chega sem avaliação do Zyron e sem nem um vídeo do atleta jogando. Aqui a R1 não acontece na primeira ligação: o SDR mantém o controle, pede o vídeo (o "DVD") e só marca a R1 depois de analisar. Regra: nunca falar de plano, de R2 ou de aprovação antes do vídeo chegar e ser analisado pelo Zyron e pelo especialista.</p>
-    <p class="rot">Abertura</p>
-    <div class="gat"><span>Escassez</span><span>Controle</span><span>Autoridade</span></div>
-    <div class="falas">
-      <div class="fala"><span class="quem">SDR</span><p>Oi <var>responsável</var>, tudo bem? Aqui é o <var>SDR</var>, da <var>empresa</var>.</p></div>
-      <div class="fala chave"><span class="quem">SDR</span><p>Olha, a gente não pega qualquer atleta: a gente é seletivo com quem entra pra avaliação, porque a turma é fechada. Pelo que me passaram, o <var>atleta</var> tem potencial, mas antes de qualquer coisa eu preciso ver ele jogando de verdade, não só ouvir falar.</p></div>
-      <div class="fala"><span class="quem">SDR</span><p>Me manda o DVD dele: um vídeo do <var>atleta</var> jogando, de jogo ou de treino, uns <var>minutos</var> minutos. Assim que eu tiver isso em mãos, eu levo pro Zyron e pro nosso especialista analisarem.</p></div>
-    </div>
-    <p class="rot">Recuo controlado</p>
-    <div class="gat"><span>Escassez</span><span>Autoridade</span></div>
-    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Assim que eu receber o vídeo, eu levo pro Zyron analisar com dados reais, não no olhômetro, e pro especialista dar o parecer dele. Isso leva uns <var>prazo</var>. Eu te chamo assim que sair o resultado.</p></div></div>
-    <p class="nota">Sem vídeo, o SDR não avança: nada de marcar R1, nada de falar de plano. Quem fica na expectativa aqui é a família, não o SDR.</p>
-    <p class="rot">Retorno com o relatório</p>
-    <div class="gat"><span>Reciprocidade</span><span>Escassez</span><span>Prova</span><span>Autoridade</span></div>
-    <div class="falas">
-      <div class="fala chave"><span class="quem">SDR</span><p><var>responsável</var>, boa notícia: o Zyron analisou o jogo do <var>atleta</var> e o especialista também deu o parecer. Ele passou: é exatamente o perfil que a gente procura.</p></div>
-      <div class="fala"><span class="quem">SDR</span><p>Agora eu preciso de uns 20 minutos com vocês pra fechar a ficha dele antes de passar pro especialista. Consegue agora, ou fica melhor <var>hora</var> ou <var>hora</var>?</p></div>
-    </div>
-    <p class="nota">Daqui em diante segue o mesmo caminho do lead do Zyron: R1 com o atleta já aprovado, terminando do mesmo jeito que qualquer outra (perfil aprovado, pré-compromisso, R2 marcada).</p>
-  </div>
-
-  <div class="cartao vd"><div><span class="tit">Regra de ouro</span>Com ou sem Zyron, ou depois do retorno do vídeo, a R1 termina com o atleta aprovado. Nenhuma frase coloca o perfil dele em dúvida.</div></div>
-  <p class="nota">Webinário e conversão direta estão no glossário (seção 14). Conversão direta não serve pra Assessoria: aqui a venda sempre passa pela R1 e pela R2.</p>
-</section>
-
-<section id="velocidade">
-  <h2><span class="num">04</span>Lead speed</h2>
-  <figure class="ref">
-    <button class="ref-img" type="button" data-full="cards/lead-speed.png"><img data-card="cards/lead-speed.png" alt="Card Lead Speed: lead entrou 10:00, contato 10:07, 7 minutos" loading="lazy"></button>
-    <figcaption>
-      <p class="tag">Card · Lead speed</p>
-      <p class="fx">Lead speed = tempo entre o lead entrar e o time responder</p>
-      <p class="fr">↳ lead entrou 10:00 e recebeu contato 10:07 = <u>7 minutos</u></p>
-      <p class="o"><b>O que é:</b> a velocidade do primeiro contato. Quanto menor o tempo, maior a chance de conexão e de conversa.</p>
-      <p class="p"><b>Aqui:</b> meta de 7 minutos. O atleta que acabou de fazer a avaliação ou mandar o formulário tá no pico da vontade.</p>
-      <p class="x"><b>O card manda:</b> não deixe lead novo parado. Velocidade é parte da performance comercial.</p>
-    </figcaption>
-  </figure>
-  <div class="placar" aria-label="Lead entrou 10:00, primeiro contato 10:07">
-    <div><div class="l">Lead entrou</div><div class="h">10:00</div></div>
-    <div class="seta">→</div>
-    <div><div class="l">Primeiro contato</div><div class="h">10:07</div></div>
-    <div class="res">7 min</div>
-  </div>
-  <div class="cartao vd"><div><span class="tit">Regra de ouro</span>Primeiro contato em até 7 minutos. Se atender, a R1 começa na hora. Não atendeu: áudio e mensagem, e nova ligação em 2 horas.</div></div>
-</section>
-
-<section id="contato">
-  <h2><span class="num">05</span>Primeiro contato</h2>
-  <p>Mensagem curta, uma pergunta por vez. O primeiro contato tem um objetivo só: começar a R1, agora ou num dos dois horários.</p>
-
-  <h3>Lead do Zyron</h3>
-  <div class="gat"><span>Exclusividade</span><span>Escolha alternativa</span></div>
-  <div class="falas">
-    <div class="fala"><span class="quem">SDR</span><p>Oi <var>responsável</var>, tudo bem? Aqui é o <var>SDR</var>, da <var>empresa</var>. Tenho uma notícia boa: o <var>atleta</var> passou na avaliação do Zyron.</p></div>
-    <div class="fala"><span class="quem">SDR</span><p>O Zyron analisa dados reais do jogo, não é olhômetro de peneira. E o que mais chamou atenção foi <var>dado específico da avaliação</var>. É exatamente o perfil que a gente procura.</p></div>
-    <div class="fala"><span class="quem">SDR</span><p>Agora eu preciso de uns 20 minutos com vocês pra fechar a ficha dele antes de passar pro especialista. Consegue agora, ou fica melhor <var>hora</var> ou <var>hora</var>?</p></div>
-  </div>
-
-  <h3>Lead do formulário do Instagram</h3>
-  <div class="gat"><span>Exclusividade</span><span>Curiosidade</span></div>
-  <div class="falas">
-    <div class="fala"><span class="quem">SDR</span><p>Oi <var>nome</var>, tudo bem? Aqui é o <var>SDR</var>, da <var>empresa</var>. Teu cadastro pelo nosso Instagram chegou pra mim.</p></div>
-    <div class="fala"><span class="quem">SDR</span><p>A gente faz assessoria individual de atletas e escolhe com quem trabalha. Pra levar teu perfil pro especialista, eu preciso de uns 20 minutos contigo e com teu responsável. Consegue agora, ou fica melhor <var>hora</var> ou <var>hora</var>?</p></div>
-    <div class="fala"><span class="quem">SDR</span><p>Se tiver, já me manda um vídeo teu jogando.</p></div>
-  </div>
-  <div class="cartao vd"><div><span class="tit">Regra de ouro</span>Sempre dois horários. Nunca "quando vocês podem?". Sem resposta em 2 horas: liga.</div></div>
-</section>
-
-<section id="r1">
-  <h2><span class="num">06</span>R1 · Call de qualificação</h2>
-  <figure class="ref">
-    <button class="ref-img" type="button" data-full="cards/r1.png"><img data-card="cards/r1.png" alt="Card R1: contato inicial, diagnóstico e próximo passo" loading="lazy"></button>
-    <figcaption>
-      <p class="tag">Card · R1</p>
-      <p class="fx">R1 = Contato inicial + Diagnóstico + Próximo passo</p>
-      <p class="fr">↳ entendeu cenário + mapeou dor + marcou avanço = <u>boa R1</u></p>
-      <p class="o"><b>O que é:</b> Reunião 1, o primeiro encontro comercial, pra diagnóstico e qualificação. Serve pra entender contexto, problema, urgência e aderência. Não é apresentação, é investigação.</p>
-      <p class="p"><b>Aqui:</b> a R1 é do SDR. Sai dela com a dor mapeada, o perfil aprovado, o pré-compromisso e a R2 marcada.</p>
-      <p class="x"><b>O card avisa:</b> R1 não deve virar monólogo. Quem fala mais é o cliente, não o vendedor.</p>
-    </figcaption>
-  </figure>
-  <figure class="ref">
-    <button class="ref-img" type="button" data-full="cards/sandler.png"><img data-card="cards/sandler.png" alt="Card Método Sandler: rapport, dor, impacto e compromisso" loading="lazy"></button>
-    <figcaption>
-      <p class="tag">Card · Método Sandler</p>
-      <p class="fx">Sandler = Rapport + Dor + Impacto + Compromisso</p>
-      <p class="fr">↳ entendeu a dor + mediu impacto + validou próximo passo = <u>avanço</u></p>
-      <p class="o"><b>O que é:</b> abordagem consultiva que explora dor, impacto e compromisso antes da proposta. Quando a dor fica clara, o valor da solução faz sentido.</p>
-      <p class="p"><b>Aqui:</b> é a ordem da R1. Rapport na abertura, dor no diagnóstico, impacto no "se continuar assim", compromisso no pré-compromisso e na R2 marcada.</p>
-      <p class="x"><b>O card avisa:</b> não apresente proposta cedo demais. Primeiro entenda o problema e o custo de não resolver.</p>
-    </figcaption>
-  </figure>
-  <figure class="ref">
-    <button class="ref-img" type="button" data-full="cards/sql.png"><img data-card="cards/sql.png" alt="Card SQL: lead, interesse real, perfil e momento" loading="lazy"></button>
-    <figcaption>
-      <p class="tag">Card · SQL</p>
-      <p class="fx">SQL = Lead + Interesse real + Perfil + Momento</p>
-      <p class="fr">↳ pediu contato + tem perfil ideal + quer avançar = <u>SQL</u></p>
-      <p class="o"><b>O que é:</b> Sales Qualified Lead. O lead qualificado e pronto pra conversa comercial.</p>
-      <p class="p"><b>Aqui:</b> perfil o atleta já tem. A R1 confirma interesse real, momento e decisores. Quem sai da R1 assim vira R2.</p>
-      <p class="x"><b>O card avisa:</b> passe pra vendas só quem realmente está pronto. SQL bem definido aumenta a chance de fechamento.</p>
-    </figcaption>
-  </figure>
-  <p>20 a 30 minutos, com o atleta e pelo menos um responsável. Tudo o que a família responde vai pro CRM (seção 12).</p>
-
-  <h3>O que a R1 precisa descobrir</h3>
-  <div class="grade mini4">
-    <div class="peca"><h4>Nomes</h4><p>Pai, mãe, atleta e quem mais decide.</p></div>
-    <div class="peca"><h4>Contexto</h4><p>Idade, cidade, onde treina, rotina.</p></div>
-    <div class="peca"><h4>Experiências</h4><p>Times, federação, posição.</p></div>
-    <div class="peca"><h4>Avaliações</h4><p>Quantas peneiras fez e em quantas foi visto de verdade.</p></div>
-    <div class="peca"><h4>Dor</h4><p>O porquê real, e o tipo: financeira, emocional ou tempo.</p></div>
-    <div class="peca"><h4>Gastos</h4><p>Quanto já investiram no sonho.</p></div>
-    <div class="peca"><h4>Locomoção</h4><p>Como ele vai pra outro estado quando o clube chamar.</p></div>
-    <div class="peca"><h4>Decisores</h4><p>Quem decide, como decide, telefone.</p></div>
-  </div>
-
-  <p class="bloco">Abertura · Rapport</p>
-  <div class="passo">
-    <h3><span class="num">6.1</span>Pedir licença e dar o motivo</h3>
-    <div class="falas">
-      <div class="fala"><span class="quem">SDR</span><p>Oi <var>responsável</var>, aqui é o <var>SDR</var>, da <var>empresa</var>. Te peguei numa hora ruim?</p></div>
-      <div class="fala"><span class="quem">Zyron</span><p>Rapidinho: o <var>atleta</var> passou na avaliação do Zyron, e antes de passar a ficha dele pro especialista eu preciso conhecer vocês.</p></div>
-      <div class="fala"><span class="quem">Instagram</span><p>Rapidinho: o cadastro do <var>atleta</var> chegou pra mim, e antes de levar o perfil dele pro especialista eu preciso conhecer vocês.</p></div>
-    </div>
-    <p class="nota">Pedir licença tira a defensiva (Predictable Revenue). Hora ruim: "Te ligo às <var>hora</var> ou às <var>hora</var>?" Nunca "te ligo depois".</p>
-  </div>
-  <div class="passo">
-    <h3><span class="num">6.2</span>Trazer o atleta</h3>
-    <div class="gat"><span>Exclusividade</span></div>
-    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>O <var>atleta</var> tá aí? Coloca ele no viva-voz, que eu quero falar com ele também.</p></div></div>
-  </div>
-
-  <p class="bloco">Diagnóstico · Dor</p>
-  <div class="passo">
-    <h3><span class="num">6.3</span>Contexto e experiências</h3>
-    <ul class="lista">
-      <li>"<var>atleta</var>, quantos anos você tem e onde você mora?"</li>
-      <li>"Joga em que posição? Qual teu pé bom?"</li>
-      <li>"Onde você treina hoje? Quantas vezes por semana?"</li>
-      <li>"Já jogou em quais times? Chegou a ser federado?"</li>
-    </ul>
-  </div>
-  <div class="passo">
-    <h3><span class="num">6.4</span>Avaliações: a dor de não ser visto</h3>
-    <p>Essa é a dor mais forte do atleta: fazer peneira atrás de peneira e nunca ser visto de verdade. O SDR entra fundo aqui, sem pressa.</p>
-    <div class="gat"><span>Empatia</span><span>Aversão à perda</span></div>
-    <ol class="lista">
-      <li>"Quantas peneiras ou avaliações você já fez?"</li>
-      <li>"Em quais clubes?"</li>
-      <li>"E em quantas delas você sentiu que alguém te observou de verdade?"</li>
-      <li>"Quantos garotos tinham lá com você?"</li>
-      <li>"Quanto tempo você jogou pra ser avaliado? Um coletivo de 20 minutos?"</li>
-      <li>"O que te disseram na saída?"</li>
-    </ol>
-    <p class="rot">Conexão</p>
-    <div class="falas">
-      <div class="fala"><span class="quem">SDR</span><p>Eu sei exatamente como é. Eu já passei por isso: dar o meu melhor numa peneira e sair sem saber se alguém sequer me viu.</p></div>
-      <div class="fala outro"><span class="quem">Se nunca jogou</span><p>Aqui na equipe a gente vê isso toda semana. Centenas de atletas chegaram até a gente com essa mesma história.</p></div>
-    </div>
-    <p class="rot">A pergunta óbvia</p>
-    <div class="falas">
-      <div class="fala chave"><span class="quem">SDR</span><p>Me fala uma coisa, com sinceridade: você acha que, no olhômetro, o avaliador de uma peneira consegue analisar todos aqueles garotos com precisão?</p></div>
-      <div class="fala outro"><span class="quem">Atleta</span><p>Não.</p></div>
-      <div class="fala"><span class="quem">SDR</span><p>Não consegue. Se ele olhou pro outro lado na hora do teu melhor lance, pra ele esse lance não existiu.</p></div>
-    </div>
-    <p class="rot">A virada</p>
-    <div class="gat"><span>Mecanismo único</span><span>Autoridade</span></div>
-    <div class="falas">
-      <div class="fala chave"><span class="quem">SDR</span><p>Hoje, com inteligência artificial, os clubes estão cada vez mais escolhendo atleta com base em dados reais, e não no olhômetro. E é assim que a gente revela os nossos jogadores: pelo Zyron.</p></div>
-    </div>
-    <p class="nota">Anota no CRM quantas avaliações ele fez e em quantas se sentiu observado de verdade. O Closer usa esses dois números na R2.</p>
-  </div>
-  <div class="passo">
-    <h3><span class="num">6.5</span>Sonho e dor do atleta</h3>
-    <ul class="lista">
-      <li>"Em que time você sonha jogar?"</li>
-      <li>"O que você sente que tá faltando pra você chegar lá?"</li>
-      <li>"Se a oportunidade aparecer amanhã, você tá pronto?"</li>
-    </ul>
-    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Isso que você falou de <var>resposta dele</var> bate com o que eu vi aqui: <var>observação real</var>.</p></div></div>
-    <figure class="ref">
-      <button class="ref-img" type="button" data-full="cards/valor-percebido.png"><img data-card="cards/valor-percebido.png" alt="Card Valor percebido: solução, transformação e resultado final" loading="lazy"></button>
-      <figcaption>
-        <p class="tag">Card · Valor percebido</p>
-        <p class="fx">Valor percebido = Solução + Transformação + Resultado final</p>
-        <p class="fr">↳ menos foco no que a gente faz + mais foco em quem ele vira = <u>oferta mais valiosa</u></p>
-        <p class="o"><b>O que é:</b> o quanto a família entende que o resultado vale mais do que qualquer objeção.</p>
-        <p class="p"><b>Aqui:</b> o SDR nunca fala de entregável (relatório, acesso, chamada). Fala do atleta vestindo a camisa do clube do sonho, do resultado final, sem citar preço.</p>
-        <p class="x"><b>O card avisa:</b> quem vende só entregável enfraquece a percepção de valor da oferta.</p>
-      </figcaption>
-    </figure>
-    <p class="rot">Virada de valor percebido</p>
-    <div class="gat"><span>Futuro imaginado</span></div>
-    <div class="falas"><div class="fala chave"><span class="quem">SDR</span><p><var>atleta</var>, imagina você entrando em campo com a camisa do <var>clube dos sonhos</var>, sabendo que teve um gerente de carreira e o Zyron cuidando de cada detalhe até ali. É isso que a gente constrói, não só mais um treino.</p></div></div>
-    <p class="nota">Sem citar preço: o SDR pinta o resultado final, nunca o meio do caminho.</p>
-  </div>
-  <div class="passo">
-    <h3><span class="num">6.6</span>Dor da família e impacto</h3>
-    <div class="gat"><span>Aversão à perda</span></div>
-    <ul class="lista">
-      <li>"Na visão de vocês, o que falta pra ele?"</li>
-      <li>"E por que isso é importante pra vocês agora?" Pergunta "por quê?" até chegar na dor real.</li>
-      <li>"Se continuar assim, onde vocês acham que ele vai estar daqui a um ano?"</li>
-      <li>"E quanto tempo mais vocês estão dispostos a esperar?"</li>
-      <li>"O que mudaria pra família se ele virasse profissional?"</li>
-    </ul>
-    <p>Anota a dor com as palavras deles e marca o tipo no CRM:</p>
-    <div class="grade">
-      <div class="peca"><h4>Financeira</h4><p>"Seria a mudança de vida da família." O Closer trabalha o cenário de salário e mudança de vida.</p></div>
-      <div class="peca"><h4>Emocional</h4><p>"Ele tá desanimado, já ouviu muito não." O Closer trabalha o sonho.</p></div>
-      <div class="peca"><h4>Tempo e idade</h4><p>"Tá ficando tarde pra ele." O Closer trabalha a janela da base.</p></div>
-    </div>
-  </div>
-  <div class="passo">
-    <h3><span class="num">6.7</span>Gastos</h3>
-    <div class="falas"><div class="fala chave"><span class="quem">Obrigatória</span><p>Quanto vocês já investiram nesse sonho até hoje? Escolinha, chuteira, viagem pra peneira, avaliação?</p></div></div>
-    <p class="nota">Esse número é a régua do preço na R2. Quem dá a comparação é a própria família.</p>
-  </div>
-  <div class="passo">
-    <h3><span class="num">6.8</span>Locomoção</h3>
-    <div class="gat"><span>Futuro imaginado</span></div>
-    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Quando o <var>atleta</var> for pro clube, pode ser em outro estado. Ele tem condição de ir? Alguém da família acompanha, ou ele vai sozinho?</p></div></div>
-    <p class="nota">Pergunta com "quando", nunca com "se". A família já começa a imaginar ele no clube.</p>
-  </div>
-  <div class="passo">
-    <h3><span class="num">6.9</span>Decisores</h3>
-    <figure class="ref">
-      <button class="ref-img" type="button" data-full="cards/bant.png"><img data-card="cards/bant.png" alt="Card Método BANT: budget, authority, need e timing" loading="lazy"></button>
-      <figcaption>
-        <p class="tag">Card · Método BANT</p>
-        <p class="fx">BANT = Budget + Authority + Need + Timing</p>
-        <p class="fr">↳ tem verba + decide + precisa + quer agora = <u>lead forte</u></p>
-        <p class="o"><b>O que é:</b> um jeito de qualificar por orçamento, autoridade, necessidade e tempo. Com os quatro mapeados, a previsão de venda fica confiável.</p>
-        <p class="p"><b>Aqui:</b> Need e Timing saem da dor (6.6). Authority é esta etapa: quem decide e como. Budget não se pergunta, só se anota pelos sinais.</p>
-        <p class="x"><b>O card avisa:</b> BANT não é interrogatório. Faça perguntas com contexto e escuta real.</p>
-      </figcaption>
-    </figure>
-    <ul class="lista">
-      <li>"Qual o nome do pai e da mãe do <var>atleta</var>?"</li>
-      <li>"Além de você, quem mais participa dessa decisão em casa?"</li>
-      <li>"Quando vocês decidem uma coisa importante pro <var>atleta</var>, como costuma ser? Os dois juntos?"</li>
-      <li>"Me passa o número dele(a), que eu mando a confirmação pros dois."</li>
-    </ul>
-    <p class="nota">Pro Predictable Revenue, o processo de decisão importa mais que o decisor.</p>
-  </div>
-
-  <p class="bloco">Impacto · Posicionamento e prova</p>
-  <div class="passo">
-    <h3><span class="num">6.10</span>A gente só ganha quando ele ganha</h3>
-    <div class="gat"><span>Compromisso</span><span>Reciprocidade</span></div>
-    <div class="falas">
-      <div class="fala chave"><span class="quem">SDR</span><p>Deixa eu te fazer uma pergunta: faz algum sentido pra gente, que já revelou centenas de atletas, querer lucrar em cima da senhora, do senhor ou de você, sendo que a gente ganha no contrato profissional do <var>atleta</var>?</p></div>
-      <div class="fala outro"><span class="quem">Família</span><p>Não.</p></div>
-      <div class="fala"><span class="quem">SDR</span><p>Pois é. A gente só ganha quando ele ganha. Por isso a gente escolhe muito bem com quem trabalha, e por isso cuida de cada um todo dia.</p></div>
-    </div>
-    <p class="nota">Quem responde "não" em voz alta passa a defender essa ideia. Na R2, o Closer ancora o valor em cima disso.</p>
-  </div>
-  <div class="passo">
-    <h3><span class="num">6.11</span>O diferencial</h3>
-    <div class="gat"><span>Mecanismo único</span><span>Autoridade</span></div>
-    <div class="falas">
-      <div class="fala"><span class="quem">SDR</span><p>Lembra do olhômetro da peneira? Aqui é o contrário: o <var>atleta</var> é analisado com dados reais, e acompanhado todo dia.</p></div>
-      <div class="fala chave"><span class="quem">SDR</span><p>E aqui o <var>atleta</var> não fica solto. Ele vai ter um gerente de carreira, o <var>nome do gerente</var>, que já revelou centenas de jogadores, acompanhando o desenvolvimento dele todo dia.</p></div>
-      <div class="fala chave"><span class="quem">SDR</span><p>E vai ter o Zyron, o nosso mecanismo exclusivo: um agente específico só pra ele, acompanhando e mantendo contato o tempo todo, pra ele ter sempre o melhor resultado possível. Isso não existe em escolinha, em peneira, em lugar nenhum.</p></div>
-    </div>
-  </div>
-  <div class="passo">
-    <h3><span class="num">6.12</span>Prova</h3>
-    <div class="gat"><span>Prova social</span><span>Comparação</span><span>Autoridade</span></div>
-    <div class="falas">
-      <div class="fala"><span class="quem">SDR</span><p>95% dos atletas que entram com a gente são encaminhados. Os 5% que não vão é por falta de disciplina e de compromisso.</p></div>
-      <div class="fala"><span class="quem">SDR</span><p>O perfil do <var>atleta</var> é muito parecido com o do <var>caso</var>, que a gente fechou recentemente. Foi assim com o Joãozinho, que fechou com o Grêmio, com o Kaio e com vários outros.</p></div>
-      <div class="fala"><span class="quem">SDR</span><p>A gente tá há mais de dez anos nisso e tem relação direta com a AGN Football. Tem jogador nosso publicado lá, te mando o link.</p></div>
-    </div>
-  </div>
-
-  <p class="bloco">Compromisso · Fechamento da R1</p>
-  <div class="passo">
-    <h3><span class="num">6.13</span>Perfil aprovado</h3>
-    <div class="gat"><span>Exclusividade</span></div>
-    <div class="falas">
-      <div class="fala chave"><span class="quem">SDR</span><p>Pelo que eu vi e pelo que vocês me contaram, o <var>atleta</var> tem exatamente o perfil que a gente procura. <var>atleta</var>, a gente escolhe atletas como você.</p></div>
-    </div>
-  </div>
-  <div class="passo">
-    <h3><span class="num">6.14</span>Missão do atleta</h3>
-    <div class="gat"><span>Compromisso</span></div>
-    <div class="falas"><div class="fala"><span class="quem">SDR</span><p><var>atleta</var>, na conversa com o especialista eu quero você lá, junto com teu pai e tua mãe. E quero que você fale pra eles o que me falou agora, do <var>sonho dele</var>. Combinado?</p></div></div>
-  </div>
-  <div class="passo">
-    <h3><span class="num">6.15</span>Pré-compromisso</h3>
-    <div class="gat"><span>Compromisso</span><span>Escassez</span></div>
-    <div class="falas">
-      <div class="fala chave"><span class="quem">SDR</span><p>Na conversa, o especialista vai mostrar o plano do <var>atleta</var>, com o gerente de carreira e o Zyron, e o investimento. Se fizer sentido, vocês decidem ali mesmo, os dois juntos?</p></div>
-      <div class="fala outro"><span class="quem">Família</span><p>Sim.</p></div>
-      <div class="fala"><span class="quem">SDR</span><p>Perfeito. Por isso é importante estarem os dois: é nessa conversa que a vaga dele na turma é definida.</p></div>
-    </div>
-    <p class="nota">Esse "sim" fecha a porta do "vou pensar" antes da R2. Vai pro CRM.</p>
-  </div>
-  <div class="passo">
-    <h3><span class="num">6.16</span>Agendar a R2</h3>
-    <figure class="ref">
-      <button class="ref-img" type="button" data-full="cards/r2.png"><img data-card="cards/r2.png" alt="Card R2: diagnóstico, proposta e tratativa de objeções" loading="lazy"></button>
-      <figcaption>
-        <p class="tag">Card · R2</p>
-        <p class="fx">R2 = Diagnóstico + Proposta + Tratativa de objeções</p>
-        <p class="fr">↳ entrou qualificado + viu a solução + alinhou investimento = <u>avanço</u></p>
-        <p class="o"><b>O que é:</b> Reunião 2, o encontro de avanço pra apresentar solução, proposta e decisão.</p>
-        <p class="p"><b>Aqui:</b> a R2 é do especialista (Closer). O SDR marca, com todos os decisores e o atleta.</p>
-        <p class="x"><b>O card avisa:</b> não marque R2 sem sair da R1 com dor clara e compromisso do lead.</p>
-      </figcaption>
-    </figure>
-    <div class="gat"><span>Exclusividade</span><span>Escolha alternativa</span></div>
-    <div class="falas">
-      <div class="fala"><span class="quem">SDR</span><p>Vou levar a ficha do <var>atleta</var> pro nosso especialista. Ele só recebe atleta que passou pela R1, e monta o plano individual em cima do que vocês me contaram.</p></div>
-      <div class="fala"><span class="quem">SDR</span><p>Tem que ser com <var>pai</var>, <var>mãe</var> e o <var>atleta</var> juntos. Ele tem <var>dia/hora</var> ou <var>dia/hora</var>. Qual fica melhor?</p></div>
-    </div>
-    <p class="nota">Só desliga depois do "confirmo". Os dois nomes e os dois telefones vão pro CRM.</p>
-  </div>
-
-  <h3>R1 por mensagem</h3>
-  <p>Quando o lead não atende ligação de jeito nenhum, a R1 acontece por WhatsApp: as mesmas perguntas, na mesma ordem, uma por mensagem, com áudio do SDR entre elas. Termina igual: perfil aprovado, pré-compromisso e R2 marcada.</p>
-  <div class="cartao"><div><span class="tit">Tática</span>Quem responde áudio atende ligação. Depois de três respostas: "Te ligo 5 minutinhos pra fechar tua ficha?"</div></div>
-</section>
-
-<section id="atleta">
-  <h2><span class="num">07</span>O atleta como aliado</h2>
-  <p class="destaque">Quem mais quer isso é o atleta. Saindo empolgado da R1, <em>ele mesmo cobra a família</em> até o dia da R2.</p>
-  <p>É o princípio do Predictable Revenue: ganhe primeiro o aliado de dentro, depois quem decide. E o do social selling: pessoas compram de pessoas.</p>
-  <ol class="lista">
-    <li><strong>Falar direto com ele</strong> e dizer que ele foi escolhido.</li>
-    <li><strong>Fazer ele falar do sonho e do que falta.</strong> Quem fala se compromete.</li>
-    <li><strong>Devolver algo específico do jogo dele.</strong> Ele precisa sentir que alguém olhou de verdade.</li>
-    <li><strong>Mostrar a estrutura:</strong> gerente de carreira e agente do Zyron só dele. Isso é coisa de profissional.</li>
-    <li><strong>Dar a missão:</strong> estar na R2 e falar pros pais o que falou pro SDR.</li>
-    <li><strong>Áudio depois da R1</strong>, se o contato for dele.</li>
-  </ol>
-  <div class="falas"><div class="fala"><span class="quem">Áudio</span><p>Parabéns de novo, <var>atleta</var>. Te espero <var>dia</var> às <var>hora</var> com teu pai e tua mãe. Leva a vontade que você me mostrou hoje.</p></div></div>
-  <div class="cartao"><div><span class="tit">Tática</span>Família esfriou? Se o contato for do próprio atleta, é com ele que o SDR retoma primeiro. O entusiasmo dele reabre a conversa dentro de casa.</div></div>
-</section>
-
-<section id="objecoes">
-  <h2><span class="num">08</span>Objeções no SDR</h2>
-  <p>O SDR não negocia. Ele contorna com valor e volta pro próximo passo: começar a R1 ou marcar a R2, sempre com dois horários.</p>
-  <div class="chips"><span>1. Acolher</span><span>2. Responder com valor</span><span>3. Voltar pro próximo passo</span></div>
-
-  <article class="objecao">
-    <h3><span class="num">8.1</span>"Quanto custa?"</h3>
-    <div class="gat"><span>Mecanismo único</span><span>Autoridade</span><span>Reciprocidade</span></div>
-    <div class="falas">
-      <div class="fala"><span class="quem">SDR</span><p>Cada perfil é individual, então o plano do <var>atleta</var> é montado pra ele, e o investimento vem junto com o plano.</p></div>
-      <div class="fala chave"><span class="quem">SDR</span><p>Mas olha o que entra nisso: ele vai ter um gerente de carreira, o <var>nome do gerente</var>, que já revelou centenas de jogadores, acompanhando o desenvolvimento dele todo dia. E o Zyron, o nosso mecanismo exclusivo, com um agente específico só pra ele, acompanhando e mantendo contato pra ele ter sempre o melhor resultado possível.</p></div>
-      <div class="fala"><span class="quem">SDR</span><p>E pensa comigo: faz algum sentido pra gente querer lucrar em cima de vocês, sendo que a gente ganha no contrato profissional dele?</p></div>
-      <div class="fala"><span class="quem">SDR</span><p>O especialista te mostra o plano e o valor juntos, na conversa. Fica melhor <var>dia/hora</var> ou <var>dia/hora</var>?</p></div>
-    </div>
-    <p class="rot">Se insistir</p>
-    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Te passar um número solto agora seria injusto com o <var>atleta</var>. Sem ver o plano, você compara com mensalidade de escolinha, e aqui ele tem gerente de carreira todo dia e um agente do Zyron só dele. Não tem nada a ver. Em 30 minutos você vê tudo e decide. <var>dia/hora</var>?</p></div></div>
-    <p class="nota">O SDR nunca passa preço. Proposta tem que ser conquistada (Predictable Revenue).</p>
-  </article>
-
-  <article class="objecao">
-    <h3><span class="num">8.2</span>"Preciso ver com meu marido / minha esposa"</h3>
-    <p>No SDR isso é ótimo: é a deixa pra colocar os dois na R2.</p>
-    <div class="falas">
-      <div class="fala"><span class="quem">SDR</span><p>Perfeito, é exatamente por isso que a conversa com o especialista é com vocês dois. Qual horário vocês dois conseguem juntos?</p></div>
-      <div class="fala"><span class="quem">SDR</span><p>Me passa o número dele(a)? Mando a confirmação pros dois.</p></div>
-    </div>
-  </article>
-
-  <article class="objecao">
-    <h3><span class="num">8.3</span>"Isso é golpe?" · "É peneira paga?"</h3>
-    <div class="gat"><span>Autoridade</span><span>Prova social</span></div>
-    <div class="falas">
-      <div class="fala"><span class="quem">SDR</span><p>Pergunta justa. Tem muita coisa errada nesse meio, e é por isso que a gente trabalha diferente. Mais de dez anos, centenas de atletas revelados, 95% de encaminhamento e relação direta com a AGN Football. O Joãozinho fechou com o Grêmio, o Kaio também passou por aqui.</p></div>
-      <div class="fala"><span class="quem">SDR</span><p>Peneira paga cobra pra olhar o menino um dia, no olhômetro. Aqui ele é analisado com dados reais pelo Zyron, tem gerente de carreira todo dia, e a gente só ganha quando ele assina contrato.</p></div>
-    </div>
-  </article>
-
-  <article class="objecao">
-    <h3><span class="num">8.4</span>"Vou pensar" · "Agora não é o momento"</h3>
-    <div class="gat"><span>Aversão à perda</span><span>Urgência</span></div>
-    <div class="falas">
-      <div class="fala"><span class="quem">SDR</span><p>Pensar sobre o quê exatamente? A conversa com o especialista é justamente pra vocês decidirem com o plano do <var>atleta</var> na mão.</p></div>
-      <div class="fala"><span class="quem">Se for momento</span><p>Com <var>idade</var> anos, cada mês conta. O <var>caso</var> entrou com <var>idade do caso</var> e em <var>tempo</var> tava no <var>clube</var>.</p></div>
-    </div>
-  </article>
-
-  <article class="objecao">
-    <h3><span class="num">8.5</span>"Me manda as informações por aqui"</h3>
-    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Não tem folder porque não é pacote: o plano é montado pro <var>atleta</var>, com gerente de carreira e agente do Zyron dele. Por isso a conversa. <var>dia/hora</var> ou <var>dia/hora</var>?</p></div></div>
-  </article>
-
-  <article class="objecao">
-    <h3><span class="num">8.6</span>"Não tenho tempo"</h3>
-    <div class="falas">
-      <div class="fala"><span class="quem">SDR</span><p>É rápido e no horário de vocês. Pode ser à noite ou no fim de semana. Qual fica melhor?</p></div>
-      <div class="fala"><span class="quem">SDR</span><p>E depois que o <var>atleta</var> entra, quem corre atrás é a gente. Vocês não vão precisar tirar tempo do trabalho pra tocar isso.</p></div>
-    </div>
-  </article>
-
-  <article class="objecao">
-    <h3><span class="num">8.7</span>"Ele já tem empresário" · "Já tá num clube"</h3>
-    <div class="gat"><span>Mecanismo único</span></div>
-    <div class="falas">
-      <div class="fala"><span class="quem">SDR</span><p>Ótimo, isso mostra que ele tem nível. Me diz uma coisa: tem alguém acompanhando o desenvolvimento dele todo dia? Nesse último ano, em quantos testes ele foi levado?</p></div>
-      <div class="fala"><span class="quem">SDR</span><p>Aqui ele teria gerente de carreira todo dia e um agente do Zyron só dele. O especialista te mostra o que muda.</p></div>
-    </div>
-  </article>
-
-  <article class="objecao">
-    <h3><span class="num">8.8</span>"Ele é muito novo" · "Ele já tá velho"</h3>
-    <div class="gat"><span>Urgência</span><span>Comparação</span></div>
-    <div class="falas">
-      <div class="fala"><span class="quem">Novo</span><p>Novo é vantagem. O <var>caso</var> entrou com <var>idade do caso</var> e hoje tá no <var>clube</var>. Quanto antes começa, mais janela ele tem.</p></div>
-      <div class="fala"><span class="quem">Velho</span><p>É exatamente por isso que não dá pra esperar. O especialista te mostra como aproveitar a janela que ele tem agora.</p></div>
-    </div>
-  </article>
-
-  <article class="objecao">
-    <h3><span class="num">8.9</span>"Ele não pode ir pra outro estado"</h3>
-    <div class="falas">
-      <div class="fala"><span class="quem">SDR</span><p>Hoje ele não precisa ir pra lugar nenhum. Isso só acontece quando o clube chamar, e o gerente de carreira cuida disso junto com vocês.</p></div>
-      <div class="fala"><span class="quem">SDR</span><p>Me conta o que pesa mais: ele ir sozinho, ou a família não conseguir acompanhar?</p></div>
-    </div>
-    <p class="nota">A resposta vai pro CRM. O Closer trata com o cenário certo.</p>
-  </article>
-
-  <article class="objecao">
-    <h3><span class="num">8.10</span>"Vocês são tipo uma escolinha?"</h3>
-    <div class="gat"><span>Mecanismo único</span><span>Autoridade</span></div>
-    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Escolinha treina. A gente leva pro clube. Gerente de carreira todo dia, agente do Zyron só dele, 95% de encaminhamento e relação direta com a AGN Football.</p></div></div>
-  </article>
-</section>
-
-<section id="decisores">
-  <h2><span class="num">09</span>Todos os decisores na R2</h2>
-  <p class="destaque">O "preciso ver com minha esposa" nasce <em>no SDR</em>, não no Closer.</p>
-  <p>Ele aparece quando o SDR agenda a R2 com uma pessoa só e a outra fica de fora.</p>
-  <div class="cartao vd"><div><span class="tit">Regra de ouro</span>R2 só com todos os decisores e o atleta, e com o pré-compromisso de decidir na conversa. O SDR pega o nome e o número do outro responsável e manda a confirmação pros dois. Agendar com um só é exceção, e o motivo vai pro CRM.</div></div>
-</section>
-
-<section id="no-show">
-  <h2><span class="num">10</span>Anti no show</h2>
-  <figure class="ref">
-    <button class="ref-img" type="button" data-full="cards/noshow.png"><img data-card="cards/noshow.png" alt="Card No Show: 3 faltas em 10 reuniões, 30%" loading="lazy"></button>
-    <figcaption>
-      <p class="tag">Card · No show</p>
-      <p class="fx">No show = faltas ÷ reuniões marcadas × 100</p>
-      <p class="fr">↳ 3 faltas em 10 reuniões marcadas = <u>30% de no show</u></p>
-      <p class="o"><b>O que é:</b> quando o lead marca a reunião e não aparece. Esse número derruba a produtividade do time.</p>
-      <p class="p"><b>Aqui:</b> R2 que não acontece é venda perdida antes de começar. Confirmação, lembrete e valor antes da call derrubam o no show.</p>
-      <p class="x"><b>O card avisa:</b> agendar reunião sem compromisso claro aumenta muito a taxa de no show.</p>
-    </figcaption>
-  </figure>
-  <ol class="linha-tempo">
-    <li><span class="q">Ao agendar</span><div class="c">
-      <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Fechado: <var>dia</var> às <var>hora</var>, <var>pai</var>, <var>mãe</var> e o <var>atleta</var>, com o <var>especialista</var>. O horário fica reservado só pro <var>atleta</var>. Me confirma com um "confirmo"?</p></div></div>
-      <p class="nota">Sem "confirmo", não conta como agendado.</p>
-    </div></li>
-    <li><span class="q">Logo depois</span><div class="c">
-      <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Tá confirmado: <var>dia</var> às <var>hora</var>. Link da conversa: <var>link da sala</var>. E aqui o link da AGN que eu te falei: <var>link AGN</var>.</p></div></div>
-    </div></li>
-    <li><span class="q">Véspera</span><div class="c">
-      <div class="falas"><div class="fala"><span class="quem">SDR</span><p><var>responsável</var>, amanhã às <var>hora</var> é a conversa do <var>atleta</var> com o <var>especialista</var>. Ele já tá com a ficha do <var>atleta</var> e vai apresentar o plano com o gerente de carreira e o Zyron. <var>pai</var>, <var>mãe</var> e ele confirmados?</p></div></div>
-    </div></li>
-    <li><span class="q">1 hora antes</span><div class="c">
-      <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Daqui a 1 hora. Link: <var>link da sala</var>. O <var>atleta</var> tá pronto?</p></div></div>
-    </div></li>
-    <li><span class="q">Se faltar</span><div class="c">
-      <p>Liga em até 5 minutos.</p>
-      <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Aconteceu alguma coisa? O especialista tá com a ficha do <var>atleta</var> aberta. Conseguem entrar agora? Se não, hoje às <var>hora</var> ou amanhã às <var>hora</var>?</p></div></div>
-    </div></li>
-  </ol>
-</section>
-
-<section id="follow-up">
-  <h2><span class="num">11</span>Follow up</h2>
-  <figure class="ref">
-    <button class="ref-img" type="button" data-full="cards/followup.png"><img data-card="cards/followup.png" alt="Card Follow Up: contato, continuidade e próximo passo" loading="lazy"></button>
-    <figcaption>
-      <p class="tag">Card · Follow up</p>
-      <p class="fx">Follow up = Contato + Continuidade + Próximo passo</p>
-      <p class="fr">↳ ligou + mandou mensagem + retomou a conversa = <u>avanço</u></p>
-      <p class="o"><b>O que é:</b> a sequência de contatos que mantém a oportunidade viva e leva o lead pra frente.</p>
-      <p class="p"><b>Aqui:</b> a cadência abaixo. Cada toque traz algo novo: AGN, caso, diferencial, turma.</p>
-      <p class="x"><b>O card avisa:</b> não faça follow up solto. Sempre retome contexto, valor e próximo passo. Muita oportunidade se perde porque o vendedor desiste cedo demais.</p>
-    </figcaption>
-  </figure>
-  <div class="gat"><span>Aversão à perda</span><span>Escassez</span><span>Prova social</span><span>Mecanismo único</span></div>
-  <ol class="linha-tempo">
-    <li><span class="q">D0 · +2 h</span><div class="c">
-      <div class="falas"><div class="fala"><span class="quem">Áudio</span><p><var>responsável</var>, é o <var>SDR</var>. Liguei pra falar do perfil do <var>atleta</var>. Me chama aqui que eu te explico em 1 minuto.</p></div></div>
-    </div></li>
-    <li><span class="q">D1</span><div class="c">
-      <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Separei pra você ver o nível dos atletas nossos publicados na AGN Football, com quem a gente tem relação direta: <var>link AGN</var>.</p></div></div>
-    </div></li>
-    <li><span class="q">D2</span><div class="c"><p>Liga à noite, em outro horário.</p></div></li>
-    <li><span class="q">D3</span><div class="c">
-      <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Lembrei do <var>atleta</var> hoje. O <var>caso</var> tinha a mesma idade quando entrou com a gente e hoje tá no <var>clube</var>.</p></div></div>
-    </div></li>
-    <li><span class="q">D5</span><div class="c">
-      <p>Pro atleta, se o contato for dele. Senão, áudio pro responsável.</p>
-      <div class="falas"><div class="fala"><span class="quem">SDR</span><p><var>atleta</var>, tua ficha tá aqui comigo. Chega de peneira no olhômetro: aqui é dado real, gerente de carreira e agente do Zyron só teu. Fala com teu pai pra gente marcar a conversa.</p></div></div>
-    </div></li>
-    <li><span class="q">D7</span><div class="c">
-      <div class="falas"><div class="fala"><span class="quem">SDR</span><p>A turma fecha com 10 atletas. Ainda consigo levar o <var>atleta</var> pro especialista, mas tem que ser essa semana. <var>dia/hora</var> ou <var>dia/hora</var>?</p></div></div>
-    </div></li>
-    <li><span class="q">D10</span><div class="c"><p>Liga.</p></div></li>
-    <li><span class="q">D14</span><div class="c">
-      <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Vou arquivar a ficha do <var>atleta</var> amanhã. Se ainda quiserem seguir, me responde hoje que eu seguro um horário.</p></div></div>
-    </div></li>
-    <li><span class="q">Depois</span><div class="c"><p>Volta pra nutrição e é reabordado em 30 dias, com estado "reabordado" no CRM.</p></div></li>
-  </ol>
-</section>
-
-<section id="crm">
-  <h2><span class="num">12</span>CRM e repasse</h2>
-  <figure class="ref">
-    <button class="ref-img" type="button" data-full="cards/closer.png"><img data-card="cards/closer.png" alt="Card Closer: diagnóstico, proposta e fechamento" loading="lazy"></button>
-    <figcaption>
-      <p class="tag">Card · Closer</p>
-      <p class="fx">Closer = Diagnóstico + Proposta + Fechamento</p>
-      <p class="fr">↳ reunião qualificada + proposta + decisão = <u>venda</u></p>
-      <p class="o"><b>O que é:</b> quem conduz a negociação e busca o fechamento, no meio e no fim do funil.</p>
-      <p class="p"><b>Aqui:</b> o Closer lê a ficha da R1 antes da R2 e chega sabendo o nome de cada um, a dor, os gastos e a locomoção. Ficha incompleta obriga ele a perguntar de novo, e aí ele parece vendedor.</p>
-      <p class="x"><b>O card avisa:</b> closer sem qualificação sofre mais. Funil bom começa antes do fechamento.</p>
-    </figcaption>
-  </figure>
-  <p><strong>Critério de repasse:</strong> R1 feita, perfil aprovado, dor clara, pré-compromisso, R2 marcada com todos os decisores. No CRM: "Agendar call e enviar".</p>
-  <div class="modelo">
-    <div class="modelo-top"><span>Ficha da R1</span><button class="btn" id="copiar-repasse" type="button">Copiar modelo</button></div>
-<pre id="modelo-repasse">Origem: [Zyron / formulário do Instagram / frio sem vídeo / outro]
-Dados do Zyron: [se houver]
-Se frio sem vídeo: DVD solicitado em [data] | recebido em [data] | retorno agendado em [data]
-Atleta: [nome], [idade], [posição], pé [dominante]
-Mora em: [cidade/estado]
-Pai: [nome] | Mãe: [nome] | Outro responsável: [nome]
-Decisores e como decidem: [...]
-Telefones dos decisores: [...]
-Treina hoje: [onde, quantas vezes por semana]
-Times e experiências: [...]
-Peneiras e avaliações: [quantas, em quais clubes, o que disseram]
-Se sentiu observado de verdade em: [quantas]
-Sonho do atleta: [...]
-O que ele acha que falta: [...]
-Dor da família (palavras deles): [...]
-Tipo de dor: [financeira / emocional / tempo e idade]
-Já investiram: [R$ e em quê]
-Locomoção pra outro estado: [vai sozinho / família acompanha / ...]
-Respondeu "não faz sentido lucrar em cima"? [sim/não]
-Apresentou gerente de carreira e Zyron? [sim/não]
-Pré-compromisso de decidir na R2? [sim/não]
-Empolgação do atleta (0 a 10): [...]
-Missão dada ao atleta? [sim/não]
-Caso citado: [...]
-Link da AGN enviado? [sim/não]
-Objeções que apareceram: [...]
-Sinais de budget: [...]
-R2: [dia/hora] | Todos os decisores confirmados? [sim/não]</pre>
-  </div>
-</section>
-
-<section id="casos">
-  <h2><span class="num">13</span>Casos e autoridade</h2>
-  <p>Fonte única: SDR e Closer contam o mesmo caso do mesmo jeito. Na R1 vai um caso principal comparado com o atleta, mais a sequência Joãozinho, Kaio e vários outros. O caso principal é sempre o mais parecido em posição, idade e nível, nunca escolhido só pelo mais famoso: é a semelhança que faz o atleta se enxergar ali.</p>
-  <figure class="ref">
-    <button class="ref-img" type="button" data-full="cards/probabilidade-sucesso.png"><img data-card="cards/probabilidade-sucesso.png" alt="Card Probabilidade percebida de sucesso: case semelhante, prova e contexto" loading="lazy"></button>
-    <figcaption>
-      <p class="tag">Card · Probabilidade percebida de sucesso</p>
-      <p class="fx">Probabilidade percebida de sucesso = Case semelhante + Prova + Contexto</p>
-      <p class="fr">↳ mesma posição + idade parecida + resultado real = <u>mais confiança pra aprovar</u></p>
-      <p class="o"><b>O que é:</b> o quanto a família acredita que esse caminho realmente vai funcionar pro atleta dela.</p>
-      <p class="p"><b>Aqui:</b> o caso citado (Joãozinho, Kaio ou o próximo da lista) é sempre o mais parecido em posição, idade e nível com o atleta da call, nunca um caso genérico só por ser o mais famoso.</p>
-      <p class="x"><b>O card avisa:</b> sem prova e sem caso parecido, a família tende a duvidar mais e adiar a decisão.</p>
-    </figcaption>
-  </figure>
-  <div class="tbl"><table class="largo">
-    <thead><tr><th>Atleta</th><th>Clube</th><th>Posição</th><th>Idade na entrada</th><th>Tempo até o resultado</th><th>Gancho pronto</th></tr></thead>
-    <tbody>
-      <tr><td>Joãozinho</td><td>Grêmio</td><td><var>posição</var></td><td><var>idade</var></td><td><var>tempo</var></td><td>"O perfil dele é muito parecido com o do Joãozinho, que fechou com o Grêmio."</td></tr>
-      <tr><td>Kaio</td><td><var>clube</var></td><td><var>posição</var></td><td><var>idade</var></td><td><var>tempo</var></td><td>"Foi assim com o Kaio também."</td></tr>
-      <tr><td><var>próximo caso</var></td><td><var>clube</var></td><td><var>posição</var></td><td><var>idade</var></td><td><var>tempo</var></td><td><var>gancho</var></td></tr>
-    </tbody>
-  </table></div>
-  <h3>Frases prontas</h3>
-  <div class="passo">
-    <p class="eyebrow">Gerente de carreira e Zyron</p>
-    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Ele vai ter um gerente de carreira, o <var>nome do gerente</var>, que já revelou centenas de jogadores, acompanhando o desenvolvimento dele todo dia. E o Zyron, o nosso mecanismo exclusivo, com um agente específico só pra ele.</p></div></div>
-  </div>
-  <div class="passo">
-    <p class="eyebrow">Olhômetro contra dados reais</p>
-    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Você acha que, no olhômetro, o avaliador de uma peneira consegue analisar todos aqueles garotos com precisão? Hoje, com inteligência artificial, os clubes estão cada vez mais escolhendo atleta com base em dados reais. E é assim que a gente revela os nossos jogadores: pelo Zyron.</p></div></div>
-  </div>
-  <div class="passo">
-    <p class="eyebrow">A gente só ganha quando ele ganha</p>
-    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>Faz algum sentido pra gente, que já revelou centenas de atletas, querer lucrar em cima de vocês, sendo que a gente ganha no contrato profissional do <var>atleta</var>?</p></div></div>
-  </div>
-  <div class="passo">
-    <p class="eyebrow">95% de encaminhamento</p>
-    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>95% dos atletas que entram com a gente são encaminhados. Os 5% que não vão é por falta de disciplina e de compromisso.</p></div></div>
-    <p class="nota">"Como vocês têm essa margem?" Filtro na entrada, gerente de carreira todo dia e o Zyron: "a gente escolhe atletas como você".</p>
-  </div>
-  <div class="passo">
-    <p class="eyebrow">Comparação e sequência de prova</p>
-    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>O perfil dele é muito parecido com o do <var>caso</var>, que a gente fechou recentemente. Foi assim com o Joãozinho, que fechou com o Grêmio, com o Kaio e com vários outros.</p></div></div>
-  </div>
-  <div class="passo">
-    <p class="eyebrow">AGN Football · relação direta · em toda conversa</p>
-    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>A gente tem relação direta com a AGN Football. Tem jogador nosso publicado lá, te mando o link.</p></div></div>
-    <p class="nota">Se perguntarem o que é: "um canal do mercado do futebol que divulga atleta, e a gente tem relação direta com eles".</p>
-  </div>
-  <div class="passo">
-    <p class="eyebrow">Institucional</p>
-    <div class="falas"><div class="fala"><span class="quem">SDR</span><p>A gente tá há mais de dez anos nisso, já revelou centenas de atletas e encaminhou jogador pro Brasil afora e pra fora.</p></div></div>
-  </div>
-</section>
-
-<section id="glossario">
-  <h2><span class="num">14</span>Glossário dos cards</h2>
-  <p>Todos os cards do treinamento num lugar só. Toque na imagem pra ampliar.</p>
-  <div class="glossario">
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/probabilidade-sucesso.png"><img data-card="cards/probabilidade-sucesso.png" alt="Card Probabilidade percebida de sucesso" loading="lazy"></button><h4>Probabilidade de sucesso</h4><p>Case semelhante + prova + contexto. Aqui: o caso mais parecido em posição, idade e nível.</p></div>
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/tempo-execucao.png"><img data-card="cards/tempo-execucao.png" alt="Card Tempo de execução inicial" loading="lazy"></button><h4>Tempo de execução inicial</h4><p>Em quanto tempo o acompanhamento começa. Aqui: gerente liga hoje, Zyron amanhã.</p></div>
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/esforco-percebido.png"><img data-card="cards/esforco-percebido.png" alt="Card Esforço percebido" loading="lazy"></button><h4>Esforço percebido</h4><p>Quanto a família acha que vai precisar se envolver. Aqui: quase nada, o resto é com a gente.</p></div>
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/valor-percebido.png"><img data-card="cards/valor-percebido.png" alt="Card Valor percebido" loading="lazy"></button><h4>Valor percebido</h4><p>Solução, transformação e resultado final. Aqui: nunca falar de entregável.</p></div>
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/sdr.png"><img data-card="cards/sdr.png" alt="Card SDR" loading="lazy"></button><h4>SDR</h4><p>Prospecta, qualifica e agenda. Aqui faz a R1.</p></div>
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/closer.png"><img data-card="cards/closer.png" alt="Card Closer" loading="lazy"></button><h4>Closer</h4><p>Conduz a negociação e o fechamento. Aqui faz a R2.</p></div>
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/sql.png"><img data-card="cards/sql.png" alt="Card SQL" loading="lazy"></button><h4>SQL</h4><p>Lead qualificado: interesse real, perfil e momento.</p></div>
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/r1.png"><img data-card="cards/r1.png" alt="Card R1" loading="lazy"></button><h4>R1</h4><p>Reunião de diagnóstico e qualificação. Do SDR.</p></div>
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/r2.png"><img data-card="cards/r2.png" alt="Card R2" loading="lazy"></button><h4>R2</h4><p>Reunião de proposta e decisão. Do Closer.</p></div>
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/bant.png"><img data-card="cards/bant.png" alt="Card BANT" loading="lazy"></button><h4>BANT</h4><p>Budget, authority, need, timing: lead forte.</p></div>
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/sandler.png"><img data-card="cards/sandler.png" alt="Card Sandler" loading="lazy"></button><h4>Sandler</h4><p>Rapport, dor, impacto e compromisso antes da proposta.</p></div>
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/lead-speed.png"><img data-card="cards/lead-speed.png" alt="Card Lead Speed" loading="lazy"></button><h4>Lead speed</h4><p>Tempo até o primeiro contato. Meta: 7 minutos.</p></div>
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/noshow.png"><img data-card="cards/noshow.png" alt="Card No Show" loading="lazy"></button><h4>No show</h4><p>Faltas ÷ reuniões marcadas × 100.</p></div>
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/followup.png"><img data-card="cards/followup.png" alt="Card Follow Up" loading="lazy"></button><h4>Follow up</h4><p>Contato, continuidade e próximo passo.</p></div>
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/inside-sales.png"><img data-card="cards/inside-sales.png" alt="Card Inside Sales" loading="lazy"></button><h4>Inside sales</h4><p>Venda remota com processo. 40 → 12 → 5.</p></div>
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/win-rate.png"><img data-card="cards/win-rate.png" alt="Card Win Rate" loading="lazy"></button><h4>Win rate</h4><p>Vendas ganhas ÷ oportunidades × 100.</p></div>
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/lead-magnet.png"><img data-card="cards/lead-magnet.png" alt="Card Lead Magnet" loading="lazy"></button><h4>Lead magnet</h4><p>Material de valor em troca de dados. Aqui: o Zyron.</p></div>
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/social-selling.png"><img data-card="cards/social-selling.png" alt="Card Social Selling" loading="lazy"></button><h4>Social selling</h4><p>Relacionamento nas redes. Aqui: o Instagram.</p></div>
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/webinario.png"><img data-card="cards/webinario.png" alt="Card Webinário" loading="lazy"></button><h4>Webinário</h4><p>Aula ao vivo ou gravada que educa e converte.</p></div>
-    <div class="gl"><button class="ref-img" type="button" data-full="cards/conversao-direta.png"><img data-card="cards/conversao-direta.png" alt="Card Conversão Direta" loading="lazy"></button><h4>Conversão direta</h4><p>Anúncio, página e compra. Não serve pra Assessoria.</p></div>
-  </div>
-</section>
-
-<section id="regras">
-  <h2><span class="num">15</span>Regras de ouro</h2>
-  <div class="cartao vd"><div><span class="tit">Sempre</span>
-    <ul>
-      <li>Primeiro contato em até 7 minutos.</li>
-      <li>R1 completa: nomes, contexto, experiências, avaliações, dor, gastos, locomoção, decisores.</li>
-      <li>Gerente de carreira e Zyron em toda R1 e em todo "quanto custa?".</li>
-      <li>A pergunta do olhômetro e a virada pros dados reais em toda R1.</li>
-      <li>A pergunta "faz sentido a gente lucrar em cima de vocês?" em toda R1.</li>
-      <li>95%, caso parecido e relação direta com a AGN em toda R1.</li>
-      <li>Virada de valor percebido (o resultado final, nunca o meio do caminho, nunca com número de preço) em toda R1.</li>
-      <li>R1 termina com o perfil aprovado e o pré-compromisso.</li>
-      <li>R2 com todos os decisores e o atleta, com "confirmo".</li>
-      <li>Ficha completa no CRM antes do repasse.</li>
-    </ul>
-  </div></div>
-  <div class="cartao vm"><div><span class="tit">Proibido</span>
-    <ul>
-      <li>Colocar o perfil do atleta em dúvida.</li>
-      <li>Falar preço (R$). Valor percebido não é proibido, é o contrário: pintar o resultado e a transformação é papel do SDR, só nunca com número junto.</li>
-      <li>Falar como quem oferece. Quem precisa da vaga é o atleta.</li>
-      <li>Marcar R2 sem dor clara e compromisso.</li>
-      <li>Repassar com a ficha incompleta.</li>
-      <li>"Te ligo depois" sem hora.</li>
-      <li>Deixar lead novo parado.</li>
-    </ul>
-  </div></div>
-</section>
-
-<section id="dados">
-  <h2><span class="num">16</span>Dados pra completar</h2>
-  <p>Entram nos roteiros no lugar das variáveis.</p>
-  <ol class="pend">
-    <li><div><strong>Nome do gerente de carreira</strong> que revelou centenas de jogadores.</div></li>
-    <li><div><strong>Como o agente do Zyron acompanha no dia a dia</strong> (canal, frequência de contato), pro SDR descrever com detalhe.</div></li>
-    <li><div><strong>Nome da empresa</strong> como a família conhece.</div></li>
-    <li><div><strong>Quais dados do Zyron</strong> o SDR enxerga, pra citar na abertura.</div></li>
-    <li><div><strong>Link da publicação na AGN Football.</strong></div></li>
-    <li><div><strong>Casos:</strong> posição, idade na entrada e tempo até o resultado do Joãozinho e do Kaio, e os próximos casos.</div></li>
-    <li><div><strong>Nome do especialista</strong> e link da sala.</div></li>
-    <li><div><strong>Prazo real de análise do vídeo (DVD)</strong> pelo Zyron e pelo especialista, pro lead muito frio (seção 03): quanto tempo isso leva de verdade, pra não prometer retorno que a operação não cumpre.</div></li>
-  </ol>
-</section>
-
-<footer>
-  <span class="versao">v8 · 28/09/2026</span>
-</footer>
-</main>
+<div class="gl"><h3>Tempo de execução inicial</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/tempo-execucao.png" aria-label="Ampliar Card Tempo de execução inicial"><img data-card="cards/tempo-execucao.png" alt="Card Tempo de execução inicial" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Tempo de execução inicial</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Definir quando a primeira entrega acontece e quem responde por ela.</p>
 </div>
+<div class="gl"><h3>Esforço percebido</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/esforco-percebido.png" aria-label="Ampliar Card Esforço percebido"><img data-card="cards/esforco-percebido.png" alt="Card Esforço percebido" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Esforço percebido</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Dividir responsabilidades de forma simples, sem prometer esforço zero.</p>
 </div>
-
+<div class="gl"><h3>Valor percebido</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/valor-percebido.png" aria-label="Ampliar Card Valor percebido"><img data-card="cards/valor-percebido.png" alt="Card Valor percebido" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Valor percebido</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Ligar cada entrega a uma mudança que a família considera importante.</p>
+</div>
+<div class="gl"><h3>SDR</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/sdr.png" aria-label="Ampliar Card SDR"><img data-card="cards/sdr.png" alt="Card SDR" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">SDR</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Função interna de prospecção e qualificação. Nome público: gerente de carreiras da R1.</p>
+</div>
+<div class="gl"><h3>Closer</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/closer.png" aria-label="Ampliar Card Closer"><img data-card="cards/closer.png" alt="Card Closer" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Closer</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Função interna de proposta e fechamento. Nome público: gerente de carreiras da R2.</p>
+</div>
+<div class="gl"><h3>SQL</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/sql.png" aria-label="Ampliar Card SQL"><img data-card="cards/sql.png" alt="Card SQL" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">SQL</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Perfil, necessidade, interesse e momento compatíveis com o próximo passo.</p>
+</div>
+<div class="gl"><h3>R1</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/r1.png" aria-label="Ampliar Card R1"><img data-card="cards/r1.png" alt="Card R1" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">R1</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Diagnóstico, compreensão da oferta e repasse qualificado.</p>
+</div>
+<div class="gl"><h3>R2</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/r2.png" aria-label="Ampliar Card R2"><img data-card="cards/r2.png" alt="Card R2" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">R2</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Plano, prova, investimento, objeções e decisão.</p>
+</div>
+<div class="gl"><h3>BANT</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/bant.png" aria-label="Ampliar Card BANT"><img data-card="cards/bant.png" alt="Card BANT" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">BANT</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Necessidade, momento, decisão e orçamento. Conversa, não interrogatório.</p>
+</div>
+<div class="gl"><h3>Sandler</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/sandler.png" aria-label="Ampliar Card Sandler"><img data-card="cards/sandler.png" alt="Card Sandler" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Sandler</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Conexão, dor, impacto e compromisso antes da proposta.</p>
+</div>
+<div class="gl"><h3>Lead speed</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/lead-speed.png" aria-label="Ampliar Card Lead speed"><img data-card="cards/lead-speed.png" alt="Card Lead speed" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Lead speed</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Tempo até a primeira resposta. Meta operacional de sete minutos na cobertura.</p>
+</div>
+<div class="gl"><h3>No show</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/noshow.png" aria-label="Ampliar Card No show"><img data-card="cards/noshow.png" alt="Card No show" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">No show</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Faltas divididas por reuniões agendadas. Medir e melhorar confirmação.</p>
+</div>
+<div class="gl"><h3>Follow up</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/followup.png" aria-label="Ampliar Card Follow up"><img data-card="cards/followup.png" alt="Card Follow up" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Follow up</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Retomar com motivo útil, respeitando o combinado e recusas.</p>
+</div>
+<div class="gl"><h3>Inside sales</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/inside-sales.png" aria-label="Ampliar Card Inside sales"><img data-card="cards/inside-sales.png" alt="Card Inside sales" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Inside sales</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Venda remota com processo e continuidade entre as pessoas.</p>
+</div>
+<div class="gl"><h3>Win rate</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/win-rate.png" aria-label="Ampliar Card Win rate"><img data-card="cards/win-rate.png" alt="Card Win rate" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Win rate</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Vendas ganhas divididas por oportunidades, com período e critério definidos.</p>
+</div>
+<div class="gl"><h3>Lead magnet</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/lead-magnet.png" aria-label="Ampliar Card Lead magnet"><img data-card="cards/lead-magnet.png" alt="Card Lead magnet" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Lead magnet</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Uma entrega útil inicia a relação. Aqui, a avaliação orienta a conversa.</p>
+</div>
+<div class="gl"><h3>Social selling</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/social-selling.png" aria-label="Ampliar Card Social selling"><img data-card="cards/social-selling.png" alt="Card Social selling" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Social selling</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Relacionamento nas redes conectado a atendimento com contexto.</p>
+</div>
+<div class="gl"><h3>Webinário</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/webinario.png" aria-label="Ampliar Card Webinário"><img data-card="cards/webinario.png" alt="Card Webinário" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Webinário</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Conteúdo para educar sobre análise e acompanhamento.</p>
+</div>
+<div class="gl"><h3>Conversão direta</h3>
+<figure class="ref"><button class="ref-img" type="button" data-full="cards/conversao-direta.png" aria-label="Ampliar Card Conversão direta"><img data-card="cards/conversao-direta.png" alt="Card Conversão direta" loading="lazy"></button><figcaption><p class="tag">Referência do treinamento</p><p class="fx">Conversão direta</p><p class="x">Clique no card para ampliar.</p></figcaption></figure>
+<p>Conceito de venda pela página. Esta operação mantém diagnóstico e proposta.</p>
+</div></div></section>
+<section id="regras"><h2><span class="num">15</span>Regras de ouro</h2>
+<ul class="lista">
+<li>Conduzir a agenda com clareza e perguntas precisas.</li>
+<li>Ouvir a dor real, confirmar entendimento e conectar a uma entrega.</li>
+<li>Apresentar-se como gerente de carreiras; não usar cargo interno como fala pública.</li>
+<li>Diferenciar cadastro, análise, elegibilidade para assessoria e decisão de clube.</li>
+<li>Confirmar o DVD e o retorno do analista com data e responsável.</li>
+<li>Explicar a Zyron de forma simples e mostrar um resultado real quando disponível.</li>
+<li>Usar David, casos e AGN com vínculo claro e links.</li>
+<li>Deixar claro que existe uma proposta paga, sem negociar preço na R1.</li>
+<li>Manter o responsável legal na decisão de menores.</li>
+<li>Concluir com avanço, pendência definida ou encerramento respeitado.</li>
+<li>Registrar no CRM antes do repasse.</li>
+</ul>
+<p><strong>Treino da equipe:</strong> simular uma família desconfiada, outra que só quer teste gratuito e outra que já enviou o DVD. Avaliar se o gerente escutou, explicou e combinou um próximo passo, em vez de apenas repetir o script.</p>
+</section>
+<section id="dados"><h2><span class="num">16</span>Dados para preparar antes de usar</h2>
+<ol class="lista">
+<li>Nome público da empresa e responsáveis por R1, análise e R2.</li>
+<li>Canal aceito, identificação e requisitos do DVD.</li>
+<li>Prazo real da análise e janela para atualizar quem aguarda.</li>
+<li>Demonstração atual da Zyron e indicadores que podem ser mostrados.</li>
+<li>Frequência e canal de acompanhamento previstos em cada plano.</li>
+<li>Publicações individuais dos casos de David e da AGN.</li>
+<li>Escopo comercial resumido para enviar por mensagem quando solicitado.</li>
+</ol>
+</section><footer><span class="versao">v9 · <time datetime="2026-09-28T20:58:00-03:00">Última atualização: 28/09/2026 às 20:58 (Brasília, UTC−3).</time></span></footer></main></div></div>
 <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Card ampliado">
   <button class="lb-fechar" id="lb-fechar" type="button">Fechar</button>
   <img id="lb-img" src="" alt="">
