@@ -1,737 +1,748 @@
-# Gerente de carreiras · R2
+# PLAYBOOK_CLOSER.md
 
-Versão: v8 (28/09/2026)
-Espelho em texto de playbook-closer.html. Autoridade e casos: CASOS.md.
-Uso interno: este é o playbook da função Closer na dashboard. Para a família, usar sempre **gerente de carreiras**. O atendimento anterior foi do gerente de carreiras da R1.
-Tudo entre colchetes vem do CRM, do contrato ou da operação. R$ ____ é preenchido com a proposta correta.
+Versão: v7 (28/09/2026)
+Espelho em texto de `playbook-closer.html`. Casos e frases: `CASOS.md`.
+Imagens dos cards: pasta `cards/`. Entrada: ficha da R1
+(`PLAYBOOK_SDR.md`, seção 12).
+Tudo entre colchetes é variável: dado do CRM ou da empresa. R$ ____ é o
+valor do plano escolhido pro lead.
 
-Revisão v8: condução da decisão, demonstração A + B da oferta, Zyron em linguagem simples, David Willer e AGN, ancoragem com material de reforço e objeções aprofundadas. Substitui as orientações das versões anteriores.
+Changelog:
+- v7: os 4 cards do framework de oferta imperdível (Probabilidade de
+  sucesso, Tempo de execução inicial, Esforço percebido, Valor percebido)
+  encaixados como card de verdade (imagem + fórmula + "aqui" + "o card
+  avisa"), não só como texto solto: Probabilidade em 14, Esforço em 6.6,
+  Valor em 07, Tempo de execução em 10, e as 4 imagens no glossário (15).
+  Rodapé do HTML simplificado pra só versão e data, em letra pequena.
+- v6: tempo de execução inicial (o que acontece nas primeiras 48h depois
+  do sim) entra no plano (6.6), no fechamento (08) e na matriz de
+  objeções ("vou pensar", "não tenho o dinheiro agora"); esforço zero pra
+  família explícito antes do valor (6.6); tabela do plano individual
+  (6.4) reescrita pro resultado final, não pro entregável; caso citado
+  sempre o mais parecido em posição, idade e nível (14). Base:
+  `oferta-imperdivel.md`, adaptado pro registro emocional da família
+  (nunca linguagem de onboarding/processo).
+- v5: retomada da dor com os números das peneiras e a pergunta do
+  olhômetro; Zyron apresentado como análise por dados reais; olhômetro na
+  ancoragem e na objeção "já tentamos peneira".
+- v4: gerente de carreira e Zyron no centro do plano, da ancoragem e das
+  objeções. AGN Football como relação direta. Fechamento do modo A começa
+  pelo resumo dos sins e cobra o pré-compromisso da R1. Cards do
+  treinamento explicados e glossário.
+- v3: o Closer faz só a R2. Leitura da ficha da R1 no CRM, cenários por
+  tipo de dor, filtro dos 95%, ancoragem, valor em branco com três planos e
+  dois modos de fechamento.
+- v2: tom agressivo, sem ressalvas.
+- v1: primeira versão.
 
-## 01. Missão: transformar compreensão em decisão
+---
 
-![Card Closer: diagnóstico, proposta e fechamento](cards/closer.png)
+## Regras da casa
 
-O gerente de carreiras da R2 chega conhecendo o atleta, mostra como o trabalho responde à necessidade da família e pede uma decisão clara. **Conhecer o caso, demonstrar valor e conduzir o próximo passo** são a base da autoridade.
+- As pessoas amam comprar, mas odeiam vendedor. Quem escolhe somos nós;
+  quem precisa da vaga é a família.
+- Nós só ganhamos quando o atleta ganha. O investimento cobre os gastos com
+  o gerente de carreira e os profissionais dedicados a ele.
+- Toda R2 termina com venda ou com o retorno da equipe marcado.
+
+O Closer faz a R2. Chega sabendo o nome do pai, da mãe e do atleta, a dor
+da família e quanto ela já gastou, porque leu a ficha da R1 no CRM. Faz a
+família imaginar o depois, apresenta o que ninguém mais tem (um gerente de
+carreira todo dia e o Zyron), ancora o valor e conduz a decisão como quem
+escolhe.
+
+Planos: R$2997 (o mais vendido), R$1497 e R$497.
+
+---
+
+## 01. Missão do Closer
+
+Card Closer (`cards/closer.png`): Closer = Diagnóstico + Proposta +
+Fechamento. ↳ reunião qualificada + proposta + decisão = venda.
+- O que é: o vendedor que conduz a negociação e busca o fechamento. Atua
+  no meio e no fim do funil: conduz a reunião, contorna objeções e pede a
+  decisão.
+- Aqui: faz a R2, com a ficha da R1 na mão. Closer bom não improvisa: segue
+  processo e sabe conduzir o próximo passo.
+- O card avisa: closer sem qualificação sofre mais. Funil bom começa antes
+  do fechamento.
 
 Quatro princípios:
-1. Continuar a R1: usar os nomes, o contexto, a análise e as palavras da família.
-2. Fazer o futuro parecer compreensível: cada entrega precisa ter uma utilidade concreta.
-3. Mostrar a prova antes de pedir confiança; explicar o investimento depois do valor.
-4. Resolver a objeção específica e pedir uma decisão, sem ficar girando no mesmo argumento.
+1. Chega sabendo tudo: nomes, dor, gastos, avaliações e locomoção vêm do
+   CRM. Não pergunta de novo o que o SDR já perguntou.
+2. Faz a família imaginar o depois: cenário certo pra cada tipo de dor.
+3. Empilha valor antes do número: gerente de carreira todo dia, Zyron,
+   95%, casos, e a conta do que gastariam sozinhos.
+4. Conduz sem parecer vendedor. Quem escolhe somos nós.
 
-> "Hoje eu quero ligar o que vocês me contaram ao plano do [atleta]. Vou mostrar como funciona, quem acompanha, o investimento e os próximos passos. No final, a gente decide se faz sentido avançar."
+Só existem dois finais de R2:
+- Venda: pagamento feito na call, venda registrada, boas-vindas pro
+  atleta.
+- Retorno marcado: modo B, a equipe decide e o Closer volta com a vaga
+  aprovada, em hora marcada.
 
-Caminho: **CRM → conexão → necessidade → cenário → demonstração → prova → ancoragem → proposta → decisão**.
+Caminho da R2: ler o CRM → conexão pelo nome → dor → cenários →
+compromisso (filtro dos 95%) → diferencial (gerente e Zyron) → valor
+(ancoragem e R$ ____) → decisão (modo A ou B).
 
-Uma boa R2 termina com contratação consciente, pendência específica com retorno marcado ou encerramento claro. O retorno da equipe só é usado quando há algo real para ela avaliar.
+## 02. Ler o CRM antes da R2
 
-## 02. Preparação: chegar sabendo muda a conversa
+Card R1 (`cards/r1.png`): R1 = Contato inicial + Diagnóstico + Próximo
+passo. ↳ entendeu cenário + mapeou dor + marcou avanço = boa R1.
+- Aqui: a R1 foi do SDR. Tudo o que ela descobriu tá na ficha do CRM. O
+  Closer usa, não repete.
+- O card avisa: R1 boa prepara a proposta certa.
 
-![Card R1: diagnóstico que prepara a proposta](cards/r1.png)
+Card SQL (`cards/sql.png`): SQL = Lead + Interesse real + Perfil +
+Momento. ↳ pediu contato + tem perfil ideal + quer avançar = SQL.
+- Aqui: quem chega na R2 é SQL: perfil aprovado, dor clara, decisores na
+  call e pré-compromisso de decidir na conversa.
+- O card avisa: SQL bem definido aumenta a chance de fechamento.
 
-![Card SQL: perfil, interesse e momento](cards/sql.png)
+10 minutos antes de toda R2, o Closer lê a ficha e vê o vídeo do atleta:
 
-Reservar dez minutos antes da R2 para conferir a ficha, o vídeo e a devolutiva. Se faltar análise essencial, alinhar a pendência antes de apresentar um plano como se estivesse concluído.
-
-| Informação da R1 | Como usar |
+| O que ler na ficha | Onde usar na R2 |
 | --- | --- |
-| Atleta, responsável legal e demais participantes | Chamar pelo nome e incluir quem decide |
-| Objetivo do atleta | Relacionar ao compromisso de rotina e à visão de futuro |
-| Dor nas palavras da família | Resumir, confirmar e conectar à entrega |
-| Avaliações, tempo observado e retorno recebido | Explicar por que análise e acompanhamento importam |
-| Resultado da Zyron e revisão humana | Abrir a demonstração com algo do próprio atleta |
-| O que já tentaram e os gastos citados | Comparar o trabalho que receberam, sem usar gasto passado como dívida emocional |
-| Orçamento ou restrição informada | Apresentar uma proposta que possa ser avaliada com responsabilidade |
-| Locomoção, escola e vínculos atuais | Definir o que é viável antes de falar de destino |
-| Caso e links mostrados | Continuar a mesma história e acrescentar prova pertinente |
-| Dúvida ainda aberta | Resolver cedo, sem esperar ela reaparecer no pagamento |
-
-Preparar: relatório demonstrável, caso autorizado, perfis do David e da AGN, material de reforço de ancoragem, escopo do plano, contrato, condições de pagamento e previsão real de início.
-
-> "[responsável], aqui é o [nome], gerente de carreiras. Estou com a ficha do [atleta] para nossa conversa das [hora]. Separei [material real] para explicar [necessidade]. [participantes] confirmados?"
-
-**Internamente:** a fila continua sendo Closer. Assumir o lead correto e preservar a linha do tempo. Não criar outra ficha para o mesmo atleta.
-
-## 03. Condução firme: agenda, diagnóstico e próximo passo
-
-A firmeza está na organização da conversa e na capacidade de resolver a dúvida. Voz calma, frases curtas, uma pergunta por vez. Deixar a família terminar a resposta.
-
-### Abrir um acordo
-
-> "Primeiro confirmo o que vocês precisam. Depois mostro o plano e a prova. Por último, investimento e decisão. Se algum ponto não fizer sentido, me interrompam."
-
-### Quando puxarem preço cedo
-
-> "Eu vou te passar o valor nesta conversa. Antes, preciso te mostrar exatamente o que está incluído, para você saber o que está comparando. Se preço for um limite para continuar, a gente trata disso agora."
-
-### Quando aparecerem três objeções ao mesmo tempo
-
-> "Anotei três pontos: [confiança], [tempo] e [valor]. Qual deles pesa mais? Vamos resolver um de cada vez."
-
-### Quando a conversa ficar vaga
-
-> "Quando você diz 'não sei', o que está faltando: clareza sobre o trabalho, confiança na entrega ou condição para contratar?"
-
-### Quando estiverem prontos
-
-> "Pelo que vocês confirmaram, o plano responde a [necessidade] e as condições estão claras. Querem iniciar o acompanhamento?"
-
-Silêncio é espaço para responder, não uma disputa para ver quem cede primeiro.
-
-### Sagacidade: trocar discurso por um ponto que a família consiga conferir
-
-**Demonstração curta, antes de mais argumento:**
-
-> "Você não precisa imaginar como a gente trabalha. Me dá 90 segundos: vou abrir uma entrega real e ligar isso ao que você disse que falta para o [atleta]."
-
-**Confirmar o critério de decisão:**
-
-> "Para você considerar esse plano, precisa ver [entrega], confiar em [responsável] e entender [condição]. Acertei? Vamos conferir os três."
-
-**Pergunta incisiva depois da prova:**
-
-> "Essa demonstração respondeu ao que você estava receoso ou ainda tem um ponto que eu não enxerguei? Quero tratar a dúvida certa."
-
-**Parar de empilhar argumentos quando houver compreensão:**
-
-> "Você já entendeu o trabalho, viu quem acompanha e conferiu a condição. O que falta para tomar uma decisão sobre esse plano?"
-
-Se aparecer um limite real, trabalhar esse limite. Se a família já decidiu que não quer, encerrar. Firmeza é manter clareza e direção.
-
-## 04. R2: conexão e dor com precisão
-
-![Card R2: proposta e objeções com contexto](cards/r2.png)
-
-![Card Sandler: conexão, impacto e compromisso](cards/sandler.png)
-
-Duração de referência: 45 a 60 minutos, ajustada à necessidade. O responsável legal participa da decisão de menores.
-
-### 4.1 Mostrar que a história foi ouvida
-
-> "[atleta], li tua conversa com o [nome do gerente de carreiras da R1]. Você falou que quer [objetivo], mas hoje sente falta de [necessidade]. E no teu material apareceu [observação real]. É por aí?"
-
-> "[responsável], você destacou [dor literal]. O que mais importa resolver primeiro?"
-
-Não repetir o cadastro. Se algo mudou desde a R1, atualizar.
-
-### 4.2 A pergunta do olhômetro
-
-> "Vocês contaram que foram a [quantidade] avaliações e receberam [tipo de retorno]. A sensação foi de terem entendido o jogo dele ou de terem saído ainda no escuro?"
-
-> "Um olhar rápido pode enxergar um bom lance. Mas ele responde sozinho o que o atleta precisa desenvolver e qual caminho faz sentido depois?"
-
-Se discordarem, explorar a experiência em vez de forçar um "não".
-
-> "O que vocês gostariam de acrescentar à avaliação que já tiveram?"
-
-### 4.3 A dificuldade e seu efeito concreto
-
-- "Onde essa falta de direção atrapalha mais hoje?"
-- "O que vocês tentaram fazer para resolver?"
-- "Qual parte do gasto e do esforço trouxe algum retorno útil?"
-- "O que vocês não querem repetir na próxima tentativa?"
-
-> "Então a questão não é só participar de mais uma avaliação. É entender [necessidade específica] e ter acompanhamento para [mudança desejada]. Acertei?"
-
-### 4.4 Importância e prontidão são coisas diferentes
-
-> "De zero a dez, quanto essa mudança importa para vocês? O que faz ela ter esse peso?"
-
-> "E o que precisa estar resolvido para vocês considerarem um acompanhamento agora?"
-
-Alta vontade não significa capacidade financeira. Aperto financeiro não significa falta de apoio ao atleta.
-
-### 4.5 Abrir a proposta com uma necessidade definida
-
-> "Se eu mostrar como o plano trabalha [necessidade], quem acompanha e como vocês verificam as entregas, isso responde ao principal ponto de vocês?"
-
-Se a resposta for vaga, esclarecer a necessidade antes de acumular argumentos.
-
-## 05. Imaginação: ligar o sonho ao caminho
-
-O atleta pode visualizar o futuro que deseja. O gerente deve construir a ponte com ações possíveis, sem anunciar sucesso esportivo como consequência do pagamento.
-
-### O atleta que quer ser visto
-
-> "[atleta], imagina chegar numa conversa sobre teu futebol sabendo explicar tua posição, tua história e o que você está trabalhando. Ter um material organizado, alguém que conhece teu caso e um próximo passo definido. O que isso muda na tua confiança?"
-
-> "A camisa do [clube dos sonhos] representa o destino que você quer. Hoje a gente precisa cuidar do caminho que está ao alcance: avaliação, desenvolvimento e apresentação."
-
-### A família cansada de tentativas soltas
-
-> "[responsável], imagina a próxima atualização sem precisar perguntar para cinco pessoas. Você sabe quem responde pelo acompanhamento, o que foi feito e o que falta. Qual parte disso aliviaria a rotina de vocês?"
-
-### Medo de perder tempo
-
-> "O que dá para começar a organizar agora e faria diferença nos próximos [período de acompanhamento]? Vamos trabalhar com a categoria e a situação real dele."
-
-Não criar uma data de validade para o sonho. Se houver prazo esportivo concreto, explicar qual competição, categoria ou evento o determina.
-
-### Dificuldade financeira
-
-> "Eu entendo o quanto vocês querem dar uma chance a ele. Para esse plano ajudar, precisa caber na realidade de vocês. Vamos ver o que está incluído, o custo total e as opções existentes."
-
-Nunca apresentar futebol como saída garantida da pobreza nem desvalorizar estudo ou outras profissões.
-
-### O compromisso do atleta
-
-> "[atleta], se tiver orientação, o que você se compromete a fazer? Qual horário de treino você consegue manter? Como vai separar material e participar das devolutivas?"
-
-O compromisso é com a rotina, não com convencer os pais a pagar.
-
-## 06. A + B: o que entregamos e por que faz sentido
-
-### 6.1 A proposta em uma frase
-
-> "O plano junta análise automática da Zyron, acompanhamento de um gerente de carreiras e trabalho de orientação para oportunidades compatíveis. Você consegue ver o que está sendo feito, por quem e em qual prazo."
-
-### 6.2 A Zyron sem termos complicados
-
-> "O DVD é o vídeo do [atleta] jogando. A Zyron analisa esse material automaticamente. A equipe de gestores de carreiras revisa o resultado com o histórico dele; um analista de carreiras faz a devolutiva. O gerente de carreiras usa essa informação para orientar o plano e os próximos passos."
-
-**Três movimentos de demonstração:**
-1. **O material:** "Este é o vídeo que recebemos e esta é a análise disponível."
-2. **A leitura:** "Aqui apareceu [achado real]. A equipe interpretou isso junto com [contexto]."
-3. **A ação:** "A partir daí, o próximo passo proposto é [ação que a equipe realmente entrega]."
-
-> "Percebe a diferença entre receber uma nota e receber uma direção?"
-
-Não descrever agentes 24 horas, métricas ou integrações que não estejam disponíveis.
-
-### 6.3 Um exemplo fácil de aplicação
-
-Exemplo ilustrativo para explicar o processo, não um caso real:
-
-> "Pensa num meia que tem um material interessante, mas ainda não sabe como se apresentar. A análise e a revisão ajudam a discutir o perfil. A equipe organiza o que precisa ser trabalhado e considera caminhos compatíveis com posição, categoria e contexto. Se houver uma oportunidade concreta, confere as exigências antes de apresentar o atleta."
-
-> "A tecnologia ajuda a analisar. A equipe precisa entender o atleta e fazer o trabalho de acompanhamento. A decisão esportiva continua com quem avalia no clube."
-
-### 6.4 IA já é usada profissionalmente
-
-> "Isso já faz parte do futebol profissional no Brasil e fora há anos. O diferencial aqui é vocês acessarem a Zyron dentro de uma assessoria que explica a análise e acompanha os próximos passos."
-
-Referências do setor: [Botafogo e SkillCorner, 2024](https://botafogo.com.br/noticias/monitoramento-ampliado); [Chelsea e AiSCOUT, 2022, após dois anos de trabalho conjunto](https://www.chelseafc.com/en/news/article/aiscout-announced-as-official-academy-research-partner). Explicam o uso de IA no futebol; não representam vínculo desses clubes com a Zyron ou com o atleta.
-
-Não atribuir anos de funcionamento à Zyron ou dizer que a tecnologia só foi aberta recentemente ao público sem um marco confirmado.
-
-### 6.5 A tabela que torna a oferta concreta
-
-Preencher com o escopo efetivo antes de apresentar. Não incluir profissionais ou serviços ausentes do plano.
-
-| Necessidade que ouvimos | Trabalho contratado | Como a família acompanha |
+| Nomes do pai, da mãe e do atleta | Chamar cada um pelo nome desde o primeiro minuto |
+| Origem (Zyron ou Instagram) e dados do Zyron | Abertura: citar um dado da avaliação |
+| Sonho do atleta e o que ele acha que falta | Conexão com o atleta e cenário emocional |
+| Dor da família, com as palavras deles | Retomada da dor (4.3) |
+| Tipo de dor (financeira, emocional, tempo) | Cenário certo (seção 05) |
+| Quantas peneiras fez e em quantas se sentiu observado de verdade | Retomada da dor (4.3) e contraste com os dados reais do Zyron (6.3) |
+| Times e experiências | "O que faltou nas outras vezes" |
+| Quanto já investiram | Régua do valor (seção 07) |
+| Locomoção pra outro estado | Cenário: "quando ele for pro clube em..." |
+| Decisores e como decidem | Confirmar todos na call |
+| Sinais de budget | Escolher o plano: R$2997, R$1497 ou R$497 |
+| Resposta ao "faz sentido a gente lucrar em cima de vocês?" | Ancoragem: "vocês mesmos disseram que não faz sentido" |
+| Pré-compromisso de decidir na R2 | Fechamento: "vocês combinaram de decidir hoje" |
+| Caso citado e se ouviram do gerente e do Zyron | Retomar e aprofundar |
+| Objeções que já apareceram | Tratar antes que voltem |
+
+Antes da R2:
+> "[pai], aqui é o [especialista]. Tô com a ficha do [atleta] aberta pra
+> nossa conversa das [hora]. Você, a [mãe] e ele confirmados?"
+
+Regra de ouro: Closer que pergunta de novo o que já tá no CRM parece
+vendedor. Closer que chega sabendo parece especialista.
+
+## 03. Quem escolhe somos nós
+
+As pessoas amam comprar, mas odeiam vendedor. O Closer não pede pra
+família entrar. Ele avalia se a família tá pronta pro que o atleta
+conquistou.
+
+- Fala de vaga e turma, nunca de produto ou pacote.
+- Pergunta se a família tá comprometida, em vez de perguntar se ela quer
+  comprar.
+- Usa os 95%: quem não vai é por falta de disciplina e compromisso, então o
+  compromisso é filtro.
+- Sentiu resistência a vendedor, recua: a equipe decide se abre a vaga
+  (modo B).
+- Nunca corre atrás. Volta com o retorno da equipe ou na hora combinada,
+  nunca com "e aí, pensaram?".
+
+Gatilhos: exclusividade, escassez.
+> "Eu não falo com toda família. Se o [atleta] chegou até aqui, é porque
+> passou pela R1 e tem o perfil que a gente procura."
+> "Antes de te mostrar qualquer coisa, eu preciso entender se vocês estão
+> prontos, porque essa vaga é disputada."
+
+## 04. R2: conexão e dor
+
+Card R2 (`cards/r2.png`): R2 = Diagnóstico + Proposta + Tratativa de
+objeções. ↳ entrou qualificado + viu a solução + alinhou investimento =
+avanço.
+- Aqui: retoma o diagnóstico da R1, apresenta o plano com gerente de
+  carreira e Zyron, ancora o valor e trata as objeções.
+- O card avisa: R2 forte aumenta a clareza sobre valor, prazo e próximo
+  passo.
+
+Card Método Sandler (`cards/sandler.png`): Sandler = Rapport + Dor +
+Impacto + Compromisso.
+- Aqui: rapport pelo nome (4.1), dor com as palavras deles (4.3), impacto e
+  cenários (4.4 e 05), compromisso no filtro dos 95% (6.1). Só depois o
+  plano e o valor.
+- O card avisa: não apresente proposta cedo demais.
+
+45 a 60 minutos, com todos os decisores e o atleta.
+
+4.1 Conexão pelo nome (gatilho: exclusividade):
+> "[pai], [mãe], [atleta], prazer. [atleta], parabéns: você foi escolhido.
+> Eu li tudo o que você conversou com o [SDR], e fiz questão de ver teu
+> material. [ponto forte próprio]."
+
+4.2 Combinado (gatilho: compromisso):
+> "Vocês combinaram com o [SDR] que, se o plano fizer sentido, decidem hoje,
+> os dois juntos. Continua valendo? Pode ser não, tudo bem. Só não vale
+> 'vou pensar'."
+Reforça o pré-compromisso da R1. Combinado inicial do Sandler.
+
+4.3 Retomar a dor com as palavras deles (gatilhos: empatia, aversão à
+perda):
+> "[mãe], você falou pro [SDR] que [dor literal do CRM]. Continua assim?"
+> "E [atleta], você disse que o que falta é [resposta do CRM]. Ainda sente
+> isso?"
+> "[atleta], você contou pro [SDR] que fez [nº de peneiras] peneiras e só
+> se sentiu observado de verdade em [nº do CRM]. É isso?"
+> "E sendo sincero: no olhômetro, com aquele monte de garoto e vinte
+> minutos de coletivo, você acha que o avaliador conseguiu analisar o teu
+> jogo com precisão?"
+> Atleta: "Não."
+> "[pai], [mãe], e quanto custou cada uma dessas peneiras pra vocês?
+> Viagem, inscrição, dia de trabalho perdido?"
+A família confirma a própria dor em voz alta. Esse é o gancho que o Closer
+usa em 6.3, quando apresenta o Zyron.
+
+4.4 Impacto, o custo de não resolver (gatilho: aversão à perda):
+- "Vocês já investiram [valor do CRM] e ele ainda não foi visto por quem
+  decide. Se continuar assim, onde ele vai estar daqui a um ano?"
+- "Com [idade] anos, quanto tempo de janela ele ainda tem pra entrar numa
+  base?"
+> "De 0 a 10, quanto vocês querem ver o [atleta] num clube profissional?"
+> Pai: "Dez."
+> "E por que dez?"
+Quem justifica o próprio número se convence sozinho. Resposta menor que 10:
+"por que não é menos?".
+
+4.5 Necessidade explícita (SPIN: sem ela, não se fala do plano):
+> "Vocês querem que eu mostre como seria o plano do [atleta]?"
+Espera o "quero". Resposta morna: volta pro impacto.
+
+## 05. Cenários: trabalhar a imaginação
+
+O cenário depende do tipo de dor registrado no CRM. Depois de cada um,
+silêncio: quem descreve o futuro em voz alta já se vê nele.
+
+Dor financeira, mudança de vida (gatilhos: futuro imaginado, aversão à
+perda):
+> "Olha, com média de 3 meses, a gente consegue colocar esses jogadores em
+> times profissionais, e o [atleta] atende a essas características. Hoje
+> eles ganham por volta de 20 a 30 mil reais, no mínimo."
+> "[pai], o que muda na vida de vocês quando o [atleta] estiver ganhando
+> isso?"
+> "Imagina ele te ligando do clube pra contar que assinou. Qual a primeira
+> coisa que vocês fazem?"
+
+Dor emocional, o sonho:
+> "[atleta], imagina você entrando em campo com a camisa do [clube dos
+> sonhos do CRM]. Quem você quer ver na arquibancada?"
+> "[mãe], depois de tanto 'não' nas peneiras, como vai ser ver ele assim?"
+
+Dor de tempo e idade, a janela (gatilhos: urgência, aversão à perda):
+> "Com [idade], a janela da base tá aberta agora. Em média, em 3 meses ele
+> pode estar num clube. Um ano parado, com [idade + 1], a conversa é
+> outra."
+
+Locomoção, ele no clube:
+> "Quando ele for pro clube em [estado], [quem acompanha, do CRM] vai
+> junto, como vocês falaram pro [SDR]. E o gerente de carreira organiza
+> essa ida com vocês. [como funciona a estrutura do clube na base]."
+
+## 06. Diferencial e plano
+
+6.1 O filtro dos 95% (gatilhos: compromisso, exclusividade):
+> "95% dos atletas que entram com a gente são encaminhados. Os 5% que não
+> vão é por falta de disciplina e de compromisso. Por isso eu te pergunto,
+> [atleta]: você tá disposto a fazer a tua parte? Treinar, cumprir o que o
+> teu gerente de carreira passar, dar o máximo?"
+> Atleta: "Tô."
+> "[pai], [mãe], e vocês? Tão dispostos a apoiar ele nesse processo?"
+O sim do atleta na frente dos pais pesa mais que qualquer argumento. E a
+família sente que está sendo avaliada, não vendida.
+
+6.2 "Como vocês têm 95%?":
+> "Três coisas. Filtro: a gente não pega qualquer atleta, escolhe atletas
+> como você, [atleta], com base em dados reais e não no olhômetro. Gerente
+> de carreira acompanhando todo dia. E o Zyron acompanhando o tempo todo. É
+> por isso que a margem é essa."
+
+6.3 O que ninguém mais tem. Escolinha treina. Peneira decide no olhômetro.
+Aqui ele é analisado com dados reais e acompanhado todo dia.
+- Gerente de carreira: o [nome do gerente], responsável por revelar
+  centenas de jogadores, acompanha o desenvolvimento do atleta todo dia:
+  evolução, treino, próximos passos e a hora certa de levar ele pros
+  clubes.
+- Zyron, o mecanismo exclusivo: analisa o atleta com dados reais, não no
+  olhômetro, que é o caminho que os clubes estão seguindo com a
+  inteligência artificial. E coloca um agente específico só pro atleta,
+  acompanhando a evolução e mantendo contato o tempo todo, pra ele ter
+  sempre o melhor resultado possível. É por esse mecanismo que a gente
+  revela os nossos jogadores.
+
+Gatilhos: mecanismo único, autoridade, exclusividade.
+> "O [atleta] vai ter um gerente de carreira, o [nome do gerente]. Foi ele o
+> responsável por revelar centenas de jogadores. E ele vai acompanhar o
+> desenvolvimento do [atleta] todo dia."
+> "E vai ter o Zyron, o nosso mecanismo exclusivo. Um agente específico só
+> pra ele, acompanhando e mantendo contato o tempo todo, pra ele ter sempre
+> o melhor resultado possível. Isso não existe em escolinha, em peneira, em
+> empresário, em lugar nenhum."
+> "Lembra do que você falou das peneiras? [nº de peneiras] peneiras, e
+> observado de verdade em [nº do CRM]. Aquilo é olhômetro. Hoje, com
+> inteligência artificial, os clubes estão cada vez mais escolhendo atleta
+> com base em dados reais. O Zyron analisa o [atleta] exatamente assim, e é
+> por esse mecanismo que a gente revela os nossos jogadores."
+> Pro atleta: "[atleta], gerente de carreira todo dia e um agente só teu.
+> Isso é estrutura de atleta profissional. Você vai começar a viver como
+> um."
+
+6.4 O plano individual:
+> "Com base no que vocês contaram, o plano do [atleta] é esse:"
+
+| Dor que a família falou | O que muda de verdade pro atleta |
+| --- | --- |
+| "Ele tá sem acompanhamento" | Ele para de estar sozinho: alguém enxerga a evolução dele todo dia e decide a hora certa de levar pro clube |
+| "Ninguém cobra ele, ninguém acompanha" | Ele nunca mais fica largado: tem alguém de olho nele o tempo todo, puxando ele pro melhor resultado |
+| "Nas peneiras ninguém olhou ele direito" | Ele para de depender do olhômetro: é analisado com dados reais, do jeito que os clubes de verdade estão escolhendo hoje |
+| "Ninguém de clube vê ele" | Ele deixa de ser invisível pros clubes: entra numa rede de mais de dez anos, com relação direta com a AGN Football |
+| "Não sei o que ele precisa melhorar" | Ele sabe exatamente o que fazer pra evoluir, com o gerente e o Zyron ajustando a rota dele |
+| "Não sei se ele tá no nível" | Ele passa a ter uma resposta real sobre o próprio nível, não mais achismo: [como a equipe avalia e dá retorno] |
+
+> "É individual. Por isso cada turma tem só 10 atletas: é o máximo que o
+> gerente de carreira acompanha de perto, todo dia."
+
+6.5 Prova (gatilhos: prova social, comparação, autoridade):
+> "O [SDR] comentou com vocês do [caso]. Ele também era [posição], entrou
+> com [idade], numa situação muito parecida com a do [atleta]. Em [tempo],
+> fechou com o [clube]."
+> "Foi assim com o Joãozinho, que hoje tá no Grêmio, com o Kaio e com
+> vários outros. Mais de dez anos, centenas de atletas revelados, e relação
+> direta com a AGN Football, com jogador nosso publicado lá."
+
+Card Esforço percebido (`cards/esforco-percebido.png`): Esforço percebido
+= Etapas + Complexidade + Envolvimento da família. ↳ família só apoia em
+casa + resto é com a gente = menos esforço percebido.
+- O que é: o quanto a família acredita que vai precisar se envolver,
+  aprender ou mudar rotina pra isso funcionar.
+- Aqui: a família não muda rotina, não corre atrás de clube, não aprende
+  nada novo. Contato com clube, ajuste de treino e acompanhamento são com
+  o gerente de carreira e o Zyron.
+- O card avisa: se parecer trabalhoso ou complicado pra família, a chance
+  de fechar cai.
+
+6.6 O que fica com a gente, não com vocês (gatilho: redução de
+ansiedade, esforço percebido):
+> "E olha, a partir de agora isso não é mais um peso de vocês. Vocês não
+> precisam aprender nada novo, não precisam mudar a rotina, não precisam
+> sair correndo atrás de clube. Isso vira trabalho nosso: o gerente de
+> carreira cuida do contato com os clubes e do acompanhamento, o Zyron
+> cuida da análise. A única coisa que fica com vocês é continuar apoiando
+> o [atleta] em casa, do jeito que vocês já fazem."
+> "O que vocês tinham que fazer sozinhos até agora, ligar atrás de
+> peneira, pagar viagem, torcer pra alguém olhar, agora é a gente que
+> faz."
+
+## 07. Ancoragem e valor
+
+Card Valor percebido (`cards/valor-percebido.png`): Valor percebido =
+Solução + Transformação + Resultado final. ↳ menos foco no que a gente
+faz + mais foco em quem ele vira = oferta mais valiosa.
+- O que é: o quanto a família entende que o resultado vale mais do que
+  qualquer objeção.
+- Aqui: o Closer empilha isso antes do número. Não é "o gerente de
+  carreira acompanha" (entregável), é "o atleta para de ser invisível
+  pros clubes" (resultado). A tabela do plano (6.4) já é escrita assim.
+- O card avisa: quem vende só entregável enfraquece a percepção de valor
+  da oferta.
+
+Ordem: régua, conta, sem certeza, contrato, número (R$ ____), silêncio.
+Gatilhos: ancoragem, comparação, aversão à perda, mecanismo único.
+
+> Régua: "Vocês já investiram [valor do CRM] nesse sonho, e ele continua
+> sem ser visto por quem decide."
+> Conta: "Agora pensa comigo: se vocês fossem montar isso por conta, iam
+> precisar de um gerente de carreira particular acompanhando ele todo dia,
+> preparador físico, analista de desempenho, alguém pra montar o vídeo e
+> levar pros clubes, e viagem pra cada avaliação. Só com profissionais
+> dedicados, isso passa de [custo mensal de mercado] por mês."
+> Sem certeza: "E mesmo pagando tudo isso, ele ia continuar dependendo do
+> olhômetro de um avaliador de peneira. Ninguém garante que ele seria
+> encaminhado, e nenhum deles tem o Zyron. A gente encaminha 95%."
+> Contrato: "Vocês mesmos disseram pro [SDR]: não faz sentido a gente
+> lucrar em cima de vocês. Nosso lucro vem do contrato profissional do
+> [atleta]. Essa parte do investimento é por conta dos gastos com o gerente
+> de carreira e os profissionais dedicados a ele."
+> Número: "O investimento no plano do [atleta] é de R$ ____."
+
+Regra de ouro: depois do número, silêncio. Nada de justificar, emendar
+desconto ou perguntar "o que achou?". Quem fala primeiro depois do preço
+perde.
+
+Se a família falar em valor, quebra no prazo médio de 3 meses:
+> "No prazo médio de 3 meses, dá menos de R$ __ por dia, com gerente de
+> carreira todo dia e um agente do Zyron só dele."
+
+Qual plano apresentar. Card Método BANT (`cards/bant.png`): o SDR anotou os
+sinais de Budget na ficha, e é com eles que o Closer escolhe. BANT não é
+interrogatório: ninguém pergunta "quanto você pode pagar?".
+
+| Plano | Valor | Por dia em 3 meses | Quando apresentar |
+| --- | --- | --- | --- |
+| Principal | R$2997 | menos de R$34 | Padrão. O mais vendido. Primeiro sempre que o CRM não mostra aperto financeiro. |
+| Intermediário | R$1497 | menos de R$17 | CRM com dor financeira forte, ou objeção de caixa real depois do principal. |
+| Entrada | R$497 | menos de R$6 | Objeção de caixa real que os outros dois não resolvem. |
+
+Tática: um valor por vez. Se precisar descer de plano, desce pelo escopo,
+nunca pelo desconto: "existe um formato mais enxuto, com [o que muda no
+plano]". Desconto derruba o "é só o custo".
+
+## 08. Fechamento: dois modos
+
+| Modo A: fechar na call | Modo B: a equipe decide |
+| --- | --- |
+| Família pedindo pra começar | Família com pé atrás com vendedor |
+| Perguntou de pagamento ou de início | Pai que precisa sentir controle |
+| Todos os decisores na call | Muita pergunta de preço, pouca de plano |
+| Dor forte e cenário comprado | Um decisor ausente |
+
+Modo A:
+1. Resumo dos sins (gatilho: compromisso): "Deixa eu resumir o que vocês me
+   falaram: [dor com as palavras deles]. Querem ver o [atleta] num clube,
+   nota dez. Ele tá comprometido. E vocês mesmos disseram que não faz
+   sentido a gente lucrar em cima de vocês. O plano tem gerente de carreira
+   todo dia, o Zyron e 95% de encaminhamento. Faz sentido pra vocês?"
+2. Pergunta de decisão (gatilho: escolha alternativa): "Então eu confirmo a
+   vaga do [atleta] agora. Fica melhor no Pix ou no cartão?"
+3. Início imediato (gatilho: redução de ansiedade, tempo de execução
+   inicial): "Show. Assim que cair o pagamento, eu já aviso o [gerente de
+   carreira], e ele te chama ainda hoje. O Zyron já começa a olhar o jogo
+   do [atleta] amanhã. Vocês não esperam a próxima turma pra ver as coisas
+   andando."
+4. Escassez e urgência: "Dessa turma de 10, restam [vagas restantes]. A
+   próxima abre em [data da próxima turma]." / "E pro [atleta], com
+   [idade], esperar a próxima turma é perder [tempo] de janela."
+5. Depois de tratar a objeção: "Resolvido isso, eu confirmo a vaga dele
+   agora. Pix ou cartão?"
+6. Lembrar o combinado: "Vocês combinaram de decidir hoje, lembra? Pode ser
+   não, tudo bem. O que tá faltando pro sim?"
+
+Modo B (o Closer recua de propósito; a família sai querendo uma vaga que
+ainda não é dela):
+1. Recuar (gatilhos: exclusividade, escassez): "Olha, eu não vou te vender
+   nada hoje. Antes de abrir a vaga, eu apresento o [atleta] pro [nome do
+   gerente] e pra nossa equipe técnica, e são eles que decidem se ele entra
+   nessa turma."
+2. Compromisso condicional: "Enquanto isso, conversem entre vocês e com o
+   [atleta]. Se a equipe aprovar, vocês estão dentro?"
+3. Data do retorno: "Amanhã até [hora] eu te dou o retorno da equipe. Fica
+   de olho no telefone."
+4. Retorno no dia seguinte (gatilhos: reciprocidade, escassez): "[pai], boa
+   notícia: o [nome do gerente] e a equipe aprovaram o [atleta]. A vaga é
+   dele até [hora]. Pra confirmar, é o investimento que eu te passei,
+   R$ ____. Pix ou cartão?"
+
+Início imediato vale nos dois modos: assim que a venda é registrada, a
+mesma sequência da seção 10 entra em ação. É isso que tira o peso do "e
+agora, quanto tempo eu espero?" antes mesmo do preço aparecer na
+conversa.
+
+Regra de ouro: modo A ou modo B, a R2 nunca termina sem data: ou a venda,
+ou o retorno da equipe marcado.
+Proibido: correr atrás da família.
+
+## 09. Matriz de objeções
+
+Método: 1 acolher, 2 isolar ("tirando isso, tem mais alguma coisa?"), 3
+diagnosticar, 4 responder com as palavras da família, 5 conduzir de volta
+pra decisão. Predictable Revenue: um "não" é informação.
+
+9.1 "O valor tá muito alto"
+Prevenção: cenário comprado, gerente e Zyron apresentados, conta dos
+profissionais antes do número.
+1. Acolher e isolar: "Entendo. Tirando o valor, tem mais alguma coisa que
+   impede o [atleta] de começar?"
+2. "Quando você fala que tá alto: você não vê o retorno, ou é o dinheiro
+   agora?"
+3. Se for retorno: "Cada perfil é individual, e o do [atleta] tem um
+   gerente de carreira que revelou centenas de jogadores olhando pra ele
+   todo dia, e um agente do Zyron só dele. Sozinhos, vocês iam pagar mais
+   que isso todo mês, e sem certeza nenhuma. Aqui são 95%." / "E lembra: os
+   atletas que a gente coloca hoje ganham por volta de 20 a 30 mil por mês,
+   no mínimo. O Joãozinho entrou numa situação parecida e hoje tá no
+   Grêmio."
+4. Se for dinheiro agora: "Se o dinheiro não fosse problema, o [atleta]
+   começava hoje?" / "Então vamos resolver a forma: dá pra fazer em
+   [condição de pagamento]. E se precisar, existe um formato mais enxuto,
+   com [o que muda no plano], de R$ ____."
+5. Conduzir: "Então eu confirmo a vaga dele. Pix ou cartão?"
+Proibido: desconto, "vou ver com meu gerente", baixar valor sem mudar o
+escopo.
+
+9.2 "Preciso ver com minha esposa / meu marido"
+Prevenção: o SDR marca a R2 com os dois e com o pré-compromisso; o Closer
+confirma os dois antes e reforça o combinado (4.2).
+1. "Faz todo sentido, é decisão de família. E você, se dependesse só de
+   você, o [atleta] começava?" (disse sim: virou aliado; hesitou: a
+   objeção real é outra)
+2. "Então, se a [mãe] topar, vocês estão dentro?"
+3. "Liga pra ela agora e coloca no viva-voz. Em 10 minutos eu explico o
+   gerente de carreira e o Zyron, e vocês decidem juntos."
+4. "O que você acha que ela vai perguntar? Me fala que eu já te respondo."
+5. Modo B: "Eu apresento o [atleta] pra equipe hoje, e amanhã às [hora] eu
+   falo com vocês dois com o retorno."
+Proibido: mandar a proposta por WhatsApp "pra você mostrar pra ela".
+
+9.3 "Vou pensar"
+> "Claro. Pensar sobre o quê exatamente? O valor, conversar com mais
+> alguém, ou alguma dúvida sobre o plano?"
+> "O que vocês vão saber amanhã que não sabem agora?"
+> "E enquanto vocês pensam, o relógio não para: se decidir hoje, o
+> [gerente de carreira] já liga ainda hoje e o Zyron já começa amanhã. Se
+> decidir daqui a uma semana, o [atleta] começa uma semana depois."
+> "Vocês combinaram com o [SDR] de decidir hoje. O que tá faltando?"
+> Modo B: "Pensem hoje, que eu levo o [atleta] pra equipe. Amanhã às [hora]
+> eu te dou o retorno, e aí vocês me dizem se estão dentro."
+
+9.4 "Mas vocês não ganham no contrato? Por que cobram?"
+> "Exatamente: nosso lucro vem do contrato. Isso aqui não é lucro, é o
+> gasto com o gerente de carreira e os profissionais dedicados ao [atleta]
+> até o contrato sair. Sem eles, não tem contrato pra ninguém ganhar."
+
+9.5 "E se ele for dos 5%?"
+> "Os 5% são falta de disciplina e de compromisso. Isso depende dele, e é
+> por isso que ele tem gerente de carreira e Zyron em cima todo dia."
+> "[atleta], você vai ser dos 5%?"
+
+9.6 "E se não der certo?" / "Tem garantia?"
+> "Quem te promete contrato tá mentindo. O que a gente tem é 95% de
+> encaminhamento, gerente de carreira todo dia, o Zyron, e a gente só ganha
+> quando ele ganha. Se ele não avançar, quem perde primeiro somos nós."
+> "O risco de verdade é ele ficar parado mais um ano."
+
+9.7 "Não tenho o dinheiro agora"
+> "Se tivesse, ele começava hoje?"
+> "Então o problema é só a forma. Dá pra fazer em [condição de pagamento],
+> ou no formato mais enxuto de R$ ____. Qual cabe melhor?"
+> "Assim que resolver a forma, o gerente de carreira já liga no mesmo dia.
+> Isso não espera."
+
+9.8 "Ele não pode ir pra outro estado"
+> "Hoje ele não precisa ir pra lugar nenhum. Isso só acontece quando o
+> clube chamar, e o gerente de carreira organiza com vocês. [como funciona
+> a estrutura do clube na base]."
+> "E vocês falaram pro [SDR] que [solução do CRM]. Então isso a gente
+> resolve junto quando chegar a hora."
+
+9.9 "Já tentamos peneira / empresário e não deu"
+> "Quantos garotos tinham nessa peneira? E quanto tempo olharam pra ele?
+> Vinte minutos de coletivo?"
+> "Então não foi ele que não deu certo. Foi o olhômetro. Ninguém analisou o
+> jogo dele de verdade, e ninguém acompanhou ele depois. É exatamente isso
+> que o Zyron e o gerente de carreira fazem: dado real na análise e
+> acompanhamento todo dia."
+
+9.10 "Ele ainda é novo" / "Ano que vem a gente vê"
+> "Com [idade + 1], a janela fica maior ou menor? O [caso] entrou com
+> [idade do caso]. Esperar um ano é deixar a vaga de base pra outro
+> menino."
+
+9.11 "Isso é confiável?"
+> "Mais de dez anos, centenas de atletas revelados, 95% de encaminhamento e
+> relação direta com a AGN Football, com jogador nosso publicado lá. O
+> Joãozinho fechou com o Grêmio, o Kaio também passou por aqui. E aqui tá o
+> nosso [site, Instagram ou CNPJ]."
+
+9.12 "Manda por WhatsApp que eu vejo com calma"
+> "O plano é do [atleta], não é folder. Explicado aqui, com vocês, é que
+> ele faz sentido. O que você precisa ver pra decidir?"
+
+9.13 "Vou ver outras opções"
+> "Compara mesmo. Pergunta pra eles: analisam o atleta com dados reais ou
+> no olhômetro? Tem gerente de carreira acompanhando todo dia? Tem um
+> agente como o Zyron? Quantos atletas encaminham? Têm relação direta com a
+> AGN? Cobram mensalidade ou só ganham quando o atleta ganha?"
+> "Só lembra que a vaga do [atleta] aqui não fica aberta pra sempre. A
+> turma é de 10."
+
+9.14 Linhas novas, vindas das calls gravadas:
+
+| Objeção (literal da call) | Call de origem | Diagnóstico | Script que fechou | O que travou |
+| --- | --- | --- | --- | --- |
+| | | | | |
+
+## 10. Depois do sim
+
+Card Tempo de execução inicial (`cards/tempo-execucao.png`): Tempo de
+execução inicial = Início imediato + Primeiras 48h + Primeiro avanço. ↳
+gerente liga hoje + Zyron começa amanhã = execução mais rápida.
+- O que é: em quanto tempo a família vê o acompanhamento começar de
+  verdade, depois do sim.
+- Aqui: a dor da família não espera os 3 meses de resultado médio pra
+  começar a ser tratada: o gerente de carreira liga ainda hoje, o Zyron
+  começa a olhar o atleta amanhã.
+- O card avisa: início atrasado ou vago esfria a decisão e enfraquece a
+  venda.
+
+1. Pagamento na própria call: "faz agora comigo na linha", no Pix ou no
+   cartão.
+2. Registro: venda concluída no CRM e cadastro em Vendas, com o produto e o
+   ticket do plano fechado. A venda entra pendente até a aprovação do
+   Executive.
+3. Áudio de boas-vindas pro atleta: "Bem-vindo, [atleta]. Teu gerente de
+   carreira e o Zyron começam contigo agora."
+4. Indicação na hora: "[atleta], tem algum colega de time que joga no teu
+   nível? A gente faz a avaliação dele também." Vira lead pro SDR.
+5. Início imediato (gatilho: redução de ansiedade): a dor não espera 3
+   meses pra começar a ser tratada, começa no mesmo dia.
+   - Hoje: o [gerente de carreira] recebe a ficha do [atleta] e chama a
+     família ainda hoje ou no máximo até amanhã [confirmar prazo real em
+     "Dados pra completar", item 9].
+   - Nas primeiras 48h: o Zyron começa a acompanhar o [atleta] e o
+     gerente de carreira alinha os primeiros passos com a família.
+   Fala isso pro pai/mãe assim que a venda fecha: "[pai], [mãe], a partir
+   de agora quem corre atrás é a gente. O [gerente de carreira] entra em
+   contato com vocês ainda hoje, e o Zyron já começa a acompanhar o
+   [atleta]."
+
+## 11. Depois do "ainda não"
+
+Card Follow up (`cards/followup.png`): o Closer volta sempre com motivo
+(retorno da equipe, caso, cenário), nunca pedindo. Muita venda se perde
+porque o vendedor desiste cedo demais.
+
+| Quando | O que fazer |
+| --- | --- |
+| Mesmo dia | "[pai], resumo da nossa conversa: vocês me falaram que [dor com as palavras deles]. O plano do [atleta] resolve isso, com gerente de carreira todo dia e o Zyron. Amanhã às [hora] eu te trago o retorno da equipe." |
+| Data combinada | Liga na hora marcada, com o retorno da equipe ou com todos os decisores. Retoma a dor e conduz a decisão. |
+| +1 dia | Caso parecido ou link da AGN Football |
+| +3 dias | "A vaga do [atleta] ainda tá separada, mas a turma tá fechando." |
+| +7 dias | Cenário de novo: idade, janela, o que muda na vida da família |
+| +14 dias | "A equipe vai liberar a vaga do [atleta] pros próximos aprovados amanhã. Se quiserem garantir, me responde hoje." |
+| Depois | Devolve pro SDR, que reaborda em 30 dias. O histórico fica no CRM. |
+
+## 12. Números
+
+Card Win rate (`cards/win-rate.png`): vendas ganhas ÷ oportunidades × 100.
+↳ 12 vendas ganhas em 40 oportunidades = 30% de win rate. O card manda: não
+olhe win rate sozinho; compare volume, ticket e ciclo de vendas.
+
+Card Inside Sales (`cards/inside-sales.png`): 40 reuniões → 12 propostas →
+5 vendas. Sem processo e follow up, a conversão cai.
+
+| Sintoma | Provável causa | Onde mexer |
 | --- | --- | --- |
-| "Não entendo a avaliação" | Análise da Zyron e devolutiva prevista no plano | [resultado mostrado], [analista] e [data] |
-| "Falta direção" | Orientação do gerente de carreiras | [plano de acompanhamento], [canal] e [frequência] |
-| "As tentativas ficam soltas" | Organização dos próximos passos incluídos | [registro das ações] e [próxima atualização] |
-| "Não sei como apresentar o perfil" | [preparação de material incluída] | Material revisado e explicação de uso |
-| "Quero entender oportunidades" | Avaliação de caminhos e contatos previstos no escopo | Requisitos, ações realizadas e retorno real, quando houver |
-
-> "Você falou [dor]. Esta parte do plano existe para trabalhar exatamente isso. Aqui está quem faz e como vocês acompanham."
-
-### 6.6 Experiência e conexões
-
-> "O David Willer é o expert. Entre os casos do trabalho dele estão Kaio no Internacional e Joãozinho profissionalmente no Grêmio. O histórico da operação vai além desses nomes, com centenas de jogadores encaminhados no Brasil e no mundo."
-
-> "A AGN Football é um braço complementar, com dezenas de atletas e atuação no caminho para o exterior. Ela amplia essa frente da operação. O acompanhamento do [atleta] continua tendo responsável e entregas definidos aqui."
-
-Mostrar [David Willer](https://www.instagram.com/dwilleroliveira/) e [AGN Football](https://www.instagram.com/agnfootball/), além do caso específico preparado. Não usar o nome de um clube para insinuar vaga aberta ou contratação garantida.
-
-### 6.7 Quem faz o quê
-
-![Card Esforço percebido: clareza nas responsabilidades](cards/esforco-percebido.png)
-
-**Aplicação:** simplificar a participação da família sem prometer que ela não fará nada.
-
-> "A equipe assume [análise, orientação e ações incluídas]. Do [atleta], precisamos de [rotina e material]. De vocês, [apoio e participação combinados]. O contato é [canal], com retorno em [frequência]. Vocês não ficam adivinhando a quem perguntar."
-
-### 6.8 Três prazos que não podem virar um só
-
-| Prazo | Como apresentar |
-| --- | --- |
-| Análise do DVD | [data/hora] para análise ou atualização de status, com analista responsável |
-| Início do acompanhamento | [primeiro contato e primeira entrega] após contratação, conforme capacidade real |
-| Encaminhamento a clube | Depende do perfil, requisitos e oportunidades; explicar cada etapa concreta |
-
-> "Sobre prazo, eu separo as coisas: a devolutiva fica para [data]; o acompanhamento começa em [data]; clube depende de uma oportunidade compatível e da avaliação de quem recebe. Eu não vou misturar esses três momentos."
-
-Só citar média de encaminhamento quando houver base definida: resultado contado, período, número de atletas e casos ainda em andamento. A referência antiga de três meses não entra como promessa pronta.
-
-## 07. Ancoragem: o valor precisa ser entendido antes do número
-
-![Card Valor percebido: solução, transformação e resultado](cards/valor-percebido.png)
-
-**Aplicação:** a família precisa entender a utilidade do acompanhamento, quem o executa e o que recebe. O material comercial de reforço faz a ancoragem detalhada; este roteiro conduz sua apresentação.
-
-### A sequência
-
-1. Retomar a dificuldade nas palavras da família.
-2. Mostrar a entrega que responde a ela.
-3. Abrir o **material de reforço de ancoragem** aprovado pela operação.
-4. Comparar escopo, duração e responsabilidades equivalentes.
-5. Explicar o custeio de profissionais e tecnologia.
-6. Apresentar a proposta e deixar a família responder.
-
-### Falas para a ancoragem
-
-> "Vocês disseram que o mais difícil é [necessidade]. Antes de falar em preço, olha o que entra para trabalhar isso: [entregas do plano]."
-
-> "Se fossem organizar por conta própria, precisariam resolver análise, orientação e acompanhamento, além de descobrir com quem falar em cada etapa. Vamos comparar o que o material mostra e o que de fato está incluído aqui."
-
-> "O investimento custeia os profissionais envolvidos e a inteligência artificial. O objetivo da parceria é desenvolver o trabalho com o atleta; as condições sobre eventual contrato profissional ficam claras no contrato."
-
-Quando houver cotações equivalentes no material:
-
-> "Estes valores são de [fonte e data], para [escopo]. É com essa comparação que você consegue avaliar o plano."
-
-Sem cotação, comparar a organização do trabalho e os entregáveis, sem inventar quanto seria mais caro contratar por fora.
-
-### O número, sem esconder o total
-
-> "Para [escopo e duração], o investimento total é de R$ ____. A condição disponível é [número] parcelas de R$ ____, [com/sem juros e total parcelado]. À vista, a condição é [condição real]."
-
-Pausar para ouvir. Não emendar desconto nem diminuir o valor de uma quantia que pode ser relevante para a família.
-
-> "Qual parte vocês querem avaliar: o que está incluído, a condição de pagamento ou a confiança no trabalho?"
-
-### Planos de referência interna
-
-![Card BANT: proposta compatível com necessidade e momento](cards/bant.png)
-
-| Plano | Valor registrado na operação | Uso |
-| --- | --- | --- |
-| Principal | R$ 2.997 | Apresentar quando o escopo responder à necessidade e puder ser avaliado pela família |
-| Intermediário | R$ 1.497 | Alternativa existente com diferenças de escopo explicitadas |
-| Entrada | R$ 497 | Formato de entrada, se suas entregas realmente atenderem à necessidade |
-
-Confirmar tabela, duração, escopo e condições vigentes antes da proposta. Não apresentar o mesmo serviço com três preços nem calcular valor diário a partir de um prazo presumido para chegar a clube.
-
-> "Existe um formato mais enxuto. Ele inclui [entregas] e deixa de incluir [diferenças]. Quero que vocês escolham sabendo o que muda."
-
-O plano menor é uma proposta diferente, não uma promessa igual com desconto disfarçado.
-
-## 08. Fechamento: decisão agora ou pendência resolvida
-
-### Modo A: a família entendeu e quer iniciar
-
-1. **Resumo:** "O que vocês querem é [objetivo]. O que faltava era [necessidade]. O plano trabalha isso com [entregas]."
-2. **Confirmação:** "Escopo, duração, acompanhamento e investimento ficaram claros?"
-3. **Decisão:** "Vocês querem iniciar o acompanhamento do [atleta] nesse formato?"
-4. **Pagamento após o sim:** "Certo. Entre as condições apresentadas, qual funciona melhor?"
-5. **Próximo passo:** "Após a confirmação, [responsável] entra em contato até [data/hora] para [primeira entrega]."
-
-Enviar o contrato e o resumo da proposta, dando espaço para leitura. Não transformar envio do Pix em substituto da concordância.
-
-### Modo B: falta uma resposta concreta
-
-Usar para uma dúvida técnica, escopo a confirmar, participante ausente ou necessidade real de avaliação da equipe.
-
-> "Hoje ficou pendente [ponto]. Eu vou confirmar com [responsável] e volto até [dia/hora], trazendo [resposta ou material]. Aí vocês avaliam com essa informação na mão."
-
-> "Além desse ponto, tem alguma outra dúvida que eu preciso levar?"
-
-No retorno:
-
-> "Você me pediu clareza sobre [ponto]. Confirmei [resposta real]. Vou te mostrar. Isso resolve a dúvida ou ficou alguma parte aberta?"
-
-Se resolver e houver interesse:
-
-> "Com isso esclarecido, vocês querem iniciar no plano que conversamos?"
-
-Não apresentar uma aprovação teatral da equipe para criar obrigação de compra.
-
-### Quando a resposta é não
-
-> "Entendi. Vou registrar [motivo, se quiserem informar] e encerrar a proposta. Se o cenário mudar, vocês podem retomar pelo mesmo contato."
-
-### Capacidade limitada real
-
-Se houver uma turma ou agenda limitada, informar apenas dado atual, condição e prazo reais:
-
-> "Hoje conseguimos iniciar [quantidade confirmada] acompanhamentos em [data]. Se essa agenda mudar, eu te aviso. O que vocês precisam esclarecer para decidir?"
-
-## 09. Objeções: descobrir o bloqueio e responder no ponto
-
-Sequência: **acolher → esclarecer → demonstrar → conferir → pedir o próximo passo**. Cada resposta deve resolver uma dúvida, não aumentar a pressão.
-
-### 9.1 "Está muito caro"
-
-**Primeira pergunta:**
-
-> "Quando você diz caro, é porque o valor não cabe agora, porque ainda não enxergou a entrega ou porque não confia que o trabalho vai acontecer?"
-
-**Se for valor percebido:**
-
-> "Vamos voltar ao que vocês querem resolver: [necessidade]. Esta entrega responde a isso de que maneira, na visão de vocês? O que ainda falta para a comparação fazer sentido?"
-
-Mostrar o material de reforço e uma entrega real, sem repetir a apresentação inteira.
-
-**Se for confiança:**
-
-> "Diminuir o preço não resolveria essa dúvida. Vamos conferir quem acompanha, o contrato e um exemplo do trabalho. Qual desses pontos você quer ver primeiro?"
-
-**Se for orçamento:**
-
-> "O limite é o total do investimento ou a forma de pagamento? Posso te mostrar as condições que realmente existem, sem mudar o que foi combinado."
-
-Explicar total, parcelas e encargos. Se houver outro plano, mostrar exatamente o que sai e o que permanece.
-
-**Pergunta de avanço:**
-
-> "Com [dúvida] resolvida e essa condição na mesa, faz sentido contratar, ou ainda existe um limite que precisamos respeitar?"
-
-Se não couber sem comprometer despesas essenciais, encerrar ou combinar retomada. Não usar o sonho do atleta para produzir culpa.
-
-### 9.2 "Parcela de X ainda pesa"
-
-> "A parcela precisa caber. São [número] parcelas de R$ ____, total de R$ ____, para [escopo e duração]. Considerando isso inteiro, qual parte ficou inviável?"
-
-> "Se o formato menor atender [necessidade], eu explico a diferença. Se não atender, não vou te oferecer algo só para caber na parcela."
-
-### 9.3 "Meu filho só quer uma oportunidade, não um serviço"
-
-> "Faz sentido: o objetivo dele é jogar. O acompanhamento é o trabalho que organiza a caminhada até as oportunidades. Vamos separar o objetivo final do que estamos contratando agora."
-
-> "Se vocês já têm análise, direção e alguém acompanhando esse caminho, precisamos entender o que faltaria aqui. Se não têm, é esse trabalho que eu estou te mostrando."
-
-### 9.4 "Empresário bom ganha no contrato"
-
-> "A negociação de um contrato e a assessoria durante a caminhada têm trabalhos diferentes. Aqui o investimento sustenta [profissionais, tecnologia e entregas previstas]. A participação em eventual contrato profissional segue as condições acordadas."
-
-> "O ponto é: o que vocês recebem durante esse período justifica o investimento para vocês? Vamos avaliar isso com clareza."
-
-### 9.5 "Tenho medo de ser golpe"
-
-> "Você está certo em conferir. Vamos por partes: identidade da empresa, contrato, quem atende, prova do trabalho e condições de pagamento."
-
-Mostrar cadastro institucional e contrato disponíveis, os perfis do David e da AGN e o caso autorizado. Usar canal de pagamento oficial da operação.
-
-> "O que ainda precisa ficar verificável para você se sentir seguro? Quero resolver essa dúvida antes de qualquer pagamento."
-
-### 9.6 "Vocês garantem clube? É tiro certo?"
-
-> "Tiro certo, para nós, precisa significar trabalho direcionado: analisar o perfil, orientar e buscar caminhos compatíveis. Contratação é decisão do clube. O que eu posso assumir está aqui: [entregas], [responsável] e [prazos]."
-
-> "Você está buscando garantia de contrato ou quer avaliar um acompanhamento com entregas claras? Preciso ser preciso com você sobre essa diferença."
-
-### 9.7 "Em quanto tempo ele vai para um clube?"
-
-> "Você quer saber o prazo para receber a análise, para começar o acompanhamento ou para ter uma avaliação de clube? São etapas diferentes."
-
-Informar os dois primeiros conforme agenda real. No terceiro, apresentar apenas dados históricos documentados e comparáveis, quando existirem, sem converter média em prazo individual.
-
-> "Para o [atleta], hoje o próximo marco é [ação e data]. É esse avanço que conseguimos acompanhar juntos."
-
-### 9.8 "Vou pensar"
-
-> "Claro. Qual é a parte principal que você quer pensar: o plano, a confiança ou o investimento? Talvez eu consiga te entregar a informação que falta."
-
-> "Prefere que eu envie o resumo e a gente retome [dia/hora], ou você prefere entrar em contato quando decidir?"
-
-Se escolher retorno, confirmar qual questão será resolvida. Não cobrar um "sim" como dívida de uma fala anterior.
-
-### 9.9 "Preciso conversar com outra pessoa"
-
-> "O que essa pessoa precisa entender para participar da decisão? Posso enviar o resumo e fazer uma conversa curta com vocês juntos."
-
-Não pedir que um participante pressione o outro; facilitar informação completa.
-
-### 9.10 "Manda a proposta no WhatsApp"
-
-> "Mando sim: objetivo, escopo, duração, quem acompanha, valor total e condições. Qual ponto você quer olhar com mais cuidado para eu destacar?"
-
-Enviar a proposta aprovada. Não condicionar informação básica a outra chamada.
-
-### 9.11 "Já tentamos peneira e não deu em nada"
-
-> "O que vocês receberam depois da tentativa? Alguma orientação ou só o resultado?"
-
-> "Aqui a diferença que precisamos avaliar é [análise, devolutiva e acompanhamento incluídos]. Vou mostrar isso funcionando, para você comparar trabalho com trabalho."
-
-Não dizer que toda peneira é inútil ou que toda assessoria concorrente trabalha errado.
-
-### 9.12 "Não temos como viajar / ele é novo"
-
-> "Então isso entra como limite do plano. Antes de qualquer avaliação fora, precisamos considerar companhia, escola, custos e requisitos. O que dá para trabalhar agora sem ultrapassar esse limite?"
-
-Não prometer custeio, alojamento ou transferência internacional de menor sem condições confirmadas.
-
-### 9.13 "Já tem clube ou empresário"
-
-> "Qual trabalho já está coberto e qual falta? Só faz sentido conversar se existir uma contribuição complementar e compatível com os vínculos dele."
-
-### 9.14 "A IA vai decidir se meu filho presta?"
-
-> "Não é esse o papel. A Zyron analisa o material; a equipe conversa sobre o resultado e o contexto. Uma análise não resume a pessoa nem decide sozinha uma carreira."
-
-> "Vamos olhar um exemplo do que ela entrega e como o analista explica isso."
-
-### 9.15 "A AGN leva para a Europa?"
-
-> "A AGN é um braço complementar com atuação no caminho para o exterior. Temos dezenas de atletas pela AGN dentro desse histórico. Isso não transforma qualquer destino em vaga disponível. Para o [atleta], primeiro precisamos entender perfil, requisitos e oportunidade."
-
-Mostrar um caso real da frente internacional, se preparado, sem inventar nome, país ou vínculo.
-
-### 9.16 "Quero começar, mas não hoje"
-
-> "O que muda entre hoje e [data]? Se for organização financeira ou participação de alguém, vamos registrar o que precisa acontecer."
-
-> "Posso te enviar o resumo e confirmar a disponibilidade real mais perto dessa data. Prefere assim?"
-
-## 10. Depois do sim: a confiança precisa continuar
-
-![Card Tempo de execução inicial: primeira entrega e próximo marco](cards/tempo-execucao.png)
-
-**Aplicação:** trocar a espera vaga por início com responsável, data e resultado esperado. Só prometer o prazo que a equipe consegue cumprir.
-
-1. Confirmar contrato, plano, escopo, duração e pagamento no canal oficial.
-2. Registrar o desfecho no CRM.
-3. Cadastrar a venda financeira uma única vez, vinculada ao lead, com produto e ticket corretos. Ela fica pendente até a aprovação do Executive.
-4. Passar a ficha ao responsável pelo acompanhamento, incluindo expectativas e objeções.
-5. Informar a primeira entrega e o próximo contato.
-6. Conferir se a família recebeu os materiais e sabe com quem falar.
-
-> "Bem-vindos, [responsáveis] e [atleta]. O plano contratado é [plano], com [escopo e duração]. O gerente de carreiras [nome] chama vocês até [data/hora]. A primeira entrega é [entrega]. O contato para acompanhar é [canal]."
-
-### Se o DVD ainda precisar de complemento
-
-> "Para concluir a análise, falta [material]. Assim que chegar, a equipe confirma a previsão e o analista de carreiras retorna com o resultado. Até [dia/hora] vocês recebem uma atualização."
-
-### Se houver atraso
-
-Avisar antes do prazo, explicar o status real e combinar a nova previsão com responsável. Não sumir após o pagamento.
-
-### Indicação
-
-Depois de uma entrega útil ou sinal de satisfação:
-
-> "Conhece outro atleta que gostaria de entender esse trabalho? Pode compartilhar nosso contato. A gente conversa com ele e com o responsável."
-
-## 11. Depois do ainda não: voltar com motivo
-
-![Card Follow up: continuidade com conteúdo útil](cards/followup.png)
-
-| Momento | Ação |
-| --- | --- |
-| Mesmo dia | Enviar resumo da proposta, links e dúvida pendente registrada |
-| Horário combinado | Entregar a resposta prometida, com responsável e evidência |
-| D3, se houver interesse | Caso ou demonstração diretamente ligado à objeção |
-| D7 | "O ponto [dúvida] ficou esclarecido? Querem avançar, ajustar a conversa ou pausar?" |
-| D14 | Confirmar se encerra ou se há uma data concreta de retomada |
-| Depois | Devolver para o fluxo interno SDR quando apropriado, preservando o histórico e a preferência de contato |
-
-A cadência se adapta ao combinado. Recusa explícita encerra o contato comercial. Sem novidade ou pergunta útil, não mandar "e aí, pensou?" todos os dias.
-
-## 12. Números que ajudam a melhorar
-
-![Card Win rate: vendas ganhas entre oportunidades](cards/win-rate.png)
-
-![Card Inside sales: consistência na venda remota](cards/inside-sales.png)
-
-Os números dos cards são exemplos de treinamento. Medir a operação com período e critérios estáveis.
-
-| Sinal | O que investigar |
-| --- | --- |
-| Muito "caro" | A família entendeu entrega, duração e prova? Ou existe limite financeiro real? |
-| Muita desconfiança | Contrato, identidade, casos e demonstração estão acessíveis? |
-| Repetição de perguntas da R1 | Ficha incompleta ou preparação insuficiente |
-| Faltas | Motivo da reunião, horário e participantes ficaram claros? |
-| Muitos retornos sem avanço | A pendência foi definida e a informação prometida foi entregue? |
-| Cancelamentos e reclamações | A venda criou uma expectativa diferente do serviço entregue? |
-
-Acompanhar R2 realizadas, conversão, ticket, tempo até decisão, motivo de perda e qualidade das primeiras entregas. Distinguir fechamento no CRM de receita aprovada. Não inventar meta de conversão a partir de exemplos do livro.
-
-## 13. Regras de ouro da condução
-
-- Ler a ficha antes da R2 e usar as palavras da família.
-- Apresentar-se como gerente de carreiras.
-- Fazer uma pergunta por vez e confirmar a dúvida principal.
-- Ligar cada entrega a uma necessidade.
-- Mostrar a Zyron de forma simples, com resultado real.
-- Usar David e AGN como autoridade contextualizada.
-- Apresentar o material de reforço antes do preço.
-- Informar valor total, parcelas, duração e diferenças entre planos.
-- Pedir uma decisão clara depois que houver compreensão.
-- Retornar com data e conteúdo definidos quando faltar algo.
-- Respeitar o não e os limites do orçamento.
-- Fazer a primeira entrega corresponder ao que foi vendido.
-
-**Treino da equipe:** ensaiar "caro por falta de confiança", "caro por falta de orçamento" e "quero só clube". A resposta deve mudar conforme o motivo. Repetir o mesmo discurso nos três casos é falhar no diagnóstico.
-
-## 14. Casos, AGN e bastidores que sustentam a conversa
-
-![Card Probabilidade de sucesso: prova com contexto](cards/probabilidade-sucesso.png)
-
-A R2 retoma o caso apresentado na R1 e aprofunda o que importa para a família. A fonte comum é CASOS.md.
-
-| Referência | Como apresentar |
-| --- | --- |
-| David Willer | Expert da operação e responsável pelas trajetórias informadas |
-| Kaio | Caso do David, no Internacional |
-| Joãozinho | Caso do David, atuando profissionalmente no Grêmio |
-| AGN Football | Braço complementar, com dezenas de atletas e atuação para o exterior |
-| Histórico amplo | Centenas de jogadores encaminhados no Brasil e no mundo, conforme histórico informado pela operação |
-
-- [Instagram do David Willer](https://www.instagram.com/dwilleroliveira/)
-- [Instagram da AGN Football](https://www.instagram.com/agnfootball/)
-
-### Uma prova que faz o pai parar para olhar
-
-> "Você me pediu para entender se existe trabalho por trás da apresentação. Olha este caso: [publicação preparada]. Aqui está [resultado], aqui o vínculo com a equipe e aqui o que aconteceu ao longo do caminho."
-
-> "Agora olha o plano do [atleta]. Qual dessas ações responde à dificuldade que vocês trouxeram?"
-
-**Semelhança:** usar posição, idade e contexto só quando conhecidos. Um atleta conhecido chama atenção; um caso pertinente explica o caminho. Não transformar todo atleta do perfil da AGN em cliente nosso.
-
-### Bastidor de 90 segundos
-
-1. Pedir autorização para mostrar um exemplo.
-2. Abrir um relatório ou trecho de devolutiva autorizado.
-3. Apontar análise, orientação e próxima ação.
-4. Voltar ao plano do atleta da chamada.
-
-> "Vou te mostrar como uma análise vira acompanhamento. Este exemplo está autorizado para apresentação. Repara neste ponto: [evidência]. A partir dele, a equipe fez [ação real]."
-
-### Consulta lateral real, sem teatro
-
-Se houver uma dúvida e um colega disponível:
-
-> "Vou confirmar esse prazo com quem acompanha a agenda. Posso pedir um minuto?"
-
-Consultar de verdade, retornar com a resposta e registrar. Não simular conversa, assinatura, aprovação ou contratação de outro jogador. Bastidor convence quando a família consegue conferir o que está vendo.
+| Muita objeção de preço | Valor mal empilhado: sem cenário, sem gerente e Zyron, sem a conta | Closer 05, 06 e 07 |
+| Muito "ver com a esposa" | Decisor fora da R2 | SDR 09, Closer 02 |
+| Muito "vou pensar" | Sem pré-compromisso ou sem combinado | SDR 6.15, Closer 4.2 |
+| Closer perguntando o básico | Ficha da R1 incompleta | SDR 12 |
+| Família fria, "cara de vendedor" | Modo A forçado | Closer 03 e 08 |
+| Ticket caindo | Descendo de plano cedo demais | Closer 07 |
+
+Toda semana: win rate de R2, ticket médio, porcentagem de calls com todos
+os decisores e quantas R2 em modo B fecharam no retorno. Se menos da metade
+das R2 vira venda, a proposta tá sendo dada fácil demais (Predictable
+Revenue).
+
+## 13. Regras de ouro
+
+Sempre:
+- Ler o CRM inteiro antes da R2.
+- Chamar pai, mãe e atleta pelo nome.
+- Reforçar o pré-compromisso de decidir hoje.
+- Dor com as palavras deles antes de qualquer plano, com os números das
+  peneiras.
+- Olhômetro contra dados reais na hora de apresentar o Zyron.
+- Cenário certo pro tipo de dor.
+- Filtro dos 95% e o sim do atleta antes do valor.
+- Gerente de carreira e Zyron no centro do plano e da ancoragem.
+- Deixar claro que o esforço fica com a gente, não com a família, antes
+  do valor.
+- Ancoragem antes do número. Um valor por vez. Silêncio depois.
+- Início imediato (hoje/amanhã) assim que a venda fecha, nunca só o
+  resultado de 3 meses.
+- Terminar com venda ou com o retorno da equipe marcado.
+
+Proibido:
+- Perguntar de novo o que já tá no CRM.
+- Falar do plano antes da necessidade explícita.
+- Desconto.
+- Proposta por WhatsApp.
+- Correr atrás da família.
+- Colocar o perfil do atleta em dúvida.
+- Linguagem de processo ("onboarding", "etapas", "acessos", "setup"): soa
+  vendedor corporativo. Início imediato e esforço zero se falam como
+  promessa pro pai e pra mãe, nunca como fluxo de produto.
+
+## 14. Casos e autoridade
+
+Card Probabilidade de sucesso (`cards/probabilidade-sucesso.png`):
+Probabilidade percebida de sucesso = Case semelhante + Prova + Contexto.
+↳ mesma posição + idade parecida + resultado real = mais confiança pra
+decidir.
+- O que é: o quanto a família acredita que esse caminho realmente vai
+  funcionar pro atleta dela.
+- Aqui: o Closer retoma o caso que o SDR já citou na R1 (fica no CRM) e
+  pode somar mais um, sempre escolhido pela semelhança em posição, idade
+  e nível, nunca pela fama do caso.
+- O card avisa: sem prova e sem caso parecido, a família tende a duvidar
+  mais e adiar a decisão.
+
+Mesma fonte do SDR (`CASOS.md`). O Closer retoma o caso que o SDR usou e
+pode somar mais um. Sempre o caso mais parecido em posição, idade e nível
+com o atleta da call, nunca um caso genérico só por ser o mais conhecido:
+é a semelhança que faz a família se enxergar naquele resultado, não só
+ouvir uma história bonita.
+
+| Atleta | Clube | Posição | Idade na entrada | Tempo até o resultado | Dúvida que a família teve |
+| --- | --- | --- | --- | --- | --- |
+| Joãozinho | Grêmio | [posição] | [idade] | [tempo] | [dúvida] |
+| Kaio | [clube] | [posição] | [idade] | [tempo] | [dúvida] |
+| [próximo caso] | [clube] | [posição] | [idade] | [tempo] | [dúvida] |
+
+Frases prontas:
+- Gerente de carreira e Zyron: "Ele vai ter um gerente de carreira, o [nome
+  do gerente], que revelou centenas de jogadores, acompanhando o
+  desenvolvimento dele todo dia. E o Zyron, o nosso mecanismo exclusivo,
+  com um agente específico só pra ele."
+- Olhômetro contra dados reais: "No olhômetro, o avaliador de uma peneira
+  não consegue analisar todos aqueles garotos com precisão. Hoje, com
+  inteligência artificial, os clubes estão cada vez mais escolhendo atleta
+  com base em dados reais. E é assim que a gente revela os nossos
+  jogadores: pelo Zyron."
+- Números da casa: "Mais de dez anos, centenas de atletas revelados, 95% de
+  encaminhamento. Os 5% que não vão é por falta de disciplina e de
+  compromisso."
+- Mudança de vida: "Com média de 3 meses, a gente consegue colocar esses
+  jogadores em times profissionais, e o [atleta] atende a essas
+  características. Hoje eles ganham por volta de 20 a 30 mil reais, no
+  mínimo."
+- Comparação: "O perfil do [atleta] é muito parecido com o do [caso], que a
+  gente fechou recentemente. Foi assim com o Joãozinho, que fechou com o
+  Grêmio, com o Kaio e com vários outros."
+- AGN Football: "A gente tem relação direta com a AGN Football. Tem jogador
+  nosso publicado lá, te mando o link."
+- A gente só ganha quando ele ganha: "Nosso lucro vem do contrato
+  profissional do [atleta]. O que a família investe é por conta dos gastos
+  com o gerente de carreira e os profissionais dedicados a ele."
 
 ## 15. Glossário dos cards
 
-Conceitos de treinamento. A identificação pública continua gerente de carreiras. Números e exemplos desenhados nos cards não são métricas da operação.
+Imagens na pasta `cards/`: probabilidade-sucesso.png, tempo-execucao.png,
+esforco-percebido.png, valor-percebido.png, closer.png, sdr.png, r2.png,
+r1.png, sql.png, sandler.png, bant.png, followup.png, win-rate.png,
+inside-sales.png, noshow.png, lead-speed.png, lead-magnet.png,
+social-selling.png, webinario.png, conversao-direta.png. Resumo de cada
+um no `PLAYBOOK_SDR.md`, seção 14.
 
-### Probabilidade de sucesso
+## 16. Dados pra completar
 
-![Card Probabilidade de sucesso](cards/probabilidade-sucesso.png)
-
-Caso comparável, prova e contexto. Mostrar o trabalho e o resultado específico.
-
-### Tempo de execução inicial
-
-![Card Tempo de execução inicial](cards/tempo-execucao.png)
-
-Definir quando a primeira entrega acontece e quem responde por ela.
-
-### Esforço percebido
-
-![Card Esforço percebido](cards/esforco-percebido.png)
-
-Dividir responsabilidades de forma simples, sem prometer esforço zero.
-
-### Valor percebido
-
-![Card Valor percebido](cards/valor-percebido.png)
-
-Ligar cada entrega a uma mudança que a família considera importante.
-
-### SDR
-
-![Card SDR](cards/sdr.png)
-
-Função interna de prospecção e qualificação. Nome público: gerente de carreiras da R1.
-
-### Closer
-
-![Card Closer](cards/closer.png)
-
-Função interna de proposta e fechamento. Nome público: gerente de carreiras da R2.
-
-### SQL
-
-![Card SQL](cards/sql.png)
-
-Perfil, necessidade, interesse e momento compatíveis com o próximo passo.
-
-### R1
-
-![Card R1](cards/r1.png)
-
-Diagnóstico, compreensão da oferta e repasse qualificado.
-
-### R2
-
-![Card R2](cards/r2.png)
-
-Plano, prova, investimento, objeções e decisão.
-
-### BANT
-
-![Card BANT](cards/bant.png)
-
-Necessidade, momento, decisão e orçamento. Conversa, não interrogatório.
-
-### Sandler
-
-![Card Sandler](cards/sandler.png)
-
-Conexão, dor, impacto e compromisso antes da proposta.
-
-### Lead speed
-
-![Card Lead speed](cards/lead-speed.png)
-
-Tempo até a primeira resposta. Meta operacional de sete minutos na cobertura.
-
-### No show
-
-![Card No show](cards/noshow.png)
-
-Faltas divididas por reuniões agendadas. Medir e melhorar confirmação.
-
-### Follow up
-
-![Card Follow up](cards/followup.png)
-
-Retomar com motivo útil, respeitando o combinado e recusas.
-
-### Inside sales
-
-![Card Inside sales](cards/inside-sales.png)
-
-Venda remota com processo e continuidade entre as pessoas.
-
-### Win rate
-
-![Card Win rate](cards/win-rate.png)
-
-Vendas ganhas divididas por oportunidades, com período e critério definidos.
-
-### Lead magnet
-
-![Card Lead magnet](cards/lead-magnet.png)
-
-Uma entrega útil inicia a relação. Aqui, a avaliação orienta a conversa.
-
-### Social selling
-
-![Card Social selling](cards/social-selling.png)
-
-Relacionamento nas redes conectado a atendimento com contexto.
-
-### Webinário
-
-![Card Webinário](cards/webinario.png)
-
-Conteúdo para educar sobre análise e acompanhamento.
-
-### Conversão direta
-
-![Card Conversão direta](cards/conversao-direta.png)
-
-Conceito de venda pela página. Esta operação mantém diagnóstico e proposta.
-
-## 16. Dados para preparar antes de usar
-
-1. Escopo, duração e diferença entre os planos de R$ 2.997, R$ 1.497 e R$ 497.
-2. Material de reforço de ancoragem, com comparações e valores aprovados.
-3. Condições reais de pagamento, total parcelado e eventuais encargos.
-4. Nome do gerente responsável, canal e frequência do acompanhamento.
-5. Agenda real de análise, devolutiva e início após contratação.
-6. Exemplo atual da Zyron e casos autorizados com vínculo explicado.
-7. Contrato, identificação institucional e canal oficial de pagamento.
-8. Dados de prazo médio de encaminhamento, caso a operação queira usá-los: base, período e definição do resultado.
-
-Última atualização: 28/09/2026 às 20:58 (Brasília, UTC−3).
+1. Nome do gerente de carreira que revelou centenas de jogadores.
+2. Como o agente do Zyron acompanha no dia a dia (canal, frequência de
+   contato).
+3. O que muda entre os planos de R$2997, R$1497 e R$497, pra descer de
+   plano pelo escopo.
+4. Custo mensal de mercado de um gerente de carreira particular e dos
+   profissionais (preparador, analista, vídeo, viagens), pra ancoragem.
+5. Condição de pagamento: parcelamento, Pix e cartão.
+6. Como funciona a estrutura do clube na base quando o atleta vai pra outro
+   estado.
+7. Como a equipe avalia e dá retorno, e o restante dos entregáveis.
+8. Vagas restantes e data da próxima turma, atualizadas toda semana.
+9. Primeiro contato do gerente de carreira depois do sim: confirmar se
+   acontece mesmo no mesmo dia ou em até 24h. Esse é o prazo assumido nos
+   scripts de início imediato (seções 06.6, 08 e 10); se na prática for
+   mais lento, ajustar os scripts antes que algum Closer prometa isso.
+10. Provas que a família confere: site, Instagram, CNPJ e link da AGN.
+11. Casos: posição, idade, tempo e dúvida da família do Joãozinho e do
+    Kaio, e os próximos casos.
