@@ -17,7 +17,7 @@ Changelog:
   cenas pro atleta e pros pais por tipo de dor. Nova seção 06, escada do
   sim com o preço da disciplina e o filtro dos 95%. Nova seção 07, A + B:
   quem somos (David Willer, Joãozinho, Kaio e os atletas da AGN pelo
-  mundo, com material de apoio), o que ele recebe, a Zyron (ficha, DVD,
+  mundo, com material de apoio), o que ele recebe, o Zyron (ficha, DVD,
   relatório e a oportunidade que bate com o estilo de jogo), média de 3
   meses, 95%, a parte dele e por que cobra (só o custo do profissional e
   da IA). Ancoragem (08) com pilha de valor de mercado vinda do material
@@ -67,7 +67,7 @@ Changelog:
 
 Card Closer (`cards/closer.png`): Closer = Diagnóstico + Proposta + Fechamento. ↳ reunião qualificada + proposta + decisão = venda.
 - O que é: na dashboard, o nome técnico da tua função: conduz a negociação e busca o fechamento.
-- Aqui: pra família você é o gerente de carreiras sênior. Faz a R2 com a ficha da R1 e o relatório da Zyron na mão.
+- Aqui: pra família você é o gerente de carreiras sênior. Faz a R2 com a ficha da R1 e o relatório do Zyron na mão.
 - O card avisa: closer sem qualificação sofre mais. Funil bom começa antes do fechamento.
 
 O atleta quer uma oportunidade e um empresário. Quase nunca quer pagar por isso, e os pais, que são quem compra de verdade, chegam achando que pode ser golpe. A R2 é a última etapa de uma jornada: primeiro a família sente a dor, depois imagina o depois, depois vê a oportunidade e entende por A + B por que funciona, e só então vê o valor. Quando o número aparece, tudo que o atleta vai ter tem que parecer barato.
@@ -100,7 +100,7 @@ Ler o CRM → Controle → Dor → Imaginação → Escada do sim → A + B → 
 
 Card R1 (`cards/r1.png`): R1 = Contato inicial + Diagnóstico + Próximo passo. ↳ entendeu cenário + mapeou dor + marcou avanço = boa R1.
 - O que é: a R1 foi do gerente de carreiras que abriu a conversa.
-- Aqui: tudo que ela descobriu, mais o relatório da Zyron, tá na ficha. Você usa, não repete.
+- Aqui: tudo que ela descobriu, mais o relatório do Zyron, tá na ficha. Você usa, não repete.
 - O card avisa: R1 boa prepara a proposta certa.
 
 Card SQL (`cards/sql.png`): SQL = Lead + Interesse real + Perfil + Momento. ↳ pediu contato + tem perfil ideal + quer avançar = SQL.
@@ -114,12 +114,12 @@ Card SQL (`cards/sql.png`): SQL = Lead + Interesse real + Perfil + Momento. ↳ 
 | --- | --- |
 | Nomes do pai, da mãe e do atleta | Chamar cada um pelo nome desde o primeiro minuto |
 | Ponto forte e ponto a desenvolver do relatório | Abertura (4.1) e o que ele recebe (7.2) |
-| A oportunidade que a Zyron achou | O momento alto da R2 (7.3). A família só sabe que ela existe |
+| A oportunidade que o Zyron achou | O momento alto da R2 (7.3). A família só sabe que ela existe |
 | Bastidor que o gerente da R1 usou | Continuar a mesma história (3.2) |
 | Material de apoio que a família já viu | Não repetir: mostrar o próximo atleta (7.1) |
 | Sonho, primeiro salário e o que faria se a bola não desse certo | Dor (4.3) e imaginação (seção 05) |
 | Dor da família, com as palavras deles, e o tipo | Retomada da dor (4.2) e cena certa (5.2) |
-| Peneiras e em quantas se sentiu observado | Olhômetro contra a Zyron (4.2 e 7.3) |
+| Peneiras e em quantas se sentiu observado | Olhômetro contra o Zyron (4.2 e 7.3) |
 | Quanto já investiram | Régua do valor (seção 08) |
 | Escada do sim e o sim da disciplina | "Você disse que tá disposto a pagar o preço" (06) |
 | Resposta ao "faz sentido lucrar em cima?" | "Vocês mesmos disseram que não faz sentido" (7.6) |
@@ -127,7 +127,7 @@ Card SQL (`cards/sql.png`): SQL = Lead + Interesse real + Perfil + Momento. ↳ 
 | Sinais de budget | Qual plano apresentar (8.2) |
 | Objeções que já apareceram | Tratar antes que voltem |
 
-> **Gerente:** [pai], aqui é o [seu nome], gerente de carreiras sênior. Tô com o relatório da Zyron do [atleta] aberto aqui pra nossa conversa das [hora]. Você, a [mãe] e ele confirmados?
+> **Gerente:** [pai], aqui é o [seu nome], gerente de carreiras sênior. Tô com o relatório do Zyron do [atleta] aberto aqui pra nossa conversa das [hora]. Você, a [mãe] e ele confirmados?
 
 **Regra de ouro:** Quem pergunta de novo o que já tá no CRM parece vendedor. Quem chega sabendo parece quem escolhe.
 
@@ -145,7 +145,7 @@ Card SQL (`cards/sql.png`): SQL = Lead + Interesse real + Perfil + Momento. ↳ 
 
 Gatilhos: controle, compromisso, exclusividade.
 
-> **Gerente:** [pai], [mãe], [atleta], prazer. Antes de começar, deixa eu explicar como vai ser. Eu vou entender onde vocês estão, vou mostrar a oportunidade que a Zyron achou pro [atleta] e o caminho até ela, e no final vocês me dizem se estão dentro ou não. Pode ser não, tudo bem. Só não vale "vou pensar", porque aí eu seguro uma vaga que outro garoto tá esperando. Combinado?
+> **Gerente:** [pai], [mãe], [atleta], prazer. Antes de começar, deixa eu explicar como vai ser. Eu vou entender onde vocês estão, vou mostrar a oportunidade que o Zyron achou pro [atleta] e o caminho até ela, e no final vocês me dizem se estão dentro ou não. Pode ser não, tudo bem. Só não vale "vou pensar", porque aí eu seguro uma vaga que outro garoto tá esperando. Combinado?
 >
 > **Família:** Combinado.
 >
@@ -215,7 +215,7 @@ Card Método Sandler (`cards/sandler.png`): Sandler = Rapport + Dor + Impacto + 
 
 Gatilhos: exclusividade, reciprocidade.
 
-> **Gerente:** [atleta], parabéns. Tô com o teu relatório da Zyron aqui. O que mais chamou atenção da equipe foi [ponto forte do relatório]. Eu vi o teu DVD também: [ponto forte próprio]. Não é todo garoto que tem isso.
+> **Gerente:** [atleta], parabéns. Tô com o teu relatório do Zyron aqui. O que mais chamou atenção da equipe foi [ponto forte do relatório]. Eu vi o teu DVD também: [ponto forte próprio]. Não é todo garoto que tem isso.
 >
 > **Gerente:** E o relatório mostrou o que a gente vai desenvolver em você: [ponto a desenvolver]. Guarda isso, que daqui a pouco eu volto nele.
 
@@ -270,7 +270,7 @@ Quem justifica o próprio número se convence sozinho. Resposta menor que 10: "p
 
 #### 4.5 Necessidade explícita
 
-> **Gerente:** Vocês querem que eu mostre a oportunidade que a Zyron achou pro [atleta] e como a gente leva ele até lá?
+> **Gerente:** Vocês querem que eu mostre a oportunidade que o Zyron achou pro [atleta] e como a gente leva ele até lá?
 
 Espera o "quero". Resposta morna: volta pro impacto.
 
@@ -364,7 +364,7 @@ Gatilhos: compromisso, consistência, exclusividade.
 Pai e mãe chegam com medo de golpe. Você não pede confiança: monta a conta na frente deles, peça por peça, mostra a prova na tela e em cada peça pergunta "faz sentido?". No final, a conclusão é deles.
 
 1. **A · Quem somos:** Mais de dez anos, David Willer, centenas de atletas, AGN pelo mundo.
-2. **B · O que ele recebe:** Relatório da Zyron, gerente de carreiras todo dia, conexões.
+2. **B · O que ele recebe:** Relatório do Zyron, gerente de carreiras todo dia, conexões.
 3. **C · Como chega:** A oportunidade que bate com o estilo dele. Tiro certo.
 4. **D · Em quanto tempo:** Média de 3 meses.
 5. **E · Com que chance:** 95% de quem passa pelo filtro.
@@ -389,24 +389,24 @@ Aqui você fala do entregável, mas sempre amarrado ao resultado. Cada linha res
 
 | O que ele recebe | O que isso resolve |
 | --- | --- |
-| A ficha e o DVD dele analisados pela Zyron, com o relatório do jogo | Ele para de depender do olhômetro: tem um retrato real do próprio jogo |
+| A ficha e o DVD dele analisados pelo Zyron, com o relatório do jogo | Ele para de depender do olhômetro: tem um retrato real do próprio jogo |
 | Gerente de carreiras que explica o relatório pra família | A família para de ouvir só "sim" ou "não" sem saber por quê |
 | A oportunidade que bate: o time que precisa das características dele | Ele para de ir em peneira aleatória e vai onde é procurado |
 | Gerente de carreiras dedicado, todo dia, trabalhando o [ponto a desenvolver do relatório] | Ele nunca mais fica sozinho: alguém cuida da evolução e da hora certa de levar pro clube |
-| Agente da Zyron só dele, acompanhando | Alguém mantendo contato o tempo todo |
+| Agente do Zyron só dele, acompanhando | Alguém mantendo contato o tempo todo |
 | Conexões com clubes no Brasil e fora, pela AGN | Ele deixa de ser invisível pro mercado |
 
 > **Gerente:** Faz sentido?
 
-#### 7.3 C · Como chega no clube: a Zyron e a oportunidade
+#### 7.3 C · Como chega no clube: o Zyron e a oportunidade
 
-O momento alto da R2. A família sabe desde a devolutiva que a Zyron achou uma oportunidade pro filho. Agora ela vê.
+O momento alto da R2. A família sabe desde a devolutiva que o Zyron achou uma oportunidade pro filho. Agora ela vê.
 
-> **Gerente:** Deixa eu explicar a Zyron de um jeito simples. Ela pegou a ficha do [atleta]: nome, idade, altura, peso e posição. Pegou o DVD, o vídeo compilado dele jogando. Entregou o relatório do jogo dele, que vocês já conhecem um pedaço. E cruzou o estilo de jogo dele com os times que precisam dessas características.
+> **Gerente:** Deixa eu explicar o Zyron de um jeito simples. Ele pegou a ficha do [atleta]: nome, idade, altura, peso e posição. Pegou o DVD, o vídeo compilado dele jogando. Entregou o relatório do jogo dele, que vocês já conhecem um pedaço. E cruzou o estilo de jogo dele com os times que precisam dessas características.
 >
-> **Gerente:** E olha o que ela achou: [a oportunidade que bate: tipo de time, categoria, região]. É pra lá que o gerente de carreiras dele leva ele, com a comunicação certa. Não é mandar vídeo pra todo mundo e torcer. É tiro certo.
+> **Gerente:** E olha o que ele achou: [a oportunidade que bate: tipo de time, categoria, região]. É pra lá que o gerente de carreiras dele leva ele, com a comunicação certa. Não é mandar vídeo pra todo mundo e torcer. É tiro certo.
 >
-> **Gerente:** Peneira pergunta "esse garoto é bom?". A Zyron pergunta "qual time precisa de um garoto exatamente como esse?".
+> **Gerente:** Peneira pergunta "esse garoto é bom?". O Zyron pergunta "qual time precisa de um garoto exatamente como esse?".
 >
 > **Gerente:** Os clubes grandes fazem isso há anos. O Liverpool montou um departamento de dados que ajudou a escolher os jogadores do time que ganhou a Champions e a Premier League. O Brentford subiu da terceira divisão inglesa pra Premier League contratando por dados. O Chelsea fechou parceria com um aplicativo de inteligência artificial pra avaliar garoto de base. E os clubes de Série A daqui têm departamento de análise. Isso sempre ficou do lado de dentro do clube. Só há pouco tempo a gente abriu pro atleta, e não é qualquer atleta que entra.
 >
@@ -436,7 +436,7 @@ Gatilhos: reciprocidade, coerência.
 
 #### 7.7 O resumo que a família repete em casa
 
-> **Gerente:** Então olha: uma operação de mais de dez anos, com atleta no Grêmio, no Inter e pela Europa, e vocês viram o material. A Zyron com o relatório dele e o time que precisa do estilo dele. Um gerente de carreiras cuidando dele todo dia e levando ele até lá. Média de 3 meses, 95% de quem passa pelo filtro. A parte dele é a disciplina. E vocês cobrem só o custo, porque a gente ganha no contrato. Faz sentido?
+> **Gerente:** Então olha: uma operação de mais de dez anos, com atleta no Grêmio, no Inter e pela Europa, e vocês viram o material. O Zyron com o relatório dele e o time que precisa do estilo dele. Um gerente de carreiras cuidando dele todo dia e levando ele até lá. Média de 3 meses, 95% de quem passa pelo filtro. A parte dele é a disciplina. E vocês cobrem só o custo, porque a gente ganha no contrato. Faz sentido?
 >
 > **Família:** Faz.
 
@@ -469,7 +469,7 @@ Gatilhos: ancoragem, comparação, aversão à perda, mecanismo único.
 >
 > **Gerente:** Agora deixa eu te mostrar o que o [atleta] passa a ter, e quanto custaria se vocês fossem montar sozinhos. Relatório de desempenho feito por inteligência artificial: [valor de mercado]. O cruzamento do perfil dele com os times que precisam desse estilo: [valor de mercado]. Um gerente de carreiras particular, todo dia: [valor de mercado] por mês. Viagem pra cada avaliação: [valor de mercado]. E as conexões com clube no Brasil e fora, pela AGN, isso não se compra: foi o que levou o [atleta da AGN] pro [clube], na [país], e levou mais de dez anos pra construir.
 >
-> **Gerente:** E mesmo pagando tudo isso, ninguém ia garantir que ele seria encaminhado. Nenhum deles tem a Zyron. A gente encaminha 95% de quem passa pelo filtro.
+> **Gerente:** E mesmo pagando tudo isso, ninguém ia garantir que ele seria encaminhado. Nenhum deles tem o Zyron. A gente encaminha 95% de quem passa pelo filtro.
 >
 > **Gerente:** E não é isso que vocês vão investir. O nosso lucro vem do contrato. Vocês cobrem só o custo do profissional e da inteligência artificial.
 >
@@ -511,8 +511,8 @@ Card Método BANT (`cards/bant.png`): BANT = Budget + Authority + Need + Timing.
 
 1. Resumo dos sins (compromisso): "Deixa eu resumir o que vocês me falaram: [dor com as palavras deles]. Querem ver o [atleta] num clube, nota dez. Ele tá disposto a pagar o preço da disciplina. E vocês mesmos disseram que não faz sentido a gente lucrar em cima de vocês. Faz sentido pra vocês?"
 2. Pergunta de decisão (escolha alternativa): "Então eu confirmo a vaga do [atleta] agora. Fica melhor no Pix ou no cartão?"
-3. Início imediato: "Assim que cair o pagamento, eu aviso o [gerente de carreiras dedicado], e ele te chama ainda hoje. O agente da Zyron começa a acompanhar o [atleta] amanhã, e a gente já começa a trabalhar a oportunidade que ela achou."
-4. Escassez: "Dessa turma de 10, restam [vagas restantes]. A próxima abre em [data]." / "Pro [atleta], com [idade], esperar a próxima turma é perder [tempo] de janela, e a oportunidade que a Zyron achou não fica esperando."
+3. Início imediato: "Assim que cair o pagamento, eu aviso o [gerente de carreiras dedicado], e ele te chama ainda hoje. O agente do Zyron começa a acompanhar o [atleta] amanhã, e a gente já começa a trabalhar a oportunidade que ele achou."
+4. Escassez: "Dessa turma de 10, restam [vagas restantes]. A próxima abre em [data]." / "Pro [atleta], com [idade], esperar a próxima turma é perder [tempo] de janela, e a oportunidade que o Zyron achou não fica esperando."
 5. Depois de tratar a objeção: "Resolvido isso, eu confirmo a vaga dele agora. Pix ou cartão?"
 6. Lembrar o combinado: "Vocês combinaram de decidir hoje, lembra? Pode ser não. O que tá faltando pro sim?"
 
@@ -531,7 +531,7 @@ Você recua de propósito. A família sai querendo uma vaga que ainda não é de
 
 Card Tempo de execução inicial (`cards/tempo-execucao.png`): Tempo de execução inicial = Início imediato + Primeiras 48h + Primeiro avanço. ↳ gerente liga hoje + Zyron começa amanhã = execução mais rápida.
 - O que é: em quanto tempo a família vê o acompanhamento começar de verdade.
-- Aqui: vale nos dois modos: fechou, o gerente de carreiras dedicado liga no mesmo dia e o agente da Zyron começa no dia seguinte. É isso que tira o peso do "e agora, quanto tempo eu espero?".
+- Aqui: vale nos dois modos: fechou, o gerente de carreiras dedicado liga no mesmo dia e o agente do Zyron começa no dia seguinte. É isso que tira o peso do "e agora, quanto tempo eu espero?".
 - O card avisa: início atrasado ou vago esfria a decisão.
 
 **Regra de ouro:** Modo A ou modo B, a R2 nunca termina sem data: ou a venda, ou o retorno da equipe marcado.
@@ -568,7 +568,7 @@ Prevenção: dor dita em voz alta, cena comprada, oportunidade mostrada, A + B c
 
 5. **A oportunidade já existe**
 
-> **Gerente:** A Zyron já achou o time que precisa do estilo dele. A oportunidade tá aí. O que vocês tão decidindo é se ele vai atrás dela agora ou se ela fica pra outro garoto.
+> **Gerente:** O Zyron já achou o time que precisa do estilo dele. A oportunidade tá aí. O que vocês tão decidindo é se ele vai atrás dela agora ou se ela fica pra outro garoto.
 
 6. **O que já foi gasto**
 
@@ -626,7 +626,7 @@ Disse sim: virou aliado. Hesitou: a objeção real é outra, volta pro método.
 
 3. **Trazer agora**
 
-> **Gerente:** Liga pra ela agora e coloca no viva-voz. Em 10 minutos eu mostro a oportunidade que a Zyron achou pro [atleta], e vocês decidem juntos.
+> **Gerente:** Liga pra ela agora e coloca no viva-voz. Em 10 minutos eu mostro a oportunidade que o Zyron achou pro [atleta], e vocês decidem juntos.
 
 4. **Antecipar a conversa do casal**
 
@@ -644,7 +644,7 @@ Disse sim: virou aliado. Hesitou: a objeção real é outra, volta pro método.
 >
 > **Gerente:** O que vocês vão saber amanhã que não sabem agora?
 >
-> **Gerente:** E enquanto vocês pensam, o relógio não para. Decidindo hoje, o gerente de carreiras dele liga ainda hoje e o agente da Zyron começa amanhã. Daqui a uma semana, ele começa uma semana depois, e a vaga, e a oportunidade, podem não estar mais aqui.
+> **Gerente:** E enquanto vocês pensam, o relógio não para. Decidindo hoje, o gerente de carreiras dele liga ainda hoje e o agente do Zyron começa amanhã. Daqui a uma semana, ele começa uma semana depois, e a vaga, e a oportunidade, podem não estar mais aqui.
 >
 > **Gerente:** Vocês combinaram de decidir hoje. O que tá faltando?
 >
@@ -656,7 +656,7 @@ Disse sim: virou aliado. Hesitou: a objeção real é outra, volta pro método.
 
 #### 10.6 "E se ele for dos 5%?"
 
-> **Gerente:** Os 5% são falta de disciplina e de compromisso. Isso depende dele, e é por isso que ele tem gerente de carreiras e a Zyron em cima todo dia.
+> **Gerente:** Os 5% são falta de disciplina e de compromisso. Isso depende dele, e é por isso que ele tem gerente de carreiras e o Zyron em cima todo dia.
 >
 > **Pro atleta:** [atleta], você vai ser dos 5%?
 
@@ -676,7 +676,7 @@ Disse sim: virou aliado. Hesitou: a objeção real é outra, volta pro método.
 
 #### 10.9 "Já tentamos peneira / empresário e não deu"
 
-> **Gerente:** Quantos garotos tinham nessa peneira? E quanto tempo olharam pra ele? Então não foi ele que não deu certo, foi o olhômetro. Ninguém fez um relatório do jogo dele, ninguém procurou o time que precisa do estilo dele, e ninguém acompanhou depois. É exatamente isso que a Zyron e o gerente de carreiras fazem.
+> **Gerente:** Quantos garotos tinham nessa peneira? E quanto tempo olharam pra ele? Então não foi ele que não deu certo, foi o olhômetro. Ninguém fez um relatório do jogo dele, ninguém procurou o time que precisa do estilo dele, e ninguém acompanhou depois. É exatamente isso que o Zyron e o gerente de carreiras fazem.
 
 #### 10.10 "Ele ainda é novo" / "Ano que vem a gente vê"
 
@@ -706,9 +706,9 @@ Disse sim: virou aliado. Hesitou: a objeção real é outra, volta pro método.
 
 1. Pagamento na própria call: "faz agora comigo na linha", Pix ou cartão.
 2. Registro: venda concluída no CRM e cadastro em Vendas, com produto e ticket. Entra pendente até a aprovação do Executive.
-3. Áudio de boas-vindas pro atleta: "Bem-vindo, [atleta]. Teu gerente de carreiras e a Zyron começam contigo agora."
+3. Áudio de boas-vindas pro atleta: "Bem-vindo, [atleta]. Teu gerente de carreiras e o Zyron começam contigo agora."
 4. Indicação na hora: "[atleta], tem algum colega de time no teu nível? Manda o DVD dele que a equipe analisa." Vira lead pra R1.
-5. Início imediato: "[pai], [mãe], a partir de agora quem corre atrás é a gente. O [gerente de carreiras dedicado] chama vocês ainda hoje, e a Zyron já começa a acompanhar o [atleta]."
+5. Início imediato: "[pai], [mãe], a partir de agora quem corre atrás é a gente. O [gerente de carreiras dedicado] chama vocês ainda hoje, e o Zyron já começa a acompanhar o [atleta]."
 
 ## 12. Depois do "ainda não"
 
@@ -719,7 +719,7 @@ Card Follow up (`cards/followup.png`): Follow up = Contato + Continuidade + Pró
 
 | Quando | O que fazer |
 | --- | --- |
-| Mesmo dia | "[pai], resumo da nossa conversa: vocês me falaram que [dor com as palavras deles]. A Zyron achou o time que precisa do estilo do [atleta]. Amanhã às [hora] eu te trago o retorno da equipe." |
+| Mesmo dia | "[pai], resumo da nossa conversa: vocês me falaram que [dor com as palavras deles]. O Zyron achou o time que precisa do estilo do [atleta]. Amanhã às [hora] eu te trago o retorno da equipe." |
 | Data combinada | Liga na hora marcada, com o retorno da equipe. Retoma a dor e conduz a decisão. |
 | +1 dia | Material de apoio de um atleta da AGN que a família ainda não viu: "Lembrei do [atleta] hoje. Esse é o [atleta da AGN]: tinha a idade dele quando entrou, e hoje tá no [clube], na [país]." |
 | +3 dias | "A vaga do [atleta] ainda tá separada, mas a turma tá fechando." |
@@ -762,7 +762,7 @@ Toda semana: win rate de R2, ticket médio, porcentagem de calls com todos os de
 - Imaginação: o atleta primeiro, os pais depois.
 - Escada do sim e o preço da disciplina antes do A + B.
 - A + B completo, com "faz sentido?" em cada peça e o material de apoio na tela.
-- A oportunidade que a Zyron achou como momento alto da R2.
+- A oportunidade que o Zyron achou como momento alto da R2.
 - David Willer, Joãozinho, Kaio e os atletas da AGN pelo mundo. Nunca só dois nomes.
 - Pilha antes do número. Um valor por vez. Silêncio depois.
 - Início imediato assim que a venda fecha.
@@ -805,7 +805,7 @@ Links pra família conferir: [David Willer](https://www.instagram.com/dwilleroli
 - Sequência de prova: "O perfil do [atleta] é muito parecido com o do [caso]. Foi assim com o Joãozinho, no profissional do Grêmio, com o Kaio, no Internacional, com o [atleta da AGN], na [país], e com dezenas de atletas nossos pela AGN, na Europa e pelo mundo. Olha o material."
 - AGN: "A AGN Football é o nosso braço pro exterior. Esse é o [atleta da AGN], hoje no [clube], na [país]: é esse mercado que o [atleta] passa a frequentar."
 - Zyron: "Ficha, DVD, relatório e o time que precisa do estilo dele. Tiro certo."
-- Peneira contra Zyron: "Peneira pergunta 'esse garoto é bom?'. A Zyron pergunta 'qual time precisa de um garoto exatamente como esse?'."
+- Peneira contra Zyron: "Peneira pergunta 'esse garoto é bom?'. O Zyron pergunta 'qual time precisa de um garoto exatamente como esse?'."
 - Mercado: "Os clubes grandes escolhem jogador com IA há anos. Só há pouco tempo isso chegou no atleta, e não é qualquer atleta."
 - Só o custo: "Nosso lucro vem do contrato. O que vocês investem cobre o profissional e a inteligência artificial."
 - Mudança de vida: "Com média de 3 meses, a gente coloca esses jogadores em times. Hoje eles ganham por volta de 20 a 30 mil, no mínimo."
@@ -835,7 +835,7 @@ Toque em qualquer card pra ampliar. Resumo de cada um no playbook da R1, seção
 | Inside sales | inside-sales.png | 40 → 12 → 5. |
 | No show | noshow.png | Faltas ÷ reuniões marcadas × 100. |
 | Lead speed | lead-speed.png | Primeiro contato em 7 minutos. |
-| Lead magnet | lead-magnet.png | A avaliação da Zyron. |
+| Lead magnet | lead-magnet.png | A avaliação do Zyron. |
 | Social selling | social-selling.png | O Instagram. |
 | Webinário | webinario.png | Aula que educa e converte. |
 | Conversão direta | conversao-direta.png | Não serve pra assessoria. |
@@ -845,7 +845,7 @@ Toque em qualquer card pra ampliar. Resumo de cada um no playbook da R1, seção
 Entram nos roteiros no lugar das variáveis.
 
 1. Atletas da AGN pra tabela de casos: nome, clube, país, posição, idade na entrada e o material de apoio de cada um, também em `CASOS.md`.
-2. Como mostrar a oportunidade que a Zyron achou (7.3): o que aparece no relatório sobre o time ou o tipo de time, e como mostrar na tela.
+2. Como mostrar a oportunidade que o Zyron achou (7.3): o que aparece no relatório sobre o time ou o tipo de time, e como mostrar na tela.
 3. Material de reforço da ancoragem: [valor de mercado] de cada peça da pilha (08) e o total.
 4. O que muda entre os planos de R$2997, R$1497 e R$497, pra descer pelo escopo.
 5. Condição de pagamento: parcelas ([x] e [y]), Pix e cartão.
@@ -857,4 +857,4 @@ Entram nos roteiros no lugar das variáveis.
 
 ---
 
-Última atualização: 28/09/2026 às 23:20 (horário de Brasília).
+Última atualização: 28/09/2026 às 23:26 (horário de Brasília).

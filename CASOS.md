@@ -22,7 +22,7 @@ Changelog:
 - v2: frases alinhadas à versão agressiva.
 - v1: criação.
 
-Fonte única de prova social, autoridade e explicação da Zyron pros dois
+Fonte única de prova social, autoridade e explicação do Zyron pros dois
 playbooks. O gerente de carreiras da R1 e o gerente de carreiras sênior
 da R2 contam o mesmo caso do mesmo jeito, e mostram o mesmo material.
 
@@ -107,19 +107,19 @@ Preencher com os atletas da AGN a partir do material de apoio.
 Como o dono descreveu (28/09/2026), em quatro passos:
 1. **Ficha:** nome, idade, altura, peso e posição do atleta.
 2. **DVD:** o vídeo compilado dele jogando.
-3. **Relatório:** a Zyron analisa e entrega o relatório do jogo dele.
+3. **Relatório:** o Zyron analisa e entrega o relatório do jogo dele.
 4. **Oportunidade:** cruza o estilo de jogo dele com o time que precisa
    dessas características.
-Depois que ele entra, um agente da Zyron só dele acompanha a evolução e
+Depois que ele entra, um agente do Zyron só dele acompanha a evolução e
 mantém contato.
 
-> "Peneira pergunta 'esse garoto é bom?'. A Zyron pergunta 'qual time
+> "Peneira pergunta 'esse garoto é bom?'. O Zyron pergunta 'qual time
 > precisa de um garoto exatamente como esse?'."
 
 Na jornada:
 - Devolutiva (R1): ponto forte e ponto a desenvolver do relatório. A
   oportunidade é anunciada, mas guardada pra R2.
-- R2: a oportunidade que a Zyron achou é o momento alto da conversa.
+- R2: a oportunidade que o Zyron achou é o momento alto da conversa.
 
 Escada do olhômetro (perguntas óbvias, uma por vez):
 > "Numa peneira, quantos garotos tinham junto contigo? E quantos
@@ -131,7 +131,7 @@ Escada do olhômetro (perguntas óbvias, uma por vez):
 > Zyron faz."
 
 Comparações: médico que dá diagnóstico sem exame (peneira) contra o exame
-(Zyron); VAR; chave e fechadura (o talento é a chave, a Zyron acha a
+(Zyron); VAR; chave e fechadura (o talento é a chave, o Zyron acha a
 fechadura); GPS; tiro no escuro contra tiro certo.
 
 Clubes que usam IA e dados (exemplos de mercado):
@@ -198,7 +198,7 @@ AGN Football (em toda conversa):
 > AGN], hoje no [clube], na [país]. Me fala o que você tá vendo."
 
 Gerente de carreiras e Zyron:
-> "A Zyron pega a ficha e o DVD dele, entrega o relatório do jogo e acha o
+> "O Zyron pega a ficha e o DVD dele, entrega o relatório do jogo e acha o
 > time que precisa do estilo dele. E ele vai ter um gerente de carreiras
 > dedicado, da equipe do David Willer, acompanhando todo dia e levando ele
 > até lá."

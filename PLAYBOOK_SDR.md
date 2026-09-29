@@ -19,7 +19,7 @@ Changelog:
   ao vivo: David Willer, Joãozinho no profissional do Grêmio, Kaio no
   Internacional e os atletas da AGN Football como cases nossos, com o
   material de apoio mostrado durante a ligação. Nova seção 09, jornada do
-  DVD: análise da equipe de gestores de carreiras e da Zyron, prazo
+  DVD: análise da equipe de gestores de carreiras e do Zyron, prazo
   anunciado, espera com material da AGN, devolutiva por ligação de um
   gerente de carreiras (ponto forte, ponto a desenvolver e a oportunidade
   guardada pra R2) e o "ainda não" raro. R1 com a dor de verdade
@@ -197,15 +197,15 @@ Em algum momento a mãe vai se emocionar, o pai vai ficar na defensiva ou o atle
 - Atleta travado: fala com ele direto, pelo nome, sobre futebol. "Me fala do teu melhor jogo."
 - Depois da dor, sempre a esperança: "agora imagina o outro lado dessa história."
 
-## 03. A Zyron, sem complicar
+## 03. O Zyron, sem complicar
 
-**Peneira é tiro no escuro.** *A Zyron é tiro certo.*
+**Peneira é tiro no escuro.** *O Zyron é tiro certo.*
 
 A família não precisa entender inteligência artificial. Precisa entender uma coisa só: hoje o atleta é escolhido no olhômetro, e a gente analisa o jogo dele de verdade e leva ele pro time que precisa exatamente do estilo dele. Você não explica, você pergunta, e deixa a família chegar sozinha na conclusão.
 
 #### 3.1 A escada do olhômetro
 
-Perguntas óbvias, uma de cada vez. Cada "não" do atleta derruba a peneira. Cada "sim" constrói a Zyron.
+Perguntas óbvias, uma de cada vez. Cada "não" do atleta derruba a peneira. Cada "sim" constrói o Zyron.
 
 Gatilhos: pergunta óbvia, consistência.
 
@@ -229,33 +229,33 @@ Gatilhos: pergunta óbvia, consistência.
 >
 > **Atleta:** Ia.
 >
-> **Gerente:** Então. É isso que a Zyron faz.
+> **Gerente:** Então. É isso que o Zyron faz.
 
 Anota no CRM quantas peneiras ele fez e em quantas se sentiu observado de verdade. O gerente de carreiras sênior usa esses dois números na R2.
 
-#### 3.2 Como a Zyron funciona, em quatro passos
+#### 3.2 Como o Zyron funciona, em quatro passos
 
 Ficha → DVD → Relatório → Oportunidade
 
 1. **Ficha:** Nome, idade, altura, peso e posição do atleta.
 2. **DVD:** O vídeo compilado dele jogando.
-3. **Relatório:** A Zyron analisa e entrega o relatório do jogo dele.
+3. **Relatório:** O Zyron analisa e entrega o relatório do jogo dele.
 4. **Oportunidade:** Cruza o estilo de jogo dele com o time que precisa dessas características.
 
-> **Gerente:** Funciona assim: a Zyron pega a ficha do [atleta]: nome, idade, altura, peso e posição. Depois o DVD, que é o vídeo compilado dele jogando. Com isso ela entrega um relatório do jogo dele, e cruza o estilo de jogo dele com o time que precisa exatamente dessas características. Aí o gerente de carreiras leva ele pra essa oportunidade. Isso é tiro certo.
+> **Gerente:** Funciona assim: o Zyron pega a ficha do [atleta]: nome, idade, altura, peso e posição. Depois o DVD, que é o vídeo compilado dele jogando. Com isso ele entrega um relatório do jogo dele, e cruza o estilo de jogo dele com o time que precisa exatamente dessas características. Aí o gerente de carreiras leva ele pra essa oportunidade. Isso é tiro certo.
 >
-> **Gerente:** Peneira pergunta "esse garoto é bom?". A Zyron pergunta "qual time precisa de um garoto exatamente como esse?". É outra conversa.
+> **Gerente:** Peneira pergunta "esse garoto é bom?". O Zyron pergunta "qual time precisa de um garoto exatamente como esse?". É outra conversa.
 >
-> **Gerente:** E depois que ele entra, a Zyron coloca um agente só pra ele, acompanhando a evolução e mantendo contato o tempo todo.
+> **Gerente:** E depois que ele entra, o Zyron coloca um agente só pra ele, acompanhando a evolução e mantendo contato o tempo todo.
 
 #### 3.3 Comparações que a família entende
 
 | Comparação | Como falar |
 | --- | --- |
-| Médico | "Você confiaria num médico que te dá o diagnóstico só olhando pra tua cara, sem exame? Peneira é isso. A Zyron é o exame: ficha, vídeo e relatório." |
-| VAR | "Antes o juiz decidia no olho e errava. Hoje tem o VAR, que volta o lance com calma. O DVD é o replay dos teus melhores lances, e a Zyron é quem analisa." |
-| Chave e fechadura | "Não adianta ser a melhor chave do mundo na porta errada. O talento dele é a chave. A Zyron acha a fechadura: o time que precisa do estilo dele." |
-| GPS | "Peneira é sair de casa sem saber o caminho. A Zyron é o GPS: mostra onde ele tá e qual time tá esperando um jogador como ele." |
+| Médico | "Você confiaria num médico que te dá o diagnóstico só olhando pra tua cara, sem exame? Peneira é isso. O Zyron é o exame: ficha, vídeo e relatório." |
+| VAR | "Antes o juiz decidia no olho e errava. Hoje tem o VAR, que volta o lance com calma. O DVD é o replay dos teus melhores lances, e o Zyron é quem analisa." |
+| Chave e fechadura | "Não adianta ser a melhor chave do mundo na porta errada. O talento dele é a chave. O Zyron acha a fechadura: o time que precisa do estilo dele." |
+| GPS | "Peneira é sair de casa sem saber o caminho. O Zyron é o GPS: mostra onde ele tá e qual time tá esperando um jogador como ele." |
 | Tiro certo | "Peneira é tiro no escuro: joga 20 minutos e torce. Aqui é tiro certo: o estilo dele, no time que precisa desse estilo, com a comunicação certa." |
 
 #### 3.4 Isso já existe no futebol profissional há anos
@@ -268,14 +268,14 @@ Gatilhos: autoridade, exclusividade, novidade.
 >
 > **Gerente:** A nossa equipe analisa e encaminha atleta profissionalmente há mais de dez anos. Só que isso sempre ficou do lado de dentro dos clubes. Só há pouco tempo a gente abriu pro atleta ter acesso antes de chegar lá. E não é qualquer atleta que entra: é quem passa pela análise da equipe.
 
-São exemplos de clubes que usam IA e dados pra escolher jogador. A fala é sobre o mercado; a Zyron entra depois, como o nosso jeito de fazer isso pro atleta.
+São exemplos de clubes que usam IA e dados pra escolher jogador. A fala é sobre o mercado; o Zyron entra depois, como o nosso jeito de fazer isso pro atleta.
 
-#### 3.5 A Zyron na prática: exemplos pra família imaginar
+#### 3.5 O Zyron na prática: exemplos pra família imaginar
 
 Exemplos pra explicar a lógica, sempre começando com "imagina". Usa o da posição do atleta da call.
 
-- **Lateral de 15 anos:** Imagina um lateral que adora apoiar e cruzar. Na peneira ele é "mais um" no meio de trinta garotos. Na Zyron, a ficha, o vídeo e o relatório mostram o estilo dele, e ela cruza com o time que joga com lateral ofensivo e tá precisando de um. O gerente de carreiras leva ele pra lá, e não pra qualquer peneira.
-- **Volante "baixinho":** Imagina um volante cortado em três peneiras por causa da altura. A Zyron tem a altura dele na ficha, sim, mas cruza o estilo: tem time que joga com a bola no chão e procura exatamente o volante que ele é. Lá, altura não é problema.
+- **Lateral de 15 anos:** Imagina um lateral que adora apoiar e cruzar. Na peneira ele é "mais um" no meio de trinta garotos. Na Zyron, a ficha, o vídeo e o relatório mostram o estilo dele, e ele cruza com o time que joga com lateral ofensivo e tá precisando de um. O gerente de carreiras leva ele pra lá, e não pra qualquer peneira.
+- **Volante "baixinho":** Imagina um volante cortado em três peneiras por causa da altura. O Zyron tem a altura dele na ficha, sim, mas cruza o estilo: tem time que joga com a bola no chão e procura exatamente o volante que ele é. Lá, altura não é problema.
 - **Atacante do interior:** Imagina um atacante que mora longe de tudo e nunca foi visto por ninguém de clube. O DVD e o relatório fazem a viagem por ele: chegam no time que precisa de um atacante com as características dele.
 - **Goleiro:** Imagina um goleiro que ninguém avaliou direito porque a peneira teve 20 minutos e duas bolas no gol dele. No DVD entram as melhores defesas dele, e o relatório mostra o goleiro que ele é. Ele para de depender da sorte de a bola chegar.
 
@@ -360,11 +360,11 @@ Todo lead passa pela mesma jornada: R1, DVD, análise e devolutiva. O que muda �
 | O que chega | Ficha e avaliação do app | Só o cadastro | Só o contato |
 | Abertura | "Ele passou na primeira fase" | "Teu cadastro chegou pra mim" | "A gente é seletivo, antes preciso ver ele jogando" |
 | DVD | Pede o vídeo compilado pra análise da equipe | Pede no fim da R1 | Pede antes de qualquer conversa |
-| Aprovação | Na devolutiva, com o relatório da Zyron | Na devolutiva, com o relatório da Zyron | Na devolutiva, com o relatório da Zyron |
+| Aprovação | Na devolutiva, com o relatório do Zyron | Na devolutiva, com o relatório do Zyron | Na devolutiva, com o relatório do Zyron |
 
 Card Lead magnet (`cards/lead-magnet.png`): Lead magnet = Oferta de valor + Formulário + Captura de lead. ↳ 1.000 visitas → 220 leads = 22% de conversão.
 - O que é: material gratuito e de valor em troca dos dados do lead.
-- Aqui: a avaliação do app da Zyron é o nosso lead magnet, e ela é a primeira fase. A análise da equipe em cima do DVD, com o relatório, é a segunda.
+- Aqui: a avaliação do app do Zyron é o nosso lead magnet, e ela é a primeira fase. A análise da equipe em cima do DVD, com o relatório, é a segunda.
 - O card avisa: lead magnet genérico atrai lead fraco. Foque em um problema real e uma promessa clara.
 
 Card Social selling (`cards/social-selling.png`): Social selling = Conteúdo + Relacionamento + Oportunidades. ↳ conteúdo frequente + conversa no direct + confiança = oportunidade qualificada.
@@ -401,7 +401,7 @@ Gatilhos: exclusividade, curiosidade, escolha alternativa.
 
 > **Gerente:** Oi [responsável], tudo bem? Aqui é o [seu nome], gerente de carreiras da [empresa].
 >
-> **Gerente:** Tenho uma notícia: o [atleta] passou na primeira fase da avaliação da Zyron. O que mais chamou atenção foi [dado específico da avaliação].
+> **Gerente:** Tenho uma notícia: o [atleta] passou na primeira fase da avaliação do Zyron. O que mais chamou atenção foi [dado específico da avaliação].
 >
 > **Gerente:** Agora vem a parte mais importante, que é a análise da nossa equipe. Antes de levar ele pra lá, preciso de uns 20 minutos com vocês. Consegue agora, ou fica melhor [hora] ou [hora]?
 
@@ -421,7 +421,7 @@ Gatilhos: escassez, controle, autoridade.
 >
 > **Gerente:** Olha, a gente não pega qualquer atleta. Pelo que me passaram, o [atleta] tem potencial, mas antes de qualquer conversa eu preciso ver ele jogando de verdade. Me manda o DVD dele: um vídeo compilado jogando, de jogo ou de treino, uns [minutos] minutos. E me passa nome, idade, altura, peso e posição.
 >
-> **Gerente:** Com isso na mão, eu levo pra análise da nossa equipe de gestores de carreiras e da Zyron. Enquanto isso, olha onde estão os nossos atletas: *(manda o material de apoio de um atleta da AGN)*.
+> **Gerente:** Com isso na mão, eu levo pra análise da nossa equipe de gestores de carreiras e do Zyron. Enquanto isso, olha onde estão os nossos atletas: *(manda o material de apoio de um atleta da AGN)*.
 
 No lead frio, nada de R1, plano ou aprovação antes do DVD. Com o vídeo, segue a seção 09 e a R1 acontece junto com a devolutiva.
 
@@ -470,7 +470,7 @@ Hora ruim: "Te ligo às [hora] ou às [hora]?" Nunca "te ligo depois".
 - "Onde você treina hoje? Quantas vezes por semana?"
 - "Já jogou em quais times? Chegou a ser federado?"
 
-Nome, idade, altura, peso e posição são a ficha que vai pra Zyron. Fala isso: "tô montando a tua ficha pra Zyron".
+Nome, idade, altura, peso e posição são a ficha que vai pro Zyron. Fala isso: "tô montando a tua ficha pro Zyron".
 
 #### 8.4 Peneiras e o olhômetro
 
@@ -617,7 +617,7 @@ Gatilhos: compromisso, consistência.
 
 Gatilhos: mecanismo único, autoridade.
 
-> **Gerente:** Lembra do olhômetro? Aqui é o contrário. A Zyron analisa a ficha e o vídeo do [atleta], entrega o relatório do jogo dele e acha o time que precisa do estilo dele. E ele é acompanhado todo dia por um gerente de carreiras dedicado, da equipe do David Willer, que já revelou centenas de jogadores.
+> **Gerente:** Lembra do olhômetro? Aqui é o contrário. O Zyron analisa a ficha e o vídeo do [atleta], entrega o relatório do jogo dele e acha o time que precisa do estilo dele. E ele é acompanhado todo dia por um gerente de carreiras dedicado, da equipe do David Willer, que já revelou centenas de jogadores.
 >
 > **Gerente:** Escolinha treina. Peneira decide no olhômetro. Empresário liga quando dá. Aqui ele é analisado, acompanhado e levado pro time certo.
 
@@ -633,7 +633,7 @@ Aqui entra a seção 04 inteira: sequência de prova e material de apoio na tela
 
 A R1 termina com o DVD pedido e a análise anunciada, com prazo. Aqui começa a espera (seção 09).
 
-> **Gerente:** Pelo que eu ouvi, o [atleta] tem muita coisa do que a gente procura. Mas quem aprova não sou eu: é a nossa equipe de gestores de carreiras, junto com a Zyron. Me manda o DVD dele: o vídeo compilado, com os melhores [minutos] minutos.
+> **Gerente:** Pelo que eu ouvi, o [atleta] tem muita coisa do que a gente procura. Mas quem aprova não sou eu: é a nossa equipe de gestores de carreiras, junto com o Zyron. Me manda o DVD dele: o vídeo compilado, com os melhores [minutos] minutos.
 >
 > **Gerente:** A análise leva [prazo]. Quando terminar, um gerente de carreiras da equipe te liga com o resultado e o relatório. Até lá, não precisa me mandar mais nada.
 
@@ -647,7 +647,7 @@ Aqui você não é objetivo, de propósito. A família mandou o DVD e quer respo
 
 Gatilhos: autoridade, expectativa.
 
-> **Gerente:** Recebi o DVD do [atleta]. Agora ele entra na análise da nossa equipe de gestores de carreiras, junto com a Zyron, que cruza a ficha e o vídeo dele e monta o relatório.
+> **Gerente:** Recebi o DVD do [atleta]. Agora ele entra na análise da nossa equipe de gestores de carreiras, junto com o Zyron, que cruza a ficha e o vídeo dele e monta o relatório.
 >
 > **Gerente:** Isso leva [prazo]. Quando terminar, um gerente de carreiras da equipe te liga com o resultado e o relatório, e aí vocês sabem se ele segue.
 >
@@ -672,13 +672,13 @@ No dia combinado, um gerente de carreiras da equipe liga: pode ser você ou outr
 
 Gatilhos: reciprocidade, exclusividade, curiosidade.
 
-> **Gerente:** [responsável], aqui é o [nome], gerente de carreiras da [empresa]. A equipe terminou a análise do [atleta], e eu tô com o relatório da Zyron aqui.
+> **Gerente:** [responsável], aqui é o [nome], gerente de carreiras da [empresa]. A equipe terminou a análise do [atleta], e eu tô com o relatório do Zyron aqui.
 >
 > **Gerente:** Ele foi aprovado. O que mais chamou atenção foi [ponto forte do relatório]. É exatamente o perfil que a gente procura.
 >
 > **Gerente:** O relatório também mostrou uma coisa que a equipe quer desenvolver nele: [ponto a desenvolver]. E isso é bom, porque é exatamente o que o gerente de carreiras dele vai trabalhar.
 >
-> **Gerente:** E tem mais: a Zyron já cruzou o estilo de jogo dele com times que precisam dessas características. Quem te mostra essa oportunidade é o gerente de carreiras sênior, na conversa com vocês.
+> **Gerente:** E tem mais: o Zyron já cruzou o estilo de jogo dele com times que precisam dessas características. Quem te mostra essa oportunidade é o gerente de carreiras sênior, na conversa com vocês.
 >
 > **Gerente:** Tem que ser com [pai], [mãe] e o [atleta] juntos. Ele tem [dia/hora] ou [dia/hora].
 >
@@ -729,7 +729,7 @@ A gente ganha quando o garoto quer muito, e os pais compram a ideia dele. Saindo
 
 > **Gerente:** [atleta], na conversa com o gerente de carreiras sênior eu quero você lá, junto com teu pai e tua mãe. E quero que você fale pra eles o que me falou agora, do [sonho dele]. Combinado?
 >
-> **Pro atleta:** Áudio depois da devolutiva, se o contato for dele: "Parabéns de novo, [atleta], aprovado pela equipe. A Zyron já achou oportunidade que bate com o teu estilo. Te espero [dia] às [hora] com teu pai e tua mãe."
+> **Pro atleta:** Áudio depois da devolutiva, se o contato for dele: "Parabéns de novo, [atleta], aprovado pela equipe. O Zyron já achou oportunidade que bate com o teu estilo. Te espero [dia] às [hora] com teu pai e tua mãe."
 
 **Tática:** Família esfriou e o contato é do atleta? Retoma com ele primeiro, com material de um atleta da AGN.
 
@@ -749,7 +749,7 @@ Gatilhos: mecanismo único, reciprocidade, controle.
 
 **Se insistir**
 
-> **Gerente:** Te passar um número agora seria injusto com o [atleta]. Sem ver o caminho, você compara com mensalidade de escolinha, e não tem nada a ver: aqui ele tem o relatório da Zyron, a oportunidade que bate com o estilo dele e gerente de carreiras todo dia.
+> **Gerente:** Te passar um número agora seria injusto com o [atleta]. Sem ver o caminho, você compara com mensalidade de escolinha, e não tem nada a ver: aqui ele tem o relatório do Zyron, a oportunidade que bate com o estilo dele e gerente de carreiras todo dia.
 
 #### 11.2 "É pago?"
 
@@ -767,7 +767,7 @@ Gatilhos: autoridade, prova social.
 
 #### 11.4 "Por que demora tanto a análise?"
 
-> **Gerente:** Porque é feita direito. Peneira decide em 20 minutos, no olho, e vocês já viram no que dá. Aqui a Zyron cruza a ficha e o vídeo dele, monta o relatório, e a equipe revisa. Prefiro te dar a resposta certa em [prazo] do que a errada hoje.
+> **Gerente:** Porque é feita direito. Peneira decide em 20 minutos, no olho, e vocês já viram no que dá. Aqui o Zyron cruza a ficha e o vídeo dele, monta o relatório, e a equipe revisa. Prefiro te dar a resposta certa em [prazo] do que a errada hoje.
 
 #### 11.5 "Me manda o resultado por mensagem"
 
@@ -811,7 +811,7 @@ Gatilhos: aversão à perda, urgência.
 
 #### 11.13 "Vocês são tipo uma escolinha?"
 
-> **Gerente:** Escolinha treina. A gente leva pro clube. Relatório da Zyron, o time que precisa do estilo dele, gerente de carreiras todo dia, 95% de encaminhamento de quem passa pelo filtro e atleta nosso pelo mundo, pela AGN.
+> **Gerente:** Escolinha treina. A gente leva pro clube. Relatório do Zyron, o time que precisa do estilo dele, gerente de carreiras todo dia, 95% de encaminhamento de quem passa pelo filtro e atleta nosso pelo mundo, pela AGN.
 
 ## 12. Todos os decisores na R2, sem no show
 
@@ -845,7 +845,7 @@ Card Follow up (`cards/followup.png`): Follow up = Contato + Continuidade + Pró
 | D1 | Material de apoio de um atleta da AGN parecido: "Separei isso pra você ver com o [atleta]. Esse é o [atleta da AGN], que hoje tá no [clube], na [país]. Começou igual ao [atleta]." |
 | D2 | Liga à noite, em outro horário. |
 | D3 | "Lembrei do [atleta] hoje. O [caso] tinha a mesma idade quando entrou com a gente e hoje tá no [clube]." *(manda o material)* |
-| D5 | Pro atleta: "[atleta], ainda não recebi teu DVD. Chega de peneira no olhômetro: manda o vídeo que a equipe analisa e a Zyron acha o time que precisa do teu estilo." |
+| D5 | Pro atleta: "[atleta], ainda não recebi teu DVD. Chega de peneira no olhômetro: manda o vídeo que a equipe analisa e o Zyron acha o time que precisa do teu estilo." |
 | D7 | "A análise dessa semana fecha [dia]. Se o DVD do [atleta] chegar até lá, ele entra. Depois, só na próxima." |
 | D10 | Liga. |
 | D14 | "Vou arquivar a ficha do [atleta] amanhã. Se ainda quiserem seguir, me responde hoje." |
@@ -862,8 +862,8 @@ Critério de repasse: R1 feita, DVD analisado, devolutiva aprovada, dor clara, p
 
 ```
 Origem: [Zyron / Instagram / frio / outro]
-Dados do app da Zyron: [se houver]
-Ficha pra Zyron: [nome], [idade], [altura], [peso], [posição], pé [dominante]
+Dados do app do Zyron: [se houver]
+Ficha pro Zyron: [nome], [idade], [altura], [peso], [posição], pé [dominante]
 Mora em: [cidade/estado]
 Pai: [nome] | Mãe: [nome] | Outro responsável: [nome]
 Decisores e como decidem: [...]
@@ -920,7 +920,7 @@ Toque em qualquer card pra ampliar. SDR e Closer são os nomes técnicos das fun
 | Follow up | followup.png | Contato, continuidade e próximo passo. |
 | Inside sales | inside-sales.png | Venda remota com processo. 40 → 12 → 5. |
 | Win rate | win-rate.png | Vendas ganhas ÷ oportunidades × 100. |
-| Lead magnet | lead-magnet.png | Material de valor em troca de dados. Aqui: a avaliação da Zyron. |
+| Lead magnet | lead-magnet.png | Material de valor em troca de dados. Aqui: a avaliação do Zyron. |
 | Social selling | social-selling.png | Relacionamento nas redes. Aqui: o Instagram. |
 | Webinário | webinario.png | Aula ao vivo ou gravada que educa e converte. |
 | Conversão direta | conversao-direta.png | Anúncio, página e compra. Não serve pra assessoria. |
@@ -932,7 +932,7 @@ Toque em qualquer card pra ampliar. SDR e Closer são os nomes técnicos das fun
 - Primeiro contato em até 7 minutos.
 - Combinado de abertura: quem conduz é você.
 - Bastidor ao vivo sempre que acontecer durante a ligação, e acontece com frequência: vira pro lado, resolve em voz alta, volta e liga ao atleta da família.
-- Escada do olhômetro e a Zyron em quatro passos (ficha, DVD, relatório, oportunidade) em toda R1.
+- Escada do olhômetro e o Zyron em quatro passos (ficha, DVD, relatório, oportunidade) em toda R1.
 - A dor de verdade (dinheiro, futuro incerto, plano B), com respeito e silêncio.
 - Imaginação do atleta: clube, camisa, primeiro salário, Europa.
 - Escada do sim com o preço da disciplina, na frente dos pais.
@@ -958,14 +958,14 @@ Entram nos roteiros no lugar das variáveis.
 
 1. Atletas da AGN pra tabela de casos (4.5): nome, clube, país, posição, idade na entrada e o material de apoio de cada um, também em `CASOS.md`.
 2. Material de apoio do Joãozinho e do Kaio, com posição, idade na entrada e tempo até o resultado.
-3. Modelo do relatório da Zyron pra usar na devolutiva (ponto forte e ponto a desenvolver).
+3. Modelo do relatório do Zyron pra usar na devolutiva (ponto forte e ponto a desenvolver).
 4. Prazo real da análise do DVD e quem faz a devolutiva.
-5. Como o agente da Zyron acompanha depois que o atleta entra (canal e frequência).
+5. Como o agente do Zyron acompanha depois que o atleta entra (canal e frequência).
 6. Nome da empresa como a família conhece, e link da sala da R2.
 7. Nome do gerente de carreiras sênior e dos gerentes de carreiras dedicados.
-8. Quais dados do app da Zyron você enxerga, pra citar na abertura.
+8. Quais dados do app do Zyron você enxerga, pra citar na abertura.
 9. Dia de fechamento da análise semanal, usado no follow up (D7).
 
 ---
 
-Última atualização: 28/09/2026 às 23:20 (horário de Brasília).
+Última atualização: 28/09/2026 às 23:26 (horário de Brasília).
