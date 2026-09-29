@@ -1,7 +1,15 @@
 # CASOS.md
 
-Versão: v6 (28/09/2026)
+Versão: v7 (28/09/2026)
 Changelog:
+- v7: cargos públicos (item 0): Estrategista Esportivo (SDR), Gestor de
+  Carreiras (Closer) e Analista de Performance (quem faz a devolutiva do
+  DVD e acompanha o atleta todo dia). Mecanismo do Zyron explicado em
+  miúdos (item 3.1): ficha, DVD, relatório, oportunidade que bate com o
+  estilo de jogo. Escada do sim com o preço da disciplina (item 4). Mais
+  um case pela AGN Football na tabela, deixando claro que Joãozinho e
+  Kaio não são os únicos. Frases novas de ancoragem vaga ("o sonho dele
+  não vale parcelas mensais de x ou y").
 - v6: reforçada em PLAYBOOK_SDR.md (13) e PLAYBOOK_CLOSER.md (14) a
   regra de escolher sempre o caso mais parecido em posição, idade e
   nível (já valia aqui desde a v1, item 1 abaixo).
@@ -17,13 +25,29 @@ Changelog:
 Fonte única de prova social e autoridade pros dois playbooks. SDR e Closer
 contam o mesmo caso do mesmo jeito.
 
+## 0. Cargos: papel interno x nome pra família
+
+| Papel interno (dashboard) | Cargo pra família | O que faz |
+| --- | --- | --- |
+| SDR | Estrategista Esportivo | Primeiro contato, R1, pede o DVD, marca a R2. |
+| Closer | Gestor de Carreiras | Faz a R2: plano, ancoragem e fechamento. |
+| (sem papel próprio na dashboard hoje) | Analista de Performance | Liga com o resultado do DVD e, depois que o atleta entra, acompanha ele todo dia, manda relatório e mede a evolução. |
+
+O SDR e o Closer sempre se apresentam pelo cargo pra família, nunca pelo
+nome interno.
+
 ## 1. Como usar
 
-- Na R1, o SDR usa um caso principal comparado com o atleta, mais a
-  sequência "foi assim com o Joãozinho, com o Kaio e com vários outros".
-- O caso vai na ficha do CRM. O Closer retoma o mesmo na R2 e pode somar
-  mais um.
+- Na R1, o estrategista esportivo usa um caso principal comparado com o
+  atleta, mais a sequência "foi assim com o Joãozinho, com o Kaio e com
+  vários outros".
+- O caso vai na ficha do CRM. O gestor de carreiras retoma o mesmo na R2
+  e pode somar mais um.
 - Escolher o caso pela posição, idade na entrada e nível mais parecidos.
+- A AGN Football não é só um canal de divulgação: lá estão publicados
+  os atletas nossos que já foram pra fora, América do Sul, Europa e
+  outros lugares do mundo. Cada um desses é case nosso, não só o
+  Joãozinho e o Kaio.
 
 ## 2. Tabela de casos
 
@@ -31,6 +55,7 @@ contam o mesmo caso do mesmo jeito.
 | --- | --- | --- | --- | --- | --- |
 | Joãozinho | Grêmio | [posição] | [idade] | [tempo] | [dúvida] |
 | Kaio | [clube] | [posição] | [idade] | [tempo] | [dúvida] |
+| [atleta pela AGN] | [clube no exterior] | [posição] | [idade] | [tempo] | [dúvida] |
 | [próximo caso] | | | | | |
 
 ## 3. Números da casa
@@ -44,6 +69,16 @@ contam o mesmo caso do mesmo jeito.
 - Média de 3 meses da entrada até o clube.
 - Atletas colocados ganham por volta de 20 a 30 mil reais, no mínimo.
 - Turma de 10 atletas.
+
+### 3.1 Como o Zyron funciona, em miúdos
+
+Ele recebe a ficha do atleta (nome, idade, altura, peso, posição) e o
+DVD, o vídeo compilado dele jogando. Com isso, entrega um relatório do
+jogo e acha a oportunidade que bate: o time que precisa exatamente
+daquele estilo de jogo. Clube grande já faz isso há anos, aqui e lá
+fora, só que sempre por dentro, sem o atleta ver o processo. A novidade
+é que isso chegou até o atleta agora, mas não é qualquer um que tem
+acesso: só quem passa pelo filtro.
 
 ## 4. Frases prontas
 
@@ -90,3 +125,29 @@ Gerente de carreira e Zyron (SDR e Closer):
 > Zyron, o nosso mecanismo exclusivo, com um agente específico só pra ele,
 > acompanhando e mantendo contato pra ele ter sempre o melhor resultado
 > possível."
+
+Escada do sim, o preço da disciplina (SDR e Closer):
+> "Você quer ser jogador profissional?"
+> Atleta: "Quero."
+> "Você está disposto a pagar o preço da disciplina?"
+> Atleta: "Tô."
+> "[responsável], vocês apoiam ele nisso?"
+> Família: "Apoiamos."
+
+Ancoragem vaga, "muito caro" (Closer):
+> "Você acha que o sonho dele não vale parcelas mensais de [x] ou [y]?"
+> "Vocês gastariam muito mais se precisassem fazer por conta própria. A
+> gente tem a fórmula, tem o potencial do [atleta]. Esse valor é
+> irrisório: a gente quer, e vai se dedicar, pra ele virar profissional.
+> É aí que a parceria é de fato proveitosa."
+
+Bastidor ao vivo (SDR e Closer, acontece com frequência de verdade):
+> ((vira pro lado, durante a ligação)) "Fechado, [nome do colega]. Manda
+> o contrato do [atleta nosso] pro jurídico que eu assino ainda hoje."
+> "Desculpa, [responsável]. Tô aqui assinando o contrato de um atleta
+> nosso que acabou de acertar com o [clube], e ao mesmo tempo te dando
+> essa mesma oportunidade pro [atleta]."
+
+---
+
+Última atualização: 28/09/2026 às 23:45 (horário de Brasília).

@@ -1,6 +1,6 @@
 # PLAYBOOK_CLOSER.md
 
-Versão: v7 (28/09/2026)
+Versão: v8 (28/09/2026)
 Espelho em texto de `playbook-closer.html`. Casos e frases: `CASOS.md`.
 Imagens dos cards: pasta `cards/`. Entrada: ficha da R1
 (`PLAYBOOK_SDR.md`, seção 12).
@@ -8,6 +8,18 @@ Tudo entre colchetes é variável: dado do CRM ou da empresa. R$ ____ é o
 valor do plano escolhido pro lead.
 
 Changelog:
+- v8: cargo público do Closer vira Gestor de Carreiras (papel interno na
+  dashboard continua Closer); o [SDR] agora aparece como estrategista
+  esportivo nas falas. Bastidor ao vivo (01 e 02): virar pro lado durante
+  a própria R2 quando tá fechando outro atleta, tática que acontece com
+  frequência de verdade. Dor real sem rodeio (04) e escada do sim com o
+  preço da disciplina, mais o framing A + B (06), amarrando talento e
+  disciplina do atleta com o mecanismo e as conexões da casa. Trabalhar a
+  imaginação e "o lead é especial" reforçados na abertura da seção 05.
+  Ancoragem de valor (07 e 9.1) ganha a versão mais vaga, "o sonho dele
+  não vale parcelas mensais de x ou y" e "por conta própria sai mais
+  caro". Mais um case pela AGN Football na tabela e no texto (14),
+  deixando claro que Joãozinho e Kaio não são os únicos.
 - v7: os 4 cards do framework de oferta imperdível (Probabilidade de
   sucesso, Tempo de execução inicial, Esforço percebido, Valor percebido)
   encaixados como card de verdade (imagem + fórmula + "aqui" + "o card
@@ -44,6 +56,10 @@ Changelog:
 - Nós só ganhamos quando o atleta ganha. O investimento cobre os gastos com
   o gerente de carreira e os profissionais dedicados a ele.
 - Toda R2 termina com venda ou com o retorno da equipe marcado.
+- O Gestor de Carreiras controla a conversa e as emoções: reabre a dor
+  real (a pobreza, a má condição, o medo do futuro incerto, o risco de
+  virar uma profissão que não é a que o atleta quer) antes de qualquer
+  plano ou valor.
 
 O Closer faz a R2. Chega sabendo o nome do pai, da mãe e do atleta, a dor
 da família e quanto ela já gastou, porque leu a ficha da R1 no CRM. Faz a
@@ -85,6 +101,18 @@ Caminho da R2: ler o CRM → conexão pelo nome → dor → cenários →
 compromisso (filtro dos 95%) → diferencial (gerente e Zyron) → valor
 (ancoragem e R$ ____) → decisão (modo A ou B).
 
+Bastidor ao vivo (gatilhos: prova social, escassez, autoridade): acontece
+com frequência, durante a própria R2, o Closer estar fechando o contrato
+de outro atleta ao mesmo tempo. Ele não esconde: vira pro lado, resolve
+em voz alta e volta.
+> ((vira pro lado)) "Pode mandar o contrato do [atleta nosso] pro
+> jurídico, eu assino assim que sair daqui."
+> "Desculpa. Essa semana tá assim: eu tô assinando com um atleta agora e,
+> ao mesmo tempo, dando essa oportunidade pro [atleta]. É o mesmo caminho
+> que ele pode fazer."
+A família ouve o negócio de verdade acontecendo, não um discurso de
+vendas.
+
 ## 02. Ler o CRM antes da R2
 
 Card R1 (`cards/r1.png`): R1 = Contato inicial + Diagnóstico + Próximo
@@ -119,12 +147,20 @@ Momento. ↳ pediu contato + tem perfil ideal + quer avançar = SQL.
 | Caso citado e se ouviram do gerente e do Zyron | Retomar e aprofundar |
 | Objeções que já apareceram | Tratar antes que voltem |
 
+O Closer também fala do Analista de Performance: é quem vai acompanhar
+o atleta todo dia depois que ele entrar, mandando relatório e medindo a
+evolução dele. Isso conecta com o que a família já ouviu do estrategista
+esportivo sobre o Zyron.
+
 Antes da R2:
-> "[pai], aqui é o [especialista]. Tô com a ficha do [atleta] aberta pra
-> nossa conversa das [hora]. Você, a [mãe] e ele confirmados?"
+> "[pai], aqui é o [nome], gestor de carreiras. Tô com a ficha do [atleta]
+> aberta pra nossa conversa das [hora]. Você, a [mãe] e ele confirmados?"
 
 Regra de ouro: Closer que pergunta de novo o que já tá no CRM parece
-vendedor. Closer que chega sabendo parece especialista.
+vendedor. Closer que chega sabendo parece o gestor de carreiras que é.
+
+Pra família, o Closer se apresenta como Gestor de Carreiras. É assim que
+ele diz o próprio cargo, desde a abertura da R2.
 
 ## 03. Quem escolhe somos nós
 
@@ -169,21 +205,21 @@ Impacto + Compromisso.
 
 4.1 Conexão pelo nome (gatilho: exclusividade):
 > "[pai], [mãe], [atleta], prazer. [atleta], parabéns: você foi escolhido.
-> Eu li tudo o que você conversou com o [SDR], e fiz questão de ver teu
+> Eu li tudo o que você conversou com o estrategista esportivo, e fiz questão de ver teu
 > material. [ponto forte próprio]."
 
 4.2 Combinado (gatilho: compromisso):
-> "Vocês combinaram com o [SDR] que, se o plano fizer sentido, decidem hoje,
+> "Vocês combinaram com o estrategista esportivo que, se o plano fizer sentido, decidem hoje,
 > os dois juntos. Continua valendo? Pode ser não, tudo bem. Só não vale
 > 'vou pensar'."
 Reforça o pré-compromisso da R1. Combinado inicial do Sandler.
 
 4.3 Retomar a dor com as palavras deles (gatilhos: empatia, aversão à
 perda):
-> "[mãe], você falou pro [SDR] que [dor literal do CRM]. Continua assim?"
+> "[mãe], você falou pro estrategista esportivo que [dor literal do CRM]. Continua assim?"
 > "E [atleta], você disse que o que falta é [resposta do CRM]. Ainda sente
 > isso?"
-> "[atleta], você contou pro [SDR] que fez [nº de peneiras] peneiras e só
+> "[atleta], você contou pro estrategista esportivo que fez [nº de peneiras] peneiras e só
 > se sentiu observado de verdade em [nº do CRM]. É isso?"
 > "E sendo sincero: no olhômetro, com aquele monte de garoto e vinte
 > minutos de coletivo, você acha que o avaliador conseguiu analisar o teu
@@ -205,11 +241,27 @@ usa em 6.3, quando apresenta o Zyron.
 Quem justifica o próprio número se convence sozinho. Resposta menor que 10:
 "por que não é menos?".
 
+A dor real, sem rodeio (gatilhos: empatia, aversão à perda): o Closer
+pergunta o que tá por trás do sonho, o medo de faltar dinheiro, o medo
+de o atleta não ter um plano B, ou virar uma profissão que ele não
+queria.
+> "Sinceramente, [pai]: se isso não der certo, o que o [atleta] vai fazer
+> da vida?"
+> "Vocês já pensaram no custo de não tentar?"
+Aqui o silêncio pesa: quem descreve o medo em voz alta sente o alívio de
+ver uma saída logo depois.
+
 4.5 Necessidade explícita (SPIN: sem ela, não se fala do plano):
 > "Vocês querem que eu mostre como seria o plano do [atleta]?"
 Espera o "quero". Resposta morna: volta pro impacto.
 
 ## 05. Cenários: trabalhar a imaginação
+
+Aqui é onde o Closer trabalha a imaginação: quanto mais o atleta e a
+família se veem vivendo aquilo, mais eles querem. O garoto tem que
+querer muito, e os pais compram a ideia dele. O Closer sempre lembra o
+atleta de que ele é especial, que esse lead é especial, e usa isso pra
+criar a cena antes de qualquer número aparecer.
 
 O cenário depende do tipo de dor registrado no CRM. Depois de cada um,
 silêncio: quem descreve o futuro em voz alta já se vê nele.
@@ -236,7 +288,7 @@ Dor de tempo e idade, a janela (gatilhos: urgência, aversão à perda):
 
 Locomoção, ele no clube:
 > "Quando ele for pro clube em [estado], [quem acompanha, do CRM] vai
-> junto, como vocês falaram pro [SDR]. E o gerente de carreira organiza
+> junto, como vocês falaram pro estrategista esportivo. E o gerente de carreira organiza
 > essa ida com vocês. [como funciona a estrutura do clube na base]."
 
 ## 06. Diferencial e plano
@@ -250,6 +302,18 @@ Locomoção, ele no clube:
 > "[pai], [mãe], e vocês? Tão dispostos a apoiar ele nesse processo?"
 O sim do atleta na frente dos pais pesa mais que qualquer argumento. E a
 família sente que está sendo avaliada, não vendida.
+
+A escada do sim (gatilhos: compromisso, consistência): antes de qualquer
+plano, o Closer confirma o compromisso em voz alta, uma pergunta óbvia
+de cada vez.
+> "[atleta], você quer ser jogador profissional?"
+> Atleta: "Quero."
+> "Você está disposto a pagar o preço da disciplina?"
+> Atleta: "Tô."
+> "[pai], [mãe], vocês apoiam ele nisso, mesmo quando for difícil?"
+> Família: "Apoiamos."
+Ninguém assina depois de dizer "sim" três vezes sem sentir que já
+decidiu.
 
 6.2 "Como vocês têm 95%?":
 > "Três coisas. Filtro: a gente não pega qualquer atleta, escolhe atletas
@@ -287,6 +351,11 @@ Gatilhos: mecanismo único, autoridade, exclusividade.
 > Isso é estrutura de atleta profissional. Você vai começar a viver como
 > um."
 
+Isso tudo é a prova por A mais B: A, o [atleta] tem talento e disciplina
+(a parte dele). B, a gente tem o mecanismo, o histórico e as conexões (a
+parte da gente). Junto, A + B é o que muda a chance dele de sair da
+peneira e chegar no clube certo.
+
 6.4 O plano individual:
 > "Com base no que vocês contaram, o plano do [atleta] é esse:"
 
@@ -303,7 +372,7 @@ Gatilhos: mecanismo único, autoridade, exclusividade.
 > gerente de carreira acompanha de perto, todo dia."
 
 6.5 Prova (gatilhos: prova social, comparação, autoridade):
-> "O [SDR] comentou com vocês do [caso]. Ele também era [posição], entrou
+> "O estrategista esportivo comentou com vocês do [caso]. Ele também era [posição], entrou
 > com [idade], numa situação muito parecida com a do [atleta]. Em [tempo],
 > fechou com o [clube]."
 > "Foi assim com o Joãozinho, que hoje tá no Grêmio, com o Kaio e com
@@ -359,7 +428,7 @@ Gatilhos: ancoragem, comparação, aversão à perda, mecanismo único.
 > Sem certeza: "E mesmo pagando tudo isso, ele ia continuar dependendo do
 > olhômetro de um avaliador de peneira. Ninguém garante que ele seria
 > encaminhado, e nenhum deles tem o Zyron. A gente encaminha 95%."
-> Contrato: "Vocês mesmos disseram pro [SDR]: não faz sentido a gente
+> Contrato: "Vocês mesmos disseram pro estrategista esportivo: não faz sentido a gente
 > lucrar em cima de vocês. Nosso lucro vem do contrato profissional do
 > [atleta]. Essa parte do investimento é por conta dos gastos com o gerente
 > de carreira e os profissionais dedicados a ele."
@@ -368,6 +437,15 @@ Gatilhos: ancoragem, comparação, aversão à perda, mecanismo único.
 Regra de ouro: depois do número, silêncio. Nada de justificar, emendar
 desconto ou perguntar "o que achou?". Quem fala primeiro depois do preço
 perde.
+
+Outra forma de fechar a ancoragem, quando o clima pedir algo mais
+emocional que a conta fechada (gatilhos: ancoragem vaga, aversão à
+perda):
+> "Você acha que o sonho dele não vale parcelas mensais de [x] ou [y]?"
+> "Vocês gastariam muito mais se precisassem fazer por conta própria. A
+> gente tem a fórmula, tem o potencial do [atleta]. Esse valor é
+> irrisório: a gente quer, e vai se dedicar, pra ele virar profissional.
+> É aí que a parceria é de fato proveitosa."
 
 Se a família falar em valor, quebra no prazo médio de 3 meses:
 > "No prazo médio de 3 meses, dá menos de R$ __ por dia, com gerente de
@@ -466,6 +544,8 @@ profissionais antes do número.
    [condição de pagamento]. E se precisar, existe um formato mais enxuto,
    com [o que muda no plano], de R$ ____."
 5. Conduzir: "Então eu confirmo a vaga dele. Pix ou cartão?"
+Outra saída pro mesmo ponto, mais vaga de propósito: "Você acha que o
+sonho dele não vale parcelas mensais de [x] ou [y]?"
 Proibido: desconto, "vou ver com meu gerente", baixar valor sem mudar o
 escopo.
 
@@ -490,7 +570,7 @@ Proibido: mandar a proposta por WhatsApp "pra você mostrar pra ela".
 > "E enquanto vocês pensam, o relógio não para: se decidir hoje, o
 > [gerente de carreira] já liga ainda hoje e o Zyron já começa amanhã. Se
 > decidir daqui a uma semana, o [atleta] começa uma semana depois."
-> "Vocês combinaram com o [SDR] de decidir hoje. O que tá faltando?"
+> "Vocês combinaram com o estrategista esportivo de decidir hoje. O que tá faltando?"
 > Modo B: "Pensem hoje, que eu levo o [atleta] pra equipe. Amanhã às [hora]
 > eu te dou o retorno, e aí vocês me dizem se estão dentro."
 
@@ -521,7 +601,7 @@ Proibido: mandar a proposta por WhatsApp "pra você mostrar pra ela".
 > "Hoje ele não precisa ir pra lugar nenhum. Isso só acontece quando o
 > clube chamar, e o gerente de carreira organiza com vocês. [como funciona
 > a estrutura do clube na base]."
-> "E vocês falaram pro [SDR] que [solução do CRM]. Então isso a gente
+> "E vocês falaram pro estrategista esportivo que [solução do CRM]. Então isso a gente
 > resolve junto quando chegar a hora."
 
 9.9 "Já tentamos peneira / empresário e não deu"
@@ -688,7 +768,14 @@ ouvir uma história bonita.
 | --- | --- | --- | --- | --- | --- |
 | Joãozinho | Grêmio | [posição] | [idade] | [tempo] | [dúvida] |
 | Kaio | [clube] | [posição] | [idade] | [tempo] | [dúvida] |
+| [atleta pela AGN] | [clube no exterior] | [posição] | [idade] | [tempo] | [dúvida] |
 | [próximo caso] | [clube] | [posição] | [idade] | [tempo] | [dúvida] |
+
+A AGN Football não é só um canal de divulgação: é onde estão publicados
+os atletas nossos que já foram pra fora, América do Sul, Europa e outros
+lugares do mundo. Cada um desses é case nosso, não só o Joãozinho e o
+Kaio. Quanto mais nomes o Closer mostra, com o link de cada um, mais a
+família entende que não é sorte, é método.
 
 Frases prontas:
 - Gerente de carreira e Zyron: "Ele vai ter um gerente de carreira, o [nome
@@ -746,3 +833,12 @@ um no `PLAYBOOK_SDR.md`, seção 14.
 10. Provas que a família confere: site, Instagram, CNPJ e link da AGN.
 11. Casos: posição, idade, tempo e dúvida da família do Joãozinho e do
     Kaio, e os próximos casos.
+12. Lista de atletas publicados pela AGN Football que sejam cases nossos
+    de verdade, com país e clube, pra citar mais do que só Joãozinho e
+    Kaio (seção 14).
+13. Nome de quem faz a devolutiva do DVD como Analista de Performance:
+    confirmar se é sempre a mesma pessoa ou um time de plantão.
+
+---
+
+Última atualização: 28/09/2026 às 23:45 (horário de Brasília).

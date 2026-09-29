@@ -1,11 +1,23 @@
 # PLAYBOOK_SDR.md
 
-Versão: v8 (28/09/2026)
+Versão: v9 (28/09/2026)
 Espelho em texto de `playbook-sdr.html`. Casos e frases: `CASOS.md`.
 Imagens dos cards: pasta `cards/`.
 Tudo entre colchetes é variável: dado da conversa ou da empresa.
 
 Changelog:
+- v9: cargo público do SDR vira Estrategista Esportivo (papel interno na
+  dashboard continua SDR). Bastidor ao vivo (01): virar pro lado durante
+  a ligação quando tá fechando outro atleta, tática que acontece com
+  frequência de verdade. Zyron explicado em miúdos (02): ficha, DVD,
+  relatório e a oportunidade que bate com o estilo de jogo, com a fala de
+  que clube grande já faz isso há anos e só agora chegou no atleta. A
+  devolutiva do DVD (03) passa a ser feita pelo Analista de Performance,
+  não pelo próprio SDR, reforçando a demora proposital e a ansiedade da
+  família pelo resultado. Dor de verdade (6.6) e escada do sim com o
+  preço da disciplina (depois de 6.10). Objeção nova sobre IA (8.11).
+  Mais um case pela AGN Football na tabela e no texto (13), deixando
+  claro que Joãozinho e Kaio não são os únicos.
 - v8: terceiro caso na seção 03, lead muito frio sem vídeo (aquecimento
   "frio" no CRM). A R1 não aprova na primeira ligação: o SDR mantém
   controle e escassez, pede o "DVD" (vídeo do atleta), recua e só marca
@@ -53,10 +65,19 @@ Changelog:
 - O SDR nunca passa preço (o R$ do plano, isso é do Closer na R2). Valor
   percebido é outra história: pintar o resultado final e a transformação
   é papel do SDR também, o tempo todo, só nunca com número de R$ junto.
+- Pra família, o SDR se apresenta como Estrategista Esportivo. É assim
+  que ele diz o próprio cargo em toda ligação, do primeiro contato ao
+  follow up.
+- O SDR controla a conversa e as emoções: conecta com a dor real (a
+  pobreza, a má condição, o medo do futuro incerto, o risco de virar uma
+  profissão que não é a que o atleta quer) antes de qualquer diferencial.
+- Nem sempre o SDR precisa ser objetivo: às vezes a demora é proposital e
+  deixada clara ("vai passar pela análise da nossa equipe de gestores de
+  carreiras"), pra deixar a família ansiosa pelo resultado.
 
 O SDR faz a R1, a call de qualificação. Mapeia contexto, dor, experiências,
 avaliações, gastos e locomoção, e apresenta o que ninguém mais tem: um
-gerente de carreira todo dia e o Zyron. No final, entrega ao especialista
+gerente de carreira todo dia e o Zyron. No final, entrega ao gestor de carreiras
 uma família que já sabe duas coisas: o atleta foi escolhido, e nós só
 ganhamos quando ele ganha.
 
@@ -69,7 +90,7 @@ Card SDR (`cards/sdr.png`): SDR = Prospecção + Qualificação + Agendamento.
 - O que é: Sales Development Representative. Prospecta, qualifica e agenda.
   Fica no começo do processo e filtra quem segue pro Closer.
 - Aqui: faz o primeiro contato, a R1 inteira e marca a R2 com o
-  especialista.
+  gestor de carreiras.
 - O card avisa: SDR não é só volume. Qualidade de abordagem também define
   resultado.
 
@@ -99,6 +120,23 @@ Apresentação + Fechamento. ↳ 40 reuniões → 12 propostas → 5 vendas.
 Tática: as pessoas amam comprar, mas odeiam vendedor. O SDR fala como quem
 seleciona, não como quem oferece.
 
+Bastidor ao vivo (gatilhos: prova social, escassez, autoridade): acontece
+com frequência, na ligação mesmo, o SDR estar fechando o contrato de outro
+atleta ao mesmo tempo. Quando acontecer, ele não esconde: vira pro lado,
+resolve rapidinho, em voz alta, e volta.
+> ((vira pro lado, tapando o microfone)) "Fechado, [nome do colega]. Manda
+> o contrato do [atleta nosso] pro jurídico que eu assino ainda hoje."
+> "Desculpa, [responsável]. Tô aqui assinando o contrato de um atleta
+> nosso que acabou de acertar com o [clube], e ao mesmo tempo te dando
+> essa mesma oportunidade pro [atleta]."
+> Se a correria for de verdade: "Te peguei no meio de uma correria, tô
+> fechando a documentação de dois atletas essa semana. Mas eu queria
+> falar do [atleta] antes do fim do dia. Tenho uns 15 minutos agora, dá
+> pra gente começar?"
+Ninguém precisa fingir nada: é o dia a dia real da operação, e por isso é
+a prova mais forte que existe. Ninguém tá vendendo pra família, ela só tá
+ouvindo o que já acontece o tempo todo do outro lado da linha.
+
 ## 02. O que ninguém mais tem
 
 Escolinha treina. Peneira decide no olhômetro. Empresário liga quando dá.
@@ -114,6 +152,19 @@ Aqui o atleta é analisado com dados reais e acompanhado todo dia.
   específico só pra ele, que vai acompanhando a evolução e mantendo contato
   o tempo todo, pra ele ter sempre o melhor resultado possível. É por esse
   mecanismo que a gente revela os nossos jogadores.
+
+Como o Zyron funciona, em miúdos (deglutível, pra explicar rápido e sem
+travar a conversa): ele recebe a ficha do atleta (nome, idade, altura,
+peso, posição) e o DVD, o vídeo compilado dele jogando. Com isso, entrega
+um relatório do jogo e acha a oportunidade que bate: o time que precisa
+exatamente daquele estilo de jogo. Clube grande já faz isso há anos, aqui
+e lá fora, só que sempre por dentro, sem o atleta ver o processo. A
+novidade é que isso chegou até o atleta agora, mas não é qualquer um que
+tem acesso: só quem passa pelo filtro.
+> "Hoje, com inteligência artificial, clube grande já escolhe atleta
+> assim há anos, só que por dentro, sem o garoto nem saber que foi visto
+> desse jeito. Agora isso chegou até vocês, mas olha: não é qualquer
+> atleta que tem acesso a isso."
 
 Regra de ouro: filtro na entrada, gerente de carreira todo dia e o Zyron
 acompanhando o tempo todo. É assim que a casa chega nos 95% de
@@ -181,21 +232,22 @@ chega sem avaliação do Zyron e sem nem um vídeo do atleta jogando. Aqui a
 R1 não acontece na primeira ligação: o SDR mantém o controle, pede o
 vídeo (o "DVD") e só marca a R1 depois de analisar. Regra: nunca falar de
 plano, de R2 ou de aprovação antes do vídeo chegar e ser analisado pelo
-Zyron e pelo especialista.
+Zyron e pelo gestor de carreiras.
 
 Abertura (gatilhos: escassez, controle, autoridade):
-> "Oi [responsável], tudo bem? Aqui é o [SDR], da [empresa]."
+> "Oi [responsável], tudo bem? Aqui é o [nome], estrategista esportivo
+> da [empresa]."
 > "Olha, a gente não pega qualquer atleta: a gente é seletivo com quem
 > entra pra avaliação, porque a turma é fechada. Pelo que me passaram, o
 > [atleta] tem potencial, mas antes de qualquer coisa eu preciso ver ele
 > jogando de verdade, não só ouvir falar."
 > "Me manda o DVD dele: um vídeo do [atleta] jogando, de jogo ou de
 > treino, uns [minutos] minutos. Assim que eu tiver isso em mãos, eu levo
-> pro Zyron e pro nosso especialista analisarem."
+> pro Zyron e pro nosso gestor de carreiras analisarem."
 
 Recuo controlado (gatilhos: escassez, autoridade):
 > "Assim que eu receber o vídeo, eu levo pro Zyron analisar com dados
-> reais, não no olhômetro, e pro especialista dar o parecer dele. Isso
+> reais, não no olhômetro, e pro gestor de carreiras dar o parecer dele. Isso
 > leva uns [prazo]. Eu te chamo assim que sair o resultado."
 Sem vídeo, o SDR não avança: nada de marcar R1, nada de falar de plano.
 Quem fica na expectativa aqui é a família, não o SDR.
@@ -203,10 +255,10 @@ Quem fica na expectativa aqui é a família, não o SDR.
 Retorno com o relatório (gatilhos: reciprocidade, escassez, prova,
 autoridade), depois do prazo, com a família já ansiosa pelo resultado:
 > "[responsável], boa notícia: o Zyron analisou o jogo do [atleta] e o
-> especialista também deu o parecer. Ele passou: é exatamente o perfil
+> gestor de carreiras também deu o parecer. Ele passou: é exatamente o perfil
 > que a gente procura."
 > "Agora eu preciso de uns 20 minutos com vocês pra fechar a ficha dele
-> antes de passar pro especialista. Consegue agora, ou fica melhor
+> antes de passar pro gestor de carreiras. Consegue agora, ou fica melhor
 > [hora] ou [hora]?"
 Daqui em diante segue o mesmo caminho do lead do Zyron: R1 com o atleta
 já aprovado, terminando do mesmo jeito que qualquer outra (perfil
@@ -214,6 +266,16 @@ aprovado, pré-compromisso, R2 marcada).
 
 Regra de ouro: com ou sem Zyron, ou depois do retorno do vídeo, a R1
 termina com o atleta aprovado.
+
+A ligação de retorno, sempre que der, não é feita pelo próprio SDR: quem
+liga com o resultado é o Analista de Performance, o mesmo profissional
+que depois acompanha o atleta todo dia. Isso separa quem prospecta de
+quem analisa, e dá mais peso ao parecer.
+> Analista de Performance: "[responsável], aqui é o [nome], analista de
+> performance da [empresa]. Terminei de olhar o material do [atleta] com
+> a nossa equipe de gestores de carreiras."
+Deixar o prazo claro (2 a 3 dias, por exemplo) e sumir até lá é parte da
+tática: quanto mais a família espera, mais ela quer o resultado.
 
 Webinário e conversão direta estão no glossário. Conversão direta não serve
 pra Assessoria: aqui a venda sempre passa pela R1 e pela R2.
@@ -236,20 +298,21 @@ Mensagem curta, uma pergunta por vez. Objetivo único: começar a R1, agora
 ou num dos dois horários.
 
 Lead do Zyron (gatilhos: exclusividade, escolha alternativa):
-> "Oi [responsável], tudo bem? Aqui é o [SDR], da [empresa]. Tenho uma
-> notícia boa: o [atleta] passou na avaliação do Zyron."
+> "Oi [responsável], tudo bem? Aqui é o [nome], estrategista esportivo da
+> [empresa]. Tenho uma notícia boa: o [atleta] passou na avaliação do
+> Zyron."
 > "O Zyron analisa dados reais do jogo, não é olhômetro de peneira. E o que
 > mais chamou atenção foi [dado específico da avaliação]. É exatamente o
 > perfil que a gente procura."
 > "Agora eu preciso de uns 20 minutos com vocês pra fechar a ficha dele
-> antes de passar pro especialista. Consegue agora, ou fica melhor [hora]
+> antes de passar pro gestor de carreiras. Consegue agora, ou fica melhor [hora]
 > ou [hora]?"
 
 Lead do formulário do Instagram (gatilhos: exclusividade, curiosidade):
-> "Oi [nome], tudo bem? Aqui é o [SDR], da [empresa]. Teu cadastro pelo
-> nosso Instagram chegou pra mim."
+> "Oi [nome], tudo bem? Aqui é o [nome do SDR], estrategista esportivo da
+> [empresa]. Teu cadastro pelo nosso Instagram chegou pra mim."
 > "A gente faz assessoria individual de atletas e escolhe com quem
-> trabalha. Pra levar teu perfil pro especialista, eu preciso de uns 20
+> trabalha. Pra levar teu perfil pro gestor de carreiras, eu preciso de uns 20
 > minutos contigo e com teu responsável. Consegue agora, ou fica melhor
 > [hora] ou [hora]?"
 > "Se tiver, já me manda um vídeo teu jogando."
@@ -299,12 +362,12 @@ O que a R1 precisa descobrir:
 ### Abertura (rapport)
 
 6.1 Pedir licença e dar o motivo:
-> "Oi [responsável], aqui é o [SDR], da [empresa]. Te peguei numa hora
-> ruim?"
+> "Oi [responsável], aqui é o [nome], estrategista esportivo da
+> [empresa]. Te peguei numa hora ruim?"
 > Zyron: "Rapidinho: o [atleta] passou na avaliação do Zyron, e antes de
-> passar a ficha dele pro especialista eu preciso conhecer vocês."
+> passar a ficha dele pro gestor de carreiras eu preciso conhecer vocês."
 > Instagram: "Rapidinho: o cadastro do [atleta] chegou pra mim, e antes de
-> levar o perfil dele pro especialista eu preciso conhecer vocês."
+> levar o perfil dele pro gestor de carreiras eu preciso conhecer vocês."
 Pedir licença tira a defensiva (Predictable Revenue). Hora ruim: "Te ligo
 às [hora] ou às [hora]?" Nunca "te ligo depois".
 
@@ -391,6 +454,14 @@ Marca o tipo no CRM:
 - Tempo e idade ("tá ficando tarde pra ele"): o Closer trabalha a janela
   da base.
 
+A dor de verdade, sem rodeio (gatilhos: empatia, aversão à perda): quando
+a conversa permitir, o SDR não foge da dor mais dura. É ela que sustenta
+o valor lá na frente, na R2.
+> "Se o futebol não der certo, o que ele vai fazer da vida?"
+> "Vocês já pensaram no que custa não tentar?"
+O SDR controla a emoção que aparece aqui: não some no silêncio, não muda
+de assunto. Deixa a resposta vir, e anota as palavras exatas no CRM.
+
 6.7 Gastos (obrigatória):
 > "Quanto vocês já investiram nesse sonho até hoje? Escolinha, chuteira,
 > viagem pra peneira, avaliação?"
@@ -430,6 +501,20 @@ reciprocidade):
 Quem responde "não" em voz alta passa a defender essa ideia. Na R2, o
 Closer ancora o valor em cima disso.
 
+A escada do sim (gatilhos: compromisso, consistência): perguntas óbvias,
+que só têm uma resposta possível. Cada "sim" dito em voz alta, na frente
+dos pais, vira um compromisso que o próprio atleta cobra depois.
+> "[atleta], você quer ser jogador profissional?"
+> Atleta: "Quero."
+> "Você sabe que talento sem disciplina não vira contrato, né?"
+> Atleta: "Sei."
+> "Você está disposto a pagar o preço da disciplina? Treinar todo dia,
+> cumprir o que o gerente de carreira passar, mesmo nos dias ruins?"
+> Atleta: "Tô."
+> "[responsável], e vocês, apoiam ele nisso?"
+> Família: "Apoiamos."
+Quem diz "sim" alto vira quem defende a própria decisão depois, sozinho.
+
 6.11 O diferencial (gatilhos: mecanismo único, autoridade):
 > "Lembra do olhômetro da peneira? Aqui é o contrário: o [atleta] é
 > analisado com dados reais, e acompanhado todo dia."
@@ -457,12 +542,12 @@ Closer ancora o valor em cima disso.
 > perfil que a gente procura. [atleta], a gente escolhe atletas como você."
 
 6.14 Missão do atleta (gatilho: compromisso):
-> "[atleta], na conversa com o especialista eu quero você lá, junto com teu
+> "[atleta], na conversa com o gestor de carreiras eu quero você lá, junto com teu
 > pai e tua mãe. E quero que você fale pra eles o que me falou agora, do
 > [sonho dele]. Combinado?"
 
 6.15 Pré-compromisso (gatilhos: compromisso, escassez):
-> "Na conversa, o especialista vai mostrar o plano do [atleta], com o
+> "Na conversa, o gestor de carreiras vai mostrar o plano do [atleta], com o
 > gerente de carreira e o Zyron, e o investimento. Se fizer sentido, vocês
 > decidem ali mesmo, os dois juntos?"
 > Família: "Sim."
@@ -475,10 +560,10 @@ Card R2 (`cards/r2.png`): R2 = Diagnóstico + Proposta + Tratativa de
 objeções. ↳ entrou qualificado + viu a solução + alinhou investimento =
 avanço.
 - O que é: Reunião 2, apresentar solução, proposta e decisão.
-- Aqui: a R2 é do especialista (Closer). O SDR marca, com todos os
+- Aqui: a R2 é do gestor de carreiras (Closer). O SDR marca, com todos os
   decisores e o atleta.
 - O card avisa: não marque R2 sem sair da R1 com dor clara e compromisso.
-> "Vou levar a ficha do [atleta] pro nosso especialista. Ele só recebe
+> "Vou levar a ficha do [atleta] pro nosso gestor de carreiras. Ele só recebe
 > atleta que passou pela R1, e monta o plano individual em cima do que
 > vocês me contaram."
 > "Tem que ser com [pai], [mãe] e o [atleta] juntos. Ele tem [dia/hora] ou
@@ -525,7 +610,7 @@ O SDR não negocia. Acolher, responder com valor, voltar pro próximo passo
 > ele ter sempre o melhor resultado possível."
 > "E pensa comigo: faz algum sentido pra gente querer lucrar em cima de
 > vocês, sendo que a gente ganha no contrato profissional dele?"
-> "O especialista te mostra o plano e o valor juntos, na conversa. Fica
+> "O gestor de carreiras te mostra o plano e o valor juntos, na conversa. Fica
 > melhor [dia/hora] ou [dia/hora]?"
 Se insistir:
 > "Te passar um número solto agora seria injusto com o [atleta]. Sem ver o
@@ -536,7 +621,7 @@ O SDR nunca passa preço. Proposta tem que ser conquistada (Predictable
 Revenue).
 
 8.2 "Preciso ver com meu marido / minha esposa"
-> "Perfeito, é exatamente por isso que a conversa com o especialista é com
+> "Perfeito, é exatamente por isso que a conversa com o gestor de carreiras é com
 > vocês dois. Qual horário vocês dois conseguem juntos?"
 > "Me passa o número dele(a)? Mando a confirmação pros dois."
 
@@ -552,7 +637,7 @@ social)
 
 8.4 "Vou pensar" / "Agora não é o momento" (gatilhos: aversão à perda,
 urgência)
-> "Pensar sobre o quê exatamente? A conversa com o especialista é
+> "Pensar sobre o quê exatamente? A conversa com o gestor de carreiras é
 > justamente pra vocês decidirem com o plano do [atleta] na mão."
 > Se for momento: "Com [idade] anos, cada mês conta. O [caso] entrou com
 > [idade do caso] e em [tempo] tava no [clube]."
@@ -573,13 +658,13 @@ urgência)
 > acompanhando o desenvolvimento dele todo dia? Nesse último ano, em
 > quantos testes ele foi levado?"
 > "Aqui ele teria gerente de carreira todo dia e um agente do Zyron só dele.
-> O especialista te mostra o que muda."
+> O gestor de carreiras te mostra o que muda."
 
 8.8 "Ele é muito novo" / "Ele já tá velho" (gatilhos: urgência,
 comparação)
 > Novo: "Novo é vantagem. O [caso] entrou com [idade do caso] e hoje tá no
 > [clube]. Quanto antes começa, mais janela ele tem."
-> Velho: "É exatamente por isso que não dá pra esperar. O especialista te
+> Velho: "É exatamente por isso que não dá pra esperar. O gestor de carreiras te
 > mostra como aproveitar a janela que ele tem agora."
 
 8.9 "Ele não pode ir pra outro estado"
@@ -594,6 +679,14 @@ autoridade)
 > "Escolinha treina. A gente leva pro clube. Gerente de carreira todo dia,
 > agente do Zyron só dele, 95% de encaminhamento e relação direta com a AGN
 > Football."
+
+8.11 "Isso de inteligência artificial funciona mesmo?" (gatilhos:
+autoridade, exclusividade, novidade)
+> "Clube grande já escolhe atleta assim há anos, aqui e lá fora, só que
+> sempre por dentro, sem o atleta nem saber que foi visto desse jeito.
+> A novidade é que agora isso chegou até o atleta, mas não é qualquer um
+> que tem acesso: só quem passa pelo nosso filtro, como o [atleta] tá
+> passando agora."
 
 ## 09. Todos os decisores na R2
 
@@ -613,18 +706,18 @@ faltas em 10 reuniões marcadas = 30% de no show.
 - O card avisa: agendar sem compromisso claro aumenta muito o no show.
 
 - Ao agendar: "Fechado: [dia] às [hora], [pai], [mãe] e o [atleta], com o
-  [especialista]. O horário fica reservado só pro [atleta]. Me confirma com
+  [gestor de carreiras]. O horário fica reservado só pro [atleta]. Me confirma com
   um 'confirmo'?" Sem "confirmo", não conta como agendado.
 - Logo depois: "Tá confirmado: [dia] às [hora]. Link da conversa: [link da
   sala]. E aqui o link da AGN que eu te falei: [link AGN]."
 - Véspera: "[responsável], amanhã às [hora] é a conversa do [atleta] com o
-  [especialista]. Ele já tá com a ficha do [atleta] e vai apresentar o
+  [gestor de carreiras]. Ele já tá com a ficha do [atleta] e vai apresentar o
   plano com o gerente de carreira e o Zyron. [pai], [mãe] e ele
   confirmados?"
 - 1 hora antes: "Daqui a 1 hora. Link: [link da sala]. O [atleta] tá
   pronto?"
 - Se faltar: liga em até 5 minutos. "Aconteceu alguma coisa? O
-  especialista tá com a ficha do [atleta] aberta. Conseguem entrar agora?
+  gestor de carreiras tá com a ficha do [atleta] aberta. Conseguem entrar agora?
   Se não, hoje às [hora] ou amanhã às [hora]?"
 
 ## 11. Follow up
@@ -638,12 +731,12 @@ passo. ↳ ligou + mandou mensagem + retomou a conversa = avanço.
 
 | Quando | Toque |
 | --- | --- |
-| D0 +2h | Áudio: "[responsável], é o [SDR]. Liguei pra falar do perfil do [atleta]. Me chama aqui que eu te explico em 1 minuto." |
+| D0 +2h | Áudio: "[responsável], é o [nome], estrategista esportivo. Liguei pra falar do perfil do [atleta]. Me chama aqui que eu te explico em 1 minuto." |
 | D1 | "Separei pra você ver o nível dos atletas nossos publicados na AGN Football, com quem a gente tem relação direta: [link AGN]." |
 | D2 | Liga à noite, em outro horário |
 | D3 | "Lembrei do [atleta] hoje. O [caso] tinha a mesma idade quando entrou com a gente e hoje tá no [clube]." |
 | D5 | Pro atleta (se o contato for dele): "[atleta], tua ficha tá aqui comigo. Chega de peneira no olhômetro: aqui é dado real, gerente de carreira e agente do Zyron só teu. Fala com teu pai pra gente marcar a conversa." |
-| D7 | "A turma fecha com 10 atletas. Ainda consigo levar o [atleta] pro especialista, mas tem que ser essa semana. [dia/hora] ou [dia/hora]?" |
+| D7 | "A turma fecha com 10 atletas. Ainda consigo levar o [atleta] pro gestor de carreiras, mas tem que ser essa semana. [dia/hora] ou [dia/hora]?" |
 | D10 | Liga |
 | D14 | "Vou arquivar a ficha do [atleta] amanhã. Se ainda quiserem seguir, me responde hoje que eu seguro um horário." |
 | Depois | Nutrição e reabordagem em 30 dias, estado "reabordado" no CRM |
@@ -714,7 +807,14 @@ enxergar ali.
 | --- | --- | --- | --- | --- | --- |
 | Joãozinho | Grêmio | [posição] | [idade] | [tempo] | "O perfil dele é muito parecido com o do Joãozinho, que fechou com o Grêmio." |
 | Kaio | [clube] | [posição] | [idade] | [tempo] | "Foi assim com o Kaio também." |
+| [atleta pela AGN] | [clube no exterior] | [posição] | [idade] | [tempo] | "A gente também tem o [atleta], jogando na Europa pela AGN." |
 | [próximo caso] | [clube] | [posição] | [idade] | [tempo] | [gancho] |
+
+A AGN Football não é só um canal de divulgação: é onde estão publicados
+os atletas nossos que já foram pra fora, América do Sul, Europa e outros
+lugares do mundo. Cada um desses é case nosso, não só o Joãozinho e o
+Kaio. Quanto mais nomes o SDR mostra, com o link de cada um, mais a
+família entende que não é sorte, é método.
 
 Frases prontas:
 - Gerente de carreira e Zyron: "Ele vai ter um gerente de carreira, o
@@ -806,7 +906,16 @@ Proibido:
 5. Link da publicação na AGN Football.
 6. Casos: posição, idade na entrada e tempo até o resultado do Joãozinho e
    do Kaio, e os próximos casos.
-7. Nome do especialista e link da sala.
-8. Prazo real de análise do vídeo (DVD) pelo Zyron e pelo especialista,
+7. Nome do gestor de carreiras e link da sala.
+8. Prazo real de análise do vídeo (DVD) pelo Zyron e pelo gestor de carreiras,
    pro lead muito frio (seção 03): quanto tempo isso leva de verdade, pra
    não prometer retorno que a operação não cumpre.
+9. Nome de quem faz a devolutiva do DVD como Analista de Performance:
+   confirmar se é sempre a mesma pessoa ou um time de plantão.
+10. Lista de atletas publicados pela AGN Football que sejam cases nossos
+    de verdade, com país e clube, pra citar mais do que só Joãozinho e
+    Kaio (seção 13).
+
+---
+
+Última atualização: 28/09/2026 às 23:45 (horário de Brasília).
