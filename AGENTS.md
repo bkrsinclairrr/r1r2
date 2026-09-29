@@ -211,11 +211,12 @@ assinaturas, nao só lendo doc de terceiro:
    virar uma fila de verdade (tabela num banco, ou pelo menos pasta
    JSON como o `chief.py` ja faz), com um jeito de um humano marcar
    "aprovado, pode mandar" ou "rejeitado".
-5. **Nao existe teste automatizado ainda.** Antes de expandir mais,
-   vale ter alguns casos fixos (sem chamar a API de verdade, usando um
-   client fake) que verificam a maquina de estado: precisa_resposta
-   baixo -> sem_acao; confianca baixa -> revisao; verificacao reprova
-   2x -> revisao com `motivo_revisao=falhou_verificacao_anti_alucinacao`.
+5. **Ja existe uma suite inicial em `tests/test_sdr_agent.py`.** Ela usa
+   clients falsos, sem chamar a API, e cobre: precisa_resposta baixo ->
+   sem_acao; confianca baixa -> revisao; verificacao reprova 2x ->
+   revisao com `motivo_revisao=falhou_verificacao_anti_alucinacao`; e
+   bloqueio do verificador quando a geracao consumiu o orcamento. Ao
+   expandir a maquina de estado, acrescente casos para os novos ramos.
 
 ## Erros ja cometidos por outras fontes (nao repetir)
 
@@ -244,3 +245,10 @@ pra 101, em 3 repeticoes de uma tarefa, nao um benchmark geral.
   do projeto usa em todo o resto do codigo aqui), nomes de
   classe/funcao em ingles quando forem termos tecnicos padrao
   (`Decision`, `verify`, etc), sem misturar os dois no mesmo termo.
+
+## Testing
+
+- Rode `python -m unittest discover -s tests -v` na raiz.
+- Os testes nao podem chamar APIs reais nem depender de chaves.
+- Toda mudanca na maquina de estados deve cobrir o ramo alterado; todo
+  bug corrigido deve ganhar um teste de regressao.
