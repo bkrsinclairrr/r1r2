@@ -1,121 +1,162 @@
 """
-Guardrails para o loop de decisao com Jev (TypeSafe AI) + geracao com Claude.
+chief.py - roteador de decisao usando Jev (TypeSafe AI).
 
-Isso NAO existe na API da TypeSafe nem da Anthropic. E logica sua, que
-fica no seu codigo, controlando ate onde o agente pode ir sozinho antes
-de precisar de aprovacao humana ou de parar.
+Fluxo: voce descreve o estado da tarefa (o que e o objetivo, o que ja
+foi feito). O Jev responde, em paralelo, numa unica chamada:
+  - next_worker (Choice): quem deve agir agora
+  - urgency     (Score):  quao urgente e o item
+  - needs_review (Noul):  se um humano deveria olhar antes de seguir
 
-IMPORTANTE: este modulo NAO sabe o preco de nenhuma API especifica.
-Ele so acumula dolar. Quem chama `record_call()` calcula o custo real
-da chamada que acabou de fazer (Jev, Claude, ou qualquer outra) usando
-a tabela de preco certa, e passa o valor em USD. Isso existe porque a
-versao anterior deste arquivo assumia que todo `input_tokens` que
-passava por aqui era preco do Jev, e uma chamada ao Claude Haiku
-(25 a 120x mais cara por token, dependendo se e input ou output)
-passava batida, sem contar pro limite de gasto. Nao repita esse erro:
-NUNCA chame `record_call()` sem calcular o custo com o preco certo do
-provider que voce acabou de chamar.
+O resultado e salvo como um arquivo JSON dentro de queue/<destino>/.
+Isso NAO publica nada e NAO executa nenhuma acao sozinho. E so o
+roteamento. Quem consome a fila (humano ou outro script) decide o que
+fazer com cada job.
 
-Use `jev_cost(input_tokens)` pra chamadas ao Jev (output do Jev e
-gratis, entao so input entra na conta). Pra Claude ou outro provider,
-calcule voce mesmo no seu modulo, com o preco daquele modelo especifico
-(varia por modelo e muda com o tempo, confira docs.claude.com antes de
-hardcodar um numero por muito tempo).
+Rode: python chief.py
+Requer: variavel de ambiente TYPESAFE_API_KEY (pegue em console.typesafe.ai)
 """
 
 from __future__ import annotations
 
 import json
-import time
-from dataclasses import dataclass, field
+import os
+import sys
 from pathlib import Path
+from uuid import uuid4
 
-JEV_INPUT_COST_PER_MILLION = 0.042
+from typesafe_sdk import Choice, Noul, Score, TypeSafeAPIError, TypeSafeClient
 
+from guardrails import Guardrails, GuardrailViolation, jev_cost
 
-def jev_cost(input_tokens: int) -> float:
-    """Custo em USD de uma chamada ao Jev. Output do Jev e gratis."""
-    return (input_tokens / 1_000_000) * JEV_INPUT_COST_PER_MILLION
+BASE_DIR = Path(__file__).resolve().parent
+QUEUE_DIR = BASE_DIR / "queue"
+STATE_FILE = BASE_DIR / ".run_state.json"
 
-
-@dataclass
-class RunState:
-    """Estado persistido entre execucoes, para sobreviver a uma interrupcao."""
-
-    actions_taken: int = 0
-    spend_usd: float = 0.0
-    started_at: float = field(default_factory=time.time)
-
-    def save(self, path: Path) -> None:
-        path.write_text(json.dumps(self.__dict__, indent=2), encoding="utf-8")
-
-    @classmethod
-    def load(cls, path: Path) -> "RunState":
-        if path.exists():
-            return cls(**json.loads(path.read_text(encoding="utf-8")))
-        return cls()
+# Ajuste estes tres numeros ao seu caso antes de rodar em producao.
+MAX_ACTIONS = 50
+MAX_SPEND_USD = 1.00
+CONFIDENCE_THRESHOLD = 0.85
 
 
-class GuardrailViolation(Exception):
-    """Levantada quando um limite de guardrail e ultrapassado."""
+def build_client() -> TypeSafeClient:
+    api_key = os.environ.get("TYPESAFE_API_KEY")
+    if not api_key:
+        sys.exit(
+            "TYPESAFE_API_KEY nao encontrada.\n"
+            "Rode: export TYPESAFE_API_KEY='sua-chave-aqui'\n"
+            "(pegue a chave em console.typesafe.ai -> API Keys)"
+        )
+    # model="jev-latest" e o default do SDK. Para producao, prefira fixar
+    # uma versao (ex: "jev-1.13.0") para o comportamento nao mudar sob voce.
+    return TypeSafeClient(api_key=api_key, model="jev-latest")
 
 
-class Guardrails:
-    def __init__(
-        self,
-        *,
-        max_actions: int,
-        max_spend_usd: float,
-        confidence_threshold: float,
-        state_path: Path,
-    ) -> None:
-        self.max_actions = max_actions
-        self.max_spend_usd = max_spend_usd
-        self.confidence_threshold = confidence_threshold
-        self.state_path = state_path
-        self.state = RunState.load(state_path)
+def available_workers() -> dict[str, str]:
+    """
+    Menu dinamico (passo 06 do guia): construa esta lista a partir dos
+    workers que existem DE VERDADE no seu sistema agora, nao uma lista
+    fixa no codigo. Aqui esta fixa so pra exemplo.
+    """
+    return {
+        "research": "Falta evidencia/dados para o objetivo.",
+        "write": "Ha evidencia suficiente para redigir o entregavel.",
+        "review": "Objetivo pouco claro, fora de escopo, ou trabalho concluido.",
+    }
 
-    def check_before_call(self) -> None:
-        """
-        Chame isso ANTES de qualquer chamada que custe dinheiro (Jev,
-        Claude, ou outra). Chame de novo entre chamadas dentro de um
-        mesmo loop se houver retry, um "check" so no inicio do loop
-        nao pega estouro de limite no meio de varias tentativas.
-        """
-        if self.state.actions_taken >= self.max_actions:
-            raise GuardrailViolation(
-                f"Limite de {self.max_actions} acoes atingido. "
-                "Revise manualmente antes de continuar."
-            )
-        if self.state.spend_usd >= self.max_spend_usd:
-            raise GuardrailViolation(
-                f"Limite de gasto (${self.max_spend_usd:.2f}) atingido. "
-                f"Gasto atual: ${self.state.spend_usd:.4f}."
-            )
 
-    def record_call(self, cost_usd: float) -> None:
-        """
-        Chame isso DEPOIS de cada chamada, com o custo real em USD
-        daquela chamada especifica (nao tokens brutos, o CUSTO, ja
-        calculado com o preco certo do provider que voce chamou).
-        """
-        self.state.actions_taken += 1
-        self.state.spend_usd += cost_usd
-        self.state.save(self.state_path)
+def ask_jev(client: TypeSafeClient, goal: str, completed_work: str) -> tuple[dict, int]:
+    state = {"goal": goal, "completed_work": completed_work}
 
-    def passes_confidence(self, confidence: float) -> bool:
-        """Confianca abaixo do limiar = nao e uma decisao automatica confiavel."""
-        return confidence >= self.confidence_threshold
+    try:
+        result = client.system_one(
+            state=state,
+            questions={
+                "next_worker": Choice(
+                    instructions="Escolha o proximo passo para este objetivo.",
+                    criteria=available_workers(),
+                ),
+                "urgency": Score(
+                    instructions="Qual a urgencia deste item?",
+                    criteria=["Baixa", "Media", "Alta", "Critica"],
+                ),
+                "needs_review": Noul(
+                    instructions="Um humano deveria revisar isso antes de prosseguir?",
+                ),
+            },
+        )
+    except TypeSafeAPIError as error:
+        sys.exit(f"Erro da API TypeSafe (status {error.status}): {error}")
 
-    def route_with_confidence_gate(self, choice: str, confidence: float, fallback: str) -> str:
-        """
-        Regra pratica: se a confianca do Jev vier abaixo do limiar,
-        force a decisao para uma rota de revisao humana, mesmo que o
-        'choice' escolhido pareca razoavel. Confianca nao e igual a
-        probabilidade de acerto individual, e sim uma medida calibrada
-        em grupo, entao trate o limiar como ponto de partida e ajuste
-        com casos reais rotulados do seu proprio fluxo.
-        """
-        if not self.passes_confidence(confidence):
-            return fallback
-        return choice
+    next_worker = result.answers["next_worker"]
+    urgency = result.answers["urgency"]
+    needs_review = result.answers["needs_review"]
+
+    payload = {
+        "goal": goal,
+        "completed_work": completed_work,
+        "next_worker": {
+            "choice": next_worker.choice,
+            "confidence": next_worker.confidence,
+            "probabilities": next_worker.probabilities,
+        },
+        "urgency_score": urgency.score,
+        "needs_human_review": needs_review.noul >= 0.5,
+        "model": result.model,
+    }
+    return payload, result.usage.input_tokens
+
+
+def save_handoff(payload: dict, destination: str) -> Path:
+    folder = QUEUE_DIR / destination
+    folder.mkdir(parents=True, exist_ok=True)
+    job_path = folder / f"{uuid4().hex}.json"
+    job_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    return job_path
+
+
+def main() -> None:
+    client = build_client()
+    guardrails = Guardrails(
+        max_actions=MAX_ACTIONS,
+        max_spend_usd=MAX_SPEND_USD,
+        confidence_threshold=CONFIDENCE_THRESHOLD,
+        state_path=STATE_FILE,
+    )
+
+    goal = input("Objetivo: ").strip()
+    if not goal:
+        sys.exit("Digite um objetivo.")
+    completed_work = input("Trabalho ja feito: ").strip() or "Nada ainda."
+
+    try:
+        guardrails.check_before_call()
+    except GuardrailViolation as violation:
+        sys.exit(f"Guardrail bloqueou a execucao: {violation}")
+
+    payload, input_tokens = ask_jev(client, goal, completed_work)
+    guardrails.record_call(jev_cost(input_tokens))
+
+    # Confianca baixa OU sinal explicito de revisao -> forca para 'review',
+    # independente do que o Choice escolheu.
+    destination = guardrails.route_with_confidence_gate(
+        choice=payload["next_worker"]["choice"],
+        confidence=payload["next_worker"]["confidence"],
+        fallback="review",
+    )
+    if payload["needs_human_review"]:
+        destination = "review"
+
+    job_path = save_handoff(payload, destination)
+
+    print(f"\nDestino: {destination}")
+    print(f"Confianca: {payload['next_worker']['confidence']:.2f}")
+    print(f"Urgencia (0-3): {payload['urgency_score']:.2f}")
+    print(f"Handoff salvo em: {job_path}")
+    print(
+        f"Custo acumulado nesta sessao: ${guardrails.state.spend_usd:.4f} "
+        f"({guardrails.state.actions_taken}/{MAX_ACTIONS} acoes)"
+    )
+
+
+if __name__ == "__main__":
+    main()
