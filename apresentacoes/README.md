@@ -12,12 +12,17 @@ Código do painel e dos quatro decks publicados na Vercel. As pastas ficam lado 
 
 O R2 anterior tem a variação `/variacoes/acompanhamento/`: Scouting por R$247,90 (10x de R$24,79) e Legacy por R$500 (10x de R$50). A sequência termina em preços, garantia incondicional e Bem-vindo. O painel oferece só esses dois planos nessa página.
 
+Nessa variação, o R2 preenche a seção **Dossiê do atleta e clubes compatíveis** antes da call: categoria, leitura do perfil, prioridade, nota geral e indicadores opcionais, além de até três clubes com liga, posição, categoria, motivo do encaixe e percentual opcional. Os números vão de 0 a 100 e devem vir do relatório preparado do Zyron. Campos vazios não ganham valores de exemplo.
+
+A foto autorizada e o primeiro nome aparecem na capa, perfil em campo, relatório, oportunidades, oferta e boas-vindas. A IA na prática mostra o relatório já pronto, sem vídeo do atleta nem cálculo ao vivo. O slide 23 chama o jogador pelo primeiro nome antes de “você foi escolhido”. A referência de contratação separada soma R$20.000 por ano; a oferta mantém R$247,90 e R$500. O dossiê é entregue somente às apresentações dessa página, e cada jogador tem armazenamento e canal próprios no navegador.
+
 ## Testar
 
 Na pasta `jogador-de-elite-closer`:
 
 ```powershell
 npm ci
+node testes/teste-dossie-acompanhamento.mjs
 node testes/teste-oferta-acompanhamento.mjs
 node testes/teste-paginas.mjs
 node testes/teste-etapas.mjs

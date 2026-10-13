@@ -143,7 +143,7 @@ try {
   await A.avalia("document.querySelector('#ver-etapa [data-etapa=r2]').click(); document.querySelector('#bt-nova-variacao').click(); 1");
   await A.ate("document.querySelector('#d-variacao').open");
   const bases2 = await A.avalia("Array.from(document.querySelectorAll('#dv-base option')).map(o => o.textContent.trim()).join('|')");
-  ok(/Principal · R2 novo/.test(bases2) && /Técnica · R2 anterior/.test(bases2) && /Principal · R2 B/.test(bases2) && !/R1/.test(bases2), 'nova variação com o R2 na tela: as páginas dos 3 decks do R2, cada uma com o nome do deck');
+  ok(Object.entries(PAGINAS_R2).every(([id, ps]) => ps.every(p => bases2.includes(p.nome))) && /R2 novo/.test(bases2) && /R2 anterior/.test(bases2) && /R2 B/.test(bases2) && !/R1/.test(bases2), 'nova variação com o R2 na tela: as páginas dos 3 decks do R2, cada uma com o nome do deck');
   await A.avalia("document.querySelector('#dv-cancelar').click(); 1");
   // a lista de todos, com os dois R1 e o R2 e o filtro de etapa
   await A.avalia("location.hash = '#/todos'; 1");

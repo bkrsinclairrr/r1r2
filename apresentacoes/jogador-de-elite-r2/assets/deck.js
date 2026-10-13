@@ -18,7 +18,8 @@
   const slides = qsa('#stage > .slide');
   const N = slides.length;
   const ROT = window.ROTEIRO || [];
-  const FKEY = 'je-r2-ficha';
+  const AID = (new URLSearchParams(location.search).get('a') || '').trim();
+  const FKEY = window.R2_PERSONAL ? 'je-r2-dossie-ficha-' + (AID || 'exemplo') : 'je-r2-ficha';
   const SILENCE_SLIDE = slides.findIndex(s => s.id === 'silencio');
   const VAGA = SILENCE_SLIDE; // slide do número: Silêncio, "fale o número e pare" e o fechamento
   const TURMA = slides.findIndex(s => s.querySelector('#turma')); // a vaga (turma de 10, só no Legacy; nos outros, o começo)
@@ -34,7 +35,6 @@
   };
   let ficha = store.get(FKEY, {});
   // link do painel (?a=<id>): outro atleta começa com a ficha limpa, antes de qualquer coisa ir pra tela
-  const AID = (new URLSearchParams(location.search).get('a') || '').trim();
   if (AID && ficha._a !== AID) { ficha = { _a: AID }; store.set(FKEY, ficha); }
   let cur = 0, curStep = null;
   // o vídeo ou o quadro do atleta não carregou: o 13 volta pra leitura ao vivo e a capa pro desenho, sem erro na tela
@@ -140,6 +140,7 @@
     PLANOS.forEach(p => ['nome', 'curto', 'descritor', 'ritmo', 'preco', 'parcela', 'passo'].forEach(k => { d[p.id + '.' + k] = str(p[k]); }));
     // o rótulo da parte de cada plano no 23: o primeiro degrau tem tudo, vitalício; os outros, tudo do degrau de baixo, mais
     PLANOS.forEach((p, i) => { d[p.id + '.mais'] = i ? 'Tudo ' + doPlano(PLANOS[i - 1]) + ', mais' : 'Vitalício, você tem'; });
+    if (window.R2_PERSONAL) Object.assign(d, window.R2_PERSONAL.derivados(ficha, d, aid, painelDoLead));
     return d;
   }
 
@@ -351,6 +352,7 @@
       if (e.dataset.desenho !== k) { e.innerHTML = campoSvg(d.posId, e.dataset.campo === 'mini', d.nomeUp); e.dataset.desenho = k; }
     });
     drawPlanos(root);
+    if (window.R2_PERSONAL) window.R2_PERSONAL.render(root, ficha, d);
     // a leitura do atleta (13): o relatório é redesenhado só quando a leitura muda; todo texto do painel entra escapado
     const RL = window.RelatorioLeitura;
     if (RL) qsa('[data-rl]', root).forEach(e => {
@@ -380,10 +382,11 @@
     return d;
   }
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  if (window.R2_PERSONAL) window.addEventListener('r2-rebind', () => applyBind(document));
 
   /* ---------------- mensagens ---------------- */
   let chan = null;
-  try { chan = new BroadcastChannel('je-r2'); } catch (e) { chan = null; }
+  try { chan = new BroadcastChannel(window.R2_PERSONAL ? 'je-r2-dossie-' + (AID || 'exemplo') : 'je-r2'); } catch (e) { chan = null; }
   let peer = isPresenter ? window.opener : null;
   const me = isPresenter ? 'p' : 'd';
   const seen = new Set();
@@ -423,6 +426,7 @@
         (Array.isArray(ficha._p) ? ficha._p : []).forEach(k => { if (!(k in f)) delete ficha[k]; });
         Object.keys(f).forEach(k => { ficha[k] = f[k]; });
         nomeDeHoje(ficha);
+        if (window.R2_PERSONAL && j.foto && j.foto.ok) ficha._foto = j.foto; else delete ficha._foto;
         // a leitura do atleta (13): o vídeo e o relatório vêm só do painel; o que sumiu lá some daqui
         if (j.video && j.video.ok) ficha._video = j.video; else delete ficha._video;
         if (j.video && j.video.ok && j.leitura) ficha._leitura = j.leitura; else delete ficha._leitura;
@@ -431,7 +435,7 @@
         store.set(FKEY, ficha);
         depois();
         if (aviso) aviso('Apresentação do painel: ' + (f.nome || AID) + '. O que veio do painel vale sobre esta ficha; pra mudar de vez, mude no painel.' +
-          (j.video && j.video.ok ? (j.leitura ? '' : ' O vídeo está no painel, mas sem lances marcados: o 13 mostra só o vídeo.') : ' Sem vídeo no painel: o 13 vai pra leitura ao vivo.'), true);
+          (window.R2_PERSONAL ? ' O slide 13 mostra o relatório preparado; os clubes compatíveis aparecem no 16.' : (j.video && j.video.ok ? (j.leitura ? '' : ' O vídeo está no painel, mas sem lances marcados: o 13 mostra só o vídeo.') : ' Sem vídeo no painel: o 13 vai pra leitura ao vivo.')), true);
       })
       .catch(() => { if (aviso) aviso('Não consegui carregar a apresentação do painel (' + AID + '). A tela usa a ficha deste navegador.', false); });
   }
@@ -1095,7 +1099,10 @@
       ['Pé e altura', 'peTxt|alturaTxt', 'cartão do 10 (vazio: a linha some)'], ['Código do dossiê (link do painel)', 'dossieCod', '01, 02, 10 e o selo no canto'],
       ['Sonho do atleta', 'sonho', '03 e 05'], ['O que falta', 'falta', '03'],
       ['Dor com as palavras deles', 'dor', '03'], ['Treina hoje', 'treina', '03'], ['Locomoção', 'locomocao', '03 e 05'], ['Primeiro foco do plano', 'trabalhar', '05, falado no 09 e o primeiro foco do relatório do 13'],
-      ['Vídeo e leitura do painel', 'leituraResumo', '13 (o jogo dele, lance a lance), 01 (o quadro na capa) e 05; sem vídeo, o 13 é a leitura ao vivo'],
+      ...(window.R2_PERSONAL ? [
+        ['Relatório preparado no painel', 'zyronResumo|zyronFoco', '13 (a leitura e a prioridade do atleta)'],
+        ['Clubes compatíveis do relatório', 'match1Clube|match2Clube|match3Clube', '16 (oportunidades preenchidas para este perfil)']
+      ] : [['Vídeo e leitura do painel', 'leituraResumo', '13 (o jogo dele, lance a lance), 01 (o quadro na capa) e 05; sem vídeo, o 13 é a leitura ao vivo']]),
       ['Peneiras que ele fez', 'peneiras', '04, 11 e 12, só falado'], ['Caso espelho (nome, clube, país)', 'casoNome&casoClube', '02 (plantar), 16 (tela), 20 e 25'], ['Link do caso espelho', 'casoLink', '16, no WhatsApp'],
       ['Link da AGN', 'linkAgn', '16, no WhatsApp'], ['Já investiram (régua)', 'investido', '17, só falado'],
       ['Não faz sentido lucrar em cima', 'lucro', '20, só falado'], ['Quanto um atleta nosso fecha', 'faixaContrato', '20'], ['Prazo da garantia', 'garantiaPrazo', 'Garantia, depois dos preços (vazio: some)'],

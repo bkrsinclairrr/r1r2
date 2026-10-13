@@ -264,6 +264,7 @@
   // o que a variação mostra do lead, em texto: o deck que segue a escolha de nome (o R2 novo) diz pelo que o admin ajustou; os outros, pelo que o deck faz
   const textoLead = v => {
     const rec = v.recursos || { nomeTela: true, foto: true };
+    if (rec.dossie) return 'Primeiro nome e foto no dossiê, relatório, oportunidades e oferta. Resultados preenchidos no painel antes da call.';
     if (!rec.nomeTela) return (deckPor(v.deck) || {}).leadTxt || (R.deckPor(v.deck) || {}).leadTxt || (v.lead.nome ? 'aparece o nome do lead' : 'não mostra o nome do lead');
     return v.lead.nome ? 'aparecem o nome e o sobrenome do lead' + (v.lead.foto ? ', com a foto dele' : ', sem a foto dele') : 'não mostra o nome nem a foto do lead (apresentação geral)';
   };
@@ -448,7 +449,14 @@
   const F = $('#f-editor');
   const campo = n => F.elements.namedItem(n);
   // os campos que são um valor só do formulário; a variação (radio) e os slides desmarcados (checkbox) têm funções próprias
-  const CHAVES = ['nome', 'apelido', 'nomeTela', 'posicao', 'idade', 'cidade', 'pe', 'altura', 'origem', 'sonho', 'caracteristicas', 'experiencia', 'r2data', 'r2hm', 'plano', 'vagas', 'proximaTurma', 'gerente', 'prazoContato', 'prazoZyron'];
+  const CHAVES = ['nome', 'apelido', 'nomeTela', 'posicao', 'idade', 'cidade', 'pe', 'altura', 'origem', 'sonho', 'caracteristicas', 'experiencia', 'r2data', 'r2hm', 'plano', 'vagas', 'proximaTurma', 'gerente', 'prazoContato', 'prazoZyron', ...R.CAMPOS_DOSSIE.map(c => c.chave)];
+  const campoDossie = c => `<label class="campo${c.area ? ' largo' : ''}"><span>${esc(c.nome)}</span>${c.area
+    ? `<textarea class="in" name="${c.chave}" rows="2" maxlength="${c.max}"></textarea>`
+    : `<input class="in" name="${c.chave}" ${c.numero ? `type="number" min="${c.numero[0]}" max="${c.numero[1]}" step="1" placeholder="0 a 100"` : `maxlength="${c.max}"`}>`}</label>`;
+  $('#dossie-campos').innerHTML = '<div class="grade">' + R.CAMPOS_DOSSIE.filter(c => !c.clube && !c.indicador).map(campoDossie).join('') + '</div>'
+    + '<details class="dossie-grupo"><summary>Indicadores individuais do relatório</summary><p class="dica">Notas de 0 a 100, somente as que o Zyron informou. A apresentação não calcula nem completa notas.</p><div class="grade">'
+    + R.CAMPOS_DOSSIE.filter(c => c.indicador).map(campoDossie).join('') + '</div></details>'
+    + [1, 2, 3].map(n => `<details class="dossie-grupo"${n === 1 ? ' open' : ''}><summary>Clube compatível ${n}</summary><p class="dica">Clube, posição, categoria e motivo do encaixe. O percentual é opcional e deve ser o do relatório. Compatibilidade de perfil não confirma vaga ou convite.</p><div class="grade">${R.CAMPOS_DOSSIE.filter(c => c.clube === n).map(campoDossie).join('')}</div></details>`).join('');
   // o R1 usa só a ficha do atleta, o que vai pro CRM e o dia e a hora da R2 (o resto é do R2)
   const CHAVES_R1 = ['nome', 'posicao', 'idade', 'cidade', 'origem', 'caracteristicas', 'experiencia', 'r2data', 'r2hm'];
   // a etapa do editor aberto (a do lead, ou a do R1 ou R2 novo) e o que o deck da variação marcada faz com a escolha do painel
@@ -632,6 +640,7 @@
     // O deck que não segue a escolha (o R2 anterior, o B e o R1) mostra o nome do jeito dele: aí não tem escolha
     const verMarcada = versaoPor(f.versao, et), verSalva = versaoPor(reg && reg.ficha && reg.ficha.versao, et);
     const rec = verMarcada.recursos || { nomeTela: true, foto: true, pular: true };
+    $('#s-dossie').hidden = !rec.dossie;
     const leadNome = verMarcada.lead.nome, leadFoto = !!(rec.foto && leadNome && verMarcada.lead.foto);
     const modo = leadNome ? (rec.nomeTela ? (f.nomeTela || '') : (rec.nomeFixo || '')) : 'sem'; // o que a tela mostra do nome (o deck que não segue a escolha mostra do jeito dele)
     const comFoto = leadFoto && modo !== 'sem' && f.semFoto !== 'sim';
@@ -649,7 +658,9 @@
     $('#foto-tela-bloco').hidden = !(leadFoto && modo !== 'sem');
     const mostraTudo = leadNome && leadFoto && rec.nomeTela;
     $('#lead-nota').hidden = r1 || mostraTudo;
-    const deck = deckPor(verMarcada.deck), leadTxtDoDeck = deck.leadTxt || (R.deckPor(verMarcada.deck) || {}).leadTxt;
+    const deck = deckPor(verMarcada.deck), leadTxtDoDeck = rec.dossie
+      ? 'Primeiro nome e foto na capa, no perfil, no relatório, nas oportunidades e na oferta. O dossiê é preparado antes da call, com os campos abaixo.'
+      : deck.leadTxt || (R.deckPor(verMarcada.deck) || {}).leadTxt;
     $('#lead-nota').textContent = !leadNome ? 'Esta variação não mostra o nome nem a foto do lead na tela (apresentação geral). A fala do apresentador continua com o nome dele.'
       : !rec.nomeTela ? 'No deck ' + deck.nome + ', ' + (leadTxtDoDeck || 'o nome do lead aparece do jeito do deck') + '.'
       : !leadFoto ? 'Esta variação não mostra a foto do lead na tela.' : '';
@@ -677,7 +688,7 @@
     $$('.so-legacy').forEach(el => el.classList.toggle('fora', f.plano !== R.LEGACY));
     // seções que só existem com o lead criado (e a leitura, só no R2)
     ['#s-link', '#s-hist', '#s-perigo'].forEach(x => { $(x).hidden = novo; });
-    $('#s-leitura').hidden = novo || r1;
+    $('#s-leitura').hidden = novo || r1 || rec.leitura === false;
     desenhaFoto(); desenhaChecklist(); desenhaLink(); desenhaHistorico();
   }
   // só os campos da ficha, a nota e o "conferi o nome" contam como mudança (a foto e o link têm botão próprio)
@@ -700,6 +711,14 @@
     const ficha = leFicha();
     $('#ed-erro').textContent = '';
     if (!ficha.nome || ficha.nome.length < 2) { $('#ed-erro').textContent = 'Coloque o nome completo do atleta.'; campo('nome').focus(); return; }
+    if (recursosDe(versaoMarcada()).dossie) {
+      const invalido = R.CAMPOS_DOSSIE.find(c => c.numero && campo(c.chave).value && !campo(c.chave).validity.valid);
+      if (invalido) {
+        $('#ed-erro').textContent = invalido.nome + ': use um número inteiro de 0 a 100, ou deixe vazio.';
+        const el = campo(invalido.chave), grupo = el.closest('details'); if (grupo) grupo.open = true;
+        el.focus(); return;
+      }
+    }
     if (etapaEd() === 'r2' && ficha.vagas && !(+ficha.vagas >= 1 && +ficha.vagas <= 10)) { $('#ed-erro').textContent = 'Vagas: um número de 1 a 10, ou vazio.'; campo('vagas').focus(); return; }
     try {
       if (!ed.t) {

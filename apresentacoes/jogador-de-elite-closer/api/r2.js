@@ -47,9 +47,9 @@ export default async function handler(req, res) {
       : { estado: 'ok', t, atualizadoEm: reg.atualizadoEm || null, versao, ficha };
     // a foto só vai quando a tela dela mostra: com a foto fora da tela (semFoto, que a variação ou o closer mandam), o deck nem fica sabendo que
     // ela existe. Vale também pros decks que não conhecem o semFoto (o R2 B): a promessa do painel é do servidor, não do deck
-    if (!legado && ficha.semFoto !== 'sim' && fotoValida(reg.foto)) saida.foto = { ok: true, versao: reg.foto.versao };
+    if ((!legado || R.temDossie(ver)) && ficha.semFoto !== 'sim' && fotoValida(reg.foto)) saida.foto = { ok: true, versao: reg.foto.versao };
     const v = reg.video;
-    if (videoValido(v)) {
+    if (!R.temDossie(ver) && videoValido(v)) {
       saida.video = { ok: true, duracaoS: v.duracaoS, temPoster: !!v.poster };
       const l = reg.leitura && limpaLeitura(reg.leitura, v.duracaoS).leitura;
       if (l && l.origem && l.lances.length) saida.leitura = { origem: l.origem, criterio: l.criterio, lances: l.lances, fortes: l.fortes, prioridades: l.prioridades };

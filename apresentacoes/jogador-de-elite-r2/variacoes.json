@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "gerado": "2026-10-13T12:56:30.705Z",
+  "gerado": "2026-10-13T15:17:30.900Z",
   "paginas": [
     {
       "id": "principal",
@@ -21,16 +21,16 @@
       "id": "acompanhamento",
       "caminho": "/variacoes/acompanhamento/",
       "nome": "R2 · Oferta R$247,90 e R$500",
-      "resumo": "R2 com Scouting por R$ 247,90 e Legacy por R$ 500, acompanhamento diário e garantia incondicional antes do Bem-vindo. Sem foto.",
+      "resumo": "R2 com Scouting por R$ 247,90 e Legacy por R$ 500, dossiê com foto, relatório do Zyron e clubes compatíveis. Garantia antes do Bem-vindo.",
       "quando": "Quando esta oferta de dois planos for a aprovada para a família. O nome do atleta continua na apresentação.",
       "validacao": "nao-validada",
       "lead": {
         "nome": true,
-        "foto": false
+        "foto": true
       },
       "slides": 25,
       "opcionais": [],
-      "hash": "a3e19bc66651b29d897cc070bfc98c12e6811ed0"
+      "hash": "5435a14ec550d460a5ad9dd93ea1382487ef4c84"
     },
     {
       "id": "tecnica",

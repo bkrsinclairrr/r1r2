@@ -10,6 +10,26 @@
   // Variações criadas sobre essa página herdam o mesmo caminho e os mesmos dois planos.
   const planosDaVersao = v => v && v.deck === 'r2-anterior' && v.caminho === '/variacoes/acompanhamento/'
     ? PLANOS.filter(p => p !== 'Assessoria PRO') : PLANOS;
+  const temDossie = v => !!(v && v.deck === 'r2-anterior' && v.caminho === '/variacoes/acompanhamento/');
+  const recursosDaPagina = (deck, pagina) => temDossie({ deck: deck.id, caminho: pagina.caminho })
+    ? { ...deck.recursos, foto: true, leitura: false, dossie: true } : deck.recursos;
+  const INDICADORES = [['Ataque', 'Ataque'], ['Defesa', 'Defesa'], ['Chute', 'Chute'], ['Domínio', 'Dominio'],
+    ['Marcação', 'Marcacao'], ['Finalização', 'Finalizacao'], ['Drible', 'Drible'], ['Passe', 'Passe'],
+    ['Velocidade', 'Velocidade'], ['Leitura de jogo', 'Leitura']];
+  // Relatório pronto, transcrito do Zyron. Nota e compatibilidade ausentes nunca viram um número calculado.
+  const CAMPOS_DOSSIE = [
+    { chave: 'zyronCategoria', nome: 'Categoria', max: 40 },
+    { chave: 'zyronResumo', nome: 'Leitura do perfil e pontos fortes', max: 220, area: true },
+    { chave: 'zyronFoco', nome: 'Prioridade de desenvolvimento', max: 160, area: true },
+    { chave: 'zyronGeral', nome: 'Nota geral do relatório', numero: [0, 100] },
+    ...INDICADORES.map(([nome, id]) => ({ chave: 'zyron' + id, nome, numero: [0, 100], indicador: true })),
+    ...[1, 2, 3].flatMap(n => [
+      ['Clube', 'Clube', 70], ['Pais', 'País', 40], ['Liga', 'Liga / competição', 60],
+      ['Posicao', 'Posição compatível', 40], ['Categoria', 'Categoria compatível', 40],
+      ['Motivo', 'Por que o perfil encaixa', 160]
+    ].map(([id, nome, max]) => ({ chave: 'match' + n + id, nome, max, clube: n, area: id === 'Motivo' }))
+      .concat({ chave: 'match' + n + 'Compatibilidade', nome: 'Compatibilidade no relatório (%)', numero: [0, 100], clube: n }))
+  ];
   const LEGACY = 'Assessoria de Elite Legacy';
   // nome de antes de um plano que mudou de nome (o Scouting PRO virou Assessoria PRO em 07/10/2026)
   const PLANOS_ANTIGOS = { 'Scouting PRO': 'Assessoria PRO' };
@@ -139,7 +159,7 @@
   // o slug de uma variação (o id que fica gravado no R2): letras minúsculas e números separados por hífen
   const SLUG_OK = /^[a-z0-9]+(-[a-z0-9]+)*$/;
   // a página de um deck como variação do painel: o id é o prefixo do deck mais o id da página; leva a etapa e o deck
-  const comoVariacao = (deck, pagina) => Object.assign({}, pagina, { id: deck.prefixo + pagina.id, idLocal: pagina.id, etapa: deck.etapa, deck: deck.id, recursos: deck.recursos });
+  const comoVariacao = (deck, pagina) => Object.assign({}, pagina, { id: deck.prefixo + pagina.id, idLocal: pagina.id, etapa: deck.etapa, deck: deck.id, recursos: recursosDaPagina(deck, pagina) });
   VERSOES.forEach(v => { v.etapa = 'r2'; v.deck = 'r2'; v.idLocal = v.id; v.recursos = deckPor('r2').recursos; });
   // a reserva de todos os decks, já como variações do painel
   const RESERVA_TODAS = [].concat(...DECKS.map(d => (RESERVA[d.id] || []).map(pg => comoVariacao(d, pg))));
@@ -269,7 +289,7 @@
   // como a fala chama o atleta: o apelido, ou o primeiro nome
   const comoFala = (nome, apelido) => str(apelido) || nomesDoAtleta(nome).primeiro;
 
-  raiz.R2_REGRAS = { PLANOS, planosDaVersao, LEGACY, PLANOS_ANTIGOS, PRAZOS, PES, ORIGENS, SUGESTOES, CAMPO_POSICOES, DATA_OK, HORA_OK,
+  raiz.R2_REGRAS = { PLANOS, planosDaVersao, temDossie, recursosDaPagina, CAMPOS_DOSSIE, INDICADORES, LEGACY, PLANOS_ANTIGOS, PRAZOS, PES, ORIGENS, SUGESTOES, CAMPO_POSICOES, DATA_OK, HORA_OK,
     VERSOES, VERSAO_PADRAO, VALIDACOES, VALIDACAO_PADRAO, SLUG_OK, NOMES_TELA, versaoPor, ordenaVersoes,
     ETAPAS, DECKS, RESERVA, RESERVA_TODAS, deckPor, entradaDe, padraoDe, comoVariacao,
     semAcento, posicaoNoCampo, diaDaCall, horaDaCall, hojeSP, dataCurta, nomeDossie, comoChama, comoFala, nomesDoAtleta };

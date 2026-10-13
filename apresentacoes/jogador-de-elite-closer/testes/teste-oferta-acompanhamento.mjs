@@ -31,13 +31,13 @@ test('a garantia dos dois R2 anteriores vem depois do investimento e antes do Be
   }
 });
 
-test('o manifesto cadastra a nova oferta no R2 anterior, com nome e sem foto', () => {
+test('o manifesto cadastra a oferta no R2 anterior, com nome e foto', () => {
   const m = JSON.parse(le('variacoes.json'));
   const pagina = m.paginas.find(p => p.id === 'acompanhamento');
   assert.ok(pagina, 'falta a página de acompanhamento');
   assert.equal(pagina.caminho, caminho);
   assert.equal(pagina.lead.nome, true);
-  assert.equal(pagina.lead.foto, false);
+  assert.equal(pagina.lead.foto, true);
 });
 
 test('a oferta é descoberta pelo painel e funciona com o mesmo link, nome, planos e apresentador', async () => {
@@ -124,7 +124,7 @@ test('a oferta é descoberta pelo painel e funciona com o mesmo link, nome, plan
     assert.doesNotMatch(await p.avalia('document.body.textContent'), /o mais completo|R\$ 997|R\$ 1\.497|R\$ 2\.997/i);
     await p.avalia(`document.querySelector('[data-plano-troca="scouting"]').click(); 1`);
     await espera(500);
-    assert.equal(await p.avalia('JSON.parse(localStorage.getItem("je-r2-ficha")).plano'), 'Scouting');
+    assert.equal(await p.avalia(`JSON.parse(localStorage.getItem('je-r2-dossie-ficha-${criado.j.t}')).plano`), 'Scouting');
     assert.ok(!a.console_.some(e => e.startsWith('EXC')) && !p.console_.some(e => e.startsWith('EXC')), 'sem exceções de script');
   } finally { await nav.fecha(); await s.fecha(); }
 });

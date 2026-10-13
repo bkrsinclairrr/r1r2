@@ -72,12 +72,12 @@ try {
 
   for (const id of IDS) {
     const deck = doDeck(id), etapa = deck.etapa, entrada = s.decks[etapa === 'r1' ? 'r1' : 'r2']; // o deck de entrada da etapa
-    const rec = (lista.versoes.find(v => v.deck === id) || {}).recursos || {};
     console.log('\n=== ' + deck.nome + ' (' + etapa.toUpperCase() + ', ' + deck.origem + ')');
     for (const p of manifesto(id).paginas) {
       const gid = PREFIXO[id] + p.id;
       console.log('\n' + gid + '  (' + p.caminho + ', ' + p.slides + ' slides' + (p.opcionais.length ? ', opcionais: ' + p.opcionais.map(o => o.id + '@' + o.slide).join(', ') : '') + ')');
       const v = lista.versoes.find(x => x.id === gid);
+      const rec = (v || {}).recursos || {};
       ok(!!v && v.deck === id && v.etapa === etapa && v.caminho === p.caminho && !!v.saude && v.saude.ok === true && v.saude.desatualizado === false, 'no painel: aparece como variação do ' + etapa.toUpperCase() + ', abre e o variacoes.json está em dia com a página');
       const mostraNome = rec.nomeTela ? p.lead.nome !== false : true, mostraFoto = !!(rec.foto && mostraNome && p.lead.foto);
       ok(!!v && JSON.stringify(v.opcionais) === JSON.stringify(p.opcionais) && v.lead.nome === mostraNome && v.lead.foto === mostraFoto, 'no painel: os slides opcionais e o que ela mostra do lead (nome ' + (mostraNome ? 'sim' : 'não') + ', foto ' + (mostraFoto ? 'sim' : 'não') + ') são os que a página e o deck dizem');

@@ -16,12 +16,12 @@
 <script type="application/json" id="r2-variacao">
 {
   "nome": "R2 · Oferta R$247,90 e R$500",
-  "resumo": "R2 com Scouting por R$ 247,90 e Legacy por R$ 500, acompanhamento diário e garantia incondicional antes do Bem-vindo. Sem foto.",
+  "resumo": "R2 com Scouting por R$ 247,90 e Legacy por R$ 500, dossiê com foto, relatório do Zyron e clubes compatíveis. Garantia antes do Bem-vindo.",
   "quando": "Quando esta oferta de dois planos for a aprovada para a família. O nome do atleta continua na apresentação.",
   "validacao": "nao-validada",
   "lead": {
     "nome": true,
-    "foto": false
+    "foto": true
   },
   "opcionais": []
 }
@@ -35,22 +35,10 @@
 <!-- ============ 01 CAPA ============ -->
 <!-- O gancho é o inimigo comum: o olhômetro (laranja-sinal, só nele). A segunda linha segue a origem do lead.
      O selo de dossiê leva o nome e, com o link do painel (?a=<id>), o código do registro dele (dossieCod). -->
-<section class="slide desk" data-slide-origem="1">
-  <div class="fill topo"></div>
-  <div class="fill" style="background:radial-gradient(34% 42% at 70% 58%,rgba(230,219,184,.10),rgba(6,11,20,0) 70%)"></div>
-  <div class="a" style="left:960px;top:230px;width:900px;height:640px"><div data-dossier="closed" class="dz-tilt" data-ifnot="posterOk"></div>
-    <!-- com o quadro do vídeo dele no painel: o dossiê é a foto do jogo dele (duotone navy), no lugar do desenho -->
-    <div class="dz-tilt dz-foto" data-if="posterOk"><div class="dz-quadro"><img data-src="posterUrl" alt="Quadro do vídeo do atleta"><div class="dz-tom"></div><div class="dz-rot"><p class="k">Dossiê do atleta</p><p class="n" data-bind="nomeUp" data-fb="VOCÊ"></p><p class="c" data-bind="dossieNo"></p></div><p class="dz-ok">Aprovado</p></div></div></div>
-  <div class="fill grain"></div>
-  <p class="a selo rise" style="left:120px;top:150px"><span>Dossiê</span><span data-if="nome"> · <span data-bind="nome"></span></span><span class="cod" data-if="dossieCod">nº <span data-bind="dossieCod"></span></span></p>
-  <div class="a" style="left:116px;top:262px;width:860px">
-    <p class="t t-130 rise" style="--d:.06s">O <span class="sig">olhômetro</span> não viu o seu jogo.</p>
-    <p class="t t-130 ice rise" data-if="origemZyron" style="margin-top:22px!important;--d:.16s">O Zyron viu.</p>
-    <p class="rise" data-ifnot="origemZyron" style="margin-top:34px!important;font-size:52px;line-height:1.2;font-weight:600;color:var(--sand-l);--d:.16s">A gente leu a sua história.</p>
-    <p class="rise" style="margin-top:34px!important;font-size:36px;line-height:1.3;color:var(--white);--d:.24s">Se você está vendo isso, é porque tem o que é preciso.</p>
-  </div>
-  <p class="a label muted bare" style="left:120px;top:962px;font-size:26px;letter-spacing:.3em">Jogador de Elite&nbsp;&nbsp;·&nbsp;&nbsp;Planejamento de carreira</p>
-</section>
+<section class="slide desk" data-slide-origem="1"><div class="fill grain"></div><div class="fill" style="background:radial-gradient(50% 75% at 80% 45%,rgba(200,184,138,.14),transparent)"></div>
+<div class="a" style="left:120px;top:160px;width:930px"><p class="label">Planejamento de carreira · Dossiê pessoal</p><h1 class="t" style="font-size:116px;line-height:.96;margin-top:42px!important"><span class="sand-l" data-bind="nome" data-fb="Você"></span>,<br>este plano<br>é seu.</h1>
+<p class="b" style="font-size:42px;line-height:1.25;margin-top:42px!important">O que a equipe viu no seu perfil, o que vale desenvolver e onde o seu jogo pode fazer sentido. Tudo reunido para esta conversa.</p><p class="zx-frase">Seu nome. Seu perfil. Seu próximo passo.</p></div>
+<div class="a" style="left:1170px;top:115px;width:570px;height:790px"><div class="zx-retrato"><img data-if="fotoOk" data-src="fotoUrl" alt="Foto do atleta"><b data-ifnot="fotoOk" data-bind="fotoIni"></b><div class="zx-retrato-caption"><span>Montado para</span><strong data-bind="nome" data-fb="você"></strong><small data-bind="dossieNo"></small></div></div></div><p class="a legal" style="left:120px;top:1010px;width:1640px">Jogador de Elite · Preparado para o atleta identificado nesta apresentação.</p></section>
 
 <section class="slide" data-slide-origem="2">
   <div class="fill" style="background:radial-gradient(40% 55% at 78% 48%,rgba(230,219,184,.08),rgba(6,11,20,0) 70%)"></div>
@@ -110,14 +98,14 @@
   <div class="fill" style="background:radial-gradient(42% 70% at 36% 52%,rgba(226,85,43,.07),rgba(6,11,20,0) 70%)"></div>
   <p class="a dtag" data-if="nome">Dossiê · <span data-bind="nome"></span><span data-if="dossieCod"> · nº <span data-bind="dossieCod"></span></span></p>
   <p class="a t t-110" style="left:116px;top:92px">Peneira é <span class="sig">olhômetro</span>.</p>
-  <table class="vs so rise" style="left:120px;top:246px;width:1680px">
+  <table class="vs rise resposta-completa" style="left:120px;top:246px;width:1680px">
     <colgroup><col style="width:440px"><col style="width:580px"><col style="width:660px"></colgroup>
     <tr><th></th><th class="c2"><svg class="olho" viewBox="0 0 48 32" aria-hidden="true"><path d="M2 16 C10 4 38 4 46 16 C38 28 10 28 2 16 Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><circle cx="24" cy="16" r="8" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M24 16 V10.5 M24 16 L28 18.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Olhômetro</th><th class="c3">A resposta</th></tr>
-    <tr><td class="c1">Quanto do seu jogo é visto</td><td class="c2">Os lances que calharem de ser vistos</td><td class="c3"></td></tr>
-    <tr><td class="c1">Atenção</td><td class="c2">Dividida entre 22</td><td class="c3"></td></tr>
-    <tr><td class="c1">O que fica registrado</td><td class="c2">A memória do avaliador</td><td class="c3"></td></tr>
-    <tr><td class="c1">Depois</td><td class="c2">“A gente te liga”</td><td class="c3"></td></tr>
-    <tr><td class="c1">Quem fica sabendo de você</td><td class="c2">Um clube, num dia</td><td class="c3"></td></tr>
+    <tr><td class="c1">Quanto do seu jogo é visto</td><td class="c2">Os lances que calharem de ser vistos</td><td class="c3">Os lances enviados, com o mesmo critério de leitura</td></tr>
+    <tr><td class="c1">Atenção</td><td class="c2">Dividida entre 22</td><td class="c3">O seu perfil analisado individualmente</td></tr>
+    <tr><td class="c1">O que fica registrado</td><td class="c2">A memória do avaliador</td><td class="c3">Um relatório que registra pontos fortes e prioridades</td></tr>
+    <tr><td class="c1">Depois</td><td class="c2">“A gente te liga”</td><td class="c3">Direção de desenvolvimento e acompanhamento</td></tr>
+    <tr><td class="c1">Quem fica sabendo de você</td><td class="c2">Um clube, num dia</td><td class="c3">Clubes compatíveis com posição, categoria e perfil</td></tr>
   </table>
   <p class="a rise" style="left:120px;top:884px;width:1600px;font-size:52px;line-height:1.15;font-weight:600;color:var(--white);--d:.2s">Não foi você que não deu certo. Foi o <span class="sig">olhômetro</span>.</p>
 </section>
@@ -210,39 +198,11 @@
   </div>
 </section>
 
-<section class="slide" data-slide-origem="10">
-  <div class="fill" style="background:radial-gradient(34% 62% at 52% 50%,rgba(107,123,69,.16),rgba(6,11,20,0) 72%)"></div>
-  <div class="a" style="left:120px;top:96px;width:580px">
-    <p class="label">Em campo</p>
-    <p class="t t-96 rise" style="margin-top:44px!important"><span data-if="nome"><span class="sand-l" data-bind="nome"></span>, o seu</span><span data-ifnot="nome">O seu</span> lugar em campo.</p>
-    <p class="rise" style="margin-top:34px!important;font-size:38px;line-height:1.25;font-weight:600;color:var(--white);--d:.08s">Todo elenco tem uma lacuna.</p>
-    <div class="pieces vert rise" style="margin-top:30px;--d:.14s"><p class="pc-z">O Zyron encontra o perfil.</p><p class="pc-g">A gente faz a ponte.</p></div>
-    <p class="rise" style="margin-top:38px!important;font-size:40px;line-height:1.2;font-weight:600;color:var(--sand-l);--d:.2s">Mais de 250 clubes procuram perfil.</p>
-  </div>
-  <div class="a campo-box rise" style="left:740px;top:96px;width:540px;height:858px;--d:.06s">
-    <div data-campo="cheio"></div>
-    <p class="campo-leg">Formação ilustrativa.</p>
-  </div>
-  <div class="brackets sand" style="left:740px;top:96px;width:540px;height:858px"><i></i><i></i><i></i><i></i></div>
-  <div class="a" style="left:1320px;top:96px;width:480px;display:flex;flex-direction:column;gap:30px">
-    <div class="cartao rise" style="--d:.12s">
-      <p class="ct-ok">Perfil aprovado</p>
-      <p class="ct-nm" data-fit="416"><span data-bind="nome" data-fb="Você"></span></p>
-      <p class="ct-pos" data-if="posicao" data-bind="posicaoUp"></p>
-      <div class="ct-grid">
-        <div data-if="idade"><p class="k">Idade</p><p class="v"><span data-bind="idade"></span> anos</p></div>
-        <div data-if="cidade"><p class="k">Cidade</p><p class="v" data-bind="cidade"></p></div>
-        <div data-if="peTxt"><p class="k">Pé</p><p class="v" data-bind="peTxt"></p></div>
-        <div data-if="alturaTxt"><p class="k">Altura</p><p class="v" data-bind="alturaTxt"></p></div>
-      </div>
-      <p class="ct-cod" data-if="dossieCod">Dossiê nº <span data-bind="dossieCod"></span></p>
-    </div>
-    <div class="rise" style="--d:.18s">
-      <p class="label bare ice" style="font-size:24px;letter-spacing:.26em">Na base do Zyron</p>
-      <ul class="clubes" id="clubes"></ul>
-    </div>
-  </div>
-</section>
+<section class="slide" data-slide-origem="10"><div class="fill" style="background:radial-gradient(55% 75% at 70% 50%,rgba(107,123,69,.14),transparent)"></div>
+<div class="a" style="left:120px;top:110px;width:770px"><p class="label">O seu perfil em campo</p><h2 class="t" style="font-size:88px;line-height:.96;margin-top:24px!important"><span class="sand-l" data-bind="nome" data-fb="Você"></span>,<br>talento precisa<br>de encaixe.</h2><div class="zx-card zx-player" style="margin-top:28px" data-dossie="identidade"></div>
+<p class="b" style="font-size:32px;line-height:1.3;margin-top:22px!important">Não se trata de servir para qualquer time. É encontrar o contexto em que o seu perfil pode contribuir.</p><div class="zx-card" style="margin-top:16px" data-dossie="destaque"></div></div>
+<div class="a zx-card zx-tatica" style="left:980px;top:115px;width:820px"><div class="zx-tatica-h"><span>Encaixe tático · perfil</span><b>4–2–3–1</b></div><div data-dossie="campo"></div><p class="zx-muted">Formação ilustrativa. O marcador destaca a posição da ficha.</p></div>
+<p class="a legal" style="left:120px;top:1010px;width:1600px">Compatibilidade de perfil não confirma vaga ou contratação.</p></section>
 
 <section class="slide" data-slide-origem="11">
   <div class="fill" style="background:radial-gradient(40% 70% at 82% 50%,rgba(127,196,234,.08),rgba(6,11,20,0) 70%)"></div>
@@ -277,72 +237,11 @@
   <p class="a rise" style="left:120px;top:940px;width:1600px;font-size:44px;line-height:1.2;font-weight:600;color:var(--sand-l);--d:.2s">O <span class="sig">olhômetro</span> pode não ter visto você. O <span class="ice">Zyron</span> viu.</p>
 </section>
 
-<section class="slide" data-slide-origem="13" data-video-se="v-atleta">
-  <p class="a dtag" data-if="nome">Dossiê · <span data-bind="nome"></span><span data-if="dossieCod"> · nº <span data-bind="dossieCod"></span></span></p>
-  <!-- Com o vídeo do atleta no painel (videoOk): o vídeo dele, o nome e o relatório que o painel guardou, revelados por avanço.
-       Só o vídeo (sem leitura): o player e "Leitura em preparação". Os textos e os lances vêm do painel e entram escapados
-       (relatorio-leitura.js); a fonte (Zyron ou equipe) decide a cópia. A lista inteira de lances vira capítulo no apresentador. -->
-  <div class="fill ia13" data-if="videoOk">
-    <div class="fill zgrid" style="opacity:.3;-webkit-mask-image:linear-gradient(90deg,#000 20%,transparent 60%);mask-image:linear-gradient(90deg,#000 20%,transparent 60%)"></div>
-    <p class="a t t-96" style="left:116px;top:58px;width:1700px;white-space:nowrap"><span data-if="nome">O jogo do <span class="sand-l" data-bind="nome"></span>. Lance a lance.</span><span data-ifnot="nome">O seu jogo. Lance a lance.</span></p>
-    <div class="player ia-player" id="p-atleta" style="left:120px;top:176px;width:840px;height:473px">
-      <video id="v-atleta" muted playsinline preload="metadata" data-src="videoSrc" data-poster="posterUrl"></video>
-      <button class="play" type="button" aria-label="Reproduzir o vídeo do atleta"><span class="disc"><svg width="54" height="62" viewBox="0 0 54 62"><path d="M0 0 L54 31 L0 62 Z" fill="#7FC4EA"/></svg></span></button>
-      <button class="som" type="button" aria-label="Ligar ou desligar o som"><svg class="mudo" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l4 6M21 9l-4 6" fill="none"/></svg><svg class="tocando" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none"/></svg><span>Som</span></button>
-      <div class="ia-chamada" hidden><p class="lk"></p><p class="nt"></p></div>
-    </div>
-    <div class="brackets" style="left:120px;top:176px;width:840px;height:473px"><i></i><i></i><i></i><i></i></div>
-    <div class="a ia-linha" data-if="leituraOk" data-step="1" data-passo="a linha do tempo e os lances marcados" style="left:120px;top:676px;width:840px">
-      <div data-rl="linha"></div>
-      <ul class="rl-curtos" data-rl="curtos"></ul>
-    </div>
-    <ul class="chapters oculta" data-for="v-atleta" data-rl="capitulos" aria-hidden="true"></ul>
-    <div class="a ia-pe" style="left:120px;top:926px;width:840px">
-      <p data-if="leituraOk"><span data-rl="criterio"></span> <span data-rl="fonte"></span></p>
-      <p>Vídeo do atleta usado somente com autorização expressa do responsável legal.</p>
-    </div>
-    <div class="a ia-rel" style="left:1020px;top:176px;width:780px">
-      <div class="rel-hd"><p class="rel-k">Relatório <span data-if="nome">de <span data-bind="nome"></span></span><span data-ifnot="nome">do seu jogo</span></p><p class="rel-fonte" data-if="leituraOk" data-rl="fonte"></p></div>
-      <div data-if="leituraOk">
-        <div class="rel-2" data-step="2" data-passo="a rosca e os pontos fortes"><div data-rl="rosca"></div><div data-rl="fortes"></div></div>
-        <div class="rel-3" data-step="3" data-passo="as prioridades, o primeiro foco e o fecho"><div data-rl="prioridades"></div><div data-rl="foco"></div>
-          <p class="rel-fecho">Isso existe porque <span data-if="nome">o <span data-bind="nome"></span></span><span data-ifnot="nome">você</span> mandou este vídeo. Outro vídeo, outro relatório.</p></div>
-      </div>
-      <div class="rel-prep" data-ifnot="leituraOk"><p class="t">Leitura em preparação.</p><p class="b">Os lances deste vídeo entram aqui, um a um, com o minuto e o porquê.</p></div>
-    </div>
-  </div>
-  <!-- sem vídeo no painel: a leitura ao vivo, como sempre -->
-  <div class="fill" data-ifnot="videoOk">
-    <div class="fill zgrid" style="opacity:.55;-webkit-mask-image:linear-gradient(90deg,transparent 35%,#000 70%);mask-image:linear-gradient(90deg,transparent 35%,#000 70%)"></div>
-    <div class="fill" style="background:radial-gradient(42% 56% at 74% 40%,rgba(127,196,234,.13),rgba(6,11,20,0) 70%)"></div>
-    <div class="fill grain"></div>
-    <p class="a label ice" style="left:120px;top:140px">Ao vivo, com o seu vídeo</p>
-    <p class="a t rise" style="left:114px;top:216px;font-size:150px;white-space:nowrap">IA na prática.</p>
-    <p class="a rise" style="left:120px;top:396px;width:840px;font-size:44px;line-height:1.25;font-weight:500;color:var(--white);--d:.08s"><span data-if="nome"><span data-bind="nome"></span>, até aqui</span><span data-ifnot="nome">Até aqui</span> você viu o <span class="ice">Zyron</span> com o jogo dos outros. <span class="sand-l">Agora é com o seu.</span></p>
-    <div class="a ia-passos rise" style="left:120px;top:576px;width:840px;--d:.16s">
-      <div class="ia-p"><span class="n">01</span><div><p class="k">O seu vídeo na tela</p><p class="d">Aqui, ao vivo, na nossa chamada.</p></div></div>
-      <div class="ia-p"><span class="n">02</span><div><p class="k">O <span class="ice">Zyron</span> lê o seu perfil</p><p class="d">Cada decisão, cada movimento, cada execução.</p></div></div>
-      <div class="ia-p g"><span class="n">03</span><div><p class="k">O resultado aparece</p><p class="d">Na hora, na frente de vocês.</p></div></div>
-    </div>
-    <div class="a ia-call rise" style="left:1010px;top:140px;width:800px;--d:.1s">
-      <div class="bar"><i class="rec pulse"></i><span>Ao vivo</span><span class="sp">Nesta chamada</span></div>
-      <div class="tela">
-        <div class="fill zgrid"></div>
-        <div class="scan"></div>
-        <p class="chip"><i class="pulse"></i>Zyron lendo</p>
-        <span class="disc"><svg width="46" height="54" viewBox="0 0 54 62" aria-hidden="true"><path d="M0 0 L54 31 L0 62 Z" fill="#7FC4EA"/></svg></span>
-        <div class="nm"><p class="lb">Vídeo do atleta</p><p class="t"><span data-if="nome">O jogo do <span data-bind="nome"></span></span><span data-ifnot="nome">O seu jogo</span></p></div>
-        <div class="brackets" style="left:28px;top:28px;right:28px;bottom:28px"><i></i><i></i><i></i><i></i></div>
-      </div>
-    </div>
-    <div class="a ia-res rise" style="left:1010px;top:690px;width:800px;--d:.24s">
-      <svg width="40" height="48" viewBox="0 0 30 36" aria-hidden="true"><rect x="2" y="15" width="26" height="19" rx="2" fill="none" stroke="#C8B88A" stroke-width="2.5"/><path d="M8 15 V10 a7 7 0 0 1 14 0 V15" fill="none" stroke="#C8B88A" stroke-width="2.5"/></svg>
-      <div><p class="dh">Resultado da leitura</p><p class="v">Revelado ao vivo, nesta chamada.</p></div>
-    </div>
-    <p class="a rise" style="left:1010px;top:874px;width:800px;font-size:42px;line-height:1.22;font-weight:600;color:var(--sand-l);--d:.32s">O que aparecer agora fala só de você<span data-if="nome">, <span data-bind="nome"></span></span>.</p>
-    <p class="a legal" style="left:120px;top:990px;width:1560px">Vídeo do atleta usado somente com autorização expressa do responsável legal.</p>
-  </div>
-</section>
+<section class="slide" data-slide-origem="13"><div class="fill" style="background:radial-gradient(50% 90% at 80% 50%,rgba(200,184,138,.09),transparent)"></div>
+<div class="a zx-report" style="left:120px;top:56px;width:1680px;height:940px"><div class="zx-topbar"><b><span class="zx-z">Z</span> ZYRON</b><span data-if="relatorioPronto" class="zx-status">Relatório preparado</span><span data-ifnot="relatorioPronto" class="zx-status">Seu dossiê</span><span class="zx-top-label">IA na prática · visão do seu perfil</span></div>
+<div class="zx-report-ident" data-dossie="identidade"></div><div class="zx-tabs"><span class="active">Visão geral</span><span>Indicadores</span><span>Oportunidades</span><span>Desenvolvimento</span></div>
+<div class="zx-report-grid"><aside class="zx-card zx-perfil" data-dossie="perfil"></aside><div class="zx-report-main"><div class="zx-card"><div class="zx-section-h"><h3>Indicadores individuais</h3><span>Do relatório do Zyron</span></div><div class="zx-indicadores" data-dossie="indicadores"></div></div><div class="zx-card zx-leitura"><h3>A leitura do seu jogo</h3><p data-bind="zyronResumo" data-fb="Os pontos fortes do seu relatório serão reunidos neste espaço."></p><div data-if="zyronFoco"><h4>Seu próximo foco</h4><p data-bind="zyronFoco"></p></div></div><div class="zx-card" data-dossie="destaque"></div></div></div></div>
+<p class="a legal" style="left:120px;top:1010px;width:1600px">Relatório preparado antes da apresentação. Indicadores e compatibilidades são os registrados para este atleta.</p></section>
 
 <section class="slide" data-slide-origem="14" data-video="a-mae">
   <div class="fill" style="background:radial-gradient(70% 80% at 18% 40%,rgba(200,184,138,.06),rgba(6,11,20,0) 60%)"></div>
@@ -386,51 +285,31 @@
   </div>
 </section>
 
-<section class="slide" data-slide-origem="16">
-  <div class="fill" style="background:radial-gradient(44% 60% at 78% 46%,rgba(230,219,184,.13),rgba(6,11,20,0) 70%)"></div>
-  <div class="a" style="left:120px;top:96px;width:980px">
-    <p class="label">AGN Football</p>
-    <p class="t rise" style="font-size:96px;margin:44px 0 0 -4px!important">Onde os nossos atletas aparecem.</p>
-    <p class="b b-40 rise" style="margin-top:30px!important;color:var(--white);--d:.08s">Relação direta com a AGN Football, o canal que o mercado olha. Lá estão os nossos que fecharam no Brasil, na América do Sul e na Europa.</p>
-    <div class="cases rise" style="margin-top:40px;--d:.16s">
-      <div class="case"><img src="../../assets/joaozinho-02.jpg" alt="Joãozinho assinando contrato com o Grêmio" style="object-position:50% 40%"><div class="shade"></div><div class="cap"><p class="nm">Joãozinho</p><p class="cl">Grêmio</p></div></div>
-      <div class="case"><img src="../../assets/kaio-01.jpg" alt="Kaio assinando contrato com o Internacional"><div class="shade"></div><div class="cap"><p class="nm">Kaio</p><p class="cl">Internacional</p></div></div>
-      <div class="case mirror" data-if="casoNome"><p class="tag">Mesmo perfil<span data-if="nome"> do <span data-bind="nome"></span></span></p><div class="cap"><p class="nm" data-fit="190"><span data-bind="casoNome"></span></p><p class="cl" data-bind="casoClube"></p><p class="ct" data-bind="casoPais"></p></div></div>
-      <div class="case next"><div class="cap"><p class="cl">O próximo</p><p class="nm" data-fit="190"><span data-bind="nome" data-fb="Você"></span></p></div></div>
-    </div>
-  </div>
-  <div class="a device rise" style="left:1180px;top:150px;width:640px;--d:.1s"><img src="../../assets/agn-feed.png" alt="Perfil público da AGN Football com atletas e clubes"></div>
-  <p class="a legal" style="left:1180px;top:740px;width:640px">Registro do perfil público da AGN Football. Nenhuma vinculação a clube ou atleta é oferecida como parte da assessoria.</p>
-  <!-- avanço 1: a arte dos jogadores que passaram pela AGN, grande, por cima do slide (o próximo avanço vai pro 17) -->
-  <div class="a" data-step="1" style="left:0;top:0;width:1920px;height:1080px;z-index:20">
-    <div class="fill" style="background:#060B14"></div>
-    <div class="fill" style="background:radial-gradient(50% 55% at 50% 55%,rgba(230,219,184,.10),rgba(6,11,20,0) 72%)"></div>
-    <p class="a label" style="left:120px;top:58px">AGN Football</p>
-    <p class="a t" style="left:116px;top:116px;width:1690px;font-size:72px;white-space:nowrap">Jogadores que passaram pela AGN Football.</p>
-    <div class="a" style="left:320px;top:222px;width:1280px"><img src="../../assets/agn-jogadores.webp" alt="Jogadores que passaram pela AGN Football, com camisas dos clubes" style="display:block;width:100%;height:auto;border-radius:12px;border:1px solid rgba(200,184,138,.35);box-shadow:0 40px 120px rgba(0,0,0,.6)"></div>
-    <p class="a legal" style="left:120px;top:1000px;width:1680px">Jogadores que passaram pela AGN Football. Nenhuma vinculação a clube ou atleta é oferecida como parte da assessoria.</p>
-  </div>
-</section>
+<section class="slide" data-slide-origem="16"><div class="fill grain"></div><div class="fill" style="background:radial-gradient(45% 85% at 75% 48%,rgba(200,184,138,.14),transparent)"></div>
+<div class="a" style="left:120px;top:115px;width:740px"><p class="label">Oportunidades do seu perfil</p><h2 class="t" style="font-size:94px;line-height:.98;margin-top:32px!important"><span class="sand-l" data-bind="nome" data-fb="Você"></span>,<br>seu jogo tem<br>um contexto.</h2><div class="zx-oportunidade-atleta" style="margin-top:30px"><span class="zx-avatar"><img data-if="avatarOk" data-src="avatarUrl" alt="Foto do atleta"><b data-ifnot="avatarOk" data-bind="fotoIni"></b></span><p>Essa lista parte do seu perfil.<br><strong>Foi preparada para você.</strong></p></div><p class="b" style="font-size:32px;line-height:1.3;margin-top:24px!important">O match transforma uma busca genérica em direção: clubes onde posição, categoria e características do seu jogo fazem sentido juntos.</p>
+<p class="zx-frase" style="font-size:28px">A oportunidade começa no encaixe.<br>O próximo passo é trabalhar por ele.</p><p class="zx-escopo">No Scouting, a leitura orienta seu desenvolvimento. No Legacy, a equipe também acompanha os encaminhamentos e a apresentação aos clubes.</p></div>
+<div class="a zx-oportunidades" style="left:950px;top:126px;width:850px"><p class="zx-k">Compatibilidades do seu relatório</p><div class="zx-clubes" data-dossie="clubes"></div><div class="zx-proximo"><span>O próximo passo</span><p>Validar o cenário de cada clube, orientar sua preparação e definir com a equipe o caminho de apresentação.</p></div></div>
+<p class="a legal" style="left:120px;top:1010px;width:1620px">Match é compatibilidade de perfil. Não representa vaga aberta, convite ou garantia de contratação.</p></section>
 
 <section class="slide" data-slide-origem="17">
   <p class="a label" style="left:120px;top:100px">O valor real</p>
   <p class="a t rise" style="left:116px;top:180px;width:1700px;font-size:92px;white-space:nowrap">Quanto custaria montar isso por conta?</p>
   <div class="a costs" style="left:120px;top:340px;width:1000px">
-    <p data-step="1" data-valor="6500"><span>Performance e desenvolvimento atlético</span><b>R$ 6.500<i class="per">/ano</i></b></p>
-    <p data-step="2" data-valor="5000"><span>Análise de dados + inteligência (<span class="ice">Zyron</span>)</span><b>R$ 5.000<i class="per">/ano</i></b></p>
-    <p data-step="3" data-valor="2500"><span>Psicologia esportiva</span><b>R$ 2.500<i class="per">/ano</i></b></p>
-    <p data-step="4" data-valor="3000"><span>Nutrição</span><b>R$ 3.000<i class="per">/ano</i></b></p>
-    <p data-step="5" data-valor="3500"><span>Comportamento</span><b>R$ 3.500<i class="per">/ano</i></b></p>
-    <p data-step="6" data-valor="3000"><span>Imagem e posicionamento</span><b>R$ 3.000<i class="per">/ano</i></b></p>
-    <p data-step="7" data-valor="6500"><span>Acompanhamento e direcionamento</span><b>R$ 6.500<i class="per">/ano</i></b></p>
+    <p data-step="1" data-valor="4000"><span>Performance e desenvolvimento atlético</span><b>R$ 4.000<i class="per">/ano</i></b></p>
+    <p data-step="2" data-valor="3500"><span>Análise de dados + inteligência (<span class="ice">Zyron</span>)</span><b>R$ 3.500<i class="per">/ano</i></b></p>
+    <p data-step="3" data-valor="1500"><span>Psicologia esportiva</span><b>R$ 1.500<i class="per">/ano</i></b></p>
+    <p data-step="4" data-valor="2000"><span>Nutrição</span><b>R$ 2.000<i class="per">/ano</i></b></p>
+    <p data-step="5" data-valor="2000"><span>Comportamento</span><b>R$ 2.000<i class="per">/ano</i></b></p>
+    <p data-step="6" data-valor="2000"><span>Imagem e posicionamento</span><b>R$ 2.000<i class="per">/ano</i></b></p>
+    <p data-step="7" data-valor="5000"><span>Acompanhamento e direcionamento</span><b>R$ 5.000<i class="per">/ano</i></b></p>
   </div>
   <div class="a" data-step="1" style="left:1220px;top:360px;width:620px">
     <p class="label bare" style="font-size:28px">Montando por conta</p>
-    <p class="t sand-l soma" data-soma data-marca="8" style="font-size:150px;line-height:.9;margin-top:30px!important;white-space:nowrap">R$ 30.000</p>
+    <p class="t sand-l soma" data-soma data-marca="8" style="font-size:150px;line-height:.9;margin-top:30px!important;white-space:nowrap">R$ 20.000</p>
     <p class="t" style="font-size:60px;margin-top:12px!important">por ano.</p>
     <p class="b b-40" data-step="8" style="margin-top:30px!important;color:var(--white)">Sete frentes profissionais. Aqui, numa estrutura só, falando entre si, com o <span class="ice">Zyron</span>.</p>
   </div>
-  <p class="a legal" data-step="1" style="left:120px;top:1014px;width:1500px">Valores de referência de mercado, por ano. Variam conforme profissional e região.</p>
+  <p class="a legal" data-step="1" style="left:120px;top:1014px;width:1500px">Simulação ilustrativa de contratação separada dessas frentes, por ano. Valores não são orçamentos individuais.</p>
 </section>
 
 <section class="slide" data-slide-origem="18">
@@ -530,7 +409,7 @@
 <div class="st goal"><i></i><p class="k">Acompanhamento diário</p><p class="d">IA nos dois planos. Estrategista e gerente todo dia no Legacy. Você sabe o que trabalhar e tem com quem contar.</p></div></div>
 <p class="a legal" style="left:120px;top:1002px;width:1640px">O acompanhamento segue o escopo do plano e os vídeos enviados. Não há promessa de contratação ou resposta humana 24 horas.</p></section>
 
-<section class="slide oferta-dupla" id="silencio" data-oferta data-roteiro="oferta" data-slide-origem="24"><div class="fill" style="background:radial-gradient(44% 65% at 80% 54%,rgba(230,219,184,.13),rgba(6,11,20,0) 72%)"></div><p class="a dtag" data-if="nome">Plano do <span data-bind="nome"></span></p><p class="a t rise" style="left:120px;top:68px;width:1600px;font-size:86px">Você foi escolhido.<span class="sand-l"> Agora tem um caminho.</span></p><div class="a pl-tab" style="left:120px;top:220px;width:1680px"><div class="pl-col scouting" data-step="1" data-passo="o plano scouting"><div class="pl-hd"><p class="pl-ds" data-bind="scouting.descritor"></p><p class="pl-nm" data-plano-marca="scouting"></p><p class="pl-rt" data-bind="scouting.ritmo"></p><p class="pl-pr"><span class="v" data-bind="scouting.preco"></span> <span class="u">vitalício</span></p><p class="pl-pc"><span class="l">ou 10x sem juros de</span><span class="n" data-bind="scouting.parcela"></span></p></div><p class="pl-mais" data-bind="scouting.mais"></p><div class="pl-vant" data-plano-vantagens="scouting"></div><div class="pl-rec" data-if="planoId=scouting" data-step="3" data-passo="o plano recomendado"><p>Minha recomendação</p></div></div><div class="pl-col legacy" data-step="2" data-passo="o plano legacy"><div class="pl-hd"><p class="pl-ds" data-bind="legacy.descritor"></p><p class="pl-nm" data-plano-marca="legacy"></p><p class="pl-rt" data-bind="legacy.ritmo"></p><p class="pl-pr"><span class="v" data-bind="legacy.preco"></span> <span class="u">vitalício</span></p><p class="pl-pc"><span class="l">ou 10x sem juros de</span><span class="n" data-bind="legacy.parcela"></span></p></div><p class="pl-mais" data-bind="legacy.mais"></p><div class="pl-vant" data-plano-vantagens="legacy"></div><div class="pl-rec" data-if="planoId=legacy" data-step="3" data-passo="o plano recomendado"><p>Minha recomendação</p></div></div></div></section>
+<section class="slide oferta-dupla" id="silencio" data-oferta data-roteiro="oferta" data-slide-origem="24"><div class="fill" style="background:radial-gradient(44% 65% at 80% 54%,rgba(230,219,184,.13),rgba(6,11,20,0) 72%)"></div><p class="a dtag" data-if="nome">Plano do <span data-bind="nome"></span></p><div class="a zx-oferta-h" style="left:120px;top:64px;width:1680px"><span class="zx-avatar"><img data-if="avatarOk" data-src="avatarUrl" alt="Foto do atleta"><b data-ifnot="avatarOk" data-bind="fotoIni"></b></span><p class="t titulo-oferta" style="font-size:82px;line-height:1" data-fit="1510"><span data-if="nome"><span data-bind="nome"></span>, você</span><span data-ifnot="nome">Você</span> foi escolhido.<br><span class="sand-l" style="font-size:62px">Agora tem um caminho.</span></p></div><div class="a pl-tab" style="left:120px;top:220px;width:1680px"><div class="pl-col scouting" data-step="1" data-passo="o plano scouting"><div class="pl-hd"><p class="pl-ds" data-bind="scouting.descritor"></p><p class="pl-nm" data-plano-marca="scouting"></p><p class="pl-rt" data-bind="scouting.ritmo"></p><p class="pl-pr"><span class="v" data-bind="scouting.preco"></span> <span class="u">vitalício</span></p><p class="pl-pc"><span class="l">ou 10x sem juros de</span><span class="n" data-bind="scouting.parcela"></span></p></div><p class="pl-mais" data-bind="scouting.mais"></p><div class="pl-vant" data-plano-vantagens="scouting"></div><div class="pl-rec" data-if="planoId=scouting" data-step="3" data-passo="o plano recomendado"><p>Minha recomendação</p></div></div><div class="pl-col legacy" data-step="2" data-passo="o plano legacy"><div class="pl-hd"><p class="pl-ds" data-bind="legacy.descritor"></p><p class="pl-nm" data-plano-marca="legacy"></p><p class="pl-rt" data-bind="legacy.ritmo"></p><p class="pl-pr"><span class="v" data-bind="legacy.preco"></span> <span class="u">vitalício</span></p><p class="pl-pc"><span class="l">ou 10x sem juros de</span><span class="n" data-bind="legacy.parcela"></span></p></div><p class="pl-mais" data-bind="legacy.mais"></p><div class="pl-vant" data-plano-vantagens="legacy"></div><div class="pl-rec" data-if="planoId=legacy" data-step="3" data-passo="o plano recomendado"><p>Minha recomendação</p></div></div></div></section>
 
 <section class="slide" data-slide-origem="21">
   <div class="fill" style="background:radial-gradient(44% 60% at 74% 50%,rgba(230,219,184,.16),rgba(6,11,20,0) 70%)"></div>
@@ -552,7 +431,7 @@
 <section class="slide" data-slide-origem="25" data-plano-atual>
   <p class="a dtag" data-if="nome">Plano do <span data-bind="nome"></span><span data-if="dossieCod"> · nº <span data-bind="dossieCod"></span></span></p>
   <div class="fill" style="background:radial-gradient(38% 62% at 80% 50%,rgba(230,219,184,.22),rgba(6,11,20,0) 72%)"></div>
-  <div class="fill grain"></div>
+  <div class="fill grain"></div><div class="a zx-bem-avatar" style="left:1740px;top:20px"><span class="zx-avatar"><img data-if="avatarOk" data-src="avatarUrl" alt="Foto do atleta"><b data-ifnot="avatarOk" data-bind="fotoIni"></b></span></div>
   <div class="a" style="left:120px;top:100px;width:1000px">
     <p class="t t-130 rise" data-fit="1004" style="margin-left:-4px!important;white-space:nowrap">Bem-vindo<span data-if="nome">, <span data-bind="nome"></span></span>.</p>
     <p class="b b-48 rise" data-bind="planoBemVindo" style="color:var(--white);font-weight:500;margin-top:40px!important;--d:.08s"></p>
@@ -618,6 +497,7 @@
 <script src="../../assets/zyron-desenhos.js"></script>
 <script src="../../assets/relatorio-leitura.js"></script>
 <script src="../../assets/variacoes/acompanhamento.js"></script>
+<script src="../../assets/variacoes/dossie-acompanhamento.js"></script>
 <script src="../../assets/ordem-garantia.js"></script>
 <script>window.VARIACAO_NOME = "R2 · Oferta R$247,90 e R$500";</script>
 <script src="../../assets/deck.js"></script>

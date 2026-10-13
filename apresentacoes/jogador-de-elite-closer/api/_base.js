@@ -162,6 +162,7 @@ export const linkDo = (t, etapa) => ((entradaDaEtapa(etapa === 'r1' ? 'r1' : 'r2
 // Fora do que o closer edita (promessa travada): preço, garantia e o prazo dela, faixa de contrato e números da rede.
 // O deck usa os padrões dele pra esses (DADOS no deck.js).
 const CAMPOS = {
+  ...Object.fromEntries(R.CAMPOS_DOSSIE.map(c => [c.chave, c.numero ? { numero: c.numero } : { max: c.max }])),
   nome: { max: 80 }, apelido: { max: 24 }, idade: { numero: [6, 40] }, posicao: { max: 40 }, cidade: { max: 60 },
   pe: { opcoes: R.PES }, altura: { numero: [100, 230] },
   origem: { opcoes: R.ORIGENS }, caracteristicas: { max: 160 }, experiencia: { max: 160 }, sonho: { max: 120 },
@@ -268,9 +269,10 @@ export function montaVersoes(cfg) {
     const reserva = R.RESERVA[d.id] || [];
     for (const p of paginasDoDeck(d, est)) {
       const id = d.prefixo + p.id, a = aj[id] || {};
+      const rec = R.recursosDaPagina(d, p);
       paginas.push(Object.assign({}, p, {
-        id, idLocal: p.id, deck: d.id, etapa: d.etapa, origem: d.origem, recursos: d.recursos,
-        validacao: validacaoDe(a.validacao, p.validacao), nota: String(a.nota || ''), lead: leadDe(a.lead, p.lead || {}, d.recursos),
+        id, idLocal: p.id, deck: d.id, etapa: d.etapa, origem: d.origem, recursos: rec,
+        validacao: validacaoDe(a.validacao, p.validacao), nota: String(a.nota || ''), lead: leadDe(a.lead, p.lead || {}, rec),
         arquivada: id !== R.padraoDe(d.etapa) && !!a.arquivada, base: null, criada: false, criadoPor: null, criadoEm: null,
         ajustadoPor: a.por || null, ajustadoEm: a.em || null, saude: saudeDe(est, p.id), sumiu: !!p.sumiu,
         // nova: apareceu no deck há menos de uma semana (as páginas de reserva, as de sempre, não contam)
@@ -351,6 +353,7 @@ export function fichaPublica(f0, ver) {
   const f = fichaEfetiva(f0, ver), out = {};
   const r1 = !!(ver && ver.etapa === 'r1');
   (r1 ? PUBLICOS_R1 : PUBLICOS_R2).forEach(k => { if (f && f[k]) out[k] = f[k]; });
+  if (!r1 && R.temDossie(ver)) R.CAMPOS_DOSSIE.forEach(c => { if (f && f[c.chave]) out[c.chave] = f[c.chave]; });
   if (f && f.r2data) out.r2dia = R.diaDaCall(f.r2data);
   if (f && f.r2hm) out.r2hora = R.horaDaCall(f.r2hm);
   if (!r1 && f && f.plano === R.LEGACY) { if (f.vagas) out.vagas = f.vagas; if (f.proximaTurma) out.proximaTurma = f.proximaTurma; }

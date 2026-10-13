@@ -224,7 +224,7 @@ try {
   await ruim('um caminho que não bate com o id', man(m => { m.paginas[2].caminho = '/variacoes/outra/'; }), /caminho que não bate/);
   await ruim('um caminho pra outro endereço', man(m => { m.paginas[2].caminho = '//evil.example/x'; }), /caminho que não bate/);
   ok(!deck.pedidos().some(p => /evil/.test(p)), '(e o painel não pediu nada desse outro endereço)');
-  await ruim('dois nomes iguais (sem olhar acento nem caixa)', man(m => { m.paginas[2].nome = 'TÉCNICA'; }), /é de duas páginas/);
+  await ruim('dois nomes iguais (sem olhar acento nem caixa)', man(m => { m.paginas[2].nome = m.paginas[1].nome.toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }), /é de duas páginas/);
   await ruim('uma página sem o hash', man(m => { delete m.paginas[2].hash; }), /sem o hash/);
   await ruim('uma página sem nome', man(m => { m.paginas[2].nome = ''; }), /sem nome, resumo ou "quando usar"/);
   await ruim('um slide opcional depois do último slide', man(m => { m.paginas[2].opcionais[0].slide = 99; }), /opcional extra fora do formato/);

@@ -52,7 +52,7 @@ try {
   const gc = (await lista(carla)).find(v => v.id === slug1);
   ok(gc && gc.criada === true && gc.base === 'tecnica' && !('criadoPor' in gc) && !('ajustadoPor' in gc), 'o closer vê a variação nova (sem quem criou nem quando)');
   ok((await cria({ nome: 'TÉCNICA sem FOTO', base: 'principal' })).status === 400 && /Já existe/.test((await cria({ nome: 'tecnica  sem foto', base: 'principal' })).j.erro), 'nome repetido (mesmo com outra caixa ou acento): 400 "Já existe"');
-  ok((await cria({ nome: 'Técnica', base: 'principal' })).status === 400, 'nome igual ao de uma página do deck: 400');
+  ok((await cria({ nome: R.VERSOES.find(v => v.id === 'tecnica').nome, base: 'principal' })).status === 400, 'nome igual ao de uma página do deck: 400');
   const c2 = await cria({ nome: '<b>Geral</b> sem lead', base: 'principal', lead: { nome: false } });
   const v2 = c2.j.versoes.find(v => v.id === c2.j.criada);
   ok(c2.status === 201 && v2.nome === 'Geral sem lead' && v2.validacao === 'nao-validada' && v2.lead.nome === false && v2.lead.foto === false && v2.quando === '', 'sem o nome do lead a variação não mostra a foto, o HTML do nome sai e a classificação de partida é "não validada"');
@@ -108,7 +108,7 @@ try {
   const w1 = e1.j.versoes.find(v => v.id === slug1);
   ok(e1.status === 200 && w1.nome === 'Técnica sem a foto' && w1.quando === 'Foto não autorizada ou sem foto boa' && w1.validacao === 'validada' && w1.nota === 'Fechou 2 de 3' && w1.lead.foto === true && w1.id === slug1, 'o admin muda nome, descrição, classificação, nota e a foto da variação criada (o slug não muda)');
   ok(e1.j.versoes[0].id === slug1, 'e ela, validada, vai pro topo da lista');
-  ok((await put(slug1, { nome: 'principal' })).status === 400 && (await put(slug1, { nome: 'A' })).status === 400, 'nome repetido ou curto na edição: 400');
+  ok((await put(slug1, { nome: R.VERSOES.find(v => v.id === 'principal').nome })).status === 400 && (await put(slug1, { nome: 'A' })).status === 400, 'nome repetido ou curto na edição: 400');
   ok((await put('tecnica', { nome: 'Outro nome' })).status === 400 && (await put('tecnica', { quando: 'x' })).status === 400, 'página do código não muda de nome nem de descrição: 400');
   ok((await put(slug1, { nome: 'Técnica sem a foto' })).status === 200, 'salvar o mesmo nome na própria variação vale (não é nome repetido)');
   ok((await put(slug1, { validacao: 'validada' }, carla)).status === 403 && (await put('nao-existe', { nota: 'x' })).status === 404, 'closer não edita (403) e variação que não existe dá 404');
@@ -174,7 +174,7 @@ try {
   ok(await A.ate("!document.querySelector('#d-variacao').open && /^Variação criada\\. O slug dela é principal-sem-foto-[a-z2-7]{4}\\.$/.test(document.querySelector('#aviso').textContent)"), 'criar fecha o diálogo e avisa o slug gerado');
   const vNova = (await lista(admin)).find(v => v.nome === 'Principal sem foto');
   ok(vNova && vNova.base === 'principal' && vNova.validacao === 'validada' && vNova.lead.nome === true && vNova.lead.foto === false && vNova.quando === 'Lead sem foto boa', 'a variação criada pela tela vale no servidor (' + (vNova && vNova.id) + ')');
-  ok(await A.avalia("(() => { const c = document.querySelector('#versoes-lista [data-v=\"" + (vNova && vNova.id) + "\"]'); return !!c && c.classList.contains('novo') && /Baseada em:\\s*Principal/.test(c.textContent) && /Validada/.test(c.querySelector('.versao-titulo').textContent) && c.querySelector('code').textContent === '" + (vNova && vNova.id) + "'; })()"), 'a ficha dela aparece em destaque, com a base, a classificação e o slug');
+  ok(await A.avalia("(() => { const c = document.querySelector('#versoes-lista [data-v=\"" + (vNova && vNova.id) + "\"]'); return !!c && c.classList.contains('novo') && c.textContent.includes(" + JSON.stringify('Baseada em: ' + R.VERSOES.find(v => v.id === 'principal').nome) + ") && /Validada/.test(c.querySelector('.versao-titulo').textContent) && c.querySelector('code').textContent === '" + (vNova && vNova.id) + "'; })()"), 'a ficha dela aparece em destaque, com a base, a classificação e o slug');
   ok((await A.avalia("document.querySelector('#versoes-lista .versao-card').dataset.v")) === slug1 || (await A.avalia("document.querySelector('#versoes-lista .versao-card .versao-titulo .chip').textContent")) === 'Validada', 'e as validadas vêm primeiro na lista');
   await A.avalia("document.querySelector('#bt-nova-variacao').click(); 1");
   await A.avalia(`(() => { document.querySelector('#dv-nome').value = 'principal SEM foto'; document.querySelector('#f-variacao').requestSubmit(); return 1; })()`);

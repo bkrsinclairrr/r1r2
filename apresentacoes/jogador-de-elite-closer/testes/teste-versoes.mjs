@@ -108,17 +108,17 @@ try {
 
   // C1. o mesmo link abre a versão escolhida no painel
   const A = await nav.aba(s.deck + '/?a=' + t1 + '#2', { largura: 1920, altura: 1080 });
-  ok(await A.ate("location.pathname === '/variacoes/tecnica/' && window.VARIACAO_NOME === 'Variação técnica' && document.querySelectorAll('#stage > .slide.active').length === 1", 15000), 'o link /?a= de um R2 da versão técnica abre a página da técnica');
+  ok(await A.ate(`location.pathname === '/variacoes/tecnica/' && window.VARIACAO_NOME === ${JSON.stringify(R.versaoPor('tecnica').nome)} && document.querySelectorAll('#stage > .slide.active').length === 1`, 15000), 'o link /?a= de um R2 da versão técnica abre a página da técnica');
   ok((await A.avalia('location.search')) === '?a=' + t1 && (await A.avalia('location.hash')) === '#2', 'a ida pra versão mantém o código e o slide (?a=<código>#2)');
   await espera(1500);
   ok((await caminho(A)) === '/variacoes/tecnica/', 'e fica nela (sem ir e voltar)');
   const vSalvo = JSON.parse(await A.avalia(`localStorage.getItem('je-r2-ficha:${t1}')`))._v;
   ok(vSalvo && vSalvo.c === '/variacoes/tecnica/' && vSalvo.o === s.deck, 'a ficha guardada leva o destino da versão, deck e caminho (a volta já vai direto)');
   const B = await nav.aba(s.deck + '/variacoes/tecnica/?a=' + t2 + '#2', { largura: 1920, altura: 1080 });
-  ok(await B.ate("location.pathname === '/' && !window.VARIACAO_NOME", 15000), 'o inverso: R2 da versão principal aberto pela página da técnica vai pra principal');
+  ok(await B.ate(`location.pathname === '/' && window.VARIACAO_NOME === ${JSON.stringify(R.versaoPor('principal').nome)}`, 15000), 'o inverso: R2 da versão principal aberto pela página da técnica vai pra principal');
   const C = await nav.aba(s.deck + '/?a=' + t1 + '&presenter#3');
   ok(await C.ate("location.pathname === '/variacoes/tecnica/' && /[?&]presenter\\b/.test(location.search) && document.querySelector('#pz-var')", 15000), 'o apresentador também vai pra versão (e mantém o ?presenter)');
-  ok((await C.avalia("document.querySelector('#pz-var').textContent")) === 'Variação técnica', 'o topo do apresentador mostra a versão aberta');
+  ok((await C.avalia("document.querySelector('#pz-var').textContent")) === R.versaoPor('tecnica').nome, 'o topo do apresentador mostra a versão aberta');
   // código que não existe: nada de ir pra lugar nenhum
   const X = await nav.aba(s.deck + '/variacoes/tecnica/?a=' + 'a'.repeat(26) + '#1', { largura: 1920, altura: 1080 });
   await X.ate("!!document.querySelector('#je-inativo')", 10000); await espera(500); // o aviso é criado quando a resposta chega; a margem é pra ver que o deck não saiu da página
