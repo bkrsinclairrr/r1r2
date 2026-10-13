@@ -305,6 +305,7 @@
     PLANOS.forEach(p => ['nome', 'curto', 'descritor', 'ritmo', 'preco', 'parcela', 'passo'].forEach(k => { d[p.id + '.' + k] = str(p[k]); }));
     // o rótulo da parte de cada plano no 25: o primeiro degrau tem tudo, vitalício; os outros, tudo do degrau de baixo, mais
     PLANOS.forEach((p, i) => { d[p.id + '.mais'] = i ? 'Tudo ' + doPlano(PLANOS[i - 1]) + ', mais' : 'Vitalício, você tem'; });
+    if (window.FotoAtleta) Object.assign(d, window.FotoAtleta.derivados(ficha, d, AID, PAINEL));
     return d;
   }
 
@@ -564,6 +565,7 @@
     qsa('[data-if]', root).forEach(e => e.classList.toggle('on', cond(e.dataset.if, d)));
     qsa('[data-ifnot]', root).forEach(e => e.classList.toggle('off', cond(e.dataset.ifnot, d)));
     if (root === document) { qsa('[data-fit-svg]').forEach(fitSvg); qsa('[data-fit]').forEach(fitHtml); ajustaChips(document); }
+    if (window.FotoAtleta) window.FotoAtleta.atualiza(root, d);
     return d;
   }
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -718,6 +720,7 @@
     else if (k === 'fotoUrl' && !fotoFalhou) { fotoFalhou = true; applyBind(document); send({ t: 'fotoFalhou' }); }
     else if (k === 'avatarUrl' && !avatarFalhou) { avatarFalhou = true; applyBind(document); send({ t: 'fotoFalhou' }); }
   }, true);
+  window.addEventListener('je-foto-atleta', () => applyBind(document));
   applyBind(document);
   // as medidas do nome (data-fit, o chip do campo) dependem da fonte: refaz quando ela termina de carregar
   try { document.fonts.ready.then(() => applyBind(document)); } catch (e) { /* sem document.fonts */ }

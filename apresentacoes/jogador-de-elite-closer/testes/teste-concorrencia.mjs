@@ -61,7 +61,7 @@ try {
   const deOutro = await closers[0].get('/api/atletas?t=' + criados.find(x => x.c === closers[1]).r.j.t);
   ok(deOutro.status === 403, 'closer abrindo o R2 de outro closer: 403 (' + deOutro.status + ')');
   const semNome = await closers[0].post('/api/atletas', { ficha: { posicao: 'meia' } });
-  ok(semNome.status === 400, 'criar sem nome: 400 (' + semNome.status + ')');
+  ok(semNome.status === 201, 'criar sem nome: 201 (' + semNome.status + ')');
 
   /* ---------------- 2. 10 gravações ao mesmo tempo no mesmo atleta ---------------- */
   console.log('\n2. 10 gravações ao mesmo tempo no mesmo atleta');

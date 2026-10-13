@@ -84,7 +84,8 @@ try {
       const extra = gid === PADRAO[etapa] ? {} : { versao: gid };
 
       // o link de entrada da etapa leva até a página, com o mesmo código, o nome (e a foto) como ela diz
-      const t = await criaLead(etapa, extra, etapa === 'r2');
+      if (gid==='r2a-acompanhamento') extra.plano='Scout PRO';
+      const t = await criaLead(etapa, extra, mostraFoto);
       const A = await abre(entrada + '/?a=' + t + '#1', deck.origem, p.caminho);
       await espera(1800);
       ok((await A.avalia('location.origin')) === deck.origem && (await A.avalia('location.pathname')) === p.caminho && (await A.avalia('location.search')) === '?a=' + t,

@@ -154,9 +154,9 @@
           </div>
         </section>
 
-        <section class="sec" id="s-foto" data-so="r2">
-          <h2 class="label">Foto</h2>
-          <p class="nota" id="ft-nota-novo" hidden>Salve o nome primeiro: a foto entra no R2 que já existe.</p>
+        <section class="sec" id="s-foto">
+          <h2 class="label">Foto do jogador (opcional)</h2><p class="nota">A imagem aparece somente no slide “Por que você”. O nome acompanha os outros momentos da apresentação.</p>
+          <p class="nota" id="ft-nota-novo" hidden>A foto é opcional. Você pode adicionar agora, mesmo sem preencher a ficha. Ao salvar a foto, a apresentação é gerada.</p>
           <p class="nota" id="ft-nota-sem" hidden>Este R2 está em “Sem nome nem foto” (veja Nome na tela): a tela não usa a foto, e ela não é pedida pro checklist.</p>
           <div id="ft-atual" class="ft-atual" hidden>
             <img id="ft-atual-ret" alt="Retrato do atleta no R2" width="120" height="160">
@@ -188,7 +188,7 @@
         <section class="sec" id="s-nome">
           <h2 class="label">Nome</h2>
           <div class="grade">
-            <label class="campo largo"><span>Nome completo <b>*</b></span><input class="in" name="nome" maxlength="80" required placeholder="Ex.: Lucas Almeida da Silva"><small id="nome-ajuda" data-r1="O R1 mostra só o primeiro nome dele (slides 02, 08, 09 e 15).">Vai na capa (Montado para). A tela usa o nome e o sobrenome daqui, do jeito que você escolher em “Nome na tela”.</small></label>
+            <label class="campo largo"><span>Nome completo (opcional)</span><input class="in" name="nome" maxlength="80" placeholder="Ex.: Lucas Almeida da Silva"><small id="nome-ajuda" data-r1="O R1 mostra só o primeiro nome dele (slides 02, 08, 09 e 15).">Vai na capa (Montado para). A tela usa o nome e o sobrenome daqui, do jeito que você escolher em “Nome na tela”.</small></label>
             <p class="nota largo" id="lead-nota" hidden style="margin:0"></p>
             <label class="campo largo" id="nt-bloco"><span>Nome na tela</span><select class="in" name="nomeTela" aria-describedby="nt-ajuda"></select><small id="nt-ajuda"></small></label>
             <label class="ck largo" id="foto-tela-bloco"><input type="checkbox" id="c-foto-tela" checked> <span>Mostrar a foto do lead na tela<small class="ck-ajuda">Desmarcado, o quadro da foto mostra a inicial do nome. A foto fica guardada.</small></span></label>

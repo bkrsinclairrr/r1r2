@@ -19,7 +19,7 @@
   const N = slides.length;
   const ROT = window.ROTEIRO || [];
   const AID = (new URLSearchParams(location.search).get('a') || '').trim();
-  const FKEY = window.R2_PERSONAL ? 'je-r2-dossie-ficha-' + (AID || 'exemplo') : 'je-r2-ficha';
+  const FKEY = window.R2_PERSONAL ? 'je-r2-dossie-ficha-' + (AID || 'exemplo') : 'je-r2-ficha' + (AID ? '-' + AID : '');
   const SILENCE_SLIDE = slides.findIndex(s => s.id === 'silencio');
   const VAGA = SILENCE_SLIDE; // slide do número: Silêncio, "fale o número e pare" e o fechamento
   const TURMA = slides.findIndex(s => s.querySelector('#turma')); // a vaga (turma de 10, só no Legacy; nos outros, o começo)
@@ -141,6 +141,7 @@
     // o rótulo da parte de cada plano no 23: o primeiro degrau tem tudo, vitalício; os outros, tudo do degrau de baixo, mais
     PLANOS.forEach((p, i) => { d[p.id + '.mais'] = i ? 'Tudo ' + doPlano(PLANOS[i - 1]) + ', mais' : 'Vitalício, você tem'; });
     if (window.R2_PERSONAL) Object.assign(d, window.R2_PERSONAL.derivados(ficha, d, aid, painelDoLead));
+    if (window.FotoAtleta) Object.assign(d, window.FotoAtleta.derivados(ficha, d, AID, painelDoLead));
     return d;
   }
 
@@ -379,6 +380,7 @@
     qsa('[data-if]', root).forEach(e => e.classList.toggle('on', cond(e.dataset.if, d)));
     qsa('[data-ifnot]', root).forEach(e => e.classList.toggle('off', cond(e.dataset.ifnot, d)));
     if (root === document) { qsa('[data-fit-svg]').forEach(fitSvg); qsa('[data-fit]').forEach(fitHtml); ajustaChips(document); }
+    if (window.FotoAtleta) window.FotoAtleta.atualiza(root, d);
     return d;
   }
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -386,7 +388,7 @@
 
   /* ---------------- mensagens ---------------- */
   let chan = null;
-  try { chan = new BroadcastChannel(window.R2_PERSONAL ? 'je-r2-dossie-' + (AID || 'exemplo') : 'je-r2'); } catch (e) { chan = null; }
+  try { chan = new BroadcastChannel(window.R2_PERSONAL ? 'je-r2-dossie-' + (AID || 'exemplo') : 'je-r2' + (AID ? '-' + AID : '')); } catch (e) { chan = null; }
   let peer = isPresenter ? window.opener : null;
   const me = isPresenter ? 'p' : 'd';
   const seen = new Set();
@@ -426,7 +428,7 @@
         (Array.isArray(ficha._p) ? ficha._p : []).forEach(k => { if (!(k in f)) delete ficha[k]; });
         Object.keys(f).forEach(k => { ficha[k] = f[k]; });
         nomeDeHoje(ficha);
-        if (window.R2_PERSONAL && j.foto && j.foto.ok) ficha._foto = j.foto; else delete ficha._foto;
+        if (j.foto && j.foto.ok) ficha._foto = j.foto; else delete ficha._foto;
         // a leitura do atleta (13): o vídeo e o relatório vêm só do painel; o que sumiu lá some daqui
         if (j.video && j.video.ok) ficha._video = j.video; else delete ficha._video;
         if (j.video && j.video.ok && j.leitura) ficha._leitura = j.leitura; else delete ficha._leitura;
@@ -470,6 +472,7 @@
     f(); requestAnimationFrame(f);
   }
 
+  window.addEventListener('je-foto-atleta', () => applyBind(document));
   applyBind(document);
   // as medidas do nome (data-fit, o chip do campo) dependem da fonte: refaz quando ela termina de carregar
   try { document.fonts.ready.then(() => applyBind(document)); } catch (e) { /* sem document.fonts */ }

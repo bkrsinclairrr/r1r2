@@ -75,7 +75,7 @@ try {
   ok(r2a.status === 201 && r2a.j.etapa === 'r2' && r2a.j.link === dR2.url + '/?a=' + r2a.j.t, 'o closer cria R2, com o link do deck de entrada do R2');
   const adR1 = await novo(admin, { ficha: fichaR1, etapa: 'r1' }), adR2 = await novo(admin, { ficha: { nome: 'Davi Lima' } });
   ok(adR1.j.etapa === 'r1' && adR2.j.etapa === 'r2', 'o admin escolhe a etapa (sem dizer, é R2)');
-  ok((await novo(rafa, { ficha: { nome: 'X' } })).status === 400, 'sem nome de verdade: 400');
+  ok((await novo(rafa, { ficha: {} })).status === 201, 'ficha vazia é aceita: 201');
 
   /* ---------------- C. a ficha de cada etapa ---------------- */
   console.log('\nC. a ficha de cada etapa');
@@ -83,14 +83,14 @@ try {
   ok(fR1.nome === fichaR1.nome && fR1.posicao === 'volante' && fR1.idade === '15' && fR1.cidade === 'Natal' && fR1.origem === 'Zyron' && fR1.r2data === hoje && fR1.r2hm === '19:30', 'a ficha do R1 guarda nome, posição, idade, cidade, origem, o que chamou atenção, experiência e o dia e a hora da R2');
   const suja = await novo(rafa, { ficha: Object.assign({}, fichaR1, { plano: 'Scouting', apelido: 'Luquinhas', gerente: 'Fulano', pe: 'Destro', altura: '170', nomeTela: 'sem', semFoto: 'sim', pular: 'leva', vagas: '3', prazoContato: 'ainda hoje' }) });
   const fs1 = suja.j.registro.ficha;
-  ok(!('plano' in fs1) && !('apelido' in fs1) && !('gerente' in fs1) && !('pe' in fs1) && !('altura' in fs1) && !('nomeTela' in fs1) && !('semFoto' in fs1) && !('pular' in fs1) && !('vagas' in fs1) && !('prazoContato' in fs1), 'o que é só do R2 (plano, apelido, gerente, pé, altura, nome na tela, foto, slide opcional, prazos) não fica no R1');
+  ok(!('plano' in fs1) && !('apelido' in fs1) && !('gerente' in fs1) && !('pe' in fs1) && !('altura' in fs1) && !('nomeTela' in fs1) && fs1.semFoto === 'sim' && !('pular' in fs1) && !('vagas' in fs1) && !('prazoContato' in fs1), 'o que é só do R2 (plano, apelido, gerente, pé, altura, nome na tela, foto, slide opcional, prazos) não fica no R1');
   const comVar = await novo(rafa, { ficha: Object.assign({}, fichaR1, { versao: 'tecnica' }) });
   ok(comVar.status === 400, 'variação do R2 num R1: 400');
   const r2comR1 = await novo(carla, { ficha: { nome: 'Pedro Costa', versao: 'r1-principal' } });
   ok(r2comR1.status === 400, 'variação do R1 num R2: 400');
   ok((await novo(carla, { ficha: { nome: 'Pedro Costa', versao: 'r2a-tecnica', nomeTela: 'sem', pular: 'leva' } })).status === 201, 'o closer escolhe uma variação de outro deck do R2 (a Técnica do R2 anterior)');
   const tAnt = (await novo(carla, { ficha: { nome: 'Pedro Costa', versao: 'r2a-tecnica', nomeTela: 'sem', pular: 'leva', semFoto: 'sim' } })).j;
-  ok(!('nomeTela' in tAnt.registro.ficha) && !('pular' in tAnt.registro.ficha) && !('semFoto' in tAnt.registro.ficha) && tAnt.registro.ficha.versao === 'r2a-tecnica', 'o R2 anterior não segue nome na tela, foto nem slide opcional: isso não fica na ficha');
+  ok(!('nomeTela' in tAnt.registro.ficha) && !('pular' in tAnt.registro.ficha) && tAnt.registro.ficha.semFoto === 'sim' && tAnt.registro.ficha.versao === 'r2a-tecnica', 'o R2 anterior não segue nome na tela, foto nem slide opcional: isso não fica na ficha');
   const tBp = (await novo(carla, { ficha: { nome: 'Pedro Costa', versao: 'r2b-principal', nomeTela: 'so-nome', semFoto: 'sim' } })).j;
   ok(!('nomeTela' in tBp.registro.ficha) && tBp.registro.ficha.semFoto === 'sim', 'o R2 B segue a foto (semFoto fica) mas não o nome na tela');
   const tNovo = (await novo(carla, { ficha: { nome: 'Pedro Costa' } })).j;
@@ -104,7 +104,7 @@ try {
   const publico = async (t, op) => { const r = await fetch(s.painel + '/api/r2?t=' + t, { headers: { Origin: dR1.url } }); return Object.assign(await r.json(), { _s: r.status }); };
   const pr1 = await publico(tR1);
   ok(pr1.estado === 'ok' && pr1.versao.id === 'r1-principal' && pr1.versao.caminho === '/' && pr1.versao.origem === dR1.url, 'o R1 aponta pro deck do R1 (id, caminho e origem)');
-  ok(Object.keys(pr1.ficha).sort().join() === 'cidade,experiencia,idade,nome,origem,caracteristicas,posicao,r2dia,r2hora'.split(',').sort().join() && pr1.ficha.r2dia && pr1.ficha.r2hora === '19h30' && !('foto' in pr1) && !('video' in pr1), 'a ficha pública do R1 só leva o que o deck dele usa (a ficha do atleta e o dia e a hora da R2), sem foto nem vídeo');
+  ok(Object.keys(pr1.ficha).sort().join() === 'cidade,experiencia,idade,nome,origem,caracteristicas,posicao,r2dia,r2hora,semFoto'.split(',').sort().join() && pr1.ficha.r2dia && pr1.ficha.r2hora === '19h30' && !('foto' in pr1) && !('video' in pr1), 'a ficha pública do R1 só leva o que o deck dele usa (a ficha do atleta e o dia e a hora da R2), sem foto nem vídeo');
   const p2 = await publico(tAnt.t);
   ok(p2.versao.id === 'r2a-tecnica' && p2.versao.caminho === '/variacoes/tecnica/' && p2.versao.origem === dAnt.url, 'o R2 numa variação do R2 anterior aponta pro deck dele (o deck de entrada leva o lead pra lá)');
   const leg = await fetch(s.painel + '/api/publico?id=' + tR1, { headers: { Origin: dR1.url } });
@@ -174,7 +174,7 @@ try {
   const slug1 = cria1.j && cria1.j.criada;
   const v1 = cria1.j && pg(cria1.j, slug1);
   ok(cria1.status === 201 && v1.etapa === 'r1' && v1.deck === 'r1' && v1.base === 'r1-principal' && v1.origem === dR1.url, 'o admin cria uma variação em cima da página do R1: ela é do R1');
-  ok(v1.lead.nome === true && v1.lead.foto === false, 'o R1 não deixa tirar o nome nem mostra foto: o que o admin pediu é ajustado (nome sempre, foto nunca)');
+  ok(v1.lead.nome === true && v1.lead.foto === true, 'o R1 preserva o primeiro nome e permite foto');
   const cria2 = await admin.post('/api/versoes', { nome: 'Técnica de 25 sem pressa', base: 'r2a-tecnica' });
   const slug2 = cria2.j && cria2.j.criada;
   ok(cria2.status === 201 && pg(cria2.j, slug2).etapa === 'r2' && pg(cria2.j, slug2).deck === 'r2-anterior', 'em cima da técnica do R2 anterior: é do R2 e do deck dele');
@@ -186,7 +186,7 @@ try {
   ok((await novo(carla, { ficha: { nome: 'Pedro Costa', versao: slug1 } })).status === 400, 'o closer não usa a variação do R1: 400');
   const pl = await admin.put('/api/versoes?id=r2a-principal', { lead: { nome: false } });
   ok(pl.status === 400, 'o admin não tira o nome do lead num deck que não segue isso (R2 anterior): 400');
-  ok((await admin.put('/api/versoes?id=r1-principal', { lead: { foto: true } })).status === 400, 'nem liga a foto num deck que não mostra: 400');
+  ok((await admin.put('/api/versoes?id=r1-principal', { lead: { foto: true } })).status === 200, 'permite ligar a foto no R1: 200');
   ok((await admin.put('/api/versoes?id=r2b-principal', { lead: { foto: false } })).status === 200, 'no R2 B (que mostra a foto) dá pra tirar a foto');
   ok((await admin.put('/api/versoes?id=r1-principal', { arquivada: true })).status === 400 && (await admin.put('/api/versoes?id=principal', { arquivada: true })).status === 400, 'a principal de cada etapa não arquiva');
   ok((await admin.put('/api/versoes?id=r2a-principal', { arquivada: true, nota: 'não usar mais' })).status === 200 && (await admin.put('/api/versoes?id=r2a-principal', { arquivada: false })).status === 200, 'a principal do R2 anterior arquiva e volta');

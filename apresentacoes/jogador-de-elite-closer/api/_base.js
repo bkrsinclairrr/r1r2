@@ -175,8 +175,8 @@ const CAMPOS = {
   versao: { dinamica: true }, nomeTela: { opcoes: R.NOMES_TELA.map(n => n.id).filter(Boolean) }, semFoto: { opcoes: ['sim'] }, pular: { lista: true }
 };
 export const CHAVES_FICHA = Object.keys(CAMPOS);
-// o R1 usa só o que o deck dele mostra (a ficha do atleta e o dia e a hora da R2) e o que vai pro CRM; foto, plano, vídeo e prazos são do R2
-const CHAVES_R1 = ['nome', 'idade', 'posicao', 'cidade', 'origem', 'caracteristicas', 'experiencia', 'r2data', 'r2hm', 'versao'];
+// o R1 usa só o que o deck dele mostra (a ficha do atleta e o dia e a hora da R2) e o que vai pro CRM; plano, vídeo e prazos são do R2
+const CHAVES_R1 = ['nome', 'idade', 'posicao', 'cidade', 'origem', 'caracteristicas', 'experiencia', 'r2data', 'r2hm', 'versao', 'semFoto'];
 export const chavesDaEtapa = etapa => (etapa === 'r1' ? CHAVES_R1 : CHAVES_FICHA);
 // texto aparado e sem HTML, opção fora da lista e número fora da faixa ficam de fora. versoes: as variações como valem agora
 // (leVersoes); sem ela, a reserva do código. etapa: r1 ou r2 (sem ela, r2): só valem os campos e as variações dela
@@ -340,15 +340,16 @@ export const versaoDoReg = (reg, lista) => R.versaoPor(((reg && reg.ficha) || {}
 // vale de verdade, mesmo que o closer tenha marcado outra coisa antes de o admin mudar a versão
 export function fichaEfetiva(f, ver) {
   const out = Object.assign({}, f);
+  if (out.plano) out.plano = R.PLANOS_ANTIGOS[out.plano] || out.plano;
   const lead = (ver && ver.lead) || { nome: true, foto: true };
   if (!lead.nome) out.nomeTela = 'sem';
   if (!lead.foto || out.nomeTela === 'sem') out.semFoto = 'sim';
   return out;
 }
 // o que a família vê (o deck lê pela /api/r2): o dia e a hora já no formato da tela. O R1 só leva a ficha do atleta e o que vai pro CRM
-// (o deck dele não usa apelido, plano, foto nem nome na tela); o R2, tudo
+// (o deck dele não usa apelido, plano nem escolha do formato do nome); o R2, tudo
 const PUBLICOS_R2 = ['nome', 'apelido', 'idade', 'posicao', 'cidade', 'pe', 'altura', 'origem', 'caracteristicas', 'experiencia', 'sonho', 'plano', 'gerente', 'prazoContato', 'prazoZyron', 'nomeTela', 'semFoto', 'pular'];
-const PUBLICOS_R1 = ['nome', 'idade', 'posicao', 'cidade', 'origem', 'caracteristicas', 'experiencia'];
+const PUBLICOS_R1 = ['semFoto', 'nome', 'idade', 'posicao', 'cidade', 'origem', 'caracteristicas', 'experiencia'];
 export function fichaPublica(f0, ver) {
   const f = fichaEfetiva(f0, ver), out = {};
   const r1 = !!(ver && ver.etapa === 'r1');

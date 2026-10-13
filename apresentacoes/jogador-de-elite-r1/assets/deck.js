@@ -9,7 +9,8 @@
   const slides = qsa('#stage > .slide');
   const N = slides.length;
   const ROT = window.ROTEIRO || [];
-  const FKEY = 'je-r1-ficha';
+  const AID = (new URLSearchParams(location.search).get('a') || '').trim();
+  const FKEY = 'je-r1-ficha' + (AID ? '-' + AID : '');
 
   const store = {
     get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
@@ -17,7 +18,6 @@
   };
   let ficha = store.get(FKEY, {});
   // link do painel (?a=<id>): outro atleta começa com a ficha limpa, antes de qualquer coisa ir pra tela
-  const AID = (new URLSearchParams(location.search).get('a') || '').trim();
   if (AID && ficha._a !== AID) { ficha = { _a: AID }; store.set(FKEY, ficha); }
   let cur = 0;
 
@@ -150,6 +150,7 @@
     d.origemOutro = !d.origemZyron && !d.origemForm ? '1' : '';
     d.caracteristicas = String(ficha.caracteristicas || '').trim();
     d.experiencia = String(ficha.experiencia || '').trim();
+    if (window.FotoAtleta) Object.assign(d, window.FotoAtleta.derivados(ficha, d, AID, painelDoLead));
     return d;
   }
   function applyBind(root) {
@@ -158,11 +159,12 @@
     qsa('[data-fit]', root).forEach(e => { const n = (e.textContent || '').length; e.setAttribute('font-size', n > 9 ? 28 : n > 6 ? 34 : 42); });
     qsa('[data-if]', root).forEach(e => e.classList.toggle('on', !!d[e.dataset.if]));
     qsa('[data-ifnot]', root).forEach(e => e.classList.toggle('off', !!d[e.dataset.ifnot]));
+    if (window.FotoAtleta) window.FotoAtleta.atualiza(root, d);
   }
 
   /* ---------------- mensagens entre deck e apresentador ---------------- */
   let chan = null;
-  try { chan = new BroadcastChannel('je-r1'); } catch (e) { chan = null; }
+  try { chan = new BroadcastChannel('je-r1' + (AID ? '-' + AID : '')); } catch (e) { chan = null; }
   let peer = isPresenter ? window.opener : null;
   const me = isPresenter ? 'p' : 'd';
   const seen = new Set();
@@ -216,8 +218,10 @@
     return true;
   }
   // o lead de um painel, pelo endereço que o deck sempre usou (/api/publico?id=)
+  let painelDoLead = PAINEL;
   const buscaLead = base => fetch(base + '/api/publico?id=' + encodeURIComponent(AID), { cache: 'no-store' })
-    .then(r => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))));
+    .then(r => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+    .then(j => { painelDoLead = base; return j; });
   function carregaPainel(depois, aviso) {
     if (!AID || typeof fetch !== 'function') return;
     buscaLead(PAINEL)
@@ -227,6 +231,7 @@
         const f = (j && j.ficha) || {};
         (Array.isArray(ficha._p) ? ficha._p : []).forEach(k => { if (!(k in f)) delete ficha[k]; });
         Object.keys(f).forEach(k => { ficha[k] = f[k]; });
+        if (j.foto && j.foto.ok) ficha._foto = j.foto; else delete ficha._foto;
         ficha._a = AID; ficha._p = Object.keys(f);
         store.set(FKEY, ficha);
         depois();
@@ -269,6 +274,7 @@
 
   drawEncaixe(qs('#encaixe'));
   drawRede(qs('#rede'));
+  window.addEventListener('je-foto-atleta', () => applyBind(document));
   applyBind(document);
 
   if (isPresenter) presenter(); else deck();

@@ -72,8 +72,6 @@ export default async function handler(req, res) {
     const r0 = await leRegistro(t);
     if (!r0) return manda(res, 404, { erro: 'Esse lead não foi encontrado. Pode ter sido apagado.' });
     if (!podeMexer(eu, r0.dados)) return manda(res, 403, { erro: etapaDe(r0.dados) === 'r1' ? 'Esse R1 é de outro SDR.' : 'Esse R2 é de outro closer.' });
-    // o deck do R1 não usa foto: nada dele é guardado (só o que o deck mostra)
-    if (etapaDe(r0.dados) === 'r1') return manda(res, 400, { erro: 'O R1 não usa a foto do atleta.' });
     const V = await leVersoes();
 
     if (req.method === 'PUT') {

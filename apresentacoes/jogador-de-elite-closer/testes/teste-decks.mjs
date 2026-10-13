@@ -44,9 +44,9 @@ try {
   ok(r1.j.link === R1 + '/?a=' + tR1, 'o link do R1 sai do deck do R1');
   let { a: A, bom } = await abre(r1.j.link, NOME + " === 'Lucas'");
   ok(bom, 'o deck do R1 abre o link e mostra o primeiro nome do lead (Lucas), que veio do painel novo');
-  ok((await A.avalia(bind('posicao'))) === 'volante' && (await A.avalia(bind('idade'))) === '15' && (await A.avalia(bind('cidade'))) === 'Natal', 'a ficha do atleta (slide 02): posição, idade e cidade');
+  ok(await A.avalia("document.querySelector('[data-bind=selecaoPerfil]').textContent.includes('volante · 15 anos · Natal')"), 'a ficha do atleta (slide 02): posição, idade e cidade');
   ok((await A.avalia('location.origin')) === R1 && (await A.avalia('location.pathname')) === '/', 'e fica no deck do R1 (a variação é a principal dele)');
-  const ficha1 = JSON.parse(await A.avalia("localStorage.getItem('je-r1-ficha')"));
+  const ficha1 = JSON.parse(await A.avalia("localStorage.getItem('je-r1-ficha-" + tR1 + "')"));
   ok(ficha1._a === tR1 && ficha1.nome === 'Lucas Almeida da Silva' && ficha1.r2dia && ficha1.r2hora === '19h30', 'a ficha guardada tem o dia e a hora da R2 (r2dia, r2hora), como o deck espera');
   await fechaAba(A);
   // o R1 com uma variação criada pelo admin em cima da principal: a mesma página
@@ -74,7 +74,7 @@ try {
   ok(bom, 'R2 na Principal do R2 anterior: o link do deck de entrada leva pro deck do R2 anterior, que carrega o lead pelo endereço de antes');
   ok((await A.avalia('location.pathname')) === '/' && (await A.avalia('location.search')) === '?a=' + tAp && (await A.avalia('location.hash')) === '#3', 'com o mesmo código e o mesmo slide');
   ok(/Lucas/.test(await A.avalia(NOME)), 'o R2 anterior mostra o nome do lead (' + await A.avalia(NOME) + ')');
-  ok(JSON.parse(await A.avalia("localStorage.getItem('je-r2-ficha:" + tAp + "') || localStorage.getItem('je-r2-ficha') || 'null'")) !== null, 'e guardou a ficha dele neste navegador');
+  ok(JSON.parse(await A.avalia("localStorage.getItem('je-r2-ficha:" + tAp + "') || localStorage.getItem('je-r2-ficha-" + tAp + "') || 'null'")) !== null, 'e guardou a ficha dele neste navegador');
   await fechaAba(A);
   const tAt = await novoR2({ versao: 'r2a-tecnica' });
   ({ a: A, bom } = await abre(R2 + '/?a=' + tAt, "location.origin === " + JSON.stringify(ANT) + " && location.pathname === '/variacoes/tecnica/' && " + NOME + " === 'Lucas'"));
@@ -136,7 +136,7 @@ try {
   antigo.pedidos.length = 0;
   ({ a: A, bom } = await abre(R1 + '/?a=' + idJoao, NOME + " === 'João'"));
   ok(bom, 'o deck do R1 abre o link de um lead do painel de antes: o painel novo responde 404 e o deck pergunta ao de antes (João)');
-  ok((await A.avalia(bind('posicao'))) === 'meia' && (await A.avalia(bind('idade'))) === '14' && (await A.avalia(bind('cidade'))) === 'Recife', 'com a ficha dele (posição, idade e cidade)');
+  ok((await A.avalia(bind('selecaoPerfil'))).includes('meia · 14 anos · Recife'), 'com a ficha dele (posição, idade e cidade)');
   ok(antigo.pedidos.includes('GET /api/publico?id=' + idJoao), 'e o pedido foi ao painel de antes, no endereço de sempre (/api/publico?id=)');
   await fechaAba(A);
   ({ a: A, bom } = await abre(ANT + '/?a=' + idMaria, NOME + " === 'Maria'"));

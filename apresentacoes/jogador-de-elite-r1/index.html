@@ -18,10 +18,11 @@
   "resumo": "A apresentação do SDR em 16 slides: o Zyron, a IA na prática e a AGN, e fecha marcando a R2.",
   "quando": "A primeira apresentação do lead. Na dúvida, esta.",
   "validacao": "em-validacao",
-  "lead": { "nome": true, "foto": false },
+  "lead": { "nome": true, "foto": true },
   "opcionais": []
 }
 </script>
+<link rel="stylesheet" href="assets/foto-atleta.css">
 </head>
 <body>
 <div class="viewport" id="viewport">
@@ -40,28 +41,7 @@
 
 <!-- ============ 02 FICHA DO ATLETA ============ -->
 <!-- Nome, posição, idade e cidade vêm do painel (link ?a=<id>) ou da ficha do apresentador. Sem nome, o slide cai em "Você". -->
-<section class="slide">
-  <div class="fill" style="background:radial-gradient(44% 56% at 76% 48%,rgba(201,162,74,.12),rgba(7,8,10,0) 70%)"></div>
-  <div class="fill grain"></div>
-  <div class="a flow" style="left:120px;top:150px;width:1040px">
-    <p class="label">Esta conversa é sua</p>
-    <p class="t t-120 rise" style="margin-top:44px!important;text-wrap:balance"><span data-if="nome"><span class="gold-l" data-bind="nome"></span>, a</span><span data-ifnot="nome">A</span> conversa de hoje é sobre o seu jogo.</p>
-    <p class="b b-44 rise" style="margin-top:34px!important;color:var(--white);--d:.12s">Hoje a gente olha o seu jogo de um jeito que quase ninguém olha.</p>
-  </div>
-  <div class="doc rise" style="left:1250px;top:190px;width:560px;height:700px;padding:48px 52px;--d:.08s">
-    <p class="dh">Ficha do atleta</p>
-    <div style="height:1px;background:var(--line);margin:26px 0 34px"></div>
-    <p class="t" style="font-size:84px;line-height:.95"><span data-if="nome" data-bind="nome"></span><span data-ifnot="nome">Você</span></p>
-    <div style="margin-top:34px;display:grid;gap:18px">
-      <div data-if="posicao"><p class="dh" style="font-size:24px">Posição</p><p style="font-size:36px;color:var(--white);margin-top:4px!important" data-bind="posicao"></p></div>
-      <div data-if="idade"><p class="dh" style="font-size:24px">Idade</p><p style="font-size:36px;color:var(--white);margin-top:4px!important"><span data-bind="idade"></span> anos</p></div>
-      <div data-if="cidade"><p class="dh" style="font-size:24px">Cidade</p><p style="font-size:36px;color:var(--white);margin-top:4px!important" data-bind="cidade"></p></div>
-    </div>
-    <div style="position:absolute;left:52px;right:52px;bottom:44px;border-top:1px solid rgba(201,162,74,.35);padding-top:24px">
-      <p class="label bare blue" style="font-size:26px;letter-spacing:.22em">Perfil pronto pro Zyron</p>
-    </div>
-  </div>
-</section>
+<section class="slide escolha-atleta" data-foto-slide="escolha"><div class="escolha-texto"><p class="escolha-selo"><i></i> Por que você · Jogador de Elite</p><h2 class="escolha-titulo"><span class="escolha-nome" data-if="nome"><span data-bind="nome"></span>,</span><br><span data-ifnot="nome">Você</span><span data-if="nome">você</span> foi escolhido<br>para esta conversa.</h2><p class="escolha-abertura">Esta apresentação parte do seu perfil e do próximo passo que você busca no futebol. O plano ganha sentido quando começa em você.</p><div class="escolha-contexto" data-if="selecaoContexto"><span>O que chamou atenção no seu perfil</span><p data-bind="selecaoContexto"></p></div><div class="escolha-direcao"><div><b>Entender seu momento</b><small>Sua história e seu jogo são o ponto de partida.</small></div><div><b>Mostrar o caminho</b><small>Leitura do Zyron e formação com sete módulos no Scout PRO.</small></div><div><b>Preparar a próxima etapa</b><small>Na R2, a equipe apresenta o plano adequado ao seu momento.</small></div></div><p class="escolha-assinatura">Seu perfil. Sua evolução. Uma direção para seguir.</p></div><div class="escolha-retrato"><img data-src="selecaoFotoUrl" data-if="selecaoFotoOk" alt="Foto do jogador escolhido para esta apresentação"><div class="escolha-inicial" data-ifnot="selecaoFotoOk"><span data-bind="selecaoInicial"></span></div><div class="escolha-retrato-rodape"><span>Apresentação preparada para</span><strong><span data-if="nome" data-bind="nome"></span><span data-ifnot="nome">Seu próximo passo</span></strong><p data-bind="selecaoPerfil" data-if="selecaoPerfil"></p><p data-if="selecaoCodigo">Dossiê <span data-bind="selecaoCodigo"></span> · Individual</p></div></div><p class="escolha-legal">Jogador de Elite · Uma conversa sobre o seu desenvolvimento.<span data-if="selecaoFotoOk"> Foto do jogador usada com autorização.</span></p></section>
 
 <!-- ============ 03 ZYRON ============ -->
 <section class="slide">
@@ -191,29 +171,7 @@
 </section>
 
 <!-- ============ 10 VOCÊ PARA DE JOGAR SOZINHO ============ -->
-<section class="slide">
-  <div class="a strip" style="left:0;top:0;width:170px;height:1080px"><img src="assets/performance.jpg" alt="" style="object-position:38% 50%"></div>
-  <div class="a strip" style="left:176px;top:0;width:170px;height:1080px"><img src="assets/psicologia.jpg" alt="" style="object-position:31% 50%"></div>
-  <div class="a strip" style="left:352px;top:0;width:170px;height:1080px"><img src="assets/nutricao.jpg" alt="" style="object-position:78% 50%"></div>
-  <div class="a strip" style="left:528px;top:0;width:170px;height:1080px"><img src="assets/imagem-profissional.jpg" alt="" style="object-position:24% 50%"></div>
-  <div class="a" style="left:0;top:0;width:760px;height:1080px;background:linear-gradient(90deg,rgba(7,8,10,0),rgba(7,8,10,.08) 66%,#07080A 92%),linear-gradient(180deg,rgba(7,8,10,.4),rgba(7,8,10,0) 30%,rgba(7,8,10,0) 70%,rgba(7,8,10,.6))"></div>
-  <p class="a t t-110 rise" style="left:800px;top:104px;width:1040px">Você para de jogar sozinho.</p>
-  <div class="a rise" style="left:800px;top:392px;width:545px;--d:.1s">
-    <p class="label bare" style="margin-bottom:34px">Pra você</p>
-    <ul class="mk">
-      <li>Gerente de carreira acompanhando você todo dia.</li>
-      <li class="z">Um estrategista de carreiras do Zyron só seu.</li>
-      <li>Analista de performance medindo sua evolução.</li>
-      <li>Físico, mente, nutrição, comportamento e imagem juntos.</li>
-    </ul>
-  </div>
-  <div class="a rule-v" style="left:1376px;top:392px;height:540px"></div>
-  <div class="a rise" style="left:1416px;top:392px;width:410px;--d:.2s">
-    <p class="label bare" style="margin-bottom:34px">Pra sua família</p>
-    <p style="font-size:36px;line-height:1.4;color:var(--white);margin-bottom:34px">Correr atrás de clube, ligar atrás de peneira, torcer pra alguém olhar: isso vira trabalho nosso.</p>
-    <p style="font-size:36px;line-height:1.4;color:var(--gold-l)">A parte de vocês continua a mesma: apoiar em casa.</p>
-  </div>
-</section>
+<section class="slide formacao-atleta"><div class="formacao-intro"><p class="label">Scout PRO · Formação incluída</p><h2><span data-bind="nome" data-fb="Você"></span>, seu jogo tem leitura.<br><span>Sua evolução tem método.</span></h2></div><div class="formacao-grid"><div class="formacao-sete"><b>7</b><strong>Módulos de formação</strong><p>Uma trilha para conectar conhecimento, rotina e desenvolvimento.</p></div><div class="formacao-corpo"><h3>Não basta entender o que melhorar.<br>É preciso aprender a trabalhar nisso.</h3><p>Conteúdos organizados em sete módulos para desenvolver o atleta além do lance isolado. A formação já faz parte do Scout PRO.</p><div class="formacao-temas"><span>Performance</span><span>Psicologia</span><span>Nutrição</span><span>Comportamento</span><span>Imagem</span></div><div class="formacao-pilares"><div><b>O Zyron lê</b><p>Os lances enviados viram uma leitura do seu jogo.</p></div><div><b>O analista acompanha</b><p>Relatório de evolução a cada 15 dias no Scout PRO.</p></div><div><b>Você desenvolve</b><p>Os sete módulos apoiam o aprendizado e a aplicação na sua rotina.</p></div></div></div></div><p class="formacao-fecho">Scout PRO: análise do seu jogo + acompanhamento da evolução + sete módulos de formação.</p><p class="escolha-legal">A orientação humana e os encaminhamentos seguem o escopo de cada plano.</p></section>
 
 <!-- ============ 11 DO SEU LADO ============ -->
 <section class="slide">
@@ -319,6 +277,7 @@
 
 <script src="assets/roteiro.js"></script>
 <script>window.VARIACAO_NOME = "R1 · Avaliação e convite para R2";</script>
+<script src="assets/foto-atleta.js"></script>
 <script src="assets/deck.js"></script>
 </body>
 </html>

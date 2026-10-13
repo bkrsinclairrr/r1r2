@@ -214,7 +214,7 @@
     vis.sort((a, b) => ((a.r2data || '9999') + (a.r2hm || '')).localeCompare((b.r2data || '9999') + (b.r2hm || '')) || String(b.atualizadoEm).localeCompare(String(a.atualizadoEm)));
     if (!itens.length) {
       const rot = duas ? 'lead' : nomeEtapa(et[0]);
-      $('#lista').innerHTML = '<div class="vazio"><p class="titulo">Nenhum ' + rot + ' ainda</p><p>Clique em <b>' + (duas ? 'Novo R1 ou Novo R2' : 'Novo ' + rot) + '</b> e coloque o nome completo do atleta.</p></div>';
+      $('#lista').innerHTML = '<div class="vazio"><p class="titulo">Nenhum ' + rot + ' ainda</p><p>Clique em <b>' + (duas ? 'Novo R1 ou Novo R2' : 'Novo ' + rot) + '</b> para gerar uma apresentação. Todos os campos de personalização são opcionais.</p></div>';
       return;
     }
     if (!vis.length) {
@@ -264,7 +264,7 @@
   // o que a variação mostra do lead, em texto: o deck que segue a escolha de nome (o R2 novo) diz pelo que o admin ajustou; os outros, pelo que o deck faz
   const textoLead = v => {
     const rec = v.recursos || { nomeTela: true, foto: true };
-    if (rec.dossie) return 'Primeiro nome e foto no dossiê, relatório, oportunidades e oferta. Resultados preenchidos no painel antes da call.';
+    if (rec.dossie) return 'Foto somente no slide de escolha. Nome, relatório e oportunidades do jogador distribuídos na apresentação.';
     if (!rec.nomeTela) return (deckPor(v.deck) || {}).leadTxt || (R.deckPor(v.deck) || {}).leadTxt || (v.lead.nome ? 'aparece o nome do lead' : 'não mostra o nome do lead');
     return v.lead.nome ? 'aparecem o nome e o sobrenome do lead' + (v.lead.foto ? ', com a foto dele' : ', sem a foto dele') : 'não mostra o nome nem a foto do lead (apresentação geral)';
   };
@@ -483,7 +483,7 @@
   function poeFicha(f) {
     desenhaNomeTela(true);
     opcoes(campo('plano'), R.planosDaVersao(versaoPor(f && f.versao, etapaEd())).slice().reverse());
-    CHAVES.forEach(k => { campo(k).value = f && f[k] != null ? f[k] : ''; });
+    CHAVES.forEach(k => { campo(k).value = f && f[k] != null ? (k === 'plano' ? R.PLANOS_ANTIGOS[f[k]] || f[k] : f[k]) : ''; });
     campo('nota').value = '';
     $('#c-foto-tela').checked = !(f && f.semFoto === 'sim');
     montaVersoes(f && f.versao); // a variação que o R2 já usa aparece mesmo arquivada
@@ -659,7 +659,7 @@
     const mostraTudo = leadNome && leadFoto && rec.nomeTela;
     $('#lead-nota').hidden = r1 || mostraTudo;
     const deck = deckPor(verMarcada.deck), leadTxtDoDeck = rec.dossie
-      ? 'Primeiro nome e foto na capa, no perfil, no relatório, nas oportunidades e na oferta. O dossiê é preparado antes da call, com os campos abaixo.'
+      ? 'Foto somente no slide de escolha. Primeiro nome no perfil, relatório, oportunidades e oferta. Os campos de personalização são opcionais.'
       : deck.leadTxt || (R.deckPor(verMarcada.deck) || {}).leadTxt;
     $('#lead-nota').textContent = !leadNome ? 'Esta variação não mostra o nome nem a foto do lead na tela (apresentação geral). A fala do apresentador continua com o nome dele.'
       : !rec.nomeTela ? 'No deck ' + deck.nome + ', ' + (leadTxtDoDeck || 'o nome do lead aparece do jeito do deck') + '.'
@@ -710,7 +710,6 @@
     if (!ed) return;
     const ficha = leFicha();
     $('#ed-erro').textContent = '';
-    if (!ficha.nome || ficha.nome.length < 2) { $('#ed-erro').textContent = 'Coloque o nome completo do atleta.'; campo('nome').focus(); return; }
     if (recursosDe(versaoMarcada()).dossie) {
       const invalido = R.CAMPOS_DOSSIE.find(c => c.numero && campo(c.chave).value && !campo(c.chave).validity.valid);
       if (invalido) {
@@ -789,7 +788,7 @@
       ];
       const prontoR1 = itensR1.every(x => x[1]);
       $('#checklist').innerHTML = itensR1.map(([t, ok, dica]) => `<li class="${ok ? 'ok' : ''}"><i>${ok ? '✓' : ''}</i><span><b>${esc(t)}</b><small>${esc(ok ? '' : dica)}</small></span></li>`).join('') +
-        `<li><span class="nota" style="margin:0">${prontoR1 ? 'Com os três feitos, a etiqueta é <b>Pronto</b>' + (ed.sujo ? ' (depois de salvar)' : '') + '.' : 'A etiqueta vira <b>Pronto</b> com os três.'}</span></li>`;
+        `<li><span class="nota" style="margin:0">${prontoR1 ? 'Com os três feitos, a etiqueta é <b>Pronto</b>' + (ed.sujo ? ' (depois de salvar)' : '') + '.' : 'Você já pode gerar e abrir a apresentação. Essas conferências são opcionais.'}</span></li>`;
       return;
     }
     // a variação e as escolhas deste R2 dizem o que a tela mostra do lead: sem nome, sem nome nem foto; sem foto, só a foto fica de fora.
@@ -797,7 +796,7 @@
     const ver = versaoPor(f.versao, et), sem = !ver.lead.nome || f.nomeTela === 'sem', semFoto = sem || !ver.lead.foto || f.semFoto === 'sim';
     const fotoOk = !!(ed.check && ed.check.foto);
     const itensCk = [
-      ['Foto com autorização', semFoto || fotoOk, semFoto ? 'Não precisa: a tela deste R2 não mostra a foto.' : fotoOk && reg.foto ? 'Some em ' + R.dataCurta(reg.foto.venceEm) + '.' : 'Falta a foto (sem ela, a tela mostra a inicial do nome).'],
+      ['Foto com autorização', semFoto || fotoOk, semFoto ? 'Não precisa: a tela deste R2 não mostra a foto.' : fotoOk && reg.foto ? 'Some em ' + R.dataCurta(reg.foto.venceEm) + '.' : 'Opcional: adicione uma foto para personalizar o slide de escolha.'],
       ['Nome conferido', sem || !!(f.nome && $('#c-conferido').checked), sem ? 'Não precisa: a tela deste R2 não mostra o nome.' : 'Marque "Conferi a grafia do nome".'],
       ['Posição reconhecida no campo', !!R.posicaoNoCampo(f.posicao), 'O slide 11 marca o lugar dele.'],
       ['Plano escolhido', !!f.plano, 'O destaque do slide dos planos.'],
@@ -808,7 +807,7 @@
     if (!(ver.recursos && ver.recursos.previa === false)) itensCk.push(['Prévia olhada', !!(ed.check && ed.check.previa && !ed.sujo), 'Abra na prévia os slides marcados com •.']);
     const pronto = itensCk.slice(0, 5).every(x => x[1]);
     $('#checklist').innerHTML = itensCk.map(([t, ok, dica]) => `<li class="${ok ? 'ok' : ''}"><i>${ok ? '✓' : ''}</i><span><b>${esc(t)}</b><small>${esc(ok && !/^(Some|Não precisa)/.test(dica) ? '' : dica)}</small></span></li>`).join('') +
-      `<li><span class="nota" style="margin:0">${pronto ? 'Com os cinco primeiros feitos, a etiqueta é <b>Pronto</b>' + (ed.sujo ? ' (depois de salvar)' : '') + '.' : 'A etiqueta vira <b>Pronto</b> com os cinco primeiros.'}</span></li>`;
+      `<li><span class="nota" style="margin:0">${pronto ? 'Com os cinco primeiros feitos, a etiqueta é <b>Pronto</b>' + (ed.sujo ? ' (depois de salvar)' : '') + '.' : 'Você já pode gerar e abrir a apresentação. Preencha apenas o que quiser personalizar.'}</span></li>`;
   }
 
   /* ---------------- link ---------------- */
@@ -975,8 +974,8 @@
     const valida = !!(ed.check && ed.check.foto && reg && reg.foto);
     $('#ft-nota-novo').hidden = !novo;
     const recortando = !$('#ft-recorte').hidden;
-    $('#ft-atual').hidden = novo || !valida || recortando;
-    $('#ft-zona').hidden = novo || valida || recortando;
+    $('#ft-atual').hidden = !valida || recortando;
+    $('#ft-zona').hidden = valida || recortando;
     if (valida && !recortando) {
       const n = reg.foto.versao;
       if ($('#ft-atual-ret').dataset.n !== String(n) || $('#ft-atual-ret').dataset.t !== ed.t) {
@@ -1047,7 +1046,7 @@
   }
   async function comecaRecorte(arq) {
     $('#ft-erro').textContent = '';
-    if (!ed || !ed.t) { $('#ft-erro').textContent = 'Salve o nome primeiro.'; return; }
+    if (!ed) return;
     let r;
     try { r = await abreImagem(arq); } catch (err) { $('#ft-erro').textContent = err.message || NAO_ABRIU; return; }
     FT.fonte = r.fonte; FT.W = r.w; FT.H = r.h;
@@ -1178,11 +1177,12 @@
       const j = await ocupado(e.currentTarget, async () => {
         const ret = await jpegAte(recortaEm(document.createElement('canvas'), 960, 1280, false), 600 * 1024);
         const av = await jpegAte(recortaEm(document.createElement('canvas'), 400, 400, true), 150 * 1024);
+        if (!ed.t) { await salva(); if (!ed.t) throw new Error($('#ed-erro').textContent || 'Não consegui gerar a apresentação. Tente de novo.'); }
         return api('foto?t=' + ed.t, { metodo: 'PUT', dados: { retrato: await emBase64(ret), avatar: await emBase64(av), autorizo: true } });
       });
       fechaRecorte();
       recebe(Object.assign(j, { emCall: ed.emCall }), false);
-      aviso(j.aviso || 'Foto salva. Ela já aparece no R2.', !!j.aviso);
+      aviso(j.aviso || 'Foto salva. Ela aparece no slide de escolha do jogador.', !!j.aviso);
       atualizaPrevia();
     } catch (err) { $('#ft-erro').textContent = err.message; }
   });

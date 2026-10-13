@@ -8,7 +8,7 @@
    [atleta], [responsável], [pai], [mãe], [gerente], [característica], [experiência], [sonho],
    [primeiro foco], [locomoção], [dor], [peneiras], [investido], [faixa], [vagas],
    [hora], [idade + 1], [link AGN], [caso], [clube do caso], [país do caso], [link do caso], [posição]
-   são trocados pelos dados da ficha. Do plano da ficha: [plano] (Scouting, Assessoria PRO ou Legacy),
+   são trocados pelos dados da ficha. Do plano da ficha: [plano] (Scout PRO, Assessoria PRO ou Legacy),
    [preço] (o valor, vitalício), [parcela] (das 10x sem juros), [ritmo] (a cada 15 dias, toda semana ou todo dia)
    e [por dia] (o valor dividido em 3 meses, só na fala).
    A ordem segue a Bíblia das Vendas (processo-r2, window.ETAPAS no fim deste arquivo). O inimigo comum é o olhômetro
@@ -82,11 +82,11 @@ window.ROTEIRO = [
       'Destino: "E tudo isso existe pra uma coisa: [sonho]."',
       'O tripé, apontando a faixa de baixo: "Pra chegar no clube, todo atleta precisa de três coisas: ser visto, ser preparado e ser apresentado. Talento sem os três fica parado em casa. A gente cuida dos três."',
       'A + B (06): "A, o [atleta] tem talento e disciplina, a parte dele. B, a gente tem o método, o histórico e as conexões. Junto, é isso que muda a chance dele de sair da peneira e chegar no clube certo."',
-      'Com a Assessoria PRO ou o Scouting na ficha, feche falando da estrutura, não do plano: "Esse é o caminho inteiro. Daqui a pouco eu te mostro como ter ele do teu lado, no ritmo que faz sentido pra vocês."'
+      'Com a Assessoria PRO ou o Scout PRO na ficha, feche falando da estrutura, não do plano: "Esse é o caminho inteiro. Daqui a pouco eu te mostro como ter ele do teu lado, no ritmo que faz sentido pra vocês."'
     ],
     perguntas: ['Faz sentido esse caminho pra vocês?'],
     crm: [],
-    atencao: 'Amarre cada etapa ao que eles disseram no alinhamento. Não prometa prazo, clube ou contrato. O tripé da Bíblia fica escrito na tela: Ser visto, Ser preparado e Ser apresentado são o passo de cada plano do 23, um por degrau. Previne "ele não pode ir pra outro estado": hoje ele não vai pra lugar nenhum, isso só acontece quando o clube chamar. O caminho da tela é a estrutura completa, a do Legacy: gerente de carreira, vitrine com clubes e AGN e a ida organizada. Com o PRO ou o Scouting na ficha, não diga que o plano dele entrega isso: o 23 mostra o que cada plano entrega.'
+    atencao: 'Amarre cada etapa ao que eles disseram no alinhamento. Não prometa prazo, clube ou contrato. O tripé da Bíblia fica escrito na tela: Ser visto, Ser preparado e Ser apresentado são o passo de cada plano do 23, um por degrau. Previne "ele não pode ir pra outro estado": hoje ele não vai pra lugar nenhum, isso só acontece quando o clube chamar. O caminho da tela é a estrutura completa, a do Legacy: gerente de carreira, vitrine com clubes e AGN e a ida organizada. Com o PRO ou o Scout PRO na ficha, não diga que o plano dele entrega isso: o 23 mostra o que cada plano entrega.'
   },
   { nome: 'E se?', min: 0.5,
     fala: [
@@ -163,7 +163,7 @@ window.ROTEIRO = [
     ],
     perguntas: [],
     crm: [],
-    atencao: 'Depois do olhômetro (04) e do bloco do Zyron (06 a 11), use este slide como resumo do serviço inteiro: passe rápido por "quem analisa", que o 04 e o 11 já mostraram, e demore em quem acompanha, quem leva aos clubes e quem corre o risco. Este slide desarma três objeções antes de aparecerem: "já tentamos peneira", "isso de IA funciona?" e "vou ver outras opções". As peneiras a família já contou no 04: use os números dela, sem perguntar de novo. Termine na virada: a peneira que não viu ele vira prova de que o problema não era ele. A coluna "Com a gente" é a estrutura completa, a da Assessoria de Elite Legacy (a nota no pé da tela diz isso). Com o PRO ou o Scouting na ficha, fale da estrutura, não do plano: gerente de carreira todo dia e a ida aos clubes são do Legacy. O 23 volta a estas linhas, plano por plano.'
+    atencao: 'Depois do olhômetro (04) e do bloco do Zyron (06 a 11), use este slide como resumo do serviço inteiro: passe rápido por "quem analisa", que o 04 e o 11 já mostraram, e demore em quem acompanha, quem leva aos clubes e quem corre o risco. Este slide desarma três objeções antes de aparecerem: "já tentamos peneira", "isso de IA funciona?" e "vou ver outras opções". As peneiras a família já contou no 04: use os números dela, sem perguntar de novo. Termine na virada: a peneira que não viu ele vira prova de que o problema não era ele. A coluna "Com a gente" é a estrutura completa, a da Assessoria de Elite Legacy (a nota no pé da tela diz isso). Com o PRO ou o Scout PRO na ficha, fale da estrutura, não do plano: gerente de carreira todo dia e a ida aos clubes são do Legacy. O 23 volta a estas linhas, plano por plano.'
   },
   { nome: 'IA na Prática', min: 5,
     fala: [
@@ -239,7 +239,7 @@ window.ROTEIRO = [
     ],
     perguntas: [],
     crm: [],
-    atencao: 'Resposta pronta pro "mas vocês não ganham no contrato? Por que cobram?": o lucro vem do contrato; isso aqui é o custo mínimo da estrutura até o contrato sair. Nunca fale "onboarding", "etapas", "acessos": é promessa pro pai e pra mãe, não fluxo de produto. Aqui é a estrutura inteira, a do Legacy. Com o PRO ou o Scouting na ficha, não prometa ao plano o gerente de carreira todo dia; as sete frentes, em sete módulos de aulas, vêm a partir da Assessoria PRO (no Scouting, não). O 23 mostra o que cada plano entrega.'
+    atencao: 'Resposta pronta pro "mas vocês não ganham no contrato? Por que cobram?": o lucro vem do contrato; isso aqui é o custo mínimo da estrutura até o contrato sair. Nunca fale "onboarding", "etapas", "acessos": é promessa pro pai e pra mãe, não fluxo de produto. Aqui é a estrutura inteira, a do Legacy. Com o PRO ou o Scout PRO na ficha, não prometa ao plano o gerente de carreira todo dia; Os sete módulos de formação já estão no Scout PRO. O acompanhamento humano e os encaminhamentos seguem o escopo de cada plano. O 23 mostra o que cada plano entrega.'
   },
   { nome: 'Não é pra qualquer um', min: 3,
     fala: [
@@ -251,7 +251,7 @@ window.ROTEIRO = [
     ],
     perguntas: ['[atleta], você quer ser jogador profissional?', 'Tá disposto a pagar o preço da disciplina?', 'Vocês apoiam ele, mesmo quando for difícil?'],
     crm: [],
-    atencao: 'A família tem que sentir que está sendo avaliada, não vendida (03). O sim do atleta na frente dos pais pesa mais que qualquer argumento. Pergunte, não mande; se o atleta hesitar, volte pro sonho dele, nunca pressione. Previne "e se ele for dos que não chegam lá?". A tela mostra os três degraus, um por avanço, só com a pergunta: quem responde é o atleta e a família, em voz alta. A turma de 10 é do Legacy: com o PRO ou o Scouting na ficha, a tela não mostra turma nem a linha do gerente de carreira, e você fica no filtro.'
+    atencao: 'A família tem que sentir que está sendo avaliada, não vendida (03). O sim do atleta na frente dos pais pesa mais que qualquer argumento. Pergunte, não mande; se o atleta hesitar, volte pro sonho dele, nunca pressione. Previne "e se ele for dos que não chegam lá?". A tela mostra os três degraus, um por avanço, só com a pergunta: quem responde é o atleta e a família, em voz alta. A turma de 10 é do Legacy: com o PRO ou o Scout PRO na ficha, a tela não mostra turma nem a linha do gerente de carreira, e você fica no filtro.'
   },
   { nome: 'Quando a gente ganha', min: 2.5,
     fala: [
@@ -264,7 +264,7 @@ window.ROTEIRO = [
     ],
     perguntas: ['O que muda na vida de vocês quando ele estiver ganhando isso?'],
     crm: [],
-    atencao: 'O número é referência do que já acontece, nunca promessa: cada contrato depende do clube, da categoria e do desempenho. Depois da pergunta do "o que muda", silêncio: quem descreve o futuro em voz alta já se vê nele. Previne "por que vocês cobram?". A faixa é referência da casa, de atleta nosso que fechou, não entrega de nenhum plano. Com o Scouting na ficha, não diga que o plano leva a esse contrato: o encaminhamento pra clubes vem a partir da Assessoria PRO.'
+    atencao: 'O número é referência do que já acontece, nunca promessa: cada contrato depende do clube, da categoria e do desempenho. Depois da pergunta do "o que muda", silêncio: quem descreve o futuro em voz alta já se vê nele. Previne "por que vocês cobram?". A faixa é referência da casa, de atleta nosso que fechou, não entrega de nenhum plano. Com o Scout PRO na ficha, não diga que o plano leva a esse contrato: o encaminhamento pra clubes vem a partir da Assessoria PRO.'
   },
   { nome: 'Garantia total', min: 1.5,
     fala: [
@@ -283,27 +283,27 @@ window.ROTEIRO = [
       'Só com o Legacy na ficha (turma e vaga na tela). Escassez, só com o número real da semana (08): "Dessa turma de 10, restam [vagas]."',
       'Início imediato, no Legacy: "Confirmando hoje, o [gerente] entra em contato com vocês, e o Zyron já começa a acompanhar o [atleta]."',
       'O relógio (9.3), no Legacy, apontando o caminho da tela: "Hoje, a vaga. Em até três meses, mais de 93% dos nossos estão encaminhados. E o dia que importa pra vocês e pra gente: a assinatura. Se decidir hoje, esse relógio começa hoje. Se decidir daqui a uma semana, o [atleta] começa uma semana depois."',
-      'Com a Assessoria PRO ou o Scouting na ficha, a tela vira "o começo": "Confirmando hoje, a equipe entra em contato com vocês, e o Zyron começa a ler o jogo do [atleta]. A cada vídeo novo, sai um relatório novo. E o ritmo, vocês escolhem agora."',
+      'Com a Assessoria PRO ou o Scout PRO na ficha, a tela vira "o começo": "Confirmando hoje, a equipe entra em contato com vocês, e o Zyron começa a ler o jogo do [atleta]. A cada vídeo novo, sai um relatório novo. E o ritmo, vocês escolhem agora."',
       'Ponte pros planos: "Agora eu te mostro como ter isso do lado do [atleta]."'
     ],
     perguntas: [],
     crm: [],
-    atencao: 'Vagas só com o número real da semana; prazo só com o prazo confirmado (campos da ficha). Turma, vagas, os 93% em até três meses e o dia da assinatura são do Legacy: com o PRO ou o Scouting na ficha, a tela não mostra nada disso, e a fala também não. O 23 mostra os planos com o investimento de cada um, e o 24 fecha com o plano da ficha.'
+    atencao: 'Vagas só com o número real da semana; prazo só com o prazo confirmado (campos da ficha). Turma, vagas, os 93% em até três meses e o dia da assinatura são do Legacy: com o PRO ou o Scout PRO na ficha, a tela não mostra nada disso, e a fala também não. O 23 mostra os planos com o investimento de cada um, e o 24 fecha com o plano da ficha.'
   },
   { nome: 'Os planos', min: 3,
     fala: [
       'Ponte, sem falar de dinheiro, lendo o título: "[atleta], na peneira você ficou sozinho. Daqui pra frente, não fica mais. O que muda de um plano pro outro é quem fica do teu lado, e quantas vezes: a cada 15 dias, toda semana ou todo dia. O Zyron tá nos três."',
-      'Um avanço por coluna (→ ou espaço). Cada coluna é a parte de um plano: o ritmo, o investimento e o que ele tem, cargo por cargo. Scouting: "Pra começar: o Zyron lê cada vídeo novo e aponta os teus pontos fortes e prioridades, o analista de performance manda o relatório da tua evolução a cada 15 dias, e você tem o relatório de entrada, o histórico e o guia da peneira."',
-      'Assessoria PRO: "Tudo do Scouting, e uma equipe do teu lado toda semana: o teu estrategista de carreiras liga, você tem os sete módulos de aulas (performance, psicologia, nutrição, comportamento e imagem), conta com um estrategista esportivo, entra no networking com outros atletas e nas aulas extras, e a gestão de carreiras faz pelo menos 5 encaminhamentos de oportunidades por mês, pra clubes do Brasil e do mundo. Tudo isso por metade do Legacy."',
+      'Um avanço por coluna (→ ou espaço). Cada coluna é a parte de um plano: o ritmo, o investimento e o que ele tem, cargo por cargo. Scout PRO: "Pra começar: o Zyron lê cada vídeo novo e aponta os teus pontos fortes e prioridades, o analista de performance manda o relatório da tua evolução a cada 15 dias, e você tem o relatório de entrada, o histórico e o guia da peneira."',
+      'Assessoria PRO: "Tudo do Scout PRO, e uma equipe do teu lado toda semana: o teu estrategista de carreiras liga, você tem os sete módulos de aulas (performance, psicologia, nutrição, comportamento e imagem), conta com um estrategista esportivo, entra no networking com outros atletas e nas aulas extras, e a gestão de carreiras faz pelo menos 5 encaminhamentos de oportunidades por mês, pra clubes do Brasil e do mundo. Tudo isso por metade do Legacy."',
       'Assessoria de Elite Legacy, a coluna em destaque: "Tudo da Assessoria PRO, e o ideal, o completo: o teu estrategista de carreiras e o gerente de carreira de perto todo dia, assessoria individual com o David Willer todo mês e acompanhamento direto com ele no WhatsApp. A gestão de carreiras faz pelo menos 15 encaminhamentos de oportunidades por mês, mundo afora, com conexão direta com clubes e com a AGN. O estrategista esportivo liga toda semana, em cima dos teus relatórios e do teu desenvolvimento, você tem um plano de carreira feito pro teu jogo, e quem corre atrás de clube, vídeo e avaliação é a gente. Nas seletivas, a gente acompanha e planeja a logística com vocês. E a turma é de 10: atenção máxima, de perto."',
-      'O investimento tá no topo de cada coluna, com a parcela em destaque. Leia uma vez, apontando, sem fazer conta: "O Scouting fica em R$ 997, a Assessoria PRO em R$ 1.497 e o Legacy em R$ 2.997, todos vitalícios, em 10x sem juros." E volte pro ritmo.',
+      'O investimento tá no topo de cada coluna, com a parcela em destaque. Leia uma vez, apontando, sem fazer conta: "O Scout PRO fica em R$ 997, a Assessoria PRO em R$ 1.497 e o Legacy em R$ 2.997, todos vitalícios, em 10x sem juros." E volte pro ritmo.',
       'As perguntas que acertam o plano, sem falar de dinheiro: "Qual ritmo faz sentido pro [atleta]? Um relatório a cada 15 dias, alguém ligando toda semana ou alguém do lado dele todo dia?" Espere. "Vocês querem os sete módulos de aulas e um estrategista junto?" Espere. "E o David Willer de perto, com assessoria individual todo mês e as conexões e os clubes dele: é o que vocês querem agora?" Espere.',
       'Recomende um, em voz alta, com as palavras deles: "Pelo que vocês me falaram, eu recomendo o [plano]." Se a resposta apontou outro, troque o plano no apresentador antes do último avanço. Último avanço: o [plano] aparece destacado na tela, como a sua recomendação.',
       'Ponte pro número: "Agora eu te mostro o investimento do [plano]."'
     ],
     perguntas: ['Qual ritmo faz sentido pro [atleta]? A cada 15 dias, toda semana ou todo dia?', 'Vocês querem os sete módulos de aulas e um estrategista junto?', 'Vocês querem o David Willer de perto, com assessoria individual todo mês?'],
     crm: ['O ritmo que a família escolheu, com as palavras deles, e o plano que você recomendou.'],
-    atencao: 'O título volta ao 12 ("Sozinho, na peneira"): é a dor que a família já contou, e cada coluna responde com quem fica do lado do atleta. Deixe o título pesar um segundo antes da primeira coluna. Ao lado do ritmo, o passo do tripé do 05 (Ser visto, Ser preparado, Ser apresentado), um por degrau. O 23 mostra cada plano na sua parte, com o investimento no topo da coluna, pra família ver tudo (decisão do dono, 06/10/2026). Cada coluna é a parte de um plano: o topo com o ritmo e o investimento, embaixo o que ele acrescenta ao degrau de baixo, cargo por cargo. Não leia tudo: aponte o que muda de um degrau pro outro. O Legacy aparece em destaque, com a moldura que brilha e o rótulo "O ideal": é o completo e tem a lista mais longa. Se a ficha recomendar outro plano, fale com franqueza: "o ideal é o Legacy; pro momento de vocês, a Assessoria PRO coloca uma equipe do lado dele toda semana, por metade do valor". Apresente pelo ritmo, não pelo preço: o número falado com silêncio é o do 24, o do plano recomendado. Ordem da casa: o Legacy abre (tudo o que a família viu até o 22 é a estrutura dele), a Assessoria PRO entra como o formato mais enxuto: uma equipe do lado dele toda semana, por metade do Legacy, e o Scouting só se o caixa realmente pedir. BANT não é interrogatório: as perguntas são de ritmo, não de dinheiro. A conexão direta com clubes e AGN, os 15 encaminhamentos por mês, a turma e os 93% são do Legacy: não atribua ao PRO nem ao Scouting. O encaminhamento vem a partir da Assessoria PRO, com pelo menos 5 por mês. Nunca "o mais barato", "o mais vendido" ou "o mais escolhido". Se perguntarem qual compensa, responda pelo ritmo, não pela diferença de preço.'
+    atencao: 'O título volta ao 12 ("Sozinho, na peneira"): é a dor que a família já contou, e cada coluna responde com quem fica do lado do atleta. Deixe o título pesar um segundo antes da primeira coluna. Ao lado do ritmo, o passo do tripé do 05 (Ser visto, Ser preparado, Ser apresentado), um por degrau. O 23 mostra cada plano na sua parte, com o investimento no topo da coluna, pra família ver tudo (decisão do dono, 06/10/2026). Cada coluna é a parte de um plano: o topo com o ritmo e o investimento, embaixo o que ele acrescenta ao degrau de baixo, cargo por cargo. Não leia tudo: aponte o que muda de um degrau pro outro. O Legacy aparece em destaque, com a moldura que brilha e o rótulo "O ideal": é o completo e tem a lista mais longa. Se a ficha recomendar outro plano, fale com franqueza: "o ideal é o Legacy; pro momento de vocês, a Assessoria PRO coloca uma equipe do lado dele toda semana, por metade do valor". Apresente pelo ritmo, não pelo preço: o número falado com silêncio é o do 24, o do plano recomendado. Ordem da casa: o Legacy abre (tudo o que a família viu até o 22 é a estrutura dele), a Assessoria PRO entra como o formato mais enxuto: uma equipe do lado dele toda semana, por metade do Legacy, e o Scout PRO só se o caixa realmente pedir. BANT não é interrogatório: as perguntas são de ritmo, não de dinheiro. A conexão direta com clubes e AGN, os 15 encaminhamentos por mês, a turma e os 93% são do Legacy: não atribua ao PRO nem ao Scout PRO. O encaminhamento vem a partir da Assessoria PRO, com pelo menos 5 por mês. Nunca "o mais barato", "o mais vendido" ou "o mais escolhido". Se perguntarem qual compensa, responda pelo ritmo, não pela diferença de preço.'
   },
   { nome: 'O investimento', min: 4,
     silencio: 'O número, uma vez, com a parcela. E silêncio: quem fala primeiro depois do preço perde.',
@@ -313,36 +313,36 @@ window.ROTEIRO = [
       'Depois do silêncio: "E com garantia total: todo o valor investido de volta."',
       'No Legacy, o completo, apontando a tela: "Um atleta médio nosso fecha ganhando, em média, R$ 30 mil+ por mês. A parcela é uma fração de um mês de contrato, quando ele fechar." E, se o valor pesar: "É o único com o estrategista de carreiras e o gerente de carreira todo dia, assessoria individual com o David Willer todo mês e pelo menos 15 encaminhamentos de oportunidades por mês, mundo afora."',
       'Na Assessoria PRO, a acessível, apontando a tela: "É uma equipe do lado do [atleta] toda semana: o estrategista de carreiras, os sete módulos de aulas e pelo menos 5 encaminhamentos de oportunidades por mês, por cerca de metade do valor do Legacy."',
-      'No Scouting, o começo: "É o jeito de começar, com o Zyron e um analista de performance olhando pro jogo dele."',
-      'Por dia, do plano da tela, se o valor pesar: no Legacy, "No prazo médio de 3 meses, dá [por dia] por dia."; no PRO e no Scouting, "Dividido nos primeiros 3 meses, dá [por dia] por dia."',
-      'Fechamento (Modo A, 08): "Confirmando hoje, eu já aviso o [gerente]. Fica melhor no Pix ou no cartão?" No PRO e no Scouting: "eu já aviso a equipe".',
+      'No Scout PRO, o começo: "É o jeito de começar, com o Zyron e um analista de performance olhando pro jogo dele."',
+      'Por dia, do plano da tela, se o valor pesar: no Legacy, "No prazo médio de 3 meses, dá [por dia] por dia."; no PRO e no Scout PRO, "Dividido nos primeiros 3 meses, dá [por dia] por dia."',
+      'Fechamento (Modo A, 08): "Confirmando hoje, eu já aviso o [gerente]. Fica melhor no Pix ou no cartão?" No PRO e no Scout PRO: "eu já aviso a equipe".',
       'Depois do "Pix ou cartão?": mande no WhatsApp o link de pagamento do [plano], na própria call, e faça o pagamento com a família na linha. O link não está no deck: tenha o de cada plano à mão.',
       'Objeção: acolha, isole e volte: "Resolvido isso, eu confirmo agora. Pix ou cartão?"',
-      'Trocar de plano, pelo escopo e nunca por desconto. Pra descer: "Existe um formato mais enxuto, a Assessoria PRO, e o que muda é isto." Pra subir: "Se vocês quiserem o completo, o Legacy acrescenta isto." Use os botões de plano no apresentador: a tela do 24 troca junto, e o apresentador mostra o que sai ou o que entra. Descendo pro Scouting, diga em voz alta: "o encaminhamento pra clubes vem a partir da Assessoria PRO." Saindo do Legacy: "a conexão direta com clubes e AGN e os 15 encaminhamentos por mês são do Legacy; na Assessoria PRO, são pelo menos 5."',
+      'Trocar de plano, pelo escopo e nunca por desconto. Pra descer: "Existe um formato mais enxuto, a Assessoria PRO, e o que muda é isto." Pra subir: "Se vocês quiserem o completo, o Legacy acrescenta isto." Use os botões de plano no apresentador: a tela do 24 troca junto, e o apresentador mostra o que sai ou o que entra. Descendo pro Scout PRO, diga em voz alta: "o encaminhamento pra clubes vem a partir da Assessoria PRO." Saindo do Legacy: "a conexão direta com clubes e AGN e os 15 encaminhamentos por mês são do Legacy; na Assessoria PRO, são pelo menos 5."',
       '"Vocês combinaram de decidir hoje, lembra? Pode ser não, tudo bem. O que tá faltando pro sim?"'
     ],
     modoB: [
-      '"Olha, eu não vou te vender nada hoje. Antes de abrir a vaga, eu apresento o [atleta] pro [gerente] e pra nossa equipe técnica, e são eles que decidem se ele entra nessa turma." No PRO e no Scouting, sem vaga nem turma: "eu apresento o [atleta] pra nossa equipe técnica, e são eles que decidem se ele entra."',
+      '"Olha, eu não vou te vender nada hoje. Antes de abrir a vaga, eu apresento o [atleta] pro [gerente] e pra nossa equipe técnica, e são eles que decidem se ele entra nessa turma." No PRO e no Scout PRO, sem vaga nem turma: "eu apresento o [atleta] pra nossa equipe técnica, e são eles que decidem se ele entra."',
       '"Enquanto isso, conversem entre vocês e com o [atleta]. Se a equipe aprovar, vocês estão dentro?"',
       '"Amanhã até [hora] eu te dou o retorno da equipe. Fica de olho no telefone."',
-      'No retorno: "[pai], boa notícia: o [gerente] e a equipe aprovaram o [atleta]. A vaga é dele até [hora]. Pra confirmar, é o investimento que eu te passei. Pix ou cartão?" No PRO e no Scouting: "a equipe aprovou o [atleta], e a entrada dele fica aprovada até [hora]."'
+      'No retorno: "[pai], boa notícia: o [gerente] e a equipe aprovaram o [atleta]. A vaga é dele até [hora]. Pra confirmar, é o investimento que eu te passei. Pix ou cartão?" No PRO e no Scout PRO: "a equipe aprovou o [atleta], e a entrada dele fica aprovada até [hora]."'
     ],
     perguntas: ['Pix ou cartão?'],
     crm: ['Resultado, plano fechado e forma de pagamento.', 'Modo B: a hora do retorno e o "estamos dentro".'],
-    atencao: 'Aqui o número é o do plano da ficha (o 23 já mostrou os três), já com o parcelamento (10 x a parcela = o valor total): Scouting, R$ 997 vitalício, 10x de R$ 99,70; Assessoria PRO, R$ 1.497 vitalício, 10x de R$ 149,70; Legacy, R$ 2.997 vitalício, 10x de R$ 299,70. Fale o número uma vez e aperte S. Regra de ouro: depois do número, silêncio. Quem fala primeiro depois do preço perde. Os 3 meses do "por dia" são só a conta: no PRO e no Scouting, não diga "prazo médio" nem ligue esses 3 meses ao encaminhamento: os 93% em até três meses são dado do Legacy. Travou no valor: isole ("tirando o valor, tem mais alguma coisa?"), diagnostique (retorno ou dinheiro agora) e volte no slide 17, 20, 21 ou 23. Modo B só se a análise da equipe for real, e a tela não muda. Link de pagamento: fora do deck, pelo WhatsApp, só depois do sim.'
+    atencao: 'Aqui o número é o do plano da ficha (o 23 já mostrou os três), já com o parcelamento (10 x a parcela = o valor total): Scout PRO, R$ 997 vitalício, 10x de R$ 99,70; Assessoria PRO, R$ 1.497 vitalício, 10x de R$ 149,70; Legacy, R$ 2.997 vitalício, 10x de R$ 299,70. Fale o número uma vez e aperte S. Regra de ouro: depois do número, silêncio. Quem fala primeiro depois do preço perde. Os 3 meses do "por dia" são só a conta: no PRO e no Scout PRO, não diga "prazo médio" nem ligue esses 3 meses ao encaminhamento: os 93% em até três meses são dado do Legacy. Travou no valor: isole ("tirando o valor, tem mais alguma coisa?"), diagnostique (retorno ou dinheiro agora) e volte no slide 17, 20, 21 ou 23. Modo B só se a análise da equipe for real, e a tela não muda. Link de pagamento: fora do deck, pelo WhatsApp, só depois do sim.'
   },
   { nome: 'Bem-vindo', min: 3,
     fala: [
       'O fecho do campo, apontando a miniatura: "Olha o teu lugar de novo, [atleta]. O olhômetro não viu. A partir de hoje, a gente vê."',
-      'Áudio de boas-vindas, com a frase da tela: "Bem-vindo, [atleta]." No Legacy: "A partir de hoje, o teu contrato profissional é o nosso objetivo." Na Assessoria PRO: "A partir de hoje, você tem uma equipe do teu lado, toda semana." No Scouting: "A partir de hoje, o teu jogo é lido de 15 em 15 dias."',
+      'Áudio de boas-vindas, com a frase da tela: "Bem-vindo, [atleta]." No Legacy: "A partir de hoje, o teu contrato profissional é o nosso objetivo." Na Assessoria PRO: "A partir de hoje, você tem uma equipe do teu lado, toda semana." No Scout PRO: "A partir de hoje, o teu jogo é lido de 15 em 15 dias."',
       'Só no Legacy, a imaginação, devagar, apontando o post da tela: "[atleta], imagina comigo. Daqui a alguns meses o teu telefone toca. É o [gerente]: \'o clube quer você\'. Você assina. No dia seguinte o teu nome tá publicado, igual o Joãozinho, igual o Kaio. Quem é a primeira pessoa que você liga?" Espere a resposta.',
       'Só no Legacy, pros pais: "[pai], [mãe], e nesse dia a gente ganha junto. Por isso, a partir de agora, quem corre atrás é a gente."',
-      'O começo: no Legacy, "O [gerente] entra em contato com vocês, e o Zyron já começa a acompanhar o [atleta]." No PRO e no Scouting, "A equipe entra em contato com vocês, e o Zyron já começa a ler cada vídeo novo do [atleta]." E aponte o próximo passo da tela: no PRO, os encontros com a equipe de gestão de carreiras; no Scouting, o próximo vídeo.',
+      'O começo: no Legacy, "O [gerente] entra em contato com vocês, e o Zyron já começa a acompanhar o [atleta]." No PRO e no Scout PRO, "A equipe entra em contato com vocês, e o Zyron já começa a ler cada vídeo novo do [atleta]." E aponte o próximo passo da tela: no PRO, os encontros com a equipe de gestão de carreiras; no Scout PRO, o próximo vídeo.',
       'Indicação, na hora: "[atleta], tem algum colega de time que joga no teu nível? A gente faz a avaliação dele também."'
     ],
     perguntas: ['No Legacy: quem é a primeira pessoa que você liga quando assinar?'],
     crm: ['Venda concluída no CRM e cadastro em Vendas (produto e ticket do plano fechado; a venda entra pendente até a aprovação do Executive).', 'A indicação.', 'O dia do primeiro contato (no Legacy, do gerente).'],
-    atencao: 'A imaginação sela a decisão: quem descreve o dia da assinatura em voz alta não volta atrás no dia seguinte. O post da tela é ilustrativo: diga "imagina", nunca "vai ser". Com caso espelho, feche com ele: "igual o [caso]". Na indicação, peça o contato do responsável do colega, não do menino. Só prometa prazo confirmado. No PRO e no Scouting, a tela não tem post, contrato nem AGN: fique no ritmo do plano e no próximo passo, sem prazo. A miniatura do campo só aparece com posição reconhecida na ficha.'
+    atencao: 'A imaginação sela a decisão: quem descreve o dia da assinatura em voz alta não volta atrás no dia seguinte. O post da tela é ilustrativo: diga "imagina", nunca "vai ser". Com caso espelho, feche com ele: "igual o [caso]". Na indicação, peça o contato do responsável do colega, não do menino. Só prometa prazo confirmado. No PRO e no Scout PRO, a tela não tem post, contrato nem AGN: fique no ritmo do plano e no próximo passo, sem prazo. A miniatura do campo só aparece com posição reconhecida na ficha.'
   }
 ];
 
@@ -383,11 +383,11 @@ window.OBJECOES = [
     'Diagnosticar: "Quando você fala que tá alto: você não vê o retorno, ou é o dinheiro agora?"',
     'Se for retorno, com o Legacy na tela: "É o completo: o estrategista de carreiras e o gerente de carreira do lado dele todo dia, assessoria individual com o David Willer todo mês e pelo menos 15 encaminhamentos de oportunidades por mês, mundo afora, além de tudo do PRO. Sozinhos, vocês iam pagar R$ 30.000 por ano por essa estrutura, e sem certeza nenhuma."',
     'Se for retorno, com a Assessoria PRO na tela: "É uma equipe do lado dele toda semana: o estrategista de carreiras ligando, os sete módulos de aulas, um estrategista esportivo, networking e aulas extras, e pelo menos 5 encaminhamentos de oportunidades por mês, pra clubes do Brasil e do mundo, por cerca de metade do valor do Legacy."',
-    'Se for retorno, com o Scouting na tela: "É o começo: o Zyron lendo cada vídeo novo e um analista de performance medindo a evolução dele a cada 15 dias."',
-    'Por dia, do plano da tela: no Legacy, "No prazo médio de 3 meses, dá [por dia] por dia."; no PRO e no Scouting, "Dividido nos primeiros 3 meses, dá [por dia] por dia." Os 3 meses do PRO e do Scouting são só a conta, não prazo de encaminhamento.',
-    'E o contrato, como referência da casa: "Lembra: hoje um atleta que a gente coloca fecha por volta de [faixa] por mês. O Joãozinho entrou numa situação parecida e hoje tá no Grêmio." Com caso espelho, use ele: "o [caso] tinha o mesmo perfil e hoje tá no [clube do caso]." Com o PRO ou o Scouting, não diga que o plano leva a esse contrato.',
+    'Se for retorno, com o Scout PRO na tela: "É o começo: o Zyron lendo cada vídeo novo e um analista de performance medindo a evolução dele a cada 15 dias."',
+    'Por dia, do plano da tela: no Legacy, "No prazo médio de 3 meses, dá [por dia] por dia."; no PRO e no Scout PRO, "Dividido nos primeiros 3 meses, dá [por dia] por dia." Os 3 meses do PRO e do Scout PRO são só a conta, não prazo de encaminhamento.',
+    'E o contrato, como referência da casa: "Lembra: hoje um atleta que a gente coloca fecha por volta de [faixa] por mês. O Joãozinho entrou numa situação parecida e hoje tá no Grêmio." Com caso espelho, use ele: "o [caso] tinha o mesmo perfil e hoje tá no [clube do caso]." Com o PRO ou o Scout PRO, não diga que o plano leva a esse contrato.',
     'O risco: "E se vocês aplicarem o método e não fizer sentido, todo o valor investido volta. Garantia total. O risco fica com a gente."',
-    'Se for o dinheiro agora: "Se o dinheiro não fosse problema, o [atleta] começava hoje?" / "Então vamos resolver a forma: dá pra fazer em 10x sem juros. E se precisar, existe um formato mais enxuto." Desça um degrau pelo escopo, com os botões de plano no apresentador: ele mostra o que sai. Descendo pro Scouting, diga que o encaminhamento pra clubes vem a partir da Assessoria PRO.',
+    'Se for o dinheiro agora: "Se o dinheiro não fosse problema, o [atleta] começava hoje?" / "Então vamos resolver a forma: dá pra fazer em 10x sem juros. E se precisar, existe um formato mais enxuto." Desça um degrau pelo escopo, com os botões de plano no apresentador: ele mostra o que sai. Descendo pro Scout PRO, diga que o encaminhamento pra clubes vem a partir da Assessoria PRO.',
     'Mais vaga, quando o clima pedir: "Você acha que o sonho dele não vale parcelas mensais de [x] ou [y]?"',
     'Conduzir: "Então eu confirmo agora. Pix ou cartão?"'
   ], proibido: 'Desconto, "vou ver com meu gerente", baixar valor sem mudar o escopo' },
@@ -401,7 +401,7 @@ window.OBJECOES = [
   { q: 'Vou pensar', slides: [24, 21], prev: 'Combinado dito em voz alta no slide 03: "só não vale \'vou pensar\'".', resposta: [
     '"Claro. Pensar sobre o quê exatamente? O valor, conversar com mais alguém, ou alguma dúvida sobre o plano?"',
     '"O que vocês vão saber amanhã que não sabem agora?"',
-    'O relógio, no Legacy: "Mais de 93% dos nossos são encaminhados em até três meses. Se decidir hoje, esses três meses começam hoje. Se decidir daqui a uma semana, o [atleta] começa uma semana depois." No PRO e no Scouting, sem os 93%: "Se decidir hoje, o Zyron começa a ler o jogo dele agora. Se decidir daqui a uma semana, ele começa uma semana depois."',
+    'O relógio, no Legacy: "Mais de 93% dos nossos são encaminhados em até três meses. Se decidir hoje, esses três meses começam hoje. Se decidir daqui a uma semana, o [atleta] começa uma semana depois." No PRO e no Scout PRO, sem os 93%: "Se decidir hoje, o Zyron começa a ler o jogo dele agora. Se decidir daqui a uma semana, ele começa uma semana depois."',
     'Sem risco: "E vocês podem decidir hoje tranquilos: se aplicarem o método e não fizer sentido, todo o valor investido volta. Garantia total."',
     '"Vocês combinaram com o estrategista esportivo de decidir hoje. O que tá faltando?"',
     'Modo B: "Pensem hoje, que eu levo o [atleta] pra equipe. Amanhã às [hora] eu te dou o retorno, e aí vocês me dizem se estão dentro."'
@@ -410,7 +410,7 @@ window.OBJECOES = [
     '"Mais de 93% dos nossos atletas são encaminhados pra clubes em até três meses."',
     '"Encaminhar é o clube que precisa do perfil dele receber ele pra avaliação. Dali em diante é o jogo dele, com o gerente de carreira preparando ele todo dia pra esse momento."',
     '"E quanto antes começa, antes esse relógio anda. Decidindo hoje, os três meses começam hoje."',
-    'Com o Scouting na tela: "O encaminhamento pra clubes vem a partir da Assessoria PRO." Com a Assessoria PRO: "Na Assessoria PRO, a gestão de carreiras faz pelo menos 5 encaminhamentos de oportunidades por mês, pra clubes do Brasil e do mundo, e os encontros com a equipe mostram o que falta pro [atleta] ser encaminhado." Os 93% e os três meses são do Legacy: não use como prazo do PRO nem do Scouting.'
+    'Com o Scout PRO na tela: "O encaminhamento pra clubes vem a partir da Assessoria PRO." Com a Assessoria PRO: "Na Assessoria PRO, a gestão de carreiras faz pelo menos 5 encaminhamentos de oportunidades por mês, pra clubes do Brasil e do mundo, e os encontros com a equipe mostram o que falta pro [atleta] ser encaminhado." Os 93% e os três meses são do Legacy: não use como prazo do PRO nem do Scout PRO.'
   ], proibido: 'Prometer data de contrato ou clube. Encaminhamento não é contratação.' },
   { q: 'Será que ele é bom o suficiente?', slides: [15, 2, 4, 10, 13, 19], prev: '"Se você está vendo isso, é porque tem o que é preciso" desde a capa, "não foi você, foi o olhômetro" (slide 04), o seu lugar em campo (slide 10), o jogo dele lido lance a lance (slide 13) e "nem tudo é talento" no slide 15.', resposta: [
     '"Se não fosse, ele não estaria nessa conversa. A equipe e o Zyron aprovaram o perfil dele: a gente só investe em quem acredita que vai chegar."',
@@ -437,7 +437,7 @@ window.OBJECOES = [
     '"Se tivesse, ele começava hoje?"',
     '"Então o problema é só a forma. Dá pra fazer em 10x sem juros, ou num formato mais enxuto. Qual cabe melhor?"',
     'Do Legacy pra Assessoria PRO, pelo escopo: "Existe um formato mais enxuto, a Assessoria PRO: o estrategista de carreiras liga toda semana em vez de estar do lado dele todo dia, e saem o gerente de carreira, a assessoria individual com o David Willer, a ligação semanal do estrategista esportivo, a conexão direta com clubes e AGN e o acompanhamento das seletivas. O encaminhamento continua: pelo menos 5 oportunidades por mês, pra clubes do Brasil e do mundo, em vez de 15." Troque no apresentador: o 24 mostra o PRO.',
-    'Da Assessoria PRO pro Scouting, só se o caixa não comporta o PRO: "O Scouting é o começo: o Zyron lendo cada vídeo novo e o relatório do analista de performance a cada 15 dias. Saem a ligação do estrategista de carreiras, os sete módulos de aulas, o estrategista esportivo, o networking e as aulas extras, os encontros com a equipe e o encaminhamento pra clubes."',
+    'Da Assessoria PRO pro Scout PRO, só se o caixa não comporta o PRO: "O Scout PRO é o começo: o Zyron lendo cada vídeo novo e o relatório do analista de performance a cada 15 dias. Os sete módulos continuam no Scout PRO. Saem a ligação do estrategista de carreiras e o estrategista esportivo, o networking e as aulas extras, os encontros com a equipe e o encaminhamento pra clubes."',
     '"Assim que resolver a forma, a equipe já entra em contato. Isso não espera."'
   ], proibido: 'Desconto. Desce de plano só pelo escopo.' },
   { q: 'Ele não pode ir pra outro estado', slides: [5, 3], prev: 'Locomoção confirmada no alinhamento (slide 03) e "quando o clube chamar" no plano (slide 05).', resposta: [
@@ -470,11 +470,11 @@ window.OBJECOES = [
   ] },
   { q: 'Qual a diferença entre os planos?', slides: [23, 12], prev: 'A matriz do 23 responde antes da pergunta: as linhas do 12, em três ritmos.', resposta: [
     'O ritmo, antes do valor: "A diferença é com que frequência tem alguém olhando pro [atleta]: a cada 15 dias, toda semana ou todo dia. O Zyron tá nos três."',
-    'Scouting: "Pra começar: o Zyron lê cada vídeo novo, e um analista de performance manda relatório a cada 15 dias."',
+    'Scout PRO: "Pra começar: o Zyron lê cada vídeo novo, e um analista de performance manda relatório a cada 15 dias."',
     'Assessoria PRO: "Tudo isso e uma equipe do lado dele toda semana: o estrategista de carreiras liga, ele tem os sete módulos de aulas, conta com um estrategista esportivo, entra no networking com outros atletas e nas aulas extras, e a gestão de carreiras faz pelo menos 5 encaminhamentos de oportunidades por mês, pra clubes do Brasil e do mundo. Por metade do Legacy."',
     'Legacy: "O completo: tudo do PRO, o estrategista de carreiras do lado dele todo dia, o gerente de carreira e assessoria individual com o David Willer todo mês, com acompanhamento direto no WhatsApp. E pelo menos 15 encaminhamentos de oportunidades por mês, mundo afora, com conexão direta com clubes e com a AGN, e as seletivas acompanhadas, com a logística planejada."',
     'Conduzir: "Pelo que vocês me falaram, eu recomendo o [plano]. Faz sentido?"'
-  ], proibido: 'Responder pela diferença de preço em vez do ritmo, chamar o PRO de "o mais barato" ou de "o mais vendido", atribuir ao PRO o que é do Legacy (conexão direta com clubes e AGN, os 15 encaminhamentos por mês) ou encaminhamento ao Scouting.' },
+  ], proibido: 'Responder pela diferença de preço em vez do ritmo, chamar o PRO de "o mais barato" ou de "o mais vendido", atribuir ao PRO o que é do Legacy (conexão direta com clubes e AGN, os 15 encaminhamentos por mês) ou encaminhamento ao Scout PRO.' },
   { q: 'Isso de inteligência artificial funciona mesmo?', slides: [8, 9, 10, 11, 13, 2], prev: 'O Zyron trabalhando (08), os cinco verbos (09), o seu lugar em campo (10), olhômetro contra Zyron (11) e a leitura ao vivo do jogo dele (13).', resposta: [
     '"Clube grande já escolhe atleta assim há anos, aqui e lá fora, só que sempre por dentro, sem o atleta nem saber que foi visto desse jeito. A novidade é que agora isso chegou até o atleta."',
     '"É o que vocês viram no vídeo: o Zyron cruza o jogo do atleta com o que cada clube precisa. Por isso mais de 93% são encaminhados em até três meses."',
@@ -491,7 +491,7 @@ window.FOLLOWUP = {
     'Registro: venda concluída no CRM e cadastro em Vendas, com o produto e o ticket do plano fechado. Entra pendente até a aprovação do Executive.',
     'Áudio de boas-vindas pro atleta.',
     'Indicação na hora, com o contato do responsável do colega. Vira lead pro SDR.',
-    'Início imediato, só com o prazo confirmado: no Legacy, o gerente de carreira e o Zyron; na Assessoria PRO e no Scouting, a equipe e o Zyron.'
+    'Início imediato, só com o prazo confirmado: no Legacy, o gerente de carreira e o Zyron; na Assessoria PRO e no Scout PRO, a equipe e o Zyron.'
   ],
   naoIntro: 'O Gestor volta sempre com motivo (retorno da equipe, um caso, o plano do atleta), nunca pedindo.',
   nao: [
@@ -506,7 +506,7 @@ window.FOLLOWUP = {
 };
 
 /* Os três planos: fonte única da tela (23 os planos, 24 o investimento, 25 bem-vindo), do apresentador e das notas-do-gestor.md.
-   Do degrau de baixo pro de cima, e cumulativos: o PRO tem tudo do Scouting, o Legacy tem tudo do PRO.
+   Do degrau de baixo pro de cima, e cumulativos: o PRO tem tudo do Scout PRO, o Legacy tem tudo do PRO.
    O plano da ficha (campo plano) é o que a tela mostra; vazio ou nome antigo vira o Legacy.
    Sem link de pagamento no deck: acertado o plano, o Gestor manda o link pelo WhatsApp, na call, só depois do sim.
    ticket: o que vai pro CRM e pro cadastro em Vendas. preco e parcela: o 23 (os três) e o 24 (o da ficha), vitalício, em 10x sem juros. porDia: só na fala (3 meses).
@@ -515,11 +515,11 @@ window.FOLLOWUP = {
    Assessoria PRO, mais"); sem artigo, vale "o". antigos: nomes de antes (o Scouting PRO virou Assessoria PRO em 07/10/2026), pra ficha
    salva no navegador e o painel com o nome antigo continuarem mostrando o plano certo.
    descritor: o papel do plano na tela (23 e 24). selo: o papel no cartão do 25, sem conta de preço (sem selo, vale o descritor). promessa: a linha dele no 24. fala: como o Gestor fala dele. passo: o passo da tese da R2.
-   rotulo e inclui: a lista do 24 (no PRO, só o que ele acrescenta ao Scouting; no Legacy, o que ele acrescenta ao PRO, em destaque).
-   base: a linha que fecha a lista do Legacy. extras: o "Também vem" do Scouting (proposta, P9: o dono valida).
+   rotulo e inclui: a lista do 24 (no PRO, só o que ele acrescenta ao Scout PRO; no Legacy, o que ele acrescenta ao PRO, em destaque).
+   base: a linha que fecha a lista do Legacy. extras: o "Também vem" do Scout PRO (proposta, P9: o dono valida).
    vantagens: a parte do plano no 23, cargo por cargo ([cargo, benefício] ou [cargo, benefício, chave]: com chave, a linha só aparece
    se o plano tiver a chave, ex.: turma), só o que ele acrescenta ao degrau de baixo. O Legacy, o ideal, tem a lista mais longa.
-   bemVindo, rotina e proximo: o 25 do PRO e do Scouting (o do Legacy é o de sempre, com o gerente e a assinatura).
+   bemVindo, rotina e proximo: o 25 do PRO e do Scout PRO (o do Legacy é o de sempre, com o gerente e a assinatura).
    sai: o que sai ao descer pra ele, a partir do degrau de cima. diferenca: o que o degrau de cima acrescenta, em uma linha.
    descer e subir: a frase do Gestor ao trocar pra ele (o apresentador completa com o que sai ou o que entra).
    Premissas, uma chave cada, pra reverter num lugar só: turma (P5, turma de 10 e vagas: slides 14, 19 e 22), garantia (P6, a linha
@@ -527,15 +527,16 @@ window.FOLLOWUP = {
    (P8, R$ 30.000 por ano e R$ 30 mil+ por mês no 24). Leitura do Legacy: o estrategista de carreiras sobe pra todo dia e entra o David direto;
    se o David substituir o estrategista de carreiras, troque a primeira linha de inclui e a primeira de vantagens do Legacy. */
 window.PLANOS = [
-  { id: 'scouting', nome: 'Scouting', curto: 'Scouting', marca: [['Scouting', 'az']],
+  { id: 'scouting', nome: 'Scout PRO', curto: 'Scout PRO', antigos: ['Scouting'], marca: [['Scout', 'az'], ['PRO', 'ou']],
     ticket: 'R$ 997,00', preco: 'R$ 997', parcela: 'R$ 99,70', porDia: 'menos de R$ 12',
     ritmo: 'A cada 15 dias', descritor: 'Pra começar', passo: 'Ser visto',
-    promessa: 'Seu jogo lido de 15 em 15 dias.',
-    fala: 'O Scouting é pra começar: o Zyron lendo cada vídeo novo e um analista de performance mandando relatório a cada 15 dias.',
+    promessa: 'Seu jogo com direção: leitura, evolução e sete módulos de formação.',
+    fala: 'O Scout PRO combina a leitura do seu jogo pelo Zyron, relatório do analista a cada 15 dias e sete módulos de formação para você aplicar no desenvolvimento.',
     rotulo: 'Vitalício, você tem',
     inclui: [
       'O Zyron lendo o seu jogo: vídeo novo, relatório novo.',
-      'Um analista de performance com relatório a cada 15 dias: a sua performance e os seus avanços.'
+      'Um analista de performance com relatório a cada 15 dias: a sua performance e os seus avanços.',
+      'Sete módulos de formação: conteúdo para aplicar na sua rotina e no desenvolvimento do seu jogo.'
     ],
     extras: [
       'Relatório de entrada: de onde você parte.',
@@ -547,14 +548,15 @@ window.PLANOS = [
       ['Analista de performance', 'relatório da sua evolução a cada 15 dias.'],
       ['Relatório de entrada', 'de onde você parte.'],
       ['Histórico de evolução', 'o quanto você avançou, num lugar só.'],
-      ['Guia da peneira', 'o que o avaliador olha em vinte minutos.']
+      ['Guia da peneira', 'o que o avaliador olha em vinte minutos.'],
+      ['Sete módulos de formação', 'uma trilha para transformar conhecimento em evolução no seu jogo.']
     ],
     bemVindo: 'A partir de hoje, o seu jogo é lido de 15 em 15 dias.',
     rotina: 'O analista de performance manda o relatório da sua performance e dos seus avanços.',
     proximo: 'Mande o seu próximo vídeo: vídeo novo, relatório novo.',
-    descer: 'Existe um formato mais enxuto, o Scouting',
-    sai: ['a ligação do estrategista de carreiras toda semana', 'os sete módulos de aulas e o estrategista esportivo', 'o networking com outros atletas e as aulas extras', 'a gestão de carreiras com pelo menos 5 encaminhamentos de oportunidades por mês', 'o encaminhamento pra clubes do Brasil e do mundo'],
-    diferenca: 'o seu estrategista de carreiras ligando toda semana, os sete módulos de aulas, um estrategista esportivo, networking e aulas extras, e a gestão de carreiras com pelo menos 5 encaminhamentos de oportunidades por mês, pra clubes do Brasil e do mundo',
+    descer: 'Existe um formato mais enxuto, o Scout PRO',
+    sai: ['a ligação do estrategista de carreiras toda semana', 'o estrategista esportivo e o acompanhamento semanal', 'o networking com outros atletas e as aulas extras', 'a gestão de carreiras com pelo menos 5 encaminhamentos de oportunidades por mês', 'o encaminhamento pra clubes do Brasil e do mundo'],
+    diferenca: 'o seu estrategista de carreiras ligando toda semana, um estrategista esportivo, networking e aulas extras, e a gestão de carreiras com pelo menos 5 encaminhamentos de oportunidades por mês, pra clubes do Brasil e do mundo',
     turma: false, garantia: true, contrato: true, ancora: false, retorno: false },
   { id: 'pro', nome: 'Assessoria PRO', curto: 'Assessoria PRO', artigo: 'a', antigos: ['Scouting PRO'], marca: [['Assessoria', 'br'], ['PRO', 'ou']],
     ticket: 'R$ 1.497,00', preco: 'R$ 1.497', parcela: 'R$ 149,70', porDia: 'menos de R$ 17',
@@ -562,7 +564,7 @@ window.PLANOS = [
     promessa: 'Toda semana, o estrategista de carreiras liga. Todo mês, pelo menos 5 encaminhamentos.',
     relacao: '', // o descritor já diz: por metade do Legacy
     fala: 'A Assessoria PRO é uma equipe do lado do [atleta] toda semana, por cerca de metade do valor do Legacy: o estrategista de carreiras liga, ele tem os sete módulos de aulas, um estrategista esportivo, networking e aulas extras, e a gestão de carreiras faz pelo menos 5 encaminhamentos de oportunidades por mês, pra clubes do Brasil e do mundo.',
-    rotulo: 'Tudo do Scouting, mais:',
+    rotulo: 'Tudo do Scout PRO, mais:',
     inclui: [
       'Seu estrategista de carreiras liga toda semana.',
       'Sete Módulos de aulas (performance, psicologia, nutrição, comportamento e imagem) e um estrategista esportivo.',
@@ -572,7 +574,7 @@ window.PLANOS = [
     ],
     vantagens: [
       ['Estrategista de carreiras', 'liga toda semana pra acompanhar você.'],
-      ['Sete Módulos de aulas', 'performance, psicologia, nutrição, comportamento e imagem.'],
+      ['Aplicação dos sete módulos', 'um estrategista esportivo orienta seu desenvolvimento.'],
       ['Estrategista esportivo', 'você conta com ele nos próximos passos.'],
       ['Gestão de carreiras', 'pelo menos 5 encaminhamentos de oportunidades por mês.'],
       ['Networking e aulas extras', 'grupo, conexões com atletas e aulas além dos módulos.'],
@@ -599,7 +601,7 @@ window.PLANOS = [
       'Conexão direta com clubes e AGN Football.',
       'Seletivas acompanhadas, com a logística planejada com vocês.'
     ],
-    base: ['E tudo da Assessoria PRO e do Scouting.'],
+    base: ['E tudo da Assessoria PRO e do Scout PRO.'],
     vantagens: [
       ['Estrategista de carreiras', 'do seu lado, todo dia.'],
       ['Gerente de carreira', 'de perto, todo dia.'],
@@ -622,7 +624,7 @@ window.CHECKLIST = [
   'Vi o vídeo do atleta',
   'Separei sonho, dor, peneiras e o que falta, com as palavras deles',
   'Escolhi o caso espelho: atleta nosso de verdade, mesmo perfil (posição, idade, nível), do CASOS.md ou publicado na AGN, com o link',
-  'Defini o primeiro foco e escolhi na ficha o plano que vou recomendar: Legacy se a ficha não mostra aperto financeiro, Assessoria PRO se a dor financeira é forte, Scouting só se o caixa não comporta o PRO',
+  'Defini o primeiro foco e escolhi na ficha o plano que vou recomendar: Legacy se a ficha não mostra aperto financeiro, Assessoria PRO se a dor financeira é forte, Scout PRO só se o caixa não comporta o PRO',
   'Tenho à mão, fora do deck, o link de pagamento de cada plano (vai no WhatsApp só depois do sim)',
   'Conferi a faixa de contrato que posso citar e o prazo da garantia',
   'Link da AGN pronto pra mandar no WhatsApp',
@@ -637,4 +639,4 @@ window.CHECKLIST = [
   'Deck aberto em tela cheia e apresentador em outra janela'
 ];
 
-window.PROIBIDOS = 'Proibido: começar do zero com quem já tem contexto; perguntar de novo o que está na ficha; prometer contrato, clube ou valor de contrato; inventar caso, clube ou número; trocar "encaminhado" por "contratado"; desconto; proposta por WhatsApp; correr atrás da família; pôr o perfil do atleta em dúvida; vender pela diferença de preço em vez do ritmo; atribuir ao PRO o que é do Legacy (conexão direta com clubes e AGN, os 15 encaminhamentos por mês) ou encaminhamento ao Scouting; descer de plano por desconto; mandar o link antes do sim; dar nota ou atributo ao atleta; dizer que o Zyron tem percentual de acerto; chamar o avaliador de incompetente; citar clube como quem usa dados; dizer que existe vaga num clube específico; dizer que o Zyron leu um relatório marcado à mão; dar nota geral, ranking, percentil ou comparação com outros atletas; mostrar o vídeo de um atleta a quem não é da família dele; prometer que o relatório da call é o do plano (o plano entrega a leitura de cada vídeo novo, no ritmo dele).';
+window.PROIBIDOS = 'Proibido: começar do zero com quem já tem contexto; perguntar de novo o que está na ficha; prometer contrato, clube ou valor de contrato; inventar caso, clube ou número; trocar "encaminhado" por "contratado"; desconto; proposta por WhatsApp; correr atrás da família; pôr o perfil do atleta em dúvida; vender pela diferença de preço em vez do ritmo; atribuir ao PRO o que é do Legacy (conexão direta com clubes e AGN, os 15 encaminhamentos por mês) ou encaminhamento ao Scout PRO; descer de plano por desconto; mandar o link antes do sim; dar nota ou atributo ao atleta; dizer que o Zyron tem percentual de acerto; chamar o avaliador de incompetente; citar clube como quem usa dados; dizer que existe vaga num clube específico; dizer que o Zyron leu um relatório marcado à mão; dar nota geral, ranking, percentil ou comparação com outros atletas; mostrar o vídeo de um atleta a quem não é da família dele; prometer que o relatório da call é o do plano (o plano entrega a leitura de cada vídeo novo, no ritmo dele).';

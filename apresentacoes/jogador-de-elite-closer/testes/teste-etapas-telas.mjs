@@ -48,7 +48,7 @@ try {
   await S.avalia("location.hash = '#/novo'; 1");
   await S.ate("!document.querySelector('#v-editor').hidden");
   ok((await txt(S, '#ed-titulo')) === 'Novo R1' && (await txt(S, '#ed-salvar')) === 'Criar R1 e gerar o link' && (await txt(S, '#ed-voltar')) === '← Meus R1', '#/novo pro SDR abre o editor do R1 (Novo R1, Criar R1 e gerar o link)');
-  const ocultos = ['#s-foto', '#nt-bloco', '#foto-tela-bloco', '#f-editor [name=apelido]', '#f-editor [name=pe]', '#f-editor [name=altura]', '#f-editor [name=sonho]', '#f-editor [name=plano]', '#f-editor [name=gerente]', '#f-editor [name=prazoContato]', '#f-editor [name=prazoZyron]', '#s-leitura', '#selo-pos'];
+  const ocultos = ['#nt-bloco', '#f-editor [name=apelido]', '#f-editor [name=pe]', '#f-editor [name=altura]', '#f-editor [name=sonho]', '#f-editor [name=plano]', '#f-editor [name=gerente]', '#f-editor [name=prazoContato]', '#f-editor [name=prazoZyron]', '#s-leitura', '#selo-pos'];
   const vis = [];
   for (const sel of ocultos) if (await visivel(S, sel)) vis.push(sel);
   ok(!vis.length, 'o formulário do R1 esconde o que é só do R2 (foto, nome na tela, apelido, pé, altura, sonho, plano, gerente, prazos, leitura)' + (vis.length ? ': aparecem ' + vis.join(', ') : ''));
@@ -93,7 +93,7 @@ try {
   ok((await C.avalia("document.querySelectorAll('#versoes .chip.deck').length")) === IDS_R2.length, 'cada variação mostra de que deck é');
   await C.avalia("document.querySelector('#versoes input[value=r2a-principal]').click(); 1");
   await espera(300);
-  ok(!(await visivel(C, '#nt-bloco')) && !(await visivel(C, '#foto-tela-bloco')) && /No deck R2 anterior, aparece o primeiro nome do lead/.test(await txt(C, '#lead-nota')), 'numa variação do R2 anterior: some o Nome na tela e a foto, e uma nota explica o que o deck faz');
+  ok(!(await visivel(C, '#nt-bloco')) && (await visivel(C, '#foto-tela-bloco')) && /No deck R2 anterior, aparece o primeiro nome do lead/.test(await txt(C, '#lead-nota')), 'numa variação do R2 anterior: some o Nome na tela e a foto, e uma nota explica o que o deck faz');
   ok(!(await visivel(C, '#opcionais')), '(e os slides opcionais, que esse deck não tem)');
   ok(!(await visivel(C, '#apelido-bloco')), '(e o campo "Como a gente chama ele", que o R2 anterior ignora)');
   ok((await C.avalia("document.querySelectorAll('#checklist li').length")) === 6 && !/Prévia olhada/.test(await txt(C, '#checklist')), '(e o checklist tem 5 itens e a nota, sem "Prévia olhada": o R2 anterior abre em outra aba)');
@@ -122,9 +122,9 @@ try {
     'a faixa lista os 3 decks do R2 com as contagens dos manifestos, todos funcionando (' + faixa + ')');
   await tela(A, 'etapas-4-admin-variacoes-r2.png');
   const cardAnt = await txt(A, '#versoes-lista [data-v=r2a-principal]');
-  ok(/R2 anterior/.test(cardAnt) && /aparece o primeiro nome do lead; este deck não mostra a foto e não deixa escolher o nome na tela/.test(cardAnt) && !/Slides que dá pra tirar/.test(cardAnt), 'o cartão do R2 anterior diz de que deck é e o que ele faz com o nome e a foto, sem slide opcional');
+  ok(/R2 anterior/.test(cardAnt) && /foto no slide de escolha/.test(cardAnt) && !/Slides que dá pra tirar/.test(cardAnt), 'o cartão do R2 anterior diz de que deck é e o que ele faz com o nome e a foto, sem slide opcional');
   const ajAnt = await A.avalia("(() => { const d = document.querySelector('#versoes-lista details[data-v=r2a-principal]'); return { nome: d.querySelector('[data-aj=nome]').disabled, foto: d.querySelector('[data-aj=foto]').disabled }; })()");
-  ok(ajAnt.nome === true && ajAnt.foto === true, 'nos ajustes do admin, o nome e a foto ficam travados nesse deck');
+  ok(ajAnt.nome === true && ajAnt.foto === false, 'nos ajustes do admin, o nome e a foto ficam travados nesse deck');
   const exemplo = await A.avalia("document.querySelector('#versoes-lista [data-v=r2a-principal] a[href^=http]').href");
   ok(exemplo === s.decks['r2-anterior'] + '/', '"Abrir exemplo" abre o deck da variação (o do R2 anterior)');
   await A.avalia("document.querySelector('#ver-etapa [data-etapa=r1]').click(); 1");
@@ -137,7 +137,7 @@ try {
   await A.ate("document.querySelector('#d-variacao').open");
   const bases = await A.avalia("Array.from(document.querySelectorAll('#dv-base option')).map(o => o.value).join()");
   ok(bases === 'r1-principal', 'nova variação com o R1 na tela: a base é só a página do R1 (' + bases + ')');
-  ok((await A.avalia("document.querySelector('#dv-lead-nome').disabled")) === true && (await A.avalia("document.querySelector('#dv-lead-foto').disabled")) === true, 'e o nome e a foto ficam travados (o deck do R1 não segue essas escolhas)');
+  ok((await A.avalia("document.querySelector('#dv-lead-nome').disabled")) === true && (await A.avalia("document.querySelector('#dv-lead-foto').disabled")) === false, 'e o nome e a foto ficam travados (o deck do R1 não segue essas escolhas)');
   await A.avalia("document.querySelector('#dv-nome').value = 'R1 de novembro'; document.querySelector('#dv-ir').click(); 1");
   ok(await A.ate("/Variação criada/.test(document.querySelector('#aviso').textContent)", 8000) && (await A.avalia("document.querySelectorAll('#versoes-lista .versao-card').length")) === 2, 'o admin cria uma variação do R1 e ela aparece na aba');
   await A.avalia("document.querySelector('#ver-etapa [data-etapa=r2]').click(); document.querySelector('#bt-nova-variacao').click(); 1");
@@ -155,7 +155,7 @@ try {
   // novo R1 pelo admin
   await A.avalia("location.hash = '#/novo-r1'; 1");
   await A.ate("!document.querySelector('#v-editor').hidden");
-  ok((await txt(A, '#ed-titulo')) === 'Novo R1' && !(await visivel(A, '#s-foto')), 'o admin abre um Novo R1 pelo botão dele (#/novo-r1)');
+  ok((await txt(A, '#ed-titulo')) === 'Novo R1' && (await visivel(A, '#s-foto')), 'o admin abre um Novo R1 pelo botão dele (#/novo-r1)');
   // usuários
   await A.avalia("location.hash = '#/usuarios'; 1");
   await A.ate("!document.querySelector('#aba-usuarios').hidden");

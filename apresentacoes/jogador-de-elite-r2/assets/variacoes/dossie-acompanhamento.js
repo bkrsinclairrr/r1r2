@@ -62,7 +62,7 @@
   const r = window.ROTEIRO;
   r[3] = { ...r[3], fala: ['"[atleta], aqui estão dois jeitos de olhar pro seu jogo. Num, o que sobra é a memória de uma peneira. No outro, o seu perfil fica registrado, com direção de desenvolvimento e os clubes compatíveis."',
     'Leia os contrastes da tela e confirme o que a família já viveu.'], atencao: 'A coluna A resposta já está completa. Não anuncie leitura ao vivo nem deixe a coluna como suspense.' };
-  r[9] = { ...r[9], nome: 'Seu perfil e encaixe em campo', fala: ['"[atleta], é o seu rosto, o seu perfil e a sua posição. A formação é ilustrativa; o ponto é mostrar onde o seu perfil atua."',
+  r[9] = { ...r[9], nome: 'Seu perfil e encaixe em campo', fala: ['"[atleta], é o seu perfil e a sua posição. A formação é ilustrativa; o ponto é mostrar onde o seu perfil atua."',
     '"Clube não procura só um bom jogador: procura o perfil que faz sentido naquela função. Daqui a pouco eu mostro os matches que constam no seu relatório."'], atencao: 'Use somente indicadores preenchidos. Não diga que a formação representa uma vaga confirmada.' };
   r[12] = { nome: 'IA na prática: relatório preparado', min: 2, fala: ['"[atleta], este é o seu dossiê. A leitura foi preparada antes da nossa conversa, e o que está aqui veio do seu relatório."',
     'Explique os indicadores presentes, a leitura do perfil e a prioridade. Se um dado estiver vazio, não complete com exemplo de outro atleta.',
@@ -87,6 +87,6 @@
       'Mostre somente os dados presentes e explique o contexto dos clubes compatíveis. Não atribua a compatibilidade a uma vaga confirmada.' ] };
     return limpa(o);
   });
-  window.CHECKLIST = ['Conferi o primeiro nome e a foto com autorização do responsável.', 'Preenchi o relatório já pronto, sem estimar notas ausentes.',
-    'Preenchi somente os clubes compatíveis do relatório e o motivo do encaixe.', 'Conferi Scouting R$247,90 ou Legacy R$500 e o prazo efetivo da garantia.', 'Olhei os slides 01, 10, 13, 16 e 23 com os dados do atleta.'];
+  window.CHECKLIST = ['Conferi o primeiro nome, se preenchido, e a foto opcional com autorização do responsável.', 'Preenchi o relatório já pronto, sem estimar notas ausentes.',
+    'Preenchi somente os clubes compatíveis do relatório e o motivo do encaixe.', 'Conferi Scout PRO R$247,90 ou Legacy R$500 e o prazo efetivo da garantia.', 'Olhei a foto no slide 02 e os dados do atleta nos slides 01, 10, 13, 16 e 23.'];
 })();

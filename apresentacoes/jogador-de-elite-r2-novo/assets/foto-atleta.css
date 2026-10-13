@@ -1,0 +1,44 @@
+.slide.escolha-atleta{background:radial-gradient(ellipse at 80% 40%,#24322566,transparent 65%),var(--bg);--es-ouro:#e6dbb8}
+.escolha-texto{position:absolute;left:120px;top:105px;width:950px}
+.escolha-selo{display:inline-flex;align-items:center;gap:12px;border:1px solid #b9a66d66;border-radius:24px;padding:11px 20px;font:600 23px/1 var(--f-label);letter-spacing:2px;text-transform:uppercase;color:var(--es-ouro)}
+.escolha-selo i{display:block;width:8px;height:8px;border-radius:50%;background:#afc58a}
+.escolha-titulo{margin:36px 0 0!important;font:800 106px/.96 var(--f-title);text-transform:uppercase;color:#fff}
+.escolha-nome{display:inline-block;white-space:nowrap;color:var(--es-ouro);max-width:940px}
+.escolha-abertura{font:400 34px/1.35 var(--f-body);color:var(--body);margin:28px 0 0!important;max-width:920px}
+.escolha-contexto{margin-top:28px;border-left:3px solid #9db06a;padding:4px 0 4px 22px}
+.escolha-contexto span{font:600 19px/1.2 var(--f-label);letter-spacing:2px;text-transform:uppercase;color:#afc58a}
+.escolha-contexto p{font:500 28px/1.3 var(--f-body);margin:10px 0 0!important;color:#fff;overflow-wrap:anywhere}
+.escolha-atleta.com-contexto .escolha-titulo{font-size:90px;margin-top:26px!important}
+.escolha-atleta.com-contexto .escolha-abertura{font-size:30px;margin-top:22px!important}
+.escolha-atleta.com-contexto .escolha-contexto{margin-top:22px}
+.escolha-atleta.com-contexto .escolha-contexto p{font-size:25px}
+.escolha-atleta.com-contexto .escolha-direcao{margin-top:24px;padding-top:20px}
+.escolha-direcao{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;border-top:1px solid #e6dbb833;padding-top:25px;margin-top:32px}
+.escolha-direcao b{display:block;font:700 27px/1.1 var(--f-title);text-transform:uppercase;color:var(--es-ouro)}
+.escolha-direcao small{display:block;font:400 20px/1.35 var(--f-body);margin-top:10px;color:#bfcbbf}
+.escolha-assinatura{font:600 24px/1.2 var(--f-body);color:var(--es-ouro);margin-top:25px!important}
+.escolha-retrato{position:absolute;left:1190px;top:105px;width:610px;height:840px;border:1px solid #b9a66d66;border-radius:24px;background:linear-gradient(135deg,#344434,#0d1720 80%);overflow:hidden;box-shadow:0 30px 85px #0006}
+.escolha-retrato img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.escolha-inicial{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font:700 225px/1 var(--f-title);color:#c8b88a66;background:radial-gradient(circle at center,#e6dbb814,transparent 65%)}
+.escolha-retrato-rodape{position:absolute;inset:auto 0 0;padding:110px 36px 32px;background:linear-gradient(transparent,#06101ad9 50%,#06101a);color:var(--es-ouro)}
+.escolha-retrato-rodape>span{font:600 21px/1 var(--f-label);text-transform:uppercase;letter-spacing:2px}
+.escolha-retrato-rodape strong{display:block;font:700 52px/1.1 var(--f-title);text-transform:uppercase;margin:12px 0 0;overflow-wrap:anywhere}
+.escolha-retrato-rodape p{font:400 21px/1.35 var(--f-body);color:#c3cec5;margin-top:10px!important;overflow-wrap:anywhere}
+.escolha-legal{position:absolute;left:120px;top:1012px;width:1560px;font:400 20px/1.2 var(--f-body);color:var(--muted)}
+.formacao-intro{position:absolute;left:120px;top:100px;width:1680px}
+.formacao-intro h2{font:800 96px/.96 var(--f-title);text-transform:uppercase;color:#fff;margin:28px 0 0;overflow-wrap:anywhere}
+.formacao-intro h2 span{color:#e6dbb8}
+.formacao-grid{position:absolute;left:120px;top:400px;width:1680px;display:grid;grid-template-columns:380px 1fr;gap:50px}
+.formacao-sete{padding:34px;border:1px solid #c8b88a66;background:linear-gradient(145deg,#293223,#0d1720);border-radius:24px;text-align:center;color:#e6dbb8}
+.formacao-sete>b{font:800 210px/.9 var(--f-title);display:block}
+.formacao-sete>strong{font:700 40px/1.1 var(--f-title);display:block;text-transform:uppercase;margin-top:24px}
+.formacao-sete>p{font:400 22px/1.4 var(--f-body);color:#c8d1c4;margin-top:20px!important}
+.formacao-corpo{padding:10px 0}
+.formacao-corpo>h3{font:600 40px/1.2 var(--f-body);color:#fff;margin:0 0 22px}
+.formacao-corpo>p{font:400 28px/1.35 var(--f-body);color:var(--body);max-width:1180px;margin:0!important}
+.formacao-temas{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 30px}
+.formacao-temas>span{border:1px solid #b9a66d66;padding:10px 17px;border-radius:20px;font:500 22px/1 var(--f-body);color:#e6dbb8}
+.formacao-pilares{display:grid;grid-template-columns:1fr 1fr 1fr;gap:25px;border-top:1px solid #ffffff26;padding-top:25px}
+.formacao-pilares b{font:700 28px/1 var(--f-title);text-transform:uppercase;color:#e6dbb8}
+.formacao-pilares p{font:400 22px/1.3 var(--f-body);color:#bfcbbf;margin-top:12px!important}
+.formacao-fecho{position:absolute;left:120px;top:946px;font:600 30px/1.25 var(--f-body);color:#e6dbb8;max-width:1640px}

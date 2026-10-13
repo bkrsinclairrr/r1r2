@@ -19,7 +19,7 @@ try {
   const url = (t, extra = '') => s.deck + '/?a=' + t + extra;
   // entre parênteses: o || solto, colado com === nas esperas, faria a espera passar com qualquer texto
   const NOME = "((document.querySelector('[data-bind=\"nome\"]') || {}).textContent || '')";
-  const CAR = "(document.querySelector('[data-bind=\"caracteristicas\"]') || {}).textContent || ''";
+  const CAR = "(document.querySelector('[data-bind=\"selecaoContexto\"]') || {}).textContent || ''";
 
   const A = await nav.aba(url(tA, '#2'), { largura: 1920, altura: 1080 });
   const B = await nav.aba(url(tB, '#2'), { largura: 1920, altura: 1080 });

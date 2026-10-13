@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Jogador de Elite · R2 · Técnica anterior sem foto</title>
+<title>Jogador de Elite · R2 · Técnica com roteiro clássico</title>
 <meta name="robots" content="noindex">
 <!-- Variação técnica da R2: família que já conhece a AGN e entende de futebol.
      Mesmo motor (assets/deck.js), mesma ficha e os mesmos 25 slides nas mesmas posições do deck padrão,
@@ -18,14 +18,15 @@
      painel deixa tirar da sequência (cada um com data-opcional="<id>" na tag do próprio slide). -->
 <script type="application/json" id="r2-variacao">
 {
-  "nome": "R2 · Técnica anterior sem foto",
-  "resumo": "A versão técnica do R2 de 25 slides: fala de par pra par, sem explicar o básico. Não mostra a foto do lead.",
+  "nome": "R2 · Técnica com roteiro clássico",
+  "resumo": "A versão técnica do R2 de 25 slides: fala de par pra par, sem explicar o básico. A foto aparece somente no slide de escolha.",
   "quando": "Lead com vivência no meio (base de clube, federado, ex-jogador, técnico) e só se precisar da versão de 25 slides.",
   "validacao": "em-validacao",
-  "lead": { "nome": true, "foto": false },
+  "lead": { "nome": true, "foto": true },
   "opcionais": []
 }
 </script>
+<link rel="stylesheet" href="../../assets/foto-atleta.css">
 </head>
 <body>
 <div class="viewport" id="viewport">
@@ -51,42 +52,7 @@
   <p class="a label muted bare" style="left:120px;top:962px;font-size:26px;letter-spacing:.3em">Jogador de Elite&nbsp;&nbsp;·&nbsp;&nbsp;Planejamento de carreira</p>
 </section>
 
-<section class="slide" data-slide-origem="2">
-  <div class="fill" style="background:radial-gradient(40% 55% at 78% 48%,rgba(230,219,184,.08),rgba(6,11,20,0) 70%)"></div>
-  <div class="a" style="left:120px;top:150px;width:1020px">
-    <p class="label" data-ifnot="origemZyron">O seu perfil</p>
-    <p class="label ice" data-if="origemZyron">Leitura do Zyron</p>
-    <p class="t t-130 rise" style="margin-top:44px!important"><span data-if="nome"><span data-bind="nome"></span>, você</span><span data-ifnot="nome">Você</span> passou no filtro.</p>
-    <div data-if="origemZyron">
-      <p class="b b-44 rise" style="margin-top:40px!important;color:var(--white);--d:.1s">O <span class="ice">Zyron</span> leu o seu vídeo com dados, e a equipe aprovou o que viu.</p>
-      <div class="rise" data-if="caracteristicas" style="margin-top:30px;--d:.16s"><p class="label bare" style="font-size:26px;margin-bottom:10px!important">O que os dados mostraram</p><p style="font-size:42px;line-height:1.25;font-weight:600;color:var(--white)" data-bind="caracteristicas"></p></div>
-    </div>
-    <div data-if="origemForm">
-      <p class="b b-44 rise" style="margin-top:40px!important;color:var(--white);--d:.1s">A equipe leu a sua trajetória e aprovou o seu perfil.</p>
-      <div class="rise" data-if="experiencia" style="margin-top:30px;--d:.16s"><p class="label bare" style="font-size:26px;margin-bottom:10px!important">A sua trajetória</p><p style="font-size:42px;line-height:1.25;font-weight:600;color:var(--white)" data-bind="experiencia"></p></div>
-    </div>
-    <div data-if="origemOutro">
-      <p class="b b-44 rise" style="margin-top:40px!important;color:var(--white);--d:.1s">A equipe analisou o seu jogo e aprovou o seu perfil.</p>
-    </div>
-  </div>
-  <p class="a rise" style="left:120px;top:900px;width:1040px;font-size:48px;line-height:1.22;font-weight:600;color:var(--sand-l);--d:.24s">Hoje eu mostro o caminho daqui até o clube.</p>
-  <div class="doc rise" style="left:1250px;top:190px;width:560px;height:700px;padding:48px 52px;--d:.08s">
-    <p class="dh ok">Perfil aprovado</p>
-    <div style="height:1px;background:var(--line);margin:26px 0 34px"></div>
-    <p class="t" data-fit="456" style="font-size:84px;line-height:.95;white-space:nowrap"><span data-if="nome" data-bind="nome"></span><span data-ifnot="nome">Você</span></p>
-    <div style="margin-top:34px;display:grid;gap:18px">
-      <div data-if="posicao"><p class="dh" style="font-size:24px">Posição</p><p style="font-size:36px;color:var(--white);margin-top:4px!important" data-bind="posicao"></p></div>
-      <div data-if="idade"><p class="dh" style="font-size:24px">Idade</p><p style="font-size:36px;color:var(--white);margin-top:4px!important"><span data-bind="idade"></span> anos</p></div>
-      <div data-if="cidade"><p class="dh" style="font-size:24px">Cidade</p><p style="font-size:36px;color:var(--white);margin-top:4px!important" data-bind="cidade"></p></div>
-    </div>
-    <div style="position:absolute;left:52px;right:52px;bottom:44px;border-top:1px solid rgba(200,184,138,.35);padding-top:24px">
-      <p class="label bare ice" data-if="origemZyron" style="font-size:26px;letter-spacing:.22em">Vídeo analisado pelo Zyron</p>
-      <p class="label bare" data-ifnot="origemZyron" style="font-size:26px;letter-spacing:.22em">Perfil lido pela equipe</p>
-      <p class="label bare muted" data-if="dossieCod" style="font-size:24px;letter-spacing:.2em;margin-top:10px!important">Dossiê nº <span data-bind="dossieCod"></span></p>
-    </div>
-  </div>
-  <div class="brackets sand" style="left:1250px;top:190px;width:560px;height:700px"><i></i><i></i><i></i><i></i></div>
-</section>
+<section class="slide escolha-atleta" data-slide-origem="2" data-foto-slide="escolha"><div class="escolha-texto"><p class="escolha-selo"><i></i> Por que você · Jogador de Elite</p><h2 class="escolha-titulo"><span class="escolha-nome" data-if="nome"><span data-bind="nome"></span>,</span><br><span data-ifnot="nome">Você</span><span data-if="nome">você</span> foi escolhido<br>para esta conversa.</h2><p class="escolha-abertura">Esta apresentação parte do seu perfil e do próximo passo que você busca no futebol. O plano ganha sentido quando começa em você.</p><div class="escolha-contexto" data-if="selecaoContexto"><span>O que chamou atenção no seu perfil</span><p data-bind="selecaoContexto"></p></div><div class="escolha-direcao"><div><b>Entender seu jogo</b><small>O Zyron transforma os lances em uma leitura do seu perfil.</small></div><div><b>Construir evolução</b><small>No Scout PRO, sete módulos conectam conhecimento e rotina.</small></div><div><b>Definir direção</b><small>O escopo do plano orienta o acompanhamento e os próximos passos.</small></div></div><p class="escolha-assinatura">Seu perfil. Sua evolução. Uma direção para seguir.</p></div><div class="escolha-retrato"><img data-src="selecaoFotoUrl" data-if="selecaoFotoOk" alt="Foto do jogador escolhido para esta apresentação"><div class="escolha-inicial" data-ifnot="selecaoFotoOk"><span data-bind="selecaoInicial"></span></div><div class="escolha-retrato-rodape"><span>Apresentação preparada para</span><strong><span data-if="nome" data-bind="nome"></span><span data-ifnot="nome">Seu próximo passo</span></strong><p data-bind="selecaoPerfil" data-if="selecaoPerfil"></p><p data-if="selecaoCodigo">Dossiê <span data-bind="selecaoCodigo"></span> · Individual</p></div></div><p class="escolha-legal">Jogador de Elite · Uma conversa sobre o seu desenvolvimento.<span data-if="selecaoFotoOk"> Foto do jogador usada com autorização.</span></p></section>
 
 <section class="slide" data-slide-origem="3">
   <div class="a page" style="left:80px;top:60px;width:1760px;height:960px"></div>
@@ -273,7 +239,7 @@
   </div>
   <!-- escopo: o "Com a gente" é a estrutura completa (Legacy); o 23 volta a estas linhas, plano por plano.
        Na técnica a tabela é mais alta que no padrão: a nota fica no pé, abaixo da linha de destaque. -->
-  <p class="a legal" style="left:120px;top:1004px;width:1560px">Com a gente: a estrutura completa, a da Assessoria de Elite Legacy. O Scouting e a Assessoria PRO entregam uma parte dela.</p>
+  <p class="a legal" style="left:120px;top:1004px;width:1560px">Com a gente: a estrutura completa, a da Assessoria de Elite Legacy. O Scout PRO e a Assessoria PRO entregam uma parte dela.</p>
   <p class="a rise" style="left:120px;top:940px;width:1600px;font-size:44px;line-height:1.2;font-weight:600;color:var(--sand-l);--d:.2s">Informação vocês já têm. O que faltava era operação.</p>
 </section>
 
@@ -365,26 +331,7 @@
   </div>
 </section>
 
-<section class="slide" data-slide-origem="15">
-  <div class="fill" style="background:radial-gradient(42% 60% at 76% 44%,rgba(230,219,184,.14),rgba(6,11,20,0) 70%)"></div>
-  <div class="fill grain"></div>
-  <div class="a" style="left:120px;top:110px;width:840px">
-    <p class="label">O gargalo</p>
-    <p class="t t-130 rise" style="margin:44px 0 0 -4px!important">Talento é o mínimo.</p>
-    <p class="b b-40 rise" style="margin-top:40px!important;color:var(--white);--d:.08s">Quem é do futebol sabe: tem muito jogador bom parado. Não falta talento. Falta alguém levando o jogo dele, com dados, ao clube que precisa daquele perfil, na hora certa.</p>
-    <p class="rise" style="font-size:46px;line-height:1.22;font-weight:600;color:var(--sand-l);margin-top:44px!important;--d:.16s">Talento ele tem. A operação é com a gente.</p>
-  </div>
-  <div class="a eff rise" style="left:1060px;top:150px;width:760px;--d:.1s">
-    <p class="sub white" style="font-size:56px">Mais de</p>
-    <p class="t sand-l big">93%</p>
-    <p class="b b-40" style="color:var(--white);margin-top:18px!important">dos nossos atletas são encaminhados a clubes em até <b class="sand-l">3 meses</b>.</p>
-    <div class="stats">
-      <div><p class="n">+250</p><p class="k">clubes na nossa rede</p></div>
-      <div><p class="n">+75</p><p class="k">encaminhados no último mês</p></div>
-      <div><p class="n">10+</p><p class="k">anos revelando atletas</p></div>
-    </div>
-  </div>
-</section>
+<section class="slide formacao-atleta" data-slide-origem="15"><div class="formacao-intro"><p class="label">Scout PRO · Formação incluída</p><h2><span data-bind="nome" data-fb="Você"></span>, seu jogo tem leitura.<br><span>Sua evolução tem método.</span></h2></div><div class="formacao-grid"><div class="formacao-sete"><b>7</b><strong>Módulos de formação</strong><p>Uma trilha para conectar conhecimento, rotina e desenvolvimento.</p></div><div class="formacao-corpo"><h3>Não basta entender o que melhorar.<br>É preciso aprender a trabalhar nisso.</h3><p>Conteúdos organizados em sete módulos para desenvolver o atleta além do lance isolado. A formação já faz parte do Scout PRO.</p><div class="formacao-temas"><span>Performance</span><span>Psicologia</span><span>Nutrição</span><span>Comportamento</span><span>Imagem</span></div><div class="formacao-pilares"><div><b>O Zyron lê</b><p>Os lances enviados viram uma leitura do seu jogo.</p></div><div><b>O analista acompanha</b><p>Relatório de evolução a cada 15 dias no Scout PRO.</p></div><div><b>Você desenvolve</b><p>Os sete módulos apoiam o aprendizado e a aplicação na sua rotina.</p></div></div></div></div><p class="formacao-fecho">Scout PRO: análise do seu jogo + acompanhamento da evolução + sete módulos de formação.</p><p class="escolha-legal">A orientação humana e os encaminhamentos seguem o escopo de cada plano.</p></section>
 
 <section class="slide" data-slide-origem="16">
   <div class="fill" style="background:radial-gradient(44% 60% at 78% 46%,rgba(230,219,184,.13),rgba(6,11,20,0) 70%)"></div>
@@ -521,7 +468,7 @@
   <p class="a t rise" style="left:116px;top:62px;width:1240px;font-size:88px;white-space:nowrap">Vocês não operam mais <span class="sand-l">sozinhos</span>.</p>
   <p class="a pl-perg" data-step="3" data-passo="a pergunta do ritmo" style="left:1372px;top:60px;width:430px">Qual ritmo o jogo <span data-if="nome">do <span data-bind="nome"></span></span><span data-ifnot="nome">dele</span> pede?</p>
   <div class="a pl-tab" style="left:120px;top:206px;width:1680px">
-    <div class="pl-col scouting" data-step="1" data-passo="a coluna do Scouting">
+    <div class="pl-col scouting" data-step="1" data-passo="a coluna do Scout PRO">
       <div class="pl-hd">
         <p class="pl-ds az" data-bind="scouting.descritor"></p>
         <p class="pl-nm" data-plano-marca="scouting"></p>
@@ -531,7 +478,7 @@
       </div>
       <p class="pl-mais" data-bind="scouting.mais"></p>
       <div class="pl-vant" data-plano-vantagens="scouting"></div>
-      <div class="pl-rec" data-if="planoId=scouting" data-step="4" data-passo="o destaque no Scouting, a sua recomendação"><p>Minha recomendação</p></div>
+      <div class="pl-rec" data-if="planoId=scouting" data-step="4" data-passo="o destaque no Scout PRO, a sua recomendação"><p>Minha recomendação</p></div>
     </div>
     <div class="pl-col pro" data-step="2" data-passo="a coluna da Assessoria PRO">
       <div class="pl-hd">
@@ -654,7 +601,7 @@
     </div>
   </div>
   <p class="a legal" data-if="planoId=legacy" style="left:1250px;top:930px;width:560px">Imagem ilustrativa.</p>
-  <!-- Assessoria PRO e Scouting: o cartão do plano, com o nome do atleta -->
+  <!-- Assessoria PRO e Scout PRO: o cartão do plano, com o nome do atleta -->
   <div class="doc rise" data-ifnot="planoId=legacy" style="left:1250px;top:150px;width:560px;height:700px;padding:48px 52px;--d:.12s">
     <p class="dh">Jogador de Elite</p>
     <div style="height:1px;background:var(--line);margin:26px 0 34px"></div>
@@ -688,7 +635,8 @@
 <script src="../../assets/zyron-desenhos.js"></script>
 <script src="../../assets/relatorio-leitura.js"></script>
 <script src="../../assets/ordem-garantia.js"></script>
-<script>window.VARIACAO_NOME = "R2 · Técnica anterior sem foto";</script>
+<script>window.VARIACAO_NOME = "R2 · Técnica com roteiro clássico";</script>
+<script src="../../assets/foto-atleta.js"></script>
 <script src="../../assets/deck.js"></script>
 </body>
 </html>

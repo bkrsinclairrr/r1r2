@@ -5,7 +5,7 @@
    Sem import e sem export: no navegador entra como script comum; no servidor, por import, e fica em globalThis.R2_REGRAS. */
 (function (raiz) {
   'use strict';
-  const PLANOS = ['Scouting', 'Assessoria PRO', 'Assessoria de Elite Legacy'];
+  const PLANOS = ['Scout PRO', 'Assessoria PRO', 'Assessoria de Elite Legacy'];
   // A oferta alternativa preserva os nomes dos produtos, com dois escopos próprios.
   // Variações criadas sobre essa página herdam o mesmo caminho e os mesmos dois planos.
   const planosDaVersao = v => v && v.deck === 'r2-anterior' && v.caminho === '/variacoes/acompanhamento/'
@@ -32,7 +32,7 @@
   ];
   const LEGACY = 'Assessoria de Elite Legacy';
   // nome de antes de um plano que mudou de nome (o Scouting PRO virou Assessoria PRO em 07/10/2026)
-  const PLANOS_ANTIGOS = { 'Scouting PRO': 'Assessoria PRO' };
+  const PLANOS_ANTIGOS = { 'Scouting': 'Scout PRO', 'Scouting PRO': 'Assessoria PRO' };
   const PRAZOS = {
     contato: ['ainda hoje', 'em até 24 horas', 'em até 48 horas'],
     zyron: ['no dia seguinte', 'em até 48 horas']
@@ -77,14 +77,14 @@
     { id: 'r2', etapa: 'r2', nome: 'R2 novo', prefixo: '', entrada: true, origem: 'https://jogador-de-elite-r2-novo.vercel.app',
       recursos: { nomeTela: true, foto: true, pular: true, leitura: true, previa: true } },
     { id: 'r2-anterior', etapa: 'r2', nome: 'R2 anterior', prefixo: 'r2a-', entrada: false, origem: 'https://jogador-de-elite-r2.vercel.app',
-      leadTxt: 'aparece o primeiro nome do lead; este deck não mostra a foto e não deixa escolher o nome na tela',
-      recursos: { nomeTela: false, nomeFixo: 'so-nome', apelido: false, foto: false, pular: false, leitura: true, previa: false } },
+      leadTxt: 'aparece o primeiro nome do lead; foto no slide de escolha; nome nos demais slides, sem escolha do formato do nome',
+      recursos: { nomeTela: false, nomeFixo: 'so-nome', apelido: false, foto: true, pular: false, leitura: true, previa: false } },
     { id: 'r2-b', etapa: 'r2', nome: 'R2 B', prefixo: 'r2b-', entrada: false, origem: 'https://jogador-de-elite-r2-b.vercel.app',
       leadTxt: 'aparecem o nome e o primeiro sobrenome do lead, com a foto dele; este deck não deixa escolher o nome na tela',
       recursos: { nomeTela: false, nomeFixo: 'primeiro-sobrenome', foto: true, pular: false, leitura: true, previa: true } },
     { id: 'r1', etapa: 'r1', nome: 'R1', prefixo: 'r1-', entrada: true, origem: 'https://jogador-de-elite-r1.vercel.app',
-      leadTxt: 'aparecem o primeiro nome do lead e a ficha dele (posição, idade e cidade); este deck não mostra a foto',
-      recursos: { nomeTela: false, nomeFixo: 'so-nome', apelido: false, foto: false, pular: false, leitura: false, previa: false } }
+      leadTxt: 'aparecem o primeiro nome do lead e a ficha dele (posição, idade e cidade); foto no slide de escolha',
+      recursos: { nomeTela: false, nomeFixo: 'so-nome', apelido: false, foto: true, pular: false, leitura: false, previa: false } }
   ];
   const deckPor = id => DECKS.find(d => d.id === id) || null;
   const entradaDe = etapa => DECKS.find(d => d.etapa === etapa && d.entrada) || null;
@@ -113,16 +113,16 @@
     r2: VERSOES.map(v => Object.assign({}, v)),
     'r2-anterior': [
       {
-        id: 'principal', nome: 'R2 · Roteiro anterior sem foto', caminho: '/',
-        resumo: 'O R2 de 25 slides, o de antes do R2 novo, com O combinado e O investimento. Não mostra a foto do lead.',
+        id: 'principal', nome: 'R2 · Roteiro clássico completo', caminho: '/',
+        resumo: 'O R2 de 25 slides, o de antes do R2 novo, com O combinado e O investimento. A foto aparece no slide de escolha.',
         quando: 'Só se precisar da versão de 25 slides. Na dúvida, use o R2 novo.',
-        validacao: 'em-validacao', lead: { nome: true, foto: false }, opcionais: []
+        validacao: 'em-validacao', lead: { nome: true, foto: true }, opcionais: []
       },
       {
-        id: 'tecnica', nome: 'R2 · Técnica anterior sem foto', caminho: '/variacoes/tecnica/',
-        resumo: 'A versão técnica do R2 de 25 slides: fala de par pra par, sem explicar o básico. Não mostra a foto do lead.',
+        id: 'tecnica', nome: 'R2 · Técnica com roteiro clássico', caminho: '/variacoes/tecnica/',
+        resumo: 'A versão técnica do R2 de 25 slides: fala de par pra par, sem explicar o básico. A foto aparece no slide de escolha.',
         quando: 'Lead com vivência no meio (base de clube, federado, ex-jogador, técnico) e só se precisar da versão de 25 slides.',
-        validacao: 'em-validacao', lead: { nome: true, foto: false }, opcionais: []
+        validacao: 'em-validacao', lead: { nome: true, foto: true }, opcionais: []
       }
     ],
     'r2-b': [
@@ -144,7 +144,7 @@
         id: 'principal', nome: 'R1 · Avaliação e convite para R2', caminho: '/',
         resumo: 'A apresentação do SDR em 16 slides: o Zyron, a IA na prática e a AGN, e fecha marcando a R2.',
         quando: 'A primeira apresentação do lead. Na dúvida, esta.',
-        validacao: 'em-validacao', lead: { nome: true, foto: false }, opcionais: []
+        validacao: 'em-validacao', lead: { nome: true, foto: true }, opcionais: []
       }
     ]
   };

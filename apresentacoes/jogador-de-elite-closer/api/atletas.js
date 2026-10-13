@@ -1,7 +1,7 @@
 // Os leads de cada atleta, um registro por atleta (atletas/<t>.json), de uma etapa: R1 (o SDR) ou R2 (o closer). Precisa de login.
 // GET                 os leads do usuário (o admin vê todos com ?todos=1), com a etiqueta de cada um e a etapa
 // GET ?t=             o registro inteiro, o link, a etiqueta, o checklist e a presença (dono ou admin)
-// POST                cria { ficha, etapa? } e devolve { t, link, registro }; exige o nome. A etapa é a do papel: o SDR cria R1, o closer
+// POST                cria { ficha, etapa? } e devolve { t, link, registro }; a personalização é opcional. A etapa é a do papel: o SDR cria R1, o closer
 //                     cria R2; o admin escolhe (R2 se não disser). Pedir a etapa de outro papel dá 403.
 // PUT ?t=             { ficha, base, nota?, conferido? } salva a ficha (dono ou admin). base é a versão da ficha que o
 //                     formulário carregou (fichaEm): se outra pessoa salvou depois, 409 com quem salvou e quando.
@@ -61,7 +61,6 @@ export default async function handler(req, res) {
       const V = await leVersoesCom(entrada && entrada.versao);
       const ficha = limpaFicha(entrada, V, etapa);
       if (versaoInvalida(entrada, ficha, etapa)) return manda(res, 400, { erro: 'Essa variação do ' + rotulo(etapa) + ' não existe mais. Recarregue a página e escolha de novo.' });
-      if (!ficha.nome || ficha.nome.length < 2) return manda(res, 400, { erro: 'Coloque o nome do atleta.' });
       const agora = new Date().toISOString();
       let reg = null;
       // o código é aleatório; se por acaso já existir, sorteia outro (gravação só se o arquivo não existe)
@@ -124,7 +123,6 @@ export default async function handler(req, res) {
       // a ficha, com versão: se mudou desde que o formulário carregou, 409 (o painel pergunta: recarregar ou sobrescrever)
       const ficha = limpaFicha(b.ficha, V, etapa);
       if (versaoInvalida(b.ficha, ficha, etapa)) return manda(res, 400, { erro: 'Essa variação do ' + rotulo(etapa) + ' não existe mais. Recarregue a página e escolha de novo.' });
-      if (!ficha.nome || ficha.nome.length < 2) return manda(res, 400, { erro: 'Coloque o nome do atleta.' });
       let conflitoCom = null, mudou = [];
       const reg = await mudaRegistro(t, r => {
         conflitoCom = null; mudou = [];

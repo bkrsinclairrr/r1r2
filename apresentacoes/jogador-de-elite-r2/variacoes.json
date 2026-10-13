@@ -1,27 +1,27 @@
 {
   "v": 1,
-  "gerado": "2026-10-13T15:17:30.900Z",
+  "gerado": "2026-10-13T16:28:30.207Z",
   "paginas": [
     {
       "id": "principal",
       "caminho": "/",
-      "nome": "R2 · Roteiro anterior sem foto",
-      "resumo": "O R2 de 25 slides, o de antes do R2 novo, com O combinado e O investimento. Não mostra a foto do lead.",
+      "nome": "R2 · Roteiro clássico completo",
+      "resumo": "O R2 de 25 slides, o de antes do R2 novo, com O combinado e O investimento. A foto aparece somente no slide de escolha.",
       "quando": "Só se precisar da versão de 25 slides. Na dúvida, use o R2 novo.",
       "validacao": "em-validacao",
       "lead": {
         "nome": true,
-        "foto": false
+        "foto": true
       },
       "slides": 25,
       "opcionais": [],
-      "hash": "3666bd805e9b3dcd5527edc8f3dce9a8eb80c10a"
+      "hash": "b65888484e43e9a3d970dba7805c149cc02c4b1f"
     },
     {
       "id": "acompanhamento",
       "caminho": "/variacoes/acompanhamento/",
       "nome": "R2 · Oferta R$247,90 e R$500",
-      "resumo": "R2 com Scouting por R$ 247,90 e Legacy por R$ 500, dossiê com foto, relatório do Zyron e clubes compatíveis. Garantia antes do Bem-vindo.",
+      "resumo": "R2 com Scout PRO por R$ 247,90 e Legacy por R$ 500, dossiê com foto, relatório do Zyron e clubes compatíveis. Garantia antes do Bem-vindo.",
       "quando": "Quando esta oferta de dois planos for a aprovada para a família. O nome do atleta continua na apresentação.",
       "validacao": "nao-validada",
       "lead": {
@@ -30,22 +30,22 @@
       },
       "slides": 25,
       "opcionais": [],
-      "hash": "5435a14ec550d460a5ad9dd93ea1382487ef4c84"
+      "hash": "9736b67e53d99b0b413f5540a815edc0db59ce14"
     },
     {
       "id": "tecnica",
       "caminho": "/variacoes/tecnica/",
-      "nome": "R2 · Técnica anterior sem foto",
-      "resumo": "A versão técnica do R2 de 25 slides: fala de par pra par, sem explicar o básico. Não mostra a foto do lead.",
+      "nome": "R2 · Técnica com roteiro clássico",
+      "resumo": "A versão técnica do R2 de 25 slides: fala de par pra par, sem explicar o básico. A foto aparece somente no slide de escolha.",
       "quando": "Lead com vivência no meio (base de clube, federado, ex-jogador, técnico) e só se precisar da versão de 25 slides.",
       "validacao": "em-validacao",
       "lead": {
         "nome": true,
-        "foto": false
+        "foto": true
       },
       "slides": 25,
       "opcionais": [],
-      "hash": "ff5a6a99f4c023c5e75bd6f4698229eae77faaf7"
+      "hash": "a4235b06f07cc22e8061886142f3f00dd21c57af"
     }
   ]
 }

@@ -16,7 +16,7 @@ test('a oferta limita os planos no painel; as outras páginas continuam com trê
   const R = globalThis.R2_REGRAS;
   const oferta = { id: 'r2a-acompanhamento', deck: 'r2-anterior', etapa: 'r2', caminho,
     opcionais: [], recursos: { nomeTela: false, foto: false, pular: false } };
-  assert.deepEqual(R.planosDaVersao(oferta), ['Scouting', 'Assessoria de Elite Legacy']);
+  assert.deepEqual(R.planosDaVersao(oferta), ['Scout PRO', 'Assessoria de Elite Legacy']);
   assert.deepEqual(R.planosDaVersao({ id: 'principal', caminho: '/' }), R.PLANOS);
 });
 
@@ -57,7 +57,7 @@ test('a oferta é descoberta pelo painel e funciona com o mesmo link, nome, plan
     await ui.avalia(`(() => { const f = document.querySelector('#f-entrar'); f.login.value = ${JSON.stringify(s.adminLogin)}; f.senha.value = ${JSON.stringify(s.adminSenha)}; f.requestSubmit(); return 1; })()`);
     const opcoes = `[...document.querySelector('#f-editor [name="plano"]').options].map(o => o.value).filter(Boolean)`;
     assert.ok(await ui.ate(`!document.querySelector('#v-editor').hidden && (${opcoes}).length === 2`));
-    assert.deepEqual(await ui.avalia(opcoes), ['Assessoria de Elite Legacy', 'Scouting']);
+    assert.deepEqual(await ui.avalia(opcoes), ['Assessoria de Elite Legacy', 'Scout PRO']);
     await ui.avalia(`document.querySelector('#versoes input[value="principal"]').click(); 1`);
     assert.equal((await ui.avalia(opcoes)).length, 3, 'as outras páginas continuam com o intermediário');
     await ui.avalia(`const sel=document.querySelector('#f-editor [name="plano"]');sel.value='Assessoria PRO';sel.dispatchEvent(new Event('input',{bubbles:true}));document.querySelector('#versoes input[value="r2a-acompanhamento"]').click(); 1`);
@@ -124,7 +124,7 @@ test('a oferta é descoberta pelo painel e funciona com o mesmo link, nome, plan
     assert.doesNotMatch(await p.avalia('document.body.textContent'), /o mais completo|R\$ 997|R\$ 1\.497|R\$ 2\.997/i);
     await p.avalia(`document.querySelector('[data-plano-troca="scouting"]').click(); 1`);
     await espera(500);
-    assert.equal(await p.avalia(`JSON.parse(localStorage.getItem('je-r2-dossie-ficha-${criado.j.t}')).plano`), 'Scouting');
+    assert.equal(await p.avalia(`JSON.parse(localStorage.getItem('je-r2-dossie-ficha-${criado.j.t}')).plano`), 'Scout PRO');
     assert.ok(!a.console_.some(e => e.startsWith('EXC')) && !p.console_.some(e => e.startsWith('EXC')), 'sem exceções de script');
   } finally { await nav.fecha(); await s.fecha(); }
 });

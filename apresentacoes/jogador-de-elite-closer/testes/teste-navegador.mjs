@@ -154,8 +154,8 @@ try {
   /* ---------- o link e o R2 aberto por ele ---------- */
   const link = await P.avalia("document.querySelector('#lk-url').value");
   ok(link === s.deck + '/?a=' + t, 'o link é o deck com ?a=<código> (' + link.replace(s.deck, '…') + ')');
-  const Fam = await nav.aba(link + '#1', { largura: 1920, altura: 1080 });
-  ok(await Fam.ate("(() => { const i = document.querySelector('#stage > .slide.active img[data-src=\"fotoUrl\"]'); return i && i.complete && i.naturalWidth === 960; })()", 12000), 'o R2 pelo link mostra o retrato na capa');
+  const Fam = await nav.aba(link + '#2', { largura: 1920, altura: 1080 });
+  ok(await Fam.ate("(() => { const i = document.querySelector('#stage > .slide.active img[data-src=\"selecaoFotoUrl\"]'); return i && i.complete && i.naturalWidth === 960; })()", 12000), 'o R2 pelo link mostra o retrato no slide de escolha');
   ok(/Dossiê · Lucas Silva/.test(await Fam.avalia("document.querySelector('.selo').textContent")) && /Montado para Lucas Almeida da Silva/.test(await Fam.avalia("document.querySelector('.cp-montado').textContent")), 'e o nome: "Dossiê · Lucas Silva" e "Montado para Lucas Almeida da Silva."');
   await tela(Fam, 'n4-r2-capa');
 
@@ -179,7 +179,7 @@ try {
   const nDepois = (await carla.get('/api/atletas?t=' + t)).j.registro.foto.versao;
   ok(nDepois === nAntes + 1, 'a versão sobe (' + nAntes + ' → ' + nDepois + ')');
   await Pz2.avalia("document.querySelector('#pz-atualizar').click(); 1");
-  ok(await Fam.ate(`(() => { const i = document.querySelector('#stage > .slide.active img[data-src="fotoUrl"]'); return i && /&n=${nDepois}$/.test(i.getAttribute('src')) && i.complete && i.naturalWidth === 960; })()`, 12000), '"Atualizar do painel" no apresentador: a tela da família troca pra foto nova');
+  ok(await Fam.ate(`(() => { const i = document.querySelector('#stage > .slide.active img[data-src="selecaoFotoUrl"]'); return i && /&n=${nDepois}$/.test(i.getAttribute('src')) && i.complete && i.naturalWidth === 960; })()`, 12000), '"Atualizar do painel" no apresentador: a tela da família troca pra foto nova');
 
   /* ---------- painel fora do ar: a família segue com a ficha guardada, sem erro ---------- */
   await Fam.envia('Network.enable');
@@ -187,7 +187,7 @@ try {
   await Fam.vai('about:blank'); await Fam.vai(link + '#2');
   await espera(2500);
   const famTxt = await Fam.avalia("document.body.innerText");
-  ok(/LUCAS SILVA, VOCÊ FOI/i.test(famTxt) && !/erro|não consegui|indisponível/i.test(famTxt) && !(await Fam.avalia("!!document.querySelector('#je-inativo')")), 'painel fora do ar: a família vê o deck com a ficha guardada deste link e nenhum erro');
+  ok(/LUCAS SILVA[\s\S]*VOCÊ FOI/i.test(famTxt) && !/erro|não consegui|indisponível/i.test(famTxt) && !(await Fam.avalia("!!document.querySelector('#je-inativo')")), 'painel fora do ar: a família vê o deck com a ficha guardada deste link e nenhum erro');
   await Fam.envia('Network.setBlockedURLs', { urls: [] });
 
   /* ---------- "Encerrar e limpar" ---------- */

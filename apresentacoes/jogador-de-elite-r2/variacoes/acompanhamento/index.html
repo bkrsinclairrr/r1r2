@@ -16,7 +16,7 @@
 <script type="application/json" id="r2-variacao">
 {
   "nome": "R2 · Oferta R$247,90 e R$500",
-  "resumo": "R2 com Scouting por R$ 247,90 e Legacy por R$ 500, dossiê com foto, relatório do Zyron e clubes compatíveis. Garantia antes do Bem-vindo.",
+  "resumo": "R2 com Scout PRO por R$ 247,90 e Legacy por R$ 500, dossiê com foto, relatório do Zyron e clubes compatíveis. Garantia antes do Bem-vindo.",
   "quando": "Quando esta oferta de dois planos for a aprovada para a família. O nome do atleta continua na apresentação.",
   "validacao": "nao-validada",
   "lead": {
@@ -27,6 +27,7 @@
 }
 </script>
 <link rel="stylesheet" href="../../assets/variacoes/acompanhamento.css">
+<link rel="stylesheet" href="../../assets/foto-atleta.css">
 </head>
 <body>
 <div class="viewport" id="viewport">
@@ -40,42 +41,7 @@
 <p class="b" style="font-size:42px;line-height:1.25;margin-top:42px!important">O que a equipe viu no seu perfil, o que vale desenvolver e onde o seu jogo pode fazer sentido. Tudo reunido para esta conversa.</p><p class="zx-frase">Seu nome. Seu perfil. Seu próximo passo.</p></div>
 <div class="a" style="left:1170px;top:115px;width:570px;height:790px"><div class="zx-retrato"><img data-if="fotoOk" data-src="fotoUrl" alt="Foto do atleta"><b data-ifnot="fotoOk" data-bind="fotoIni"></b><div class="zx-retrato-caption"><span>Montado para</span><strong data-bind="nome" data-fb="você"></strong><small data-bind="dossieNo"></small></div></div></div><p class="a legal" style="left:120px;top:1010px;width:1640px">Jogador de Elite · Preparado para o atleta identificado nesta apresentação.</p></section>
 
-<section class="slide" data-slide-origem="2">
-  <div class="fill" style="background:radial-gradient(40% 55% at 78% 48%,rgba(230,219,184,.08),rgba(6,11,20,0) 70%)"></div>
-  <div class="a" style="left:120px;top:150px;width:1020px">
-    <p class="label" data-ifnot="origemZyron">Por que você</p>
-    <p class="label ice" data-if="origemZyron">Pré-seleção Zyron</p>
-    <p class="t t-130 rise" style="margin-top:44px!important"><span data-if="nome"><span data-bind="nome"></span>, você</span><span data-ifnot="nome">Você</span> foi escolhido.</p>
-    <div data-if="origemZyron">
-      <p class="b b-44 rise" style="margin-top:40px!important;color:var(--white);--d:.1s">O <span class="ice">Zyron</span> leu o seu vídeo. A equipe aprovou o que viu.</p>
-      <div class="rise" data-if="caracteristicas" style="margin-top:30px;--d:.16s"><p class="label bare" style="font-size:26px;margin-bottom:10px!important">O que chamou atenção</p><p style="font-size:42px;line-height:1.25;font-weight:600;color:var(--white)" data-bind="caracteristicas"></p></div>
-    </div>
-    <div data-if="origemForm">
-      <p class="b b-44 rise" style="margin-top:40px!important;color:var(--white);--d:.1s">A equipe leu a sua história e viu o jogador que você já é.</p>
-      <div class="rise" data-if="experiencia" style="margin-top:30px;--d:.16s"><p class="label bare" style="font-size:26px;margin-bottom:10px!important">O que você contou</p><p style="font-size:42px;line-height:1.25;font-weight:600;color:var(--white)" data-bind="experiencia"></p></div>
-    </div>
-    <div data-if="origemOutro">
-      <p class="b b-44 rise" style="margin-top:40px!important;color:var(--white);--d:.1s">A equipe analisou o seu jogo e aprovou o seu perfil.</p>
-    </div>
-  </div>
-  <p class="a rise" style="left:120px;top:900px;width:1040px;font-size:48px;line-height:1.22;font-weight:600;color:var(--sand-l);--d:.24s">Hoje eu trago o plano pra levar você até lá.</p>
-  <div class="doc rise" style="left:1250px;top:190px;width:560px;height:700px;padding:48px 52px;--d:.08s">
-    <p class="dh ok">Perfil aprovado</p>
-    <div style="height:1px;background:var(--line);margin:26px 0 34px"></div>
-    <p class="t" data-fit="456" style="font-size:84px;line-height:.95;white-space:nowrap"><span data-if="nome" data-bind="nome"></span><span data-ifnot="nome">Você</span></p>
-    <div style="margin-top:34px;display:grid;gap:18px">
-      <div data-if="posicao"><p class="dh" style="font-size:24px">Posição</p><p style="font-size:36px;color:var(--white);margin-top:4px!important" data-bind="posicao"></p></div>
-      <div data-if="idade"><p class="dh" style="font-size:24px">Idade</p><p style="font-size:36px;color:var(--white);margin-top:4px!important"><span data-bind="idade"></span> anos</p></div>
-      <div data-if="cidade"><p class="dh" style="font-size:24px">Cidade</p><p style="font-size:36px;color:var(--white);margin-top:4px!important" data-bind="cidade"></p></div>
-    </div>
-    <div style="position:absolute;left:52px;right:52px;bottom:44px;border-top:1px solid rgba(200,184,138,.35);padding-top:24px">
-      <p class="label bare ice" data-if="origemZyron" style="font-size:26px;letter-spacing:.22em">Vídeo analisado pelo Zyron</p>
-      <p class="label bare" data-ifnot="origemZyron" style="font-size:26px;letter-spacing:.22em">Perfil lido pela equipe</p>
-      <p class="label bare muted" data-if="dossieCod" style="font-size:24px;letter-spacing:.2em;margin-top:10px!important">Dossiê nº <span data-bind="dossieCod"></span></p>
-    </div>
-  </div>
-  <div class="brackets sand" style="left:1250px;top:190px;width:560px;height:700px"><i></i><i></i><i></i><i></i></div>
-</section>
+<section class="slide escolha-atleta" data-slide-origem="2" data-foto-slide="escolha"><div class="escolha-texto"><p class="escolha-selo"><i></i> Por que você · Jogador de Elite</p><h2 class="escolha-titulo"><span class="escolha-nome" data-if="nome"><span data-bind="nome"></span>,</span><br><span data-ifnot="nome">Você</span><span data-if="nome">você</span> foi escolhido<br>para esta conversa.</h2><p class="escolha-abertura">Esta apresentação parte do seu perfil e do próximo passo que você busca no futebol. O plano ganha sentido quando começa em você.</p><div class="escolha-contexto" data-if="selecaoContexto"><span>O que chamou atenção no seu perfil</span><p data-bind="selecaoContexto"></p></div><div class="escolha-direcao"><div><b>Entender seu jogo</b><small>O Zyron transforma os lances em uma leitura do seu perfil.</small></div><div><b>Construir evolução</b><small>No Scout PRO, sete módulos conectam conhecimento e rotina.</small></div><div><b>Definir direção</b><small>O escopo do plano orienta o acompanhamento e os próximos passos.</small></div></div><p class="escolha-assinatura">Seu perfil. Sua evolução. Uma direção para seguir.</p></div><div class="escolha-retrato"><img data-src="selecaoFotoUrl" data-if="selecaoFotoOk" alt="Foto do jogador escolhido para esta apresentação"><div class="escolha-inicial" data-ifnot="selecaoFotoOk"><span data-bind="selecaoInicial"></span></div><div class="escolha-retrato-rodape"><span>Apresentação preparada para</span><strong><span data-if="nome" data-bind="nome"></span><span data-ifnot="nome">Seu próximo passo</span></strong><p data-bind="selecaoPerfil" data-if="selecaoPerfil"></p><p data-if="selecaoCodigo">Dossiê <span data-bind="selecaoCodigo"></span> · Individual</p></div></div><p class="escolha-legal">Jogador de Elite · Uma conversa sobre o seu desenvolvimento.<span data-if="selecaoFotoOk"> Foto do jogador usada com autorização.</span></p></section>
 
 <section class="slide" data-slide-origem="3">
   <div class="a page" style="left:80px;top:60px;width:1760px;height:960px"></div>
@@ -233,7 +199,7 @@
     <div><p class="k">Quem corre o risco</p><p>Vocês, sozinhos</p><p class="us">A gente, que só ganha quando ele fecha</p></div>
   </div>
   <!-- escopo: o "Com a gente" é a estrutura completa (Legacy); o 23 volta a estas linhas, plano por plano -->
-  <p class="a legal" style="left:120px;top:882px;width:1600px">Com a gente: a estrutura completa, a da Assessoria de Elite Legacy. O Scouting e a Assessoria PRO entregam uma parte dela.</p>
+  <p class="a legal" style="left:120px;top:882px;width:1600px">Com a gente: a estrutura completa, a da Assessoria de Elite Legacy. O Scout PRO e a Assessoria PRO entregam uma parte dela.</p>
   <p class="a rise" style="left:120px;top:940px;width:1600px;font-size:44px;line-height:1.2;font-weight:600;color:var(--sand-l);--d:.2s">O <span class="sig">olhômetro</span> pode não ter visto você. O <span class="ice">Zyron</span> viu.</p>
 </section>
 
@@ -264,30 +230,11 @@
   </div>
 </section>
 
-<section class="slide" data-slide-origem="15">
-  <div class="fill" style="background:radial-gradient(42% 60% at 76% 44%,rgba(230,219,184,.14),rgba(6,11,20,0) 70%)"></div>
-  <div class="fill grain"></div>
-  <div class="a" style="left:120px;top:110px;width:840px">
-    <p class="label">Por que dá certo</p>
-    <p class="t t-130 rise" style="margin:44px 0 0 -4px!important">Nem tudo é talento.</p>
-    <p class="b b-40 rise" style="margin-top:40px!important;color:var(--white);--d:.08s">Tem jogador bom parado em casa. O <span class="sig">olhômetro</span> não viu, e ninguém levou ele ao clube certo, na hora certa.</p>
-    <p class="rise" style="font-size:46px;line-height:1.22;font-weight:600;color:var(--sand-l);margin-top:44px!important;--d:.16s">Talento você já tem. O resto é com a gente.</p>
-  </div>
-  <div class="a eff rise" style="left:1060px;top:150px;width:760px;--d:.1s">
-    <p class="sub white" style="font-size:56px">Mais de</p>
-    <p class="t sand-l big">93%</p>
-    <p class="b b-40" style="color:var(--white);margin-top:18px!important">dos nossos atletas são encaminhados a clubes em até <b class="sand-l">3 meses</b>.</p>
-    <div class="stats">
-      <div><p class="n">+250</p><p class="k">clubes na nossa rede</p></div>
-      <div><p class="n">+75</p><p class="k">encaminhados no último mês</p></div>
-      <div><p class="n">10+</p><p class="k">anos revelando atletas</p></div>
-    </div>
-  </div>
-</section>
+<section class="slide formacao-atleta" data-slide-origem="15"><div class="formacao-intro"><p class="label">Scout PRO · Formação incluída</p><h2><span data-bind="nome" data-fb="Você"></span>, seu jogo tem leitura.<br><span>Sua evolução tem método.</span></h2></div><div class="formacao-grid"><div class="formacao-sete"><b>7</b><strong>Módulos de formação</strong><p>Uma trilha para conectar conhecimento, rotina e desenvolvimento.</p></div><div class="formacao-corpo"><h3>Não basta entender o que melhorar.<br>É preciso aprender a trabalhar nisso.</h3><p>Conteúdos organizados em sete módulos para desenvolver o atleta além do lance isolado. A formação já faz parte do Scout PRO.</p><div class="formacao-temas"><span>Performance</span><span>Psicologia</span><span>Nutrição</span><span>Comportamento</span><span>Imagem</span></div><div class="formacao-pilares"><div><b>O Zyron lê</b><p>Os lances enviados viram uma leitura do seu jogo.</p></div><div><b>O analista acompanha</b><p>Relatório de evolução a cada 15 dias no Scout PRO.</p></div><div><b>Você desenvolve</b><p>Os sete módulos apoiam o aprendizado e a aplicação na sua rotina.</p></div></div></div></div><p class="formacao-fecho">Scout PRO: análise do seu jogo + acompanhamento da evolução + sete módulos de formação.</p><p class="escolha-legal">A orientação humana e os encaminhamentos seguem o escopo de cada plano.</p></section>
 
 <section class="slide" data-slide-origem="16"><div class="fill grain"></div><div class="fill" style="background:radial-gradient(45% 85% at 75% 48%,rgba(200,184,138,.14),transparent)"></div>
 <div class="a" style="left:120px;top:115px;width:740px"><p class="label">Oportunidades do seu perfil</p><h2 class="t" style="font-size:94px;line-height:.98;margin-top:32px!important"><span class="sand-l" data-bind="nome" data-fb="Você"></span>,<br>seu jogo tem<br>um contexto.</h2><div class="zx-oportunidade-atleta" style="margin-top:30px"><span class="zx-avatar"><img data-if="avatarOk" data-src="avatarUrl" alt="Foto do atleta"><b data-ifnot="avatarOk" data-bind="fotoIni"></b></span><p>Essa lista parte do seu perfil.<br><strong>Foi preparada para você.</strong></p></div><p class="b" style="font-size:32px;line-height:1.3;margin-top:24px!important">O match transforma uma busca genérica em direção: clubes onde posição, categoria e características do seu jogo fazem sentido juntos.</p>
-<p class="zx-frase" style="font-size:28px">A oportunidade começa no encaixe.<br>O próximo passo é trabalhar por ele.</p><p class="zx-escopo">No Scouting, a leitura orienta seu desenvolvimento. No Legacy, a equipe também acompanha os encaminhamentos e a apresentação aos clubes.</p></div>
+<p class="zx-frase" style="font-size:28px">A oportunidade começa no encaixe.<br>O próximo passo é trabalhar por ele.</p><p class="zx-escopo">No Scout PRO, a leitura orienta seu desenvolvimento. No Legacy, a equipe também acompanha os encaminhamentos e a apresentação aos clubes.</p></div>
 <div class="a zx-oportunidades" style="left:950px;top:126px;width:850px"><p class="zx-k">Compatibilidades do seu relatório</p><div class="zx-clubes" data-dossie="clubes"></div><div class="zx-proximo"><span>O próximo passo</span><p>Validar o cenário de cada clube, orientar sua preparação e definir com a equipe o caminho de apresentação.</p></div></div>
 <p class="a legal" style="left:120px;top:1010px;width:1620px">Match é compatibilidade de perfil. Não representa vaga aberta, convite ou garantia de contratação.</p></section>
 
@@ -390,7 +337,7 @@
   <div class="a path rise" data-ifnot="planoId=legacy" style="left:1080px;top:420px;width:740px;--d:.16s">
     <div class="st"><i></i><p class="k">Hoje</p><p class="d">Confirmado, a equipe entra em contato com vocês.</p></div>
     <div class="st"><i></i><p class="k">A cada vídeo novo</p><p class="d">O <span class="ice">Zyron</span> lê o seu jogo, e sai um relatório novo.</p></div>
-    <div class="st goal"><i></i><p class="k">No ritmo de vocês</p><p class="d">Leitura e relatório no Scouting; equipe de carreira todo dia no Legacy. Vocês escolhem agora.</p></div>
+    <div class="st goal"><i></i><p class="k">No ritmo de vocês</p><p class="d">Leitura e relatório no Scout PRO; equipe de carreira todo dia no Legacy. Vocês escolhem agora.</p></div>
   </div>
   <div class="a path rise" data-if="planoId=legacy" style="left:1080px;top:420px;width:740px;--d:.16s">
     <div class="st"><i></i><p class="k">Hoje</p><p class="d">A vaga confirmada. O gerente de carreira e o <span class="ice">Zyron</span> começam.</p></div>
@@ -405,7 +352,7 @@
 <div class="a" style="left:120px;top:115px;width:950px"><p class="label">Você já foi escolhido</p><p class="t rise" style="font-size:110px;line-height:.94;margin-top:36px!important">Seu jogo.<br><span class="sand-l">Acompanhado<br>todo dia.</span></p><p class="b b-40 rise" style="margin-top:40px!important"><span data-if="nome"><span data-bind="nome"></span>, </span>a equipe viu potencial no seu jogo. Agora ele precisa de direção, continuidade e gente que acompanhe os próximos passos.</p></div>
 <div class="a path rise" style="left:1170px;top:165px;width:610px">
 <div class="st"><i></i><p class="k">O funcionamento da IA</p><p class="d">O investimento paga o funcionamento da IA: o <span class="ice">Zyron</span> acompanha seu jogo a partir dos vídeos enviados, com prioridades e histórico de evolução.</p></div>
-<div class="st"><i></i><p class="k">O trabalho dos profissionais</p><p class="d">Paga também os profissionais que vão acompanhar você: relatório do analista a cada 15 dias no Scouting; equipe de carreira todo dia no Legacy.</p></div>
+<div class="st"><i></i><p class="k">O trabalho dos profissionais</p><p class="d">Paga também os profissionais que vão acompanhar você: relatório do analista a cada 15 dias no Scout PRO; equipe de carreira todo dia no Legacy.</p></div>
 <div class="st goal"><i></i><p class="k">Acompanhamento diário</p><p class="d">IA nos dois planos. Estrategista e gerente todo dia no Legacy. Você sabe o que trabalhar e tem com quem contar.</p></div></div>
 <p class="a legal" style="left:120px;top:1002px;width:1640px">O acompanhamento segue o escopo do plano e os vídeos enviados. Não há promessa de contratação ou resposta humana 24 horas.</p></section>
 
@@ -464,7 +411,7 @@
     </div>
   </div>
   <p class="a legal" data-if="planoId=legacy" style="left:1250px;top:930px;width:560px">Imagem ilustrativa.</p>
-  <!-- Assessoria PRO e Scouting: o cartão do plano, com o nome do atleta -->
+  <!-- Assessoria PRO e Scout PRO: o cartão do plano, com o nome do atleta -->
   <div class="doc rise" data-ifnot="planoId=legacy" style="left:1250px;top:150px;width:560px;height:700px;padding:48px 52px;--d:.12s">
     <p class="dh">Jogador de Elite</p>
     <div style="height:1px;background:var(--line);margin:26px 0 34px"></div>
@@ -500,6 +447,7 @@
 <script src="../../assets/variacoes/dossie-acompanhamento.js"></script>
 <script src="../../assets/ordem-garantia.js"></script>
 <script>window.VARIACAO_NOME = "R2 · Oferta R$247,90 e R$500";</script>
+<script src="../../assets/foto-atleta.js"></script>
 <script src="../../assets/deck.js"></script>
 </body>
 </html>
