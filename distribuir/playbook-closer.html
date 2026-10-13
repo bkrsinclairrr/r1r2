@@ -169,6 +169,12 @@ td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top}
 td:first-child{font-weight:500}
 td.num{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600}
 table.largo{min-width:820px}
+.grade.pagamentos{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.pag .k .per{font-size:.55em;color:var(--ink-2);margin-left:2px}
+.pag .url{font-size:.82rem;overflow-wrap:anywhere;color:var(--accent-strong)}
+.pag .acoes{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:4px}
+a.btn{text-decoration:none;display:inline-flex;align-items:center}
+.btn.copiar.ok{background:var(--green-soft);color:var(--green-ink);border-color:var(--green)}
 
 .passo{display:flex;flex-direction:column;gap:12px;padding:18px;border:1px solid var(--line);border-radius:12px}
 .passo > h3{margin:0}
@@ -228,7 +234,7 @@ footer .credito{font-size:.68rem;color:var(--ink-3);opacity:.6}
 
 <div class="topo">
   <div class="topo-in">
-    <div class="marca"><span class="papel">Closer</span>Playbook <span class="v">v8 · 28/09/2026</span></div>
+    <div class="marca"><span class="papel">Closer</span>Playbook <span class="v">v9 · 30/09/2026</span></div>
     <button class="btn" id="modo-apresentacao" type="button" aria-pressed="false">Modo apresentação</button>
   </div>
 </div>
@@ -261,9 +267,9 @@ footer .credito{font-size:.68rem;color:var(--ink-3);opacity:.6}
   <div class="fcard"><p class="fx">Closer = Diagnóstico + Proposta + Fechamento</p><p class="fr">↳ reunião qualificada + proposta + decisão = <u>venda</u></p></div>
   <p class="lede">O Closer faz a R2. Chega sabendo o nome do pai, da mãe e do atleta, a dor da família e quanto ela já gastou, porque leu a ficha da R1 no CRM. Faz a família imaginar o depois, apresenta o que ninguém mais tem (um gerente de carreira todo dia e o Zyron), ancora o valor e conduz a decisão como quem escolhe. Quem precisa da vaga é a família.</p>
   <dl class="meta">
-    <div><dt>Versão</dt><dd>v8, 28/09/2026</dd></div>
+    <div><dt>Versão</dt><dd>v9, 30/09/2026</dd></div>
     <div><dt>Entrada</dt><dd>Ficha da R1 do SDR no CRM</dd></div>
-    <div><dt>Planos</dt><dd>R$2997 (mais vendido) · R$1497 · R$497</dd></div>
+    <div><dt>Planos</dt><dd>R$2997 (mais vendido) · R$1497,90 · R$497,90 · Scouter R$47,90/mês · <a href="#links-pagamento">links de pagamento</a></dd></div>
   </dl>
   <div class="legenda" aria-label="Legenda">
     <span class="item"><var>atleta</var> dado do CRM ou da empresa</span>
@@ -357,7 +363,7 @@ footer .credito{font-size:.68rem;color:var(--ink-3);opacity:.6}
       <tr><td>Quanto já investiram</td><td>Régua do valor (seção 07)</td></tr>
       <tr><td>Locomoção pra outro estado</td><td>Cenário: "quando ele for pro clube em..."</td></tr>
       <tr><td>Decisores e como decidem</td><td>Confirmar todos na call</td></tr>
-      <tr><td>Sinais de budget</td><td>Escolher o plano: R$2997, R$1497 ou R$497</td></tr>
+      <tr><td>Sinais de budget</td><td>Escolher o plano: R$2997, R$1497,90, R$497,90 ou o Scouter mensal (seção 07)</td></tr>
       <tr><td>Resposta ao "faz sentido a gente lucrar em cima de vocês?"</td><td>Ancoragem: "vocês mesmos disseram que não faz sentido"</td></tr>
       <tr><td>Pré-compromisso de decidir na R2</td><td>Fechamento: "vocês combinaram de decidir hoje"</td></tr>
       <tr><td>Caso citado e se ouviram do gerente e do Zyron</td><td>Retomar e aprofundar</td></tr>
@@ -653,15 +659,46 @@ footer .credito{font-size:.68rem;color:var(--ink-3);opacity:.6}
       <p class="x"><b>O card avisa:</b> BANT não é interrogatório. Ninguém pergunta "quanto você pode pagar?".</p>
     </figcaption>
   </figure>
-  <div class="tbl"><table>
-    <thead><tr><th>Plano</th><th>Valor</th><th>Por dia em 3 meses</th><th>Quando apresentar</th></tr></thead>
+  <div class="tbl"><table class="largo">
+    <thead><tr><th>Plano</th><th>Produto</th><th>Ticket</th><th>Por dia em 3 meses</th><th>Quando apresentar</th></tr></thead>
     <tbody>
-      <tr><td>Principal</td><td class="num">R$2997</td><td class="num">menos de R$34</td><td>Padrão. O mais vendido. Primeiro sempre que o CRM não mostra aperto financeiro.</td></tr>
-      <tr><td>Intermediário</td><td class="num">R$1497</td><td class="num">menos de R$17</td><td>CRM com dor financeira forte, ou objeção de caixa real depois do principal.</td></tr>
-      <tr><td>Entrada</td><td class="num">R$497</td><td class="num">menos de R$6</td><td>Objeção de caixa real que os outros dois não resolvem.</td></tr>
+      <tr><td>Principal</td><td>Assessoria de Elite - Legacy</td><td class="num">R$2997</td><td class="num">menos de R$34</td><td>Padrão. O mais vendido. Primeiro sempre que o CRM não mostra aperto financeiro.</td></tr>
+      <tr><td>Intermediário</td><td>Assessoria de Elite</td><td class="num">R$1497,90</td><td class="num">menos de R$17</td><td>CRM com dor financeira forte, ou objeção de caixa real depois do principal.</td></tr>
+      <tr><td>Entrada</td><td>Scouting PRO</td><td class="num">R$497,90</td><td class="num">menos de R$6</td><td>Objeção de caixa real que os outros dois não resolvem.</td></tr>
+      <tr><td>Mensal</td><td>Scouter - Acompanhamento de Performance</td><td class="num">R$47,90/mês</td><td class="num">menos de R$2</td><td>Último degrau, quando nem a Entrada cabe no caixa. Assinatura mensal: agente de IA que acompanha o atleta, com supervisão de agente humano.</td></tr>
     </tbody>
   </table></div>
   <div class="cartao"><div><span class="tit">Tática</span>Um valor por vez. Se precisar descer de plano, desce pelo escopo, nunca pelo desconto: "existe um formato mais enxuto, com <var>o que muda no plano</var>". Desconto derruba o "é só o custo".</div></div>
+
+  <h3 id="links-pagamento">Links de pagamento</h3>
+  <p>Kirvano. O link só vai depois do sim, pra família pagar na linha com você (seção 10). Antes de mandar, confere se o produto e o ticket batem com o plano que a família aceitou.</p>
+  <div class="grade pagamentos">
+    <div class="peca pag">
+      <h4>Assessoria de Elite - Legacy</h4>
+      <p class="k">R$2997,00</p>
+      <a class="url" href="https://pay.kirvano.com/22aa7d69-394c-41ca-9f30-e5c18c4a9f68" target="_blank" rel="noopener noreferrer">https://pay.kirvano.com/22aa7d69-394c-41ca-9f30-e5c18c4a9f68</a>
+      <div class="acoes"><button class="btn copiar" type="button" data-link="https://pay.kirvano.com/22aa7d69-394c-41ca-9f30-e5c18c4a9f68" aria-label="Copiar link: Assessoria de Elite - Legacy">Copiar link</button><a class="btn" href="https://pay.kirvano.com/22aa7d69-394c-41ca-9f30-e5c18c4a9f68" target="_blank" rel="noopener noreferrer" aria-label="Abrir checkout: Assessoria de Elite - Legacy">Abrir</a></div>
+    </div>
+    <div class="peca pag">
+      <h4>Assessoria de Elite</h4>
+      <p class="k">R$1497,90</p>
+      <a class="url" href="https://pay.kirvano.com/35ec1d60-7899-4b19-a8b2-2b7cbf4f8270" target="_blank" rel="noopener noreferrer">https://pay.kirvano.com/35ec1d60-7899-4b19-a8b2-2b7cbf4f8270</a>
+      <div class="acoes"><button class="btn copiar" type="button" data-link="https://pay.kirvano.com/35ec1d60-7899-4b19-a8b2-2b7cbf4f8270" aria-label="Copiar link: Assessoria de Elite">Copiar link</button><a class="btn" href="https://pay.kirvano.com/35ec1d60-7899-4b19-a8b2-2b7cbf4f8270" target="_blank" rel="noopener noreferrer" aria-label="Abrir checkout: Assessoria de Elite">Abrir</a></div>
+    </div>
+    <div class="peca pag">
+      <h4>Scouting PRO</h4>
+      <p class="k">R$497,90</p>
+      <a class="url" href="https://pay.kirvano.com/3a063481-18ec-4e2f-98f4-ea15a5bbdfdf" target="_blank" rel="noopener noreferrer">https://pay.kirvano.com/3a063481-18ec-4e2f-98f4-ea15a5bbdfdf</a>
+      <div class="acoes"><button class="btn copiar" type="button" data-link="https://pay.kirvano.com/3a063481-18ec-4e2f-98f4-ea15a5bbdfdf" aria-label="Copiar link: Scouting PRO">Copiar link</button><a class="btn" href="https://pay.kirvano.com/3a063481-18ec-4e2f-98f4-ea15a5bbdfdf" target="_blank" rel="noopener noreferrer" aria-label="Abrir checkout: Scouting PRO">Abrir</a></div>
+    </div>
+    <div class="peca pag">
+      <h4>Scouter - Acompanhamento de Performance</h4>
+      <p class="k">R$47,90<span class="per">/mês</span></p>
+      <a class="url" href="https://pay.kirvano.com/851f7e2d-d82a-4687-b811-8deaed4be61f" target="_blank" rel="noopener noreferrer">https://pay.kirvano.com/851f7e2d-d82a-4687-b811-8deaed4be61f</a>
+      <div class="acoes"><button class="btn copiar" type="button" data-link="https://pay.kirvano.com/851f7e2d-d82a-4687-b811-8deaed4be61f" aria-label="Copiar link: Scouter - Acompanhamento de Performance">Copiar link</button><a class="btn" href="https://pay.kirvano.com/851f7e2d-d82a-4687-b811-8deaed4be61f" target="_blank" rel="noopener noreferrer" aria-label="Abrir checkout: Scouter - Acompanhamento de Performance">Abrir</a></div>
+    </div>
+  </div>
+  <div class="cartao vm"><div><span class="tit">Proibido</span>Mandar o link antes do número, ou como "proposta pra ver com calma" (9.12). Link é pra pagar agora, não pra pensar.</div></div>
 </section>
 
 <section id="fechamento">
@@ -918,7 +955,7 @@ footer .credito{font-size:.68rem;color:var(--ink-3);opacity:.6}
     </figcaption>
   </figure>
   <ol class="lista">
-    <li><strong>Pagamento na própria call:</strong> "faz agora comigo na linha", no Pix ou no cartão.</li>
+    <li><strong>Pagamento na própria call:</strong> "faz agora comigo na linha", no Pix ou no cartão, pelo <a href="#links-pagamento">link do plano fechado</a> (seção 07).</li>
     <li><strong>Registro:</strong> venda concluída no CRM e cadastro em Vendas, com o produto e o ticket do plano fechado. A venda entra pendente até a aprovação do Executive.</li>
     <li><strong>Áudio de boas-vindas pro atleta:</strong> "Bem-vindo, <var>atleta</var>. Teu gerente de carreira e o Zyron começam contigo agora."</li>
     <li><strong>Indicação na hora</strong>, enquanto a família tá no pico da empolgação.</li>
@@ -1124,7 +1161,7 @@ footer .credito{font-size:.68rem;color:var(--ink-3);opacity:.6}
   <ol class="pend">
     <li><div><strong>Nome do gerente de carreira</strong> que revelou centenas de jogadores.</div></li>
     <li><div><strong>Como o agente do Zyron acompanha no dia a dia</strong> (canal, frequência de contato).</div></li>
-    <li><div><strong>O que muda entre os planos</strong> de R$2997, R$1497 e R$497, pra descer de plano pelo escopo.</div></li>
+    <li><div><strong>O que muda entre os planos</strong> de R$2997, R$1497,90 e R$497,90, pra descer de plano pelo escopo. E confirmar se o Scouter (R$47,90/mês) entra mesmo como último degrau da escada ou como outra coisa (complemento depois do sim, por exemplo).</div></li>
     <li><div><strong>Custo mensal de mercado</strong> de um gerente de carreira particular e dos profissionais (preparador, analista, vídeo, viagens), pra conta da ancoragem.</div></li>
     <li><div><strong>Condição de pagamento:</strong> parcelamento, Pix e cartão.</div></li>
     <li><div><strong>Como funciona a estrutura do clube na base</strong> quando o atleta vai pra outro estado.</div></li>
@@ -1137,7 +1174,7 @@ footer .credito{font-size:.68rem;color:var(--ink-3);opacity:.6}
 </section>
 
 <footer>
-  <span class="versao">v8 · última atualização: 28/09/2026 às 23:55 (horário de Brasília)</span>
+  <span class="versao">v9 · última atualização: 30/09/2026 às 13:26 (horário de Brasília)</span>
   <span class="credito">Feito por Sinclair</span>
 </footer>
 </main>
@@ -1201,6 +1238,32 @@ footer .credito{font-size:.68rem;color:var(--ink-3);opacity:.6}
     },{rootMargin:'-30% 0px -60% 0px'});
     document.querySelectorAll('main section[id]').forEach(function(s){obs.observe(s)});
   }
+
+  // clipboard moderno primeiro; se o navegador negar, tenta o jeito antigo antes de desistir
+  function copiaAntiga(t){
+    var ta=document.createElement('textarea');
+    ta.value=t;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    var feito=false;try{feito=document.execCommand('copy')}catch(e){}
+    document.body.removeChild(ta);
+    return feito;
+  }
+  function copiarTexto(t){
+    if(navigator.clipboard&&window.isSecureContext){
+      return navigator.clipboard.writeText(t).catch(function(){if(!copiaAntiga(t))throw new Error('sem clipboard')});
+    }
+    return copiaAntiga(t)?Promise.resolve():Promise.reject(new Error('sem clipboard'));
+  }
+  document.querySelectorAll('.btn.copiar').forEach(function(b){
+    b.addEventListener('click',function(){
+      copiarTexto(b.getAttribute('data-link')).then(function(){
+        b.textContent='Link copiado';b.classList.add('ok');
+      },function(){
+        b.textContent='Copie pelo link acima';
+      });
+      setTimeout(function(){b.textContent='Copiar link';b.classList.remove('ok')},1800);
+    });
+  });
 })();
 </script>
 

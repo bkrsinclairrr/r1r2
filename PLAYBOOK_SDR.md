@@ -1,11 +1,19 @@
 # PLAYBOOK_SDR.md
 
-Versão: v9 (28/09/2026)
+Versão: v10 (30/09/2026)
 Espelho em texto de `playbook-sdr.html`. Casos e frases: `CASOS.md`.
 Imagens dos cards: pasta `cards/`.
 Tudo entre colchetes é variável: dado da conversa ou da empresa.
 
 Changelog:
+- v10: nunca abordar do zero (03, 6.1, 6.3, 07, 15, 16). Lead do Zyron é
+  pré-selecionado: a equipe viu o vídeo e se interessou pelas
+  características dele. Lead do formulário é abordado pela história que
+  ele mesmo escreveu (posição, times, experiências). Antes de qualquer
+  contato, o SDR lê a parte de Contexto do lead no CRM, chama o atleta
+  pelo nome o tempo todo e cita o que ele já contou ("quando você jogou
+  no América de Natal..."). A R1 passa a ter cara de oportunidade
+  iminente: o nome dele chegou até a equipe por um motivo.
 - v9: cargo público do SDR vira Estrategista Esportivo (papel interno na
   dashboard continua SDR). Bastidor ao vivo (01): virar pro lado durante
   a ligação quando tá fechando outro atleta, tática que acontece com
@@ -99,7 +107,8 @@ que já falou da própria dor, já conhece o gerente de carreira e o Zyron, já
 sabe que o atleta foi escolhido e já quer ouvir o plano.
 
 Três objetivos:
-1. Fazer o atleta se sentir escolhido. A gente escolhe atletas como ele.
+1. Fazer o atleta se sentir escolhido. A gente escolhe atletas como ele,
+   e mostra isso pelo nome e com o que ele já contou (seção 03).
 2. Mapear tudo e mostrar o diferencial: contexto, dor, experiências,
    avaliações, gastos, locomoção, decisores, e o gerente de carreira e o
    Zyron.
@@ -197,10 +206,41 @@ o atleta aprovado, mesmo quando isso só acontece numa segunda ligação.
 
 | | Veio do Zyron | Veio do formulário do Instagram | Veio muito frio, sem vídeo |
 | --- | --- | --- | --- |
-| O que chega | Avaliação e dados do atleta | Só o cadastro | Só o contato, sem vídeo e sem avaliação |
-| Abertura | Notícia da aprovação, com um dado específico | Seleção: "teu cadastro chegou pra mim" | Escassez e controle: "a gente é seletivo, e antes preciso ver ele jogando" |
+| O que chega | Vídeo e dados do atleta: a equipe viu e se interessou, ele foi pré-selecionado | O formulário: posição, times, experiências | Só o contato, sem vídeo e sem avaliação |
+| Abertura | Pré-seleção: a equipe se interessou pelas características dele, com um dado específico | Seleção pelo que ele escreveu: "teu cadastro chegou pra mim, vi que você jogou no [time]" | Escassez e controle: "a gente é seletivo, e antes preciso ver ele jogando" |
 | R1 | Aprofunda dor, gastos, locomoção, decisores | Vira a própria avaliação e coleta tudo | Não acontece ainda: primeiro pede o vídeo (o "DVD") e recua |
 | Fim da R1 | Perfil aprovado | Perfil aprovado | Perfil aprovado, na ligação de retorno, depois do vídeo analisado |
+
+### Nunca do zero: o que ele já contou
+
+Quase todo lead chega com contexto. Pelo Zyron, a gente já tem o vídeo
+dele e os dados que ele preencheu. Pelo formulário, muito atleta escreve a
+própria história: posição, times por onde passou, experiências. Antes de
+qualquer mensagem ou ligação, o SDR abre a parte de Contexto do lead no
+CRM e separa isso.
+
+Veio do Zyron, pré-selecionado (gatilhos: exclusividade, prova, urgência):
+> "[atleta], o Zyron analisou o teu vídeo e a nossa equipe se interessou
+> pelo que viu: [característica do Contexto]. Foi por isso que o teu nome
+> chegou até mim."
+> "Você foi pré-selecionado pelas tuas características. Tem uma
+> oportunidade aberta pra você agora, e eu quero entender se você tá
+> pronto pra ela."
+
+Veio do formulário, a história dele (gatilhos: conexão, atenção):
+> "[atleta], li aqui o que você escreveu. Quando você jogou no [time do
+> formulário, ex.: América de Natal], você já jogava de [posição]? Como foi
+> lá?"
+> "É por isso que eu tô falando contigo: a tua história chamou atenção da
+> equipe. E a oportunidade é agora."
+
+O nome do atleta vai na abertura, em cada pergunta importante e no
+fechamento. O que ele já informou vira confirmação, nunca pergunta de
+novo: quem sente que foi lido de verdade se sente escolhido.
+
+Regra de ouro: nenhum lead com contexto é abordado do zero. Leia o
+Contexto do lead no CRM antes do primeiro contato e cite na R1, pelo nome,
+o que ele já contou: o vídeo do Zyron ou a história do formulário.
 
 Card Lead magnet (`cards/lead-magnet.png`): Oferta de valor + Formulário +
 Captura de lead. ↳ 1.000 visitas → 220 leads = 22% de conversão.
@@ -224,6 +264,7 @@ Munição antes do primeiro contato:
 | --- | --- | --- | --- |
 | Um ponto forte específico | Dado da avaliação do app | Posts e vídeos do perfil | Ainda não tem, só depois do vídeo |
 | Nome do atleta e do responsável | Cadastro do Zyron | Formulário | O que veio no contato |
+| O que ele já contou | Contexto do CRM: vídeo, dados e características da avaliação | Contexto do CRM: posição, times e experiências do formulário | O que veio no contato |
 | Caso mais parecido | `CASOS.md` | `CASOS.md`, depois da R1 | `CASOS.md`, no retorno com o vídeo |
 | Link da publicação na AGN Football | `CASOS.md` | `CASOS.md` | `CASOS.md` |
 
@@ -364,10 +405,13 @@ O que a R1 precisa descobrir:
 6.1 Pedir licença e dar o motivo:
 > "Oi [responsável], aqui é o [nome], estrategista esportivo da
 > [empresa]. Te peguei numa hora ruim?"
-> Zyron: "Rapidinho: o [atleta] passou na avaliação do Zyron, e antes de
-> passar a ficha dele pro gestor de carreiras eu preciso conhecer vocês."
-> Instagram: "Rapidinho: o cadastro do [atleta] chegou pra mim, e antes de
-> levar o perfil dele pro gestor de carreiras eu preciso conhecer vocês."
+> Zyron: "Rapidinho: o Zyron analisou o vídeo do [atleta] e a nossa
+> equipe se interessou pelas características dele. Ele foi pré-selecionado,
+> e antes de passar a ficha dele pro gestor de carreiras eu preciso
+> conhecer vocês."
+> Instagram: "Rapidinho: o cadastro do [atleta] chegou pra mim. Vi que ele
+> passou pelo [time do formulário]. Antes de levar o perfil dele pro gestor
+> de carreiras, eu preciso conhecer vocês."
 Pedir licença tira a defensiva (Predictable Revenue). Hora ruim: "Te ligo
 às [hora] ou às [hora]?" Nunca "te ligo depois".
 
@@ -382,6 +426,10 @@ Pedir licença tira a defensiva (Predictable Revenue). Hora ruim: "Te ligo
 - "Joga em que posição? Qual teu pé bom?"
 - "Onde você treina hoje? Quantas vezes por semana?"
 - "Já jogou em quais times? Chegou a ser federado?"
+
+Antes de perguntar, confira o Contexto do lead no CRM. O que ele já
+informou vira confirmação, não pergunta: "[atleta], você jogou no [time],
+né? Como foi lá?" Pergunte só o que falta.
 
 6.4 Avaliações: a dor de não ser visto (gatilhos: empatia, aversão à
 perda). Essa é a dor mais forte do atleta: fazer peneira atrás de peneira
@@ -583,7 +631,9 @@ Quem mais quer isso é o atleta. Saindo empolgado da R1, ele mesmo cobra a
 família até o dia da R2. Predictable Revenue: ganhe primeiro o aliado de
 dentro, depois quem decide. Social selling: pessoas compram de pessoas.
 
-1. Falar direto com ele e dizer que ele foi escolhido.
+1. Falar direto com ele, pelo nome, e dizer que ele foi escolhido. Citar o
+   que ele já contou (o vídeo do Zyron ou a história do formulário) mostra
+   que ele foi lido de verdade.
 2. Fazer ele falar do sonho e do que falta. Quem fala se compromete.
 3. Devolver algo específico do jogo dele.
 4. Mostrar a estrutura: gerente de carreira e agente do Zyron só dele.
@@ -873,6 +923,12 @@ Imagens na pasta `cards/`.
 
 Sempre:
 - Primeiro contato em até 7 minutos.
+- Ler o Contexto do lead no CRM antes do primeiro contato e citar na R1 o
+  que ele já contou.
+- Chamar o atleta pelo nome: na abertura, em cada pergunta importante e no
+  fechamento.
+- R1 com cara de oportunidade aberta agora: o nome dele chegou até a
+  equipe por um motivo, e a turma é de 10.
 - R1 completa: nomes, contexto, experiências, avaliações, dor, gastos,
   locomoção, decisores.
 - Gerente de carreira e Zyron em toda R1 e em todo "quanto custa?".
@@ -887,6 +943,8 @@ Sempre:
 
 Proibido:
 - Colocar o perfil do atleta em dúvida.
+- Perguntar de novo o que o atleta já informou no formulário ou no Zyron.
+- Abordar do zero um lead que já tem contexto.
 - Falar preço (R$). Valor percebido não é proibido, é o contrário: pintar
   o resultado e a transformação é papel do SDR, só nunca com número
   junto.
@@ -915,7 +973,9 @@ Proibido:
 10. Lista de atletas publicados pela AGN Football que sejam cases nossos
     de verdade, com país e clube, pra citar mais do que só Joãozinho e
     Kaio (seção 13).
+11. Onde fica o Contexto do lead no CRM e quais campos o formulário e o
+    Zyron preenchem, pro SDR saber exatamente o que ler antes da call.
 
 ---
 
-Última atualização: 28/09/2026 às 23:45 (horário de Brasília).
+Última atualização: 30/09/2026 às 00:40 (horário de Brasília).

@@ -1,0 +1,929 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script>if(!/[?&]raw(&|$)/.test(location.search))document.documentElement.classList.add('apr')</script>
+<title>Área de Membros · anexo pro lead</title>
+<!-- Anexo pro lead: seis telas da área de membros (1080 x 1440, o formato da foto de celular), geradas em PNG e PDF por
+     gerar.mjs, nesta pasta. No navegador abre em modo de apresentação (uma tela por vez, escalada pra caber na janela,
+     setas do teclado, F = tela cheia); com ?raw as seis ficam empilhadas em tamanho real, que é o que o gerar.mjs usa. Atleta, clubes e números são ilustrativos, e o rodapé de cada tela diz isso.
+     As datas saem do dia da geração; ?hoje=AAAA-MM-DD fixa outro dia. Paleta e fontes do R2 (navy-seal). -->
+<link rel="stylesheet" href="fonts.css">
+<style>
+:root{
+  --bg:#060B14; --panel:#0A1422; --panel2:#12233A; --deep:#08101C;
+  --sand:#C8B88A; --sand-l:#E6DBB8;
+  --olive:#6B7B45; --olive-l:#9DB06A;
+  --ice:#7FC4EA;
+  --white:#FFFFFF; --body:#C9D3DF; --muted:#7F93A8; --dim:#3E4E62;
+  --line:rgba(200,214,232,.14); --line2:rgba(200,214,232,.08);
+  --f-title:'Saira Condensed',sans-serif; --f-label:'Barlow Condensed',sans-serif; --f-body:'Archivo',sans-serif;
+}
+@page{size:1080px 1440px;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;background:#02050A}
+body{font-family:var(--f-body);color:var(--body);-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+h1,h2,h3,p,ul,ol,figure,figcaption{margin:0;padding:0}
+ul,ol{list-style:none}
+.ic{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- a página (1080 x 1440) ---------- */
+.page{position:relative;width:1080px;height:1440px;overflow:hidden;background:var(--bg);display:flex;flex-direction:column;padding:50px 56px 34px;break-after:page;page-break-after:always;isolation:isolate}
+.page:last-of-type{break-after:auto;page-break-after:auto}
+.page::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(64% 38% at 92% 0%,rgba(200,184,138,.14),transparent 70%),radial-gradient(56% 34% at 0% 100%,rgba(127,196,234,.09),transparent 72%)}
+.page::after{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(127,196,234,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(127,196,234,.045) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 40%);mask-image:linear-gradient(180deg,#000,transparent 40%)}
+/* ---------- modo apresentação (padrão no navegador): uma tela por vez, escalada pra caber na janela ---------- */
+html.apr,html.apr body{height:100%;overflow:hidden}
+html.apr .stage{position:fixed;left:50%;top:calc(50% - 32px);width:1080px;height:1440px;transform:translate(-50%,-50%) scale(var(--s,.5));transform-origin:center center}
+html.apr .page{position:absolute;left:0;top:0;opacity:0;visibility:hidden;box-shadow:0 0 0 1px rgba(200,214,232,.1),0 50px 140px rgba(0,0,0,.75);transition:opacity .28s ease,visibility 0s linear .28s}
+html.apr .page.ativa{opacity:1;visibility:visible;transition:opacity .28s ease,visibility 0s}
+.apr-ui{display:none}
+html.apr .apr-ui{display:flex;position:fixed;left:0;right:0;bottom:0;height:64px;align-items:center;justify-content:center;gap:18px;z-index:10;font:600 18px/1 var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);user-select:none}
+.apr-ui button{flex:none;display:grid;place-items:center;padding:0;border:0;cursor:pointer;color:inherit;font:inherit}
+.apr-ui .seta{width:42px;height:42px;border-radius:50%;background:rgba(18,35,58,.7);box-shadow:inset 0 0 0 1px var(--line);font-size:20px;color:var(--body)}
+.apr-ui .seta:hover{box-shadow:inset 0 0 0 1px rgba(200,184,138,.7);color:var(--sand-l)}
+.apr-ui .seta:disabled{opacity:.3;cursor:default}
+.apr-ui .pts{display:flex;align-items:center;gap:4px}
+.apr-ui .pt{width:22px;height:22px;background:none}
+.apr-ui .pt::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--dim)}
+.apr-ui .pt.on::before{width:24px;border-radius:5px;background:var(--sand)}
+.apr-ui .pt:hover::before{background:var(--sand-l)}
+.apr-ui #apr-n{min-width:84px;text-align:center;color:var(--body)}
+.apr-ui .dica{margin-left:10px;color:var(--dim)}
+@media (max-width:760px){.apr-ui .dica{display:none}}
+@media (prefers-reduced-motion:reduce){html.apr .page,html.apr .page.ativa{transition:none}}
+@media print{
+  html.apr,html.apr body{height:auto;overflow:visible}
+  html.apr .stage{position:static;width:auto;height:auto;transform:none}
+  html.apr .page{position:relative;opacity:1;visibility:visible;box-shadow:none;transition:none}
+  html.apr .apr-ui{display:none}
+}
+.topo{flex:none;height:40px;display:flex;align-items:center;justify-content:space-between}
+.marca{font:600 23px/1 var(--f-label);letter-spacing:.3em;text-transform:uppercase;color:var(--sand)}
+.marca span{color:var(--body)}
+.marca i{font-style:normal;color:var(--dim);margin:0 .3em}
+.num{font:600 23px/1 var(--f-label);letter-spacing:.2em;color:var(--muted)}
+.num b{font-weight:600;color:var(--white)}
+.tit{flex:none;margin-top:34px;font:800 90px/1.0 var(--f-title);text-transform:uppercase;letter-spacing:.004em;color:var(--white)}
+.tit em{font-style:normal;color:var(--sand-l)}
+.sub{flex:none;margin-top:20px;max-width:930px;font:400 32px/1.36 var(--f-body);color:var(--body)}
+.sub b{font-weight:600;color:var(--white)}
+.rodape{flex:none;margin-top:24px;padding-top:15px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font:400 21px/1.3 var(--f-body);color:var(--muted)}
+.rodape span:last-child{font:600 20px/1 var(--f-label);letter-spacing:.26em;text-transform:uppercase;color:var(--dim)}
+
+/* ---------- a "tela" da plataforma ---------- */
+.tela{position:relative;flex:1;min-height:0;margin-top:32px;display:flex;flex-direction:column;border-radius:26px;background:linear-gradient(180deg,#0F1C30 0%,#0A1422 34%,#08111D 100%);border:1px solid rgba(200,214,232,.16);box-shadow:0 50px 110px -30px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.05);overflow:hidden}
+.tbar{flex:none;height:60px;display:flex;align-items:center;gap:16px;padding:0 22px;border-bottom:1px solid var(--line2);background:rgba(4,8,15,.4)}
+.dots{display:flex;gap:8px}
+.dots i{width:12px;height:12px;border-radius:50%;background:#1B293C}
+.crumb{display:flex;align-items:center;gap:10px;font:600 21px/1 var(--f-label);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.crumb b{font-weight:600;color:var(--white)}
+.crumb .sep{color:var(--dim)}
+.tbar .dir{margin-left:auto;display:flex;align-items:center;gap:10px}
+.tcorpo{flex:1;min-height:0;padding:22px 24px 24px;display:flex;flex-direction:column;gap:18px}
+.k{font:600 21px/1.1 var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.k.sand{color:var(--sand)} .k.ok{color:var(--olive-l)} .k.ia{color:var(--ice)}
+
+.chip{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 15px;border-radius:999px;border:1px solid var(--line);background:rgba(18,35,58,.55);font:600 19px/1 var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:var(--body);white-space:nowrap}
+.chip .ic{font-size:18px}
+.chip.on{border-color:rgba(200,184,138,.55);background:rgba(200,184,138,.13);color:var(--sand-l)}
+.chip.ia{border-color:rgba(127,196,234,.5);background:rgba(127,196,234,.09);color:var(--ice)}
+.chip.ok{border-color:rgba(157,176,106,.5);background:rgba(157,176,106,.1);color:var(--olive-l)}
+.chip.vivo::before{content:"";width:9px;height:9px;border-radius:50%;background:currentColor;box-shadow:0 0 0 4px rgba(127,196,234,.2)}
+.av{flex:none;display:inline-grid;place-items:center;border-radius:50%;background:linear-gradient(145deg,#1B3352,#0E1C30);border:2px solid rgba(200,184,138,.6);color:var(--sand-l);font-family:var(--f-label);font-weight:700;letter-spacing:.04em;line-height:1}
+
+/* ---------- o campo (mapa de calor) ---------- */
+.campo{position:relative;width:100%;border-radius:14px;overflow:hidden;background:#0C1A1A}
+.campo>svg,.campo>canvas{position:absolute;display:block}
+.campo .gram,.campo .linhas{left:0;top:0;width:100%;height:100%}
+.campo .terco{position:absolute;bottom:4.5%;transform:translateX(-50%);display:flex;align-items:baseline;gap:9px;padding:7px 14px 8px;border-radius:12px;background:rgba(6,11,20,.78);border:1px solid var(--line);white-space:nowrap}
+.campo .terco b{font:800 40px/1 var(--f-title);color:var(--white)}
+.campo .terco span{font:600 18px/1 var(--f-label);letter-spacing:.16em;text-transform:uppercase;color:var(--body)}
+.campo .terco.alto{border-color:rgba(200,184,138,.6)}
+.campo .terco.alto b{color:var(--sand-l)}
+.campo .nota{position:absolute;padding:12px 16px;border-radius:12px;background:rgba(6,11,20,.86);border:1px solid rgba(127,196,234,.55)}
+.campo .nota p:first-child{font:600 17px/1 var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--ice)}
+.campo .nota p:last-child{margin-top:6px;font:600 23px/1.2 var(--f-body);color:var(--white);white-space:nowrap}
+.campo .ataque{position:absolute;left:4%;top:4.6%;display:flex;align-items:center;gap:8px;font:600 17px/1 var(--f-label);letter-spacing:.22em;text-transform:uppercase;color:rgba(230,219,184,.85)}
+.campo .ataque .ic{font-size:20px}
+.campo .escala{position:absolute;right:3.2%;top:4.5%;display:flex;align-items:center;gap:10px;font:600 16px/1 var(--f-label);letter-spacing:.16em;text-transform:uppercase;color:rgba(201,211,223,.85)}
+.campo .escala i{width:120px;height:10px;border-radius:5px;background:linear-gradient(90deg,rgba(31,74,107,.5),#5FA6CF,#C8B88A,#E6DBB8,#FFFAEC)}
+
+/* ---------- 01 capa ---------- */
+.capa .tit{font-size:118px;margin-top:40px}
+.capa .sub{max-width:900px}
+.cena{position:relative;flex:1;min-height:0;margin-top:30px}
+.janela{position:absolute;left:-6px;top:6px;width:960px;border-radius:18px;overflow:hidden;border:1px solid rgba(200,214,232,.2);background:#070D17;box-shadow:0 60px 120px -24px rgba(0,0,0,.9),0 0 90px rgba(127,196,234,.08)}
+.jbar{height:38px;display:flex;align-items:center;gap:8px;padding:0 16px;background:#0B1524;border-bottom:1px solid var(--line2)}
+.jbar>i{width:10px;height:10px;border-radius:50%;background:#1F2E44}
+.jbar .url{margin:0 auto;transform:translateX(-24px);height:24px;padding:0 16px;border-radius:12px;background:#060B14;display:flex;align-items:center;gap:8px;font:500 13px/1 var(--f-body);color:var(--muted)}
+.jbar .url .ic{font-size:13px;color:var(--olive-l)}
+.jvista{width:960px;height:600px;overflow:hidden}
+.app{width:1440px;height:900px;transform:scale(.66667);transform-origin:0 0;display:grid;grid-template-columns:250px 1fr;background:#070D17;color:var(--body)}
+.ap-side{background:#050A12;border-right:1px solid var(--line2);padding:28px 18px 22px;display:flex;flex-direction:column}
+.ap-logo{font:800 23px/1 var(--f-title);letter-spacing:.04em;text-transform:uppercase;color:var(--white);padding:0 10px}
+.ap-logo small{display:block;margin-top:8px;font:600 13px/1 var(--f-label);letter-spacing:.32em;color:var(--sand)}
+.ap-nav{margin-top:34px;display:flex;flex-direction:column;gap:5px}
+.ap-nav a{display:flex;align-items:center;gap:13px;height:44px;padding:0 13px;border-radius:10px;font:500 16px/1 var(--f-body);color:var(--muted);white-space:nowrap}
+.ap-nav a .ic{font-size:19px}
+.ap-nav a.on{background:rgba(200,184,138,.11);color:var(--sand-l);box-shadow:inset 3px 0 0 var(--sand)}
+.ap-nav a b{margin-left:auto;min-width:24px;height:24px;padding:0 7px;border-radius:12px;background:var(--sand);color:#060B14;font:700 13px/24px var(--f-label);text-align:center}
+.ap-scout{margin-top:auto;display:flex;align-items:center;gap:12px;padding:14px;border-radius:16px;background:linear-gradient(160deg,rgba(18,35,58,.8),rgba(10,20,34,.6));border:1px solid var(--line)}
+.ap-scout .av{width:44px;height:44px;border-color:rgba(127,196,234,.6);color:var(--ice)}
+.ap-scout .av .ic{font-size:22px}
+.ap-scout p{font:700 16px/1 var(--f-body);color:var(--white)}
+.ap-scout div span{display:flex;align-items:center;gap:6px;margin-top:6px;font:500 13px/1 var(--f-body);color:var(--olive-l)}
+.ap-scout div span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--olive-l)}
+.pilha{display:flex}
+.pilha i{width:34px;height:34px;margin-right:-9px;border-radius:50%;display:grid;place-items:center;background:#16293F;border:2px solid #050A12;font:700 12px/1 var(--f-label);font-style:normal;color:var(--body)}
+.pilha i:last-child{background:var(--sand);color:#060B14}
+.ap-main{padding:22px 30px 26px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.ap-top{display:flex;align-items:center;gap:16px}
+.ap-busca{flex:1;height:44px;border-radius:12px;background:#0A1422;border:1px solid var(--line2);display:flex;align-items:center;gap:11px;padding:0 16px;font:400 15px/1 var(--f-body);color:var(--dim)}
+.ap-busca .ic{font-size:18px;color:var(--muted)}
+.ap-sino{position:relative;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:#0A1422;border:1px solid var(--line2);color:var(--body)}
+.ap-sino .ic{font-size:20px}
+.ap-sino b{position:absolute;right:10px;top:10px;width:9px;height:9px;border-radius:50%;background:var(--sand)}
+.ap-eu{display:flex;align-items:center;gap:10px;font:600 15px/1 var(--f-body);color:var(--white)}
+.ap-eu .av{width:40px;height:40px;font-size:15px}
+.ap-hero{display:flex;align-items:center;gap:22px;padding:20px 26px;border-radius:18px;background:linear-gradient(100deg,rgba(200,184,138,.13),rgba(10,20,34,.7) 48%);border:1px solid var(--line)}
+.ap-hero .av{width:84px;height:84px;font-size:30px}
+.ap-nome{font:800 40px/1 var(--f-title);text-transform:uppercase;color:var(--white)}
+.ap-meta{margin-top:8px;font:400 16px/1.3 var(--f-body);color:var(--body)}
+.ap-chips{margin-top:12px;display:flex;gap:8px}
+.ap-chips .chip{height:28px;padding:0 12px;font-size:13px}
+.ap-dossie{display:none}
+.ap-dossie p{font:600 13px/1 var(--f-label);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.ap-dossie b{display:block;margin:8px 0;font:700 26px/1 var(--f-label);letter-spacing:.12em;color:var(--sand-l)}
+.ap-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.ap-kpi{padding:16px 18px;border-radius:16px;background:#0A1422;border:1px solid var(--line2)}
+.ap-kpi p{font:600 13px/1 var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.ap-kpi strong{display:block;margin-top:10px;font:800 44px/1 var(--f-title);color:var(--white)}
+.ap-kpi span{display:block;margin-top:8px;font:600 14px/1 var(--f-label);letter-spacing:.06em;color:var(--olive-l)}
+.ap-kpi span.n{color:var(--muted)}
+.ap-grid{flex:1;min-height:0;display:grid;grid-template-columns:1.42fr 1fr;gap:14px}
+.ap-card{padding:16px 18px;border-radius:16px;background:#0A1422;border:1px solid var(--line2);display:flex;flex-direction:column;gap:12px;min-height:0}
+.ap-ch{display:flex;align-items:center;justify-content:space-between}
+.ap-ch p{font:600 14px/1 var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--body)}
+.ap-ch .chip{height:26px;padding:0 10px;font-size:12px}
+.ap-col{display:flex;flex-direction:column;gap:14px;min-height:0}
+.ap-col .ap-card:first-child{flex:none}
+.ap-col .ap-card:last-child{flex:1}
+.ap-linha{width:100%;height:150px;display:block}
+.ap-opps li{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line2)}
+.ap-opps li:first-child{border-top:0;padding-top:2px}
+.ap-opps .ic{font-size:22px;color:var(--sand)}
+.ap-opps .t{flex:1;min-width:0}
+.ap-opps .t p{font:600 15px/1.2 var(--f-body);color:var(--white)}
+.ap-opps .t span{font:400 13px/1.2 var(--f-body);color:var(--muted)}
+.ap-opps .v{display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:8px;background:rgba(200,184,138,.1);border:1px solid rgba(200,184,138,.35);font:600 12px/1 var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:var(--sand-l);white-space:nowrap}
+.ap-opps .v .ic{font-size:13px;color:var(--sand-l)}
+
+.celular{position:absolute;right:-12px;bottom:0;width:312px;height:640px;border-radius:52px;padding:11px;background:linear-gradient(150deg,#2A3442,#0B1018 40%,#1A222E);box-shadow:0 50px 90px -10px rgba(0,0,0,.9),0 0 0 1px rgba(200,214,232,.18)}
+.cel{position:relative;width:100%;height:100%;border-radius:42px;overflow:hidden;background:#060B14;display:flex;flex-direction:column}
+.cel-status{flex:none;height:46px;display:flex;align-items:center;justify-content:space-between;padding:6px 26px 0;font:600 15px/1 var(--f-body);color:var(--white)}
+.cel-status .ilha{width:92px;height:27px;border-radius:14px;background:#000}
+.cel-status .sinal{display:flex;gap:3px;align-items:flex-end}
+.cel-status .sinal i{width:4px;border-radius:1px;background:var(--white)}
+.cel-cont{flex:1;padding:8px 16px 0;display:flex;flex-direction:column;gap:10px}
+.cel-ola{font:800 27px/1 var(--f-title);white-space:nowrap;text-transform:uppercase;color:var(--white)}
+.cel-ola em{font-style:normal;color:var(--sand-l)}
+.cel-sub{margin-top:-2px;font:400 13px/1.3 var(--f-body);color:var(--muted)}
+.cel-card{padding:12px;border-radius:16px;background:#0A1422;border:1px solid var(--line2)}
+.cel-card .k{font-size:12px;letter-spacing:.18em}
+.cel-card .v{margin-top:6px;font:700 17px/1.2 var(--f-body);color:var(--white)}
+.cel-card .m{margin-top:4px;font:400 12.5px/1.3 var(--f-body);color:var(--muted)}
+.cel-card .campo{margin-top:8px;border-radius:9px}
+.cel-card .m b{font-weight:600;color:var(--sand-l)}
+.cel-nav{flex:none;height:64px;margin-top:auto;display:flex;align-items:center;justify-content:space-around;border-top:1px solid var(--line2);background:#050A12;color:var(--muted)}
+.cel-nav .ic{font-size:22px}
+.cel-nav .on{color:var(--sand-l)}
+.selo-casa{position:absolute;left:26px;bottom:6px;display:flex;align-items:center;gap:16px;padding:14px 22px 14px 16px;border-radius:999px;background:rgba(6,11,20,.92);border:1px solid rgba(200,184,138,.5);box-shadow:0 20px 50px rgba(0,0,0,.6)}
+.selo-casa .pilha{margin:0}
+.selo-casa .pilha i{width:46px;height:46px;margin-right:-12px;border-color:#060B14;font-size:15px}
+.selo-casa p{margin-left:10px;font:600 22px/1.1 var(--f-label);letter-spacing:.14em;text-transform:uppercase;color:var(--body)}
+.selo-casa p b{display:block;font:800 44px/1 var(--f-title);letter-spacing:0;color:var(--white)}
+
+/* ---------- 02 mapa de desempenho ---------- */
+.filtros{flex:none;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.filtros .per{margin-left:auto}
+.mudou{flex:none;display:grid;grid-template-columns:1fr 232px 30px 232px;align-items:center;gap:14px;padding:14px 16px 14px 20px;border-radius:18px;background:rgba(18,35,58,.38);border:1px solid var(--line2)}
+.mudou .v{margin-top:10px;font:400 26px/1.3 var(--f-body);color:var(--body)}
+.mudou .v b{font-weight:700;color:var(--white)}
+.mudou .v b.s{color:var(--sand-l)}
+.mudou figure{position:relative}
+.mudou figcaption{position:absolute;left:8px;top:8px;padding:5px 9px 6px;border-radius:7px;background:rgba(6,11,20,.84);font:600 16px/1 var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--body)}
+.mudou figure.agora figcaption{color:var(--sand-l);box-shadow:inset 0 0 0 1px rgba(200,184,138,.55)}
+.mudou .seta{font-size:34px;color:var(--sand)}
+.mudou .campo{border-radius:9px}
+
+/* ---------- 03 evolução ---------- */
+.ev-top{flex:none;display:grid;grid-template-columns:300px 1fr;gap:18px}
+.bloco{padding:18px 20px;border-radius:18px;background:rgba(18,35,58,.38);border:1px solid var(--line2)}
+.anel{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.anel .roda{position:relative;width:184px;height:184px}
+.anel .roda svg{width:100%;height:100%;display:block}
+.anel .meio{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.anel .meio b{font:800 64px/1 var(--f-title);color:var(--white)}
+.anel .meio span{margin-top:4px;font:600 15px/1 var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.delta{display:flex;align-items:center;gap:8px;font:600 22px/1.1 var(--f-label);letter-spacing:.06em;color:var(--olive-l);text-align:center}
+.delta .ic{font-size:20px;stroke-width:2.6}
+.ev-graf{display:flex;flex-direction:column;gap:6px}
+.ev-graf svg{width:100%;height:214px;display:block}
+.tipos{flex:none}
+.tipos .cab{display:flex;justify-content:space-between;align-items:center}
+.tipos .leg{display:flex;align-items:center;gap:8px;font:600 18px/1 var(--f-label);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.tipos .leg i{width:22px;height:10px;border-radius:5px;background:var(--olive-l)}
+.tipos ul{margin-top:12px;display:flex;flex-direction:column;gap:10px}
+.tipos li{display:grid;grid-template-columns:210px 1fr 74px 120px;align-items:center;gap:16px}
+.tipos .nm{font:600 25px/1 var(--f-body);color:var(--white)}
+.tipos .tr{height:16px;border-radius:8px;background:rgba(157,176,106,.16);overflow:hidden}
+.tipos .tr i{display:block;height:100%;border-radius:8px;background:var(--olive-l)}
+.tipos .pc{font:800 34px/1 var(--f-title);color:var(--white);text-align:right}
+.tipos .qt{font:600 19px/1 var(--f-label);letter-spacing:.08em;color:var(--muted)}
+.fp{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.lst{margin-top:12px;display:flex;flex-direction:column;gap:10px}
+.lst li{position:relative;padding-left:34px;font:500 24px/1.25 var(--f-body);color:var(--white)}
+.lst.fortes li::before{content:"";position:absolute;left:6px;top:3px;width:9px;height:17px;border-right:3px solid var(--olive-l);border-bottom:3px solid var(--olive-l);transform:rotate(40deg)}
+.lst.prior li::before{content:"";position:absolute;left:2px;top:9px;width:12px;height:12px;border-top:3px solid var(--sand);border-right:3px solid var(--sand);transform:rotate(45deg)}
+
+/* ---------- 04 plano de carreira ---------- */
+.plano{flex-direction:row;gap:20px}
+.pl-col{flex:1.42;min-width:0;display:flex;flex-direction:column}
+.ag-col{flex:1;min-width:0;display:flex;flex-direction:column;gap:14px}
+.trilha{position:relative;margin-top:16px;display:flex;flex-direction:column;gap:6px}
+.trilha li{position:relative;display:grid;grid-template-columns:52px 1fr;gap:14px;padding-bottom:14px}
+.trilha li::before{content:"";position:absolute;left:25px;top:52px;bottom:-6px;width:2px;background:var(--line)}
+.trilha li.feito::before{background:rgba(157,176,106,.55)}
+.trilha li:last-child::before{display:none}
+.trilha .no{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--dim);background:var(--deep);color:var(--muted)}
+.trilha .no .ic{font-size:24px;stroke-width:2.6}
+.trilha li.feito .no{border-color:var(--olive-l);background:rgba(157,176,106,.18);color:var(--olive-l)}
+.trilha li.agora .no{border-color:var(--sand);background:var(--sand);color:#060B14;box-shadow:0 0 0 7px rgba(200,184,138,.18),0 0 30px rgba(200,184,138,.45)}
+.trilha li.destino .no{border-style:dashed;border-color:var(--sand);color:var(--sand)}
+.trilha .qd{display:flex;align-items:center;gap:10px;font:600 19px/1 var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.trilha li.agora .qd{color:var(--sand)}
+.trilha .qd .tag{margin-left:auto;height:28px;padding:0 11px;border-radius:999px;display:inline-flex;align-items:center;border:1px solid var(--line);font:600 15px/1 var(--f-label);letter-spacing:.14em;color:var(--body)}
+.trilha .tt{margin-top:7px;font:700 31px/1.08 var(--f-title);text-transform:uppercase;color:var(--white)}
+.trilha li.destino .tt{color:var(--sand-l)}
+.trilha .tx{margin-top:5px;font:400 21px/1.32 var(--f-body);color:var(--body)}
+.trilha li.agora .card{padding:14px 16px;margin:-6px 0 0;border-radius:14px;background:rgba(200,184,138,.08);border:1px solid rgba(200,184,138,.35)}
+.foco{padding:18px 20px;border-radius:18px;background:linear-gradient(150deg,rgba(127,196,234,.12),rgba(18,35,58,.4));border:1px solid rgba(127,196,234,.4)}
+.foco .v{margin-top:10px;font:700 30px/1.12 var(--f-title);text-transform:uppercase;color:var(--white)}
+.foco .m{margin-top:8px;font:400 19px/1.3 var(--f-body);color:var(--body)}
+.agenda{display:flex;flex-direction:column;gap:10px}
+.agenda li{display:grid;grid-template-columns:70px 1fr;gap:14px;align-items:center;padding:12px 14px;border-radius:16px;background:rgba(18,35,58,.42);border:1px solid var(--line2)}
+.agenda .dt{height:70px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0A1422;border:1px solid var(--line)}
+.agenda .dt span{font:600 15px/1 var(--f-label);letter-spacing:.18em;text-transform:uppercase;color:var(--sand)}
+.agenda .dt b{margin-top:4px;font:800 30px/1 var(--f-title);color:var(--white)}
+.agenda .at{font:700 22px/1.15 var(--f-body);color:var(--white)}
+.agenda .qm{margin-top:4px;display:flex;align-items:center;gap:7px;font:400 18px/1.25 var(--f-body);color:var(--muted)}
+.agenda .qm .ic{font-size:17px;color:var(--ice)}
+.agenda li.forte{border-color:rgba(200,184,138,.45);background:rgba(200,184,138,.08)}
+.rotina{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;border:1px dashed rgba(157,176,106,.5);background:rgba(157,176,106,.07)}
+.rotina .ic{flex:none;font-size:28px;color:var(--olive-l)}
+.rotina p{font:400 19px/1.3 var(--f-body);color:var(--body)}
+.rotina p b{display:block;margin-bottom:3px;font:600 16px/1 var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--olive-l)}
+
+/* ---------- 05 oportunidades ---------- */
+.op-meio{flex:1;min-height:0;display:grid;grid-template-columns:1fr 360px;gap:16px}
+.op-esq{min-width:0;display:flex;flex-direction:column;gap:12px}
+.op-lista{display:flex;flex-direction:column;gap:12px}
+.op{padding:16px 18px;border-radius:18px;background:rgba(18,35,58,.42);border:1px solid var(--line2)}
+.op-cab{display:flex;align-items:center;gap:14px}
+.op .esc{flex:none;width:54px;height:54px;border-radius:14px;display:grid;place-items:center;background:#0A1422;border:1px solid var(--line);color:var(--sand)}
+.op .esc .ic{font-size:28px}
+.op .cl{font:700 26px/1.1 var(--f-body);color:var(--white)}
+.op .lc{margin-top:5px;font:400 20px/1.2 var(--f-body);color:var(--muted)}
+.op .lc b{font-weight:600;color:var(--body)}
+.op .bs{margin-top:12px;font:400 20px/1.3 var(--f-body);color:var(--muted)}
+.op .bs b{font-weight:600;color:var(--white)}
+.op .st{margin-top:10px;display:flex;align-items:center;gap:12px}
+.op .st .degraus{display:flex;gap:5px}
+.op .st .degraus i{width:28px;height:7px;border-radius:4px;background:rgba(200,214,232,.14)}
+.op .st .degraus i.on{background:var(--sand)}
+.op .st span{font:600 18px/1 var(--f-label);letter-spacing:.14em;text-transform:uppercase;color:var(--sand-l)}
+.op .val{margin-top:13px;padding-top:13px;border-top:1px solid var(--line2);display:flex;align-items:center;gap:12px}
+.op .val .k{font-size:17px;letter-spacing:.2em}
+.op .val .pill{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 15px;border-radius:11px;background:rgba(200,184,138,.12);border:1px solid rgba(200,184,138,.55);font:700 22px/1 var(--f-label);letter-spacing:.1em;text-transform:uppercase;color:var(--sand-l)}
+.op .val .pill .ic{font-size:20px}
+.op .val .com{margin-left:auto;font:500 19px/1 var(--f-body);color:var(--muted)}
+.op .val .com b{font-weight:700;color:var(--white)}
+.op-mais{display:flex;align-items:center;justify-content:space-between;padding:4px 6px 0;font:600 20px/1 var(--f-label);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.op-mais b{color:var(--sand-l);font-weight:600}
+.op-nota{flex:none;font:400 19px/1.35 var(--f-body);color:var(--muted)}
+.chat{min-height:0;display:flex;flex-direction:column;border-radius:20px;background:#0E1828;border:1px solid rgba(200,214,232,.2);box-shadow:0 30px 70px rgba(0,0,0,.55);overflow:hidden}
+.chat-cab{flex:none;display:flex;align-items:center;gap:13px;padding:14px 16px;border-bottom:1px solid var(--line2);background:rgba(4,8,15,.35)}
+.chat-cab .av{width:52px;height:52px;border-color:rgba(127,196,234,.6);color:var(--ice)}
+.chat-cab .av .ic{font-size:26px}
+.chat-cab p{font:700 23px/1 var(--f-body);color:var(--white)}
+.chat-cab div span{display:block;margin-top:6px;font:400 16px/1 var(--f-body);color:var(--muted)}
+.chat-cab div span.on{display:flex;align-items:center;gap:7px;margin-top:5px;color:var(--olive-l)}
+.chat-cab div span.on::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--olive-l)}
+.chat-msgs{flex:1;min-height:0;padding:16px 14px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px}
+.chat .dia{align-self:center;padding:5px 12px;border-radius:999px;background:rgba(200,214,232,.07);font:600 15px/1 var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.chat .aviso{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:rgba(200,184,138,.08);border:1px solid rgba(200,184,138,.35)}
+.chat .aviso .ic{flex:none;font-size:26px;color:var(--sand)}
+.chat .aviso p{font:400 17px/1.3 var(--f-body);color:var(--body)}
+.chat .aviso b{display:block;font:600 15px/1 var(--f-label);letter-spacing:.18em;text-transform:uppercase;color:var(--sand-l);margin-bottom:4px}
+.bolha{max-width:92%;padding:11px 14px;border-radius:15px 15px 15px 4px;background:#17253A;font:400 20px/1.33 var(--f-body);color:var(--white)}
+.bolha b{font-weight:700;color:var(--sand-l)}
+.bolha.eu{align-self:flex-end;border-radius:15px 15px 4px 15px;background:rgba(200,184,138,.15);border:1px solid rgba(200,184,138,.3)}
+.bolha small{display:block;margin-top:5px;font:500 14px/1 var(--f-body);color:var(--muted);text-align:right}
+.chat-in{flex:none;display:flex;align-items:center;gap:10px;margin:0 14px 14px;padding:0 14px;height:48px;border-radius:12px;background:#0A1422;border:1px solid var(--line2);font:400 18px/1 var(--f-body);color:var(--dim)}
+.chat-in .ic{margin-left:auto;font-size:21px;color:var(--ice)}
+
+/* ---------- 06 a casa ---------- */
+.p6 .tit{font-size:84px}
+.casa-top{flex:none;display:flex;align-items:center;gap:10px}
+.casa-top .busca{flex:1;height:44px;border-radius:12px;background:#0A1422;border:1px solid var(--line2);display:flex;align-items:center;gap:10px;padding:0 16px;font:400 19px/1 var(--f-body);color:var(--dim)}
+.casa-top .busca .ic{font-size:20px;color:var(--muted)}
+.casa-grade{position:relative;flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:118px;gap:12px;overflow:hidden}
+.casa-grade::after{content:"";position:absolute;left:0;right:0;bottom:0;height:150px;background:linear-gradient(180deg,rgba(8,17,29,0),#08111D 82%);pointer-events:none}
+.atl{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;background:rgba(18,35,58,.42);border:1px solid var(--line2);min-width:0}
+.atl .av{width:58px;height:58px;font-size:21px;border-color:rgba(127,147,168,.55);color:var(--body)}
+.atl .tx{min-width:0}
+.atl .nm{font:700 22px/1.1 var(--f-body);color:var(--white)}
+.atl .mt{margin-top:4px;font:400 17px/1.2 var(--f-body);color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.atl .stt{margin-top:7px;display:inline-flex;align-items:center;gap:6px;font:600 15px/1 var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:var(--body)}
+.atl .stt::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.atl .stt.ia{color:var(--ice)} .atl .stt.ok{color:var(--olive-l)} .atl .stt.on{color:var(--sand-l)}
+.atl.destaque{border-color:rgba(200,184,138,.35)}
+.atl.destaque .av{border-color:rgba(200,184,138,.6);color:var(--sand-l)}
+.sua{grid-column:span 2;grid-row:span 2;position:relative;display:flex;align-items:center;gap:24px;padding:18px 26px;border-radius:20px;border:2px dashed rgba(200,184,138,.8);background:radial-gradient(80% 120% at 0% 40%,rgba(200,184,138,.2),rgba(200,184,138,.04));box-shadow:0 0 50px rgba(200,184,138,.2),inset 0 0 0 1px rgba(6,11,20,.4)}
+.sua .av{width:112px;height:112px;border-style:dashed;border-color:rgba(200,184,138,.8);background:rgba(6,11,20,.6);color:var(--sand-l)}
+.sua .av .ic{font-size:52px;stroke-width:1.6}
+.sua .chip{height:32px;font-size:17px}
+.sua .t1{margin-top:10px;font:800 50px/1 var(--f-title);text-transform:uppercase;color:var(--sand-l)}
+.sua .t2{margin-top:8px;font:500 21px/1.3 var(--f-body);color:var(--white)}
+.sua .cad{margin-top:13px;display:inline-flex;align-items:center;gap:10px;height:42px;padding:0 16px;border-radius:11px;border:1px solid rgba(200,184,138,.6);background:rgba(200,184,138,.13);font:700 20px/1 var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:var(--sand-l)}
+.sua .cad .ic{font-size:20px}
+.atl .nm span{font-weight:400;color:var(--muted)}
+.casa-fim{position:absolute;left:0;right:0;bottom:26px;z-index:2;display:flex;justify-content:center}
+.casa-fim p{display:flex;align-items:center;gap:14px;padding:12px 24px;border-radius:999px;background:rgba(6,11,20,.92);border:1px solid rgba(200,184,138,.45);font:600 22px/1 var(--f-label);letter-spacing:.16em;text-transform:uppercase;color:var(--body)}
+.casa-fim p b{font:800 34px/1 var(--f-title);letter-spacing:0;color:var(--white)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-inicio" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="i-mapa" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></symbol>
+    <symbol id="i-plano" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></symbol>
+    <symbol id="i-clube" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></symbol>
+    <symbol id="i-aulas" viewBox="0 0 24 24"><path d="M3 5.5c3-1.2 6-1.2 9 .8 3-2 6-2 9-.8v13.5c-3-1.2-6-1.2-9 .8-3-2-6-2-9-.8z"/><path d="M12 6.3V20"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+    <symbol id="i-sino" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></symbol>
+    <symbol id="i-busca" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+    <symbol id="i-cadeado" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+    <symbol id="i-seta" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-sobe" viewBox="0 0 24 24"><path d="M5 15l7-7 7 7"/></symbol>
+    <symbol id="i-pessoa" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></symbol>
+    <symbol id="i-enviar" viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-7z"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></symbol>
+    <symbol id="i-estrela" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></symbol>
+    <symbol id="i-bola" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5l3.8 2.8-1.4 4.4H9.6l-1.4-4.4z"/><path d="M12 3v4.5M20.5 9.5l-4.7.8M17.5 19l-3.1-4.3M6.5 19l3.1-4.3M3.5 9.5l4.7.8"/></symbol>
+    <symbol id="i-raio" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+    <symbol id="i-alvo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="2"/></symbol>
+  </defs>
+</svg>
+
+<main class="stage" id="stage">
+<!-- 01 · capa -->
+<section class="page capa">
+  <header class="topo"><p class="marca">Jogador de Elite <i>·</i> <span>Área de Membros</span></p><span class="chip ia vivo">Prévia</span></header>
+  <h1 class="tit">Aqui, cada<br><em>lance conta.</em></h1>
+  <p class="sub">A área de membros do Jogador de Elite: o <b>mapa de desempenho</b>, o <b>plano de carreira</b> e as <b>oportunidades em clubes</b> do atleta, num lugar só.</p>
+  <div class="cena">
+    <div class="janela">
+      <div class="jbar"><i></i><i></i><i></i><p class="url"><svg class="ic"><use href="#i-cadeado"/></svg>Área de Membros · Jogador de Elite</p></div>
+      <div class="jvista"><div class="app">
+        <aside class="ap-side">
+          <p class="ap-logo">Jogador de Elite<small>Área de Membros</small></p>
+          <nav class="ap-nav">
+            <a><svg class="ic"><use href="#i-inicio"/></svg>Início</a>
+            <a class="on"><svg class="ic"><use href="#i-mapa"/></svg>Mapa de desempenho</a>
+            <a><svg class="ic"><use href="#i-plano"/></svg>Plano de carreira</a>
+            <a><svg class="ic"><use href="#i-clube"/></svg>Oportunidades<b data-txt="encMes"></b></a>
+            <a><svg class="ic"><use href="#i-video"/></svg>Vídeos e leituras</a>
+            <a><svg class="ic"><use href="#i-aulas"/></svg>Sete Módulos</a>
+            <a><svg class="ic"><use href="#i-chat"/></svg>Mensagens<b>2</b></a>
+          </nav>
+          <div class="ap-scout"><span class="av"><svg class="ic"><use href="#i-pessoa"/></svg></span><div><p>Seu Scout</p><span>online agora</span></div></div>
+        </aside>
+        <main class="ap-main">
+          <div class="ap-top">
+            <div class="ap-busca"><svg class="ic"><use href="#i-busca"/></svg>Buscar vídeo, relatório ou clube</div>
+            <span class="ap-sino"><svg class="ic"><use href="#i-sino"/></svg><b></b></span>
+            <span class="ap-eu"><span class="av">FS</span>Fernando Silva</span>
+          </div>
+          <section class="ap-hero">
+            <span class="av">FS</span>
+            <div>
+              <p class="ap-nome">Fernando Silva</p>
+              <p class="ap-meta">Meia central · 16 anos · Sub-17 · Uberlândia, MG · Destro · 1,76 m</p>
+              <div class="ap-chips"><span class="chip ok">Perfil aprovado</span><span class="chip on">Legacy</span><span class="chip ia">Zyron lendo</span></div>
+            </div>
+            <div class="ap-dossie"><p>Dossiê nº</p><b>K4T9Q2MX</b><p>Na casa desde <span data-txt="mesEntrada"></span></p></div>
+          </section>
+          <section class="ap-kpis">
+            <div class="ap-kpi"><p>Vídeos lidos</p><strong>14</strong><span>2 este mês</span></div>
+            <div class="ap-kpi"><p>Lances lidos</p><strong>486</strong><span class="n">lance a lance, pelo Zyron</span></div>
+            <div class="ap-kpi"><p>Decisões boas</p><strong>74%</strong><span>+16 pontos desde <span data-txt="mesEntrada"></span></span></div>
+            <div class="ap-kpi"><p>Encaminhamentos</p><strong>68</strong><span class="n"><span data-txt="encMes"></span> em <span data-txt="mesAgora"></span></span></div>
+          </section>
+          <section class="ap-grid">
+            <div class="ap-card"><div class="ap-ch"><p>Mapa de calor</p><span class="chip on">Últimos 30 dias</span></div><div class="campo" id="ap-mapa"></div></div>
+            <div class="ap-col">
+              <div class="ap-card"><div class="ap-ch"><p>Decisões boas por mês</p><span class="chip ok">+16</span></div><svg class="ap-linha" id="ap-linha"></svg></div>
+              <div class="ap-card"><div class="ap-ch"><p>Oportunidades em clubes</p><span class="chip"><span data-txt="encMes"></span> no mês</span></div><ul class="ap-opps" id="ap-opps"></ul></div>
+            </div>
+          </section>
+        </main>
+      </div></div>
+    </div>
+    <div class="celular"><div class="cel">
+      <div class="cel-status"><span>9:41</span><i class="ilha"></i><span class="sinal"><i style="height:5px"></i><i style="height:8px"></i><i style="height:11px"></i><i style="height:14px"></i></span></div>
+      <div class="cel-cont">
+        <p class="cel-ola">Bom dia, <em>Fernando Silva</em></p>
+        <p class="cel-sub">O seu mapa foi atualizado hoje.</p>
+        <div class="cel-card"><p class="k ia">Mapa de calor</p><div class="campo" id="cel-mapa"></div><p class="m">Último terço: <b><span data-txt="out3"></span>% dos lances</b></p></div>
+        <div class="cel-card"><p class="k sand">Próximo compromisso</p><p class="v">Avaliação presencial</p><p class="m"><span data-txt="avalLonga"></span> · Clube da Série A (SP)</p></div>
+        <div class="cel-card"><p class="k sand">Oportunidades</p><p class="v"><span data-txt="encMes"></span> encaminhamentos no mês</p><p class="m">Valores: <b>a consultar com o Scout</b></p></div>
+      </div>
+      <nav class="cel-nav"><svg class="ic"><use href="#i-inicio"/></svg><svg class="ic on"><use href="#i-mapa"/></svg><svg class="ic"><use href="#i-plano"/></svg><svg class="ic"><use href="#i-clube"/></svg><svg class="ic"><use href="#i-chat"/></svg></nav>
+    </div></div>
+    <div class="selo-casa"><div class="pilha"><i>GS</i><i>MA</i><i>RC</i><i>LF</i></div><p><b>300+</b>atletas na casa</p></div>
+  </div>
+  <footer class="rodape"><span>Prévia da área de membros. Atleta e dados ilustrativos.</span><span>Jogador de Elite</span></footer>
+</section>
+
+<!-- 02 · mapa de desempenho -->
+<section class="page">
+  <header class="topo"><p class="marca">Jogador de Elite <i>·</i> <span>Área de Membros</span></p><p class="num"><b>02</b> / 06</p></header>
+  <h1 class="tit">Onde ele joga.<br><em>Onde ele decide.</em></h1>
+  <p class="sub">Cada lance que o Zyron lê no vídeo vira <b>um ponto no mapa</b>.</p>
+  <div class="tela">
+    <div class="tbar"><span class="dots"><i></i><i></i><i></i></span><p class="crumb"><b>Fernando Silva</b><span class="sep">/</span>Mapa de desempenho</p><span class="dir"><span class="chip ia vivo">Leitura do Zyron</span></span></div>
+    <div class="tcorpo">
+      <div class="filtros"><span class="chip on">Todos os lances</span><span class="chip">Com a bola</span><span class="chip">Sem a bola</span><span class="chip">Defensivos</span><span class="chip per"><svg class="ic"><use href="#i-cal"/></svg>Últimos 30 dias</span></div>
+      <div class="campo" id="mapa-agora"></div>
+      <div class="mudou">
+        <div><p class="k sand">Como o mapa mudou</p><p class="v">Último terço: <b><span data-txt="jun3"></span>% dos lances</b> em <span data-txt="mesEntrada"></span>, <b class="s"><span data-txt="out3"></span>% agora</b>.</p></div>
+        <figure><div class="campo" id="mapa-jun"></div><figcaption data-txt="mesEntradaCap"></figcaption></figure>
+        <svg class="ic seta"><use href="#i-seta"/></svg>
+        <figure class="agora"><div class="campo" id="mapa-agora-mini"></div><figcaption>Agora</figcaption></figure>
+      </div>
+    </div>
+  </div>
+  <footer class="rodape"><span>Prévia da área de membros. Atleta e dados ilustrativos.</span><span>Jogador de Elite</span></footer>
+</section>
+
+<!-- 03 · evolução -->
+<section class="page">
+  <header class="topo"><p class="marca">Jogador de Elite <i>·</i> <span>Área de Membros</span></p><p class="num"><b>03</b> / 06</p></header>
+  <h1 class="tit">A evolução,<br><em>mês a mês.</em></h1>
+  <p class="sub">Vídeo novo, leitura nova. O Fernando Silva vê <b>o que melhorou</b> e <b>o que treinar agora</b>.</p>
+  <div class="tela">
+    <div class="tbar"><span class="dots"><i></i><i></i><i></i></span><p class="crumb"><b>Fernando Silva</b><span class="sep">/</span>Evolução</p><span class="dir"><span class="chip">14 vídeos lidos</span><span class="chip">486 lances</span></span></div>
+    <div class="tcorpo">
+      <div class="ev-top">
+        <div class="bloco anel">
+          <div class="roda" id="roda"></div>
+          <p class="delta"><svg class="ic"><use href="#i-sobe"/></svg><span>+16 pontos desde <span data-txt="mesEntrada"></span></span></p>
+        </div>
+        <div class="bloco ev-graf"><p class="k">Decisões boas por mês</p><svg id="linha"></svg></div>
+      </div>
+      <div class="bloco tipos">
+        <div class="cab"><p class="k">Por tipo de lance</p><p class="leg"><i></i>Decisões boas</p></div>
+        <ul id="tipos"></ul>
+      </div>
+      <div class="fp">
+        <div class="bloco"><p class="k ok">Pontos fortes</p><ul class="lst fortes" id="fortes"></ul></div>
+        <div class="bloco"><p class="k sand">Prioridades</p><ul class="lst prior" id="prior"></ul></div>
+      </div>
+    </div>
+  </div>
+  <footer class="rodape"><span>Prévia da área de membros. Atleta e dados ilustrativos.</span><span>Jogador de Elite</span></footer>
+</section>
+
+<!-- 04 · plano de carreira -->
+<section class="page">
+  <header class="topo"><p class="marca">Jogador de Elite <i>·</i> <span>Área de Membros</span></p><p class="num"><b>04</b> / 06</p></header>
+  <h1 class="tit">Um plano de carreira<br><em>com nome e sobrenome.</em></h1>
+  <p class="sub"><b>Ser visto, ser preparado, ser apresentado.</b> Cada movimento com data e com alguém da equipe cuidando.</p>
+  <div class="tela">
+    <div class="tbar"><span class="dots"><i></i><i></i><i></i></span><p class="crumb"><b>Fernando Silva</b><span class="sep">/</span>Plano de carreira</p><span class="dir"><span class="chip on">Assessoria de Elite Legacy</span></span></div>
+    <div class="tcorpo plano">
+      <div class="pl-col"><p class="k sand">O caminho do Fernando Silva</p><ol class="trilha" id="trilha"></ol></div>
+      <div class="ag-col">
+        <div class="foco"><p class="k ia">Primeiro foco do mês</p><p class="v">Finalização de média distância</p><p class="m">Saiu da leitura do Zyron: é o ponto que mais cresce com treino agora.</p></div>
+        <p class="k">Próximos compromissos</p>
+        <ul class="agenda" id="agenda"></ul>
+        <div class="rotina"><svg class="ic"><use href="#i-pessoa"/></svg><p><b>Todo dia</b>Estrategista de carreiras e gerente de carreira acompanhando o Fernando Silva.</p></div>
+      </div>
+    </div>
+  </div>
+  <footer class="rodape"><span>Prévia da área de membros. Atleta e dados ilustrativos.</span><span>Jogador de Elite</span></footer>
+</section>
+
+<!-- 05 · oportunidades em clubes -->
+<section class="page">
+  <header class="topo"><p class="marca">Jogador de Elite <i>·</i> <span>Área de Membros</span></p><p class="num"><b>05</b> / 06</p></header>
+  <h1 class="tit">Os clubes que<br><em>recebem o perfil dele.</em></h1>
+  <p class="sub">Cada encaminhamento com o perfil que o clube procura. <b>Os valores, você vê com o Scout.</b></p>
+  <div class="tela">
+    <div class="tbar"><span class="dots"><i></i><i></i><i></i></span><p class="crumb"><b>Fernando Silva</b><span class="sep">/</span>Oportunidades</p><span class="dir"><span class="chip on"><span data-txt="encMes"></span> no mês</span><span class="chip">68 desde <span data-txt="mesEntrada"></span></span></span></div>
+    <div class="tcorpo">
+      <div class="op-meio">
+        <div class="op-esq">
+          <ul class="op-lista" id="opps"></ul>
+          <p class="op-mais"><span>Mais <b data-txt="encResto"></b> este mês</span><span>Ver todos</span></p>
+        </div>
+        <div class="chat">
+          <div class="chat-cab"><span class="av"><svg class="ic"><use href="#i-pessoa"/></svg></span><div><p>Seu Scout</p><span>estrategista de carreiras</span><span class="on">online agora</span></div></div>
+          <div class="chat-msgs">
+            <p class="dia">Hoje</p>
+            <div class="aviso"><svg class="ic"><use href="#i-clube"/></svg><p><b>Perfil encaminhado</b>Clube da 2ª divisão · Portugal · Sub-19</p></div>
+            <p class="bolha">Fernando Silva, o clube de SP confirmou a <b>avaliação do dia <span data-txt="avalDia"></span></b>. O gerente de carreira já combinou a logística com o seu pai.</p>
+            <p class="bolha">Os valores de cada oportunidade eu passo pra família, numa ligação.</p>
+            <p class="bolha eu">Pode ligar hoje à noite?<small>Pai do Fernando Silva</small></p>
+            <p class="bolha">Combinado. Às 19h eu ligo.</p>
+          </div>
+          <div class="chat-in">Escreva uma mensagem...<svg class="ic"><use href="#i-enviar"/></svg></div>
+        </div>
+      </div>
+      <p class="op-nota">Encaminhamento para clubes a partir da Assessoria PRO. O nome do clube aparece quando o clube autoriza.</p>
+    </div>
+  </div>
+  <footer class="rodape"><span>Prévia da área de membros. Atleta, clubes e dados ilustrativos.</span><span>Jogador de Elite</span></footer>
+</section>
+
+<!-- 06 · a casa -->
+<section class="page p6">
+  <header class="topo"><p class="marca">Jogador de Elite <i>·</i> <span>Área de Membros</span></p><p class="num"><b>06</b> / 06</p></header>
+  <h1 class="tit">Se você está vendo isso,<br><em>é porque tem<br>o que é preciso.</em></h1>
+  <p class="sub">Mais de 300 atletas na casa, cada um com o próprio plano. <b>A sua área abre no dia do sim.</b></p>
+  <div class="tela">
+    <div class="tbar"><span class="dots"><i></i><i></i><i></i></span><p class="crumb"><b>Atletas da casa</b></p><span class="dir"><span class="chip on">300+ atletas</span></span></div>
+    <div class="tcorpo">
+      <div class="casa-top"><div class="busca"><svg class="ic"><use href="#i-busca"/></svg>Buscar por posição, categoria ou estado</div><span class="chip on">Todos</span><span class="chip">Sub-15</span><span class="chip">Sub-17</span></div>
+      <div class="casa-grade" id="casa"></div>
+    </div>
+    <div class="casa-fim"><p><b>300+</b>atletas na casa</p></div>
+  </div>
+  <footer class="rodape"><span>Prévia da área de membros. Atletas e dados ilustrativos.</span><span>Jogador de Elite</span></footer>
+</section>
+</main>
+
+<nav class="apr-ui" aria-label="Navegação das telas">
+  <button type="button" class="seta" id="apr-ant" aria-label="Tela anterior"><svg class="ic" style="transform:rotate(180deg)"><use href="#i-seta"/></svg></button>
+  <span class="pts" id="apr-pts"></span>
+  <span id="apr-n" aria-live="polite"></span>
+  <button type="button" class="seta" id="apr-prox" aria-label="Próxima tela"><svg class="ic"><use href="#i-seta"/></svg></button>
+  <span class="dica">Setas navegam · F tela cheia</span>
+</nav>
+
+<script>
+(function () {
+  'use strict';
+  const qs = (s, r) => (r || document).querySelector(s);
+  const qsa = (s, r) => Array.from((r || document).querySelectorAll(s));
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const ic = (id, cls) => '<svg class="ic' + (cls ? ' ' + cls : '') + '"><use href="#' + id + '"/></svg>';
+
+  /* ---------- o dia da geração (ou ?hoje=AAAA-MM-DD) ---------- */
+  const qh = new URLSearchParams(location.search).get('hoje');
+  const HOJE = qh && /^\d{4}-\d{2}-\d{2}$/.test(qh) ? new Date(qh + 'T12:00:00') : new Date();
+  HOJE.setHours(12, 0, 0, 0);
+  const MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+  const MES3 = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+  const SEMANA = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
+  const mes = n => new Date(HOJE.getFullYear(), HOJE.getMonth() + n, 1);
+  // dia útil n dias depois de hoje (sábado e domingo vão pra segunda)
+  const util = n => { const d = new Date(HOJE); d.setDate(d.getDate() + n); while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() + 1); return d; };
+  const dd = d => String(d.getDate()).padStart(2, '0');
+  const ddmm = d => dd(d) + '/' + String(d.getMonth() + 1).padStart(2, '0');
+  const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+
+  /* ---------- o atleta de demonstração (dados ilustrativos) ---------- */
+  const AVAL = util(40); // a avaliação presencial
+  const EVOL = [58, 63, 66, 71, 74]; // decisões boas (%), de 4 meses atrás até agora
+  const TIPOS = [['Passe', 168, 82], ['Jogo sem a bola', 54, 76], ['Condução', 64, 72], ['Drible', 41, 56], ['Finalização', 26, 46]];
+  const FORTES = ['Passe entre linhas sob pressão', 'Ataque ao espaço no tempo certo', 'Primeiro toque orientado'];
+  const PRIOR = ['Finalização de média distância', 'Duelo defensivo no meio', 'Passe longo com a perna esquerda'];
+  const ENC_MES = 9;
+  const DEGRAUS = ['Encaminhado', 'Em análise', 'Pediu mais vídeo', 'Avaliação marcada'];
+  const OPPS = [
+    { clube: 'Clube da Série A', local: 'São Paulo', cat: 'Sub-17', busca: 'meia de criação, destro', st: 3, quando: ddmm(AVAL) },
+    { clube: 'Clube da Série B', local: 'Paraná', cat: 'Sub-17', busca: 'meia com chegada na área', st: 2 },
+    { clube: 'Clube da 2ª divisão', local: 'Portugal', cat: 'Sub-19', busca: 'meia de transição', st: 1 },
+    { clube: 'Academia com bolsa de estudo', local: 'Estados Unidos', cat: 'Sub-17', busca: 'meia com bom passe', st: 0 }
+  ];
+  const CASA = [
+    ['G. S.', 'PR', 'GS', 'Volante · Sub-16', 'Vídeo lido hoje', 'ia'],
+    ['M. A.', 'BA', 'MA', 'Lateral esq. · Sub-15', 'Plano atualizado', 'ok'],
+    ['R. C.', 'SP', 'RC', 'Zagueiro · Sub-17', 'Encaminhado', 'on'],
+    ['SUA'],
+    ['Fernando Silva', '', 'FS', 'Meia central · Sub-17', 'Mapa atualizado', 'ia', 'destaque'],
+    ['L. F.', 'RS', 'LF', 'Goleiro · Sub-17', 'Avaliação marcada', 'on'],
+    ['P. H.', 'PE', 'PH', 'Centroavante · Sub-16', 'Relatório novo', 'ia'],
+    ['J. V.', 'GO', 'JV', 'Ponta dir. · Sub-14', 'Vídeo lido hoje', 'ia'],
+    ['D. M.', 'SC', 'DM', 'Meia · Sub-15', 'Encaminhado', 'on'],
+    ['K. S.', 'CE', 'KS', 'Lateral dir. · Sub-17', 'Plano atualizado', 'ok'],
+    ['T. N.', 'MG', 'TN', 'Ponta esq. · Sub-16', 'Relatório novo', 'ia'],
+    ['A. B.', 'RJ', 'AB', 'Volante · Sub-17', 'Encaminhado', 'on'],
+    ['I. C.', 'DF', 'IC', 'Zagueiro · Sub-15', 'Vídeo lido hoje', 'ia'],
+    ['W. L.', 'AM', 'WL', 'Atacante · Sub-16', 'Plano atualizado', 'ok'],
+    ['B. R.', 'PA', 'BR', 'Meia · Sub-14', 'Relatório novo', 'ia'],
+    ['E. P.', 'MT', 'EP', 'Goleiro · Sub-15', 'Vídeo lido hoje', 'ia'],
+    ['V. S.', 'PB', 'VS', 'Ponta esq. · Sub-17', 'Encaminhado', 'on'],
+    ['H. M.', 'ES', 'HM', 'Zagueiro · Sub-16', 'Relatório novo', 'ia']
+  ];
+
+  /* ---------- os lances no campo: amostra fixa (semente), pra a imagem sair sempre igual ---------- */
+  // campo de 105 x 68 m, ataque pra direita; y = 0 é a lateral esquerda de quem ataca
+  const AGORA = [{ x: 66, y: 21, sx: 7, sy: 5, w: .25 }, { x: 55, y: 33, sx: 8, sy: 6, w: .17 }, { x: 84, y: 26, sx: 5, sy: 6, w: .13 }, { x: 42, y: 30, sx: 7, sy: 8, w: .11 }, { x: 72, y: 47, sx: 7, sy: 5, w: .09 }, { x: 94, y: 33, sx: 3, sy: 4, w: .06 }, { x: 28, y: 24, sx: 7, sy: 6, w: .11 }, { x: 57, y: 12, sx: 7, sy: 3, w: .05 }, { x: 48, y: 52, sx: 7, sy: 5, w: .05 }];
+  const ANTES = [{ x: 50, y: 24, sx: 7, sy: 6, w: .26 }, { x: 44, y: 35, sx: 8, sy: 6, w: .22 }, { x: 74, y: 27, sx: 6, sy: 6, w: .12 }, { x: 33, y: 31, sx: 7, sy: 8, w: .16 }, { x: 60, y: 47, sx: 7, sy: 5, w: .09 }, { x: 25, y: 23, sx: 6, sy: 6, w: .1 }, { x: 88, y: 32, sx: 4, sy: 5, w: .04 }, { x: 40, y: 52, sx: 7, sy: 5, w: .05 }];
+  function rng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function gauss(r) { let u = 0, v = 0; while (!u) u = r(); while (!v) v = r(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+  function amostra(grupos, n, seed) {
+    const r = rng(seed), tot = grupos.reduce((a, g) => a + g.w, 0), pts = [];
+    while (pts.length < n) {
+      let x = r() * tot, g = grupos[grupos.length - 1];
+      for (const k of grupos) { if ((x -= k.w) <= 0) { g = k; break; } }
+      const px = g.x + gauss(r) * g.sx, py = g.y + gauss(r) * g.sy;
+      if (px > .6 && px < 104.4 && py > .6 && py < 67.4) pts.push([px, py]);
+    }
+    return pts;
+  }
+  // porcentagens que somam 100 (maior resto)
+  function pcts(cont) {
+    const n = cont.reduce((a, b) => a + b, 0), cru = cont.map(c => 100 * c / n), base = cru.map(Math.floor);
+    let falta = 100 - base.reduce((a, b) => a + b, 0);
+    cru.map((c, i) => [c - base[i], i]).sort((a, b) => b[0] - a[0]).slice(0, falta).forEach(([, i]) => { base[i]++; });
+    return base;
+  }
+  const tercos = pts => pcts([0, 1, 2].map(t => pts.filter(([x]) => (t === 0 ? x < 35 : t === 1 ? x >= 35 && x < 70 : x >= 70)).length));
+  const P_AGORA = amostra(AGORA, 320, 10), P_ANTES = amostra(ANTES, 320, 1010);
+  const T_AGORA = tercos(P_AGORA), T_ANTES = tercos(P_ANTES);
+
+  // rampa do calor: de um azul fundo (pouco) ao areia e ao creme (muito); a claridade só sobe
+  const RAMPA = [[0, 31, 74, 107, 0], [.14, 31, 74, 107, .34], [.34, 95, 166, 207, .58], [.58, 200, 184, 138, .82], [.8, 230, 219, 184, .93], [1, 255, 250, 236, 1]];
+  function cor(v) {
+    for (let i = 1; i < RAMPA.length; i++) {
+      if (v <= RAMPA[i][0]) {
+        const a = RAMPA[i - 1], b = RAMPA[i], t = (v - a[0]) / (b[0] - a[0]);
+        return [1, 2, 3, 4].map(k => a[k] + (b[k] - a[k]) * t);
+      }
+    }
+    return RAMPA[RAMPA.length - 1].slice(1);
+  }
+
+  /* o campo: gramado, calor, linhas e, no grande, os terços e a zona mais forte */
+  function campo(box, pts, o) {
+    o = o || {};
+    const W = box.clientWidth, H = W * 72 / 109;
+    box.style.height = H.toFixed(1) + 'px';
+    const u = 'c' + Math.random().toString(36).slice(2, 8);
+    let s = '<svg class="gram" viewBox="-2 -2 109 72" aria-hidden="true"><defs><radialGradient id="' + u + '" cx=".5" cy=".5" r=".72"><stop offset="0" stop-color="#16301F"/><stop offset="1" stop-color="#0B1919"/></radialGradient></defs>' +
+      '<rect x="-2" y="-2" width="109" height="72" fill="url(#' + u + ')"/>';
+    for (let i = 0; i < 10; i += 2) s += '<rect x="' + (i * 10.5) + '" y="0" width="10.5" height="68" fill="rgba(157,176,106,.05)"/>';
+    s += '</svg><canvas></canvas>';
+    const sw = o.mini ? 1.1 : 1.8, L = ' fill="none" stroke="rgba(200,184,138,.45)" stroke-width="' + sw + '" vector-effect="non-scaling-stroke"';
+    let l = '<svg class="linhas" viewBox="-2 -2 109 72" aria-hidden="true">';
+    if (o.tercos) l += '<path d="M35 0V68M70 0V68" fill="none" stroke="rgba(127,196,234,.5)" stroke-width="' + sw + '" stroke-dasharray="0" vector-effect="non-scaling-stroke"/>';
+    l += '<rect x="0" y="0" width="105" height="68"' + L + '/><path d="M52.5 0V68"' + L + '/><circle cx="52.5" cy="34" r="9.15"' + L + '/>' +
+      '<rect x="0" y="13.84" width="16.5" height="40.32"' + L + '/><rect x="88.5" y="13.84" width="16.5" height="40.32"' + L + '/>' +
+      '<rect x="0" y="24.84" width="5.5" height="18.32"' + L + '/><rect x="99.5" y="24.84" width="5.5" height="18.32"' + L + '/>' +
+      '<path d="M16.5 26.68A9.15 9.15 0 0 1 16.5 41.32M88.5 26.68A9.15 9.15 0 0 0 88.5 41.32"' + L + '/>' +
+      '<rect x="-1.6" y="30.34" width="1.6" height="7.32"' + L + '/><rect x="105" y="30.34" width="1.6" height="7.32"' + L + '/>' +
+      '<circle cx="52.5" cy="34" r=".45" fill="rgba(200,184,138,.6)"/><circle cx="11" cy="34" r=".4" fill="rgba(200,184,138,.6)"/><circle cx="94" cy="34" r=".4" fill="rgba(200,184,138,.6)"/>';
+    box.innerHTML = s + l + '</svg>';
+
+    // o calor: densidade dos lances numa grade de meio metro, suavizada
+    const cv = qs('canvas', box), fx = W * 2 / 109, fy = H * 2 / 72, fw = W * 105 / 109, fh = H * 68 / 72;
+    const dpr = Math.max(2, window.devicePixelRatio || 1);
+    cv.style.left = fx + 'px'; cv.style.top = fy + 'px'; cv.style.width = fw + 'px'; cv.style.height = fh + 'px';
+    cv.width = Math.round(fw * dpr); cv.height = Math.round(fh * dpr);
+    const GW = 210, GH = 136, g = new Float32Array(GW * GH), sg = (o.sigma || 3.3) / .5, R = Math.ceil(sg * 3), ker = [];
+    for (let dy = -R; dy <= R; dy++) for (let dx = -R; dx <= R; dx++) ker.push(dx, dy, Math.exp(-(dx * dx + dy * dy) / (2 * sg * sg)));
+    pts.forEach(([x, y]) => {
+      const cx = Math.round(x / .5), cy = Math.round(y / .5);
+      for (let i = 0; i < ker.length; i += 3) { const X = cx + ker[i], Y = cy + ker[i + 1]; if (X >= 0 && X < GW && Y >= 0 && Y < GH) g[Y * GW + X] += ker[i + 2]; }
+    });
+    let max = 0, imax = 0;
+    for (let i = 0; i < g.length; i++) if (g[i] > max) { max = g[i]; imax = i; }
+    const off = document.createElement('canvas'); off.width = GW; off.height = GH;
+    const oc = off.getContext('2d'), img = oc.createImageData(GW, GH);
+    for (let i = 0; i < g.length; i++) {
+      const c = cor(Math.pow(g[i] / max, .82));
+      img.data[i * 4] = c[0]; img.data[i * 4 + 1] = c[1]; img.data[i * 4 + 2] = c[2]; img.data[i * 4 + 3] = Math.round(c[3] * 255);
+    }
+    oc.putImageData(img, 0, 0);
+    const ctx = cv.getContext('2d'); ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(off, 0, 0, cv.width, cv.height);
+
+    const mx = (imax % GW) * .5, my = Math.floor(imax / GW) * .5;
+    const px = x => fx + x / 105 * fw, py = y => fy + y / 68 * fh;
+    if (o.tercos) {
+      const t = tercos(pts), nomes = ['Terço defensivo', 'Meio-campo', 'Último terço'];
+      [17.5, 52.5, 87.5].forEach((x, i) => {
+        const d = document.createElement('p');
+        d.className = 'terco' + (i === 2 ? ' alto' : '');
+        d.style.left = px(x) + 'px';
+        d.innerHTML = '<b>' + t[i] + '%</b><span>' + nomes[i] + '</span>';
+        box.appendChild(d);
+      });
+    }
+    if (o.anota) {
+      // a zona mais forte: anel no ponto de maior densidade e a nota ao lado
+      const ns = 'http://www.w3.org/2000/svg', sv = qs('.linhas', box);
+      [[3.4, 'rgba(127,196,234,.95)', 2.2], [6.2, 'rgba(127,196,234,.4)', 1.4]].forEach(([r, c, w]) => {
+        const k = document.createElementNS(ns, 'circle');
+        k.setAttribute('cx', mx); k.setAttribute('cy', my); k.setAttribute('r', r);
+        k.setAttribute('fill', 'none'); k.setAttribute('stroke', c); k.setAttribute('stroke-width', w); k.setAttribute('vector-effect', 'non-scaling-stroke');
+        sv.appendChild(k);
+      });
+      const n = document.createElement('div');
+      n.className = 'nota';
+      n.innerHTML = '<p>Zona mais forte</p><p>' + esc(o.anota) + '</p>';
+      box.appendChild(n);
+      const nw = n.offsetWidth, nh = n.offsetHeight, ax = px(mx), ay = py(my);
+      let left = ax - nw - 70, top = ay - nh / 2 - 50;
+      if (left < fx + 10) left = ax + 70;
+      top = Math.max(fy + 46, Math.min(top, fy + fh - nh - 90));
+      n.style.left = left + 'px'; n.style.top = top + 'px';
+      const ln = document.createElementNS(ns, 'path'), toM = (vx, vy) => [(vx - fx) / fw * 105, (vy - fy) / fh * 68];
+      const a = toM(left + (left < ax ? nw : 0), top + nh / 2), b = [mx + (left < ax ? -6.2 : 6.2) * .72, my - 6.2 * .55];
+      ln.setAttribute('d', 'M' + a[0].toFixed(2) + ' ' + a[1].toFixed(2) + 'L' + b[0].toFixed(2) + ' ' + b[1].toFixed(2));
+      ln.setAttribute('fill', 'none'); ln.setAttribute('stroke', 'rgba(127,196,234,.8)'); ln.setAttribute('stroke-width', 1.6); ln.setAttribute('vector-effect', 'non-scaling-stroke');
+      sv.appendChild(ln);
+    }
+    if (o.rotulos) {
+      box.insertAdjacentHTML('beforeend', '<p class="ataque">Ataque' + ic('i-seta') + '</p><p class="escala">Menos lances<i></i>Mais</p>');
+    }
+  }
+
+  /* o campo grande ocupa a largura toda, ou menos, se a altura que sobra no corpo da tela não der */
+  function encaixa(box) {
+    const corpo = box.parentElement, cs = getComputedStyle(corpo), filhos = Array.from(corpo.children);
+    const vao = parseFloat(cs.rowGap) || 0, outros = filhos.filter(e => e !== box).reduce((a, e) => a + e.offsetHeight, 0);
+    const livre = corpo.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom) - outros - vao * (filhos.length - 1);
+    const larg = corpo.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    box.style.flex = 'none'; box.style.alignSelf = 'center';
+    box.style.width = Math.floor(Math.min(larg, (livre - 1) * 109 / 72)) + 'px';
+  }
+
+  /* a linha de decisões boas, mês a mês: uma série só, sem legenda; o título diz o que é */
+  function linha(svg, vals, labs, o) {
+    o = o || {};
+    const W = svg.clientWidth, H = svg.clientHeight, fs = o.fs || 20;
+    const pl = o.pl || 46, pr = o.pr || 96, pt = o.pt || 24, pb = o.pb || 38, lo = 50, hi = 80;
+    const x = i => pl + i * (W - pl - pr) / (vals.length - 1), y = v => pt + (hi - v) * (H - pt - pb) / (hi - lo);
+    let s = '';
+    [50, 60, 70, 80].forEach(v => {
+      s += '<line x1="' + pl + '" x2="' + (W - pr + 18) + '" y1="' + y(v) + '" y2="' + y(v) + '" stroke="rgba(200,214,232,' + (v === 50 ? '.22' : '.09') + ')" stroke-width="1"/>';
+      if (!o.semEixo) s += '<text x="' + (pl - 12) + '" y="' + y(v) + '" text-anchor="end" dominant-baseline="central" font-family="Barlow Condensed" font-weight="600" font-size="' + (fs - 2) + '" fill="#7F93A8">' + v + '%</text>';
+    });
+    const pts = vals.map((v, i) => [x(i), y(v)]);
+    const d = 'M' + pts.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join('L');
+    const u = 'l' + Math.random().toString(36).slice(2, 7);
+    s += '<defs><linearGradient id="' + u + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(157,176,106,.22)"/><stop offset="1" stop-color="rgba(157,176,106,0)"/></linearGradient></defs>';
+    s += '<path d="' + d + 'L' + x(vals.length - 1).toFixed(1) + ' ' + y(lo) + 'L' + pl + ' ' + y(lo) + 'Z" fill="url(#' + u + ')"/>';
+    s += '<path d="' + d + '" fill="none" stroke="#9DB06A" stroke-width="' + (o.lw || 4) + '" stroke-linejoin="round" stroke-linecap="round"/>';
+    pts.forEach((p, i) => {
+      const ult = i === pts.length - 1, r = (o.r || 6) + (ult ? 2 : 0);
+      s += '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="' + r + '" fill="#9DB06A" stroke="#0E1B2D" stroke-width="3"/>';
+      s += '<text x="' + p[0] + '" y="' + (H - pb + (o.dx || 26)) + '" text-anchor="middle" font-family="Barlow Condensed" font-weight="600" font-size="' + fs + '" letter-spacing="2" fill="' + (ult ? '#E6DBB8' : '#7F93A8') + '">' + labs[i].toUpperCase() + '</text>';
+    });
+    const ul = pts[pts.length - 1];
+    s += '<text x="' + (ul[0] + 14) + '" y="' + (ul[1] - 6) + '" font-family="Saira Condensed" font-weight="800" font-size="' + (o.fv || 40) + '" fill="#FFFFFF">' + vals[vals.length - 1] + '%</text>';
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svg.innerHTML = s;
+  }
+
+  /* o anel de decisões boas (medidor: a trilha é a mesma cor, mais apagada) */
+  function roda(box, pct, rotulo) {
+    const r = 82, c = 2 * Math.PI * r, f = c * pct / 100;
+    box.innerHTML = '<svg viewBox="0 0 196 196" aria-hidden="true"><circle cx="98" cy="98" r="' + r + '" fill="none" stroke="rgba(157,176,106,.18)" stroke-width="18"/>' +
+      '<circle cx="98" cy="98" r="' + r + '" fill="none" stroke="#9DB06A" stroke-width="18" stroke-linecap="round" stroke-dasharray="' + f.toFixed(1) + ' ' + c.toFixed(1) + '" transform="rotate(-90 98 98)"/></svg>' +
+      '<div class="meio"><b>' + pct + '%</b><span>' + esc(rotulo) + '</span></div>';
+  }
+
+  /* ---------- textos que dependem da data ---------- */
+  const TXT = {
+    mesEntrada: MESES[mes(-4).getMonth()], mesEntradaCap: cap(MESES[mes(-4).getMonth()]), mesAgora: MESES[HOJE.getMonth()],
+    encMes: String(ENC_MES), encResto: (ENC_MES - 3) + ' encaminhamentos', avalDia: dd(AVAL), avalLonga: SEMANA[AVAL.getDay()] + ', ' + ddmm(AVAL),
+    jun3: String(T_ANTES[2]), out3: String(T_AGORA[2])
+  };
+  qsa('[data-txt]').forEach(e => { e.textContent = TXT[e.dataset.txt] != null ? TXT[e.dataset.txt] : ''; });
+
+  function monta() {
+    const labs = [-4, -3, -2, -1, 0].map(n => MES3[mes(n).getMonth()]);
+
+    /* 01 capa: o painel em miniatura e o celular */
+    campo(qs('#ap-mapa'), P_AGORA, {});
+    linha(qs('#ap-linha'), EVOL, labs, { fs: 15, pl: 40, pr: 64, pt: 16, pb: 30, dx: 22, lw: 3, r: 4.5, fv: 30 });
+    qs('#ap-opps').innerHTML = OPPS.slice(0, 3).map(o => '<li>' + ic('i-clube') + '<div class="t"><p>' + esc(o.clube) + ' · ' + esc(o.local) + '</p><span>' + esc(o.cat) + ' · ' + esc(DEGRAUS[o.st]) + '</span></div><span class="v">' + ic('i-cadeado') + 'A consultar</span></li>').join('');
+    campo(qs('#cel-mapa'), P_AGORA, { mini: true });
+
+    /* 02 mapa de desempenho: os dois pequenos primeiro, porque o grande fica com a altura que sobra */
+    campo(qs('#mapa-jun'), P_ANTES, { mini: true });
+    campo(qs('#mapa-agora-mini'), P_AGORA, { mini: true });
+    encaixa(qs('#mapa-agora'));
+    campo(qs('#mapa-agora'), P_AGORA, { tercos: true, anota: 'Entre linhas, pela meia-esquerda', rotulos: true });
+
+    /* 03 evolução */
+    roda(qs('#roda'), EVOL[EVOL.length - 1], 'decisões boas');
+    linha(qs('#linha'), EVOL, labs, {});
+    qs('#tipos').innerHTML = TIPOS.map(([n, q, p]) => '<li><span class="nm">' + esc(n) + '</span><span class="tr"><i style="width:' + p + '%"></i></span><span class="pc">' + p + '%</span><span class="qt">' + q + ' lances</span></li>').join('');
+    qs('#fortes').innerHTML = FORTES.map(t => '<li>' + esc(t) + '</li>').join('');
+    qs('#prior').innerHTML = PRIOR.map(t => '<li>' + esc(t) + '</li>').join('');
+
+    /* 04 plano de carreira */
+    const TRILHA = [
+      { st: 'feito', quando: MESES[mes(-4).getMonth()], tag: 'Ser visto', tt: 'Perfil aprovado', tx: 'O Zyron leu o primeiro vídeo. A equipe aprovou o perfil e montou o plano.' },
+      { st: 'feito', quando: MESES[mes(-3).getMonth()] + ' a ' + MESES[mes(-1).getMonth()], tag: 'Ser preparado', tt: 'Jogo lido, treino com direção', tx: '10 vídeos lidos. Passe vertical e chegada na área viraram rotina.' },
+      { st: 'agora', quando: MESES[HOJE.getMonth()] + ' · agora', tag: 'Ser visto', tt: 'Vitrine aberta', tx: 'Perfil encaminhado a ' + ENC_MES + ' clubes no mês. Dois pediram mais vídeo.' },
+      { st: 'proximo', quando: MESES[AVAL.getMonth()], tag: 'Ser apresentado', tt: 'Avaliação presencial', tx: 'Clube da Série A (SP), dia ' + dd(AVAL) + '. Logística planejada com a família.' },
+      { st: 'destino', quando: 'Destino', tag: '', tt: 'O elenco que combina com o jogo dele', tx: 'Cada movimento do plano aponta pra cá.' }
+    ];
+    const NO = { feito: ic('i-check'), agora: ic('i-alvo'), proximo: ic('i-cal'), destino: ic('i-estrela') };
+    qs('#trilha').innerHTML = TRILHA.map(t => '<li class="' + t.st + '"><span class="no">' + NO[t.st] + '</span><div class="card"><p class="qd">' + esc(t.quando) + (t.tag ? '<span class="tag">' + esc(t.tag) + '</span>' : '') + '</p><p class="tt">' + esc(t.tt) + '</p><p class="tx">' + esc(t.tx) + '</p></div></li>').join('');
+    const AGENDA = [
+      { d: util(3), tt: 'Ligação da semana', qm: 'com o estrategista esportivo', ic: 'i-tel' },
+      { d: util(6), tt: 'Relatório quinzenal', qm: 'do analista de performance', ic: 'i-doc' },
+      { d: util(13), tt: 'Assessoria individual', qm: 'com o David Willer', ic: 'i-estrela' },
+      { d: AVAL, tt: 'Avaliação presencial', qm: 'Clube da Série A (SP)', ic: 'i-bola', forte: true }
+    ];
+    qs('#agenda').innerHTML = AGENDA.map(a => '<li' + (a.forte ? ' class="forte"' : '') + '><span class="dt"><span>' + SEMANA[a.d.getDay()] + '</span><b>' + ddmm(a.d) + '</b></span><div><p class="at">' + esc(a.tt) + '</p><p class="qm">' + ic(a.ic) + esc(a.qm) + '</p></div></li>').join('');
+
+    /* 05 oportunidades */
+    qs('#opps').innerHTML = OPPS.slice(0, 3).map(o => '<li class="op"><div class="op-cab"><span class="esc">' + ic('i-clube') + '</span><div><p class="cl">' + esc(o.clube) + '</p><p class="lc"><b>' + esc(o.local) + '</b> · ' + esc(o.cat) + '</p></div></div>' +
+      '<p class="bs">Busca: <b>' + esc(o.busca) + '</b></p>' +
+      '<div class="st"><span class="degraus">' + DEGRAUS.map((_, i) => '<i' + (i <= o.st ? ' class="on"' : '') + '></i>').join('') + '</span><span>' + esc(DEGRAUS[o.st]) + (o.quando ? ' · ' + esc(o.quando) : '') + '</span></div>' +
+      '<div class="val"><p class="k">Valores</p><p class="pill">' + ic('i-cadeado') + 'A consultar</p><p class="com">com o <b>Scout</b></p></div></li>').join('');
+
+    /* 06 a casa */
+    qs('#casa').innerHTML = CASA.map(c => {
+      if (c[0] === 'SUA') return '<div class="sua"><span class="av">' + ic('i-pessoa') + '</span><div><span class="chip ok">Perfil aprovado</span><p class="t1">A sua área</p>' +
+        '<p class="t2">O seu mapa de desempenho, o seu plano de carreira e as suas oportunidades em clubes.</p><p class="cad">' + ic('i-cadeado') + 'Abre no dia do sim</p></div></div>';
+      return '<div class="atl' + (c[6] ? ' ' + c[6] : '') + '"><span class="av">' + esc(c[2]) + '</span><div class="tx"><p class="nm">' + esc(c[0]) + (c[1] ? '<span> · ' + esc(c[1]) + '</span>' : '') + '</p><p class="mt">' + esc(c[3]) + '</p><p class="stt ' + c[5] + '">' + esc(c[4]) + '</p></div></div>';
+    }).join('');
+  }
+
+  /* ---------- modo apresentação: uma tela por vez, escalada pra caber na janela (sem ?raw) ---------- */
+  if (document.documentElement.classList.contains('apr')) {
+    const paginas = qsa('.page'), stage = qs('#stage'), N = paginas.length, pts = [];
+    let atual = 0;
+    const encaixaJanela = () => stage.style.setProperty('--s', Math.max(.1, Math.min(innerWidth / 1080, (innerHeight - 64) / 1440)).toFixed(4));
+    const vai = i => {
+      atual = Math.max(0, Math.min(N - 1, i));
+      paginas.forEach((pg, k) => pg.classList.toggle('ativa', k === atual));
+      pts.forEach((b, k) => { b.classList.toggle('on', k === atual); b.setAttribute('aria-current', k === atual ? 'true' : 'false'); });
+      qs('#apr-n').textContent = String(atual + 1).padStart(2, '0') + ' / ' + String(N).padStart(2, '0');
+      qs('#apr-ant').disabled = atual === 0; qs('#apr-prox').disabled = atual === N - 1;
+      try { history.replaceState(null, '', location.pathname + location.search + '#' + (atual + 1)); } catch (e) { /* file:// sem histórico */ }
+    };
+    for (let k = 0; k < N; k++) {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'pt'; b.setAttribute('aria-label', 'Tela ' + (k + 1));
+      b.addEventListener('click', () => vai(k));
+      qs('#apr-pts').appendChild(b); pts.push(b);
+    }
+    qs('#apr-ant').addEventListener('click', () => vai(atual - 1));
+    qs('#apr-prox').addEventListener('click', () => vai(atual + 1));
+    // clique na janela: o terço da esquerda volta, o resto avança
+    document.addEventListener('click', e => { if (!e.target.closest('.apr-ui')) vai(e.clientX < innerWidth * .3 ? atual - 1 : atual + 1); });
+    document.addEventListener('keydown', e => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      const k = e.key;
+      if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(k)) vai(atual + 1);
+      else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(k)) vai(atual - 1);
+      else if (k === 'Home') vai(0);
+      else if (k === 'End') vai(N - 1);
+      else if (/^[1-9]$/.test(k)) vai(Number(k) - 1);
+      else if (k === 'f' || k === 'F') { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen && document.documentElement.requestFullscreen().catch(() => {}); }
+      else return;
+      e.preventDefault();
+    });
+    let x0 = null;
+    document.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+    document.addEventListener('touchend', e => { if (x0 == null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 50) vai(atual + (dx < 0 ? 1 : -1)); }, { passive: true });
+    addEventListener('resize', encaixaJanela);
+    encaixaJanela();
+    vai((parseInt(location.hash.slice(1), 10) || 1) - 1);
+  }
+
+  const pronto = () => { document.body.dataset.pronto = '1'; };
+  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(() => { monta(); requestAnimationFrame(() => requestAnimationFrame(pronto)); });
+})();
+</script>
+</body>
+</html>

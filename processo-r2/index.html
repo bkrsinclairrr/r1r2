@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Processo de venda da R2 · Jogador de Elite</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="fonts.css">
+<style>
+/* Jogador de Elite · Processo de venda da R2 (Gestor de Carreiras)
+   17 slides de 1920×1080. Na tela, os slides se ajustam à largura da janela;
+   na impressão (ou ?raw), cada slide vira uma página de 1920×1080. */
+
+:root{
+  --ink:#07080A; --panel:#111419; --panel2:#171B22; --edge:#262C35;
+  --paper:#F3EEE4; --card:#FFFDF8;
+  --gold:#C9A24A; --gold-l:#E8CE8E; --gold-d:#A8852F; --gold-ink:#8A6A1E; --gold-deep:#A57F27;
+  --blue:#7FAEFF;
+  --white:#FFFFFF; --body:#C9CFD7; --muted:#8B939D;
+  --text:#0B0D10; --text-2:#3D424A; --text-3:#73787F;
+  --f-title:'Saira Condensed',sans-serif;
+  --f-label:'Barlow Condensed',sans-serif;
+  --f-body:'Archivo',sans-serif;
+  --s:1;
+}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html,body{margin:0;padding:0}
+body{background:#1B1E23;font-family:var(--f-body);-webkit-font-smoothing:antialiased}
+
+/* ---------- moldura: escala na tela, 1:1 na impressão ---------- */
+.deck{padding:20px 0}
+.frame{width:calc(1920px * var(--s));height:calc(1080px * var(--s));margin:0 auto 20px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.45)}
+.slide{position:relative;width:1920px;height:1080px;overflow:hidden;transform:scale(var(--s));transform-origin:0 0}
+.raw body{background:#000}
+.raw .deck{padding:0}
+.raw .frame{margin:0;box-shadow:none}
+@page{size:1920px 1080px;margin:0}
+@media print{
+  :root{--s:1 !important}
+  body{background:none}
+  .deck{padding:0}
+  .frame{margin:0;box-shadow:none;break-inside:avoid}
+  .frame:not(:last-child){break-after:page}
+  .slide{transform:none !important}
+}
+
+/* ---------- fundos ---------- */
+.dark{background:var(--ink);color:var(--body)}
+.light{background:var(--paper);color:var(--text-2)}
+.goldbg{background:linear-gradient(128deg,#D6B25A 0%,#C9A24A 48%,#B48D3A 100%);color:var(--ink)}
+.fill{position:absolute;inset:0;pointer-events:none}
+.grain{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");opacity:.06;mix-blend-mode:overlay}
+.glow-cover{background:radial-gradient(52% 62% at 80% 28%,rgba(201,162,74,.16),rgba(7,8,10,0) 66%),linear-gradient(160deg,#14171C 0%,#07080A 58%)}
+.glow-tr{background:radial-gradient(46% 58% at 96% 0%,rgba(201,162,74,.09),rgba(7,8,10,0) 62%)}
+.glow-c{background:radial-gradient(60% 70% at 70% 55%,rgba(201,162,74,.10),rgba(7,8,10,0) 66%)}
+.glow-end{background:radial-gradient(60% 70% at 85% 80%,rgba(201,162,74,.14),rgba(7,8,10,0) 64%),linear-gradient(200deg,#16191E 0%,#07080A 60%)}
+
+/* ---------- tipografia ---------- */
+.a{position:absolute;margin:0}
+.label{font-family:var(--f-label);font-weight:600;font-size:30px;letter-spacing:.3em;text-transform:uppercase;line-height:1.2;margin:0}
+.dark .label{color:var(--gold)}
+.light .label{color:var(--gold-ink)}
+.goldbg .label{color:var(--ink)}
+/* entrelinha 1.0+: com .9, a cedilha de uma linha cai em cima da letra de baixo e vira acento */
+.h{font-family:var(--f-title);font-weight:800;text-transform:uppercase;line-height:1.02;letter-spacing:.004em;margin:0;text-wrap:balance}
+p,li,blockquote{text-wrap:pretty}
+.nb{white-space:nowrap}
+.dark .h{color:var(--white)}
+.light .h{color:var(--text)}
+.goldbg .h{color:var(--ink)}
+.dark .acc{color:var(--gold)}
+.light .acc{color:var(--gold-deep)}
+.u{color:var(--gold-deep);background-image:linear-gradient(var(--gold-deep),var(--gold-deep));background-size:100% 9px;background-position:0 96%;background-repeat:no-repeat;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.p{font-size:31px;line-height:1.4;margin:0}
+.light .p b{color:var(--text);font-weight:700}
+.dark .p b{color:var(--white);font-weight:600}
+.giant{font-family:var(--f-title);font-weight:800;font-size:330px;line-height:.8;letter-spacing:-.01em;margin:0}
+.light .giant{color:rgba(138,106,30,.13)}
+.dark .giant{color:#1A1E25}
+.stack{display:flex;flex-direction:column}
+
+/* rodapé de cada slide */
+.foot{position:absolute;left:128px;right:128px;bottom:50px;display:flex;justify-content:space-between;align-items:baseline;font-size:22px;margin:0}
+.dark .foot{color:var(--muted)}
+.light .foot{color:var(--text-3)}
+.foot .n{font-family:var(--f-label);font-weight:600;font-size:25px;letter-spacing:.12em}
+
+/* marca */
+.wm{display:flex;flex-direction:column;font-family:var(--f-title);font-weight:800;font-size:48px;line-height:.84;letter-spacing:.02em;text-transform:uppercase;color:var(--gold)}
+.wm span:last-child{color:var(--gold-l)}
+
+/* gatilhos */
+.chips{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.chips .k{font-family:var(--f-label);font-weight:600;font-size:22px;letter-spacing:.26em;text-transform:uppercase;margin-right:8px}
+.chip{font-family:var(--f-label);font-weight:600;font-size:22px;letter-spacing:.14em;text-transform:uppercase;padding:7px 16px 6px;border-radius:999px;border:1.5px solid}
+.light .chips .k{color:var(--text-3)}
+.light .chip{color:var(--gold-ink);border-color:rgba(138,106,30,.42)}
+.dark .chips .k{color:var(--muted)}
+.dark .chip{color:var(--gold-l);border-color:rgba(201,162,74,.45)}
+
+.ic{width:46px;height:46px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- 01 capa ---------- */
+.tape{position:absolute;left:-140px;width:2200px;height:86px;display:flex;align-items:center;gap:46px;padding-left:20px;white-space:nowrap;font-family:var(--f-title);font-weight:800;font-size:40px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink);box-shadow:0 18px 44px rgba(0,0,0,.5)}
+.tape.t1{top:902px;background:var(--gold-d);transform:rotate(-3.3deg)}
+.tape.t2{top:962px;background:var(--gold);transform:rotate(2.3deg)}
+
+/* ---------- cartões escuros (03, 10) ---------- */
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+.card{position:relative;display:flex;flex-direction:column;background:var(--panel);border-top:6px solid var(--gold);padding:52px 48px 40px}
+.card .num{font-family:var(--f-title);font-weight:800;font-size:104px;line-height:.86;color:var(--gold);margin:0 0 34px}
+.card .ic{color:var(--gold);margin:0 0 30px;display:block}
+.card .ct{font-family:var(--f-title);font-weight:800;font-size:50px;line-height:1.08;text-transform:uppercase;color:var(--white);margin:0 0 20px}
+.card .cb{font-size:29px;line-height:1.42;color:var(--body);margin:0}
+.card .tag{margin:auto 0 0;padding-top:24px;font-family:var(--f-label);font-weight:600;font-size:22px;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,162,74,.8)}
+.gl{list-style:none;margin:0;padding:0}
+.gl li{font-size:27px;line-height:1.36;color:var(--body);margin:0 0 12px}
+.gl b{color:var(--white);font-weight:600}
+
+/* ---------- 04 pré-R2 ---------- */
+.pc{position:relative;background:var(--card);border-radius:12px;padding:28px 40px 28px 112px}
+.pc .ic{position:absolute;left:40px;top:30px;color:var(--gold-deep)}
+.pc h3{font-family:var(--f-title);font-weight:800;font-size:42px;line-height:1;text-transform:uppercase;color:var(--text);margin:0 0 10px}
+.pc p{font-size:26px;line-height:1.38;color:var(--text-2);margin:0}
+
+/* ---------- 05 estrutura ---------- */
+.pill{font-family:var(--f-label);font-weight:700;font-size:30px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--gold);padding:14px 34px 12px;border-radius:999px}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:28px}
+.st .dk{font-family:var(--f-label);font-weight:600;font-size:22px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:0 0 18px}
+.st i{display:block;height:5px;background:#353B44;margin:0 0 40px}
+.st.on i{background:var(--gold)}
+.st.on .dk{color:var(--gold)}
+.st .sn{font-family:var(--f-title);font-weight:800;font-size:124px;line-height:.82;color:var(--white);margin:0 0 30px}
+.st.on .sn{color:var(--gold)}
+.st h3{font-family:var(--f-title);font-weight:800;font-size:48px;line-height:1;text-transform:uppercase;color:var(--white);margin:0 0 12px}
+.st .sd{font-size:27px;line-height:1.32;color:var(--muted);margin:0}
+
+/* ---------- 06 a 08: etapas ---------- */
+.it{border-left:6px solid var(--gold);padding:4px 0 6px 34px}
+.it h3{font-family:var(--f-title);font-weight:800;font-size:50px;line-height:1;text-transform:uppercase;color:var(--text);margin:0 0 14px}
+.it p{font-size:30px;line-height:1.4;color:var(--text-2);margin:0}
+.q{margin:0;background:var(--panel);border-left:6px solid var(--gold);padding:34px 44px 36px;font-weight:600;font-size:38px;line-height:1.26;color:var(--white)}
+.tripe{background:var(--ink);border-radius:12px;padding:44px 52px 46px}
+.tripe .label{color:var(--gold)}
+.tr{display:grid;grid-template-columns:30px 1fr;column-gap:18px;align-items:baseline;padding:20px 0 22px;border-bottom:1px solid rgba(255,255,255,.12)}
+.tr:first-of-type{margin-top:16px}
+.tr .dot{width:16px;height:16px;border-radius:50%;transform:translateY(-6px)}
+.dot.b{background:var(--blue)}
+.dot.bg{background:linear-gradient(90deg,var(--blue) 50%,var(--gold) 50%)}
+.dot.g{background:var(--gold)}
+.tr h3{font-family:var(--f-title);font-weight:800;font-size:62px;line-height:.95;text-transform:uppercase;color:var(--white);margin:0}
+.tr p{grid-column:2;font-size:25px;line-height:1.35;color:var(--muted);margin:8px 0 0}
+.tripe .tf{font-size:27px;line-height:1.4;color:var(--body);margin:26px 0 0}
+.tripe .tf b{color:var(--white);font-weight:600}
+
+/* ---------- 11 a ordem do valor ---------- */
+.road{display:grid;grid-template-columns:repeat(7,1fr);gap:26px;position:relative;padding-top:78px}
+.road .line{position:absolute;left:14px;right:40px;top:26px;height:4px;background:linear-gradient(90deg,rgba(165,127,39,.28),var(--gold-deep) 72%,var(--gold))}
+.road .stop{position:relative}
+.road .stop i{position:absolute;left:0;top:-66px;width:30px;height:30px;border-radius:50%;background:var(--paper);border:4px solid var(--gold-deep)}
+.road .stop.goal i{width:46px;height:46px;top:-74px;left:-8px;background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 12px rgba(201,162,74,.22)}
+.road .sk{font-family:var(--f-label);font-weight:600;font-size:22px;letter-spacing:.2em;color:var(--gold-ink);margin:0 0 10px}
+.road h3{font-family:var(--f-title);font-weight:800;font-size:44px;line-height:.95;text-transform:uppercase;color:var(--text);margin:0 0 14px}
+.road .stop.goal h3{color:var(--gold-deep)}
+.road .sd{font-size:26px;line-height:1.36;color:var(--text-2);margin:0}
+.silence{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center;background:var(--ink);border-radius:12px;padding:36px 52px}
+.silence h3{font-family:var(--f-title);font-weight:800;font-size:58px;line-height:.92;text-transform:uppercase;color:var(--gold);margin:0}
+.silence p{font-size:28px;line-height:1.4;color:var(--body);margin:0}
+.silence p b{color:var(--white);font-weight:600}
+
+/* ---------- 12 a escada do sim ---------- */
+.stairs{display:flex;align-items:flex-end;gap:14px}
+.sp{flex:1;height:var(--h);background:linear-gradient(180deg,#191E26 0%,#0E1116 100%);border-top:5px solid var(--gold);padding:34px 34px 0}
+.sp .who{font-family:var(--f-label);font-weight:600;font-size:22px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+.sp .sq{font-weight:600;font-size:30px;line-height:1.3;color:var(--white);margin:0 0 20px}
+.sp .sa{font-family:var(--f-title);font-weight:800;font-size:76px;line-height:.88;text-transform:uppercase;color:var(--gold);margin:0}
+
+/* ---------- 13 os planos ---------- */
+.plans{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:28px;align-items:stretch}
+.pl{position:relative;background:var(--ink);border-radius:12px;padding:46px 40px 40px}
+.pl::before{content:"";position:absolute;left:0;right:0;top:0;height:8px;border-radius:12px 12px 0 0}
+.pl.sc::before{background:var(--blue)}
+.pl.pro::before{background:linear-gradient(90deg,var(--blue),var(--gold))}
+.pl.leg::before{background:var(--gold)}
+.pl.leg{box-shadow:0 0 0 2px var(--gold),0 30px 60px rgba(138,106,30,.28)}
+.pl .role{font-family:var(--f-label);font-weight:600;font-size:21px;letter-spacing:.18em;text-transform:uppercase;line-height:1.3;min-height:55px;margin:0 0 12px}
+.pl.sc .role,.pl.sc .rt{color:var(--blue)}
+.pl.pro .role,.pl.pro .rt{color:#B9C9E8}
+.pl.leg .role,.pl.leg .rt{color:var(--gold)}
+.pl h3{font-family:var(--f-title);font-weight:800;font-size:50px;line-height:.94;text-transform:uppercase;color:var(--white);margin:0 0 12px}
+.pl .rt{font-family:var(--f-title);font-weight:700;font-size:32px;line-height:1;text-transform:uppercase;letter-spacing:.02em;margin:0 0 24px}
+.pl .pr{display:flex;align-items:baseline;gap:14px;border-top:1px solid rgba(255,255,255,.12);padding-top:22px;margin:0}
+.pl .pr b{font-family:var(--f-title);font-weight:800;font-size:80px;line-height:.9;color:var(--white)}
+.pl .pr span{font-family:var(--f-label);font-weight:600;font-size:22px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.pl .pp{font-size:24px;font-weight:600;color:var(--gold-l);margin:10px 0 20px}
+.pl .pd{font-size:24px;line-height:1.42;color:var(--body);margin:0}
+.ribbon{position:absolute;right:32px;top:-20px;background:var(--gold);color:var(--ink);font-family:var(--f-label);font-weight:700;font-size:22px;letter-spacing:.26em;text-transform:uppercase;padding:8px 18px 7px;border-radius:4px;margin:0}
+
+/* ---------- 15 objeções ---------- */
+.obj{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.obj article{background:var(--card);border-radius:12px;padding:30px 34px 32px}
+.obj h3{font-family:var(--f-title);font-weight:800;font-size:40px;line-height:.98;text-transform:uppercase;color:var(--text);margin:0 0 14px}
+.obj h3 em{font-style:normal;color:var(--gold-deep)}
+.obj p{font-size:24px;line-height:1.4;color:var(--text-2);margin:0}
+
+/* ---------- 16 próximo passo ---------- */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.win{background:linear-gradient(128deg,#D6B25A 0%,#C9A24A 52%,#B8913C 100%);border-radius:12px;padding:54px 56px}
+.lose{background:var(--panel);border:1px solid var(--edge);border-radius:12px;padding:54px 56px}
+.win h3,.lose h3{font-family:var(--f-title);font-weight:800;font-size:84px;line-height:.88;text-transform:uppercase;margin:0 0 34px}
+.win h3{color:var(--ink)}
+.lose h3{color:var(--white)}
+.win ol{list-style:none;margin:0;padding:0;counter-reset:n}
+.win li{counter-increment:n;position:relative;padding-left:50px;font-weight:600;font-size:31px;line-height:1.36;color:var(--ink);margin:0 0 22px}
+.win li::before{content:counter(n) ".";position:absolute;left:0;top:-2px;font-family:var(--f-title);font-weight:800;font-size:38px}
+.lose p{font-size:31px;line-height:1.36;color:var(--body);margin:0 0 22px}
+.lose p b{color:var(--white);font-weight:600}
+
+/* ---------- 17 encerramento ---------- */
+.cta{display:inline-block;font-family:var(--f-label);font-weight:700;font-size:32px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:var(--gold);padding:24px 48px 22px;border-radius:999px;text-decoration:none}
+</style>
+</head>
+<body>
+<main class="deck">
+
+<!-- ============ 01 CAPA ============ -->
+<div class="frame"><section class="slide dark">
+  <div class="fill glow-cover"></div><div class="fill grain"></div>
+  <div class="a wm" style="left:128px;top:116px"><span>Jogador</span><span>de Elite</span></div>
+  <p class="a label" style="left:128px;top:374px">Material interno · Gestor de Carreiras</p>
+  <h1 class="a h" style="left:122px;top:434px;width:1700px;font-size:150px;line-height:.94">O processo de venda que<br><span class="acc">fecha o plano na call.</span></h1>
+  <p class="a p" style="left:128px;top:744px;width:1060px;font-size:34px;color:#B9C0C9">O roteiro passo a passo pra transformar a R2 num planejamento de carreira e sair dela com o atleta dentro.</p>
+  <div class="tape t1"><span>Jogador de Elite</span><span>Jogador de Elite</span><span>Jogador de Elite</span><span>Jogador de Elite</span><span>Jogador de Elite</span><span>Jogador de Elite</span><span>Jogador de Elite</span><span>Jogador de Elite</span><span>Jogador de Elite</span><span>Jogador de Elite</span></div>
+  <div class="tape t2"><span>Jogador de Elite</span><span>Jogador de Elite</span><span>Jogador de Elite</span><span>Jogador de Elite</span><span>Jogador de Elite</span><span>Jogador de Elite</span><span>Jogador de Elite</span><span>Jogador de Elite</span><span>Jogador de Elite</span><span>Jogador de Elite</span></div>
+</section></div>
+
+<!-- ============ 02 MENTALIDADE ============ -->
+<div class="frame"><section class="slide light">
+  <p class="a label" style="left:128px;top:236px">Antes de tudo, a mentalidade</p>
+  <h2 class="a h" style="left:124px;top:304px;width:1690px;font-size:124px">A R2 não é uma apresentação.<br>É um <span class="u">planejamento de carreira.</span></h2>
+  <div class="a stack" style="left:128px;top:610px;width:1250px;gap:36px">
+    <p class="p" style="font-size:36px">Entenda o momento do atleta e da família e mostre, com as palavras deles, o caminho dele até o clube. Eles precisam sair da call sentindo que já receberam valor, antes mesmo de pagar.</p>
+    <p class="p" style="font-size:32px;padding-left:28px;border-left:5px solid var(--gold-deep)"><b>Quem escolhe somos nós.</b> As pessoas amam comprar, mas odeiam vendedor: a família tem que se sentir avaliada, não vendida.</p>
+  </div>
+  <footer class="foot"><span>Jogador de Elite · Processo padrão da R2</span><span class="n">02</span></footer>
+</section></div>
+
+<!-- ============ 03 AS 3 REGRAS ============ -->
+<div class="frame"><section class="slide dark">
+  <div class="fill glow-tr"></div><div class="fill grain"></div>
+  <h2 class="a h" style="left:126px;top:110px;font-size:118px">As 3 regras de toda R2</h2>
+  <div class="a cards3" style="left:128px;top:290px;width:1664px;height:650px">
+    <article class="card">
+      <p class="num">01</p>
+      <h3 class="ct">Gere o máximo de valor</h3>
+      <p class="cb">A R2 é um planejamento de carreira. A família vê o jogo do filho como nunca viu: o vídeo dele, lance a lance, com o relatório pronto.</p>
+      <p class="tag">No deck · slide 13</p>
+    </article>
+    <article class="card">
+      <p class="num">02</p>
+      <h3 class="ct">Feche ainda na call</h3>
+      <p class="cb">Esse é o objetivo final. Pai, mãe e atleta na call, o combinado de decidir hoje dito em voz alta, e tudo construído pra decisão acontecer ali, não depois.</p>
+      <p class="tag">No deck · slide 03</p>
+    </article>
+    <article class="card">
+      <p class="num">03</p>
+      <h3 class="ct">Antecipe as objeções</h3>
+      <p class="cb">Cada slide do deck desarma uma objeção antes de ela aparecer. Quem responde antes da pergunta conduz a conversa.</p>
+      <p class="tag">No apresentador · aba Objeções</p>
+    </article>
+  </div>
+  <footer class="foot"><span>Jogador de Elite · Processo padrão da R2</span><span class="n">03</span></footer>
+</section></div>
+
+<!-- ============ 04 PRÉ-R2 ============ -->
+<div class="frame"><section class="slide light">
+  <p class="a label" style="left:128px;top:384px">Pré-R2</p>
+  <h2 class="a h" style="left:124px;top:452px;width:700px;font-size:104px;text-wrap:wrap">A venda começa<br>antes da call</h2>
+  <p class="a p" style="left:128px;top:712px;width:620px;font-size:30px">Dez minutos antes de toda R2, com a ficha da R1 aberta.</p>
+  <div class="a stack" style="left:860px;top:130px;width:932px;gap:18px">
+    <article class="pc">
+      <svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><line x1="21" y1="21" x2="16.4" y2="16.4"/></svg>
+      <h3>Estude a ficha da R1</h3>
+      <p>Nomes, sonho, dor com as palavras deles, peneiras e quanto já investiram. Quem pergunta de novo parece vendedor.</p>
+    </article>
+    <article class="pc">
+      <svg class="ic" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <h3>Escolha o caso espelho</h3>
+      <p>Atleta nosso de verdade, mesma posição, idade e nível, com o link da AGN. É a semelhança que convence.</p>
+    </article>
+    <article class="pc">
+      <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+      <h3>Suba o vídeo e teste o deck</h3>
+      <p>Suba o vídeo do atleta no painel, com a autorização do responsável, marque os lances e confira a fonte. Teste o vídeo do Zyron, o áudio da mãe e o 13.</p>
+    </article>
+    <article class="pc">
+      <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <h3>Seja pontual</h3>
+      <p>Atraso é a primeira objeção que você mesmo cria. Confirme pai, mãe e atleta: faltou decisor, reagende.</p>
+    </article>
+  </div>
+  <footer class="foot"><span>Jogador de Elite · Processo padrão da R2</span><span class="n">04</span></footer>
+</section></div>
+
+<!-- ============ 05 ESTRUTURA ============ -->
+<div class="frame"><section class="slide dark">
+  <div class="fill glow-tr"></div><div class="fill grain"></div>
+  <h2 class="a h" style="left:126px;top:110px;font-size:118px">A estrutura da R2</h2>
+  <p class="a pill" style="right:128px;top:128px">45 min a 1 hora</p>
+  <div class="a steps" style="left:128px;top:560px;width:1664px">
+    <div class="st on"><p class="dk">Slides 01 a 03</p><i></i><p class="sn">01</p><h3>Conexão</h3><p class="sd">Pelo nome, e o combinado</p></div>
+    <div class="st"><p class="dk">Slides 03, 04 e 12</p><i></i><p class="sn">02</p><h3>Dor e sonho</h3><p class="sd">O que trava o atleta</p></div>
+    <div class="st"><p class="dk">Slides 05 a 16</p><i></i><p class="sn">03</p><h3>O plano</h3><p class="sd">Zyron, prova e caso espelho</p></div>
+    <div class="st"><p class="dk">Slides 17 a 24</p><i></i><p class="sn">04</p><h3>Fechamento</h3><p class="sd">Decisão na call</p></div>
+    <div class="st"><p class="dk">Slide 25</p><i></i><p class="sn">05</p><h3>Próximo passo</h3><p class="sd">Bem-vindo ou retorno marcado</p></div>
+  </div>
+  <footer class="foot"><span>Jogador de Elite · Processo padrão da R2</span><span class="n">05</span></footer>
+</section></div>
+
+<!-- ============ 06 ETAPA 01 ============ -->
+<div class="frame"><section class="slide light">
+  <p class="a label" style="left:128px;top:130px">Etapa 01</p>
+  <p class="a giant" style="left:110px;top:186px">01</p>
+  <h2 class="a h" style="left:124px;top:478px;width:640px;font-size:112px">Conexão e combinado</h2>
+  <div class="a chips" style="left:128px;top:760px;width:640px"><span class="k">Gatilhos</span><span class="chip">Exclusividade</span><span class="chip">Compromisso</span></div>
+  <div class="a stack" style="left:820px;top:200px;width:972px;gap:56px">
+    <div class="it"><h3>Gere conexão</h3><p>Chame pai, mãe e atleta pelo nome desde o primeiro minuto. E pro atleta, olhando pra ele: “parabéns, você foi escolhido”.</p></div>
+    <div class="it"><h3>Alinhe o combinado</h3><p>“Se fizer sentido, vocês decidem hoje, os dois juntos. Pode ser não, tudo bem. Só não vale ‘vou pensar’.” Quem define o roteiro conduz a R2.</p></div>
+    <div class="it"><h3>Deixe a família falar</h3><p>Confirme a ficha com as palavras deles, sem perguntar de novo. Enquanto ouve, já marque onde o plano entra.</p></div>
+  </div>
+  <footer class="foot"><span>Jogador de Elite · Processo padrão da R2</span><span class="n">06</span></footer>
+</section></div>
+
+<!-- ============ 07 ETAPA 02 ============ -->
+<div class="frame"><section class="slide dark">
+  <div class="fill glow-tr"></div><div class="fill grain"></div>
+  <p class="a label" style="left:128px;top:130px">Etapa 02</p>
+  <p class="a giant" style="left:110px;top:186px">02</p>
+  <h2 class="a h" style="left:124px;top:462px;width:640px;font-size:112px">Exploração de dor e sonho</h2>
+  <div class="a chips" style="left:128px;top:856px;width:640px"><span class="k">Gatilhos</span><span class="chip">Autopersuasão</span><span class="chip">Aversão à perda</span></div>
+  <p class="a" style="left:820px;top:176px;font-size:28px;color:var(--muted)">As perguntas que você não pode deixar de fazer:</p>
+  <div class="a stack" style="left:820px;top:236px;width:972px;gap:22px">
+    <blockquote class="q">“De 0 a 10, quanto vocês querem ver ele num clube profissional? E por que esse número?”</blockquote>
+    <blockquote class="q">“No olhômetro, em vinte minutos de coletivo, o avaliador analisou o teu jogo de verdade?”</blockquote>
+    <blockquote class="q">“Se isso não der certo, o que ele vai fazer da vida?”</blockquote>
+  </div>
+  <p class="a" style="left:820px;top:868px;width:972px;font-size:26px;line-height:1.4;color:var(--muted)">Depois de cada uma, silêncio. Quem justifica o próprio número se convence sozinho.</p>
+  <p class="a label" style="left:820px;top:926px;font-size:22px;letter-spacing:.22em;color:rgba(201,162,74,.8)">No deck · o olhômetro vem antes do plano: slide 04</p>
+  <footer class="foot"><span>Jogador de Elite · Processo padrão da R2</span><span class="n">07</span></footer>
+</section></div>
+
+<!-- ============ 08 ETAPA 03 ============ -->
+<div class="frame"><section class="slide light">
+  <p class="a label" style="left:128px;top:130px">Etapa 03</p>
+  <h2 class="a h" style="left:124px;top:184px;font-size:112px">Apresentação do plano</h2>
+  <div class="a stack" style="left:128px;top:340px;width:760px;gap:28px">
+    <p class="p" style="font-size:29px"><b>Mostre o plano de carreira dele,</b> não a assessoria: o que evoluir primeiro, quem acompanha, a vitrine e a ida quando o clube chamar.</p>
+    <p class="p" style="font-size:29px"><b>Prove com o jogo dele.</b> O vídeo dele, lance a lance, no slide 13. Sem vídeo, a leitura ao vivo.</p>
+    <p class="p" style="font-size:29px"><b>Mostre o caso espelho.</b> Atleta nosso, mesmo perfil, publicado na AGN: plantado no começo, revelado com o link.</p>
+    <p class="p" style="font-size:29px"><b>Personalize com a dor e o sonho</b> que a família contou na etapa anterior.</p>
+    <p class="label" style="font-size:22px;letter-spacing:.22em">No deck · o tripé: slide 05 · o campo: slide 10</p>
+  </div>
+  <div class="a chips" style="left:128px;top:928px;width:780px"><span class="k">Gatilhos</span><span class="chip">Mecanismo único</span><span class="chip">Prova social</span><span class="chip">Autoridade</span></div>
+  <div class="a tripe" style="left:960px;top:300px;width:832px">
+    <p class="label">O tripé da carreira</p>
+    <div class="tr"><i class="dot b"></i><h3>Ser visto</h3><p>O Zyron lê cada lance com dados reais, não no olhômetro.</p></div>
+    <div class="tr"><i class="dot bg"></i><h3>Ser preparado</h3><p>A equipe acompanha a evolução dele, no ritmo do plano.</p></div>
+    <div class="tr"><i class="dot g"></i><h3>Ser apresentado</h3><p>A rede leva o perfil dele aos clubes e à AGN.</p></div>
+    <p class="tf"><b>Mostre que a gente cuida dos três.</b> Talento sem os três fica parado em casa.</p>
+  </div>
+  <footer class="foot"><span>Jogador de Elite · Processo padrão da R2</span><span class="n">08</span></footer>
+</section></div>
+
+<!-- ============ 09 NUNCA ESQUEÇA ============ -->
+<div class="frame"><section class="slide goldbg">
+  <div class="fill grain"></div>
+  <div class="a stack" style="left:122px;top:212px;width:1700px;gap:0">
+    <p class="label" style="margin:0 0 44px 6px">Nunca esqueça</p>
+    <h2 class="h" style="font-size:160px;line-height:1.02">Você vende carreira.<br>Não assessoria.<br>Não relatório.</h2>
+    <p class="p" style="margin:56px 0 0 6px;width:1320px;font-size:36px;font-weight:500;color:rgba(7,8,10,.78)">A família não compra relatório, encontro nem Zyron. Compra o filho deixando de ser invisível pros clubes.</p>
+  </div>
+</section></div>
+
+<!-- ============ 10 ETAPA 04 ============ -->
+<div class="frame"><section class="slide dark">
+  <div class="fill glow-tr"></div><div class="fill grain"></div>
+  <p class="a label" style="left:128px;top:130px">Etapa 04</p>
+  <h2 class="a h" style="left:124px;top:184px;font-size:112px">Fechamento na call</h2>
+  <div class="a cards3" style="left:128px;top:340px;width:1664px;height:600px">
+    <article class="card">
+      <svg class="ic" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      <h3 class="ct">Planos pelo ritmo</h3>
+      <p class="cb">Apresente pelo ritmo, não pelo preço: a cada 15 dias, toda semana ou todo dia. O Legacy abre a conversa, e o número vem uma vez só.</p>
+      <p class="tag">No deck · slides 23 e 24</p>
+    </article>
+    <article class="card">
+      <svg class="ic" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      <h3 class="ct">Gatilhos</h3>
+      <ul class="gl">
+        <li><b>Segurança:</b> garantia total antes do número.</li>
+        <li><b>Escassez:</b> turma de 10 do Legacy, só com vaga real.</li>
+        <li><b>Urgência:</b> a janela de idade não espera.</li>
+        <li><b>Prova ao vivo:</b> o bastidor, só se for verdade.</li>
+      </ul>
+      <p class="tag">No deck · slides 21 e 22</p>
+    </article>
+    <article class="card">
+      <svg class="ic" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+      <h3 class="ct">Objeções com empatia</h3>
+      <p class="cb">“Tá caro”: acolha, isole e volte na conta. Montar por conta custa R$&nbsp;30.000 por ano. Desce de plano pelo escopo, nunca por desconto.</p>
+      <p class="tag">No deck · slide 17</p>
+    </article>
+  </div>
+  <footer class="foot"><span>Jogador de Elite · Processo padrão da R2</span><span class="n">10</span></footer>
+</section></div>
+
+<!-- ============ 11 A ORDEM DO VALOR ============ -->
+<div class="frame"><section class="slide light">
+  <p class="a label" style="left:128px;top:130px">A ordem do valor</p>
+  <h2 class="a h" style="left:124px;top:184px;font-size:112px">O número é o último a entrar</h2>
+  <div class="a road" style="left:128px;top:380px;width:1664px">
+    <div class="line"></div>
+    <div class="stop"><i></i><p class="sk">01</p><h3>Régua</h3><p class="sd">“Vocês já investiram [valor] nesse sonho.”</p></div>
+    <div class="stop"><i></i><p class="sk">02</p><h3>A conta</h3><p class="sd">Montar por conta custa R$&nbsp;30.000 por ano.</p></div>
+    <div class="stop"><i></i><p class="sk">03</p><h3>O filtro</h3><p class="sd">A escada do sim: ele quer e faz a parte dele.</p></div>
+    <div class="stop"><i></i><p class="sk">04</p><h3>O contrato</h3><p class="sd">A gente só lucra quando ele fecha.</p></div>
+    <div class="stop"><i></i><p class="sk">05</p><h3>A garantia</h3><p class="sd">Todo o valor investido de volta.</p></div>
+    <div class="stop"><i></i><p class="sk">06</p><h3>Os planos</h3><p class="sd">Pelo ritmo: 15 dias, toda semana ou todo dia.</p></div>
+    <div class="stop goal"><i></i><p class="sk">07</p><h3>O número</h3><p class="sd">Uma vez, com a parcela. E silêncio.</p></div>
+  </div>
+  <div class="a silence" style="left:128px;top:770px;width:1664px">
+    <h3>Depois do número,<br>silêncio.</h3>
+    <p><b>Quem fala primeiro depois do preço perde.</b> Nada de justificar, emendar desconto ou perguntar “o que achou?”. Quebrou o silêncio: “fica melhor no Pix ou no cartão?”</p>
+  </div>
+  <footer class="foot"><span>Jogador de Elite · Processo padrão da R2</span><span class="n">11</span></footer>
+</section></div>
+
+<!-- ============ 12 A ESCADA DO SIM ============ -->
+<div class="frame"><section class="slide dark">
+  <div class="fill glow-tr"></div><div class="fill grain"></div>
+  <p class="a label" style="left:128px;top:130px">Antes de qualquer plano</p>
+  <h2 class="a h" style="left:124px;top:184px;font-size:124px">A escada do sim</h2>
+  <div class="a stack" style="left:128px;top:420px;width:540px;gap:30px">
+    <p class="p" style="color:var(--white);font-weight:500">Uma pergunta óbvia de cada vez, em voz alta, antes de qualquer plano ou valor.</p>
+    <p class="p">Ninguém assina depois de dizer sim três vezes sem sentir que já decidiu.</p>
+    <p class="p" style="font-size:25px;color:var(--muted)">Pergunte, não mande. Se o atleta hesitar, volte pro sonho dele.</p>
+  </div>
+  <div class="a chips" style="left:128px;top:860px;width:560px"><span class="k">Gatilhos</span><span class="chip">Compromisso</span><span class="chip">Consistência</span></div>
+  <div class="a stairs" style="left:730px;top:300px;width:1062px;height:640px">
+    <div class="sp" style="--h:330px"><p class="who">Pro atleta</p><p class="sq">“Você quer ser jogador profissional?”</p><p class="sa">Quero.</p></div>
+    <div class="sp" style="--h:485px"><p class="who">Pro atleta</p><p class="sq">“Tá disposto a pagar o preço da disciplina?”</p><p class="sa">Tô.</p></div>
+    <div class="sp" style="--h:640px"><p class="who">Pra família</p><p class="sq">“Vocês apoiam ele nisso, mesmo quando for difícil?”</p><p class="sa">Apoiamos.</p></div>
+  </div>
+  <footer class="foot"><span>Jogador de Elite · Processo padrão da R2</span><span class="n">12</span></footer>
+</section></div>
+
+<!-- ============ 13 OS PLANOS ============ -->
+<div class="frame"><section class="slide light">
+  <p class="a label" style="left:128px;top:110px">Os planos, pelo ritmo</p>
+  <h2 class="a h" style="left:124px;top:162px;width:1690px;font-size:96px">O que muda é quem fica do lado dele</h2>
+  <p class="a p" style="left:128px;top:268px;width:1664px;font-size:27px">O Legacy abre. A Assessoria PRO entra como o formato mais enxuto. O Scouting, só se o caixa pedir. Nunca “o mais barato”.</p>
+  <div class="a plans" style="left:128px;top:356px;width:1664px">
+    <article class="pl sc">
+      <p class="role">Pra começar</p>
+      <h3>Scouting</h3>
+      <p class="rt">A cada 15 dias</p>
+      <p class="pr"><b>R$&nbsp;997</b><span>vitalício</span></p>
+      <p class="pp">10x de R$&nbsp;99,70 sem juros</p>
+      <p class="pd">O Zyron lê cada vídeo novo e o analista de performance manda o relatório da evolução.</p>
+    </article>
+    <article class="pl pro">
+      <p class="role">Uma equipe do seu lado, por metade do Legacy</p>
+      <h3>Assessoria PRO</h3>
+      <p class="rt">Toda semana</p>
+      <p class="pr"><b>R$&nbsp;1.497</b><span>vitalício</span></p>
+      <p class="pp">10x de R$&nbsp;149,70 sem juros</p>
+      <p class="pd">Tudo do Scouting, mais o estrategista de carreiras ligando toda semana, sete módulos de aulas e pelo menos 5 encaminhamentos por mês.</p>
+    </article>
+    <article class="pl leg">
+      <p class="ribbon">O ideal</p>
+      <p class="role">O mais completo</p>
+      <h3>Assessoria de Elite Legacy</h3>
+      <p class="rt">Todo dia</p>
+      <p class="pr"><b>R$&nbsp;2.997</b><span>vitalício</span></p>
+      <p class="pp">10x de R$&nbsp;299,70 sem juros</p>
+      <p class="pd">Tudo do PRO, mais estrategista e gerente de carreira todo dia, assessoria individual com o David Willer todo mês, pelo menos 15 encaminhamentos por mês, mundo afora, e as seletivas acompanhadas.</p>
+    </article>
+  </div>
+  <footer class="foot"><span>Jogador de Elite · Processo padrão da R2</span><span class="n">13</span></footer>
+</section></div>
+
+<!-- ============ 14 A PERGUNTA DE OURO ============ -->
+<div class="frame"><section class="slide dark">
+  <div class="fill glow-c"></div><div class="fill grain"></div>
+  <p class="a label" style="left:128px;top:196px">A pergunta de ouro para qualquer objeção</p>
+  <p class="a" style="left:128px;top:282px;width:1600px;font-size:40px;line-height:1.3;font-weight:500;color:var(--body)">“Vocês combinaram de decidir hoje, lembra? Pode ser não, tudo bem.”</p>
+  <h2 class="a h" style="left:120px;top:372px;width:1700px;font-size:196px;line-height:.86">“O que tá faltando<br>pro <span class="acc">sim?”</span></h2>
+  <p class="a p" style="left:128px;top:786px;width:1300px;font-size:34px;color:var(--body)">Ela tira a conversa do “não” e coloca a família pra dizer o que falta pro sim. Resolvido isso, volte pra decisão: “então eu confirmo agora. Pix ou cartão?”</p>
+  <footer class="foot"><span>Jogador de Elite · Processo padrão da R2</span><span class="n">14</span></footer>
+</section></div>
+
+<!-- ============ 15 AS OBJEÇÕES ============ -->
+<div class="frame"><section class="slide light">
+  <p class="a label" style="left:128px;top:110px">Acolher, isolar, responder</p>
+  <h2 class="a h" style="left:124px;top:162px;font-size:104px">As objeções que mais aparecem</h2>
+  <div class="a obj" style="left:128px;top:310px;width:1664px">
+    <article><h3><em>“</em>Tá caro.<em>”</em></h3><p>“Tirando o valor, tem mais alguma coisa?” Se for retorno, volte na conta dos R$&nbsp;30.000 e na garantia. Se for caixa, 10x sem juros ou um degrau abaixo, pelo escopo.</p></article>
+    <article><h3><em>“</em>Vou pensar.<em>”</em></h3><p>“Pensar sobre o quê exatamente? O que vocês vão saber amanhã que não sabem agora?” E lembre o combinado de decidir hoje.</p></article>
+    <article><h3><em>“</em>Preciso ver com a minha esposa.<em>”</em></h3><p>“Se dependesse só de você, ele começava?” Então liga pra ela agora, no viva-voz, e vocês decidem juntos.</p></article>
+    <article><h3><em>“</em>Tem garantia?<em>”</em></h3><p>“Garantia total: aplicou o método e não fez sentido, todo o valor investido volta.” Contrato, ninguém sério garante.</p></article>
+    <article><h3><em>“</em>Manda no WhatsApp.<em>”</em></h3><p>“O plano é do [atleta], não é folder. O que você precisa ver pra decidir?” Proposta por WhatsApp, nunca.</p></article>
+    <article><h3><em>“</em>Já tentamos peneira.<em>”</em></h3><p>“Quantos garotos tinham? Quanto tempo olharam pra ele?” Não foi ele que não deu certo. Foi o olhômetro.</p></article>
+  </div>
+  <p class="a" style="left:128px;top:916px;width:1664px;font-size:25px;line-height:1.4;color:var(--text-2)"><b style="font-family:var(--f-label);font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-ink);margin-right:12px">Proibido</b>desconto, “vou ver com meu gerente”, proposta por WhatsApp e correr atrás da família.</p>
+  <footer class="foot"><span>Jogador de Elite · Processo padrão da R2</span><span class="n">15</span></footer>
+</section></div>
+
+<!-- ============ 16 ETAPA 05 ============ -->
+<div class="frame"><section class="slide dark">
+  <div class="fill glow-tr"></div><div class="fill grain"></div>
+  <p class="a label" style="left:128px;top:130px">Etapa 05</p>
+  <h2 class="a h" style="left:124px;top:184px;font-size:112px">Próximo passo</h2>
+  <div class="a two" style="left:128px;top:340px;width:1664px;height:600px">
+    <article class="win">
+      <h3>Fechou</h3>
+      <ol>
+        <li>Mande o link do plano no WhatsApp e faça o pagamento com a família na linha.</li>
+        <li>Registre a venda: concluída no CRM e cadastro em Vendas.</li>
+        <li>Áudio de boas-vindas pro atleta e indicação na hora.</li>
+      </ol>
+    </article>
+    <article class="lose">
+      <h3>Não fechou</h3>
+      <p><b>Modo B:</b> a equipe decide, e você volta com o retorno em hora marcada.</p>
+      <p><b>Follow-up sempre com motivo:</b> no mesmo dia, +1, +3, +7 e +14 dias.</p>
+      <p>Ninguém sai da R2 sem data: ou a venda, ou o retorno marcado.</p>
+    </article>
+  </div>
+  <footer class="foot"><span>Jogador de Elite · Processo padrão da R2</span><span class="n">16</span></footer>
+</section></div>
+
+<!-- ============ 17 ENCERRAMENTO ============ -->
+<div class="frame"><section class="slide dark">
+  <div class="fill glow-end"></div><div class="fill grain"></div>
+  <div class="a wm" style="left:128px;top:116px"><span>Jogador</span><span>de Elite</span></div>
+  <div class="a stack" style="left:122px;top:282px;width:1690px;gap:0">
+    <h2 class="h" style="font-size:128px;line-height:1.02;text-wrap:wrap">Ter o roteiro é o começo.<br><span class="acc">Aplicar em toda R2<br>é o que muda o jogo.</span></h2>
+    <p class="p" style="margin:44px 0 0 6px;width:1240px;font-size:34px;color:#B9C0C9">Cada R2 é a carreira de um atleta. Leia a ficha, siga a ordem, fale o número uma vez e fique em silêncio.</p>
+  </div>
+  <a class="a cta" href="https://jogador-de-elite-r2.vercel.app/" style="left:128px;top:862px">Abrir o deck da R2</a>
+  <p class="a" style="right:128px;top:872px;text-align:right;font-size:24px;line-height:1.45;color:var(--muted)">Feito por Sinclair<br><span style="font-size:20px;color:#5E656E">v3 · 09/10/2026</span></p>
+</section></div>
+
+</main>
+<script>
+(function(){
+  var root=document.documentElement;
+  if(/[?&]raw\b/.test(location.search)){root.classList.add('raw');return}
+  function fit(){var w=Math.min(window.innerWidth-40,1920);root.style.setProperty('--s',(w/1920).toFixed(5))}
+  fit();addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>

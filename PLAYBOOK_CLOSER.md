@@ -1,6 +1,6 @@
 # PLAYBOOK_CLOSER.md
 
-Versão: v8 (28/09/2026)
+Versão: v9 (30/09/2026)
 Espelho em texto de `playbook-closer.html`. Casos e frases: `CASOS.md`.
 Imagens dos cards: pasta `cards/`. Entrada: ficha da R1
 (`PLAYBOOK_SDR.md`, seção 12).
@@ -8,6 +8,12 @@ Tudo entre colchetes é variável: dado do CRM ou da empresa. R$ ____ é o
 valor do plano escolhido pro lead.
 
 Changelog:
+- v9: links de pagamento (Kirvano) na seção 07, logo depois de "Qual
+  plano apresentar", com nome do produto, ticket e link de cada plano:
+  Assessoria de Elite - Legacy, Assessoria de Elite, Scouting PRO e o
+  Scouter mensal, que entra como último degrau da escada. Tickets exatos
+  no playbook inteiro (R$1497,90 e R$497,90). O pagamento na própria call
+  (10) aponta pra tabela de links.
 - v8: cargo público do Closer vira Gestor de Carreiras (papel interno na
   dashboard continua Closer); o [SDR] agora aparece como estrategista
   esportivo nas falas. Bastidor ao vivo (01 e 02): virar pro lado durante
@@ -67,7 +73,9 @@ família imaginar o depois, apresenta o que ninguém mais tem (um gerente de
 carreira todo dia e o Zyron), ancora o valor e conduz a decisão como quem
 escolhe.
 
-Planos: R$2997 (o mais vendido), R$1497 e R$497.
+Planos: Assessoria de Elite - Legacy, R$2997 (o mais vendido); Assessoria
+de Elite, R$1497,90; Scouting PRO, R$497,90; e Scouter, R$47,90 por mês.
+Links de pagamento na seção 07.
 
 ---
 
@@ -141,7 +149,7 @@ Momento. ↳ pediu contato + tem perfil ideal + quer avançar = SQL.
 | Quanto já investiram | Régua do valor (seção 07) |
 | Locomoção pra outro estado | Cenário: "quando ele for pro clube em..." |
 | Decisores e como decidem | Confirmar todos na call |
-| Sinais de budget | Escolher o plano: R$2997, R$1497 ou R$497 |
+| Sinais de budget | Escolher o plano: R$2997, R$1497,90, R$497,90 ou o Scouter mensal (seção 07) |
 | Resposta ao "faz sentido a gente lucrar em cima de vocês?" | Ancoragem: "vocês mesmos disseram que não faz sentido" |
 | Pré-compromisso de decidir na R2 | Fechamento: "vocês combinaram de decidir hoje" |
 | Caso citado e se ouviram do gerente e do Zyron | Retomar e aprofundar |
@@ -455,15 +463,30 @@ Qual plano apresentar. Card Método BANT (`cards/bant.png`): o SDR anotou os
 sinais de Budget na ficha, e é com eles que o Closer escolhe. BANT não é
 interrogatório: ninguém pergunta "quanto você pode pagar?".
 
-| Plano | Valor | Por dia em 3 meses | Quando apresentar |
-| --- | --- | --- | --- |
-| Principal | R$2997 | menos de R$34 | Padrão. O mais vendido. Primeiro sempre que o CRM não mostra aperto financeiro. |
-| Intermediário | R$1497 | menos de R$17 | CRM com dor financeira forte, ou objeção de caixa real depois do principal. |
-| Entrada | R$497 | menos de R$6 | Objeção de caixa real que os outros dois não resolvem. |
+| Plano | Produto | Ticket | Por dia em 3 meses | Quando apresentar |
+| --- | --- | --- | --- | --- |
+| Principal | Assessoria de Elite - Legacy | R$2997 | menos de R$34 | Padrão. O mais vendido. Primeiro sempre que o CRM não mostra aperto financeiro. |
+| Intermediário | Assessoria de Elite | R$1497,90 | menos de R$17 | CRM com dor financeira forte, ou objeção de caixa real depois do principal. |
+| Entrada | Scouting PRO | R$497,90 | menos de R$6 | Objeção de caixa real que os outros dois não resolvem. |
+| Mensal | Scouter - Acompanhamento de Performance | R$47,90 por mês | menos de R$2 | Último degrau, quando nem a Entrada cabe no caixa. Assinatura mensal: agente de IA que acompanha o atleta, com supervisão de agente humano. |
 
 Tática: um valor por vez. Se precisar descer de plano, desce pelo escopo,
 nunca pelo desconto: "existe um formato mais enxuto, com [o que muda no
 plano]". Desconto derruba o "é só o custo".
+
+Links de pagamento (Kirvano). O link só vai depois do sim, pra família
+pagar na linha com o Gestor de Carreiras (seção 10). Antes de mandar,
+confere se o produto e o ticket batem com o plano que a família aceitou.
+
+| Produto | Ticket | Link |
+| --- | --- | --- |
+| Assessoria de Elite - Legacy | R$2997,00 | https://pay.kirvano.com/22aa7d69-394c-41ca-9f30-e5c18c4a9f68 |
+| Assessoria de Elite | R$1497,90 | https://pay.kirvano.com/35ec1d60-7899-4b19-a8b2-2b7cbf4f8270 |
+| Scouting PRO | R$497,90 | https://pay.kirvano.com/3a063481-18ec-4e2f-98f4-ea15a5bbdfdf |
+| Scouter - Acompanhamento de Performance | R$47,90 por mês | https://pay.kirvano.com/851f7e2d-d82a-4687-b811-8deaed4be61f |
+
+Proibido: mandar o link antes do número, ou como "proposta pra ver com
+calma" (9.12). Link é pra pagar agora, não pra pensar.
 
 ## 08. Fechamento: dois modos
 
@@ -655,7 +678,7 @@ gerente liga hoje + Zyron começa amanhã = execução mais rápida.
   venda.
 
 1. Pagamento na própria call: "faz agora comigo na linha", no Pix ou no
-   cartão.
+   cartão, pelo link do plano fechado (tabela de links na seção 07).
 2. Registro: venda concluída no CRM e cadastro em Vendas, com o produto e o
    ticket do plano fechado. A venda entra pendente até a aprovação do
    Executive.
@@ -817,8 +840,10 @@ um no `PLAYBOOK_SDR.md`, seção 14.
 1. Nome do gerente de carreira que revelou centenas de jogadores.
 2. Como o agente do Zyron acompanha no dia a dia (canal, frequência de
    contato).
-3. O que muda entre os planos de R$2997, R$1497 e R$497, pra descer de
-   plano pelo escopo.
+3. O que muda entre os planos de R$2997, R$1497,90 e R$497,90, pra descer
+   de plano pelo escopo. E confirmar se o Scouter (R$47,90 por mês) entra
+   mesmo como último degrau da escada ou como outra coisa (complemento
+   depois do sim, por exemplo).
 4. Custo mensal de mercado de um gerente de carreira particular e dos
    profissionais (preparador, analista, vídeo, viagens), pra ancoragem.
 5. Condição de pagamento: parcelamento, Pix e cartão.
@@ -841,4 +866,4 @@ um no `PLAYBOOK_SDR.md`, seção 14.
 
 ---
 
-Última atualização: 28/09/2026 às 23:45 (horário de Brasília).
+Última atualização: 30/09/2026 às 13:26 (horário de Brasília).
