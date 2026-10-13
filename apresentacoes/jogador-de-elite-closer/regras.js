@@ -73,14 +73,14 @@
   const padraoDe = etapa => (etapa === 'r1' ? 'r1-principal' : VERSAO_PADRAO);
   const VERSOES = [
     {
-      id: 'principal', nome: 'Principal', caminho: '/',
+      id: 'principal', nome: 'R2 · Apresentação completa com foto', caminho: '/',
       resumo: 'O deck completo: explica o caminho do começo, com o olhômetro, o Zyron e a AGN.',
       quando: 'Na dúvida, esta.',
       validacao: 'em-validacao', lead: { nome: true, foto: true },
       opcionais: [{ id: 'leva', rotulo: 'O que o {nome} leva', slide: 19, ajuda: 'Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai do 18 direto pro 20.' }]
     },
     {
-      id: 'tecnica', nome: 'Técnica', caminho: '/variacoes/tecnica/',
+      id: 'tecnica', nome: 'R2 · Técnica para quem conhece futebol', caminho: '/variacoes/tecnica/',
       resumo: 'Fala de par pra par: não explica o básico, a AGN aparece uma vez só e o foco é a operação e o interesse alinhado.',
       quando: 'Citou a AGN pelo nome, tem vivência no meio (base de clube, federado, ex-jogador, técnico, contato com empresário) ou fez pergunta técnica na R1.',
       validacao: 'em-validacao', lead: { nome: true, foto: true },
@@ -93,13 +93,13 @@
     r2: VERSOES.map(v => Object.assign({}, v)),
     'r2-anterior': [
       {
-        id: 'principal', nome: 'Principal', caminho: '/',
+        id: 'principal', nome: 'R2 · Roteiro anterior sem foto', caminho: '/',
         resumo: 'O R2 de 25 slides, o de antes do R2 novo, com O combinado e O investimento. Não mostra a foto do lead.',
         quando: 'Só se precisar da versão de 25 slides. Na dúvida, use o R2 novo.',
         validacao: 'em-validacao', lead: { nome: true, foto: false }, opcionais: []
       },
       {
-        id: 'tecnica', nome: 'Técnica', caminho: '/variacoes/tecnica/',
+        id: 'tecnica', nome: 'R2 · Técnica anterior sem foto', caminho: '/variacoes/tecnica/',
         resumo: 'A versão técnica do R2 de 25 slides: fala de par pra par, sem explicar o básico. Não mostra a foto do lead.',
         quando: 'Lead com vivência no meio (base de clube, federado, ex-jogador, técnico) e só se precisar da versão de 25 slides.',
         validacao: 'em-validacao', lead: { nome: true, foto: false }, opcionais: []
@@ -107,13 +107,13 @@
     ],
     'r2-b': [
       {
-        id: 'principal', nome: 'Principal', caminho: '/',
+        id: 'principal', nome: 'R2 · Nome e primeiro sobrenome', caminho: '/',
         resumo: 'O R2 novo com a tela dizendo o nome e o primeiro sobrenome do lead (Lucas Almeida da Silva vira Lucas Almeida).',
         quando: 'Só se precisar desse endereço. No R2 novo, a escolha Nome na tela (primeiro sobrenome) faz o mesmo.',
         validacao: 'em-validacao', lead: { nome: true, foto: true }, opcionais: []
       },
       {
-        id: 'tecnica', nome: 'Técnica', caminho: '/variacoes/tecnica/',
+        id: 'tecnica', nome: 'R2 · Técnica com primeiro sobrenome', caminho: '/variacoes/tecnica/',
         resumo: 'A técnica do R2 novo com a tela dizendo o nome e o primeiro sobrenome do lead.',
         quando: 'Mesmo critério da Técnica do R2 novo, só se precisar desse endereço.',
         validacao: 'em-validacao', lead: { nome: true, foto: true }, opcionais: []
@@ -121,7 +121,7 @@
     ],
     r1: [
       {
-        id: 'principal', nome: 'Principal', caminho: '/',
+        id: 'principal', nome: 'R1 · Avaliação e convite para R2', caminho: '/',
         resumo: 'A apresentação do SDR em 16 slides: o Zyron, a IA na prática e a AGN, e fecha marcando a R2.',
         quando: 'A primeira apresentação do lead. Na dúvida, esta.',
         validacao: 'em-validacao', lead: { nome: true, foto: false }, opcionais: []

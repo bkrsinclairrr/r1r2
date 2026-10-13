@@ -1,11 +1,11 @@
 {
   "v": 1,
-  "gerado": "2026-10-12T18:25:49.529Z",
+  "gerado": "2026-10-13T12:53:31.421Z",
   "paginas": [
     {
       "id": "principal",
       "caminho": "/",
-      "nome": "Principal",
+      "nome": "R1 · Avaliação e convite para R2",
       "resumo": "A apresentação do SDR em 16 slides: o Zyron, a IA na prática e a AGN, e fecha marcando a R2.",
       "quando": "A primeira apresentação do lead. Na dúvida, esta.",
       "validacao": "em-validacao",
@@ -15,7 +15,7 @@
       },
       "slides": 16,
       "opcionais": [],
-      "hash": "ddc40f7bb12f5f080eed10f2262d4f84f6ebcf05"
+      "hash": "6a074d0252ed72778f3e9c300f26c084d7373d40"
     }
   ]
 }

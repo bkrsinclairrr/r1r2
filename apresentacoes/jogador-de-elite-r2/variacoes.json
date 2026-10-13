@@ -1,11 +1,11 @@
 {
   "v": 1,
-  "gerado": "2026-10-13T11:10:27.522Z",
+  "gerado": "2026-10-13T12:53:31.537Z",
   "paginas": [
     {
       "id": "principal",
       "caminho": "/",
-      "nome": "Principal",
+      "nome": "R2 · Roteiro anterior sem foto",
       "resumo": "O R2 de 25 slides, o de antes do R2 novo, com O combinado e O investimento. Não mostra a foto do lead.",
       "quando": "Só se precisar da versão de 25 slides. Na dúvida, use o R2 novo.",
       "validacao": "em-validacao",
@@ -15,12 +15,12 @@
       },
       "slides": 25,
       "opcionais": [],
-      "hash": "667d8eeae229738b6125cebe9c38f302692621c6"
+      "hash": "168d2a9465891b930f20950e93644eb985dbf7ec"
     },
     {
       "id": "acompanhamento",
       "caminho": "/variacoes/acompanhamento/",
-      "nome": "Acompanhamento",
+      "nome": "R2 · Oferta R$247,90 e R$500",
       "resumo": "R2 com Scouting por R$ 247,90 e Legacy por R$ 500, acompanhamento diário e garantia incondicional antes do Bem-vindo. Sem foto.",
       "quando": "Quando esta oferta de dois planos for a aprovada para a família. O nome do atleta continua na apresentação.",
       "validacao": "nao-validada",
@@ -30,12 +30,12 @@
       },
       "slides": 25,
       "opcionais": [],
-      "hash": "21998e35a645913ddb7e2a524eeec451203e1887"
+      "hash": "6d2dc7015aa132114265fe4f2587ecebb1ca3082"
     },
     {
       "id": "tecnica",
       "caminho": "/variacoes/tecnica/",
-      "nome": "Técnica",
+      "nome": "R2 · Técnica anterior sem foto",
       "resumo": "A versão técnica do R2 de 25 slides: fala de par pra par, sem explicar o básico. Não mostra a foto do lead.",
       "quando": "Lead com vivência no meio (base de clube, federado, ex-jogador, técnico) e só se precisar da versão de 25 slides.",
       "validacao": "em-validacao",
@@ -45,7 +45,7 @@
       },
       "slides": 25,
       "opcionais": [],
-      "hash": "660be6808b2e023badca4681fc31150d080df02f"
+      "hash": "4fdad124d0ea48b889fbdc7a23239898f3ba9847"
     }
   ]
 }
