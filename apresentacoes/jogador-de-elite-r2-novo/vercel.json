@@ -1,0 +1,33 @@
+{
+  "redirects": [
+    {
+      "source": "/admin",
+      "destination": "https://jogador-de-elite-closer.vercel.app/",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "frame-ancestors 'self' https://jogador-de-elite-closer.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/variacoes.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    }
+  ]
+}

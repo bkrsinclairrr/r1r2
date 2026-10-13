@@ -1,0 +1,8 @@
+notas-do-gestor.md
+REFERENCIAS_R2.md
+*.md
+.claude
+.env*
+*.bat
+.gitattributes
+gera-manifesto.mjs

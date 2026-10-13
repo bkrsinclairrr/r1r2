@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Painel de Apresentações · Jogador de Elite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Barlow+Condensed:wght@500;600&family=Saira+Condensed:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/painel.css">
+</head>
+<body>
+
+<!-- ============ entrar ============ -->
+<main id="v-entrar" hidden>
+  <div class="cartao-login">
+    <p class="label">Jogador de Elite</p>
+    <h1 class="titulo">Painel de Apresentações</h1>
+    <p class="sub">O R1 do SDR e o R2 do closer de cada atleta, com o nome dele, num link só dele. Entre com o seu usuário.</p>
+    <form id="f-entrar" autocomplete="on">
+      <label class="campo"><span>Usuário</span><input class="in" name="login" autocomplete="username" autocapitalize="none" spellcheck="false" required></label>
+      <label class="campo"><span>Senha</span><input class="in" name="senha" type="password" autocomplete="current-password" required></label>
+      <p class="erro" id="entrar-erro" role="alert"></p>
+      <button class="bt ouro" type="submit">Entrar</button>
+    </form>
+  </div>
+</main>
+
+<!-- ============ o painel ============ -->
+<div id="v-app" hidden>
+  <header class="topo">
+    <div class="wrap">
+      <a class="marca" href="#/"><span class="titulo">Painel de Apresentações</span><span class="label" id="marca-sub">Jogador de Elite</span></a>
+      <div class="eu"><b id="eu-nome"></b><span class="chip" id="eu-papel"></span><button class="bt mini fantasma" id="bt-sair" type="button">Sair</button></div>
+    </div>
+  </header>
+
+  <!-- lista -->
+  <div class="wrap" id="v-lista" hidden>
+    <nav class="abas" aria-label="Seções">
+      <a class="tab" href="#/" data-aba="lista" id="tab-meus">Meus R2</a>
+      <a class="tab" href="#/todos" data-aba="todos" id="tab-todos" hidden>Todos os leads</a>
+      <a class="tab" href="#/versoes" data-aba="versoes" id="tab-versoes">Variações do R2</a>
+      <a class="tab" href="#/usuarios" data-aba="usuarios" id="tab-usu" hidden>Usuários</a>
+      <a class="tab" href="#/senha" data-aba="senha">Minha senha</a>
+    </nav>
+    <section id="aba-lista">
+      <div class="barra">
+        <input class="in busca" id="busca" type="search" placeholder="Buscar pelo nome" aria-label="Buscar pelo nome">
+        <div class="filtros" role="group" aria-label="Filtro">
+          <button class="filtro" type="button" data-filtro="hoje">Hoje</button>
+          <button class="filtro" type="button" data-filtro="proximos">Próximos</button>
+          <button class="filtro" type="button" data-filtro="todos">Todos</button>
+        </div>
+        <div class="filtros" role="group" aria-label="Etapa" id="filtro-etapa" hidden>
+          <button class="filtro" type="button" data-etapa="todas">R1 e R2</button>
+          <button class="filtro" type="button" data-etapa="r1">R1</button>
+          <button class="filtro" type="button" data-etapa="r2">R2</button>
+        </div>
+        <button class="bt" id="bt-importar" type="button">Importar o R1 de um SDR</button>
+        <a class="bt ouro" id="bt-novo-r1" href="#/novo-r1" hidden>+ Novo R1</a>
+        <a class="bt ouro" id="bt-novo" href="#/novo">+ Novo R2</a>
+      </div>
+      <details class="ajuda" id="ajuda-r1">
+        <summary>Como funciona o R1</summary>
+        <ol>
+          <li><b>Novo R1</b>: o nome completo do atleta. Salve: o link sai na hora.</li>
+          <li><b>A ficha</b>: posição, idade e cidade (vão pro slide 02 do R1), de onde veio o lead e o que chamou atenção.</li>
+          <li><b>Variação</b>: escolha a apresentação do R1 pra esse lead (veja todas em <b>Variações do R1</b>, a mais validada primeiro).</li>
+          <li><b>A R2</b>: o dia e a hora que ficaram marcados pra R2. O checklist diz o que falta pro R1 ficar <b>pronto</b>.</li>
+          <li>Na call, abra o link (botão <b>Abrir o R1</b>), compartilhe a aba e aperte <b>P</b> pro apresentador.</li>
+          <li>Quando o lead for pro closer, ele cola o link do R1 em <b>Importar o R1 de um SDR</b> e a ficha já vem pronta.</li>
+        </ol>
+      </details>
+      <details class="ajuda" id="ajuda-r2">
+        <summary>Como funciona</summary>
+        <ol>
+          <li><b>Novo R2</b>: o nome completo do atleta e, se quiser, como a gente chama ele. Salve: o link sai na hora.</li>
+          <li><b>Foto</b>: escolha a foto (do WhatsApp, da galeria ou da câmera), ajuste o rosto na moldura e marque a autorização do responsável.</li>
+          <li><b>Variação</b>: escolha a variação do R2 pra esse lead (veja todas em <b>Variações do R2</b>, a mais validada primeiro), se aparecem o nome, o sobrenome e a foto dele, e se algum slide fica de fora. O link é um só por lead, qualquer que seja a variação.</li>
+          <li><b>A call</b>: posição, plano, dia e hora. O checklist diz o que falta pro R2 ficar <b>pronto</b>.</li>
+          <li><b>Prévia</b>: confira os slides com o rosto e o nome dele antes da call.</li>
+          <li>Na call, abra o link (botão <b>Abrir o R2</b>), compartilhe a aba e aperte <b>P</b> pro apresentador, como sempre.</li>
+        </ol>
+      </details>
+      <div class="lista" id="lista" aria-live="polite"></div>
+    </section>
+    <section id="aba-versoes" hidden>
+      <div class="painel">
+        <div class="painel-topo"><h2 class="titulo" id="vr-titulo">Variações do R2</h2><div class="filtros" role="group" aria-label="Etapa das variações" id="ver-etapa" hidden>
+          <button class="filtro" type="button" data-etapa="r1">R1 · SDR</button>
+          <button class="filtro" type="button" data-etapa="r2">R2 · Closer</button>
+        </div><button class="bt ouro" type="button" id="bt-nova-variacao" hidden>+ Nova variação</button></div>
+        <p class="nota" style="margin:0 0 14px">Todas as variações da apresentação do R2 num lugar só. A classificação ao lado do nome (Validada, Em validação ou Não validada) mostra o quanto cada uma já foi validada, e a mais validada vem primeiro. A cada lead, o closer escolhe a variação e gera a apresentação dele: o link é um só por lead, e dá pra trocar de variação até a hora da call (o link que já foi enviado passa a abrir a nova). Cada variação diz se mostra o nome, o sobrenome e a foto do lead. As páginas do deck entram aqui sozinhas e o painel confere se cada uma está funcionando. <b>Abrir exemplo</b> mostra a variação sem lead, só pra ver.</p>
+        <div class="sinc" id="sinc-status" aria-live="polite"><div id="sinc-texto">Conferindo com os decks…</div><button class="bt mini" type="button" id="bt-sincroniza" hidden>Sincronizar agora</button></div>
+        <div class="versoes-lista" id="versoes-lista"></div>
+      </div>
+    </section>
+    <section id="aba-usuarios" hidden>
+      <div class="painel">
+        <h2 class="titulo">Novo usuário</h2>
+        <form id="f-usuario" class="form-linha" autocomplete="off">
+          <label class="campo"><span>Nome</span><input class="in" name="nome" required placeholder="Ex.: Ana Souza"></label>
+          <label class="campo"><span>Login</span><input class="in" name="login" required placeholder="ana.souza" autocapitalize="none" spellcheck="false"></label>
+          <label class="campo"><span>Papel</span><select class="in" name="papel"><option value="sdr">SDR (R1)</option><option value="closer" selected>Closer (R2)</option><option value="admin">Admin</option></select></label>
+          <label class="campo"><span>Senha</span><span class="senha-nova"><input class="in" name="senha" required minlength="10" spellcheck="false"><button class="bt" type="button" id="bt-gerar" title="Gerar outra" aria-label="Gerar outra senha">↻</button></span></label>
+          <button class="bt ouro" type="submit">Criar</button>
+        </form>
+        <p class="erro" id="usuario-erro" role="alert"></p>
+        <div id="usuario-recado"></div>
+      </div>
+      <div class="painel">
+        <h2 class="titulo">Quem tem acesso</h2>
+        <table class="tabela"><thead><tr><th>Nome</th><th>Login</th><th>Papel</th><th></th></tr></thead><tbody id="usuarios"></tbody></table>
+      </div>
+    </section>
+    <section id="aba-senha" hidden>
+      <div class="painel">
+        <h2 class="titulo">Trocar minha senha</h2>
+        <form id="f-senha" class="estreito" autocomplete="off">
+          <label class="campo"><span>Senha atual</span><input class="in" name="atual" type="password" autocomplete="current-password" required></label>
+          <label class="campo"><span>Senha nova</span><input class="in" name="nova" type="password" autocomplete="new-password" minlength="10" required><small>Pelo menos 10 caracteres.</small></label>
+          <label class="campo"><span>Repita a senha nova</span><input class="in" name="repete" type="password" autocomplete="new-password" minlength="10" required></label>
+          <p class="erro" id="senha-erro" role="alert"></p>
+          <button class="bt ouro" type="submit">Salvar senha</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <!-- editor -->
+  <div id="v-editor" hidden>
+    <div class="ed-barra">
+      <div class="wrap ed-barra-in">
+        <a class="bt fantasma" href="#/" id="ed-voltar">← Meus R2</a>
+        <div class="ed-nome"><h1 class="titulo" id="ed-titulo">Novo R2</h1><span class="chip" id="ed-estado"></span><span class="ed-salvo" id="ed-salvo"></span></div>
+        <button class="bt ouro" type="button" id="ed-salvar">Salvar</button>
+      </div>
+    </div>
+    <div class="wrap ed-grade">
+      <form class="ed-form" id="f-editor" novalidate autocomplete="off">
+        <p class="erro ed-erro" id="ed-erro" role="alert"></p>
+
+        <section class="sec" id="s-versao">
+          <h2 class="label">Variação do R2</h2>
+          <p class="nota" style="margin:0 0 12px">Escolha a apresentação pra este lead. A classificação ao lado do nome mostra o quanto ela já foi validada. O link do lead é um só: o deck abre a variação marcada aqui, e se você trocar depois de mandar o link, o mesmo link passa a abrir a nova.</p>
+          <div class="versoes" id="versoes" role="radiogroup" aria-label="Variação do R2"></div>
+          <p class="nota" id="vr-nota"></p>
+          <div id="opcionais" hidden>
+            <p class="label" style="margin:16px 0 4px">Slides desta variação</p>
+            <p class="nota" style="margin:0 0 6px">Marcado entra na apresentação. Desmarcado, o deck pula o slide (os números dos outros não mudam).</p>
+            <div id="opcionais-lista"></div>
+          </div>
+        </section>
+
+        <section class="sec" id="s-foto" data-so="r2">
+          <h2 class="label">Foto</h2>
+          <p class="nota" id="ft-nota-novo" hidden>Salve o nome primeiro: a foto entra no R2 que já existe.</p>
+          <p class="nota" id="ft-nota-sem" hidden>Este R2 está em “Sem nome nem foto” (veja Nome na tela): a tela não usa a foto, e ela não é pedida pro checklist.</p>
+          <div id="ft-atual" class="ft-atual" hidden>
+            <img id="ft-atual-ret" alt="Retrato do atleta no R2" width="120" height="160">
+            <img id="ft-atual-av" alt="Avatar do atleta no R2" width="72" height="72">
+            <div class="ft-atual-txt"><p id="ft-atual-info"></p><div class="acoes"><button class="bt" type="button" id="ft-trocar">Trocar foto</button><button class="bt perigo" type="button" id="ft-apagar">Apagar foto</button></div></div>
+          </div>
+          <div id="ft-zona" class="ft-zona" hidden>
+            <p><b>Solte a foto aqui</b> ou</p>
+            <button class="bt ouro" type="button" id="ft-escolher">Escolher foto</button>
+            <input type="file" id="ft-arquivo" accept="image/*" hidden>
+            <small>Do WhatsApp, da galeria ou da câmera. JPG ou PNG. Foto do iPhone (HEIC) que não abrir: mande em JPG ou tire um print.</small>
+          </div>
+          <div id="ft-recorte" class="ft-recorte" hidden>
+            <div class="ft-moldura-box">
+              <canvas id="ft-canvas" class="ft-canvas" aria-label="Moldura do retrato: arraste a foto, use a roda do mouse ou dois dedos pra dar zoom. O quadrado tracejado é o avatar."></canvas>
+            </div>
+            <div class="ft-controles">
+              <label class="campo"><span>Zoom</span><input type="range" id="ft-zoom" min="0" max="100" value="0"></label>
+              <label class="campo"><span>Tamanho do avatar (o quadrado tracejado)</span><input type="range" id="ft-quad" min="30" max="100" value="62"></label>
+              <p class="dica">Arraste a foto pra ajustar o rosto na moldura 3:4. Arraste o quadrado tracejado pra escolher o avatar (o rosto, de preferência).</p>
+              <div class="ft-saidas"><canvas id="ft-mini-ret" width="90" height="120" aria-label="Prévia do retrato"></canvas><canvas id="ft-mini-av" width="64" height="64" aria-label="Prévia do avatar"></canvas></div>
+              <label class="ck"><input type="checkbox" id="ft-autoriza"> <span>Tenho a autorização do responsável legal para usar a imagem deste atleta nesta apresentação e conferi que a foto é dele.</span></label>
+              <div class="acoes"><button class="bt ouro" type="button" id="ft-salvar" disabled>Salvar foto</button><button class="bt fantasma" type="button" id="ft-cancelar">Cancelar</button></div>
+            </div>
+          </div>
+          <p class="erro" id="ft-erro" role="alert"></p>
+        </section>
+
+        <section class="sec" id="s-nome">
+          <h2 class="label">Nome</h2>
+          <div class="grade">
+            <label class="campo largo"><span>Nome completo <b>*</b></span><input class="in" name="nome" maxlength="80" required placeholder="Ex.: Lucas Almeida da Silva"><small id="nome-ajuda" data-r1="O R1 mostra só o primeiro nome dele (slides 02, 08, 09 e 15).">Vai na capa (Montado para). A tela usa o nome e o sobrenome daqui, do jeito que você escolher em “Nome na tela”.</small></label>
+            <p class="nota largo" id="lead-nota" hidden style="margin:0"></p>
+            <label class="campo largo" id="nt-bloco"><span>Nome na tela</span><select class="in" name="nomeTela" aria-describedby="nt-ajuda"></select><small id="nt-ajuda"></small></label>
+            <label class="ck largo" id="foto-tela-bloco"><input type="checkbox" id="c-foto-tela" checked> <span>Mostrar a foto do lead na tela<small class="ck-ajuda">Desmarcado, o quadro da foto mostra a inicial do nome. A foto fica guardada.</small></span></label>
+            <label class="campo largo" data-so="r2" id="apelido-bloco"><span>Como a gente chama ele</span><input class="in" name="apelido" maxlength="24" placeholder="Nome e sobrenome"><small id="apelido-ajuda" data-fixo="Vazio: a tela usa o nome do jeito do deck (veja o aviso acima), e a fala, o primeiro nome. Escreva aqui só se for de outro jeito (Joãozinho, ou Lucas Almeida).">Vazio: a tela usa o nome da escolha acima, e a fala, o primeiro nome. Escreva aqui só se for de outro jeito (Joãozinho, ou Lucas Almeida).</small></label>
+            <div class="campo largo" data-so="r2"><span>Na tela fica assim</span><p class="exemplo" id="ex-nome">Você foi escolhido.</p><small id="ex-nome-nota"></small></div>
+            <label class="ck largo"><input type="checkbox" id="c-conferido"> <span id="conferido-txt">Conferi a grafia do nome com a família (ou com a ficha do SDR).</span></label>
+          </div>
+        </section>
+
+        <section class="sec" id="s-atleta">
+          <h2 class="label">O atleta</h2>
+          <div class="grade">
+            <label class="campo"><span>Posição</span><input class="in" name="posicao" maxlength="40" list="posicoes" placeholder="Ex.: zagueiro"><datalist id="posicoes"></datalist><span class="selo-pos" id="selo-pos" data-so="r2"></span><small data-r1="Slide 02 do R1." hidden></small></label>
+            <label class="campo"><span>Idade</span><input class="in" name="idade" type="number" inputmode="numeric" min="6" max="40" placeholder="Ex.: 15"><small data-r1="Slide 02 do R1." hidden></small></label>
+            <label class="campo"><span>Cidade</span><input class="in" name="cidade" maxlength="60" placeholder="Ex.: Natal"></label>
+            <label class="campo" data-so="r2"><span>Pé</span><select class="in" name="pe"><option value="">escolha</option></select></label>
+            <label class="campo" data-so="r2"><span>Altura (cm)</span><input class="in" name="altura" type="number" inputmode="numeric" min="100" max="230" placeholder="Ex.: 176"><small>Cartão do slide 11. Vazio: a linha some.</small></label>
+          </div>
+        </section>
+
+        <section class="sec" id="s-origem">
+          <h2 class="label">De onde ele veio</h2>
+          <div class="grade">
+            <label class="campo"><span>Origem do lead</span><select class="in" name="origem"><option value="">escolha</option></select><small data-r1="Vai pro CRM, não aparece nos slides.">Muda o texto dos slides 01 e 02.</small></label>
+            <label class="campo" data-so="r2"><span>Sonho dele</span><input class="in" name="sonho" maxlength="120" placeholder="Ex.: jogar na Europa"><small>Vira o destino do plano (slide 04).</small></label>
+            <label class="campo largo"><span>O que chamou atenção no Zyron</span><input class="in" name="caracteristicas" maxlength="160" placeholder="Ex.: arrancada e cruzamento com o pé bom"><small data-r1="Vai pro CRM, não aparece nos slides.">Aparece no 02 se veio do Zyron.</small></label>
+            <label class="campo largo"><span>Experiência que ele contou</span><input class="in" name="experiencia" maxlength="160" placeholder="Ex.: Sub-15 do América de Natal"><small data-r1="Vai pro CRM, não aparece nos slides.">Aparece no 02 se veio do formulário.</small></label>
+          </div>
+        </section>
+
+        <section class="sec" id="s-call">
+          <h2 class="label" id="call-titulo">A call</h2>
+          <div class="grade">
+            <label class="campo"><span>Dia <b>*</b></span><input class="in" name="r2data" type="date"></label>
+            <label class="campo"><span>Hora <b>*</b></span><input class="in" name="r2hm" type="time" step="300"></label>
+            <p class="exemplo largo" id="ex-call"></p><small class="largo" id="call-r1" hidden>A R2 que ficou marcada com o closer: o R1 mostra o dia e a hora no slide 16.</small>
+            <label class="campo largo" data-so="r2"><span>Plano que vai recomendar <b>*</b></span><select class="in" name="plano"><option value="">escolha</option></select><small>A tela destaca este plano no slide dos planos e no Bem-vindo. Turma e vagas só aparecem no Legacy.</small></label>
+            <label class="campo so-legacy"><span>Vagas restantes nesta turma</span><input class="in" name="vagas" type="number" inputmode="numeric" min="1" max="10"><small>Só o número real da semana, de 1 a 10.</small></label>
+            <label class="campo so-legacy"><span>Próxima turma abre em</span><input class="in" name="proximaTurma" maxlength="40"></label>
+            <label class="campo" data-so="r2"><span>Gerente de carreira</span><input class="in" name="gerente" maxlength="60"></label>
+            <label class="campo" data-so="r2"><span>Quando o gerente entra em contato</span><select class="in" name="prazoContato"><option value="">escolha</option></select></label>
+            <label class="campo" data-so="r2"><span>Quando o Zyron começa</span><select class="in" name="prazoZyron"><option value="">escolha</option></select></label>
+          </div>
+          <p class="nota" data-so="r2">Preço, garantia, números da rede e os 93% não são campo: o deck tem os da casa.</p>
+        </section>
+
+        <section class="sec" id="s-nota">
+          <h2 class="label">Anotação privada</h2>
+          <label class="campo"><span>Só você e o admin veem. Nunca vai pro deck.</span><textarea class="in" name="nota" rows="3" maxlength="600"></textarea></label>
+        </section>
+
+        <section class="sec" id="s-check">
+          <h2 class="label">Pronto pra apresentar</h2>
+          <ul class="check" id="checklist"></ul>
+        </section>
+
+        <section class="sec" id="s-link" hidden>
+          <h2 class="label">Link da apresentação</h2>
+          <div class="lk-linha"><input class="in mono" id="lk-url" readonly aria-label="Link da apresentação deste atleta"><button class="bt" type="button" id="lk-copiar">Copiar</button><a class="bt ouro" id="lk-abrir" target="_blank" rel="noopener noreferrer">Abrir o R2 desta call</a></div>
+          <p class="lk-info" id="lk-info"></p>
+          <p class="lk-call" id="lk-call" hidden></p>
+          <div class="acoes">
+            <span class="renova"><select class="in" id="lk-dias" aria-label="Dias de validade"><option value="7">7 dias</option><option value="15">15 dias</option><option value="30">30 dias</option><option value="60">60 dias</option></select><button class="bt" type="button" id="lk-renovar">Renovar</button></span>
+            <button class="bt" type="button" id="lk-revogar">Revogar</button>
+            <button class="bt" type="button" id="lk-encerrar">Marcar call como encerrada</button>
+            <button class="bt" type="button" id="lk-gerar">Gerar outro link</button>
+          </div>
+          <div class="acoes" id="lk-admin" hidden>
+            <label class="campo"><span id="lk-dono-rotulo">Dono deste R2 (admin)</span><select class="in" id="lk-dono"></select></label>
+            <button class="bt" type="button" id="lk-trocar-dono">Trocar o dono</button>
+          </div>
+        </section>
+
+        <section class="sec" id="s-leitura" data-so="r2" hidden>
+          <h2 class="label">Leitura do atleta</h2>
+          <p class="nota" id="lt-resumo">O vídeo dele e os lances marcados aparecem no slide 14 (IA na Prática). Sem vídeo, o 14 é a leitura ao vivo no Meet.</p>
+          <button class="bt" type="button" id="bt-leitura">Abrir a Leitura do atleta</button>
+        </section>
+
+        <section class="sec" id="s-hist" hidden>
+          <details><summary class="label">Histórico (as últimas 30 ações)</summary><ul class="hist" id="hist"></ul></details>
+        </section>
+
+        <section class="sec perigo-sec" id="s-perigo" hidden>
+          <h2 class="label">Apagar</h2>
+          <p class="nota">Apaga o registro, a foto, o vídeo e a leitura deste atleta. O link para de funcionar na hora.</p>
+          <button class="bt perigo" type="button" id="bt-apagar-tudo">Apagar tudo deste atleta</button>
+        </section>
+      </form>
+
+      <aside class="ed-previa" id="ed-previa">
+        <div class="pv-topo"><h2 class="label">Prévia</h2><button class="bt mini" type="button" id="pv-atualizar">Atualizar</button></div>
+        <div class="pv-quadro" id="pv-quadro"><p class="pv-vazio" id="pv-vazio">A prévia aparece depois de salvar o nome.</p></div>
+        <p class="nota" id="pv-fora" hidden></p>
+        <div class="pv-bts" id="pv-bts"></div>
+        <p class="nota" id="pv-nota">Olhe os slides marcados com • antes da call: é o último item do checklist.</p>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- conflito ao salvar -->
+<dialog id="d-conflito" aria-labelledby="dc-titulo">
+  <div class="dlg">
+    <div class="dlg-topo"><h2 class="titulo" id="dc-titulo">Alguém salvou antes</h2></div>
+    <div class="dlg-corpo"><p id="dc-texto"></p><p class="nota">Recarregar traz o que está salvo e descarta o que você digitou. Sobrescrever salva o seu por cima.</p></div>
+    <div class="dlg-pe"><button class="bt" type="button" id="dc-recarregar">Recarregar</button><button class="bt ouro" type="button" id="dc-sobrescrever">Sobrescrever</button><button class="bt fantasma" type="button" id="dc-cancelar">Cancelar</button></div>
+  </div>
+</dialog>
+
+<!-- nova variação (só o admin): usa a página de uma apresentação que já existe no deck -->
+<dialog id="d-variacao" aria-labelledby="dv-titulo">
+  <form class="dlg" id="f-variacao" method="dialog">
+    <div class="dlg-topo"><h2 class="titulo" id="dv-titulo">Nova variação</h2></div>
+    <div class="dlg-corpo">
+      <p class="nota" style="margin:0 0 12px">A variação usa as telas e o texto de uma apresentação que já existe no deck (a base). O que muda é o nome, a classificação, a descrição e o que ela mostra do lead. O painel gera o slug dela. Uma apresentação com texto ou slides novos precisa de uma página nova no deck: ela aparece aqui como Não validada.</p>
+      <label class="campo"><span>Nome da variação <b>*</b></span><input class="in" id="dv-nome" maxlength="40" required placeholder="Ex.: Técnica sem foto" autocomplete="off"></label>
+      <label class="campo"><span>Baseada em <b>*</b></span><select class="in" id="dv-base"></select></label>
+      <label class="campo"><span>Quando usar</span><input class="in" id="dv-quando" maxlength="300" placeholder="Ex.: lead que não autorizou a foto" autocomplete="off"></label>
+      <label class="campo"><span>Classificação</span><select class="in" id="dv-validacao"></select></label>
+      <label class="ck"><input type="checkbox" id="dv-lead-nome" checked> <span>Aparece o nome e o sobrenome do lead</span></label>
+      <label class="ck"><input type="checkbox" id="dv-lead-foto" checked> <span>Aparece a foto do lead</span></label>
+      <p class="erro" id="dv-erro" role="alert"></p>
+    </div>
+    <div class="dlg-pe"><button class="bt fantasma" type="button" id="dv-cancelar">Cancelar</button><button class="bt ouro" type="submit" id="dv-ir">Criar variação e gerar o slug</button></div>
+  </form>
+</dialog>
+
+<!-- importar do painel atual -->
+<dialog id="d-importar" aria-labelledby="di-titulo">
+  <form class="dlg" id="f-importar" method="dialog">
+    <div class="dlg-topo"><h2 class="titulo" id="di-titulo">Importar o R1 de um SDR</h2></div>
+    <div class="dlg-corpo">
+      <label class="campo"><span>Cole o link do R1 que o SDR mandou (com ?a= no fim). Também serve o link do painel de antes.</span><input class="in mono" id="di-link" placeholder="https://jogador-de-elite-r1.vercel.app/?a=..." autocomplete="off" spellcheck="false"></label>
+      <p class="nota">Vem só a ficha (nome, posição, idade, cidade, dia e hora da R2...). A foto e o vídeo não vêm. Nada é salvo antes de você conferir.</p>
+      <p class="erro" id="di-erro" role="alert"></p>
+    </div>
+    <div class="dlg-pe"><button class="bt fantasma" type="button" id="di-cancelar">Cancelar</button><button class="bt ouro" type="submit" id="di-ir">Importar</button></div>
+  </form>
+</dialog>
+
+<!-- leitura do atleta: o vídeo dele e o relatório do slide 14 do R2 (portada do painel atual) -->
+<dialog id="leitura" class="largo" aria-labelledby="lt-titulo">
+  <div class="dlg">
+    <div class="dlg-topo"><h2 class="titulo" id="lt-titulo">Leitura do atleta</h2><button class="bt mini fantasma" type="button" id="lt-fechar">Fechar</button></div>
+    <div class="dlg-corpo">
+      <p class="lt-aviso" style="margin:0 0 14px">O que você salvar aqui aparece no slide 14 do R2 (IA na Prática), na tela da família: o vídeo dele, o nome e o relatório. Sem vídeo, o slide fica como sempre, com a leitura ao vivo no Meet.</p>
+      <fieldset class="lt-passo" id="lt-p1"><legend><span class="label">1 · Autorização</span></legend>
+        <label class="lt-ck"><input type="checkbox" id="lt-autoriza"> <span>Tenho a autorização expressa do responsável legal pra usar o vídeo deste atleta.</span></label>
+        <p class="lt-ok" id="lt-autorizado" hidden></p>
+      </fieldset>
+      <fieldset class="lt-passo off" id="lt-p2"><legend><span class="label">2 · Vídeo</span></legend>
+        <p class="nota">mp4 (H.264) de preferência, até 5 minutos e 250 MB. Vale só pra este atleta e some sozinho em <span id="lt-dias">90</span> dias.</p>
+        <div class="lt-linha">
+          <input type="file" id="lt-arquivo" accept="video/mp4,video/webm,video/quicktime" hidden>
+          <button class="bt ouro" type="button" id="lt-escolher">Enviar vídeo</button>
+          <button class="bt" type="button" id="lt-cancelar" hidden>Cancelar envio</button>
+          <button class="bt perigo" type="button" id="lt-apagar" hidden>Apagar vídeo e leitura</button>
+        </div>
+        <div id="lt-progresso" hidden><div class="lt-barra"><i id="lt-barra"></i></div><p class="lt-aviso" id="lt-progresso-txt"></p></div>
+        <p class="lt-ok" id="lt-video-info" hidden></p>
+        <p class="erro" id="lt-video-erro" role="alert"></p>
+      </fieldset>
+      <fieldset class="lt-passo off" id="lt-p3"><legend><span class="label">3 · Marcar os lances</span></legend>
+        <div class="lt-grade">
+          <div>
+            <video class="lt-video" id="lt-video" controls playsinline preload="metadata"></video>
+            <div class="lt-linha" style="margin-top:10px">
+              <select class="in" id="lt-tipo" aria-label="Tipo do lance"></select>
+              <button class="bt" type="button" id="lt-bom">Bom</button>
+              <button class="bt" type="button" id="lt-ajustar">A melhorar</button>
+              <button class="bt fantasma" type="button" id="lt-marcar">Marcar lance</button>
+            </div>
+            <p class="lt-teclas">Teclas, com o cursor fora dos campos: <kbd>B</kbd> lance bom, <kbd>A</kbd> lance a melhorar, <kbd>M</kbd> marcar com a última leitura, <kbd>Espaço</kbd> play e pausa. Cada lance grava o minuto do vídeo e abre a nota.</p>
+          </div>
+          <div class="lt-lances" id="lt-lances"></div>
+        </div>
+      </fieldset>
+      <fieldset class="lt-passo off" id="lt-p4"><legend><span class="label">4 · Pontos fortes, prioridades e a fonte</span></legend>
+        <div class="lt-textos">
+          <label class="campo"><span>Pontos fortes (até 3)</span><input class="in" maxlength="70" data-forte="0"><input class="in" maxlength="70" data-forte="1"><input class="in" maxlength="70" data-forte="2"></label>
+          <label class="campo"><span>Prioridades (até 3)</span><input class="in" maxlength="70" data-prior="0"><input class="in" maxlength="70" data-prior="1"><input class="in" maxlength="70" data-prior="2"></label>
+          <div class="campo"><span>Quem fez a leitura</span>
+            <div class="lt-escolha"><label><input type="radio" name="lt-origem" value="zyron"> Zyron</label><label><input type="radio" name="lt-origem" value="equipe"> Equipe</label></div>
+            <small>Escolha Zyron só se os lances e os textos vieram do Zyron. Se foram marcados à mão, escolha Equipe.</small></div>
+          <div class="campo"><span>Lances marcados</span>
+            <div class="lt-escolha"><label><input type="radio" name="lt-criterio" value="todos"> Todos os lances em que ele participa</label><label><input type="radio" name="lt-criterio" value="selecao"> Uma seleção</label></div>
+            <small>Vai escrito no rodapé do slide. Só marque "todos" se marcou todos mesmo.</small></div>
+        </div>
+      </fieldset>
+      <fieldset class="lt-passo off" id="lt-p5"><legend><span class="label">5 · Capa, prévia e JSON</span></legend>
+        <div class="lt-poster">
+          <img id="lt-poster-img" alt="Quadro de capa do vídeo" hidden>
+          <div><button class="bt" type="button" id="lt-poster">Usar o quadro de agora como capa</button><p class="lt-teclas">Pause o vídeo no quadro que você quer. Ele vira a capa do slide 14 e, sem foto do atleta, a capa do deck.</p></div>
+        </div>
+        <div class="lt-linha" style="margin-top:12px">
+          <button class="bt" type="button" id="lt-ver">Ver relatório</button>
+          <input type="file" id="lt-json" accept="application/json,.json" hidden>
+          <button class="bt fantasma" type="button" id="lt-importar">Importar JSON</button>
+          <button class="bt fantasma" type="button" id="lt-exportar">Exportar JSON</button>
+        </div>
+        <ul class="lt-erros" id="lt-json-erros" hidden></ul>
+        <div class="lt-previa" id="lt-previa" hidden></div>
+      </fieldset>
+    </div>
+    <div class="dlg-pe"><p class="erro" id="lt-erro" role="alert"></p><button class="bt fantasma" type="button" id="lt-fechar2">Fechar</button><button class="bt ouro" type="button" id="lt-salvar">Salvar leitura</button></div>
+  </div>
+</dialog>
+
+<div id="aviso" role="status" aria-live="polite"></div>
+
+<script src="/regras.js"></script>
+<!-- o mesmo componente do relatório do slide 14 do R2 (cópia idêntica de jogador-de-elite-r2-novo/assets/relatorio-leitura.js) -->
+<script src="/relatorio-leitura.js"></script>
+<script src="/painel.js"></script>
+</body>
+</html>

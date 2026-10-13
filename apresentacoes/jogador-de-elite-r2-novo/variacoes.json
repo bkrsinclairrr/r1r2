@@ -1,0 +1,50 @@
+{
+  "v": 1,
+  "gerado": "2026-10-12T05:39:31.481Z",
+  "paginas": [
+    {
+      "id": "principal",
+      "caminho": "/",
+      "nome": "Principal",
+      "resumo": "O deck completo: explica o caminho do começo, com o olhômetro, o Zyron e a AGN.",
+      "quando": "Na dúvida, esta.",
+      "validacao": "em-validacao",
+      "lead": {
+        "nome": true,
+        "foto": true
+      },
+      "slides": 27,
+      "opcionais": [
+        {
+          "id": "leva",
+          "slide": 19,
+          "rotulo": "O que o {nome} leva",
+          "ajuda": "Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai do 18 direto pro 20."
+        }
+      ],
+      "hash": "e1c8155420fbe620534c4772fd6abce96d4dafd5"
+    },
+    {
+      "id": "tecnica",
+      "caminho": "/variacoes/tecnica/",
+      "nome": "Técnica",
+      "resumo": "Fala de par pra par: não explica o básico, a AGN aparece uma vez só e o foco é a operação e o interesse alinhado.",
+      "quando": "Citou a AGN pelo nome, tem vivência no meio (base de clube, federado, ex-jogador, técnico, contato com empresário) ou fez pergunta técnica na R1.",
+      "validacao": "em-validacao",
+      "lead": {
+        "nome": true,
+        "foto": true
+      },
+      "slides": 27,
+      "opcionais": [
+        {
+          "id": "leva",
+          "slide": 19,
+          "rotulo": "O que o {nome} leva",
+          "ajuda": "Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai do 18 direto pro 20."
+        }
+      ],
+      "hash": "aa31f638e45f1e89ba346b86b5da06b1667c81ac"
+    }
+  ]
+}

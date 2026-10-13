@@ -1,0 +1,913 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jogador de Elite · R2</title>
+<meta name="robots" content="noindex">
+<!-- Variação técnica da R2: família que já conhece a AGN e entende de futebol.
+     Mesmo motor (assets/deck.js), mesma ficha e os mesmos 27 slides nas mesmas posições do deck padrão,
+     com copy e persuasão próprias. Roteiro: assets/variacoes/tecnica.js. -->
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/deck.css">
+<link rel="stylesheet" href="../../assets/r2.css">
+<!-- O Painel de Apresentações lê este bloco (pelo variacoes.json, que o gera-manifesto.mjs monta das páginas) e é assim que esta
+     variação aparece lá, com o nome, o quando usar e o que ela mostra do lead. Mudou aqui? Rode: node gera-manifesto.mjs
+     nome, resumo, quando: o que quem monta lê no painel. validacao: só a classificação de partida (o admin muda no painel).
+     lead: se esta variação mostra o nome do lead e a foto dele (o painel só oferece o que este deck faz). opcionais: slides que o
+     painel deixa tirar da sequência (cada um com data-opcional="<id>" na tag do próprio slide). -->
+<script type="application/json" id="r2-variacao">
+{
+  "nome": "Técnica",
+  "resumo": "A técnica do R2 novo com a tela dizendo o nome e o primeiro sobrenome do lead.",
+  "quando": "Mesmo critério da Técnica do R2 novo, só se precisar desse endereço.",
+  "validacao": "em-validacao",
+  "lead": { "nome": true, "foto": true },
+  "opcionais": []
+}
+</script>
+</head>
+<body>
+<div class="viewport" id="viewport">
+<div class="stage" id="stage">
+
+<!-- ============ 01 CAPA ============ -->
+<!-- O gancho é o inimigo comum: o olhômetro (laranja-sinal, só nele). A segunda linha segue a origem do lead.
+     O selo de dossiê leva o nome e, com o link do painel (?a=<id>), o código do registro dele (dossieCod). -->
+<section class="slide desk">
+  <div class="fill topo"></div>
+  <div class="fill" style="background:radial-gradient(34% 42% at 70% 58%,rgba(230,219,184,.10),rgba(6,11,20,0) 70%)"></div>
+  <!-- o dossiê: com a foto do painel (autorizada pelo responsável), o retrato dele com o nome e o número do registro;
+       sem foto e com o quadro do vídeo dele, a foto do jogo (duotone navy); sem nenhum dos dois, o desenho -->
+  <div class="a" style="left:960px;top:230px;width:900px;height:640px"><div data-dossier="closed" class="dz-tilt" data-ifnot="fotoOk|posterOk"></div>
+    <div class="dz-tilt dz-foto" data-if="posterOk&!fotoOk"><div class="dz-quadro"><img data-src="posterUrl" alt="Quadro do vídeo do atleta"><div class="dz-tom"></div><div class="dz-rot"><p class="k">Dossiê do atleta</p><p class="n" data-bind="nomeDossie" data-fb="VOCÊ"></p><p class="c" data-bind="dossieNo"></p></div><p class="dz-ok">Aprovado</p></div></div>
+    <div data-if="fotoOk"><div class="ft ft-ret cp-ret"><img data-src="fotoUrl" alt="Foto do atleta"><div class="ft-tom"></div><div class="ft-sombra"></div><div class="cp-rot"><p class="k">Dossiê do atleta</p><p class="n" data-bind="nomeDossie" data-fit="394"></p><p class="c" data-bind="dossieNo"></p></div></div><p class="a cp-ok">Aprovado</p><div class="brackets sand" style="left:225px;top:6px;width:450px;height:600px"><i></i><i></i><i></i><i></i></div></div></div>
+  <div class="a cp-montado" data-if="montadoPara" style="left:960px;top:884px;width:900px"><p class="m" data-bind="montadoPara"></p><p class="c" data-if="callTxt" data-bind="callTxt"></p></div>
+  <p class="a legal" data-if="fotoOk" style="left:960px;top:996px;width:760px">Imagem do atleta usada com autorização do responsável legal.</p>
+  <div class="fill grain"></div>
+  <p class="a selo rise" style="left:120px;top:150px"><span>Dossiê</span><span data-if="nome"> · <span data-bind="nome"></span></span><span class="cod" data-if="dossieCod">nº <span data-bind="dossieCod"></span></span></p>
+  <div class="a" style="left:116px;top:262px;width:860px">
+    <p class="t t-130 rise" style="--d:.06s"><span class="sig">Observação</span> não é leitura.</p>
+    <p class="t t-130 ice rise" data-if="origemZyron" style="margin-top:22px!important;--d:.16s">O Zyron leu o seu jogo.</p>
+    <p class="rise" data-ifnot="origemZyron" style="margin-top:34px!important;font-size:52px;line-height:1.2;font-weight:600;color:var(--sand-l);--d:.16s">A gente leu a sua trajetória.</p>
+    <p class="rise" style="margin-top:34px!important;font-size:36px;line-height:1.3;color:var(--white);--d:.24s">Vocês conhecem o jogo. Hoje, direto ao plano.</p>
+  </div>
+  <p class="a label muted bare" style="left:120px;top:962px;font-size:26px;letter-spacing:.3em">Jogador de Elite&nbsp;&nbsp;·&nbsp;&nbsp;Planejamento de carreira</p>
+</section>
+
+<!-- ============ 02 POR QUE VOCÊ ============ -->
+<section class="slide">
+  <div class="fill" style="background:radial-gradient(40% 55% at 78% 48%,rgba(230,219,184,.08),rgba(6,11,20,0) 70%)"></div>
+  <i class="s2-longo" data-if="nomeMuitoLongo" aria-hidden="true"></i>
+  <div class="a" style="left:120px;top:150px;width:1020px">
+    <p class="label" data-ifnot="origemZyron">O seu perfil</p>
+    <p class="label ice" data-if="origemZyron">Leitura do Zyron</p>
+    <p class="t t-130 rise" style="margin-top:44px!important"><span data-if="nome"><span data-bind="nome"></span>, você</span><span data-ifnot="nome">Você</span> passou no filtro.</p>
+    <div data-if="origemZyron">
+      <p class="b b-44 rise" style="margin-top:40px!important;color:var(--white);--d:.1s">O <span class="ice">Zyron</span> leu o seu vídeo com dados, e a equipe aprovou o que viu.</p>
+      <div class="rise" data-if="caracteristicas" style="margin-top:30px;--d:.16s"><p class="label bare" style="font-size:26px;margin-bottom:10px!important">O que os dados mostraram</p><p style="font-size:42px;line-height:1.25;font-weight:600;color:var(--white)" data-bind="caracteristicas"></p></div>
+    </div>
+    <div data-if="origemForm">
+      <p class="b b-44 rise" style="margin-top:40px!important;color:var(--white);--d:.1s">A equipe leu a sua trajetória e aprovou o seu perfil.</p>
+      <div class="rise" data-if="experiencia" style="margin-top:30px;--d:.16s"><p class="label bare" style="font-size:26px;margin-bottom:10px!important">A sua trajetória</p><p style="font-size:42px;line-height:1.25;font-weight:600;color:var(--white)" data-bind="experiencia"></p></div>
+    </div>
+    <div data-if="origemOutro">
+      <p class="b b-44 rise" style="margin-top:40px!important;color:var(--white);--d:.1s">A equipe analisou o seu jogo e aprovou o seu perfil.</p>
+    </div>
+  </div>
+  <p class="a rise" style="left:120px;top:900px;width:1040px;font-size:48px;line-height:1.22;font-weight:600;color:var(--sand-l);--d:.24s">Hoje eu mostro o caminho daqui até o clube.</p>
+  <!-- o cartão Perfil aprovado com o retrato dele (sem foto, a inicial do nome no mesmo quadro) -->
+  <div class="doc rise" style="left:1250px;top:140px;width:560px;height:800px;padding:40px 44px;--d:.08s">
+    <p class="dh ok">Perfil aprovado</p>
+    <div style="height:1px;background:var(--line);margin:22px 0 26px"></div>
+    <div class="pv-top">
+      <div class="pv-foto"><div class="ft ft-ret" data-if="fotoOk"><img data-src="fotoUrl" alt="Foto do atleta"><div class="ft-tom"></div></div><div class="ft ft-ret ft-mono" data-ifnot="fotoOk"><b data-bind="fotoIni" style="font-size:120px"></b></div></div>
+      <div class="pv-id">
+        <p class="t" data-fit="268" style="font-size:76px;line-height:.95;white-space:nowrap"><span data-if="nome" data-bind="nome"></span><span data-ifnot="nome">Você</span></p>
+        <p class="label bare muted" data-if="dossieCod" style="font-size:24px;letter-spacing:.2em;margin-top:14px!important" data-bind="dossieNo"></p>
+      </div>
+    </div>
+    <div class="pv-campos">
+      <div data-if="posicao"><p class="dh" style="font-size:24px">Posição</p><p class="v" data-bind="posicao"></p></div>
+      <div data-if="idade"><p class="dh" style="font-size:24px">Idade</p><p class="v"><span data-bind="idade"></span> anos</p></div>
+      <div data-if="cidade"><p class="dh" style="font-size:24px">Cidade</p><p class="v" data-bind="cidade"></p></div>
+    </div>
+    <div class="pv-pe">
+      <p class="pv-unico">Nenhum outro atleta tem este plano.</p>
+      <p class="label bare ice" data-if="origemZyron" style="font-size:26px;letter-spacing:.22em">Vídeo analisado pelo Zyron</p>
+      <p class="label bare" data-ifnot="origemZyron" style="font-size:26px;letter-spacing:.22em">Perfil lido pela equipe</p>
+    </div>
+  </div>
+  <div class="brackets sand" style="left:1250px;top:140px;width:560px;height:800px"><i></i><i></i><i></i><i></i></div>
+  <p class="a legal" data-if="fotoOk" style="left:1250px;top:958px;width:600px">Imagem do atleta usada com autorização do responsável legal.</p>
+</section>
+
+<!-- ============ 03 O QUE A OBSERVAÇÃO DEIXA PASSAR (novo) ============ -->
+<!-- A dor, com o inimigo definido pelo método (a Bíblia manda a pergunta do olhômetro antes do plano). Só o lado do olhômetro,
+     em laranja-sinal; a coluna "A resposta" fica vazia e tracejada: o 12 repete a mesma tabela, na mesma ordem, e preenche com o Zyron.
+     Ataca o método, nunca o avaliador nem clube nenhum. "Vinte minutos" e "dividida entre 22" são as referências que o deck já usava. -->
+<section class="slide">
+  <div class="fill" style="background:radial-gradient(42% 70% at 36% 52%,rgba(226,85,43,.07),rgba(6,11,20,0) 70%)"></div>
+  <p class="a dtag" data-if="nome">Dossiê · <span data-bind="nome"></span><span data-if="dossieCod"> · nº <span data-bind="dossieCod"></span></span></p>
+  <p class="a t t-110" style="left:116px;top:92px">O que a <span class="sig">observação</span> deixa passar.</p>
+  <table class="vs so rise" style="left:120px;top:246px;width:1680px">
+    <colgroup><col style="width:440px"><col style="width:580px"><col style="width:660px"></colgroup>
+    <tr><th></th><th class="c2"><svg class="olho" viewBox="0 0 48 32" aria-hidden="true"><path d="M2 16 C10 4 38 4 46 16 C38 28 10 28 2 16 Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><circle cx="24" cy="16" r="8" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M24 16 V10.5 M24 16 L28 18.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Observação</th><th class="c3">A resposta</th></tr>
+    <tr><td class="c1">Quanto do seu jogo é visto</td><td class="c2">Os lances que calharem de ser vistos</td><td class="c3"></td></tr>
+    <tr><td class="c1">Atenção</td><td class="c2">Dividida entre 22</td><td class="c3"></td></tr>
+    <tr><td class="c1">O que fica registrado</td><td class="c2">A memória do avaliador</td><td class="c3"></td></tr>
+    <tr><td class="c1">Depois</td><td class="c2">“A gente te liga”</td><td class="c3"></td></tr>
+    <tr><td class="c1">Quem fica sabendo de você</td><td class="c2">Um clube, num dia</td><td class="c3"></td></tr>
+  </table>
+  <p class="a rise" style="left:120px;top:884px;width:1600px;font-size:52px;line-height:1.15;font-weight:600;color:var(--white);--d:.2s">Não foi falta de jogo. Foi falta de leitura.</p>
+</section>
+
+<!-- ============ 04 O PLANEJAMENTO DE CARREIRA ============ -->
+<!-- O caminho do atleta e, embaixo, o tripé da Bíblia (os três verbos vêm do passo de cada plano em window.PLANOS). -->
+<section class="slide">
+  <div class="fill" style="background:radial-gradient(40% 50% at 88% 50%,rgba(230,219,184,.09),rgba(6,11,20,0) 70%)"></div>
+  <p class="a dtag" data-if="nome">Dossiê · <span data-bind="nome"></span><span data-if="dossieCod"> · nº <span data-bind="dossieCod"></span></span></p>
+  <p class="a label" style="left:120px;top:90px"><span data-if="videoOk">Feito a partir do vídeo e da trajetória dele</span><span data-ifnot="videoOk">Feito a partir da trajetória dele</span></p>
+  <i class="s4-longo" data-if="nomeMuitoLongo" aria-hidden="true"></i>
+  <p class="a t t-110 rise" style="left:116px;top:164px;width:1700px">O plano do <span class="sand-l" data-bind="nome" data-fb="atleta"></span>.</p>
+  <p class="a rise" style="left:120px;top:282px;width:1600px;font-size:40px;line-height:1.25;font-weight:600;color:var(--sand-l);--d:.06s">Talento sem operação fica parado. Isso aqui é a operação.</p>
+  <div class="a road compact rise" style="left:120px;top:356px;width:1680px;--d:.1s">
+    <div class="line"></div>
+    <div class="stop"><i></i><p class="k">Agora</p><p class="d">O <span class="ice">Zyron</span> e o gerente de carreira leem o seu jogo e definem o que evoluir primeiro.<span data-if="trabalhar"> Primeiro foco: <span data-bind="trabalhar"></span>.</span></p></div>
+    <div class="stop"><i></i><p class="k">Todo dia</p><p class="d">Treino com direção, gerente de carreira acompanhando e um estrategista de carreiras do <span class="ice">Zyron</span> só seu.</p></div>
+    <div class="stop"><i></i><p class="k">A ponte</p><p class="d">Seu perfil levado a quem tem carência de um <span data-bind="posicaoMin" data-fb="jogador"></span> como você, na rede de clubes.</p></div>
+    <div class="stop"><i></i><p class="k">Quando o clube chamar</p><p class="d">O gerente de carreira organiza a ida com vocês.</p></div>
+    <div class="stop goal"><i></i><p class="k">Destino</p><p class="d"><span data-if="sonho" data-bind="sonho"></span><span data-ifnot="sonho">O seu sonho.</span></p></div>
+  </div>
+  <div class="a tripe rise" style="left:120px;top:770px;width:1680px;--d:.18s">
+    <div class="tp"><i class="d1"></i><p class="v" data-bind="scouting.passo" data-fb="Ser visto"></p><p class="d">O <span class="ice">Zyron</span> lê cada lance.</p></div>
+    <div class="tp"><i class="d2"></i><p class="v" data-bind="pro.passo" data-fb="Ser preparado"></p><p class="d">A equipe acompanha a evolução.</p></div>
+    <div class="tp"><i class="d3"></i><p class="v" data-bind="legacy.passo" data-fb="Ser apresentado"></p><p class="d">A rede leva o perfil aos clubes.</p></div>
+    <p class="tp-f">Talento sem os três fica parado em casa.</p>
+  </div>
+</section>
+
+<!-- ============ 05 E SE? (bloco do Zyron, trazido do R1) ============ -->
+<section class="slide">
+  <img class="photo" src="../../assets/tunel.jpg" alt="Túnel de estádio com a saída iluminada">
+  <div class="fill" style="background:linear-gradient(90deg,rgba(6,11,20,.95) 0%,rgba(6,11,20,.84) 36%,rgba(6,11,20,.18) 62%,rgba(6,11,20,.4) 100%)"></div>
+  <div class="fill" style="background:radial-gradient(8% 15% at 54.7% 30.5%,rgba(127,196,234,.9),rgba(127,196,234,.35) 50%,rgba(127,196,234,0) 100%);mix-blend-mode:color"></div>
+  <div class="fill" style="background:radial-gradient(6% 11% at 54.7% 30.5%,rgba(127,196,234,.30),rgba(127,196,234,0) 100%);mix-blend-mode:screen"></div>
+  <div class="fill grain"></div>
+  <p class="a t t-130 rise" style="left:116px;top:196px;width:860px">E se alguém<br>visse cada<br>lance seu?</p>
+  <p class="a b b-44 rise" style="left:120px;top:618px;width:760px;color:#DDE2E8;--d:.14s">Cada decisão. Cada movimento sem a bola. E levasse tudo isso a quem procura um jogador como você.</p>
+</section>
+
+<!-- ============ 06 ZYRON: a resposta ao olhômetro ============ -->
+<section class="slide">
+  <div class="fill zgrid" style="-webkit-mask-image:linear-gradient(90deg,transparent 30%,#000 60%);mask-image:linear-gradient(90deg,transparent 30%,#000 60%)"></div>
+  <div class="fill" style="background:radial-gradient(46% 58% at 72% 48%,rgba(127,196,234,.12),rgba(6,11,20,0) 70%)"></div>
+  <p class="a label ice" style="left:120px;top:150px">A leitura com dados</p>
+  <p class="a t rise" style="left:108px;top:236px;font-size:272px;line-height:.84;letter-spacing:.03em">Zyron</p>
+  <p class="a sub ice rise" style="left:120px;top:498px;font-size:66px;--d:.1s">O olheiro que não pisca.</p>
+  <p class="a white rise" style="left:120px;top:600px;width:820px;font-size:44px;line-height:1.28;font-weight:600;--d:.16s">Não olha pro lado.<br>Não cansa. Não esquece.</p>
+  <p class="a b b-40 rise" style="left:120px;top:762px;width:800px;--d:.22s">Inteligência artificial que lê cada lance do seu vídeo, com o mesmo critério pra todo atleta.</p>
+  <div class="a" style="left:968px;top:250px;width:840px;height:472px;overflow:hidden;border:1px solid rgba(127,196,234,.3)">
+    <img src="../../assets/zyron-leitura.jpg" alt="Trecho da demonstração do Zyron" style="width:100%;height:100%;object-fit:cover;filter:saturate(.8) brightness(.88)">
+    <div class="fill" style="background:linear-gradient(180deg,rgba(6,11,20,0) 55%,rgba(6,11,20,.45))"></div>
+    <div class="scan"></div>
+  </div>
+  <div class="brackets" style="left:968px;top:250px;width:840px;height:472px"><i></i><i></i><i></i><i></i></div>
+  <p class="a legal" style="left:968px;top:760px">Trecho da demonstração do Zyron.</p>
+</section>
+
+<!-- ============ 07 O ZYRON TRABALHANDO ============ -->
+<section class="slide" data-video="v-zyron">
+  <div class="fill" style="background:radial-gradient(60% 70% at 36% 56%,rgba(127,196,234,.08),rgba(6,11,20,0) 70%)"></div>
+  <p class="a t t-96" style="left:116px;top:66px">Veja o Zyron trabalhando.</p>
+  <p class="a b b-40" style="left:120px;top:176px">Dois minutos que explicam mais que qualquer slide.</p>
+  <div class="player" id="p-zyron" style="left:120px;top:268px;width:1180px;height:664px">
+    <video id="v-zyron" controls preload="metadata" playsinline poster="../../assets/video/poster-zyron-filme.jpg">
+      <source src="../../assets/video/zyron-filme.mp4" type="video/mp4">
+    </video>
+    <button class="play" type="button" aria-label="Reproduzir o vídeo do Zyron"><span class="disc"><svg width="54" height="62" viewBox="0 0 54 62"><path d="M0 0 L54 31 L0 62 Z" fill="#7FC4EA"/></svg></span></button>
+  </div>
+  <div class="brackets" style="left:120px;top:268px;width:1180px;height:664px"><i></i><i></i><i></i><i></i></div>
+  <div class="a" style="left:1376px;top:262px;width:440px">
+    <p class="label ice bare" style="font-size:26px;margin-bottom:16px">No vídeo</p>
+    <ul class="chapters" data-for="v-zyron">
+      <li data-t="0"><span class="tm">0:00</span><span class="ct">O olhômetro</span></li>
+      <li data-t="24"><span class="tm">0:24</span><span class="ct">A leitura lance a lance</span></li>
+      <li data-t="36"><span class="tm">0:36</span><span class="ct">O relatório: o que treinar</span></li>
+      <li data-t="40"><span class="tm">0:40</span><span class="ct">A IA e o seu estrategista de carreiras</span></li>
+      <li data-t="60"><span class="tm">1:00</span><span class="ct">A base de clubes</span></li>
+      <li data-t="81"><span class="tm">1:21</span><span class="ct">O plano até o grande clube</span></li>
+      <li data-t="97"><span class="tm">1:37</span><span class="ct">O Zyron na prática</span></li>
+    </ul>
+  </div>
+  <p class="a legal" style="left:120px;top:964px;width:1480px">Demonstração do Zyron. Vídeos e dados de atletas são usados somente com autorização expressa do responsável legal.</p>
+</section>
+
+<!-- ============ 08 COMO O ZYRON FUNCIONA ============ -->
+<section class="slide">
+  <div class="fill zgrid" style="opacity:.7;-webkit-mask-image:linear-gradient(180deg,transparent,#000 40%,transparent);mask-image:linear-gradient(180deg,transparent,#000 40%,transparent)"></div>
+  <p class="a t t-110" style="left:116px;top:128px">O Zyron em cinco verbos.</p>
+  <div class="a beam rise" style="left:120px;top:414px;width:1690px;height:3px"></div>
+  <div class="a steps rise" style="left:0;top:0;width:1920px;height:1080px;--d:.12s">
+    <div class="a step" style="left:120px"><i></i><p class="v">Recebe</p><p class="d">Sua ficha e o vídeo do seu jogo. Com autorização expressa do responsável.</p></div>
+    <div class="a step" style="left:464px"><i></i><p class="v">Analisa</p><p class="d">Cada lance do vídeo: movimento, escolha e execução.</p></div>
+    <div class="a step" style="left:808px"><i></i><p class="v">Relata</p><p class="d">Relatório de performance: pontos fortes, prioridades e a evidência em vídeo de cada ponto.</p></div>
+    <div class="a step" style="left:1152px"><i></i><p class="v">Acompanha</p><p class="d">Um estrategista de carreiras do Zyron só seu, a cada vídeo novo. Vídeo novo, relatório novo.</p></div>
+    <div class="a step g" style="left:1496px"><i></i><p class="v">Conecta</p><p class="d">Seu perfil cruzado com o que os clubes procuram. A ponte é com a gente.</p></div>
+  </div>
+</section>
+
+<!-- ============ 09 A PLATAFORMA (novo) ============ -->
+<!-- Referencia: imagesr2 (plataforma de dados de clubes). TELA ILUSTRATIVA: nada aqui e dado de atleta. Sem nota, sem percentil, sem ranking,
+     sem comparacao com outros atletas. O mapa de calor e so a ideia (areia e gelo, sem laranja). O video do atleta, quando o painel mandou o quadro,
+     aparece no cartao do video. Os cartoes entram um por avanco: o mapa de calor, os clipes por acao e o relatorio. -->
+<section class="slide">
+  <div class="fill zgrid" style="opacity:.55;-webkit-mask-image:radial-gradient(60% 70% at 72% 50%,#000,transparent);mask-image:radial-gradient(60% 70% at 72% 50%,#000,transparent)"></div>
+  <p class="a dtag" data-if="nome">Plataforma · <span data-bind="nome"></span></p>
+  <p class="a label ice" style="left:120px;top:96px">A plataforma</p>
+  <p class="a t rise" style="left:116px;top:178px;width:540px;font-size:100px;--d:.04s">Tudo dele num lugar só.</p>
+  <div class="a pf-linhas rise" style="left:120px;top:540px;width:540px;--d:.1s">
+    <p class="pf-l"><i></i><span>O vídeo dele entra.</span></p>
+    <p class="pf-l" data-step="1" data-passo="o mapa de calor"><i></i><span>O Zyron mostra por onde ele joga.</span></p>
+    <p class="pf-l" data-step="2" data-passo="os clipes por ação"><i></i><span>Cada lance vira um clipe.</span></p>
+    <p class="pf-l s" data-step="3" data-passo="o relatório"><i></i><span>E sai o relatório.</span></p>
+  </div>
+  <div class="a pf-app rise" style="left:700px;top:120px;width:1120px;height:800px;--d:.12s">
+    <div class="pf-side"><i class="on" style="top:96px"></i><i style="top:156px"></i><i style="top:216px"></i><i style="top:276px"></i><i style="top:336px"></i></div>
+    <div class="pf-top"><div class="pf-eu"><span class="ft ft-av pf-av" data-if="avatarOk"><img data-src="avatarUrl" alt="Foto do atleta"><span class="ft-tom"></span></span><span class="ft ft-av ft-mono pf-av" data-if="fotoIni&!avatarOk"><b data-bind="fotoIni" style="font-size:26px"></b></span><p class="pg">Painel<span data-if="nome"> do <span data-bind="nome"></span></span></p></div><p class="il">Tela ilustrativa</p></div>
+    <div class="pf-card" style="left:102px;top:92px;width:540px;height:300px">
+      <p class="k">Último vídeo</p>
+      <div class="pf-vid">
+        <img data-src="posterUrl" alt="Quadro do vídeo do atleta" data-if="posterOk">
+        <div class="sh"></div>
+        <div class="pf-play"><svg width="34" height="38" viewBox="0 0 34 38" aria-hidden="true"><path d="M3 3 L31 19 L3 35 Z" fill="#7FC4EA"/></svg></div>
+      </div>
+    </div>
+    <div class="pf-card pf-heat" data-step="1" style="left:666px;top:92px;width:432px;height:300px">
+      <p class="k">Mapa de calor</p>
+      <svg viewBox="0 0 420 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <radialGradient id="pfq1"><stop offset="0" stop-color="#E6DBB8" stop-opacity=".95"/><stop offset=".45" stop-color="#C8B88A" stop-opacity=".55"/><stop offset="1" stop-color="#7FC4EA" stop-opacity="0"/></radialGradient>
+          <radialGradient id="pfq2"><stop offset="0" stop-color="#C8B88A" stop-opacity=".8"/><stop offset=".5" stop-color="#7FC4EA" stop-opacity=".35"/><stop offset="1" stop-color="#7FC4EA" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="420" height="300" fill="#0B1F1A"/>
+        <g fill="none" stroke="#9DB06A" stroke-opacity=".5" stroke-width="2">
+          <rect x="16" y="52" width="388" height="232"/>
+          <line x1="210" y1="52" x2="210" y2="284"/>
+          <circle cx="210" cy="168" r="38"/>
+          <rect x="16" y="112" width="58" height="112"/><rect x="346" y="112" width="58" height="112"/>
+        </g>
+        <ellipse cx="262" cy="150" rx="104" ry="72" fill="url(#pfq1)"/>
+        <ellipse cx="190" cy="196" rx="76" ry="52" fill="url(#pfq2)"/>
+        <ellipse cx="330" cy="206" rx="58" ry="42" fill="url(#pfq2)"/>
+      </svg>
+    </div>
+    <div class="pf-card" data-step="2" style="left:102px;top:416px;width:996px;height:196px">
+      <p class="k">Lances por ação</p>
+      <div class="pf-clips">
+        <div class="pf-clip"><div class="pl"><svg width="16" height="18" viewBox="0 0 16 18" aria-hidden="true"><path d="M2 2 L14 9 L2 16 Z" fill="#7FC4EA"/></svg></div><p class="nm">Passe</p></div>
+        <div class="pf-clip"><div class="pl"><svg width="16" height="18" viewBox="0 0 16 18" aria-hidden="true"><path d="M2 2 L14 9 L2 16 Z" fill="#7FC4EA"/></svg></div><p class="nm">Condução</p></div>
+        <div class="pf-clip"><div class="pl"><svg width="16" height="18" viewBox="0 0 16 18" aria-hidden="true"><path d="M2 2 L14 9 L2 16 Z" fill="#7FC4EA"/></svg></div><p class="nm">Desarme</p></div>
+      </div>
+    </div>
+    <div class="pf-card" data-step="3" style="left:102px;top:636px;width:996px;height:142px">
+      <p class="k">Relatório</p>
+      <div class="pf-rel">
+        <div><p class="h">Pontos fortes</p><i class="sk"></i><i class="sk m"></i></div>
+        <div><p class="h s">Prioridades</p><i class="sk"></i><i class="sk m"></i></div>
+      </div>
+    </div>
+  </div>
+  <p class="a legal" style="left:120px;top:990px;width:1500px">Tela ilustrativa da plataforma. Vídeo e dados de atletas só com autorização expressa do responsável legal.</p>
+</section>
+
+<!-- ============ 10 QUEM OLHA POR ELE (novo) ============ -->
+<!-- A IA fica ligada 24 horas (e so a IA: ninguem da equipe esta de plantao 24 horas). A parte humana segue o ritmo do plano, sem inventar:
+     Scouting a cada 15 dias (relatorio do analista de performance), Assessoria PRO toda semana (o estrategista de carreiras liga),
+     Legacy todo dia (estrategista de carreiras e gerente de carreira de perto). O selo "O seu plano" marca o plano da ficha. -->
+<section class="slide">
+  <div class="fill" style="background:radial-gradient(46% 62% at 50% 56%,rgba(127,196,234,.1),rgba(6,11,20,0) 72%)"></div>
+  <p class="a dtag" data-if="nome">Acompanhamento · <span data-bind="nome"></span></p>
+  <p class="a label ice" style="left:120px;top:96px">Acompanhamento</p>
+  <p class="a t rise" style="left:116px;top:170px;width:1690px;font-size:104px;--d:.04s">IA que <span class="ice">não dorme</span>.<br><span class="sand-l">Gente</span> que acompanha.</p>
+  <div class="qo-card estreito rise" style="left:120px;top:400px;width:720px;height:330px;--d:.1s">
+    <div class="hd"><svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="#7FC4EA" stroke-width="3"/><path d="M8 32 C18 16 46 16 56 32 C46 48 18 48 8 32 Z" fill="none" stroke="#7FC4EA" stroke-width="3"/><circle cx="32" cy="32" r="8" fill="#7FC4EA"/></svg><div><p class="nm">O Zyron</p><p class="tg">A IA, ligada 24 horas</p></div></div>
+    <ul>
+      <li><b>Lê cada vídeo novo</b> que chega.</li>
+      <li>Marca os lances e <b>monta o relatório</b>.</li>
+      <li>Avisa a equipe do que mudou.</li>
+    </ul>
+  </div>
+  <!-- no lugar do sinal de mais: ele no centro, com a IA de um lado e a equipe do outro (sem nome, o mais de antes) -->
+  <div class="qo-centro" style="left:840px;top:404px;width:240px">
+    <div class="ft ft-av qo-av" data-if="avatarOk"><img data-src="avatarUrl" alt="Foto do atleta"><div class="ft-tom"></div></div>
+    <div class="ft ft-av ft-mono qo-av" data-ifnot="avatarOk"><b data-bind="fotoIni" data-fb="+" style="font-size:72px"></b></div>
+    <p class="lg">A IA e a equipe,<br>em volta do<b><span data-bind="nomeUp" data-fb="ATLETA"></span>.</b></p>
+  </div>
+  <div class="qo-card s estreito" data-step="1" style="left:1080px;top:400px;width:720px;height:330px;--d:.14s">
+    <div class="hd"><svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="22" r="12" fill="none" stroke="#C8B88A" stroke-width="3"/><path d="M8 58 C8 42 20 36 32 36 C44 36 56 42 56 58" fill="none" stroke="#C8B88A" stroke-width="3" stroke-linecap="round"/></svg><div><p class="nm">A equipe</p><p class="tg">Um agente humano de olho</p></div></div>
+    <ul>
+      <li>Acompanha <b>o <span data-bind="nome" data-fb="atleta"></span></b> de perto.</li>
+      <li>Lê o relatório e <b>define o próximo foco</b>.</li>
+      <li>Fala com vocês, <b>no ritmo do plano</b>.</li>
+    </ul>
+  </div>
+  <div class="qo-faixa" data-step="2" style="left:120px;top:752px;width:1680px;--d:.18s">
+    <div class="qo-pl"><p class="n">Scouting</p><p class="r">A cada 15 dias</p><p class="d">Relatório do analista de performance.</p><p class="aqui" data-if="planoId=scouting">O seu plano</p></div>
+    <div class="qo-pl"><p class="n">Assessoria PRO</p><p class="r">Toda semana</p><p class="d">O estrategista de carreiras liga.</p><p class="aqui" data-if="planoId=pro">O seu plano</p></div>
+    <div class="qo-pl"><p class="n">Legacy</p><p class="r">Todo dia</p><p class="d">Estrategista e gerente de carreira.</p><p class="aqui" data-if="planoId=legacy">O seu plano</p></div>
+  </div>
+  <p class="a legal" style="left:120px;top:990px;width:1500px">O Zyron analisa o vídeo que a família envia, com autorização expressa do responsável legal.</p>
+</section>
+
+<!-- ============ 11 O SEU LUGAR EM CAMPO (novo: o encaixe e a base de clubes numa peça só) ============ -->
+<!-- A peça da exclusividade: o campo (SVG do deck.js, data-campo, a partir da posição da ficha) com o atleta marcado,
+     o cartão dele (só o que está na ficha: nada de nota, atributo, barra ou porcentagem) e a base do Zyron com os dez clubes
+     de sempre (zyron-desenhos.js). Formação ilustrativa: nenhum jogador, escudo ou clube escalado. Sem posição reconhecida,
+     o campo fica sem destaque e diz "O seu lugar entra aqui." A leitura do jogo é do 14, dita ao vivo. -->
+<section class="slide">
+  <div class="fill" style="background:radial-gradient(34% 62% at 52% 50%,rgba(107,123,69,.16),rgba(6,11,20,0) 72%)"></div>
+  <i class="s11-longo" data-if="nomeLongo" aria-hidden="true"></i>
+  <div class="a" style="left:120px;top:96px;width:580px">
+    <p class="label">Em campo</p>
+    <p class="t t-96 rise" style="margin-top:44px!important"><span data-if="nome"><span class="sand-l" data-bind="nome"></span>, o seu</span><span data-ifnot="nome">O seu</span> perfil em campo.</p>
+    <p class="rise" style="margin-top:34px!important;font-size:38px;line-height:1.25;font-weight:600;color:var(--white);--d:.08s">Clube contrata pela carência do elenco.</p>
+    <div class="pieces vert rise" style="margin-top:30px;--d:.14s"><p class="pc-z">O Zyron cruza perfil e carência.</p><p class="pc-g">A ponte é com a gente.</p></div>
+    <p class="rise" style="margin-top:38px!important;font-size:40px;line-height:1.2;font-weight:600;color:var(--sand-l);--d:.2s">A base do Zyron: mais de 250 clubes.</p>
+  </div>
+  <div class="a campo-box rise" style="left:740px;top:96px;width:540px;height:858px;--d:.06s">
+    <div data-campo="cheio"></div>
+    <p class="campo-leg">Formação ilustrativa (4-3-3).</p>
+  </div>
+  <div class="brackets sand" style="left:740px;top:96px;width:540px;height:858px"><i></i><i></i><i></i><i></i></div>
+  <p class="a legal" data-if="fotoOk" style="left:120px;top:968px;width:580px">Imagem do atleta usada com autorização do responsável legal.</p>
+  <div class="a" style="left:1320px;top:96px;width:480px;display:flex;flex-direction:column;gap:30px">
+    <div class="cartao rise" style="--d:.12s">
+      <p class="ct-ok"><span data-if="nome">O cartão do <span data-bind="nome"></span>.</span><span data-ifnot="nome">Perfil aprovado</span></p>
+      <div class="ct-topo">
+        <div class="ct-foto"><div class="ft ft-ret" data-if="fotoOk"><img data-src="fotoUrl" alt="Foto do atleta"><div class="ft-tom"></div></div><div class="ft ft-ret ft-mono" data-ifnot="fotoOk"><b data-bind="fotoIni" style="font-size:80px"></b></div></div>
+        <div class="ct-id"><p class="ct-nm" data-fit="276"><span data-bind="nome" data-fb="Você"></span></p>
+        <p class="ct-pos" data-if="posicao" data-bind="posicaoUp"></p></div>
+      </div>
+      <div class="ct-grid">
+        <div data-if="idade"><p class="k">Idade</p><p class="v"><span data-bind="idade"></span> anos</p></div>
+        <div data-if="cidade"><p class="k">Cidade</p><p class="v" data-bind="cidade"></p></div>
+        <div data-if="peTxt"><p class="k">Pé</p><p class="v" data-bind="peTxt"></p></div>
+        <div data-if="alturaTxt"><p class="k">Altura</p><p class="v" data-bind="alturaTxt"></p></div>
+      </div>
+      <p class="ct-cod" data-if="dossieCod">Dossiê nº <span data-bind="dossieCod"></span></p>
+    </div>
+    <div class="rise" style="--d:.18s">
+      <p class="label bare ice" style="font-size:24px;letter-spacing:.26em">Na base do Zyron</p>
+      <ul class="clubes" id="clubes"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12 OLHÔMETRO × ZYRON: a resposta ============ -->
+<!-- A mesma tabela do 03, na mesma ordem, agora com a coluna da resposta preenchida: olhômetro em laranja-sinal, Zyron em gelo. -->
+<section class="slide">
+  <div class="fill" style="background:radial-gradient(40% 70% at 82% 50%,rgba(127,196,234,.08),rgba(6,11,20,0) 70%)"></div>
+  <p class="a dtag" data-if="nome">Dossiê · <span data-bind="nome"></span><span data-if="dossieCod"> · nº <span data-bind="dossieCod"></span></span></p>
+  <p class="a t t-110" style="left:116px;top:92px"><span class="sig">Observação</span> ou dados reais.</p>
+  <table class="vs rise" style="left:120px;top:246px;width:1680px">
+    <colgroup><col style="width:440px"><col style="width:580px"><col style="width:660px"></colgroup>
+    <tr><th></th><th class="c2"><svg class="olho" viewBox="0 0 48 32" aria-hidden="true"><path d="M2 16 C10 4 38 4 46 16 C38 28 10 28 2 16 Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><circle cx="24" cy="16" r="8" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M24 16 V10.5 M24 16 L28 18.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Observação</th><th class="c3">Zyron</th></tr>
+    <tr><td class="c1">Quanto do seu jogo é visto</td><td class="c2">Os lances que calharem de ser vistos</td><td class="c3">Todos os lances do vídeo</td></tr>
+    <tr><td class="c1">Atenção</td><td class="c2">Dividida entre 22</td><td class="c3">Só em você</td></tr>
+    <tr><td class="c1">O que fica registrado</td><td class="c2">A memória do avaliador</td><td class="c3">Relatório com a evidência em vídeo</td></tr>
+    <tr><td class="c1">Depois</td><td class="c2">“A gente te liga”</td><td class="c3">Acompanhamento da sua evolução</td></tr>
+    <tr><td class="c1">Quem fica sabendo de você</td><td class="c2">Um clube, num dia</td><td class="c3">Quem procura o seu perfil</td></tr>
+  </table>
+  <p class="a b b-40" style="left:120px;top:888px;width:1480px;color:var(--white);font-weight:500">Os grandes clubes já escolhem jogador com dados há anos, por dentro. <span class="ice">Agora essa leitura joga do seu lado.</span></p>
+</section>
+
+<!-- ============ 13 CONHECER O CAMINHO NÃO É ESTAR NELE ============ -->
+<section class="slide">
+  <div class="fill" style="background:radial-gradient(40% 60% at 86% 60%,rgba(127,196,234,.07),rgba(6,11,20,0) 70%)"></div>
+  <p class="a dtag" data-if="nome">Dossiê · <span data-bind="nome"></span><span data-if="dossieCod"> · nº <span data-bind="dossieCod"></span></span></p>
+  <p class="a label" style="left:120px;top:100px">O que falta não é informação</p>
+  <p class="a t rise" style="left:116px;top:180px;width:1700px;font-size:96px;white-space:nowrap">Conhecer o caminho não é estar nele.</p>
+  <div class="a cmp tight rise" style="left:120px;top:340px;width:1680px;--d:.1s">
+    <div class="hd"><p></p><p class="op">Por conta própria</p><p class="us">Com a gente</p></div>
+    <div><p class="k">Quem lê o jogo</p><p>O olho treinado de vocês, e um avaliador quando dá</p><p class="us">O <span class="ice">Zyron</span>, com dados reais do vídeo dele</p></div>
+    <div><p class="k">Quem acompanha</p><p>Vocês, no tempo que sobra do trabalho</p><p class="us">O gerente de carreira, todo dia</p></div>
+    <div><p class="k">Quem tem a demanda</p><p>Um contato, quando atende</p><p class="us">A rede: +250 clubes e o que cada um pede</p></div>
+    <div><p class="k">Quem corre o risco</p><p>Vocês, sozinhos</p><p class="us">A gente, que só ganha quando ele fecha</p></div>
+  </div>
+  <!-- escopo: o "Com a gente" é a estrutura completa (Legacy); o 25 volta a estas linhas, plano por plano.
+       Na técnica a tabela é mais alta que no padrão: a nota fica no pé, abaixo da linha de destaque. -->
+  <p class="a legal" style="left:120px;top:1004px;width:1560px">Com a gente: a estrutura completa, a da Assessoria de Elite Legacy. O Scouting e a Assessoria PRO entregam uma parte dela.</p>
+  <p class="a rise" style="left:120px;top:940px;width:1600px;font-size:44px;line-height:1.2;font-weight:600;color:var(--sand-l);--d:.2s">Informação vocês já têm. O que faltava era operação.</p>
+</section>
+
+<!-- ============ 14 IA NA PRÁTICA: o jogo dele, lance a lance (ou a leitura ao vivo no Meet) ============ -->
+<!-- Com vídeo no painel, o slide mostra o vídeo do atleta, o nome e o relatório que o Gestor deixou pronto (só o que o painel
+     guardou, na fonte que o painel diz). Sem vídeo, painel fora do ar, vídeo vencido ou que não carrega: o slide de sempre,
+     que prepara a leitura ao vivo e não mostra resultado nenhum (o resultado é dito na chamada, por quem conduz a leitura). -->
+<section class="slide" data-video-se="v-atleta">
+  <p class="a dtag" data-if="nome">Dossiê · <span data-bind="nome"></span><span data-if="dossieCod"> · nº <span data-bind="dossieCod"></span></span></p>
+  <!-- Com o vídeo do atleta no painel (videoOk): o vídeo dele, o nome e o relatório que o painel guardou, revelados por avanço.
+       Só o vídeo (sem leitura): o player e "Leitura em preparação". Os textos e os lances vêm do painel e entram escapados
+       (relatorio-leitura.js); a fonte (Zyron ou equipe) decide a cópia. A lista inteira de lances vira capítulo no apresentador. -->
+  <div class="fill ia13" data-if="videoOk">
+    <div class="fill zgrid" style="opacity:.3;-webkit-mask-image:linear-gradient(90deg,#000 20%,transparent 60%);mask-image:linear-gradient(90deg,#000 20%,transparent 60%)"></div>
+    <p class="a t t-96" style="left:116px;top:58px;width:1700px;white-space:nowrap"><span data-if="nome">Leitura do vídeo do atleta: <span class="sand-l" data-bind="nome"></span></span><span data-ifnot="nome">Leitura do vídeo do atleta.</span></p>
+    <div class="player ia-player" id="p-atleta" style="left:120px;top:176px;width:840px;height:473px">
+      <video id="v-atleta" muted playsinline preload="metadata" data-src="videoSrc" data-poster="posterUrl"></video>
+      <button class="play" type="button" aria-label="Reproduzir o vídeo do atleta"><span class="disc"><svg width="54" height="62" viewBox="0 0 54 62"><path d="M0 0 L54 31 L0 62 Z" fill="#7FC4EA"/></svg></span></button>
+      <button class="som" type="button" aria-label="Ligar ou desligar o som"><svg class="mudo" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l4 6M21 9l-4 6" fill="none"/></svg><svg class="tocando" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none"/></svg><span>Som</span></button>
+      <div class="ia-chamada" hidden><p class="lk"></p><p class="nt"></p></div>
+    </div>
+    <div class="brackets" style="left:120px;top:176px;width:840px;height:473px"><i></i><i></i><i></i><i></i></div>
+    <div class="a ia-linha" data-if="leituraOk" data-step="1" data-passo="a linha do tempo e os lances marcados" style="left:120px;top:676px;width:840px">
+      <div data-rl="linha"></div>
+      <ul class="rl-curtos" data-rl="curtos"></ul>
+    </div>
+    <ul class="chapters oculta" data-for="v-atleta" data-rl="capitulos" aria-hidden="true"></ul>
+    <div class="a ia-pe" style="left:120px;top:926px;width:840px">
+      <p data-if="leituraOk"><span data-rl="criterio"></span> <span data-rl="fonte"></span></p>
+      <p>Vídeo do atleta usado somente com autorização expressa do responsável legal.</p>
+    </div>
+    <div class="a ia-rel" style="left:1020px;top:176px;width:780px">
+      <div class="rel-hd"><p class="rel-k">Relatório <span data-if="nome">de <span data-bind="nome"></span></span><span data-ifnot="nome">do seu jogo</span></p><p class="rel-fonte" data-if="leituraOk" data-rl="fonte"></p></div>
+      <div data-if="leituraOk">
+        <div class="rel-2" data-step="2" data-passo="a rosca e os pontos fortes"><div data-rl="rosca"></div><div data-rl="fortes"></div></div>
+        <div class="rel-3" data-step="3" data-passo="as prioridades, o primeiro foco e o fecho"><div data-rl="prioridades"></div><div data-rl="foco"></div>
+          <p class="rel-fecho">Isso existe porque <span data-if="nome">o <span data-bind="nome"></span></span><span data-ifnot="nome">você</span> mandou este vídeo. A cada vídeo novo, um relatório novo.</p></div>
+      </div>
+      <div class="rel-prep" data-ifnot="leituraOk"><p class="t">Leitura em preparação.</p><p class="b">Os lances deste vídeo entram aqui, um a um, com o minuto e o porquê.</p></div>
+    </div>
+  </div>
+  <!-- sem vídeo no painel: a leitura ao vivo, como sempre -->
+  <div class="fill" data-ifnot="videoOk">
+    <div class="fill zgrid" style="opacity:.55;-webkit-mask-image:linear-gradient(90deg,transparent 35%,#000 70%);mask-image:linear-gradient(90deg,transparent 35%,#000 70%)"></div>
+    <div class="fill" style="background:radial-gradient(42% 56% at 74% 40%,rgba(127,196,234,.13),rgba(6,11,20,0) 70%)"></div>
+    <div class="fill grain"></div>
+    <p class="a label ice" style="left:120px;top:140px">Ao vivo, com o seu vídeo</p>
+    <p class="a t rise" style="left:114px;top:216px;font-size:150px;white-space:nowrap">IA na prática.</p>
+    <p class="a rise" style="left:120px;top:396px;width:840px;font-size:44px;line-height:1.25;font-weight:500;color:var(--white);--d:.08s"><span data-if="nome"><span data-bind="nome"></span>, até aqui</span><span data-ifnot="nome">Até aqui</span> você viu o <span class="ice">Zyron</span> com o jogo dos outros. <span class="sand-l">Agora é com o seu.</span></p>
+    <div class="a ia-passos rise" style="left:120px;top:576px;width:840px;--d:.16s">
+      <div class="ia-p"><span class="n">01</span><div><p class="k">O seu vídeo na tela</p><p class="d">Aqui, ao vivo, na nossa chamada.</p></div></div>
+      <div class="ia-p"><span class="n">02</span><div><p class="k">O <span class="ice">Zyron</span> lê o seu perfil</p><p class="d">Cada decisão, cada movimento, cada execução.</p></div></div>
+      <div class="ia-p g"><span class="n">03</span><div><p class="k">O resultado aparece</p><p class="d">Na hora, na frente de vocês.</p></div></div>
+    </div>
+    <div class="a ia-call rise" style="left:1010px;top:140px;width:800px;--d:.1s">
+      <div class="bar"><i class="rec pulse"></i><span>Ao vivo</span><span class="sp">Nesta chamada</span></div>
+      <div class="tela">
+        <div class="fill zgrid"></div>
+        <div class="scan"></div>
+        <p class="chip"><i class="pulse"></i>Zyron lendo</p>
+        <span class="disc"><svg width="46" height="54" viewBox="0 0 54 62" aria-hidden="true"><path d="M0 0 L54 31 L0 62 Z" fill="#7FC4EA"/></svg></span>
+        <div class="nm"><p class="lb">Vídeo do atleta</p><p class="t"><span data-if="nome">O jogo do <span data-bind="nome"></span></span><span data-ifnot="nome">O seu jogo</span></p></div>
+        <div class="brackets" style="left:28px;top:28px;right:28px;bottom:28px"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+    <div class="a ia-res rise" style="left:1010px;top:690px;width:800px;--d:.24s">
+      <svg width="40" height="48" viewBox="0 0 30 36" aria-hidden="true"><rect x="2" y="15" width="26" height="19" rx="2" fill="none" stroke="#C8B88A" stroke-width="2.5"/><path d="M8 15 V10 a7 7 0 0 1 14 0 V15" fill="none" stroke="#C8B88A" stroke-width="2.5"/></svg>
+      <div><p class="dh">Resultado da leitura</p><p class="v">Revelado ao vivo, nesta chamada.</p></div>
+    </div>
+    <p class="a rise" style="left:1010px;top:874px;width:800px;font-size:42px;line-height:1.22;font-weight:600;color:var(--sand-l);--d:.32s">O que aparecer agora fala só de você<span data-if="nome">, <span data-bind="nome"></span></span>.</p>
+    <p class="a legal" style="left:120px;top:990px;width:1560px">Vídeo do atleta usado somente com autorização expressa do responsável legal.</p>
+  </div>
+</section>
+
+<!-- ============ 15 DEPOIMENTO DE UMA MÃE (o mesmo áudio de sempre) ============ -->
+<section class="slide" data-video="a-mae">
+  <div class="fill" style="background:radial-gradient(70% 80% at 18% 40%,rgba(200,184,138,.06),rgba(6,11,20,0) 60%)"></div>
+  <p class="a label" style="left:120px;top:222px">Quem já esteve aí</p>
+  <p class="a t t-130 rise" style="left:116px;top:318px;width:1700px">A gente não vende vaga.<br><span class="sand-l">A gente escolhe atleta.</span></p>
+  <p class="a b b-44 rise" style="left:120px;top:628px;width:1180px;--d:.12s">Ouçam uma mãe que já esteve onde vocês estão.</p>
+  <div class="a audio-dep rise" style="left:120px;top:770px;width:1180px;--d:.2s">
+    <p class="ap-hd"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 19h7l10-8v26l-10-8H8z" fill="rgba(230,219,184,.15)" stroke="#E6DBB8" stroke-width="3" stroke-linejoin="round"/><path d="M31 18a8 8 0 0 1 0 12M36 13a15 15 0 0 1 0 22" fill="none" stroke="#E6DBB8" stroke-width="3" stroke-linecap="round"/></svg><span>Depoimento de uma mãe</span><span class="ap-emoji" aria-hidden="true">&#128071;</span></p>
+    <div class="audio-player" data-for="a-mae">
+      <button class="ap-play" type="button" aria-label="Tocar ou pausar o depoimento"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button>
+      <div class="ap-onda" title="Clique pra pular pra esse ponto"><i style="height:30%"></i><i style="height:90%"></i><i style="height:39%"></i><i style="height:31%"></i><i style="height:48%"></i><i style="height:79%"></i><i style="height:79%"></i><i style="height:66%"></i><i style="height:57%"></i><i style="height:32%"></i><i style="height:67%"></i><i style="height:39%"></i><i style="height:100%"></i><i style="height:36%"></i><i style="height:59%"></i><i style="height:32%"></i><i style="height:66%"></i><i style="height:68%"></i><i style="height:81%"></i><i style="height:73%"></i><i style="height:44%"></i><i style="height:39%"></i><i style="height:43%"></i><i style="height:94%"></i><i style="height:33%"></i><i style="height:84%"></i><i style="height:35%"></i><i style="height:41%"></i><i style="height:51%"></i><i style="height:84%"></i><i style="height:76%"></i><i style="height:64%"></i><i style="height:48%"></i><i style="height:36%"></i><i style="height:75%"></i><i style="height:43%"></i><i style="height:98%"></i><i style="height:33%"></i><i style="height:49%"></i><i style="height:36%"></i><i style="height:74%"></i><i style="height:67%"></i><i style="height:81%"></i><i style="height:66%"></i><i style="height:39%"></i><i style="height:48%"></i><i style="height:47%"></i><i style="height:97%"></i><i style="height:35%"></i><i style="height:77%"></i><i style="height:32%"></i><i style="height:51%"></i><i style="height:52%"></i><i style="height:88%"></i><i style="height:72%"></i><i style="height:60%"></i><i style="height:39%"></i><i style="height:42%"></i><i style="height:81%"></i><i style="height:46%"></i><i style="height:95%"></i><i style="height:31%"></i><i style="height:39%"></i><i style="height:38%"></i></div>
+      <span class="ap-tempo">0:00</span>
+    </div>
+    <audio id="a-mae" preload="metadata" src="../../assets/audio/depoimento-mae.mp3"></audio>
+  </div>
+  <!-- turma de 10: só com o Legacy na ficha (P5) -->
+  <div class="a" data-if="planoTurma" style="left:120px;top:984px;display:flex;align-items:center;gap:36px">
+    <div style="display:flex;gap:14px"><i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="tick"></i></div>
+    <p class="label bare" style="font-size:28px">10 atletas por turma</p>
+  </div>
+</section>
+
+<!-- ============ 16 TALENTO É O MÍNIMO ============ -->
+<section class="slide">
+  <div class="fill" style="background:radial-gradient(42% 60% at 76% 44%,rgba(230,219,184,.14),rgba(6,11,20,0) 70%)"></div>
+  <div class="fill grain"></div>
+  <div class="a" style="left:120px;top:110px;width:840px">
+    <p class="label">O gargalo</p>
+    <p class="t t-130 rise" style="margin:44px 0 0 -4px!important">Talento é o mínimo.</p>
+    <p class="b b-40 rise" style="margin-top:40px!important;color:var(--white);--d:.08s">Quem é do futebol sabe: tem muito jogador bom parado. Não falta talento. Falta alguém levando o jogo dele, com dados, ao clube que precisa daquele perfil, na hora certa.</p>
+    <p class="rise" style="font-size:46px;line-height:1.22;font-weight:600;color:var(--sand-l);margin-top:44px!important;--d:.16s">Talento ele tem. A operação é com a gente.</p>
+  </div>
+  <div class="a eff rise" style="left:1060px;top:150px;width:760px;--d:.1s">
+    <p class="sub white" style="font-size:56px">Mais de</p>
+    <p class="t sand-l big">93%</p>
+    <p class="b b-40" style="color:var(--white);margin-top:18px!important">dos nossos atletas são encaminhados a clubes em até <b class="sand-l">3 meses</b>.</p>
+    <div class="stats">
+      <div><p class="n">+250</p><p class="k">clubes na nossa rede</p></div>
+      <div><p class="n">+75</p><p class="k">encaminhados no último mês</p></div>
+      <div><p class="n">10+</p><p class="k">anos revelando atletas</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 17 ANTES DO POST ============ -->
+<section class="slide">
+  <div class="fill" style="background:radial-gradient(44% 60% at 78% 46%,rgba(230,219,184,.13),rgba(6,11,20,0) 70%)"></div>
+  <div class="a" style="left:120px;top:96px;width:980px">
+    <p class="label">Antes do post</p>
+    <p class="t rise" style="font-size:96px;margin:44px 0 0 -4px!important">O que o post não mostra.</p>
+    <p class="b b-40 rise" style="margin-top:30px!important;color:var(--white);--d:.08s">Vocês já conhecem a AGN e já viram quem fecha. O post mostra a assinatura. O caminho até ela fica fora da foto.</p>
+    <div class="cases rise" style="margin-top:40px;--d:.16s">
+      <div class="case"><img src="../../assets/joaozinho-02.jpg" alt="Joãozinho assinando contrato com o Grêmio" style="object-position:50% 40%"><div class="shade"></div><div class="cap"><p class="nm">Joãozinho</p><p class="cl">Grêmio</p></div></div>
+      <div class="case"><img src="../../assets/kaio-01.jpg" alt="Kaio assinando contrato com o Internacional"><div class="shade"></div><div class="cap"><p class="nm">Kaio</p><p class="cl">Internacional</p></div></div>
+      <div class="case mirror" data-if="casoNome"><p class="tag">Mesmo perfil<span data-if="nome"> do <span data-bind="nome"></span></span></p><div class="cap"><p class="nm" data-fit="190"><span data-bind="casoNome"></span></p><p class="cl" data-bind="casoClube"></p><p class="ct" data-bind="casoPais"></p></div></div>
+      <div class="case next"><div class="cap"><p class="cl">O próximo</p><p class="nm" data-fit="190"><span data-bind="nome" data-fb="Você"></span></p></div></div>
+    </div>
+  </div>
+  <div class="a path rise" style="left:1180px;top:130px;width:640px;--d:.1s">
+    <div class="st"><i></i><p class="k">O vídeo</p><p class="d">O <span class="ice">Zyron</span> lê o jogo com dados e acha quem precisa daquele estilo.</p></div>
+    <div class="st"><i></i><p class="k">Todo dia</p><p class="d">Gerente de carreira e o estrategista de carreiras do <span class="ice">Zyron</span> em cima dele.</p></div>
+    <div class="st"><i></i><p class="k">A ponte</p><p class="d">O perfil na mesa de quem tem a carência.</p></div>
+    <div class="st goal"><i></i><p class="k">O post</p><p class="d">A assinatura. A única parte que todo mundo vê.</p></div>
+  </div>
+  <p class="a legal" style="left:120px;top:990px;width:1600px">Casos reais de atletas acompanhados.</p>
+</section>
+
+<!-- ============ 18 A REDE (novo) ============ -->
+<!-- Encaminhar nao e prometer clube. A AGN descrita como o proprio site dela se descreve (agencia que administra a carreira de atletas, administrada
+     por Augusto Nogueira, 25 anos de gestao de atletas). O site nao cita o David nem a Jogador de Elite: a relacao direta e da casa, nao do site.
+     Os numeros (+250 clubes, +75 no ultimo mes, 10+ anos, centenas de atletas) sao os da casa, os mesmos do slide 16, e o David entra como o rosto da casa (cargo dele nunca foi definido: nada de curriculo inventado). A linha de baixo segue o plano:
+     conexao direta com clubes e AGN e o David de perto e so do Legacy; a Assessoria PRO encaminha pra clubes; o Scouting e o comeco. -->
+<section class="slide">
+  <div class="fill" style="background:radial-gradient(46% 60% at 50% 60%,rgba(230,219,184,.1),rgba(6,11,20,0) 72%)"></div>
+  <p class="a dtag" data-if="nome">A rede · <span data-bind="nome"></span></p>
+  <p class="a label" style="left:120px;top:96px">A rede</p>
+  <p class="a t rise" style="left:116px;top:170px;width:1700px;font-size:104px;white-space:nowrap;--d:.04s">A gente <span class="sand-l">encaminha</span>. O clube decide.</p>
+  <p class="a b b-48 rise" style="left:120px;top:304px;width:1560px;color:var(--white);--d:.1s">Encaminhamos o perfil dele. Viabilizamos a ida.</p>
+  <!-- o perfil dele: "pronto pra encaminhar" só na Assessoria PRO e no Legacy (no Scouting o encaminhamento começa na PRO) -->
+  <div class="rd-perfil rise" data-if="nome" style="left:1270px;top:282px;--d:.12s">
+    <div class="ft ft-av rd-av" data-if="avatarOk"><img data-src="avatarUrl" alt="Foto do atleta"><div class="ft-tom"></div></div>
+    <div class="ft ft-av ft-mono rd-av" data-ifnot="avatarOk"><b data-bind="fotoIni" style="font-size:36px"></b></div>
+    <p>Perfil do <span data-bind="nome"></span><span data-if="planoId=pro|planoId=legacy">,</span><span data-ifnot="planoId=pro|planoId=legacy">.</span><span class="sub" data-if="planoId=pro|planoId=legacy">pronto pra encaminhar.</span></p>
+  </div>
+  <div class="rd-card" data-step="1" style="left:120px;top:440px;width:540px;height:380px;--d:.14s">
+    <p class="tg">Relação direta</p>
+    <p class="nm">AGN Football</p>
+    <p class="tx">Agência de atletas, no Brasil e no exterior. Administrada por quem tem <b>25 anos de gestão de atletas</b>.</p>
+    <p class="fn">agnfootball.com</p>
+  </div>
+  <div class="rd-card" data-step="2" style="left:690px;top:440px;width:540px;height:380px;--d:.18s">
+    <p class="tg">Os clubes</p>
+    <p class="nm">Quem decide</p>
+    <p class="rd-num"><b>+250</b><span>clubes na nossa rede</span></p>
+    <p class="rd-num"><b>+75</b><span>encaminhamentos no último mês</span></p>
+  </div>
+  <div class="rd-card" data-step="3" style="left:1260px;top:440px;width:540px;height:380px;--d:.22s">
+    <p class="tg">O rosto da casa</p>
+    <p class="nm">David Willer</p>
+    <p class="tx">A casa está há <b>mais de dez anos</b> nisso e já revelou <b>centenas de atletas</b>.</p>
+  </div>
+  <p class="rd-linha" data-step="3" style="left:120px;top:836px;width:1680px;--d:.26s">
+    <span data-if="planoId=legacy"><b>No seu plano:</b> conexão direta com clubes e AGN, assessoria individual com o David todo mês e pelo menos 15 encaminhamentos de oportunidades por mês.</span>
+    <span data-if="planoId=pro"><b>No seu plano:</b> pelo menos 5 encaminhamentos de oportunidades por mês, pra clubes do Brasil e do mundo.</span>
+    <span data-if="planoId=scouting"><b>No seu plano:</b> o Scouting é o começo. O encaminhamento pra clubes vem a partir da Assessoria PRO.</span>
+  </p>
+  <p class="a legal" style="left:120px;top:984px;width:1560px">Não há promessa de contratação ou de clube específico. Nenhuma vinculação a clube ou atleta é oferecida como parte da assessoria. Informações da AGN Football: agnfootball.com.</p>
+</section>
+
+<!-- ============ 19 O QUE ELE LEVA (novo, 11/10/2026: painel do closer) ============ -->
+<!-- Junta numa tela só o que é dele a partir de hoje, com o rosto e o nome dele: IA, gente, conexões, oportunidades, tempo e
+     garantia, uma linha por avanço (data-step 1 a 6). Cada linha segue o plano da ficha: no Scouting, conexões e
+     oportunidades começam na Assessoria PRO. Só a IA é 24 horas. O tempo é só o que a casa controla (os prazos da lista fixa)
+     e, só no Legacy, a referência dos 93% em até 3 meses, com a legenda. A garantia vem de window.GARANTIA. Vem antes do
+     "quanto custaria montar isso por conta?": o "isso" já está na tela. -->
+<section class="slide">
+  <div class="fill" style="background:radial-gradient(38% 62% at 82% 46%,rgba(230,219,184,.13),rgba(6,11,20,0) 72%)"></div>
+  <div class="fill grain"></div>
+  <p class="a dtag" data-if="nome">Dossiê · <span data-bind="nome"></span><span data-if="dossieCod"> · nº <span data-bind="dossieCod"></span></span></p>
+  <i class="lv-longo" data-if="nomeLongo" aria-hidden="true"></i>
+  <div class="a" style="left:120px;top:84px;width:1180px">
+    <p class="label">O que é seu a partir de hoje</p>
+    <p class="t rise" style="font-size:100px;margin:30px 0 0 -4px!important">O que <span data-if="nome">o <span class="sand-l" data-bind="nome"></span></span><span data-ifnot="nome">você</span> leva.</p>
+    <div class="lv-lista" style="margin-top:30px">
+      <div class="lv-l" data-step="1" data-passo="a IA"><p class="k ia">IA</p><p class="d">O <span class="ice">Zyron</span> lê cada lance do seu vídeo, ligado 24 horas.</p></div>
+      <div class="lv-l" data-step="2" data-passo="a gente">
+        <p class="k">Gente</p>
+        <p class="d"><span data-if="planoId=scouting">Um analista de performance, a cada 15 dias.</span><span data-if="planoId=pro">O estrategista de carreiras liga toda semana.</span><span data-if="planoId=legacy">Estrategista e gerente de carreira, todo dia.</span></p>
+      </div>
+      <div class="lv-l" data-step="3" data-passo="as conexões">
+        <p class="k">Conexões</p>
+        <p class="d"><span data-if="planoId=legacy">Relação direta com a AGN Football e mais de 250 clubes.</span><span data-if="planoId=pro">Perfil encaminhado a clubes do Brasil e do mundo.</span><span data-if="planoId=scouting">A partir da Assessoria PRO.</span></p>
+      </div>
+      <div class="lv-l" data-step="4" data-passo="as oportunidades">
+        <p class="k">Oportunidades</p>
+        <p class="d"><span data-if="planoId=legacy">Pelo menos 15 encaminhamentos de oportunidades por mês.</span><span data-if="planoId=pro">Pelo menos 5 por mês.</span><span data-if="planoId=scouting">A partir da Assessoria PRO.</span></p>
+      </div>
+      <div class="lv-l" data-step="5" data-passo="o tempo">
+        <p class="k">Tempo</p>
+        <p class="d"><span data-bind="tempoContato"></span> <span data-bind="tempoZyron"></span> <span data-if="planoId=scouting">Depois, o relatório da sua evolução a cada 15 dias.</span><span data-if="planoId=pro">Depois, a ligação do estrategista toda semana.</span><span data-if="planoId=legacy">Depois, gente do seu lado todo dia.</span><span class="ref" data-if="planoId=legacy" style="color:var(--white);font-size:32px">Em até 3 meses, mais de 93% dos nossos já estão encaminhados a clubes.</span><span class="ref" data-if="planoId=legacy">Referência de atletas acompanhados.</span></p>
+      </div>
+      <div class="lv-l" data-step="6" data-passo="a garantia">
+        <p class="k">Garantia</p>
+        <p class="d"><span data-bind="garantiaTitulo" data-fb="Garantia total."></span> <span data-bind="garantiaDestaque" data-fb="Todo o valor investido é devolvido."></span><span class="ref" data-bind="garantiaCondicao"></span></p>
+      </div>
+    </div>
+  </div>
+  <!-- o retrato dele (sem foto, a inicial do nome no mesmo quadro), com o nome do dossiê -->
+  <div class="a" style="left:1380px;top:150px;width:420px;height:560px">
+    <div class="ft ft-ret lv-ret" data-if="fotoOk" style="left:0;top:0"><img data-src="fotoUrl" alt="Foto do atleta"><div class="ft-tom"></div><div class="ft-sombra"></div><div class="cp-rot"><p class="k">Dossiê do atleta</p><p class="n" data-bind="nomeDossie" data-fit="364"></p><p class="c" data-bind="dossieNo"></p></div></div>
+    <div class="ft ft-ret ft-mono lv-ret" data-ifnot="fotoOk" style="left:0;top:0"><b data-bind="fotoIni" style="font-size:220px"></b></div>
+  </div>
+  <div class="brackets sand" style="left:1380px;top:150px;width:420px;height:560px"><i></i><i></i><i></i><i></i></div>
+  <p class="a legal" style="left:120px;top:1004px;width:1560px">Não há promessa de contratação ou de clube específico.<span data-if="fotoOk"> Imagem do atleta usada com autorização do responsável legal.</span></p>
+</section>
+
+<!-- ============ 20 O VALOR REAL ============ -->
+<!-- Abre só com a pergunta. Cada avanço revela uma frente (data-step 1 a 7) e a soma da direita sobe junto (data-soma soma os data-valor visíveis); o último avanço (8) fecha com o total em destaque e o texto. -->
+<section class="slide">
+  <p class="a label" style="left:120px;top:100px">O valor real</p>
+  <p class="a t rise" style="left:116px;top:180px;width:1700px;font-size:92px;white-space:nowrap">Quanto custa cada frente, por conta?</p>
+  <div class="a costs" style="left:120px;top:340px;width:1000px">
+    <p data-step="1" data-valor="6500"><span>Performance e desenvolvimento atlético</span><b>R$ 6.500<i class="per">/ano</i></b></p>
+    <p data-step="2" data-valor="5000"><span>Análise de dados + inteligência (<span class="ice">Zyron</span>)</span><b>R$ 5.000<i class="per">/ano</i></b></p>
+    <p data-step="3" data-valor="2500"><span>Psicologia esportiva</span><b>R$ 2.500<i class="per">/ano</i></b></p>
+    <p data-step="4" data-valor="3000"><span>Nutrição</span><b>R$ 3.000<i class="per">/ano</i></b></p>
+    <p data-step="5" data-valor="3500"><span>Comportamento</span><b>R$ 3.500<i class="per">/ano</i></b></p>
+    <p data-step="6" data-valor="3000"><span>Imagem e posicionamento</span><b>R$ 3.000<i class="per">/ano</i></b></p>
+    <p data-step="7" data-valor="6500"><span>Acompanhamento e direcionamento</span><b>R$ 6.500<i class="per">/ano</i></b></p>
+  </div>
+  <div class="a" data-step="1" style="left:1220px;top:360px;width:620px">
+    <p class="label bare" style="font-size:28px">Por conta própria</p>
+    <p class="t sand-l soma" data-soma data-marca="8" style="font-size:150px;line-height:.9;margin-top:30px!important;white-space:nowrap">R$ 30.000</p>
+    <p class="t" style="font-size:60px;margin-top:12px!important">por ano.</p>
+    <p class="b b-40" data-step="8" style="margin-top:30px!important;color:var(--white)">O difícil não é contratar cada frente. É fazer as sete falarem entre si, com o <span class="ice">Zyron</span> no meio.</p>
+  </div>
+  <p class="a legal" data-step="1" style="left:120px;top:1014px;width:1500px">Valores de referência de mercado, por ano. Variam conforme profissional e região.</p>
+</section>
+
+<!-- ============ 21 ATÉ LÁ, A GENTE BANCA ============ -->
+<section class="slide">
+  <p class="a dtag" data-if="nome">Dossiê · <span data-bind="nome"></span><span data-if="dossieCod"> · nº <span data-bind="dossieCod"></span></span></p>
+  <div class="a" style="left:120px;top:100px;width:1680px">
+    <p class="label">Até lá</p>
+    <p class="t t-110 rise" style="margin:44px 0 0 -4px!important">Quem banca a operação somos nós.</p>
+    <div class="pillars rise" style="margin-top:70px;--d:.1s">
+      <div><p class="n">01</p><p class="k">Tempo</p><p class="d">Gerente de carreira olhando pra ele todo dia, até o contrato sair.</p></div>
+      <div><p class="n">02</p><p class="k">Esforço</p><p class="d">Contato com clube, vídeo, avaliação, a ida pro clube: quem corre atrás é a gente.</p></div>
+      <div><p class="n">03</p><p class="k">Profissionais</p><p class="d">Performance, psicologia, nutrição, comportamento, imagem e acompanhamento, falando entre si.</p></div>
+      <div><p class="n">04</p><p class="k">Tecnologia</p><p class="d">O <span class="ice">Zyron</span>: cada lance lido, e um estrategista de carreiras só dele.</p></div>
+    </div>
+    <p class="rise" style="font-size:46px;line-height:1.25;font-weight:600;color:var(--sand-l);margin-top:64px!important;max-width:1500px;--d:.2s">Vocês pagam só o custo mínimo pra essa estrutura existir. O resto é investimento nosso.</p>
+  </div>
+</section>
+
+<!-- ============ 22 CRITÉRIO, NÃO VOLUME (o filtro e a escada do sim) ============ -->
+<!-- O filtro (o funil) e a escada do sim da Bíblia: três degraus, uma pergunta por avanço (data-step 1 a 3), sem resposta escrita:
+     quem responde é o atleta e a família, em voz alta. Turma de 10 só com o Legacy na ficha (P5). -->
+<section class="slide">
+  <div class="fill" style="background:radial-gradient(40% 60% at 76% 45%,rgba(230,219,184,.12),rgba(6,11,20,0) 70%)"></div>
+  <p class="a dtag" data-if="nome">Dossiê · <span data-bind="nome"></span><span data-if="dossieCod"> · nº <span data-bind="dossieCod"></span></span></p>
+  <div class="a" style="left:120px;top:100px;width:960px">
+    <p class="label">Seleção</p>
+    <p class="t t-96 rise" style="margin:40px 0 0 -4px!important;white-space:nowrap">Critério, não volume.</p>
+    <p class="b b-40 rise" style="margin-top:30px!important;color:var(--white);--d:.08s">Esse custo só existe pra quem passou no filtro. <span data-if="nome">O <span data-bind="nome"></span> passou.</span></p>
+    <p class="b b-40 rise" data-if="planoTurma" style="margin-top:20px!important;--d:.14s">A turma tem 10 vagas: é o máximo que o gerente de carreira acompanha de perto, todo dia.</p>
+  </div>
+  <div class="a escada" style="left:120px;top:600px;width:960px;height:400px">
+    <div class="dg" data-step="1" data-passo="o degrau 1, pro atleta: quer ser jogador profissional?" style="height:248px"><p class="n">01</p><p class="who">Pro atleta</p><p class="q">Você quer ser jogador profissional?</p></div>
+    <div class="dg" data-step="2" data-passo="o degrau 2, pro atleta: tá disposto a pagar o preço da disciplina?" style="height:324px"><p class="n">02</p><p class="who">Pro atleta</p><p class="q">Tá disposto a pagar o preço da disciplina?</p></div>
+    <div class="dg" data-step="3" data-passo="o degrau 3, pra família: vocês apoiam ele, mesmo quando for difícil?" style="height:400px"><p class="n">03</p><p class="who">Pra família</p><p class="q">Vocês apoiam ele, mesmo quando for difícil?</p></div>
+  </div>
+  <div class="a funnel rise" style="left:1100px;top:120px;width:720px;--d:.1s">
+    <div style="width:100%"><p>Vídeos e cadastros que chegam</p></div>
+    <div style="width:84%"><p>Analisados pelo <span class="ice">Zyron</span></p></div>
+    <div style="width:68%"><p>Aprovados pela equipe</p></div>
+    <div style="width:52%" data-if="planoTurma"><p>Turma de 10</p></div>
+    <div class="you"><p data-fit="640"><span data-bind="nomeUp" data-fb="VOCÊ"></span></p></div>
+  </div>
+  <p class="a rise" style="left:1100px;top:830px;width:720px;font-size:44px;line-height:1.22;font-weight:600;color:var(--sand-l);--d:.22s">Quem entra é escolhido pelo jogo, não pelo pagamento.</p>
+</section>
+
+<!-- ============ 23 INTERESSE ALINHADO ============ -->
+<section class="slide">
+  <div class="fill" style="background:radial-gradient(50% 60% at 30% 58%,rgba(230,219,184,.16),rgba(6,11,20,0) 70%)"></div>
+  <div class="fill grain"></div>
+  <p class="a dtag" data-if="nome">Dossiê · <span data-bind="nome"></span><span data-if="dossieCod"> · nº <span data-bind="dossieCod"></span></span></p>
+  <p class="a label" style="left:120px;top:120px">Interesse alinhado</p>
+  <div class="a" style="left:120px;top:210px;width:1680px">
+    <p class="b rise" style="font-size:50px;line-height:1.2;color:var(--white);font-weight:500">Hoje, um atleta que a gente coloca num clube fecha ganhando por volta de</p>
+    <p class="t sand-l rise" style="font-size:250px;line-height:.9;margin:36px 0 0 -8px!important;white-space:nowrap;text-shadow:0 0 70px rgba(230,219,184,.35);--d:.1s"><span data-bind="faixaContrato"></span></p>
+    <p class="t rise" style="font-size:84px;margin-top:14px!important;--d:.14s">por mês.</p>
+    <p class="rise" style="font-size:54px;line-height:1.2;font-weight:600;color:var(--sand-l);margin-top:70px!important;--d:.22s">A gente lucra no contrato dele. Antes disso, não.</p>
+  </div>
+  <div class="a rise" style="left:1360px;top:580px;width:440px;--d:.3s">
+    <div class="contract">
+      <p class="h">Contrato profissional</p>
+      <i></i><i style="width:82%"></i><i style="width:64%"></i><i style="width:90%"></i><i style="width:56%"></i>
+      <div class="sig"><p class="nm" data-fit="360" style="white-space:nowrap"><span data-bind="nomeAssinatura"></span></p><p class="ln">Atleta</p></div>
+    </div>
+  </div>
+  <p class="a legal" style="left:120px;top:990px;width:1500px">Referência de contratos de atletas acompanhados.</p>
+</section>
+
+<!-- ============ 24 A VAGA (Legacy) / O COMEÇO (Assessoria PRO e Scouting) ============ -->
+<!-- Turma e vagas só com planoTurma (P5); gerente de carreira, os 93% e o dia da assinatura só no Legacy.
+     Nos outros planos, o começo: sem escassez, sem prazo inventado e sem plano antecipado (os planos vêm no 25). -->
+<section class="slide">
+  <div class="fill" style="background:radial-gradient(40% 62% at 80% 56%,rgba(230,219,184,.13),rgba(6,11,20,0) 72%)"></div>
+  <div class="fill grain"></div>
+  <p class="a dtag" data-if="nome">Dossiê · <span data-bind="nome"></span><span data-if="dossieCod"> · nº <span data-bind="dossieCod"></span></span></p>
+  <div class="a" style="left:120px;top:130px;width:860px">
+    <p class="label">A decisão</p>
+    <p class="t t-130 rise" data-if="planoTurma" style="margin:48px 0 0 -4px!important">A vaga do <span data-bind="nome" data-fb="atleta"></span>.</p>
+    <p class="t t-130 rise" data-ifnot="planoTurma" style="margin:48px 0 0 -4px!important">O começo do <span data-bind="nome" data-fb="atleta"></span>.</p>
+    <div class="rise" style="margin-top:56px;width:840px;--d:.1s">
+      <p class="b b-40" data-if="vagas&planoTurma" style="color:var(--white);margin-bottom:24px!important">Dessa turma de 10, <span data-bind="vagasFrase2"></span><span data-if="proximaTurma"> A próxima abre em <span data-bind="proximaTurma"></span>.</span></p>
+      <p class="b b-40" data-if="planoId=legacy" style="color:var(--white)">Confirmando hoje, o gerente de carreira entra em contato <span data-bind="prazoContato" data-fb="assim que a vaga é confirmada"></span>, e o <span class="ice">Zyron</span> começa a acompanhar o <span data-bind="nome" data-fb="atleta"></span> <span data-bind="prazoZyron" data-fb="em seguida"></span>.</p>
+      <p class="b b-40" data-ifnot="planoId=legacy" style="color:var(--white)">Confirmando hoje, a equipe entra em contato com vocês, e o <span class="ice">Zyron</span> começa a ler o jogo do <span data-bind="nome" data-fb="atleta"></span> <span data-bind="prazoZyron" data-fb="em seguida"></span>.</p>
+    </div>
+  </div>
+  <div class="a turma rise" id="turma" data-if="planoTurma" style="left:1080px;top:150px;width:740px;--d:.06s"></div>
+  <!-- o avatar dele ao lado do título; no Legacy com o número de vagas, ele fica dentro da vaga dele na turma -->
+  <div class="a rise" data-if="!vagas|!planoTurma" style="left:856px;top:118px;--d:.04s"><div class="ft ft-av vg-av" data-if="avatarOk"><img data-src="avatarUrl" alt="Foto do atleta"><div class="ft-tom"></div></div><div class="ft ft-av ft-mono vg-av" data-if="fotoIni&!avatarOk"><b data-bind="fotoIni" style="font-size:56px"></b></div></div>
+  <div class="a path rise" data-ifnot="planoId=legacy" style="left:1080px;top:420px;width:740px;--d:.16s">
+    <div class="st"><i></i><p class="k">Hoje</p><p class="d">Confirmado, a equipe entra em contato com vocês.</p></div>
+    <div class="st"><i></i><p class="k">A cada vídeo novo</p><p class="d">O <span class="ice">Zyron</span> lê o seu jogo, e sai um relatório novo.</p></div>
+    <div class="st goal"><i></i><p class="k">No ritmo de vocês</p><p class="d">A cada 15 dias, toda semana ou todo dia. Vocês escolhem agora.</p></div>
+  </div>
+  <div class="a path rise" data-if="planoId=legacy" style="left:1080px;top:420px;width:740px;--d:.16s">
+    <div class="st"><i></i><p class="k">Hoje</p><p class="d">A vaga confirmada. O gerente de carreira e o <span class="ice">Zyron</span> começam.</p></div>
+    <div class="st"><i></i><p class="k">Em até 3 meses</p><p class="d">Mais de 93% dos nossos já estão encaminhados a clubes.</p></div>
+    <div class="st goal"><i></i><p class="k">O dia da assinatura</p><p class="d">Contrato profissional. É nesse dia que a gente ganha.</p></div>
+  </div>
+</section>
+
+<!-- ============ 25 OS PLANOS ============ -->
+<!-- Os três planos lado a lado, cada um na sua parte (pedidos do dono, 06/10/2026): o papel, o nome, o ritmo, o investimento
+     (a parcela em destaque) e o que o plano acrescenta ao degrau de baixo, cargo por cargo (window.PLANOS[].vantagens).
+     O Legacy é o ideal: coluna mais larga, a lista mais longa e a moldura em destaque. Cada avanço mostra um plano
+     (data-step 1 a 3, a pergunta do ritmo entra com o 3) e o avanço 4 destaca o plano da ficha, a recomendação do Gestor.
+     Este é o slide do número: o avanço 4 destaca o plano da ficha, o Gestor fala o valor dele uma vez e aperta S (Silêncio). -->
+<section class="slide" id="planos" data-silencio="4">
+  <div class="fill" style="background:radial-gradient(40% 62% at 84% 56%,rgba(230,219,184,.12),rgba(6,11,20,0) 72%)"></div>
+  <p class="a t rise" style="left:116px;top:62px;width:1240px;font-size:88px;white-space:nowrap">Vocês não operam mais <span class="sand-l">sozinhos</span>.</p>
+  <p class="a pl-perg" data-step="3" data-passo="a pergunta do ritmo" style="left:1372px;top:60px;width:430px">Qual ritmo o jogo <span data-if="nome">do <span data-bind="nome"></span></span><span data-ifnot="nome">dele</span> pede?</p>
+  <div class="a pl-tab" style="left:120px;top:206px;width:1680px">
+    <div class="pl-col scouting" data-step="1" data-passo="a coluna do Scouting">
+      <div class="pl-hd">
+        <p class="pl-ds az" data-bind="scouting.descritor"></p>
+        <p class="pl-nm" data-plano-marca="scouting"></p>
+        <p class="pl-rt"><span data-bind="scouting.ritmo"></span><span class="ps"> · <span data-bind="scouting.passo"></span></span></p>
+        <p class="pl-pr"><span class="v" data-bind="scouting.preco"></span> <span class="u">vitalício</span></p>
+        <p class="pl-pc"><span class="l">10x sem juros de</span> <span class="n" data-bind="scouting.parcela"></span></p>
+      </div>
+      <p class="pl-mais" data-bind="scouting.mais"></p>
+      <div class="pl-vant" data-plano-vantagens="scouting"></div>
+      <div class="pl-rec" data-if="planoId=scouting" data-step="4" data-passo="o destaque no Scouting, a sua recomendação"><p>Minha recomendação</p></div>
+    </div>
+    <div class="pl-col pro" data-step="2" data-passo="a coluna da Assessoria PRO">
+      <div class="pl-hd">
+        <p class="pl-ds" data-bind="pro.descritor"></p>
+        <p class="pl-nm" data-plano-marca="pro"></p>
+        <p class="pl-rt"><span data-bind="pro.ritmo"></span><span class="ps"> · <span data-bind="pro.passo"></span></span></p>
+        <p class="pl-pr"><span class="v" data-bind="pro.preco"></span> <span class="u">vitalício</span></p>
+        <p class="pl-pc"><span class="l">10x sem juros de</span> <span class="n" data-bind="pro.parcela"></span></p>
+      </div>
+      <p class="pl-mais" data-bind="pro.mais"></p>
+      <div class="pl-vant" data-plano-vantagens="pro"></div>
+      <div class="pl-rec" data-if="planoId=pro" data-step="4" data-passo="o destaque na Assessoria PRO, a sua recomendação"><p>Minha recomendação</p></div>
+    </div>
+    <div class="pl-col legacy" data-step="3" data-passo="a coluna do Legacy, em destaque como o ideal">
+      <div class="pl-hd">
+        <p class="pl-ds" data-bind="legacy.descritor"></p>
+        <p class="pl-nm" data-plano-marca="legacy"></p>
+        <p class="pl-rt"><span data-bind="legacy.ritmo"></span><span class="ps"> · <span data-bind="legacy.passo"></span></span></p>
+        <p class="pl-pr"><span class="v" data-bind="legacy.preco"></span> <span class="u">vitalício</span></p>
+        <p class="pl-pc"><span class="l">10x sem juros de</span> <span class="n" data-bind="legacy.parcela"></span></p>
+      </div>
+      <p class="pl-mais" data-bind="legacy.mais"></p>
+      <div class="pl-vant" data-plano-vantagens="legacy"></div>
+      <!-- o ideal: moldura dourada que brilha devagar (parada, a moldura e o rótulo continuam); com o Legacy na ficha, o avanço 4 junta a recomendação -->
+      <div class="pl-ideal"><p>O ideal<span data-if="planoId=legacy" data-step="4" data-passo="o destaque no Legacy, a sua recomendação"> · minha recomendação</span></p></div>
+    </div>
+  </div>
+  <p class="a legal" style="left:120px;top:1000px;width:1680px">Valor único e vitalício, destinado ao custeio dos profissionais parceiros.<span data-if="planoContrato"> A remuneração da Jogador de Elite vem do contrato profissional do atleta.</span></p>
+</section>
+
+<!-- ============ 26 GARANTIA TOTAL (depois dos planos, com os tres valores na tela) ============ -->
+<section class="slide">
+  <div class="fill" style="background:radial-gradient(44% 60% at 74% 38%,rgba(230,219,184,.16),rgba(6,11,20,0) 70%)"></div>
+  <div class="a" style="left:120px;top:76px;width:1000px">
+    <p class="label">Confiança pra começar</p>
+    <p class="rise" data-if="garantiaCamada1" data-bind="garantiaCamada1" style="margin-top:22px!important;font-size:40px;line-height:1.2;font-weight:600;color:var(--white)"></p>
+    <p class="t t-130 rise" data-bind="garantiaTitulo" data-fb="Garantia total." style="margin:30px 0 0 -4px!important">Garantia total.</p>
+    <!-- o destaque: todo o valor de volta. A média de três meses só com o Legacy na ficha (é dado do Legacy); a condição fica no rodapé -->
+    <p class="t sand-l rise" data-bind="garantiaDestaque" data-fb="Todo o valor investido é devolvido." style="font-size:62px;line-height:1.05;margin-top:16px!important;white-space:nowrap;--d:.05s">Todo o valor investido é devolvido.</p>
+    <p class="b b-40 rise" style="margin-top:24px!important;color:var(--white);--d:.08s"><span data-if="planoId=legacy">A média de fechamento dos nossos atletas é de cerca de <b class="sand-l">três meses</b>. </span>A gente confia no trabalho, na estrutura e no método: se vocês aplicarem o método e não fizer sentido pro momento de vocês, o dinheiro volta inteiro.</p>
+    <p class="rise" style="font-size:46px;line-height:1.25;font-weight:600;color:var(--sand-l);margin-top:20px!important;--d:.14s">Sem burocracia.</p>
+    <p class="b rise" data-if="garantiaPrazo" style="font-size:36px;line-height:1.3;margin-top:14px!important;--d:.18s">Prazo da garantia: <span data-bind="garantiaPrazo"></span>.</p>
+  </div>
+  <div class="a seal rise" style="left:1230px;top:120px;--d:.1s">
+    <div class="ring"><p class="pct">100%</p><p class="sub">do investimento<br>de volta</p></div>
+  </div>
+  <div class="a" data-if="nome" style="left:1230px;top:704px;width:560px;display:flex;justify-content:center"><div class="gt-dele rise" style="--d:.16s"><div class="ft ft-av gt-av" data-if="avatarOk"><img data-src="avatarUrl" alt="Foto do atleta"><div class="ft-tom"></div></div><div class="ft ft-av ft-mono gt-av" data-ifnot="avatarOk"><b data-bind="fotoIni" style="font-size:30px"></b></div><p>Garantia do <span data-bind="nome"></span></p></div></div>
+    <!-- os tres valores, de uma vez, sem avanco (pedido do dono, 11/10/2026): o 25 continua mostrando um plano por avanco -->
+  <div class="a gt-planos" style="left:120px;top:790px;width:1680px">
+    <div class="gt-pl sc"><p class="n" data-bind="scouting.curto"></p><p class="v"><span data-bind="scouting.preco"></span><i>vitalício</i></p><p class="p">10x sem juros de <b data-bind="scouting.parcela"></b></p></div>
+    <div class="gt-pl pr"><p class="n" data-bind="pro.curto"></p><p class="v"><span data-bind="pro.preco"></span><i>vitalício</i></p><p class="p">10x sem juros de <b data-bind="pro.parcela"></b></p></div>
+    <div class="gt-pl lg"><p class="n" data-bind="legacy.curto"></p><p class="v"><span data-bind="legacy.preco"></span><i>vitalício</i></p><p class="p">10x sem juros de <b data-bind="legacy.parcela"></b></p></div>
+  </div>
+  <p class="a legal" data-bind="garantiaCondicao" data-fb="A garantia refere-se ao investimento realizado na assessoria. Pra acionar, é preciso comprovar que o método foi aplicado, conforme os termos do contrato." style="left:120px;top:988px;width:1600px">A garantia refere-se ao investimento realizado na assessoria. Pra acionar, é preciso comprovar que o método foi aplicado, conforme os termos do contrato.</p>
+</section>
+
+<!-- ============ 27 BEM-VINDO ============ -->
+<!-- O fecho do campo do 11: a miniatura com o atleta no lugar dele (só com posição reconhecida na ficha).
+     O bloco de boas-vindas segue o ritmo do plano da ficha (todo dia, toda semana, a cada 15 dias). Contrato, assinatura, AGN e o post
+     só no Legacy; na Assessoria PRO e no Scouting, o próximo passo do plano e o cartão do plano, sem prazo inventado. -->
+<section class="slide" data-plano-atual>
+  <p class="a dtag" data-if="nome">Plano do <span data-bind="nome"></span><span data-if="dossieCod"> · nº <span data-bind="dossieCod"></span></span></p>
+  <div class="fill" style="background:radial-gradient(38% 62% at 80% 50%,rgba(230,219,184,.22),rgba(6,11,20,0) 72%)"></div>
+  <div class="fill grain"></div>
+  <div class="a" style="left:120px;top:100px;width:1000px">
+    <p class="t t-130 rise" data-fit="1004" style="margin-left:-4px!important;white-space:nowrap">Bem-vindo<span data-if="nome">, <span data-bind="nome"></span></span>.</p>
+    <p class="b b-48 rise" data-bind="planoBemVindo" style="color:var(--white);font-weight:500;margin-top:40px!important;--d:.08s"></p>
+    <div class="bv-row rise" style="margin-top:36px;--d:.16s">
+      <div class="bv-campo" data-if="posId"><div data-campo="mini"></div><p class="bv-leg"><span data-if="nome">O lugar do <span data-bind="nome"></span></span><span data-ifnot="nome">O seu lugar</span></p></div>
+      <div class="welcome">
+      <div><p class="k">Hoje</p>
+        <p class="d" data-if="planoId=legacy"><span data-if="gerente">O gerente de carreira <span data-bind="gerente"></span> entra em contato <span data-bind="prazoContato" data-fb="com vocês"></span>.</span><span data-ifnot="gerente">O gerente de carreira entra em contato <span data-bind="prazoContato" data-fb="com vocês"></span>.</span></p>
+        <p class="d" data-ifnot="planoId=legacy">A equipe entra em contato com vocês.</p></div>
+      <div><p class="k" data-bind="planoRitmo"></p>
+        <p class="d" data-if="planoId=legacy">O <span class="ice">Zyron</span> e o gerente em cima do seu jogo<span data-if="prazoZyron">, começando <span data-bind="prazoZyron"></span></span>. Quem corre atrás é a gente.</p>
+        <p class="d" data-ifnot="planoId=legacy" data-plano-campo="rotina"></p></div>
+      <div class="gd"><p class="k" data-if="planoId=legacy">O dia da assinatura</p><p class="k" data-ifnot="planoId=legacy">O próximo passo</p>
+        <p class="d" data-if="planoId=legacy">Seu nome no contrato profissional. Nesse dia, a gente ganha junto com você.</p>
+        <p class="d" data-ifnot="planoId=legacy" data-bind="planoProximo"></p></div>
+      </div>
+    </div>
+  </div>
+  <div class="a rise" data-if="planoId=legacy" style="left:1250px;top:92px;width:560px;--d:.12s">
+    <p class="label bare" style="font-size:26px;margin-bottom:18px!important">Imagine este anúncio</p>
+    <div class="post">
+      <div class="post-hd"><span class="av">JE</span><div><p class="h">Jogador de Elite</p><p class="s">agora</p></div></div>
+      <div class="post-art" data-ifnot="fotoOk">
+        <p class="off">Oficial</p>
+        <p class="nm" data-fit="480"><span data-bind="nomeDossie" data-fb="VOCÊ"></span></p>
+        <p class="what">assina contrato profissional</p>
+        <div class="sig"><p class="sn" data-fit="480" style="white-space:nowrap"><span data-bind="nomeAssinatura" data-fb="Você"></span></p><p class="sl">Atleta</p></div>
+      </div>
+      <!-- com a foto dele, o anúncio de exemplo ganha o retrato (continua "Imagem ilustrativa") -->
+      <div class="post-art com-foto" data-if="fotoOk">
+        <div class="ft pa-foto"><img data-src="fotoUrl" alt="Foto do atleta"><div class="ft-tom"></div><div class="ft-sombra"></div></div>
+        <p class="off">Oficial</p>
+        <div class="pa-txt"><p class="nm" data-fit="478"><span data-bind="nomeDossie" data-fb="VOCÊ"></span></p><p class="what">assina contrato profissional</p>
+          <div class="sig"><p class="sn" data-fit="480" style="white-space:nowrap"><span data-bind="nomeAssinatura" data-fb="Você"></span></p><p class="sl">Atleta</p></div></div>
+      </div>
+      <p class="post-cap"><b>Mais um atleta nosso no futebol profissional.</b></p>
+    </div>
+  </div>
+  <p class="a legal" data-if="planoId=legacy" style="left:1250px;top:930px;width:560px">Imagem ilustrativa.<span data-if="fotoOk"> Imagem do atleta usada com autorização do responsável legal.</span></p>
+  <p class="a legal" data-if="fotoOk&!planoId=legacy" style="left:1250px;top:872px;width:560px">Imagem do atleta usada com autorização do responsável legal.</p>
+  <!-- Assessoria PRO e Scouting: o cartão do plano, com o nome do atleta -->
+  <div class="doc rise" data-ifnot="planoId=legacy" style="left:1250px;top:150px;width:560px;height:700px;padding:48px 52px;--d:.12s">
+    <p class="dh">Jogador de Elite</p>
+    <div style="height:1px;background:var(--line);margin:26px 0 34px"></div>
+    <p class="pl-ds" data-bind="planoSelo" style="font-size:26px"></p>
+    <p class="t" data-plano-marca="atual" data-fit="456" style="font-size:80px;line-height:.92;margin-top:16px!important;white-space:nowrap"></p>
+    <p class="t" data-bind="planoRitmo" style="font-size:48px;line-height:1;margin-top:22px!important"></p>
+    <div class="pl-pe">
+      <div class="pl-ret"><div class="ft ft-ret" data-if="fotoOk"><img data-src="fotoUrl" alt="Foto do atleta"><div class="ft-tom"></div></div><div class="ft ft-ret ft-mono" data-ifnot="fotoOk"><b data-bind="fotoIni" style="font-size:96px"></b></div></div>
+      <div class="nm-box"><p class="t" data-fit="282" style="font-size:64px;line-height:1;white-space:nowrap"><span data-bind="nomeDossie" data-fb="VOCÊ"></span></p>
+        <p class="label bare" style="font-size:24px;margin-top:12px!important">Atleta</p></div>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<div class="hud" id="hud" style="width:max-content">
+  <button type="button" data-act="prev" aria-label="Slide anterior">◀</button>
+  <span class="pos" id="hud-pos">1 / 27</span>
+  <button type="button" data-act="next" aria-label="Próximo slide">▶</button>
+  <button type="button" data-act="overview">Slides</button>
+  <button type="button" data-act="variacoes">Variações</button>
+  <button type="button" data-act="presenter">Apresentador</button>
+  <button type="button" data-act="fullscreen">Tela cheia</button>
+</div>
+<div class="progress" id="progress"></div>
+<div class="overview" id="overview"><h2>Todos os slides · Esc pra voltar</h2><div class="ov-grid" id="ov-grid"></div></div>
+
+<script src="../../assets/roteiro.js"></script>
+<script src="../../assets/variacoes/tecnica.js"></script>
+<script src="../../assets/zyron-desenhos.js"></script>
+<script src="../../assets/relatorio-leitura.js"></script>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>

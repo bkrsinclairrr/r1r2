@@ -1,0 +1,8 @@
+.oferta-dupla .pl-tab{grid-template-columns:1fr 1fr;column-gap:100px}
+.oferta-dupla .pl-pr .v,.oferta-dupla .pl-pc .n{font-size:64px;font-weight:800;line-height:1}
+.oferta-dupla .pl-pc .l{display:block;font-size:24px;margin:6px 0 4px}
+.oferta-dupla .pl-pc .n{display:block}
+.oferta-dupla .pl-col .pl-hd .pl-nm{font-size:56px;line-height:1}
+.oferta-dupla .pl-vant p{font-size:23px;line-height:1.17;margin-top:5px!important}
+.oferta-dupla .pl-hd{padding-top:16px}
+.oferta-dupla .pl-rec{top:-42px}

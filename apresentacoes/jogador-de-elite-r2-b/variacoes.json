@@ -1,0 +1,36 @@
+{
+  "v": 1,
+  "gerado": "2026-10-12T18:25:49.945Z",
+  "paginas": [
+    {
+      "id": "principal",
+      "caminho": "/",
+      "nome": "Principal",
+      "resumo": "O R2 novo com a tela dizendo o nome e o primeiro sobrenome do lead (Lucas Almeida da Silva vira Lucas Almeida).",
+      "quando": "Só se precisar desse endereço. No R2 novo, a escolha Nome na tela (primeiro sobrenome) faz o mesmo.",
+      "validacao": "em-validacao",
+      "lead": {
+        "nome": true,
+        "foto": true
+      },
+      "slides": 27,
+      "opcionais": [],
+      "hash": "21324f2f7c60f94be38b90eb4ec4c40a460c0153"
+    },
+    {
+      "id": "tecnica",
+      "caminho": "/variacoes/tecnica/",
+      "nome": "Técnica",
+      "resumo": "A técnica do R2 novo com a tela dizendo o nome e o primeiro sobrenome do lead.",
+      "quando": "Mesmo critério da Técnica do R2 novo, só se precisar desse endereço.",
+      "validacao": "em-validacao",
+      "lead": {
+        "nome": true,
+        "foto": true
+      },
+      "slides": 27,
+      "opcionais": [],
+      "hash": "87a1d856a56357aa9d45e22df3ba1aba69fa3294"
+    }
+  ]
+}

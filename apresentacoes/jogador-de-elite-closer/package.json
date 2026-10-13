@@ -1,0 +1,9 @@
+{
+  "name": "jogador-de-elite-closer",
+  "private": true,
+  "type": "module",
+  "description": "Painel do Closer: o R2 novo de cada atleta, com foto e nome, num link só dele (Jogador de Elite)",
+  "dependencies": {
+    "@vercel/blob": "^2.8.1"
+  }
+}

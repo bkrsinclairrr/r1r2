@@ -1,0 +1,21 @@
+{
+  "v": 1,
+  "gerado": "2026-10-12T18:25:49.529Z",
+  "paginas": [
+    {
+      "id": "principal",
+      "caminho": "/",
+      "nome": "Principal",
+      "resumo": "A apresentação do SDR em 16 slides: o Zyron, a IA na prática e a AGN, e fecha marcando a R2.",
+      "quando": "A primeira apresentação do lead. Na dúvida, esta.",
+      "validacao": "em-validacao",
+      "lead": {
+        "nome": true,
+        "foto": false
+      },
+      "slides": 16,
+      "opcionais": [],
+      "hash": "ddc40f7bb12f5f080eed10f2262d4f84f6ebcf05"
+    }
+  ]
+}

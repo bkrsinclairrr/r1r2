@@ -1,0 +1,24 @@
+{
+  "functions": {
+    "api/limpeza.js": { "maxDuration": 60 },
+    "api/versoes.js": { "maxDuration": 20 }
+  },
+  "rewrites": [
+    { "source": "/api/publico", "destination": "/api/r2" }
+  ],
+  "crons": [
+    { "path": "/api/limpeza", "schedule": "0 9 * * *" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "no-referrer" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://vercel.com https://*.vercel-storage.com; img-src 'self' data: blob:; media-src 'self' blob:; frame-src https://jogador-de-elite-r2-novo.vercel.app https://jogador-de-elite-r2-b.vercel.app; frame-ancestors 'none'; base-uri 'none'; form-action 'self'; object-src 'none'" }
+      ]
+    }
+  ]
+}

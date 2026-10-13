@@ -1,0 +1,605 @@
+/* Jogador de Elite · R2 (Gestor de Carreiras)
+   Complementa deck.css (herdado da R1). 23 slides, pele navy-seal (08/10/2026). */
+
+/* mesa escura da capa */
+.slide.desk{background:linear-gradient(180deg,#060B14 0%,#060B14 52%,#09101A 76%,#070D15 100%)}
+.slide.desk::before{content:"";position:absolute;left:0;right:0;top:910px;height:1px;background:linear-gradient(90deg,transparent,rgba(230,219,184,.12) 40%,rgba(230,219,184,.12) 70%,transparent)}
+
+/* dossiê fechado (SVG injetado) */
+.dz-tilt{width:100%;height:100%;transform:perspective(1800px) rotateX(26deg) rotateZ(-5deg);transform-origin:50% 60%}
+.dz-tilt svg{width:100%;height:100%;overflow:visible}
+
+/* página de dossiê ocupando o slide */
+.page{background:linear-gradient(180deg,#0A121E,#070D16);border:1px solid rgba(200,184,138,.22);box-shadow:0 40px 120px rgba(0,0,0,.6),inset 0 1px 0 rgba(230,219,184,.12)}
+
+/* 03: alinhamento */
+.align>div{display:grid;grid-template-columns:560px 1fr;gap:40px;align-items:baseline;padding:18px 0;border-top:1px solid var(--line)}
+.align>div:last-child{border-bottom:1px solid var(--line)}
+.align .k{font-family:var(--f-label);font-weight:600;font-size:26px;letter-spacing:.2em;text-transform:uppercase;color:var(--sand);margin:0;line-height:1.3}
+.align .v{font-size:38px;line-height:1.24;color:var(--white);font-weight:500;margin:0}
+
+/* 04: o plano, etapa por etapa */
+.road{display:grid;grid-template-columns:repeat(5,1fr);gap:36px;position:relative;padding-top:70px}
+.road .line{position:absolute;left:14px;right:14px;top:24px;height:3px;background:linear-gradient(90deg,rgba(200,184,138,.35),var(--sand) 70%,var(--sand-l))}
+.road .stop{position:relative}
+.road .stop i{position:absolute;left:0;top:-58px;width:28px;height:28px;border-radius:50%;background:#0A1422;border:3px solid var(--sand)}
+.road .stop .k{font-family:var(--f-title);font-weight:800;font-size:40px;line-height:1;text-transform:uppercase;color:var(--sand-l);margin:0 0 18px}
+.road .stop .d{font-size:32px;line-height:1.3;color:var(--white);margin:0}
+.road .stop.goal i{width:40px;height:40px;top:-64px;left:-6px;background:var(--sand-l);border-color:var(--sand-l);box-shadow:0 0 36px 8px rgba(230,219,184,.55)}
+.road .stop.goal .k{color:var(--white)}
+.road .stop.goal .d{font-family:var(--f-title);font-weight:700;font-size:44px;line-height:1.08;text-transform:uppercase;color:var(--sand-l)}
+
+/* 07: o valor real */
+.costs p{display:flex;justify-content:space-between;align-items:baseline;gap:30px;padding:15px 0;border-bottom:1px solid var(--line);margin:0}
+.costs p:first-child{border-top:1px solid var(--line)}
+.costs span{font-size:34px;line-height:1.2;color:var(--white)}
+.costs b{font-family:var(--f-title);font-weight:700;font-size:40px;color:var(--sand-l);white-space:nowrap}
+
+/* 05: peneira contra a gente */
+.cmp>div{display:grid;grid-template-columns:400px 1fr 1fr;gap:40px;align-items:baseline;padding:24px 0;border-bottom:1px solid var(--line)}
+.cmp>div.hd{padding:0 0 18px;border-bottom:2px solid rgba(200,184,138,.5)}
+.cmp .hd p{font-family:var(--f-label);font-weight:600;font-size:28px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin:0}
+.cmp .hd p.us{color:var(--sand-l)}
+.cmp .k{font-family:var(--f-title);font-weight:800;font-size:44px;line-height:1;text-transform:uppercase;color:var(--white);margin:0}
+.cmp p{font-size:36px;line-height:1.25;color:#7F93A8;margin:0}
+.cmp p.us{color:var(--white);font-weight:500}
+.cmp.tight>div{padding:18px 0}
+.cmp.tight>div.hd{padding:0 0 16px}
+
+/* 06: AGN, casos */
+.cases{display:flex;gap:22px}
+.case{position:relative;width:250px;height:300px;overflow:hidden;background:#09111C;border:1px solid rgba(200,184,138,.28)}
+.case img{width:100%;height:100%;object-fit:cover;display:block}
+.case .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,11,20,0) 40%,rgba(6,11,20,.94) 100%)}
+.case .cap{position:absolute;left:22px;right:18px;bottom:20px}
+.case .nm{font-family:var(--f-title);font-weight:800;font-size:46px;line-height:1;text-transform:uppercase;color:var(--white);margin:0}
+.case .cl{font-family:var(--f-label);font-weight:600;font-size:24px;letter-spacing:.22em;text-transform:uppercase;color:var(--sand);margin:8px 0 0}
+.case.next{background:radial-gradient(80% 70% at 50% 40%,rgba(230,219,184,.16),rgba(6,11,20,0) 75%),#09101B;border:2px dashed rgba(230,219,184,.6)}
+.case.next .cl{margin:0 0 10px}
+.case.next .nm{color:var(--sand-l);white-space:nowrap}
+
+/* 08: contrato */
+.contract{padding:34px 40px 30px;background:linear-gradient(180deg,#0F1B2C,#09111C);border:1px solid rgba(200,184,138,.5);transform:rotate(-4deg);box-shadow:0 40px 90px rgba(0,0,0,.65),0 0 70px rgba(230,219,184,.14)}
+.contract .h{font-family:var(--f-label);font-weight:600;font-size:22px;letter-spacing:.3em;text-transform:uppercase;color:var(--sand);margin:0 0 24px}
+.contract i{display:block;height:8px;border-radius:2px;background:#1F324D;margin:0 0 14px}
+.contract .sig{margin-top:30px}
+.contract .sig .nm{min-height:58px;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:46px;line-height:1.1;color:var(--sand-l);margin:0;padding:0 0 8px;border-bottom:2px solid rgba(230,219,184,.7)}
+.contract .sig .ln{font-family:var(--f-label);font-weight:600;font-size:20px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin:10px 0 0}
+
+/* 09: até lá, a gente investe */
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.pillars>div{border-top:3px solid var(--sand);padding-top:26px}
+.pillars .n{font-family:var(--f-label);font-weight:600;font-size:26px;letter-spacing:.24em;color:var(--muted);margin:0}
+.pillars .k{font-family:var(--f-title);font-weight:800;font-size:60px;line-height:1;text-transform:uppercase;color:var(--sand-l);margin:14px 0 20px}
+.pillars .d{font-size:34px;line-height:1.3;color:var(--white);margin:0}
+
+/* 10: funil */
+.funnel{display:flex;flex-direction:column;align-items:center;gap:14px}
+.funnel>div{height:118px;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(180deg,#101D2F,#0B1420);border:1px solid rgba(200,184,138,.28)}
+.funnel>div p{font-family:var(--f-label);font-weight:600;font-size:28px;letter-spacing:.14em;text-transform:uppercase;color:#C9D3DF;margin:0;padding:0 20px;line-height:1.2}
+.funnel>div.you{width:auto;min-width:36%;max-width:100%;padding:0 30px;height:132px;background:linear-gradient(180deg,#F1E9CF,#C8B88A);border:0;box-shadow:0 0 70px 10px rgba(230,219,184,.35)}
+.funnel>div.you p{font-family:var(--f-title);font-weight:800;font-size:54px;letter-spacing:.02em;color:#060B14;white-space:nowrap}
+
+/* 11: garantia */
+.seal .ring{width:560px;height:560px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:3px solid var(--sand);box-shadow:0 0 0 18px rgba(6,11,20,1),0 0 0 21px rgba(200,184,138,.45),0 0 120px 20px rgba(230,219,184,.22);background:radial-gradient(60% 60% at 50% 40%,rgba(230,219,184,.16),rgba(6,11,20,0) 75%),#080F18}
+.seal .pct{font-family:var(--f-title);font-weight:800;font-size:200px;line-height:.9;color:var(--sand-l);margin:0;text-shadow:0 0 60px rgba(230,219,184,.4)}
+.seal .sub{font-family:var(--f-label);font-weight:600;font-size:32px;letter-spacing:.2em;text-transform:uppercase;color:var(--white);margin:22px 0 0;line-height:1.3}
+
+/* 06: os clubes estão procurando (vídeo) */
+.chapters.sand .tm{color:var(--sand)}
+.chapters.sand li.on .tm{color:var(--sand-l)}
+.bridge{margin-top:48px;padding-left:26px;border-left:3px solid var(--sand)}
+.bridge p{font-family:var(--f-title);font-weight:800;font-size:50px;line-height:1.06;text-transform:uppercase;color:var(--white)}
+.bridge p.g{color:var(--sand-l);text-shadow:0 0 40px rgba(230,219,184,.35)}
+
+/* 07: nem tudo é talento */
+.eff .big{font-size:300px;line-height:.84;margin:6px 0 0 -10px!important;text-shadow:0 0 80px rgba(230,219,184,.3)}
+.eff .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:52px;padding-top:34px;border-top:1px solid var(--line)}
+.eff .stats .n{font-family:var(--f-title);font-weight:800;font-size:84px;line-height:.9;color:var(--white)}
+.eff .stats .k{font-family:var(--f-label);font-weight:600;font-size:24px;line-height:1.25;letter-spacing:.16em;text-transform:uppercase;color:var(--sand);margin-top:14px}
+
+/* 08: AGN, quatro quadros com o caso espelho */
+.cases .case{width:226px;height:284px}
+.cases .case .nm{font-size:42px}
+.cases .case .cl{font-size:22px}
+.case.mirror{background:radial-gradient(90% 70% at 50% 30%,rgba(230,219,184,.18),rgba(6,11,20,0) 75%),linear-gradient(180deg,#0F1B2C,#080F19);border:2px solid var(--sand)}
+.case.mirror .tag{position:absolute;left:20px;right:16px;top:20px;font-family:var(--f-label);font-weight:600;font-size:21px;line-height:1.25;letter-spacing:.2em;text-transform:uppercase;color:var(--sand-l)}
+.case.mirror .nm{white-space:nowrap}
+.case.mirror .ct{font-family:var(--f-label);font-weight:600;font-size:20px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+
+/* 14: a vaga (turma de 10 e o caminho até a assinatura) */
+.turma .hd{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--f-label);font-weight:600;font-size:26px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.turma .hd b{color:var(--sand-l);font-weight:600}
+.turma .row{display:grid;grid-template-columns:repeat(10,1fr);gap:10px}
+.turma .row i{display:block;height:96px;border:2px solid rgba(200,184,138,.55);background:rgba(200,184,138,.06)}
+.turma .row i.taken{border-color:rgba(200,184,138,.22);background:rgba(200,184,138,.24)}
+.turma .row i.you{border-color:var(--sand-l);background:linear-gradient(180deg,#F1E9CF,#C8B88A);box-shadow:0 0 34px rgba(230,219,184,.6)}
+.turma .you-l{margin-top:16px;font-family:var(--f-title);font-weight:800;font-size:38px;text-transform:uppercase;color:var(--sand-l)}
+.path{padding-left:10px}
+.path .st{position:relative;padding:0 0 38px 64px}
+.path .st::before{content:"";position:absolute;left:15px;top:34px;bottom:0;width:2px;background:linear-gradient(180deg,var(--sand),rgba(200,184,138,.25))}
+.path .st:last-child{padding-bottom:0}
+.path .st:last-child::before{display:none}
+.path .st i{position:absolute;left:0;top:4px;width:32px;height:32px;border-radius:50%;border:3px solid var(--sand);background:var(--bg)}
+.path .k{font-family:var(--f-title);font-weight:800;font-size:46px;line-height:1;text-transform:uppercase;color:var(--white)}
+.path .d{font-size:32px;line-height:1.3;color:var(--body);margin-top:10px!important}
+.path .goal i{width:40px;height:40px;left:-4px;top:0;background:var(--sand-l);border-color:var(--sand-l);box-shadow:0 0 36px 8px rgba(230,219,184,.55)}
+.path .goal .k{color:var(--sand-l);font-size:54px}
+.path .goal .d{color:var(--white);font-weight:600}
+
+/* 15: boas-vindas */
+.welcome>div{padding:20px 0;border-top:1px solid var(--line)}
+.welcome .k{font-family:var(--f-label);font-weight:600;font-size:28px;letter-spacing:.28em;text-transform:uppercase;color:var(--sand);margin:0 0 10px}
+.welcome .d{font-size:36px;line-height:1.3;color:var(--white)}
+.welcome .gd{border-bottom:1px solid var(--line)}
+.welcome .gd .k{color:var(--sand-l)}
+.welcome .gd .d{font-weight:600;color:var(--sand-l)}
+.post{background:#09101B;border:1px solid rgba(255,255,255,.14);border-radius:26px;overflow:hidden;box-shadow:0 50px 120px rgba(0,0,0,.65),0 0 90px rgba(230,219,184,.16)}
+.post-hd{display:flex;align-items:center;gap:16px;padding:20px 24px}
+.post-hd .av{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#F1E9CF,#C8B88A);color:#060B14;font:800 24px var(--f-title)}
+.post-hd .h{font:600 26px var(--f-body);color:#fff}
+.post-hd .s{font:500 20px var(--f-body);color:var(--muted)}
+.post-art{position:relative;height:540px;padding:44px 40px;background:radial-gradient(80% 60% at 50% 38%,rgba(230,219,184,.3),rgba(6,11,20,0) 70%),linear-gradient(180deg,#122135,#070D16);border-top:1px solid rgba(200,184,138,.35);border-bottom:1px solid rgba(200,184,138,.35);overflow:hidden}
+.post-art::after{content:"";position:absolute;inset:18px;border:1px solid rgba(230,219,184,.28);pointer-events:none}
+.post-art .off{display:inline-block;font:600 24px var(--f-label);letter-spacing:.34em;text-transform:uppercase;color:#060B14;background:var(--sand-l);padding:6px 14px}
+.post-art .nm{font-family:var(--f-title);font-weight:800;font-size:124px;line-height:.9;text-transform:uppercase;color:#fff;margin-top:40px!important;white-space:nowrap;text-shadow:0 0 50px rgba(230,219,184,.35)}
+.post-art .what{font:600 32px var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand-l);margin-top:14px!important}
+.post-art .sig{position:absolute;left:40px;right:40px;bottom:48px}
+.post-art .sn{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:56px;line-height:1.1;color:var(--sand-l);padding-bottom:8px;border-bottom:2px solid rgba(230,219,184,.7)}
+.post-art .sl{font:600 20px var(--f-label);letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:10px!important}
+.post-cap{padding:20px 24px 24px;font-size:24px;line-height:1.4;color:var(--body)}
+.post-cap b{color:#fff;font-weight:600}
+
+/* 23, 24 e 25: os três planos. Cor da marca só com os tokens do deck: azul (o Zyron, a leitura) e dourado (gente e carreira).
+   Scouting azul; Assessoria PRO branco e dourado, com o filete azul e dourado no 23; Legacy dourado. data-plano-atual recebe o id do plano da ficha. */
+.pl-az{color:var(--ice)}
+.pl-ou{color:var(--sand-l)}
+.pl-br{color:var(--white)}
+.pl-pre{display:block;font-size:.52em;line-height:1;color:var(--white);margin-bottom:.14em}
+.pl-ds{font-family:var(--f-label);font-weight:600;font-size:24px;line-height:1.25;letter-spacing:.16em;text-transform:uppercase;color:var(--sand-l);margin:0}
+.pl-ds.az,[data-plano-atual="scouting"] .pl-ds{color:var(--ice)}
+.label.pl-ds{font-size:30px;line-height:1.2;letter-spacing:.22em}
+/* 23: os tr�s planos lado a lado, cada um na sua parte: papel, nome, ritmo, investimento (a parcela em destaque) e o que ele
+   acrescenta ao degrau de baixo, cargo por cargo. O Legacy, o ideal, � a coluna mais larga. Cabe�alho de altura fixa pra os
+   topos alinharem entre as colunas. */
+/* o Legacy, o ideal, com a coluna mais larga e a lista mais longa; o Scouting, a mais curta, cede espaço (07/10/2026) */
+.pl-tab{display:grid;grid-template-columns:.78fr 1.05fr 1.45fr;column-gap:40px}
+.pl-col{position:relative}
+.pl-hd{height:266px;display:flex;flex-direction:column;padding-top:10px;border-top:4px solid var(--ice)}
+.pl-col.pro .pl-hd{border-top-color:var(--sand);border-image:linear-gradient(90deg,var(--ice),var(--sand)) 1}
+.pl-col.legacy .pl-hd{border-top-color:var(--sand)}
+.pl-hd .pl-ds{height:58px;overflow:hidden;letter-spacing:.12em}
+.pl-hd .pl-nm{position:relative;margin:4px 0 0!important;font-family:var(--f-title);font-weight:800;font-size:54px;line-height:1;text-transform:uppercase;color:var(--white);white-space:nowrap}
+/* no 23, o nome inteiro numa linha e no mesmo corpo: Assessoria de Elite Legacy grande (pedido do dono, 07/10/2026) */
+.pl-hd .pl-nm .pl-pre{display:inline;font-size:1em;line-height:inherit;margin:0}
+.pl-col.legacy .pl-hd .pl-nm{font-size:60px;line-height:54px}
+.pl-hd .pl-rt{margin:4px 0 0!important;font-family:var(--f-title);font-weight:700;font-size:30px;line-height:1;text-transform:uppercase;color:var(--white)}
+.pl-pr{margin:10px 0 0!important;line-height:1;white-space:nowrap}
+.pl-pr .v{font-family:var(--f-title);font-weight:800;font-size:34px;color:var(--sand-l)}
+.pl-pr .u{font-family:var(--f-title);font-weight:700;font-size:24px;text-transform:uppercase;color:var(--white)}
+.pl-pc{margin:4px 0 0!important;line-height:1;white-space:nowrap}
+.pl-pc .l{font-family:var(--f-title);font-weight:700;font-size:24px;text-transform:uppercase;color:var(--body)}
+.pl-pc .n{font-family:var(--f-title);font-weight:800;font-size:50px;color:var(--sand-l)}
+.pl-mais{margin:10px 0 0!important;padding-top:8px;border-top:1px solid var(--line);font-family:var(--f-label);font-weight:600;font-size:24px;line-height:1.2;letter-spacing:.18em;text-transform:uppercase;color:var(--sand)}
+.pl-vant p{position:relative;padding-left:34px;margin:6px 0 0!important;font-size:24px;line-height:1.2;color:var(--body);text-wrap:pretty}
+.pl-vant p::before{content:"";position:absolute;left:6px;top:.2em;width:9px;height:18px;border-right:3px solid var(--sand);border-bottom:3px solid var(--sand);transform:rotate(40deg)}
+.pl-vant b{font-weight:600;color:var(--white)}
+.pl-col.legacy .pl-vant p::before{border-color:var(--sand-l)}
+.pl-perg{font-size:34px;line-height:1.2;font-weight:600;color:var(--sand-l)}
+.pl-rec{position:absolute;left:-14px;right:-14px;top:-46px;bottom:-12px;border:2px solid var(--sand-l);box-shadow:0 0 60px rgba(230,219,184,.16);pointer-events:none}
+.pl-rec p{position:absolute;left:14px;top:10px;margin:0;font-family:var(--f-label);font-weight:600;font-size:24px;letter-spacing:.2em;text-transform:uppercase;color:var(--sand-l);white-space:nowrap}
+/* o Legacy em destaque, como o ideal: moldura dourada, fundo levemente aceso, brilho que pulsa e um reflexo que atravessa a coluna.
+   S� anima com o slide ativo e a coluna na tela; parada (compartilhamento travado), a moldura e o r�tulo seguem vis�veis. */
+.pl-ideal{position:absolute;left:-14px;right:-14px;top:-50px;bottom:-12px;border:3px solid var(--sand-l);background:linear-gradient(180deg,rgba(230,219,184,.08),rgba(230,219,184,.02) 45%,rgba(230,219,184,0));box-shadow:0 0 60px rgba(230,219,184,.22);pointer-events:none;overflow:hidden}
+.pl-ideal>p{position:absolute;left:0;right:0;top:0;margin:0;padding:9px 14px 8px;background:linear-gradient(90deg,#F1E9CF,#E6DBB8 45%,#C8B88A);font-family:var(--f-label);font-weight:700;font-size:26px;line-height:1.2;letter-spacing:.26em;text-transform:uppercase;color:#060B14;white-space:nowrap}
+.pl-ideal::after{content:"";position:absolute;top:0;bottom:0;left:-45%;width:35%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(241,233,207,.16),rgba(255,255,255,0))}
+.slide.active .pl-col.shown .pl-ideal{animation:pl-ideal 3.2s ease-in-out infinite}
+.slide.active .pl-col.shown .pl-ideal::after{animation:pl-reflexo 5.5s ease-in-out infinite}
+@keyframes pl-ideal{0%,100%{box-shadow:0 0 50px rgba(230,219,184,.18)}50%{box-shadow:0 0 120px rgba(230,219,184,.5),inset 0 0 40px rgba(230,219,184,.08)}}
+@keyframes pl-reflexo{0%{left:-45%}55%,100%{left:120%}}
+@media (prefers-reduced-motion:reduce){.slide.active .pl-col.shown .pl-ideal,.slide.active .pl-col.shown .pl-ideal::after{animation:none!important}}
+/* 24: a lista do plano da ficha; no Legacy, a base (o resto da lista inteira) vem apagada */
+.beneficios.vazio{display:none}
+.beneficios.base p{color:var(--body)}
+.beneficios.base p::before{border-color:var(--dim)}
+
+/* ---------- apresentador R2 ---------- */
+.pz-ctl{margin-top:14px;padding:12px 16px;background:#09111C;border-left:3px solid var(--sand)}
+.pz-ctl .pz-h{margin-bottom:10px}
+.pz-say{font:600 20px/1.4 var(--f-body);color:#fff;margin:0}
+#pz-sil{min-width:140px}
+#pz-sil.on{background:#E2552B;color:#060B14;border-color:#E2552B}
+#pz-time.mid{color:var(--sand-l)}
+.pz-read{width:100%;border-collapse:collapse;font-size:14px}
+.pz-read td,.pz-read th{padding:7px 8px;border-bottom:1px solid #132237;text-align:left;vertical-align:top}
+.pz-read th{font:600 12px var(--f-label);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.pz-read td.miss{color:#E2552B;font-weight:600}
+.pz-read td.ok{color:#E4E8ED}
+.pz-method{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 12px}
+.pz-method span{font:600 12px var(--f-label);letter-spacing:.12em;text-transform:uppercase;border:1px solid #1F324D;border-radius:4px;padding:5px 8px;color:#E4E8ED}
+.pz-mode{display:flex;gap:8px;margin:8px 0 4px;flex-wrap:wrap}
+.pz-mode button.on{background:var(--sand);color:#060B14;border-color:var(--sand)}
+.pz-import textarea{min-height:140px;font:13px/1.4 Consolas,monospace!important}
+.pz-read-out{font-size:13px;line-height:1.5;color:#C9D3DF;background:#09111C;border:1px solid #15243A;padding:8px 10px;margin-top:8px;max-height:220px;overflow:auto}
+.pz-read-out b{color:var(--sand-l)}
+/* o plano da ficha e a troca de plano: só no apresentador (o deck não tem link de pagamento) */
+.pz-sec.plano{border-left-color:var(--sand)}
+.pz .pz-plan{min-width:0;margin-top:8px;padding:10px 12px;background:#0A1422;border:1px solid #15243A;border-radius:6px}
+.pz .pz-plan.on{border-color:var(--sand);box-shadow:inset 3px 0 0 var(--sand)}
+.pz .pz-plan-hd{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.pz .pz-plan-nm{margin:0;font:600 16px/1.3 var(--f-body);color:#fff}
+.pz .pz-plan-tk{font:700 20px var(--f-title);color:var(--sand-l);white-space:nowrap}
+.pz .pz-plan-ds{margin:4px 0 0;font-size:13px;line-height:1.4;color:#8FA2B5}
+.pz-foot{flex:none;padding:8px 20px;border-top:1px solid #132237;background:#0A1422;font:500 13px var(--f-body);color:#8FA2B5}
+.pz-foot b{color:#E2552B;font-weight:600}
+
+/* revelação item a item (data-step): o slide abre sem eles, e cada avanço mostra o próximo */
+.slide [data-step]{opacity:0;transform:translateY(14px);transition:opacity .4s ease,transform .4s ease}
+.slide [data-step].shown{opacity:1;transform:none}
+@media print{.slide [data-step]{opacity:1!important;transform:none!important}}
+.costs b .per{font-style:normal;font-family:var(--f-label);font-weight:600;font-size:24px;letter-spacing:.12em;color:var(--muted);margin-left:8px}
+
+/* slide do investimento */
+.inv-pontos p{position:relative;padding-left:36px;font-size:40px;line-height:1.3;color:var(--body);margin:16px 0 0!important}
+.inv-pontos p::before{content:"";position:absolute;left:0;top:.5em;width:14px;height:14px;border-radius:50%;background:var(--sand)}
+
+/* soma do valor real: sobe a cada avanço e ganha destaque no total */
+.soma{transition:text-shadow .6s ease}
+.soma.marcado{text-shadow:0 0 90px rgba(230,219,184,.6)}
+
+/* benefícios do investimento */
+.beneficios p{position:relative;padding-left:42px;font-size:32px;line-height:1.25;color:var(--white);margin:12px 0 0!important}
+.beneficios p::before{content:"";position:absolute;left:6px;top:.18em;width:10px;height:20px;border-right:4px solid var(--sand);border-bottom:4px solid var(--sand);transform:rotate(40deg)}
+
+/* ========== reformulação de 08/10/2026: o inimigo comum, o dossiê do atleta e o campo, na pele navy-seal ==========
+   Cores por papel (tokens no deck.css): areia é carreira e o nome do atleta, gelo é o Zyron e os dados,
+   oliva é aprovado e o campo, e o laranja-sinal é só do olhômetro (a coluna, o selo, o risco), nunca decoração. */
+.sig{color:var(--signal)}
+.olho{display:inline-block;width:48px;height:32px;margin-right:16px;vertical-align:-5px;color:var(--signal)}
+.topo{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080'><g fill='none' stroke='%23C8B88A' stroke-opacity='.075' stroke-width='1.3'><path d='M1602 640 L1604 648 L1602 655 L1598 662 L1592 668 L1585 674 L1578 678 L1571 683 L1564 688 L1558 692 L1551 697 L1544 701 L1536 704 L1527 705 L1518 706 L1509 706 L1500 706 L1491 707 L1482 706 L1473 706 L1464 705 L1454 703 L1445 701 L1437 697 L1429 693 L1422 688 L1415 682 L1411 675 L1408 668 L1407 661 L1408 654 L1411 647 L1413 640 L1416 634 L1417 628 L1417 621 L1417 615 L1418 608 L1420 601 L1425 594 L1431 589 L1438 584 L1446 581 L1455 577 L1463 574 L1472 571 L1481 569 L1490 567 L1500 566 L1510 567 L1519 569 L1528 572 L1536 576 L1543 580 L1550 584 L1557 589 L1563 594 L1568 599 L1573 604 L1577 609 L1582 615 L1588 620 L1594 626 L1599 633Z'/><path d='M1708 640 L1709 655 L1705 670 L1695 684 L1682 696 L1667 706 L1653 716 L1640 725 L1628 735 L1616 745 L1603 754 L1588 762 L1571 767 L1553 770 L1535 771 L1517 772 L1500 772 L1482 772 L1464 773 L1445 773 L1426 772 L1407 769 L1389 763 L1371 756 L1356 747 L1342 736 L1331 724 L1323 710 L1318 696 L1318 681 L1321 666 L1325 653 L1330 640 L1333 628 L1334 616 L1333 603 L1333 589 L1334 574 L1339 560 L1348 547 L1361 537 L1376 528 L1393 521 L1410 515 L1426 508 L1444 502 L1461 497 L1480 493 L1500 492 L1519 494 L1538 499 L1555 505 L1571 513 L1585 522 L1599 531 L1611 540 L1623 549 L1635 558 L1645 568 L1656 578 L1668 589 L1680 600 L1691 612 L1701 625Z'/><path d='M1816 640 L1816 663 L1807 685 L1790 705 L1769 723 L1747 738 L1726 752 L1707 766 L1690 781 L1673 796 L1654 811 L1632 822 L1606 830 L1579 834 L1552 835 L1526 836 L1500 836 L1474 838 L1446 841 L1417 843 L1387 842 L1357 838 L1329 829 L1304 817 L1282 802 L1263 784 L1248 765 L1238 744 L1233 722 L1233 700 L1237 679 L1243 659 L1249 640 L1251 622 L1251 603 L1247 583 L1245 562 L1246 540 L1254 518 L1269 500 L1289 484 L1314 472 L1339 462 L1364 452 L1389 442 L1415 432 L1442 423 L1470 418 L1500 416 L1529 420 L1557 429 L1582 441 L1604 454 L1625 467 L1644 480 L1664 492 L1683 505 L1701 518 L1720 531 L1738 546 L1757 561 L1776 578 L1794 597 L1808 618Z'/><path d='M1924 640 L1921 671 L1906 700 L1882 726 L1853 748 L1823 768 L1796 787 L1773 806 L1753 827 L1731 848 L1706 868 L1676 883 L1641 893 L1605 897 L1569 898 L1534 899 L1500 901 L1465 905 L1427 911 L1387 915 L1346 916 L1305 910 L1268 897 L1235 879 L1208 857 L1186 831 L1169 804 L1159 775 L1154 746 L1154 718 L1158 690 L1164 665 L1168 640 L1168 616 L1164 591 L1158 563 L1154 534 L1156 504 L1168 476 L1189 451 L1218 431 L1251 416 L1286 402 L1319 389 L1352 376 L1386 361 L1422 349 L1460 341 L1500 341 L1539 348 L1575 362 L1607 380 L1635 398 L1662 416 L1688 432 L1715 446 L1742 461 L1770 476 L1798 492 L1825 511 L1852 532 L1877 555 L1900 581 L1916 610Z'/><path d='M2031 640 L2023 678 L2001 714 L1970 746 L1933 773 L1897 797 L1866 821 L1839 846 L1815 873 L1789 901 L1757 925 L1719 944 L1676 955 L1631 959 L1586 960 L1543 962 L1500 966 L1456 975 L1407 985 L1356 992 L1302 994 L1251 985 L1205 968 L1166 942 L1135 910 L1112 876 L1096 840 L1085 804 L1080 769 L1079 735 L1082 702 L1085 670 L1086 640 L1082 610 L1074 577 L1065 542 L1060 505 L1064 467 L1080 432 L1109 402 L1147 378 L1189 359 L1232 343 L1274 326 L1314 308 L1356 289 L1402 274 L1450 265 L1500 266 L1548 278 L1592 298 L1630 322 L1664 347 L1696 368 L1730 386 L1765 401 L1804 415 L1843 432 L1882 451 L1919 474 L1953 501 L1983 531 L2009 565 L2026 602Z'/><path d='M2134 640 L2120 685 L2092 727 L2053 764 L2011 797 L1970 826 L1935 855 L1905 886 L1877 920 L1846 953 L1808 982 L1762 1003 L1710 1015 L1656 1020 L1602 1022 L1551 1025 L1500 1034 L1446 1047 L1386 1063 L1322 1074 L1257 1075 L1194 1064 L1141 1038 L1098 1003 L1067 961 L1045 917 L1029 873 L1018 831 L1011 790 L1008 751 L1006 713 L1004 676 L1000 640 L992 603 L980 563 L968 521 L963 475 L970 430 L992 389 L1029 353 L1076 326 L1127 303 L1178 283 L1228 262 L1276 239 L1326 216 L1381 198 L1440 189 L1500 194 L1557 211 L1608 239 L1651 270 L1690 299 L1729 323 L1771 340 L1817 353 L1869 367 L1921 384 L1972 406 L2019 435 L2059 468 L2093 507 L2118 549 L2133 594Z'/><path d='M2232 640 L2212 692 L2178 740 L2134 782 L2087 820 L2042 855 L2004 889 L1971 927 L1940 966 L1904 1004 L1859 1038 L1804 1062 L1743 1075 L1680 1080 L1619 1084 L1560 1090 L1500 1105 L1435 1125 L1364 1146 L1287 1161 L1209 1161 L1137 1143 L1078 1108 L1034 1061 L1004 1008 L984 954 L970 902 L958 855 L947 810 L937 766 L928 724 L920 682 L909 640 L896 596 L880 549 L868 498 L864 445 L875 393 L904 345 L949 305 L1004 273 L1064 247 L1124 223 L1181 197 L1237 170 L1296 143 L1361 122 L1430 115 L1500 125 L1565 150 L1622 185 L1671 223 L1715 255 L1761 279 L1813 293 L1873 303 L1939 315 L2007 332 L2070 358 L2125 393 L2170 435 L2203 482 L2226 533 L2236 586Z'/><path d='M2323 640 L2298 698 L2260 752 L2212 800 L2162 843 L2114 883 L2073 924 L2038 967 L2002 1012 L1960 1055 L1908 1092 L1845 1119 L1776 1134 L1705 1141 L1636 1147 L1569 1160 L1500 1181 L1424 1209 L1340 1236 L1250 1252 L1160 1248 L1080 1222 L1018 1175 L975 1114 L948 1049 L932 985 L918 928 L903 876 L885 829 L866 783 L846 736 L828 689 L811 640 L794 588 L777 533 L765 475 L765 414 L781 355 L816 302 L869 256 L933 220 L1001 190 L1068 161 L1133 131 L1197 99 L1266 69 L1341 49 L1421 45 L1500 61 L1573 94 L1635 137 L1688 180 L1739 213 L1793 234 L1858 244 L1934 248 L2017 257 L2101 275 L2175 306 L2237 348 L2282 400 L2312 457 L2329 518 L2333 579Z'/><path d='M344 180 L342 186 L339 192 L336 197 L332 202 L328 207 L324 212 L320 216 L315 221 L310 225 L304 229 L297 232 L290 234 L283 235 L275 237 L268 238 L260 240 L252 242 L243 243 L234 243 L225 242 L218 238 L212 234 L207 228 L203 222 L200 216 L198 211 L194 206 L191 201 L188 196 L185 191 L183 186 L182 180 L181 174 L180 168 L181 162 L182 156 L185 150 L189 145 L194 140 L201 136 L207 132 L214 129 L221 126 L228 123 L236 121 L244 119 L252 119 L260 120 L268 122 L275 126 L281 128 L287 131 L294 133 L302 134 L310 135 L318 137 L326 140 L332 144 L337 149 L341 155 L343 161 L344 168 L344 174Z'/><path d='M424 180 L422 192 L417 203 L411 214 L404 224 L396 234 L388 243 L380 253 L370 262 L360 270 L348 277 L335 283 L320 288 L306 292 L291 295 L276 299 L260 302 L243 306 L226 308 L208 307 L191 303 L177 295 L165 285 L156 273 L150 262 L144 251 L137 241 L130 231 L122 222 L114 213 L108 202 L103 191 L100 180 L99 168 L99 156 L101 144 L105 132 L111 121 L119 110 L129 100 L141 92 L154 84 L168 78 L182 72 L196 66 L212 62 L228 60 L244 60 L260 62 L275 67 L289 73 L302 78 L315 81 L329 84 L345 86 L362 88 L379 92 L394 98 L407 107 L416 118 L421 130 L424 143 L426 156 L426 168Z'/><path d='M503 180 L500 198 L495 215 L487 231 L477 246 L465 261 L452 275 L439 289 L425 302 L409 315 L391 326 L372 335 L351 343 L329 349 L307 355 L284 361 L260 367 L235 372 L208 374 L182 371 L158 363 L137 350 L121 334 L109 317 L99 300 L89 284 L78 270 L65 257 L51 244 L38 230 L28 214 L21 197 L17 180 L16 162 L18 144 L22 126 L28 109 L36 91 L48 75 L63 61 L81 48 L101 36 L121 26 L143 18 L165 10 L188 5 L212 2 L236 3 L260 7 L282 13 L303 20 L323 26 L344 31 L366 33 L391 35 L417 38 L442 45 L465 56 L482 70 L494 87 L500 106 L503 125 L504 144 L504 162Z'/><path d='M580 180 L578 203 L572 226 L563 248 L550 269 L534 288 L517 307 L498 325 L479 342 L458 359 L435 374 L410 387 L382 399 L354 409 L324 418 L293 426 L260 433 L226 438 L191 439 L156 433 L125 421 L99 403 L79 381 L63 358 L49 336 L35 317 L18 300 L-1 283 L-22 266 L-41 248 L-55 226 L-64 204 L-68 180 L-67 156 L-63 132 L-57 109 L-49 85 L-38 62 L-22 40 L-3 20 L21 3 L47 -12 L75 -25 L104 -36 L134 -45 L166 -51 L197 -53 L229 -52 L260 -47 L289 -40 L317 -32 L344 -26 L373 -23 L405 -21 L439 -18 L474 -13 L508 -3 L536 12 L557 33 L570 57 L577 83 L579 108 L580 133 L580 157Z'/><path d='M657 180 L656 209 L650 237 L639 265 L623 291 L602 316 L580 338 L557 361 L533 382 L507 403 L479 423 L449 441 L415 457 L379 471 L341 483 L302 493 L260 501 L217 504 L173 502 L132 493 L95 476 L64 452 L39 425 L20 397 L1 372 L-19 350 L-43 330 L-70 311 L-98 290 L-123 266 L-141 239 L-151 210 L-153 180 L-151 150 L-144 120 L-136 91 L-126 62 L-112 33 L-93 5 L-69 -20 L-40 -42 L-7 -61 L29 -76 L67 -88 L105 -97 L144 -103 L183 -106 L222 -104 L260 -99 L296 -93 L331 -86 L367 -81 L405 -79 L446 -77 L489 -74 L533 -67 L574 -53 L607 -31 L631 -3 L644 28 L650 60 L653 92 L654 122 L655 151Z'/></g></svg>");background-size:100% 100%;pointer-events:none}
+
+/* selo de dossiê: a capa (.selo) e o canto de cima dos slides (.dtag), com o nome e, com o link do painel, o código do registro */
+.selo{margin:0;padding:12px 22px 11px;border:1px solid rgba(200,184,138,.5);background:rgba(10,20,34,.6);font-family:var(--f-label);font-weight:600;font-size:30px;line-height:1.2;letter-spacing:.32em;text-transform:uppercase;color:var(--sand-l);white-space:nowrap}
+.selo .cod{margin-left:22px;padding-left:22px;border-left:1px solid rgba(200,184,138,.4);color:var(--muted);letter-spacing:.2em}
+.dtag{top:30px;right:72px;margin:0;font-family:var(--f-label);font-weight:600;font-size:24px;line-height:1.2;letter-spacing:.3em;text-transform:uppercase;color:var(--sand);white-space:nowrap;z-index:40}
+.dtag::before{content:"";display:inline-block;width:14px;height:14px;margin-right:16px;border-left:2px solid var(--sand);border-top:2px solid var(--sand);vertical-align:3px}
+.brackets.sand i{border-color:var(--sand)}
+.doc .dh.ok{color:var(--olive-l)}
+.doc .dh.ok::before{content:"";display:inline-block;width:10px;height:20px;margin:0 18px 0 4px;border-right:3px solid var(--olive-l);border-bottom:3px solid var(--olive-l);transform:rotate(40deg) translateY(-4px)}
+
+/* 03: o combinado de decidir hoje, visível */
+.combinado{margin-top:40px;padding:20px 30px 22px;border-left:4px solid var(--sand);background:linear-gradient(90deg,rgba(200,184,138,.10),rgba(200,184,138,0))}
+.combinado .k{font-family:var(--f-label);font-weight:600;font-size:24px;letter-spacing:.3em;text-transform:uppercase;color:var(--sand);margin:0 0 8px}
+.combinado .v{font-size:44px;line-height:1.2;font-weight:600;color:var(--white);margin:0}
+
+/* 04 e 11: a tabela do olhômetro. No 04, a coluna da resposta fica vazia e tracejada; o 11 preenche com o Zyron */
+.vs th.c2,.vs td.c2{color:var(--signal)}
+.vs td.c2{background:rgba(226,85,43,.05);border-left:2px solid rgba(226,85,43,.45)}
+.vs.so th.c3{color:var(--muted);text-shadow:none}
+.vs.so .c3{background:none;border-left:2px dashed rgba(127,196,234,.45);border-right:2px dashed rgba(127,196,234,.45)}
+.cmp .hd p.op{color:var(--signal)}
+
+/* 05: o caminho mais curto e o tripé da carreira (Ser visto, Ser preparado, Ser apresentado) */
+.road.compact .stop .d{font-size:30px}
+.tripe{display:grid;grid-template-columns:repeat(3,1fr) 1.15fr;column-gap:44px;align-items:start;padding-top:28px;border-top:1px solid var(--line)}
+.tripe .tp{position:relative;padding-left:36px}
+.tripe .tp i{position:absolute;left:0;top:15px;width:18px;height:18px;border-radius:50%}
+.tripe .tp i.d1{background:var(--ice)}
+.tripe .tp i.d2{background:linear-gradient(90deg,var(--ice) 50%,var(--sand) 50%)}
+.tripe .tp i.d3{background:var(--sand)}
+.tripe .v{font-family:var(--f-title);font-weight:800;font-size:52px;line-height:1;text-transform:uppercase;color:var(--white)}
+.tripe .d{font-size:30px;line-height:1.3;color:var(--body);margin-top:10px!important}
+.tripe .tp-f{font-size:40px;line-height:1.2;font-weight:600;color:var(--sand-l);padding-left:30px;border-left:3px solid var(--sand)}
+
+/* 10: o seu lugar em campo (o campo é desenhado pelo deck.js; os clubes, pelo zyron-desenhos.js) */
+.pieces.vert{flex-direction:column;align-items:flex-start}
+.pieces.vert p{font-size:36px}
+.pieces.vert .pc-g{border-left:2px solid var(--sand);border-top:0}
+.campo-box{padding:20px;background:linear-gradient(180deg,#0B1726,#08111D);border:1px solid rgba(200,184,138,.28);box-shadow:0 40px 120px rgba(0,0,0,.55)}
+.campo-box svg,.bv-campo svg{display:block;width:100%;height:auto}
+.campo-leg{margin:16px 0 0!important;font-family:var(--f-label);font-weight:600;font-size:24px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.cartao{position:relative;padding:26px 32px 26px;background:linear-gradient(180deg,#0E1B2D,#0A1422);border:1px solid rgba(200,184,138,.35);box-shadow:0 40px 120px rgba(0,0,0,.55)}
+.cartao::before,.cartao::after{content:"";position:absolute;width:40px;height:40px;border:0 solid var(--sand)}
+.cartao::before{right:-12px;top:-12px;border-right-width:3px;border-top-width:3px}
+.cartao::after{left:-12px;bottom:-12px;border-left-width:3px;border-bottom-width:3px}
+.ct-ok{margin:0;padding-bottom:14px;border-bottom:1px solid var(--line);font-family:var(--f-label);font-weight:600;font-size:24px;letter-spacing:.26em;text-transform:uppercase;color:var(--olive-l)}
+.ct-ok::before{content:"";display:inline-block;width:9px;height:18px;margin:0 16px 0 4px;border-right:3px solid var(--olive-l);border-bottom:3px solid var(--olive-l);transform:rotate(40deg) translateY(-3px)}
+.ct-nm{margin:18px 0 0!important;font-family:var(--f-title);font-weight:800;font-size:64px;line-height:1;text-transform:uppercase;color:var(--white);white-space:nowrap}
+.ct-pos{margin:8px 0 0!important;font-family:var(--f-title);font-weight:700;font-size:40px;line-height:1.05;letter-spacing:.04em;text-transform:uppercase;color:var(--sand)}
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin-top:18px}
+.ct-grid .k{font-family:var(--f-label);font-weight:600;font-size:24px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin:0}
+.ct-grid .v{font-size:34px;line-height:1.15;font-weight:600;color:var(--white);margin:4px 0 0!important}
+.ct-cod{margin:18px 0 0!important;padding-top:12px;border-top:1px solid var(--line);font-family:var(--f-label);font-weight:600;font-size:24px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.clubes{list-style:none;margin:10px 0 0;padding:12px 0 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:8px 24px}
+.clubes li{margin:0}
+.clubes b{display:block;font-weight:600;font-size:26px;line-height:1.1;color:var(--white)}
+.clubes span{display:block;margin-top:3px;font-family:var(--f-label);font-weight:600;font-size:24px;line-height:1.1;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+/* 19: a escada do sim, um degrau por avanço */
+.escada{display:flex;align-items:flex-end;gap:16px}
+.escada .dg{flex:1;padding:22px 24px 0;background:linear-gradient(180deg,#10203A,#0A1422);border-top:4px solid var(--sand)}
+.escada .dg .n{font-family:var(--f-title);font-weight:800;font-size:40px;line-height:1;color:var(--sand);margin:0 0 10px}
+.escada .dg .who{font-family:var(--f-label);font-weight:600;font-size:24px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.escada .dg .q{font-size:32px;line-height:1.25;font-weight:600;color:var(--white);margin:0}
+
+/* 23: o passo do tripé ao lado do ritmo */
+.pl-rt .ps{color:var(--sand-l)}
+
+/* 25: a miniatura do campo ao lado das boas-vindas */
+.bv-row{display:flex;gap:40px;align-items:flex-start}
+.bv-row .welcome{flex:1;min-width:0}
+.bv-campo{flex:none;width:300px}
+.bv-leg{margin:12px 0 0!important;font-family:var(--f-label);font-weight:600;font-size:24px;letter-spacing:.24em;text-transform:uppercase;color:var(--sand)}
+
+/* apresentador: a etapa da Bíblia, o que o slide desarma e os pontos de pergunta e silêncio */
+.pz-etapa{margin:6px 0 0;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font:600 13px var(--f-label);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.pz-etapa b{color:var(--sand-l);font-weight:600}
+.pz-siltag{border:1px solid var(--signal);color:var(--signal);border-radius:4px;padding:3px 7px;letter-spacing:.16em}
+.pz-sec.sil{border-left-color:var(--signal)}
+.pz-sec.desarma{border-left-color:var(--olive-l)}
+.pz-ctl.warn{border-left-color:var(--signal)}
+
+/* ========== v2 (08/10/2026): a leitura do atleta no 13, o vídeo dele e o relatório que o painel guardou ==========
+   Bom em verde-oliva claro, a melhorar em areia (vazado). O laranja-sinal não entra aqui: é só do olhômetro. */
+.ia13 .chapters.oculta{display:none}
+.ia13 .player video{object-fit:contain}
+.player .som{position:absolute;right:18px;top:18px;z-index:3;display:flex;align-items:center;gap:10px;padding:8px 16px 8px 12px;border:1px solid rgba(127,196,234,.55);border-radius:999px;background:rgba(6,11,20,.78);color:var(--white);font:600 24px var(--f-label);letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.player .som svg{width:30px;height:30px;fill:var(--ice);stroke:var(--ice);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.player .som .tocando,.player.com-som .som .mudo{display:none}
+.player.com-som .som .tocando{display:block}
+.ia-chamada{position:absolute;left:18px;right:18px;bottom:18px;z-index:2;padding:12px 20px 14px;background:rgba(6,11,20,.84);border-left:5px solid var(--olive-l)}
+.ia-chamada.ajustar{border-left-color:var(--sand)}
+.ia-chamada[hidden]{display:none}
+.ia-chamada .lk{margin:0;font:600 28px var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:var(--white)}
+.ia-chamada .nt{margin:4px 0 0!important;font-size:26px;line-height:1.25;color:var(--body)}
+.ia-chamada .nt:empty{display:none}
+.ia-linha .rl-linha{position:relative;height:60px}
+.ia-linha .rl-trilho{position:absolute;left:0;right:0;top:14px;height:4px;background:rgba(200,214,232,.2)}
+.ia-linha .rl-m{position:absolute;top:4px;width:24px;height:24px;margin-left:-12px;border-radius:50%;border:4px solid var(--olive-l);background:var(--olive-l);padding:0;cursor:pointer}
+.ia-linha .rl-m.ajustar{background:var(--bg);border-color:var(--sand)}
+.ia-linha .rl-t0,.ia-linha .rl-t1{position:absolute;top:32px;margin:0;font:600 24px var(--f-label);letter-spacing:.1em;color:var(--muted)}
+.ia-linha .rl-t0{left:0}
+.ia-linha .rl-t1{right:0}
+.ia-linha .rl-curtos{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 28px}
+.ia-linha .rl-curtos li{display:flex;align-items:center;gap:12px;min-width:0;cursor:pointer}
+.ia-linha .rl-curtos i{flex:none;width:18px;height:18px;border-radius:50%;background:var(--olive-l)}
+.ia-linha .rl-curtos li.ajustar i{background:none;border:3px solid var(--sand)}
+.ia-linha .rl-curtos .tm{font:600 28px var(--f-label);letter-spacing:.06em;color:var(--white)}
+.ia-linha .rl-curtos .tp{font-size:28px;color:var(--body);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ia-linha .rl-curtos .lt{flex:none;font:600 24px var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:var(--olive-l)}
+.ia-linha .rl-curtos li.ajustar .lt{color:var(--sand)}
+.ia-pe p{margin:0 0 6px!important;font-size:24px;line-height:1.3;color:var(--muted)}
+.ia-rel .rel-hd{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.ia-rel .rel-k{margin:0;font:600 30px var(--f-label);letter-spacing:.24em;text-transform:uppercase;color:var(--sand)}
+.ia-rel .rel-fonte{margin:0;font:600 24px var(--f-label);letter-spacing:.18em;text-transform:uppercase;color:var(--ice)}
+.ia-rel .rel-2{display:grid;grid-template-columns:220px 1fr;gap:30px;align-items:start;margin-top:22px}
+.ia-rel .rel-2:has(>div:first-child:empty){grid-template-columns:1fr}
+.ia-rel .rel-3{margin-top:18px}
+.rl-rosca{position:relative;width:220px}
+.rl-rosca svg{display:block;width:100%}
+.rl-r-fundo{stroke:rgba(200,214,232,.12)}
+.rl-r-bom{stroke:var(--olive-l)}
+.rl-r-ajustar{stroke:var(--sand)}
+.rl-r-meio{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.rl-r-n{margin:0;font-family:var(--f-title);font-weight:800;font-size:64px;line-height:1;color:var(--white)}
+.rl-r-n span{font-size:30px;color:var(--muted)}
+.rl-r-pct{margin:4px 0 0!important;font:600 26px var(--f-label);letter-spacing:.08em;color:var(--olive-l)}
+.rl-r-leg{margin:10px 0 0!important;text-align:center;font:600 24px var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.ia-rel .rl-bloco{margin:0 0 14px}
+.ia-rel .rl-k{margin:0 0 6px!important;font:600 24px var(--f-label);letter-spacing:.24em;text-transform:uppercase;color:var(--sand)}
+.ia-rel .rl-lista{list-style:none;margin:0;padding:0}
+.ia-rel .rl-lista li{position:relative;padding-left:32px;margin:0 0 6px;font-size:28px;line-height:1.22;color:var(--white)}
+.ia-rel .rl-fortes li::before{content:"";position:absolute;left:5px;top:.18em;width:9px;height:18px;border-right:3px solid var(--olive-l);border-bottom:3px solid var(--olive-l);transform:rotate(40deg)}
+.ia-rel .rl-prior li::before{content:"";position:absolute;left:2px;top:.42em;width:14px;height:14px;border-top:3px solid var(--sand);border-right:3px solid var(--sand);transform:rotate(45deg)}
+.ia-rel .rl-foco .rl-v{margin:0;font-size:30px;line-height:1.25;font-weight:600;color:var(--sand-l)}
+.ia-rel .rel-fecho{margin:16px 0 0!important;padding-top:14px;border-top:1px solid var(--line);font-size:28px;line-height:1.3;font-weight:600;color:var(--white)}
+.ia-rel .rel-prep .t{font-size:72px;margin-top:44px!important}
+.ia-rel .rel-prep .b{font-size:32px;line-height:1.3;color:var(--body);margin-top:20px!important}
+
+/* 01: com o quadro do vídeo dele, o dossiê da capa vira a foto do jogo dele (duotone navy) */
+.dz-foto{display:flex;align-items:center;justify-content:center}
+.dz-quadro{position:relative;width:760px;aspect-ratio:16/9;overflow:hidden;border:2px solid rgba(200,184,138,.55);box-shadow:0 40px 120px rgba(0,0,0,.6),0 0 60px rgba(230,219,184,.12)}
+.dz-quadro img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.12) brightness(.95)}
+.dz-tom{position:absolute;inset:0;background:#12233A;mix-blend-mode:color}
+.dz-tom::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,11,20,0) 35%,rgba(6,11,20,.9))}
+.dz-rot{position:absolute;left:30px;right:30px;bottom:24px}
+.dz-rot .k{margin:0;font:600 24px var(--f-label);letter-spacing:.3em;text-transform:uppercase;color:var(--sand)}
+.dz-rot .n{margin:6px 0 0!important;font:800 72px/1 var(--f-title);text-transform:uppercase;color:var(--white)}
+.dz-rot .c{margin:6px 0 0!important;font:600 24px var(--f-label);letter-spacing:.2em;color:var(--muted)}
+.dz-rot .c:empty{display:none}
+.dz-ok{position:absolute;right:26px;top:24px;margin:0;padding:6px 16px 5px;border:3px solid var(--olive-l);background:rgba(6,11,20,.6);font:700 28px var(--f-label);letter-spacing:.22em;text-transform:uppercase;color:var(--olive-l);transform:rotate(-6deg)}
+.ia-linha .rl-linha.denso .rl-m{width:16px;height:16px;margin-left:-8px;top:8px;border-width:3px}
+
+/* ========== 09/10/2026: tres slides novos (a plataforma, quem olha por ele e a rede), pele navy-seal ========== */
+/* so as cores da casa: gelo = o Zyron e a leitura, areia = gente e carreira, oliva = o campo. Laranja so do olhometro. Nada abaixo de 24px. */
+.pf-linhas{margin:0}
+.pf-l{display:flex;gap:18px;align-items:baseline;margin:0 0 22px!important;font:400 38px/1.25 var(--f-body);color:var(--body)}
+.pf-l i{flex:0 0 auto;width:16px;height:16px;margin-top:14px;border-radius:50%;background:var(--ice)}
+.pf-l.s i{background:var(--sand)}
+.pf-app{overflow:hidden;background:linear-gradient(180deg,#0C1829,#08121F);border:1px solid rgba(127,196,234,.32);border-radius:18px;box-shadow:0 40px 120px rgba(0,0,0,.6)}
+.pf-side{position:absolute;left:0;top:0;bottom:0;width:80px;background:#07101B;border-right:1px solid var(--line)}
+.pf-side i{position:absolute;left:23px;width:34px;height:34px;border-radius:9px;border:2px solid rgba(201,211,223,.35)}
+.pf-side i.on{border-color:var(--ice);background:rgba(127,196,234,.2)}
+.pf-top{position:absolute;left:80px;right:0;top:0;height:70px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px}
+.pf-top .pg{margin:0;font:600 28px var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--white)}
+.pf-top .il{margin:0;font:600 24px var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand)}
+.pf-card{position:absolute;background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.pf-card>.k{position:absolute;left:18px;top:12px;margin:0;z-index:3;font:600 24px var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--body);text-shadow:0 2px 10px rgba(6,11,20,.9)}
+.pf-vid{position:absolute;inset:0;background:radial-gradient(60% 70% at 50% 55%,rgba(127,196,234,.25),rgba(8,18,31,0) 70%),linear-gradient(180deg,#10223A,#0A1626)}
+.pf-vid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pf-vid .sh{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,11,20,.55),rgba(6,11,20,.1) 40%,rgba(6,11,20,.45))}
+.pf-play{position:absolute;left:50%;top:56%;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;background:rgba(6,11,20,.72);border:3px solid var(--ice);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 10px rgba(127,196,234,.12)}
+.pf-play svg{margin-left:6px}
+.pf-heat svg{position:absolute;inset:0;width:100%;height:100%}
+.pf-clips{position:absolute;left:16px;right:16px;top:52px;bottom:16px;display:flex;gap:16px}
+.pf-clip{position:relative;flex:1;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(160deg,#12263F,#0A1626)}
+.pf-clip::before{content:"";position:absolute;left:0;right:0;top:0;bottom:0;background:linear-gradient(90deg,rgba(127,196,234,.08) 1px,transparent 1px) 0 0/34px 34px,linear-gradient(rgba(127,196,234,.08) 1px,transparent 1px) 0 0/34px 34px}
+.pf-clip .pl{position:absolute;right:14px;top:14px;width:44px;height:44px;border-radius:50%;border:2px solid var(--ice);background:rgba(6,11,20,.6);display:flex;align-items:center;justify-content:center}
+.pf-clip .pl svg{margin-left:3px}
+.pf-clip .nm{position:absolute;left:16px;bottom:12px;margin:0;font:600 28px var(--f-label);letter-spacing:.14em;text-transform:uppercase;color:var(--white)}
+.pf-rel{position:absolute;left:18px;right:18px;top:48px;bottom:14px;display:flex;gap:28px}
+.pf-rel>div{flex:1}
+.pf-rel .h{margin:0;font:600 24px var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--ice)}
+.pf-rel .h.s{color:var(--sand)}
+.pf-rel .sk{display:block;height:12px;margin-top:14px;border-radius:6px;background:rgba(201,211,223,.2)}
+.pf-rel .sk.m{width:72%}
+/* quem olha por ele */
+.qo-card{position:absolute;padding:30px 38px 26px;border:1px solid rgba(127,196,234,.34);background:linear-gradient(180deg,#0E1B2D,#0A1422);box-shadow:0 40px 120px rgba(0,0,0,.5)}
+.qo-card.s{border-color:rgba(200,184,138,.4)}
+.qo-card .hd{display:flex;align-items:center;gap:22px;margin:0 0 20px!important}
+.qo-card .hd svg{flex:0 0 auto}
+.qo-card .nm{margin:0;font:800 64px/.95 var(--f-title);text-transform:uppercase;color:var(--white)}
+.qo-card .tg{margin:6px 0 0!important;font:600 26px var(--f-label);letter-spacing:.26em;text-transform:uppercase;color:var(--ice)}
+.qo-card.s .tg{color:var(--sand)}
+.qo-card ul{list-style:none;margin:0;padding:0}
+.qo-card li{position:relative;margin:0 0 14px;padding-left:36px;font:400 36px/1.22 var(--f-body);color:var(--body)}
+.qo-card li::before{content:"";position:absolute;left:0;top:16px;width:16px;height:16px;border-radius:50%;background:var(--ice)}
+.qo-card.s li::before{background:var(--sand)}
+.qo-card li b{font-weight:600;color:var(--white)}
+.qo-mais{position:absolute;width:72px;height:72px;border-radius:50%;border:2px solid rgba(200,214,232,.4);background:#08111D;display:flex;align-items:center;justify-content:center;z-index:5}
+.qo-faixa{position:absolute;display:flex;gap:28px}
+.qo-pl{position:relative;flex:1;padding:18px 26px 16px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
+.qo-pl .n{margin:0;font:600 26px var(--f-label);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.qo-pl .r{margin:6px 0 0!important;font:800 54px/1 var(--f-title);text-transform:uppercase;color:var(--white)}
+.qo-pl .d{margin:6px 0 0!important;font:400 32px/1.2 var(--f-body);color:var(--body)}
+.qo-pl .aqui{position:absolute;right:16px;top:14px;margin:0;padding:4px 14px 3px;border:2px solid var(--sand);background:rgba(10,20,34,.8);font:700 24px var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand-l)}
+/* a rede */
+.rd-card{position:absolute;padding:28px 34px 24px;border:1px solid rgba(200,184,138,.36);background:linear-gradient(180deg,#0E1B2D,#0A1422);box-shadow:0 40px 120px rgba(0,0,0,.5)}
+.rd-card .tg{margin:0;font:600 26px var(--f-label);letter-spacing:.26em;text-transform:uppercase;color:var(--sand)}
+.rd-card .nm{margin:8px 0 0!important;font:800 54px/.95 var(--f-title);text-transform:uppercase;color:var(--white)}
+.rd-card .tx{margin:14px 0 0!important;font:400 32px/1.25 var(--f-body);color:var(--body)}
+.rd-card .tx b{font-weight:600;color:var(--white)}
+.rd-card .fn{margin:14px 0 0!important;font:400 24px/1.3 var(--f-body);color:var(--muted)}
+.rd-num{display:flex;align-items:baseline;gap:14px;margin:10px 0 0!important}
+.rd-num b{flex:0 0 auto;font:800 68px/1 var(--f-title);color:var(--sand-l)}
+.rd-num span{font:400 32px/1.15 var(--f-body);color:var(--body)}
+.rd-linha{position:absolute;margin:0;padding:14px 26px;border-left:4px solid var(--sand);background:rgba(200,184,138,.08);font:400 32px/1.25 var(--f-body);color:var(--white)}
+.rd-linha b{font-weight:600;color:var(--sand-l)}
+
+/* nada abaixo de 24px (regra dura dos briefings): sobe o que ficou com 20 a 22px nos slides 14, 17 e 26 */
+.ia-call .bar{font-size:24px}
+.ia-call .chip{font-size:24px}
+.ia-call .nm .lb{font-size:24px}
+.cases .case .cl{font-size:24px;letter-spacing:.12em}
+.case.mirror .tag{font-size:24px;letter-spacing:.14em}
+.post-hd .s{font-size:24px}
+.post-art .sl{font-size:24px}
+
+/* 11/10/2026: a garantia vem depois dos planos e mostra os tres valores de uma vez (sem avanco) */
+.gt-planos{display:flex;gap:30px}
+.gt-pl{flex:1;padding:14px 26px 14px;border:1px solid var(--line);background:rgba(255,255,255,.035)}
+.gt-pl .n{margin:0;font:600 26px var(--f-label);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.gt-pl.sc .n{color:var(--ice)}
+.gt-pl.pr .n{color:var(--white)}
+.gt-pl.lg .n{color:var(--sand-l)}
+.gt-pl .v{margin:6px 0 0!important;font:800 68px/1 var(--f-title);text-transform:uppercase;color:var(--white);white-space:nowrap}
+.gt-pl .v i{margin-left:12px;font:600 32px var(--f-label);font-style:normal;letter-spacing:.12em;color:var(--muted)}
+.gt-pl .p{margin:6px 0 0!important;font:400 32px/1.2 var(--f-body);color:var(--body)}
+.gt-pl .p b{font-weight:600;color:var(--white)}
+
+/* nada abaixo de 24px: o contrato do slide 22 (aparece no fim da animacao) tinha 20 e 22px */
+.contract .h{font-size:24px;letter-spacing:.22em}
+.contract .sig .ln{font-size:24px}
+
+/* ===== 11/10/2026: painel do closer (jogador-de-elite-closer). A foto e o nome do atleta nos encaixes
+   (01, 02, 09, 10, 11, 18, 24, 26 e 27), o slide 19 (o que ele leva) e a garantia lida de window.GARANTIA.
+   Foto em tom navy suave por padrao (filtro e sobreposicao, como o quadro do video da capa); com a classe
+   foto-cor no html (FOTO_TOM no deck.js) a foto fica em cor. Sem foto, a inicial do nome no mesmo quadro. ===== */
+.ft{position:relative;display:block;overflow:hidden;background:#0A1422;border:2px solid rgba(200,184,138,.6)}
+.ft>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:grayscale(.85) contrast(1.06) brightness(1.04)}
+.ft-tom{position:absolute;inset:0;background:#12233A;mix-blend-mode:color;opacity:.82;pointer-events:none}
+.ft-sombra{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,11,20,0) 44%,rgba(6,11,20,.9));pointer-events:none}
+.foto-cor .ft>img{filter:none}
+.foto-cor .ft-tom{display:none}
+.ft-ret{aspect-ratio:3/4}
+.ft-av{border-radius:50%;aspect-ratio:1/1;border:3px solid var(--sand);box-shadow:0 0 0 6px rgba(200,184,138,.14)}
+.ft-av>img{object-position:50% 50%}
+.ft-mono{display:flex;align-items:center;justify-content:center;background-color:#0A1422;background-image:linear-gradient(rgba(127,196,234,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(127,196,234,.07) 1px,transparent 1px);background-size:48px 48px;background-position:center}
+.ft-mono>b{font-family:var(--f-title);font-weight:800;line-height:1;color:var(--sand-l);text-transform:uppercase}
+/* 01: o retrato vira o dossie (a precedencia e foto, quadro do video, desenho) */
+.cp-ret{position:absolute;left:225px;top:6px;width:450px;box-shadow:0 40px 120px rgba(0,0,0,.6),0 0 70px rgba(230,219,184,.14)}
+.cp-rot{position:absolute;left:28px;right:28px;bottom:24px}
+.cp-rot .k{margin:0;font:600 24px var(--f-label);letter-spacing:.3em;text-transform:uppercase;color:var(--sand)}
+.cp-rot .n{margin:8px 0 0!important;font:800 64px/1 var(--f-title);text-transform:uppercase;color:var(--white);white-space:nowrap}
+.cp-rot .c{margin:8px 0 0!important;font:600 24px var(--f-label);letter-spacing:.2em;color:var(--body)}
+.cp-rot .c:empty{display:none}
+.cp-ok{left:592px;top:42px;margin:0;padding:6px 16px 5px;border:3px solid var(--olive-l);background:rgba(6,11,20,.8);font:700 28px var(--f-label);letter-spacing:.22em;text-transform:uppercase;color:var(--olive-l);transform:rotate(8deg);z-index:3}
+.cp-montado{text-align:center}
+.cp-montado .m{margin:0;font:600 30px/1.25 var(--f-body);color:var(--sand-l);text-wrap:balance}
+.cp-montado .c{margin:6px 0 0!important;font:500 28px/1.3 var(--f-body);color:var(--white)}
+/* 02: o retrato no cartao Perfil aprovado */
+.pv-top{display:flex;gap:24px;align-items:center}
+.pv-foto{flex:0 0 180px}
+.pv-id{flex:1 1 auto;min-width:0}
+.pv-campos{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;margin-top:30px}
+.pv-campos .v{margin:4px 0 0!important;font-size:34px;line-height:1.15;color:var(--white)}
+.pv-pe{position:absolute;left:44px;right:44px;bottom:36px;border-top:1px solid rgba(200,184,138,.35);padding-top:20px}
+.pv-unico{margin:0 0 12px!important;font:600 32px/1.25 var(--f-body);color:var(--sand-l)}
+/* 09: o avatar no topo da plataforma */
+.pf-eu{display:flex;align-items:center;gap:14px}
+.pf-av{width:50px;height:50px;border-width:2px;box-shadow:none}
+/* 10: ele no centro, entre a IA e a equipe (no lugar do sinal de mais) */
+.qo-centro{position:absolute;display:flex;flex-direction:column;align-items:center;text-align:center;z-index:5}
+.qo-av{width:172px;height:172px}
+.qo-centro .lg{margin:16px 0 0!important;font:500 26px/1.25 var(--f-body);color:var(--white)}
+.qo-centro .lg b{display:block;margin-top:6px;font:800 34px/1 var(--f-title);text-transform:uppercase;color:var(--sand-l)}
+.qo-card.estreito{padding:28px 32px 24px}
+.qo-card.estreito li{font-size:32px}
+/* 11: o retrato no cartao do atleta */
+.ct-topo{display:flex;gap:20px;align-items:center;margin-top:18px}
+.ct-foto{flex:0 0 120px}
+.ct-id{flex:1 1 auto;min-width:0}
+.ct-topo .ct-nm{margin:0!important}
+/* 18: o perfil dele, pronto pra encaminhar */
+.rd-perfil{position:absolute;display:flex;align-items:center;gap:18px;padding:12px 26px 12px 12px;border:2px solid var(--sand);background:rgba(10,20,34,.88);box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.rd-av{width:72px;height:72px;flex:0 0 auto;border-width:2px;box-shadow:none}
+.rd-perfil p{margin:0;font:600 30px/1.15 var(--f-body);color:var(--white)}
+.rd-perfil p .sub{display:block;margin-top:6px;font:600 24px/1.2 var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand)}
+/* 24: o avatar na vaga dele da turma (Legacy com vagas), ou ao lado do titulo */
+.turma .row i.you{position:relative;display:flex;align-items:center;justify-content:center}
+.tm-av{width:54px;height:54px;border-width:2px;border-color:#060B14;box-shadow:none}
+.tm-ini{font:800 40px/1 var(--f-title);color:#060B14}
+.vg-av{width:124px;height:124px}
+/* 26: a garantia dele */
+.gt-dele{display:flex;align-items:center;gap:16px;padding:10px 24px 10px 10px;border:1px solid rgba(200,184,138,.5);background:rgba(10,20,34,.85)}
+.gt-av{width:58px;height:58px;flex:0 0 auto;border-width:2px;box-shadow:none}
+.gt-dele p{margin:0;font:600 24px var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand-l);white-space:nowrap}
+/* 27: o anuncio com o retrato (Legacy) e o cartao do plano com o retrato (Assessoria PRO e Scouting) */
+.post-art.com-foto{padding:0}
+.pa-foto{position:absolute;left:0;right:0;top:0;height:300px;border:0;border-bottom:1px solid rgba(200,184,138,.35)}
+.pa-foto>img{object-position:50% 30%}
+.pa-foto .ft-sombra{background:linear-gradient(180deg,rgba(6,11,20,0) 62%,rgba(7,13,22,.85))}
+.post-art.com-foto .off{position:absolute;left:30px;top:26px;z-index:2}
+.pa-txt{position:absolute;left:40px;right:40px;bottom:30px;z-index:2}
+.post-art.com-foto .nm{margin-top:0!important;font-size:84px}
+.post-art.com-foto .what{font-size:26px;margin-top:10px!important}
+.post-art.com-foto .sig{position:static;margin-top:16px}
+.post-art.com-foto .sn{font-size:40px}
+.post-art.com-foto::after{z-index:3}
+.pl-pe{position:absolute;left:52px;right:52px;bottom:44px;border-top:1px solid rgba(200,184,138,.35);padding-top:22px;display:flex;gap:22px;align-items:flex-end}
+.pl-ret{flex:0 0 150px}
+.pl-pe .nm-box{flex:1 1 auto;min-width:0;padding-bottom:4px}
+/* 19: o que ele leva (seis linhas, uma por avanco, com o retrato ao lado) */
+.lv-lista{display:flex;flex-direction:column}
+.lv-l{display:grid;grid-template-columns:236px 1fr;gap:26px;align-items:baseline;padding:14px 0;border-top:1px solid var(--line)}
+.lv-l .k{margin:0;font:800 36px/1 var(--f-title);text-transform:uppercase;color:var(--sand-l)}
+.lv-l .k.ia{color:var(--ice)}
+.lv-l .d{margin:0;font:400 32px/1.25 var(--f-body);color:var(--white)}
+.lv-l .d .ref{display:block;margin-top:6px;font:400 24px/1.3 var(--f-body);color:var(--muted)}
+.lv-ret{position:absolute;width:420px;box-shadow:0 40px 120px rgba(0,0,0,.6),0 0 70px rgba(230,219,184,.12)}
+.lv-ret .cp-rot .n{font-size:56px}
+/* 19 com nome curto de 13 letras ou mais: o titulo quebra em duas linhas; a lista chega ao rodape. Mais junta so nesse caso */
+.lv-longo{display:none}
+.slide:has(.lv-longo.on) .lv-lista{margin-top:20px!important}
+.slide:has(.lv-longo.on) .lv-l{padding:9px 0}
+/* nome e sobrenome curtos (ate 14 letras): na mesma linha, a quebra vai antes do nome */
+.nm-junto{white-space:nowrap}
+/* 11 com nome da tela de 13 letras ou mais: o titulo quebra em 4 linhas e a coluna chega ao rodape; titulo de 80px so nesse caso */
+.s11-longo{display:none}
+.slide:has(.s11-longo.on) .t-96{font-size:80px}
+/* 4 com nome da tela de 22 letras ou mais: o titulo de 110px quebra em duas linhas e cobre a frase de baixo; 96px cabe em uma */
+.s4-longo{display:none}
+.slide:has(.s4-longo.on) .t-110{font-size:96px}
+/* 2 com nome da tela de 22 letras ou mais: o titulo de 130px quebra em 4 linhas e a coluna bate na frase de baixo; 110px so nesse caso */
+.s2-longo{display:none}
+.slide:has(.s2-longo.on) .t-130{font-size:110px}
