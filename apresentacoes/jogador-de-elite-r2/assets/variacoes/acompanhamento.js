@@ -6,7 +6,7 @@
   window.PLANOS = [
     { ...scouting, ticket: 'R$ 247,90', preco: 'R$ 247,90', parcela: 'R$ 24,79', porDia: 'menos de R$ 3',
       descritor: 'A leitura do seu jogo', selo: 'Seu jogo com direção',
-      promessa: 'A IA acompanha todo dia. O analista entrega o relatório a cada 15 dias.',
+      promessa: 'A IA acompanha todo dia. O analista entrega o relatório.',
       diferenca: 'a equipe de carreira todo dia, aulas, acompanhamento individual e encaminhamentos para clubes',
       sai: ['a equipe de carreira e o gerente todo dia', 'a assessoria individual e o networking', 'os encaminhamentos, a conexão com clubes e a AGN', 'o acompanhamento e a logística das seletivas'] },
     { ...legacy, ticket: 'R$ 500,00', preco: 'R$ 500', parcela: 'R$ 50', porDia: 'menos de R$ 6',
@@ -30,13 +30,13 @@
     acompanhamento: { nome: 'O acompanhamento diário', min: 1.5, fala: [
       '"[atleta], você foi escolhido pelo que a equipe viu no seu jogo. Agora essa leitura precisa virar rotina."',
       '"O investimento paga o funcionamento da IA e o trabalho dos profissionais que vão acompanhar você. O Zyron acompanha o seu jogo diariamente a partir dos vídeos enviados."',
-      '"No Scout PRO, o analista entrega o relatório a cada 15 dias. No Legacy, o estrategista e o gerente acompanham de perto todo dia, além das aulas, das conexões e das oportunidades."',
+      '"No Scout PRO, o analista entrega o relatório. No Legacy, o estrategista e o gerente acompanham de perto todo dia, além das aulas, das conexões e das oportunidades."',
       '"Não é pagar pra ser escolhido. Você já passou por essa etapa. É colocar a estrutura pra trabalhar no seu desenvolvimento."'
     ], perguntas: ['Qual acompanhamento faz sentido pro momento de vocês?'], crm: [],
-      atencao: 'Acompanhamento diário da IA nos dois planos; contato humano diário no Legacy. O Scout PRO mantém o relatório humano a cada 15 dias. Não prometa análise sem vídeo, resposta humana 24 horas nem contratação.' },
+      atencao: 'Acompanhamento diário da IA nos dois planos; contato humano diário no Legacy. O Scout PRO mantém o relatório humano. Não prometa análise sem vídeo, resposta humana 24 horas nem contratação.' },
     oferta: { nome: 'Os dois planos', min: 2, fala: [
       '"[atleta], os dois começam com o seu jogo sendo lido pelo Zyron. O que muda é a estrutura humana do seu lado."',
-      '"O Scout PRO é R$ 247,90, ou 10x sem juros de R$ 24,79: o Zyron, relatório do analista a cada 15 dias, histórico da evolução e sete módulos de formação."',
+      '"O Scout PRO é R$ 247,90, ou 10x sem juros de R$ 24,79: o Zyron, relatório do analista, histórico da evolução e sete módulos de formação."',
       '"O Legacy é R$ 500, ou 10x sem juros de R$ 50: tudo do Scout PRO, com a equipe de carreira todo dia, assessoria individual, aulas, conexões e acompanhamento das oportunidades."',
       '"Pelo que vocês me contaram, eu recomendo o [plano]. Faz sentido?" Espere a resposta antes de seguir à garantia.'
     ], silencio: 'Fale o investimento do plano recomendado e espere a família responder.',

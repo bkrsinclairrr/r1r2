@@ -292,16 +292,16 @@ window.ROTEIRO = [
   },
   { nome: 'Os planos', min: 3,
     fala: [
-      'Ponte, sem falar de dinheiro, lendo o título: "[atleta], na peneira você ficou sozinho. Daqui pra frente, não fica mais. O que muda de um plano pro outro é quem fica do teu lado, e quantas vezes: a cada 15 dias, toda semana ou todo dia. O Zyron tá nos três."',
-      'Um avanço por coluna (→ ou espaço). Cada coluna é a parte de um plano: o ritmo, o investimento e o que ele tem, cargo por cargo. Scout PRO: "Pra começar: o Zyron lê cada vídeo novo e aponta os teus pontos fortes e prioridades, o analista de performance manda o relatório da tua evolução a cada 15 dias, e você tem o relatório de entrada, o histórico e o guia da peneira."',
+      'Ponte, sem falar de dinheiro, lendo o título: "[atleta], na peneira você ficou sozinho. Daqui pra frente, não fica mais. O que muda de um plano pro outro é quem fica do teu lado, e o acompanhamento que você recebe. O Zyron tá nos três."',
+      'Um avanço por coluna (→ ou espaço). Cada coluna é a parte de um plano: o ritmo, o investimento e o que ele tem, cargo por cargo. Scout PRO: "Pra começar: o Zyron lê cada vídeo novo e aponta os teus pontos fortes e prioridades, o analista de performance manda o relatório da tua evolução, e você tem o relatório de entrada, o histórico e o guia da peneira."',
       'Assessoria PRO: "Tudo do Scout PRO, e uma equipe do teu lado toda semana: o teu estrategista de carreiras liga, você tem os sete módulos de aulas (performance, psicologia, nutrição, comportamento e imagem), conta com um estrategista esportivo, entra no networking com outros atletas e nas aulas extras, e a gestão de carreiras faz pelo menos 5 encaminhamentos de oportunidades por mês, pra clubes do Brasil e do mundo. Tudo isso por metade do Legacy."',
       'Assessoria de Elite Legacy, a coluna em destaque: "Tudo da Assessoria PRO, e o ideal, o completo: o teu estrategista de carreiras e o gerente de carreira de perto todo dia, assessoria individual com o David Willer todo mês e acompanhamento direto com ele no WhatsApp. A gestão de carreiras faz pelo menos 15 encaminhamentos de oportunidades por mês, mundo afora, com conexão direta com clubes e com a AGN. O estrategista esportivo liga toda semana, em cima dos teus relatórios e do teu desenvolvimento, você tem um plano de carreira feito pro teu jogo, e quem corre atrás de clube, vídeo e avaliação é a gente. Nas seletivas, a gente acompanha e planeja a logística com vocês. E a turma é de 10: atenção máxima, de perto."',
       'O investimento tá no topo de cada coluna, com a parcela em destaque. Leia uma vez, apontando, sem fazer conta: "O Scout PRO fica em R$ 997, a Assessoria PRO em R$ 1.497 e o Legacy em R$ 2.997, todos vitalícios, em 10x sem juros." E volte pro ritmo.',
-      'As perguntas que acertam o plano, sem falar de dinheiro: "Qual ritmo faz sentido pro [atleta]? Um relatório a cada 15 dias, alguém ligando toda semana ou alguém do lado dele todo dia?" Espere. "Vocês querem os sete módulos de aulas e um estrategista junto?" Espere. "E o David Willer de perto, com assessoria individual todo mês e as conexões e os clubes dele: é o que vocês querem agora?" Espere.',
+      'As perguntas que acertam o plano, sem falar de dinheiro: "Qual ritmo faz sentido pro [atleta]? Um relatório, alguém ligando toda semana ou alguém do lado dele todo dia?" Espere. "Vocês querem os sete módulos de aulas e um estrategista junto?" Espere. "E o David Willer de perto, com assessoria individual todo mês e as conexões e os clubes dele: é o que vocês querem agora?" Espere.',
       'Recomende um, em voz alta, com as palavras deles: "Pelo que vocês me falaram, eu recomendo o [plano]." Se a resposta apontou outro, troque o plano no apresentador antes do último avanço. Último avanço: o [plano] aparece destacado na tela, como a sua recomendação.',
       'Ponte pro número: "Agora eu te mostro o investimento do [plano]."'
     ],
-    perguntas: ['Qual ritmo faz sentido pro [atleta]? A cada 15 dias, toda semana ou todo dia?', 'Vocês querem os sete módulos de aulas e um estrategista junto?', 'Vocês querem o David Willer de perto, com assessoria individual todo mês?'],
+    perguntas: ['Qual ritmo faz sentido pro [atleta]? Relatório, acompanhamento semanal ou diário?', 'Vocês querem os sete módulos de aulas e um estrategista junto?', 'Vocês querem o David Willer de perto, com assessoria individual todo mês?'],
     crm: ['O ritmo que a família escolheu, com as palavras deles, e o plano que você recomendou.'],
     atencao: 'O título volta ao 12 ("Sozinho, na peneira"): é a dor que a família já contou, e cada coluna responde com quem fica do lado do atleta. Deixe o título pesar um segundo antes da primeira coluna. Ao lado do ritmo, o passo do tripé do 05 (Ser visto, Ser preparado, Ser apresentado), um por degrau. O 23 mostra cada plano na sua parte, com o investimento no topo da coluna, pra família ver tudo (decisão do dono, 06/10/2026). Cada coluna é a parte de um plano: o topo com o ritmo e o investimento, embaixo o que ele acrescenta ao degrau de baixo, cargo por cargo. Não leia tudo: aponte o que muda de um degrau pro outro. O Legacy aparece em destaque, com a moldura que brilha e o rótulo "O ideal": é o completo e tem a lista mais longa. Se a ficha recomendar outro plano, fale com franqueza: "o ideal é o Legacy; pro momento de vocês, a Assessoria PRO coloca uma equipe do lado dele toda semana, por metade do valor". Apresente pelo ritmo, não pelo preço: o número falado com silêncio é o do 24, o do plano recomendado. Ordem da casa: o Legacy abre (tudo o que a família viu até o 22 é a estrutura dele), a Assessoria PRO entra como o formato mais enxuto: uma equipe do lado dele toda semana, por metade do Legacy, e o Scout PRO só se o caixa realmente pedir. BANT não é interrogatório: as perguntas são de ritmo, não de dinheiro. A conexão direta com clubes e AGN, os 15 encaminhamentos por mês, a turma e os 93% são do Legacy: não atribua ao PRO nem ao Scout PRO. O encaminhamento vem a partir da Assessoria PRO, com pelo menos 5 por mês. Nunca "o mais barato", "o mais vendido" ou "o mais escolhido". Se perguntarem qual compensa, responda pelo ritmo, não pela diferença de preço.'
   },
@@ -531,11 +531,11 @@ window.PLANOS = [
     ticket: 'R$ 997,00', preco: 'R$ 997', parcela: 'R$ 99,70', porDia: 'menos de R$ 12',
     ritmo: 'A cada 15 dias', descritor: 'Pra começar', passo: 'Ser visto',
     promessa: 'Seu jogo com direção: leitura, evolução e sete módulos de formação.',
-    fala: 'O Scout PRO combina a leitura do seu jogo pelo Zyron, relatório do analista a cada 15 dias e sete módulos de formação para você aplicar no desenvolvimento.',
+    fala: 'O Scout PRO combina a leitura do seu jogo pelo Zyron, relatório do analista e sete módulos de formação para você aplicar no desenvolvimento.',
     rotulo: 'Vitalício, você tem',
     inclui: [
       'O Zyron lendo o seu jogo: vídeo novo, relatório novo.',
-      'Um analista de performance com relatório a cada 15 dias: a sua performance e os seus avanços.',
+      'Um analista de performance com relatório: a sua performance e os seus avanços.',
       'Sete módulos de formação: conteúdo para aplicar na sua rotina e no desenvolvimento do seu jogo.'
     ],
     extras: [
@@ -545,7 +545,7 @@ window.PLANOS = [
     ],
     vantagens: [
       ['O Zyron', 'lê cada vídeo novo e aponta pontos fortes e prioridades.'],
-      ['Analista de performance', 'relatório da sua evolução a cada 15 dias.'],
+      ['Analista de performance', 'relatório da sua evolução.'],
       ['Relatório de entrada', 'de onde você parte.'],
       ['Histórico de evolução', 'o quanto você avançou, num lugar só.'],
       ['Guia da peneira', 'o que o avaliador olha em vinte minutos.'],
