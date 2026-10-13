@@ -44,7 +44,7 @@
     <div class="dz-tilt dz-foto" data-if="posterOk&!fotoOk"><div class="dz-quadro"><img data-src="posterUrl" alt="Quadro do vídeo do atleta"><div class="dz-tom"></div><div class="dz-rot"><p class="k">Dossiê do atleta</p><p class="n" data-bind="nomeDossie" data-fb="VOCÊ"></p><p class="c" data-bind="dossieNo"></p></div><p class="dz-ok">Aprovado</p></div></div>
     <div data-if="fotoOk"><div class="ft ft-ret cp-ret"><img data-src="fotoUrl" alt="Foto do atleta"><div class="ft-tom"></div><div class="ft-sombra"></div><div class="cp-rot"><p class="k">Dossiê do atleta</p><p class="n" data-bind="nomeDossie" data-fit="394"></p><p class="c" data-bind="dossieNo"></p></div></div><p class="a cp-ok">Aprovado</p><div class="brackets sand" style="left:225px;top:6px;width:450px;height:600px"><i></i><i></i><i></i><i></i></div></div></div>
   <div class="a cp-montado" data-if="montadoPara" style="left:960px;top:884px;width:900px"><p class="m" data-bind="montadoPara"></p><p class="c" data-if="callTxt" data-bind="callTxt"></p></div>
-  <p class="a legal" data-if="fotoOk" style="left:960px;top:996px;width:760px">Imagem do atleta usada com autorização do responsável legal.</p>
+
   <div class="fill grain"></div>
   <p class="a selo rise" style="left:120px;top:150px"><span>Dossiê</span><span data-if="nome"> · <span data-bind="nome"></span></span><span class="cod" data-if="dossieCod">nº <span data-bind="dossieCod"></span></span></p>
   <div class="a" style="left:116px;top:262px;width:860px">
@@ -57,7 +57,7 @@
 </section>
 
 <!-- ============ 02 POR QUE VOCÊ ============ -->
-<section class="slide escolha-atleta" data-foto-slide="escolha"><div class="escolha-texto"><p class="escolha-selo"><i></i> Por que você · Jogador de Elite</p><h2 class="escolha-titulo"><span class="escolha-nome" data-if="nome"><span data-bind="nome"></span>,</span><br><span data-ifnot="nome">Você</span><span data-if="nome">você</span> foi escolhido<br>para esta conversa.</h2><p class="escolha-abertura">Esta apresentação parte do seu perfil e do próximo passo que você busca no futebol. O plano ganha sentido quando começa em você.</p><div class="escolha-contexto" data-if="selecaoContexto"><span>O que chamou atenção no seu perfil</span><p data-bind="selecaoContexto"></p></div><div class="escolha-direcao"><div><b>Entender seu jogo</b><small>O Zyron transforma os lances em uma leitura do seu perfil.</small></div><div><b>Construir evolução</b><small>No Scout PRO, sete módulos conectam conhecimento e rotina.</small></div><div><b>Definir direção</b><small>O escopo do plano orienta o acompanhamento e os próximos passos.</small></div></div><p class="escolha-assinatura">Seu perfil. Sua evolução. Uma direção para seguir.</p></div><div class="escolha-retrato"><img data-src="selecaoFotoUrl" data-if="selecaoFotoOk" alt="Foto do jogador escolhido para esta apresentação"><div class="escolha-inicial" data-ifnot="selecaoFotoOk"><span data-bind="selecaoInicial"></span></div><div class="escolha-retrato-rodape"><span>Apresentação preparada para</span><strong><span data-if="nome" data-bind="nome"></span><span data-ifnot="nome">Seu próximo passo</span></strong><p data-bind="selecaoPerfil" data-if="selecaoPerfil"></p><p data-if="selecaoCodigo">Dossiê <span data-bind="selecaoCodigo"></span> · Individual</p></div></div><p class="escolha-legal">Jogador de Elite · Uma conversa sobre o seu desenvolvimento.<span data-if="selecaoFotoOk"> Foto do jogador usada com autorização.</span></p></section>
+<section class="slide escolha-atleta" data-foto-slide="escolha"><div class="escolha-texto"><p class="escolha-selo"><i></i> Por que você · Jogador de Elite</p><h2 class="escolha-titulo"><span class="escolha-nome" data-if="nome"><span data-bind="nome"></span>,</span><br><span data-ifnot="nome">Você</span><span data-if="nome">você</span> foi escolhido<br>para esta conversa.</h2><p class="escolha-abertura">Esta apresentação parte do seu perfil e do próximo passo que você busca no futebol. O plano ganha sentido quando começa em você.</p><div class="escolha-contexto" data-if="selecaoContexto"><span>O que chamou atenção no seu perfil</span><p data-bind="selecaoContexto"></p></div><div class="escolha-direcao"><div><b>Entender seu jogo</b><small>O Zyron transforma os lances em uma leitura do seu perfil.</small></div><div><b>Construir evolução</b><small>No Scout PRO, sete módulos conectam conhecimento e rotina.</small></div><div><b>Definir direção</b><small>O escopo do plano orienta o acompanhamento e os próximos passos.</small></div></div><p class="escolha-assinatura">Seu perfil. Sua evolução. Uma direção para seguir.</p></div><div class="escolha-retrato"><img data-src="selecaoFotoUrl" data-if="selecaoFotoOk" alt="Foto do jogador escolhido para esta apresentação"><div class="escolha-inicial" data-ifnot="selecaoFotoOk"><span data-bind="selecaoInicial"></span></div><div class="escolha-retrato-rodape"><span>Apresentação preparada para</span><strong><span data-if="nome" data-bind="nome"></span><span data-ifnot="nome">Seu próximo passo</span></strong><p data-bind="selecaoPerfil" data-if="selecaoPerfil"></p><p data-if="selecaoCodigo">Dossiê <span data-bind="selecaoCodigo"></span> · Individual</p></div></div></section>
 
 <!-- ============ 03 O QUE A OBSERVAÇÃO DEIXA PASSAR (novo) ============ -->
 <!-- A dor, com o inimigo definido pelo método (a Bíblia manda a pergunta do olhômetro antes do plano). Só o lado do olhômetro,
@@ -130,7 +130,7 @@
     <div class="scan"></div>
   </div>
   <div class="brackets" style="left:968px;top:250px;width:840px;height:472px"><i></i><i></i><i></i><i></i></div>
-  <p class="a legal" style="left:968px;top:760px">Trecho da demonstração do Zyron.</p>
+
 </section>
 
 <!-- ============ 07 O ZYRON TRABALHANDO ============ -->
@@ -157,7 +157,7 @@
       <li data-t="97"><span class="tm">1:37</span><span class="ct">O Zyron na prática</span></li>
     </ul>
   </div>
-  <p class="a legal" style="left:120px;top:964px;width:1480px">Demonstração do Zyron. Vídeos e dados de atletas são usados somente com autorização expressa do responsável legal.</p>
+
 </section>
 
 <!-- ============ 08 COMO O ZYRON FUNCIONA ============ -->
@@ -235,7 +235,7 @@
       </div>
     </div>
   </div>
-  <p class="a legal" style="left:120px;top:990px;width:1500px">Tela ilustrativa da plataforma. Vídeo e dados de atletas só com autorização expressa do responsável legal.</p>
+
 </section>
 
 <!-- ============ 10 QUEM OLHA POR ELE (novo) ============ -->
@@ -274,7 +274,7 @@
     <div class="qo-pl"><p class="n">Assessoria PRO</p><p class="r">Toda semana</p><p class="d">O estrategista de carreiras liga.</p><p class="aqui" data-if="planoId=pro">O seu plano</p></div>
     <div class="qo-pl"><p class="n">Legacy</p><p class="r">Todo dia</p><p class="d">Estrategista e gerente de carreira.</p><p class="aqui" data-if="planoId=legacy">O seu plano</p></div>
   </div>
-  <p class="a legal" style="left:120px;top:990px;width:1500px">O Zyron analisa o vídeo que a família envia, com autorização expressa do responsável legal.</p>
+
 </section>
 
 <!-- ============ 11 O SEU LUGAR EM CAMPO (novo: o encaixe e a base de clubes numa peça só) ============ -->
@@ -297,7 +297,7 @@
     <p class="campo-leg">Formação ilustrativa (4-3-3).</p>
   </div>
   <div class="brackets sand" style="left:740px;top:96px;width:540px;height:858px"><i></i><i></i><i></i><i></i></div>
-  <p class="a legal" data-if="fotoOk" style="left:120px;top:968px;width:580px">Imagem do atleta usada com autorização do responsável legal.</p>
+
   <div class="a" style="left:1320px;top:96px;width:480px;display:flex;flex-direction:column;gap:30px">
     <div class="cartao rise" style="--d:.12s">
       <p class="ct-ok"><span data-if="nome">O cartão do <span data-bind="nome"></span>.</span><span data-ifnot="nome">Perfil aprovado</span></p>
@@ -354,7 +354,7 @@
   </div>
   <!-- escopo: o "Com a gente" é a estrutura completa (Legacy); o 25 volta a estas linhas, plano por plano.
        Na técnica a tabela é mais alta que no padrão: a nota fica no pé, abaixo da linha de destaque. -->
-  <p class="a legal" style="left:120px;top:1004px;width:1560px">Com a gente: a estrutura completa, a da Assessoria de Elite Legacy. O Scout PRO e a Assessoria PRO entregam uma parte dela.</p>
+
   <p class="a rise" style="left:120px;top:940px;width:1600px;font-size:44px;line-height:1.2;font-weight:600;color:var(--sand-l);--d:.2s">Informação vocês já têm. O que faltava era operação.</p>
 </section>
 
@@ -425,7 +425,7 @@
       <div><p class="dh">Resultado da leitura</p><p class="v">Revelado ao vivo, nesta chamada.</p></div>
     </div>
     <p class="a rise" style="left:1010px;top:874px;width:800px;font-size:42px;line-height:1.22;font-weight:600;color:var(--sand-l);--d:.32s">O que aparecer agora fala só de você<span data-if="nome">, <span data-bind="nome"></span></span>.</p>
-    <p class="a legal" style="left:120px;top:990px;width:1560px">Vídeo do atleta usado somente com autorização expressa do responsável legal.</p>
+
   </div>
 </section>
 
@@ -452,7 +452,7 @@
 </section>
 
 <!-- ============ 16 TALENTO É O MÍNIMO ============ -->
-<section class="slide formacao-atleta"><div class="formacao-intro"><p class="label">Scout PRO · Formação incluída</p><h2><span data-bind="nome" data-fb="Você"></span>, seu jogo tem leitura.<br><span>Sua evolução tem método.</span></h2></div><div class="formacao-grid"><div class="formacao-sete"><b>7</b><strong>Módulos de formação</strong><p>Uma trilha para conectar conhecimento, rotina e desenvolvimento.</p></div><div class="formacao-corpo"><h3>Não basta entender o que melhorar.<br>É preciso aprender a trabalhar nisso.</h3><p>Conteúdos organizados em sete módulos para desenvolver o atleta além do lance isolado. A formação já faz parte do Scout PRO.</p><div class="formacao-temas"><span>Performance</span><span>Psicologia</span><span>Nutrição</span><span>Comportamento</span><span>Imagem</span></div><div class="formacao-pilares"><div><b>O Zyron lê</b><p>Os lances enviados viram uma leitura do seu jogo.</p></div><div><b>O analista acompanha</b><p>Relatório de evolução a cada 15 dias no Scout PRO.</p></div><div><b>Você desenvolve</b><p>Os sete módulos apoiam o aprendizado e a aplicação na sua rotina.</p></div></div></div></div><p class="formacao-fecho">Scout PRO: análise do seu jogo + acompanhamento da evolução + sete módulos de formação.</p><p class="escolha-legal">A orientação humana e os encaminhamentos seguem o escopo de cada plano.</p></section>
+<section class="slide formacao-atleta"><div class="formacao-intro"><p class="label">Scout PRO · Formação incluída</p><h2><span data-bind="nome" data-fb="Você"></span>, seu jogo tem leitura.<br><span>Sua evolução tem método.</span></h2></div><div class="formacao-grid"><div class="formacao-sete"><b>7</b><strong>Módulos de formação</strong><p>Uma trilha para conectar conhecimento, rotina e desenvolvimento.</p></div><div class="formacao-corpo"><h3>Não basta entender o que melhorar.<br>É preciso aprender a trabalhar nisso.</h3><p>Conteúdos organizados em sete módulos para desenvolver o atleta além do lance isolado. A formação já faz parte do Scout PRO.</p><div class="formacao-temas"><span>Performance</span><span>Psicologia</span><span>Nutrição</span><span>Comportamento</span><span>Imagem</span></div><div class="formacao-pilares"><div><b>O Zyron lê</b><p>Os lances enviados viram uma leitura do seu jogo.</p></div><div><b>O analista acompanha</b><p>Relatório de evolução a cada 15 dias no Scout PRO.</p></div><div><b>Você desenvolve</b><p>Os sete módulos apoiam o aprendizado e a aplicação na sua rotina.</p></div></div></div></div><p class="formacao-fecho">Scout PRO: análise do seu jogo + acompanhamento da evolução + sete módulos de formação.</p></section>
 
 <!-- ============ 17 ANTES DO POST ============ -->
 <section class="slide">
@@ -474,7 +474,7 @@
     <div class="st"><i></i><p class="k">A ponte</p><p class="d">O perfil na mesa de quem tem a carência.</p></div>
     <div class="st goal"><i></i><p class="k">O post</p><p class="d">A assinatura. A única parte que todo mundo vê.</p></div>
   </div>
-  <p class="a legal" style="left:120px;top:990px;width:1600px">Casos reais de atletas acompanhados.</p>
+
 </section>
 
 <!-- ============ 18 A REDE (novo) ============ -->
@@ -516,7 +516,7 @@
     <span data-if="planoId=pro"><b>No seu plano:</b> pelo menos 5 encaminhamentos de oportunidades por mês, pra clubes do Brasil e do mundo.</span>
     <span data-if="planoId=scouting"><b>No seu plano:</b> o Scout PRO é o começo. O encaminhamento pra clubes vem a partir da Assessoria PRO.</span>
   </p>
-  <p class="a legal" style="left:120px;top:984px;width:1560px">Não há promessa de contratação ou de clube específico. Nenhuma vinculação a clube ou atleta é oferecida como parte da assessoria. Informações da AGN Football: agnfootball.com.</p>
+
 </section>
 
 <!-- ============ 19 O QUE ELE LEVA (novo, 11/10/2026: painel do closer) ============ -->
@@ -563,7 +563,7 @@
     <div class="ft ft-ret ft-mono lv-ret" data-ifnot="fotoOk" style="left:0;top:0"><b data-bind="fotoIni" style="font-size:220px"></b></div>
   </div>
   <div class="brackets sand" style="left:1380px;top:150px;width:420px;height:560px"><i></i><i></i><i></i><i></i></div>
-  <p class="a legal" style="left:120px;top:1004px;width:1560px">Não há promessa de contratação ou de clube específico.<span data-if="fotoOk"> Imagem do atleta usada com autorização do responsável legal.</span></p>
+
 </section>
 
 <!-- ============ 20 O VALOR REAL ============ -->
@@ -586,7 +586,7 @@
     <p class="t" style="font-size:60px;margin-top:12px!important">por ano.</p>
     <p class="b b-40" data-step="8" style="margin-top:30px!important;color:var(--white)">O difícil não é contratar cada frente. É fazer as sete falarem entre si, com o <span class="ice">Zyron</span> no meio.</p>
   </div>
-  <p class="a legal" data-step="1" style="left:120px;top:1014px;width:1500px">Valores de referência de mercado, por ano. Variam conforme profissional e região.</p>
+
 </section>
 
 <!-- ============ 21 ATÉ LÁ, A GENTE BANCA ============ -->
@@ -651,7 +651,7 @@
       <div class="sig"><p class="nm" data-fit="360" style="white-space:nowrap"><span data-bind="nomeAssinatura"></span></p><p class="ln">Atleta</p></div>
     </div>
   </div>
-  <p class="a legal" style="left:120px;top:990px;width:1500px">Referência de contratos de atletas acompanhados.</p>
+
 </section>
 
 <!-- ============ 24 A VAGA (Legacy) / O COMEÇO (Assessoria PRO e Scout PRO) ============ -->
@@ -810,8 +810,8 @@
       <p class="post-cap"><b>Mais um atleta nosso no futebol profissional.</b></p>
     </div>
   </div>
-  <p class="a legal" data-if="planoId=legacy" style="left:1250px;top:930px;width:560px">Imagem ilustrativa.<span data-if="fotoOk"> Imagem do atleta usada com autorização do responsável legal.</span></p>
-  <p class="a legal" data-if="fotoOk&!planoId=legacy" style="left:1250px;top:872px;width:560px">Imagem do atleta usada com autorização do responsável legal.</p>
+
+
   <!-- Assessoria PRO e Scout PRO: o cartão do plano, com o nome do atleta -->
   <div class="doc rise" data-ifnot="planoId=legacy" style="left:1250px;top:150px;width:560px;height:700px;padding:48px 52px;--d:.12s">
     <p class="dh">Jogador de Elite</p>

@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "gerado": "2026-10-13T18:03:25.418Z",
+  "gerado": "2026-10-13T21:07:03.256Z",
   "paginas": [
     {
       "id": "principal",
@@ -22,7 +22,7 @@
           "ajuda": "Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai do 18 direto pro 20."
         }
       ],
-      "hash": "f100b28ac5b627cf3899cacfff58dc262bc24788"
+      "hash": "ddca93a0ec803867195ad287ea2f5a702caca181"
     },
     {
       "id": "tecnica",
@@ -44,7 +44,7 @@
           "ajuda": "Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai do 18 direto pro 20."
         }
       ],
-      "hash": "aa49aabf9c3e0face84a3d4142d45d889273e131"
+      "hash": "d1963ccc129eadd4e4be0975c0e5fe8eb73d484e"
     }
   ]
 }

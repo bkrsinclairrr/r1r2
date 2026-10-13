@@ -28,7 +28,7 @@ test('todas as páginas aceitam foto, ficha vazia e exibem a imagem em um único
       assert.match(await a.avalia(`document.querySelector('#stage>.slide.active').innerText`),/Gabriel|GABRIEL/);
       assert.match(await a.avalia(`document.querySelector('.escolha-retrato-rodape strong').innerText`),/Gabriel|GABRIEL/);
       await a.avalia('document.fonts.ready.then(()=>1)'); await espera(500);
-      assert.ok(await a.avalia(`document.querySelector('.escolha-texto').getBoundingClientRect().bottom < document.querySelector('.escolha-legal').getBoundingClientRect().top - 10`), v.id+': contexto e nome cabem no slide');
+      assert.ok(await a.avalia(`document.querySelector('.escolha-texto').getBoundingClientRect().bottom < document.querySelector('#stage').getBoundingClientRect().bottom - 70`), v.id+': contexto e nome cabem no slide');
       assert.equal(await a.avalia(`document.querySelectorAll('.formacao-atleta').length`),1);
       assert.match(await a.avalia(`document.querySelector('.formacao-atleta').textContent`),/7[\s\S]*módulos/);
       const modulo=await a.avalia(`[...document.querySelectorAll('#stage>.slide')].findIndex(s=>s.classList.contains('formacao-atleta'))+1`);
