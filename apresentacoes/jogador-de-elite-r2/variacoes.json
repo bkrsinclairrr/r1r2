@@ -1,21 +1,21 @@
 {
   "v": 1,
-  "gerado": "2026-10-13T21:07:19.459Z",
+  "gerado": "2026-10-14T13:20:06.454Z",
   "paginas": [
     {
       "id": "principal",
       "caminho": "/",
       "nome": "R2 · Roteiro clássico completo",
-      "resumo": "O R2 de 25 slides, o de antes do R2 novo, com O combinado e O investimento. A foto aparece somente no slide de escolha.",
-      "quando": "Só se precisar da versão de 25 slides. Na dúvida, use o R2 novo.",
+      "resumo": "O R2 de 24 slides, o de antes do R2 novo, com os planos e O investimento. A foto aparece somente no slide de escolha.",
+      "quando": "Só se precisar da versão de 24 slides. Na dúvida, use o R2 novo.",
       "validacao": "em-validacao",
       "lead": {
         "nome": true,
         "foto": true
       },
-      "slides": 25,
+      "slides": 24,
       "opcionais": [],
-      "hash": "42791b987bbfd115058a8ac1f688cc4c43ba52eb"
+      "hash": "5b3fd2186dc7dc1a6fde64594a90b5b05cfee574"
     },
     {
       "id": "acompanhamento",
@@ -28,24 +28,24 @@
         "nome": true,
         "foto": true
       },
-      "slides": 25,
+      "slides": 24,
       "opcionais": [],
-      "hash": "4e5b8eae55e79d19fbc61e6fe0bd18149108229c"
+      "hash": "d4d0dfa5af95c76b7bb8ced862114bdc18670451"
     },
     {
       "id": "tecnica",
       "caminho": "/variacoes/tecnica/",
       "nome": "R2 · Técnica com roteiro clássico",
-      "resumo": "A versão técnica do R2 de 25 slides: fala de par pra par, sem explicar o básico. A foto aparece somente no slide de escolha.",
-      "quando": "Lead com vivência no meio (base de clube, federado, ex-jogador, técnico) e só se precisar da versão de 25 slides.",
+      "resumo": "A versão técnica do R2 de 24 slides: fala de par pra par, sem explicar o básico. A foto aparece somente no slide de escolha.",
+      "quando": "Lead com vivência no meio (base de clube, federado, ex-jogador, técnico) e só se precisar da versão de 24 slides.",
       "validacao": "em-validacao",
       "lead": {
         "nome": true,
         "foto": true
       },
-      "slides": 25,
+      "slides": 24,
       "opcionais": [],
-      "hash": "fa32b4b24a85ef2b4a0cb92b986a2e66a0c966cc"
+      "hash": "62ec5a98b4be531dd26583d838d8e3e1b43f06d0"
     }
   ]
 }

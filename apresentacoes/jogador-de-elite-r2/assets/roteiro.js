@@ -44,19 +44,7 @@ window.ROTEIRO = [
     crm: [],
     atencao: 'Confirme o que ele já contou, nunca pergunte de novo. "Só do [atleta]" é sobre o plano, nunca sobre o nível dele: nada de "você é único", "especial" ou "o melhor". Use as palavras do Contexto do CRM. O atleta sai deste slide sabendo que foi escolhido. O espelho só entra com o caso real preenchido na ficha (grupo Caso espelho); sem caso, pule a frase.'
   },
-  { nome: 'O combinado', min: 5,
-    fala: [
-      '"Antes de te mostrar o plano, deixa eu confirmar o que eu já sei, pra não gastar o tempo de vocês com pergunta repetida. Eu confirmo, vocês corrigem."',
-      'Leia cada linha da tela com as palavras deles (4.3): "[mãe], você falou pro estrategista esportivo que [dor]. Continua assim?"',
-      'Aspiração: "[atleta], se tudo der certo, onde você quer estar daqui a dois anos?"',
-      'Impacto (4.4): "De 0 a 10, quanto vocês querem ver o [atleta] num clube profissional?" Espere. "E por que esse número?" Resposta menor que 10: "E por que não é menos?"',
-      'Combinado (4.2), lendo a linha de baixo da tela: "Vocês combinaram com o estrategista esportivo que, se o plano fizer sentido, decidem hoje, os dois juntos. Continua valendo? Pode ser não, tudo bem. Só não vale \'vou pensar\'." Espere o sim dos dois.',
-      'Necessidade explícita (4.5): "Vocês querem que eu mostre como seria o plano do [atleta]?" Espere o "quero".'
-    ],
-    perguntas: ['Continua assim? Mudou alguma coisa?', '[atleta], onde você quer estar daqui a dois anos?', 'De 0 a 10, quanto vocês querem ver ele num clube? Por quê?', 'Se fizer sentido, vocês decidem hoje, juntos?', 'Querem que eu mostre o plano?'],
-    crm: ['O que mudou desde a R1.', 'A aspiração do atleta, com as palavras dele.'],
-    atencao: 'É aqui que você previne o "preciso ver com minha esposa" e o "vou pensar": os dois decisores na call e o combinado dito em voz alta, e agora também escrito na tela, pra você apontar de novo no 24. Quem justifica o próprio número se convence sozinho. Resposta morna ao "querem ver o plano?": volte pro impacto antes de seguir. A tela mostra só o que a família lê; as perguntas ficam na fala.'
-  },
+  null, // Posição de origem removida; os demais roteiros preservam seus identificadores.
   { nome: 'O olhômetro', min: 2,
     fala: [
       'Ponte, olhando pros pais: "Antes do plano, eu quero falar de quem avaliou o [atleta] até hoje. Vocês me contaram: [peneiras]."',
@@ -96,7 +84,7 @@ window.ROTEIRO = [
     ],
     perguntas: ['O que mudaria pra vocês se ele fosse visto assim?'],
     crm: [],
-    atencao: 'Bloco do Zyron (slides 06 a 09), o mesmo que a família viu na R1, e depois o campo (10) e a resposta ao olhômetro (11), que são novos. Sonho e o que falta já estão na ficha e foram confirmados no 03: não pergunte de novo. Se todos os decisores estavam na R1, passe rápido do 06 ao 09 e use cada slide como lembrete; se um decisor não estava, mostre inteiro, com o vídeo. O 10 e o 11 são sempre inteiros.'
+    atencao: 'Bloco do Zyron (slides 06 a 09), o mesmo que a família viu na R1, e depois o campo (10) e a resposta ao olhômetro (11), que são novos. Sonho e o que falta já estão na ficha e vieram da ficha do SDR: não pergunte de novo. Se todos os decisores estavam na R1, passe rápido do 06 ao 09 e use cada slide como lembrete; se um decisor não estava, mostre inteiro, com o vídeo. O 10 e o 11 são sempre inteiros.'
   },
   { nome: 'Zyron', min: 1,
     fala: [
@@ -229,7 +217,7 @@ window.ROTEIRO = [
     ],
     perguntas: ['Quanto vocês acham que custaria montar isso por conta?'],
     crm: [],
-    atencao: 'O slide abre só com a pergunta: espere o chute da família antes do primeiro avanço. Cada avanço mostra uma frente com o valor anual, e a soma da direita sobe junto; o último avanço destaca o total, R$ 30.000 por ano, com tudo junto. O apresentador mostra o que entra no próximo avanço. Ordem do playbook: régua, conta, sem certeza (este slide), até lá e filtro (18 e 19), contrato (20), garantia (21), a vaga (22), os planos (23), número (24), silêncio. Aqui é o valor da estrutura inteira, a do Legacy, não o preço de um plano. Previne "o valor tá muito alto".'
+    atencao: 'O slide abre só com a pergunta: espere o chute da família antes do primeiro avanço. Cada avanço mostra uma frente com o valor anual, e a soma da direita sobe junto; o último avanço destaca o total, R$ 30.000 por ano, com tudo junto. O apresentador mostra o que entra no próximo avanço. Ordem do fechamento: valor da estrutura, até lá, filtro, contrato, vaga, planos, investimento, garantia incondicional e Bem-vindo. Aqui é o valor da estrutura inteira, a do Legacy, não o preço de um plano. Previne "o valor tá muito alto".'
   },
   { nome: 'Até lá, a gente investe', min: 2,
     fala: [
@@ -349,8 +337,8 @@ window.ROTEIRO = [
 /* As etapas da Bíblia das Vendas (processo-r2) e os slides de cada uma. O apresentador mostra a etapa no cabeçalho;
    o 03 e o 12 cobrem duas. A Bíblia cita estes números: mudou aqui, muda lá. */
 window.ETAPAS = [
-  { nome: 'Conexão', slides: [1, 2, 3] },
-  { nome: 'Dor e sonho', slides: [3, 4, 12] },
+  { nome: 'Conexão', slides: [1, 2] },
+  { nome: 'Dor e sonho', slides: [4, 12] },
   { nome: 'O plano', slides: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] },
   { nome: 'Fechamento', slides: [17, 18, 19, 20, 21, 22, 23, 24] },
   { nome: 'Próximo passo', slides: [25] }
@@ -391,14 +379,14 @@ window.OBJECOES = [
     'Mais vaga, quando o clima pedir: "Você acha que o sonho dele não vale parcelas mensais de [x] ou [y]?"',
     'Conduzir: "Então eu confirmo agora. Pix ou cartão?"'
   ], proibido: 'Desconto, "vou ver com meu gerente", baixar valor sem mudar o escopo' },
-  { q: 'Preciso ver com minha esposa / meu marido', slides: [3], prev: 'O SDR marca a R2 com os dois; você confirma os dois antes e reforça o combinado no slide 03.', resposta: [
+  { q: 'Preciso ver com minha esposa / meu marido', slides: [], prev: 'O SDR marca a R2 com os dois; você confirma os dois antes e confirma o contexto recebido do SDR.', resposta: [
     '"Faz todo sentido, é decisão de família. E você, se dependesse só de você, o [atleta] começava?" (disse sim: virou aliado; hesitou: a objeção real é outra)',
     '"Então, se a [mãe] topar, vocês estão dentro?"',
     '"Liga pra ela agora e coloca no viva-voz. Em 10 minutos eu mostro o plano do [atleta], e vocês decidem juntos."',
     '"O que você acha que ela vai perguntar? Me fala que eu já te respondo."',
     'Modo B: "Eu apresento o [atleta] pra equipe hoje, e amanhã às [hora] eu falo com vocês dois com o retorno."'
   ], proibido: 'Mandar a proposta por WhatsApp "pra você mostrar pra ela".' },
-  { q: 'Vou pensar', slides: [24, 21], prev: 'Combinado dito em voz alta no slide 03: "só não vale \'vou pensar\'".', resposta: [
+  { q: 'Vou pensar', slides: [24, 21], prev: 'Contexto do SDR e a proposta apresentada à família.', resposta: [
     '"Claro. Pensar sobre o quê exatamente? O valor, conversar com mais alguém, ou alguma dúvida sobre o plano?"',
     '"O que vocês vão saber amanhã que não sabem agora?"',
     'O relógio, no Legacy: "Mais de 93% dos nossos são encaminhados em até três meses. Se decidir hoje, esses três meses começam hoje. Se decidir daqui a uma semana, o [atleta] começa uma semana depois." No PRO e no Scout PRO, sem os 93%: "Se decidir hoje, o Zyron começa a ler o jogo dele agora. Se decidir daqui a uma semana, ele começa uma semana depois."',
@@ -440,7 +428,7 @@ window.OBJECOES = [
     'Da Assessoria PRO pro Scout PRO, só se o caixa não comporta o PRO: "O Scout PRO é o começo: o Zyron lendo cada vídeo novo e o relatório do analista de performance a cada 15 dias. Os sete módulos continuam no Scout PRO. Saem a ligação do estrategista de carreiras e o estrategista esportivo, o networking e as aulas extras, os encontros com a equipe e o encaminhamento pra clubes."',
     '"Assim que resolver a forma, a equipe já entra em contato. Isso não espera."'
   ], proibido: 'Desconto. Desce de plano só pelo escopo.' },
-  { q: 'Ele não pode ir pra outro estado', slides: [5, 3], prev: 'Locomoção confirmada no alinhamento (slide 03) e "quando o clube chamar" no plano (slide 05).', resposta: [
+  { q: 'Ele não pode ir pra outro estado', slides: [5], prev: 'Locomoção registrada na ficha do SDR e "quando o clube chamar" no plano (slide 05).', resposta: [
     '"Hoje ele não precisa ir pra lugar nenhum. Isso só acontece quando o clube chamar." No Legacy, some: "e o gerente de carreira organiza a ida com vocês."',
     '"E vocês falaram pro estrategista esportivo: [locomoção]. Então isso a gente resolve junto quando chegar a hora."'
   ] },
@@ -628,12 +616,12 @@ window.CHECKLIST = [
   'Tenho à mão, fora do deck, o link de pagamento de cada plano (vai no WhatsApp só depois do sim)',
   'Conferi a faixa de contrato que posso citar e o prazo da garantia',
   'Link da AGN pronto pra mandar no WhatsApp',
-  'Conferi posição, pé e altura do atleta (o campo do slide 10 depende da posição)',
-  'Testei o vídeo do Zyron (slide 08) e o depoimento da mãe (slide 14) com o áudio no compartilhamento de tela',
+  'Conferi posição, pé e altura do atleta (o campo do slide 09 depende da posição)',
+  'Testei o vídeo do Zyron (slide 07) e o depoimento da mãe (slide 13) com o áudio no compartilhamento de tela',
   'Subi o vídeo do atleta no painel (Leitura do atleta), com a autorização do responsável, marquei os lances e olhei a prévia',
   'Testei o vídeo no deck (play, som, pular pelos lances no apresentador)',
   'Conferi se a fonte do relatório é Zyron ou Equipe, de verdade',
-  'Se não subi o vídeo, deixei o vídeo do atleta aberto pra leitura ao vivo no Meet (IA na Prática, slide 13)',
+  'Se não subi o vídeo, deixei o vídeo do atleta aberto pra leitura ao vivo no Meet (IA na Prática, slide 12)',
   'Conferi vagas e data da próxima turma (só aparecem com o Legacy)',
   'Confirmei pai, mãe e atleta na call',
   'Deck aberto em tela cheia e apresentador em outra janela'

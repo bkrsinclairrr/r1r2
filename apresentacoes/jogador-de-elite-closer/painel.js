@@ -679,9 +679,9 @@
     // a variação: o que está marcado e ainda não foi salvo muda o link só depois de salvar
     $('#vr-nota').textContent = reg && verMarcada.id !== verSalva.id ? 'Salve pra o link deste lead abrir a variação ' + verMarcada.nome + '.'
       : quebrada(verMarcada) ? 'A página desta variação não está funcionando agora: o link do lead abre a Principal até ela voltar. (' + motivoDe(verMarcada) + ')' : '';
-    // a posição no campo do slide 11 (só o R2)
+    // a posição no campo do perfil (só o R2)
     const pos = R.posicaoNoCampo(f.posicao), sp = $('#selo-pos');
-    sp.textContent = !f.posicao ? 'Sem posição: o campo do slide 11 fica sem destaque.' : pos ? 'Reconhecida no campo: ' + pos : 'Não reconheci: o campo do slide 11 fica sem destaque. Escreva como goleiro, zagueiro, volante, meia, atacante...';
+    sp.textContent = !f.posicao ? 'Sem posição: o campo do perfil fica sem destaque.' : pos ? 'Reconhecida no campo: ' + pos : 'Não reconheci: o campo do perfil fica sem destaque. Escreva como goleiro, zagueiro, volante, meia, atacante...';
     sp.className = 'selo-pos ' + (!f.posicao ? '' : pos ? 'ok' : 'nao');
     // a call: na capa do R2; no slide 16 do R1
     $('#ex-call').textContent = f.r2data || f.r2hm ? (r1 ? 'No slide 16: R2 de ' : 'Na capa: Call de ') + callTxt(f.r2data, f.r2hm) + '.' : '';
@@ -798,7 +798,7 @@
     const itensCk = [
       ['Foto com autorização', semFoto || fotoOk, semFoto ? 'Não precisa: a tela deste R2 não mostra a foto.' : fotoOk && reg.foto ? 'Some em ' + R.dataCurta(reg.foto.venceEm) + '.' : 'Opcional: adicione uma foto para personalizar o slide de escolha.'],
       ['Nome conferido', sem || !!(f.nome && $('#c-conferido').checked), sem ? 'Não precisa: a tela deste R2 não mostra o nome.' : 'Marque "Conferi a grafia do nome".'],
-      ['Posição reconhecida no campo', !!R.posicaoNoCampo(f.posicao), 'O slide 11 marca o lugar dele.'],
+      ['Posição reconhecida no campo', !!R.posicaoNoCampo(f.posicao), 'O campo do perfil marca o lugar dele.'],
       ['Plano escolhido', !!f.plano, 'O destaque do slide dos planos.'],
       ['Dia e hora da call', !!(f.r2data && f.r2hm), 'Aparecem na capa.']
     ];

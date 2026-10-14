@@ -4,7 +4,7 @@
    (window.OBJECOES) e acrescenta itens ao checklist (window.CHECKLIST). Os três planos (window.PLANOS),
    follow-up e proibidos continuam os do padrão; o deck não tem link de pagamento. Nada do deck padrão é alterado.
 
-   Os 25 slides ficam nas mesmas posições do padrão, pra aba Ler antes (números fixos no deck.js)
+   Os 24 slides seguem as mesmas posições do padrão após remover o alinhamento, pra aba Ler antes (números fixos no deck.js)
    continuar certa, inclusive os dois da reformulação de 08/10/2026: o 04 (o que a avaliação por observação
    deixa passar, o inimigo comum na voz de quem conhece o meio) e o 10 (o perfil dele em campo). Muda a copy e a persuasão:
    - Conversa de par pra par: nunca explicar o básico (peneira, olhômetro, o que é a AGN).
@@ -20,10 +20,10 @@
   // aparece no topo do apresentador, pra o Gestor saber qual versão está na tela da família
   window.VARIACAO_NOME = 'Variação técnica';
   const PADRAO = window.ROTEIRO || [];
-  const VAGA_PADRAO = PADRAO.find(r => r.modoB) || {}; // o Modo B do padrão (slide do investimento)
+  const VAGA_PADRAO = PADRAO.find(r => r && r.modoB) || {}; // o Modo B do padrão (slide do investimento)
   // bloco do Zyron (06 a 09, trazido do R1): o roteiro vem do padrão. O campo (10) e o olhômetro contra o Zyron (11)
   // também vêm do padrão, no idioma de quem é do meio
-  const doPadrao = nome => Object.assign({}, PADRAO.find(r => r.nome === nome) || { nome, min: 1, fala: [], perguntas: [], crm: [], atencao: '' });
+  const doPadrao = nome => Object.assign({}, PADRAO.find(r => r && r.nome === nome) || { nome, min: 1, fala: [], perguntas: [], crm: [], atencao: '' });
   const BLOCO_ZYRON = ['E se?', 'Zyron', 'O Zyron trabalhando (vídeo)', 'Como o Zyron funciona'].map(doPadrao);
   const CAMPO = Object.assign(doPadrao('O seu lugar em campo'), {
     nome: 'O perfil em campo',
@@ -74,19 +74,7 @@
       crm: ['O que o [pai] acrescentou sobre o jogo do atleta, com as palavras dele.'],
       atencao: 'Pra quem entende de futebol, a leitura do jogo é a prova de competência. Fale de característica de jogo, nunca de "dom" ou "talento nato". Se o [pai] corrigir ou acrescentar algo, concorde com o que for verdade e anote: ele acabou de virar coautor do plano. Confirme o que já está no CRM, nunca pergunte de novo.'
     },
-    { nome: 'O combinado', min: 5,
-      fala: [
-        '"Vocês já contaram tudo pro estrategista esportivo. Eu só confirmo, pra não repetir pergunta."',
-        'Leia cada linha da tela com as palavras deles (4.3): "[mãe], vocês falaram que [dor]. Continua assim?"',
-        'Aspiração: "[atleta], se tudo der certo, onde você quer estar daqui a dois anos?"',
-        'Impacto, no idioma deles (4.4): "Vocês conhecem a janela da base melhor do que eu. Quanto tempo ele ainda tem pra ser visto na categoria certa?" Espere. "E de 0 a 10, quanto vocês querem ver ele num clube profissional? Por que esse número?"',
-        'Combinado (4.2): "Vocês combinaram com o estrategista esportivo que, se o plano fizer sentido, decidem hoje, os dois juntos. Continua valendo? Pode ser não. Só não vale \'vou pensar\'."',
-        'Necessidade explícita (4.5): "Querem ver como a gente operaria a carreira do [atleta]?" Espere o "quero".'
-      ],
-      perguntas: ['Continua assim? Mudou alguma coisa?', '[atleta], onde você quer estar daqui a dois anos?', 'Quanto tempo ele ainda tem pra ser visto na categoria certa?', 'De 0 a 10, quanto vocês querem ver ele num clube? Por quê?', 'Se fizer sentido, vocês decidem hoje, juntos?', 'Querem ver como a gente operaria a carreira dele?'],
-      crm: ['O que mudou desde a R1.', 'A janela que a própria família estimou, com as palavras deles.', 'A aspiração do atleta, com as palavras dele.'],
-      atencao: 'A pergunta da janela é a dor desta família: quem conhece o meio sabe que categoria passa e não volta. Deixe eles dizerem o prazo; você não estima nada. Os dois decisores na call e o combinado dito em voz alta previnem "vou pensar" e "preciso ver com minha esposa". Resposta morna ao "querem ver?": volte pra janela antes de seguir.'
-    },
+    null, // Posição de origem removida; os demais roteiros preservam seus identificadores.
     { nome: 'O que a observação deixa passar', min: 2,
       fala: [
         'Sem explicar o básico, pro [pai]: "Vocês conhecem avaliação por observação melhor do que eu. Ele já fez [peneiras]. Me diz: em qual delas o avaliador teve tempo de ler o jogo dele de verdade?" Silêncio. Deixe o [pai] diagnosticar.',
@@ -134,8 +122,8 @@
     Object.assign(doPadrao('IA na Prática'), {
       fala: [
         'Com o vídeo dele no painel, a ponte no idioma deles: "Vocês leem jogo com o olho treinado. Agora eu quero que vocês vejam o jogo do [atleta] lido lance a lance, com o minuto e o porquê."'
-      ].concat((PADRAO.find(r => r.nome === 'IA na Prática') || { fala: [] }).fala.slice(1)),
-      atencao: (PADRAO.find(r => r.nome === 'IA na Prática') || { atencao: '' }).atencao + ' Variação técnica: família do meio quer opinar sobre o jogo. Deixe o [pai] comentar depois da leitura, não durante, e pergunte qual lance ele quer ver de novo.'
+      ].concat((PADRAO.find(r => r && r.nome === 'IA na Prática') || { fala: [] }).fala.slice(1)),
+      atencao: (PADRAO.find(r => r && r.nome === 'IA na Prática') || { atencao: '' }).atencao + ' Variação técnica: família do meio quer opinar sobre o jogo. Deixe o [pai] comentar depois da leitura, não durante, e pergunte qual lance ele quer ver de novo.'
     }),
     doPadrao('Depoimento de uma mãe'),
     { nome: 'Talento é o mínimo', min: 2,

@@ -1,6 +1,6 @@
 /* Jogador de Elite · Deck R2 (Gestor de Carreiras)
    Modo família (a tela compartilhada) e modo apresentador (?presenter), sincronizados.
-   Vinte e cinco slides, na ordem da Bíblia das Vendas (processo-r2): conexão (capa com o inimigo comum, por que você, o combinado),
+   Vinte e quatro slides, na ordem da Bíblia das Vendas (processo-r2): conexão (capa com o inimigo comum, por que você),
    a dor (04, o olhômetro), o plano (05, com o tripé), o bloco do Zyron (06 a 09: e se, Zyron, vídeo, cinco verbos), o seu lugar
    em campo (10, o campo e o cartão do atleta), olhômetro contra Zyron (11), o que ninguém mais tem, IA na Prática (13, a leitura ao
    vivo), o depoimento de uma mãe (14, áudio), nem tudo é talento, AGN, valor real (revelado item a item), até lá a gente investe,
@@ -437,7 +437,7 @@
         store.set(FKEY, ficha);
         depois();
         if (aviso) aviso('Apresentação do painel: ' + (f.nome || AID) + '. O que veio do painel vale sobre esta ficha; pra mudar de vez, mude no painel.' +
-          (window.R2_PERSONAL ? ' O slide 13 mostra o relatório preparado; os clubes compatíveis aparecem no 16.' : (j.video && j.video.ok ? (j.leitura ? '' : ' O vídeo está no painel, mas sem lances marcados: o 13 mostra só o vídeo.') : ' Sem vídeo no painel: o 13 vai pra leitura ao vivo.')), true);
+          (window.R2_PERSONAL ? ' O slide 12 mostra o relatório; os clubes compatíveis aparecem no 15.' : (j.video && j.video.ok ? (j.leitura ? '' : ' O vídeo está no painel, mas sem lances marcados: o 12 mostra só o vídeo.') : ' Sem vídeo no painel: o 12 vai pra leitura ao vivo.')), true);
       })
       .catch(() => { if (aviso) aviso('Não consegui carregar a apresentação do painel (' + AID + '). A tela usa a ficha deste navegador.', false); });
   }
@@ -808,7 +808,7 @@
             (atleta ? (d.leituraOk ? `<p class="pz-small"><b>Fonte desta leitura: ${d.leituraFonte === 'zyron' ? 'o Zyron' : 'a equipe'}.</b> ${d.leituraFonte === 'zyron' ? 'Pode dizer que o Zyron leu.' : 'Diga "a nossa equipe leu o seu vídeo". Não diga que o Zyron leu: esses lances foram marcados à mão.'} O vídeo começa mudo: Som liga o áudio.</p>` : '<p class="pz-small"><b>Só o vídeo, sem lances:</b> a tela mostra "Leitura em preparação". Marque os lances no painel (Leitura do atleta) e recarregue o deck.</p>') : '') + '</div>';
         }
       } else if (slides[cur].dataset.videoSe) {
-        h = '<div class="pz-ctl warn"><p class="pz-h">Sem vídeo do atleta no painel</p><p class="pz-say">O 13 está na leitura ao vivo, como sempre: troque o compartilhamento pro vídeo dele no Meet. Pra mostrar o jogo dele lance a lance, suba o vídeo na Leitura do atleta, no painel.</p></div>';
+        h = '<div class="pz-ctl warn"><p class="pz-h">Sem vídeo do atleta no painel</p><p class="pz-say">O 12 está na leitura ao vivo, como sempre: troque o compartilhamento pro vídeo dele no Meet. Pra mostrar o jogo dele lance a lance, suba o vídeo na Leitura do atleta, no painel.</p></div>';
       }
       if (cur <= 1) h = `<div class="pz-ctl"><p class="pz-h">Origem do lead (muda o texto na tela)</p><div class="pz-mode">${[['Zyron', 'Zyron'], ['Formulário do Instagram', 'Formulário'], ['Frio, sem vídeo', 'Sem contexto']].map(([v, l]) => `<button data-origem="${esc(v)}" class="${o === v ? 'on' : ''}">${l}</button>`).join('')}</div></div>`;
       // os planos: a recomendação é o plano da ficha, destacado no último avanço; trocar aqui move o destaque na tela
@@ -923,41 +923,41 @@
     const F = [
       ['Atleta (a família vê)', [
         ['nome', 'Nome do atleta', 'text', 'Só o primeiro nome aparece na tela'], ['idade', 'Idade', 'number'],
-        ['posicao', 'Posição', 'text', 'Desenha o campo do slide 10 (e a miniatura do 25). Ex.: goleiro, lateral direito, zagueiro, volante, meia, ponta esquerda, atacante. Posição que o deck não reconhece: o campo fica sem destaque'], ['cidade', 'Cidade', 'text'],
-        ['pe', 'Pé', 'select', 'Cartão do slide 10. Vazio: a linha some', ['', 'Destro', 'Canhoto', 'Ambidestro']],
-        ['altura', 'Altura (cm)', 'number', 'Cartão do slide 10, em metros. Vazio: a linha some'],
+        ['posicao', 'Posição', 'text', 'Desenha o campo e a miniatura de boas-vindas. Ex.: goleiro, lateral direito, zagueiro, volante, meia, ponta esquerda, atacante. Posição que o deck não reconhece: o campo fica sem destaque'], ['cidade', 'Cidade', 'text'],
+        ['pe', 'Pé', 'select', 'Cartão do perfil em campo. Vazio: a linha some', ['', 'Destro', 'Canhoto', 'Ambidestro']],
+        ['altura', 'Altura (cm)', 'number', 'Cartão do perfil em campo, em metros. Vazio: a linha some'],
         ['origem', 'Origem do lead', 'select', 'Muda os slides 01 e 02: Zyron (o Zyron viu), formulário (a história dele) ou sem contexto', ORIGENS],
         ['caracteristicas', 'O que chamou atenção no Zyron', 'text', 'Do Contexto do CRM. Aparece no 02 se veio do Zyron'],
         ['experiencia', 'Experiência que ele contou no formulário', 'text', 'Do Contexto do CRM. Ex.: Sub-15 do América de Natal. Aparece no 02 se veio do formulário']
       ]],
-      ['Alinhamento (a família vê no 03 e no 05)', [
-        ['sonho', 'Sonho do atleta', 'text', 'Vira o destino do plano (05)'], ['falta', 'O que ele acha que falta', 'text'], ['dor', 'Dor da família (palavras deles)', 'area'],
+      ['Contexto do SDR (orienta o plano)', [
+        ['sonho', 'Sonho do atleta', 'text', 'Vira o destino do plano'], ['falta', 'O que ele acha que falta', 'text'], ['dor', 'Dor da família (palavras deles)', 'area'],
         ['treina', 'Treina hoje', 'text'], ['locomocao', 'Locomoção pra outro estado', 'text'],
-        ['trabalhar', 'Primeiro foco do plano', 'text', 'Você define, a partir do vídeo e do Zyron. Aparece no 05']
+        ['trabalhar', 'Primeiro foco do plano', 'text', 'Você define, a partir do vídeo e do Zyron. Aparece no planejamento']
       ]],
       ['Equipe', [
         ['gestor', 'Seu nome (Gestor)', 'text', 'Só na mensagem de confirmação'], ['gerente', 'Gerente de carreira', 'text'], ['analista', 'Analista de performance', 'text'],
         ['prazoContato', 'Quando o gerente entra em contato', 'text', 'Só o que a operação cumpre. Ex.: ainda hoje'], ['prazoZyron', 'Quando o Zyron começa', 'text', 'Ex.: no dia seguinte']
       ]],
-      ['Caso espelho (a família vê no 16)', [
-        ['casoNome', 'Atleta nosso com o mesmo perfil', 'text', 'O "ele me lembra muito você". Só caso real: tabela do CASOS.md ou publicado na AGN. Vazio: o quadro some do 16'],
+      ['Caso espelho (na apresentação da AGN)', [
+        ['casoNome', 'Atleta nosso com o mesmo perfil', 'text', 'O "ele me lembra muito você". Só caso real: tabela do CASOS.md ou publicado na AGN. Vazio: o quadro fica fora da apresentação da AGN'],
         ['casoClube', 'Clube que ele fechou', 'text', 'Ex.: Wigan Athletic'], ['casoPais', 'País do clube', 'text', 'Ex.: Inglaterra'],
         ['casoLink', 'Link da publicação dele na AGN', 'text', 'Pra mandar no WhatsApp na hora em que você fala o nome']
       ]],
       ['Contrato, garantia e AGN', [
-        ['faixaContrato', 'Quanto um atleta nosso fecha', 'text', 'Aparece no 20, seguido de "por mês". Padrão: R$ 20 a 30 mil+. Só o que vocês comprovam com contrato'],
+        ['faixaContrato', 'Quanto um atleta nosso fecha', 'text', 'Aparece no contrato, seguido de "por mês". Padrão: R$ 20 a 30 mil+. Só o que vocês comprovam com contrato'],
         ['garantiaPrazo', 'Prazo da garantia (se houver)', 'text', 'Prazo real da garantia incondicional. Vazio: a linha do prazo fica fora da tela'],
-        ['linkAgn', 'Link da AGN Football', 'text', 'Pra mandar no WhatsApp durante o slide 16']
+        ['linkAgn', 'Link da AGN Football', 'text', 'Pra mandar no WhatsApp durante a apresentação da AGN']
       ]],
       ['Turma e investimento', [
-        ['vagas', 'Vagas restantes (número real da semana)', 'number', 'Só no Legacy (14, 19 e 22)'], ['proximaTurma', 'Próxima turma abre em', 'text', 'Só no Legacy (22)'],
-        ['plano', 'Plano que vou recomendar', 'select', 'A tela da família mostra este plano: o destaque do 23, o número do 24 e o 25 (turma e vaga só no Legacy). Regra da casa: Legacy se a ficha não mostra aperto financeiro; Assessoria PRO se a dor financeira é forte ou na objeção de caixa depois do Legacy; Scouting só se o caixa não comporta o PRO. Vazio ou nome antigo: a tela mostra o Legacy', [''].concat(PLANOS.map(p => p.nome))],
+        ['vagas', 'Vagas restantes (número real da semana)', 'number', 'Só no Legacy, na turma e no começo'], ['proximaTurma', 'Próxima turma abre em', 'text', 'Só no Legacy, no começo'],
+        ['plano', 'Plano que vou recomendar', 'select', 'A tela da família mostra este plano: o destaque dos planos, o investimento e as boas-vindas (turma e vaga só no Legacy). Regra da casa: Legacy se a ficha não mostra aperto financeiro; Assessoria PRO se a dor financeira é forte ou na objeção de caixa depois do Legacy; Scouting só se o caixa não comporta o PRO. Vazio ou nome antigo: a tela mostra o Legacy', [''].concat(PLANOS.map(p => p.nome))],
         ['horaRetorno', 'Hora do retorno (Modo B)', 'text', 'Ex.: 19h']
       ]],
       ['Da R1 (só você vê)', [
         ['responsavel', 'Quem fala pela família', 'text'], ['pai', 'Pai', 'text'], ['mae', 'Mãe', 'text'], ['outro', 'Outro responsável', 'text'],
         ['decisores', 'Decisores e como decidem', 'area'], ['telefones', 'Telefones dos decisores', 'text'], ['dadosZyron', 'Dados do Zyron', 'area'],
-        ['times', 'Times e experiências', 'area'], ['peneiras', 'Peneiras e avaliações', 'area', 'Falado no 04 (o olhômetro), no 11 e no 12'], ['investido', 'Já investiram (a régua, só falada)', 'text'],
+        ['times', 'Times e experiências', 'area'], ['peneiras', 'Peneiras e avaliações', 'area', 'Falado nos slides de avaliação e comparação'], ['investido', 'Já investiram (a régua, só falada)', 'text'],
         ['lucro', 'Respondeu que não faz sentido a gente lucrar em cima', 'check'], ['precomp', 'Pré-compromisso de decidir na R2', 'check'], ['empolgacao', 'Empolgação do atleta (0 a 10)', 'number'],
         ['objecoes', 'Objeções que apareceram', 'area'], ['budget', 'Sinais de budget', 'area'], ['confirmados', 'Todos os decisores confirmados', 'check'], ['r2dia', 'R2: dia', 'text'], ['r2hora', 'R2: hora', 'text']
       ]],
@@ -1100,8 +1100,8 @@
       ['O que chamou atenção no Zyron', 'caracteristicas', '02, se veio do Zyron'], ['Experiência do formulário', 'experiencia', '02, se veio do formulário'],
       ['Posição, idade, cidade', 'posicao|idade|cidade', '02, 05 e o cartão do 10'], ['Posição que desenha o campo', 'posCampo', '10 (o campo) e 25 (a miniatura); vazio: campo sem destaque'],
       ['Pé e altura', 'peTxt|alturaTxt', 'cartão do 10 (vazio: a linha some)'], ['Código do dossiê (link do painel)', 'dossieCod', '01, 02, 10 e o selo no canto'],
-      ['Sonho do atleta', 'sonho', '03 e 05'], ['O que falta', 'falta', '03'],
-      ['Dor com as palavras deles', 'dor', '03'], ['Treina hoje', 'treina', '03'], ['Locomoção', 'locomocao', '03 e 05'], ['Primeiro foco do plano', 'trabalhar', '05, falado no 09 e o primeiro foco do relatório do 13'],
+      ['Sonho do atleta', 'sonho', '05'],
+      ['Locomoção', 'locomocao', '05'], ['Primeiro foco do plano', 'trabalhar', '05, falado no 09 e o primeiro foco do relatório do 13'],
       ...(window.R2_PERSONAL ? [
         ['Relatório preparado no painel', 'zyronResumo|zyronFoco', '13 (a leitura e a prioridade do atleta)'],
         ['Clubes compatíveis do relatório', 'match1Clube|match2Clube|match3Clube', '16 (oportunidades preenchidas para este perfil)']
@@ -1158,7 +1158,7 @@
       if (m.t === 'state') { if (!linked) { linked = true; qs('#pz-link').textContent = 'Deck conectado'; qs('#pz-link').classList.add('ok'); } show(m.i, m.step); }
       else if (m.t === 'ficha') { ficha = m.ficha || {}; syncForm(); refreshAll(applyBind(document)); }
       else if (m.t === 'local') { syncForm(); refreshAll(applyBind(document)); }
-      else if (m.t === 'videoFalhou') { videoFalhou = true; refreshAll(applyBind(document)); avisoPainel('O vídeo do atleta não carregou na tela da família: o 13 voltou pra leitura ao vivo. Troque o compartilhamento pro vídeo dele no Meet.', false); }
+      else if (m.t === 'videoFalhou') { videoFalhou = true; refreshAll(applyBind(document)); avisoPainel('O vídeo do atleta não carregou na tela da família: o 12 voltou pra leitura ao vivo. Troque o compartilhamento pro vídeo dele no Meet.', false); }
     });
     const h = parseInt((location.hash || '').replace('#', ''), 10);
     cur = Number.isFinite(h) && h >= 1 && h <= N ? h - 1 : 0;

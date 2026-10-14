@@ -114,14 +114,14 @@
     'r2-anterior': [
       {
         id: 'principal', nome: 'R2 · Roteiro clássico completo', caminho: '/',
-        resumo: 'O R2 de 25 slides, o de antes do R2 novo, com O combinado e O investimento. A foto aparece no slide de escolha.',
-        quando: 'Só se precisar da versão de 25 slides. Na dúvida, use o R2 novo.',
+        resumo: 'O R2 de 24 slides, o de antes do R2 novo, com os planos e O investimento. A foto aparece no slide de escolha.',
+        quando: 'Só se precisar da versão de 24 slides. Na dúvida, use o R2 novo.',
         validacao: 'em-validacao', lead: { nome: true, foto: true }, opcionais: []
       },
       {
         id: 'tecnica', nome: 'R2 · Técnica com roteiro clássico', caminho: '/variacoes/tecnica/',
-        resumo: 'A versão técnica do R2 de 25 slides: fala de par pra par, sem explicar o básico. A foto aparece no slide de escolha.',
-        quando: 'Lead com vivência no meio (base de clube, federado, ex-jogador, técnico) e só se precisar da versão de 25 slides.',
+        resumo: 'A versão técnica do R2 de 24 slides: fala de par pra par, sem explicar o básico. A foto aparece no slide de escolha.',
+        quando: 'Lead com vivência no meio (base de clube, federado, ex-jogador, técnico) e só se precisar da versão de 24 slides.',
         validacao: 'em-validacao', lead: { nome: true, foto: true }, opcionais: []
       }
     ],

@@ -5,7 +5,7 @@ O painel guarda as duas etapas da venda, cada uma com as suas apresentações:
 | Etapa | Quem monta | Decks que ela tem | Papel no painel |
 | --- | --- | --- | --- |
 | **R1** | o SDR | R1 (`jogador-de-elite-r1`, 16 slides) | `sdr` |
-| **R2** | o closer | R2 novo (`jogador-de-elite-r2-novo`, 27 slides), R2 anterior (`jogador-de-elite-r2`, 25 slides) e R2 B (`jogador-de-elite-r2-b`, 27 slides) | `closer` |
+| **R2** | o closer | R2 novo (`jogador-de-elite-r2-novo`, 27 slides), R2 anterior (`jogador-de-elite-r2`, 24 slides) e R2 B (`jogador-de-elite-r2-b`, 27 slides) | `closer` |
 
 O **admin** vê as duas etapas. Cada papel vê só as variações, os leads e os decks da etapa dele. O SDR cria o R1 de um lead (aba "Meus R1", botão **+ Novo R1**); quando o lead vai pro closer, ele cola o link do R1 em **Importar o R1 de um SDR** e a ficha já vem pronta no R2.
 

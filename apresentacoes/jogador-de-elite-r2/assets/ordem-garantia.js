@@ -6,8 +6,14 @@
   const slides = Array.from(document.querySelectorAll('#stage > .slide'));
   const mapa = {};
   slides.forEach((s, i) => { if (s.dataset.slideOrigem) mapa[Number(s.dataset.slideOrigem)] = i + 1; });
-  const texto = t => String(t).replace(/\b(slides? |no |do |pro |o |e o )(0?[1-9]|1\d|2[0-5])\b/g,
-    (m, p, n) => mapa[Number(n)] ? p + String(mapa[Number(n)]).padStart(n.length, '0') : m)
+  const numeros = t => t.replace(/\b(0?[1-9]|1\d|2[0-5])\b/g,
+    n => mapa[Number(n)] ? String(mapa[Number(n)]).padStart(n.length, '0') : n);
+  const texto = t => String(t)
+    // Só os títulos de telas identificam referências entre parênteses. Seções do playbook permanecem intactas.
+    .replace(/\b(campo|resposta ao olhômetro|olhômetro|bloco do Zyron|Zyron trabalhando|cinco verbos|seu lugar em campo|olhômetro contra Zyron|leitura ao vivo do jogo dele|vídeo do Zyron|depoimento de uma mãe|números|AGN|garantia|vaga|planos|número|até lá e filtro|como o Zyron funciona") \(([\d ,ea]+)\)/gi,
+      (m, titulo, ns) => titulo + ' (slide' + (/[,ea]/.test(ns) ? 's ' : ' ') + ns + ')')
+    .replace(/\b(slides? |no |do |pro |ao |o |e o )((?:0?[1-9]|1\d|2[0-5])(?:\b(?:, | e | a | ao | até )(?:0?[1-9]|1\d|2[0-5]))*)\b/gi,
+      (m, p, ns) => p + numeros(ns))
     .replace(/garantia antes do número/gi, 'garantia depois dos preços')
     .replace(/A garantia vem antes do número de propósito[^.]*\./g, 'A garantia vem depois dos preços e antes do Bem-vindo.')
     .replace(/se vocês aplicarem o método e (?:entenderem que )?não (?:faz|fizer) sentido/gi, 'se não fizer sentido')
@@ -32,6 +38,5 @@
   if (obj) { obj.prev = 'Garantia incondicional depois dos preços e antes do Bem-vindo.';
     obj.resposta = garantia.fala.slice(0, 2); }
   // A aba Ler antes usa só números de slide, sem números comerciais.
-  window.R2_REFERENCIA = t => String(t).replace(/\b(0?[1-9]|1\d|2[0-5])\b/g,
-    (n) => mapa[Number(n)] ? String(mapa[Number(n)]).padStart(n.length, '0') : n);
+  window.R2_REFERENCIA = t => numeros(String(t));
 })();

@@ -88,5 +88,5 @@
     return limpa(o);
   });
   window.CHECKLIST = ['Conferi o primeiro nome, se preenchido, e a foto opcional com autorização do responsável.', 'Preenchi o relatório já pronto, sem estimar notas ausentes.',
-    'Preenchi somente os clubes compatíveis do relatório e o motivo do encaixe.', 'Conferi Scout PRO R$247,90 ou Legacy R$500 e o prazo efetivo da garantia.', 'Olhei a foto no slide 02 e os dados do atleta nos slides 01, 10, 13, 16 e 23.'];
+    'Preenchi somente os clubes compatíveis do relatório e o motivo do encaixe.', 'Conferi Scout PRO R$247,90 ou Legacy R$500 e o prazo efetivo da garantia.', 'Olhei a foto no slide 02 e os dados do atleta nos slides 01, 09, 12, 15 e 22.'];
 })();

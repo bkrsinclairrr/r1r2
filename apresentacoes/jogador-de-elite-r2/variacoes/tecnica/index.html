@@ -6,7 +6,7 @@
 <title>Jogador de Elite · R2 · Técnica com roteiro clássico</title>
 <meta name="robots" content="noindex">
 <!-- Variação técnica da R2: família que já conhece a AGN e entende de futebol.
-     Mesmo motor (assets/deck.js), mesma ficha e os mesmos 25 slides nas mesmas posições do deck padrão,
+     Mesmo motor (assets/deck.js), mesma ficha e os mesmos 24 slides nas mesmas posições do deck padrão,
      com copy e persuasão próprias. Roteiro: assets/variacoes/tecnica.js. -->
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <link rel="stylesheet" href="../../assets/deck.css">
@@ -19,8 +19,8 @@
 <script type="application/json" id="r2-variacao">
 {
   "nome": "R2 · Técnica com roteiro clássico",
-  "resumo": "A versão técnica do R2 de 25 slides: fala de par pra par, sem explicar o básico. A foto aparece somente no slide de escolha.",
-  "quando": "Lead com vivência no meio (base de clube, federado, ex-jogador, técnico) e só se precisar da versão de 25 slides.",
+  "resumo": "A versão técnica do R2 de 24 slides: fala de par pra par, sem explicar o básico. A foto aparece somente no slide de escolha.",
+  "quando": "Lead com vivência no meio (base de clube, federado, ex-jogador, técnico) e só se precisar da versão de 24 slides.",
   "validacao": "em-validacao",
   "lead": { "nome": true, "foto": true },
   "opcionais": []
@@ -53,23 +53,6 @@
 </section>
 
 <section class="slide escolha-atleta" data-slide-origem="2" data-foto-slide="escolha"><div class="escolha-texto"><p class="escolha-selo"><i></i> Por que você · Jogador de Elite</p><h2 class="escolha-titulo"><span class="escolha-nome" data-if="nome"><span data-bind="nome"></span>,</span><br><span data-ifnot="nome">Você</span><span data-if="nome">você</span> foi escolhido<br>para esta conversa.</h2><p class="escolha-abertura">Esta apresentação parte do seu perfil e do próximo passo que você busca no futebol. O plano ganha sentido quando começa em você.</p><div class="escolha-contexto" data-if="selecaoContexto"><span>O que chamou atenção no seu perfil</span><p data-bind="selecaoContexto"></p></div><div class="escolha-direcao"><div><b>Entender seu jogo</b><small>O Zyron transforma os lances em uma leitura do seu perfil.</small></div><div><b>Construir evolução</b><small>No Scout PRO, sete módulos conectam conhecimento e rotina.</small></div><div><b>Definir direção</b><small>O escopo do plano orienta o acompanhamento e os próximos passos.</small></div></div><p class="escolha-assinatura">Seu perfil. Sua evolução. Uma direção para seguir.</p></div><div class="escolha-retrato"><img data-src="selecaoFotoUrl" data-if="selecaoFotoOk" alt="Foto do jogador escolhido para esta apresentação"><div class="escolha-inicial" data-ifnot="selecaoFotoOk"><span data-bind="selecaoInicial"></span></div><div class="escolha-retrato-rodape"><span>Apresentação preparada para</span><strong><span data-if="nome" data-bind="nome"></span><span data-ifnot="nome">Seu próximo passo</span></strong><p data-bind="selecaoPerfil" data-if="selecaoPerfil"></p><p data-if="selecaoCodigo">Dossiê <span data-bind="selecaoCodigo"></span> · Individual</p></div></div></section>
-
-<section class="slide" data-slide-origem="3">
-  <div class="a page" style="left:80px;top:60px;width:1760px;height:960px"></div>
-  <p class="a dtag" data-if="nome">Dossiê · <span data-bind="nome"></span><span data-if="dossieCod"> · nº <span data-bind="dossieCod"></span></span></p>
-  <p class="a label" style="left:160px;top:130px">O combinado</p>
-  <p class="a t t-110 rise" style="left:156px;top:210px;width:1600px">Vocês já contaram. Eu só confirmo.</p>
-  <div class="a rise" style="left:160px;top:370px;width:1600px;--d:.1s">
-    <div class="align">
-      <div data-if="sonho"><p class="k">Onde você quer chegar</p><p class="v" data-bind="sonho"></p></div>
-      <div data-if="falta"><p class="k">O que falta, pra você</p><p class="v">“<span data-bind="falta"></span>”</p></div>
-      <div data-if="dor"><p class="k">O que a família me contou</p><p class="v">“<span data-bind="dor"></span>”</p></div>
-      <div data-if="treina"><p class="k">Hoje</p><p class="v" data-bind="treina"></p></div>
-      <div data-if="locomocao"><p class="k">Quando o clube chamar</p><p class="v" data-bind="locomocao"></p></div>
-    </div>
-    <div class="combinado"><p class="k">Combinado de hoje</p><p class="v">Vocês combinaram decidir hoje. Pode ser não. Só não vale “vou pensar”.</p></div>
-  </div>
-</section>
 
 <section class="slide" data-slide-origem="4">
   <div class="fill" style="background:radial-gradient(42% 70% at 36% 52%,rgba(226,85,43,.07),rgba(6,11,20,0) 70%)"></div>
@@ -620,7 +603,7 @@
 
 <div class="hud" id="hud" style="width:max-content">
   <button type="button" data-act="prev" aria-label="Slide anterior">◀</button>
-  <span class="pos" id="hud-pos">1 / 25</span>
+  <span class="pos" id="hud-pos">1 / 24</span>
   <button type="button" data-act="next" aria-label="Próximo slide">▶</button>
   <button type="button" data-act="overview">Slides</button>
   <button type="button" data-act="variacoes">Variações</button>

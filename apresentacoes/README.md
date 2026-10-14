@@ -18,7 +18,7 @@ Em todos os decks, a foto autorizada aparece somente no slide 02, dedicado à es
 
 O plano de entrada agora se chama **Scout PRO** e inclui os **sete módulos de formação**, com um slide dedicado em todas as páginas. A análise do Zyron, a formação e o acompanhamento humano são apresentados com seus respectivos papéis; as entregas humanas seguem o plano escolhido. Os preços foram preservados.
 
-Na variação de acompanhamento, a IA na prática mostra o relatório já pronto, sem vídeo do atleta nem cálculo ao vivo. O slide 23 chama o jogador pelo primeiro nome antes de “você foi escolhido”. A referência de contratação separada soma R$20.000 por ano; a oferta mantém R$247,90 e R$500. O dossiê é entregue somente às apresentações dessa página, e cada jogador tem armazenamento e canal próprios no navegador.
+Na variação de acompanhamento, a IA na prática mostra o relatório já pronto, sem vídeo do atleta nem cálculo ao vivo. O slide 22 chama o jogador pelo primeiro nome antes de “você foi escolhido”. A referência de contratação separada soma R$20.000 por ano; a oferta mantém R$247,90 e R$500. O dossiê é entregue somente às apresentações dessa página, e cada jogador tem armazenamento e canal próprios no navegador.
 
 ## Testar
 
