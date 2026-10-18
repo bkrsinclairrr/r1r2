@@ -55,14 +55,14 @@
 .zx-z{display:inline-flex;align-items:center;justify-content:center;background:#f1c33e;color:#141809;border-radius:9px;width:38px;height:38px;letter-spacing:0}
 .zx-status{font:500 24px var(--f-body);color:#58d4ad;background:#14372c;padding:6px 18px;border-radius:22px;border:1px solid #27634b}
 .zx-top-label{margin-left:auto;font:400 24px var(--f-body);color:#a4aba2}
-.zx-report-ident{padding:8px 32px}
+.zx-report-ident{padding:4px 32px}
 .zx-report-ident .zx-k{display:none}
 .zx-report-ident .zx-avatar{width:90px;height:90px}
 .zx-tabs{display:flex;gap:35px;padding:0 32px;border-bottom:1px solid #272c25;font:500 24px var(--f-body);color:#9ba097}
-.zx-tabs>span{padding:12px 0}
+.zx-tabs>span{padding:8px 0}
 .zx-tabs .active{color:#f4c849;border-bottom:2px solid #f4c849}
-.zx-report-grid{display:grid;grid-template-columns:360px 1fr;gap:24px;padding:14px 32px}
-.zx-report-main{display:grid;gap:10px;align-content:start}
+.zx-report-grid{display:grid;grid-template-columns:360px 1fr;gap:24px;padding:10px 32px}
+.zx-report-main{display:grid;gap:8px;align-content:start}
 .zx-report-main>.zx-card{padding:10px 25px}
 .zx-perfil h3{font-size:24px}
 .zx-perfil dl{margin:28px 0 0}
@@ -83,7 +83,7 @@
 .zx-leitura h4{font:600 24px var(--f-body);margin:6px 0 0;color:#62d6b0}
 .zx-report .zx-match h3{font-size:27px}
 /* na tela do relatorio o card do clube perde as etiquetas: com texto de 24 px elas nao cabem (as etiquetas aparecem no slide dos clubes) */
-.zx-report .zx-match .zx-tags{display:none}
+.zx-report .zx-match .zx-tags{margin-top:8px}
 .zx-report .zx-match .zx-k{font-size:24px}
 .zx-report .zx-match .zx-motivo{display:none}
 .zx-report .zx-clube-ini{width:56px;height:68px;font-size:24px}

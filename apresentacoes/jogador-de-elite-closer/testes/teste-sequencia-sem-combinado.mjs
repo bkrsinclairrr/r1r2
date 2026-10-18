@@ -22,7 +22,7 @@ test('a sequência sem o alinhamento mantém a oferta, a garantia e os atalhos s
         assert.equal(await a.avalia(`document.querySelector('#stage>.slide.active').dataset.slideOrigem`),'4',v.id+': próximo conteúdo é a terceira tela');
         assert.equal(await a.avalia(`window.ROTEIRO[2].nome`),v.id==='r2a-tecnica'?'O que a observação deixa passar':'O olhômetro',v.id);
         const fim=await a.avalia(`(()=>{const ss=[...document.querySelectorAll('#stage>.slide')];return ss.slice(-3).map((sl,i)=>[sl.id,window.ROTEIRO[ss.length-3+i].nome])})()`);
-        assert.deepEqual(fim,[['silencio',v.id==='r2a-acompanhamento'?'Os dois planos':'O investimento'],['','Garantia total'],['','Bem-vindo']],v.id+': fechamento preservado');
+        assert.deepEqual(fim,[['silencio',v.id==='r2a-acompanhamento'?'Os dois planos':'O investimento'],['','Garantia incondicional'],['','Bem-vindo']],v.id+': fechamento preservado');
         assert.equal(await a.avalia(`window.OBJECOES.find(o=>/Tem garantia/.test(o.q)).slides[0]`),29);
         assert.ok(await a.avalia(`window.ETAPAS.every(e=>e.slides.every(n=>n>=1&&n<=30))`));
         assert.match(await a.avalia(`window.ROTEIRO[4].atencao`), /slides 05 a 08/);

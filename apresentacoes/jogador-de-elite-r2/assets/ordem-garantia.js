@@ -24,7 +24,7 @@
   const adapta = v => typeof v === 'string' ? texto(v) : Array.isArray(v) ? v.map(adapta) :
     v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, adapta(x)])) : v;
   const garantia = {
-    nome: 'Garantia total', min: 1,
+    nome: 'Garantia incondicional', min: 1,
     fala: ['"[pai], [mãe], o investimento não precisa virar uma aposta. Se não fizer sentido, vocês pedem a devolução dentro do prazo da garantia e recebem todo o valor de volta."',
       '"Não precisa provar treino, resultado ou aplicação do método. A garantia é do investimento, não de contratação por um clube."',
       'Se o prazo estiver preenchido: "O prazo é [prazo da garantia]." Confira o prazo efetivo antes da call.'],
@@ -36,7 +36,7 @@
   window.ETAPAS = (window.ETAPAS || []).map(e => ({ ...e, slides: e.slides.map(n => mapa[n]).filter(Boolean) }));
   window.OBJECOES = (window.OBJECOES || []).map(o => ({ ...adapta(o), slides: [...new Set(o.slides.map(n => mapa[n]).filter(Boolean))] }));
   const obj = window.OBJECOES.find(o => /Tem garantia/.test(o.q));
-  if (obj) { obj.prev = 'Garantia total depois dos preços e antes do Bem-vindo.';
+  if (obj) { obj.prev = 'Garantia incondicional depois dos preços e antes do Bem-vindo.';
     obj.resposta = garantia.fala.slice(0, 2); }
   // A aba Ler antes usa só números de slide, sem números comerciais.
   window.R2_REFERENCIA = t => numeros(String(t));

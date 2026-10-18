@@ -217,7 +217,7 @@ window.ROTEIRO = [
     ],
     perguntas: ['Quanto vocês acham que custaria montar isso por conta?'],
     crm: [],
-    atencao: 'O slide abre só com a pergunta: espere o chute da família antes do primeiro avanço. Cada avanço mostra uma frente com o valor anual, e a soma da direita sobe junto; o último avanço destaca o total, R$ 30.000 por ano, com tudo junto. O apresentador mostra o que entra no próximo avanço. Ordem do fechamento: valor da estrutura, até lá, filtro, contrato, vaga, planos, investimento, garantia total e Bem-vindo. Aqui é o valor da estrutura inteira, a do Legacy, não o preço de um plano. Previne "o valor tá muito alto".'
+    atencao: 'O slide abre só com a pergunta: espere o chute da família antes do primeiro avanço. Cada avanço mostra uma frente com o valor anual, e a soma da direita sobe junto; o último avanço destaca o total, R$ 30.000 por ano, com tudo junto. O apresentador mostra o que entra no próximo avanço. Ordem do fechamento: valor da estrutura, até lá, filtro, contrato, vaga, planos, investimento, garantia incondicional e Bem-vindo. Aqui é o valor da estrutura inteira, a do Legacy, não o preço de um plano. Previne "o valor tá muito alto".'
   },
   { nome: 'Até lá, a gente investe', min: 2,
     fala: [

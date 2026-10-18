@@ -1,6 +1,6 @@
 # Notas do Gestor de Carreiras · R2
 
-Deck: `index.html` (30 slides, com os seis do bloco da página institucional: o método, o campo, o encaixe, os 326 atletas, os clubes e parceiros e o mosaico; nesta versão eles não saem pelo painel). Roteiro na mesma ordem do modo apresentador (tecla P), com preços no slide 28, garantia total no 29 e Bem-vindo no 30. A técnica e a oferta de R$247,90 e R$500 usam suas próprias falas no apresentador, com a mesma numeração.
+Deck: `index.html` (30 slides, com os seis do bloco da página institucional: o método, o campo, o encaixe, os 326 atletas, os clubes e parceiros e o mosaico; nesta versão eles não saem pelo painel). Roteiro na mesma ordem do modo apresentador (tecla P), com preços no slide 28, garantia incondicional no 29 e Bem-vindo no 30. A técnica e a oferta de R$247,90 e R$500 usam suas próprias falas no apresentador, com a mesma numeração.
 
 Abra o deck em tela cheia e o apresentador em outra janela. Use o contexto já coletado pelo SDR. Os campos são opcionais; a foto do jogador aparece somente no slide 02.
 
@@ -427,7 +427,7 @@ Etapa da Bíblia: Fechamento.
 **Pergunte**
 - Quanto vocês acham que custaria montar isso por conta?
 
-**Atenção:** O slide abre só com a pergunta: espere o chute da família antes do primeiro avanço. Cada avanço mostra uma frente com o valor anual, e a soma da direita sobe junto; o último avanço destaca o total, R$ 30.000 por ano, com tudo junto. O apresentador mostra o que entra no próximo avanço. Ordem do fechamento: valor da estrutura, até lá, filtro, contrato, vaga, planos, investimento, garantia total e Bem-vindo. Aqui é o valor da estrutura inteira, a do Legacy, não o preço de um plano. Previne "o valor tá muito alto".
+**Atenção:** O slide abre só com a pergunta: espere o chute da família antes do primeiro avanço. Cada avanço mostra uma frente com o valor anual, e a soma da direita sobe junto; o último avanço destaca o total, R$ 30.000 por ano, com tudo junto. O apresentador mostra o que entra no próximo avanço. Ordem do fechamento: valor da estrutura, até lá, filtro, contrato, vaga, planos, investimento, garantia incondicional e Bem-vindo. Aqui é o valor da estrutura inteira, a do Legacy, não o preço de um plano. Previne "o valor tá muito alto".
 
 
 ## 23 · Até lá, a gente investe
@@ -558,7 +558,7 @@ Etapa da Bíblia: Fechamento.
 **Atenção:** Aqui o número é o do plano da ficha (o 21 já mostrou os três), já com o parcelamento (10 x a parcela = o valor total): Scout PRO, R$ 997 vitalício, 10x de R$ 99,70; Assessoria PRO, R$ 1.497 vitalício, 10x de R$ 149,70; Legacy, R$ 2.997 vitalício, 10x de R$ 299,70. Fale o número uma vez e aperte S. Regra de ouro: depois do número, silêncio. Quem fala primeiro depois do preço perde. Os 3 meses do "por dia" são só a conta: no PRO e no Scout PRO, não diga "prazo médio" nem ligue esses 3 meses ao encaminhamento: os 93% em até três meses são dado do Legacy. Travou no valor: isole ("tirando o valor, tem mais alguma coisa?"), diagnostique (retorno ou dinheiro agora) e volte no slide 22, 25, 29 ou 23. Modo B só se a análise da equipe for real, e a tela não muda. Link de pagamento: fora do deck, pelo WhatsApp, só depois do sim.
 
 
-## 29 · Garantia total
+## 29 · Garantia incondicional
 
 Tempo: 1 min (acumulado: 57.5 min)
 
@@ -739,7 +739,7 @@ Prevenção: Escada do sim no slide 24, com o atleta dizendo em voz alta que faz
 
 ### E se não der certo? / Tem garantia? (slides 29)
 
-Prevenção: Garantia total depois dos preços e antes do Bem-vindo.
+Prevenção: Garantia incondicional depois dos preços e antes do Bem-vindo.
 
 **Resposta**
 - "[pai], [mãe], o investimento não precisa virar uma aposta. Se não fizer sentido, vocês pedem a devolução dentro do prazo da garantia e recebem todo o valor de volta."

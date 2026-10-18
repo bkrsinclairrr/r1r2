@@ -57,6 +57,6 @@
   ];
   window.CHECKLIST = ['Li a ficha e o Contexto do lead; a escolha do atleta se apoia em dados reais.',
     'Conferi o plano: Scout PRO R$ 247,90 (10x R$ 24,79) ou Legacy R$ 500 (10x R$ 50).',
-    'Confirmei o prazo da garantia e o link de pagamento correto desta oferta.',
+    'Confirmei o prazo da garantia incondicional e o link de pagamento correto desta oferta.',
     'Testei o vídeo, a leitura e o nome do atleta antes de compartilhar a tela.'];
 })();

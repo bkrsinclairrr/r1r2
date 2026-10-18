@@ -10,7 +10,7 @@ Código do painel e dos quatro decks publicados na Vercel. As pastas ficam lado 
 | `jogador-de-elite-r2-novo` | https://jogador-de-elite-r2-novo.vercel.app |
 | `jogador-de-elite-r2-b` | https://jogador-de-elite-r2-b.vercel.app |
 
-O R2 anterior tem a variação `/variacoes/acompanhamento/`: Scout PRO por R$247,90 (10x de R$24,79) e Legacy por R$500 (10x de R$50). A sequência termina em preços, garantia total e Bem-vindo. O painel oferece só esses dois planos nessa página.
+O R2 anterior tem a variação `/variacoes/acompanhamento/`: Scout PRO por R$247,90 (10x de R$24,79) e Legacy por R$500 (10x de R$50). A sequência termina em preços, garantia incondicional e Bem-vindo. O painel oferece só esses dois planos nessa página.
 
 Nessa variação, o R2 preenche a seção **Dossiê do atleta e clubes compatíveis** antes da call: categoria, leitura do perfil, prioridade, nota geral e indicadores opcionais, além de até três clubes com liga, posição, categoria, motivo do encaixe e percentual opcional. Os números vão de 0 a 100 e devem vir do relatório preparado do Zyron. Campos vazios não ganham valores de exemplo.
 
@@ -37,7 +37,7 @@ Para o painel: o R2 novo declara sete opcionais por página no `variacoes.json` 
 
 ## Regras da casa nos decks antigos (17/10/2026)
 
-A auditoria de regras da casa (texto de 24 px ou mais, nada fora do palco, texto sobre texto, palavras proibidas, travessão) achou problemas antigos que foram corrigidos nos quatro decks: slides de escolha e de formação com texto de 19 a 23 px e o título cobrindo a grade com nome longo; texto pequeno no R1 e no R2 anterior (janela de chamada do Zyron, contrato, casos, post, dossiê da acompanhamento); o campo do R2 anterior com o mesmo posicionamento de nome do R2 novo; "Garantia incondicional" que virou "Garantia total" no R2 anterior; "o melhor da peneira" que virou "o destaque da peneira" no R1; e a linha "A gente só ganha se você ganhar." que cobria a nota legal no slide dos planos com o Scout PRO (R2 anterior). Na acompanhamento, clubes com nome muito longo passam a ter o nome limitado a 2 linhas no slide 11 e a liga e o motivo a 1 e 3 linhas no slide 18, pra o texto de 24 px caber acima do rodapé. O detalhe está no `AUDITORIA_R2_NOVO.md` do R2 novo e do R2 B.
+A auditoria de regras da casa (texto de 24 px ou mais, nada fora do palco, texto sobre texto, palavras proibidas, travessão) achou problemas antigos que foram corrigidos nos quatro decks: slides de escolha e de formação com texto de 19 a 23 px e o título cobrindo a grade com nome longo; texto pequeno no R1 e no R2 anterior (janela de chamada do Zyron, contrato, casos, post, dossiê da acompanhamento); o campo do R2 anterior com o mesmo posicionamento de nome do R2 novo; "o melhor da peneira" que virou "o destaque da peneira" no R1; e a linha "A gente só ganha se você ganhar." que cobria a nota legal no slide dos planos com o Scout PRO (R2 anterior). Na acompanhamento, clubes com nome muito longo passam a ter o nome limitado a 2 linhas no slide 11 e a liga e o motivo a 1 e 3 linhas no slide 18, pra o texto de 24 px caber acima do rodapé; o card do clube na tela do relatório mantém as etiquetas. A palavra "incondicional" na garantia do R2 anterior fica, por decisão do dono (17/10/2026), mesmo com a auditoria acusando. O detalhe está no `AUDITORIA_R2_NOVO.md` do R2 novo e do R2 B.
 
 ## Testar
 

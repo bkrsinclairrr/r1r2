@@ -952,7 +952,7 @@
       ]],
       ['Contrato, garantia e AGN', [
         ['faixaContrato', 'Quanto um atleta nosso fecha', 'text', 'Aparece no contrato, seguido de "por mês". Padrão: R$ 20 a 30 mil+. Só o que vocês comprovam com contrato'],
-        ['garantiaPrazo', 'Prazo da garantia (se houver)', 'text', 'Prazo real da garantia. Vazio: a linha do prazo fica fora da tela'],
+        ['garantiaPrazo', 'Prazo da garantia (se houver)', 'text', 'Prazo real da garantia incondicional. Vazio: a linha do prazo fica fora da tela'],
         ['linkAgn', 'Link da AGN Football', 'text', 'Pra mandar no WhatsApp durante a apresentação da AGN']
       ]],
       ['Turma e investimento', [
