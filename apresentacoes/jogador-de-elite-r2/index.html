@@ -17,7 +17,7 @@
 <script type="application/json" id="r2-variacao">
 {
   "nome": "R2 · Roteiro clássico completo",
-  "resumo": "O R2 de 30 slides, o de antes do R2 novo, com os planos e O investimento. A foto aparece somente no slide de escolha.",
+  "resumo": "O R2 de 30 slides, o de antes do R2 novo, com os planos e O investimento. Nome e sobrenome do lead na tela (com a escolha do painel) e a foto no slide de escolha.",
   "quando": "Só se precisar da versão de 30 slides. Na dúvida, use o R2 novo.",
   "validacao": "em-validacao",
   "lead": {
@@ -53,7 +53,7 @@
   <p class="a label muted bare" style="left:120px;top:962px;font-size:26px;letter-spacing:.3em">Jogador de Elite&nbsp;&nbsp;·&nbsp;&nbsp;Planejamento de carreira</p>
 </section>
 
-<section class="slide escolha-atleta" data-slide-origem="2" data-foto-slide="escolha"><div class="escolha-texto"><p class="escolha-selo"><i></i> Por que você · Jogador de Elite</p><h2 class="escolha-titulo"><span class="escolha-nome" data-if="nome"><span data-bind="nome"></span>,</span><br><span data-ifnot="nome">Você</span><span data-if="nome">você</span> foi escolhido<br>para esta conversa.</h2><p class="escolha-abertura">Esta apresentação parte do seu perfil e do próximo passo que você busca no futebol. O plano ganha sentido quando começa em você.</p><div class="escolha-contexto" data-if="selecaoContexto"><span>O que chamou atenção no seu perfil</span><p data-bind="selecaoContexto"></p></div><div class="escolha-direcao"><div><b>Entender seu jogo</b><small>O Zyron transforma os lances em uma leitura do seu perfil.</small></div><div><b>Construir evolução</b><small>No Scout PRO, sete módulos conectam conhecimento e rotina.</small></div><div><b>Definir direção</b><small>O escopo do plano orienta o acompanhamento e os próximos passos.</small></div></div><p class="escolha-assinatura">Seu perfil. Sua evolução. Uma direção para seguir.</p></div><div class="escolha-retrato"><img data-src="selecaoFotoUrl" data-if="selecaoFotoOk" alt="Foto do jogador escolhido para esta apresentação"><div class="escolha-inicial" data-ifnot="selecaoFotoOk"><span data-bind="selecaoInicial"></span></div><div class="escolha-retrato-rodape"><span>Apresentação preparada para</span><strong><span data-if="nome" data-bind="nome"></span><span data-ifnot="nome">Seu próximo passo</span></strong><p data-bind="selecaoPerfil" data-if="selecaoPerfil"></p><p data-if="selecaoCodigo">Dossiê <span data-bind="selecaoCodigo"></span> · Individual</p></div></div></section>
+<section class="slide escolha-atleta" data-slide-origem="2" data-foto-slide="escolha"><div class="escolha-texto"><p class="escolha-selo"><i></i> Por que você · Jogador de Elite</p><h2 class="escolha-titulo"><span class="escolha-nome" data-if="nome"><span data-bind="nome"></span>,</span><br><span data-ifnot="nome">Você</span><span data-if="nome">você</span> foi escolhido<br>para esta conversa.</h2><p class="escolha-abertura">Esta apresentação parte do seu perfil e do próximo passo que você busca no futebol. O plano ganha sentido quando começa em você.</p><div class="escolha-contexto" data-if="selecaoContexto"><span>O que chamou atenção no seu perfil</span><p data-bind="selecaoContexto"></p></div><div class="escolha-direcao"><div><b>Entender seu jogo</b><small>O Zyron transforma os lances em uma leitura do seu perfil.</small></div><div><b>Construir evolução</b><small>No Scout PRO, sete módulos conectam conhecimento e rotina.</small></div><div><b>Definir direção</b><small>O escopo do plano orienta o acompanhamento e os próximos passos.</small></div></div><p class="escolha-assinatura">Seu perfil. Sua evolução. Uma direção para seguir.</p></div><div class="escolha-retrato"><img data-src="selecaoFotoUrl" data-if="selecaoFotoOk" alt="Foto do jogador escolhido para esta apresentação"><div class="escolha-inicial" data-ifnot="selecaoFotoOk"><span data-bind="selecaoInicial"></span></div><div class="escolha-retrato-rodape"><span>Apresentação preparada para</span><strong><span data-if="selecaoNome" data-bind="selecaoNome"></span><span data-ifnot="selecaoNome">Seu próximo passo</span></strong><p data-bind="selecaoPerfil" data-if="selecaoPerfil"></p><p data-if="selecaoCodigo">Dossiê <span data-bind="selecaoCodigo"></span> · Individual</p></div></div></section>
 
 <section class="slide" data-slide-origem="4">
   <div class="fill" style="background:radial-gradient(42% 70% at 36% 52%,rgba(226,85,43,.07),rgba(6,11,20,0) 70%)"></div>
@@ -71,7 +71,7 @@
   <p class="a rise" style="left:120px;top:884px;width:1600px;font-size:52px;line-height:1.15;font-weight:600;color:var(--white);--d:.2s">Não foi você que não deu certo. Foi o <span class="sig">olhômetro</span>.</p>
 </section>
 
-<section class="slide" data-slide-origem="5">
+<section class="slide" data-slide-origem="5"><i class="s4-longo" data-if="nome4Longo" aria-hidden="true"></i>
   <div class="fill" style="background:radial-gradient(40% 50% at 88% 50%,rgba(230,219,184,.09),rgba(6,11,20,0) 70%)"></div>
   <p class="a dtag" data-if="nome">Dossiê · <span data-bind="nome"></span><span data-if="dossieCod"> · nº <span data-bind="dossieCod"></span></span></p>
   <p class="a label" style="left:120px;top:90px"><span data-if="videoOk">Feito a partir do seu vídeo e da sua história</span><span data-ifnot="videoOk">Feito a partir da sua história</span></p>
@@ -183,7 +183,7 @@
   </div>
 </section>
 
-<section class="slide" data-slide-origem="10">
+<section class="slide" data-slide-origem="10"><i class="s10-longo" data-if="nomeLongo" aria-hidden="true"></i>
   <div class="fill" style="background:radial-gradient(34% 62% at 52% 50%,rgba(107,123,69,.16),rgba(6,11,20,0) 72%)"></div>
   <div class="a" style="left:120px;top:96px;width:580px">
     <p class="label">Em campo</p>
@@ -394,7 +394,7 @@
       <div class="case"><img src="assets/joaozinho-02.jpg" alt="Joãozinho assinando contrato com o Grêmio" style="object-position:50% 40%"><div class="shade"></div><div class="cap"><p class="nm">Joãozinho</p><p class="cl">Grêmio</p></div></div>
       <div class="case"><img src="assets/kaio-01.jpg" alt="Kaio assinando contrato com o Internacional"><div class="shade"></div><div class="cap"><p class="nm">Kaio</p><p class="cl">Internacional</p></div></div>
       <div class="case mirror" data-if="casoNome"><p class="tag">Mesmo perfil<span data-if="nome"> do <span data-bind="nome"></span></span></p><div class="cap"><p class="nm" data-fit="190"><span data-bind="casoNome"></span></p><p class="cl" data-bind="casoClube"></p><p class="ct" data-bind="casoPais"></p></div></div>
-      <div class="case next"><div class="cap"><p class="cl">O próximo</p><p class="nm" data-fit="190"><span data-bind="nome" data-fb="Você"></span></p></div></div>
+      <div class="case next"><div class="cap"><p class="cl">O próximo</p><p class="nm" data-fit="190"><span data-bind="nomeCampo" data-fb="Você"></span></p></div></div>
     </div>
   </div>
   <div class="a device rise" style="left:1180px;top:150px;width:640px;--d:.1s"><img src="assets/agn-feed.png" alt="Perfil público da AGN Football com atletas e clubes"></div>

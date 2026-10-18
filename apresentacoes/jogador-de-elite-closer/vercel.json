@@ -1,6 +1,7 @@
 {
   "functions": {
     "api/limpeza.js": { "maxDuration": 60 },
+    "api/atletas.js": { "maxDuration": 60 },
     "api/versoes.js": { "maxDuration": 20 }
   },
   "rewrites": [

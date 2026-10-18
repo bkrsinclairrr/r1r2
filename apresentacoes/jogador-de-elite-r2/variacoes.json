@@ -1,12 +1,12 @@
 {
   "v": 1,
-  "gerado": "2026-10-18T01:41:28.583Z",
+  "gerado": "2026-10-18T17:20:00.629Z",
   "paginas": [
     {
       "id": "principal",
       "caminho": "/",
       "nome": "R2 · Roteiro clássico completo",
-      "resumo": "O R2 de 30 slides, o de antes do R2 novo, com os planos e O investimento. A foto aparece somente no slide de escolha.",
+      "resumo": "O R2 de 30 slides, o de antes do R2 novo, com os planos e O investimento. Nome e sobrenome do lead na tela (com a escolha do painel) e a foto no slide de escolha.",
       "quando": "Só se precisar da versão de 30 slides. Na dúvida, use o R2 novo.",
       "validacao": "em-validacao",
       "lead": {
@@ -15,13 +15,13 @@
       },
       "slides": 30,
       "opcionais": [],
-      "hash": "29db9854eec58ec90e11caf8f73a43ece4653430"
+      "hash": "f014b253c424a2f06e9f67308effdec17907f6a2"
     },
     {
       "id": "acompanhamento",
       "caminho": "/variacoes/acompanhamento/",
       "nome": "R2 · Oferta R$247,90 e R$500",
-      "resumo": "R2 com Scout PRO por R$ 247,90 e Legacy por R$ 500, dossiê com foto, relatório do Zyron e clubes compatíveis. Garantia antes do Bem-vindo.",
+      "resumo": "R2 com Scout PRO por R$ 247,90 e Legacy por R$ 500, dossiê com o nome, o sobrenome e a foto do lead, relatório do Zyron e clubes compatíveis. Garantia antes do Bem-vindo.",
       "quando": "Quando esta oferta de dois planos for a aprovada para a família. O nome do atleta continua na apresentação.",
       "validacao": "nao-validada",
       "lead": {
@@ -30,13 +30,13 @@
       },
       "slides": 30,
       "opcionais": [],
-      "hash": "93df3ea5d3e729691f381cae2772d16c8d3c6d74"
+      "hash": "5d53ad9b0758d0ee549f096021fe6b151708a6a7"
     },
     {
       "id": "tecnica",
       "caminho": "/variacoes/tecnica/",
       "nome": "R2 · Técnica com roteiro clássico",
-      "resumo": "A versão técnica do R2 de 30 slides: fala de par pra par, sem explicar o básico. A foto aparece somente no slide de escolha.",
+      "resumo": "A versão técnica do R2 de 30 slides: fala de par pra par, sem explicar o básico. Nome e sobrenome do lead na tela e a foto no slide de escolha.",
       "quando": "Lead com vivência no meio (base de clube, federado, ex-jogador, técnico) e só se precisar da versão de 30 slides.",
       "validacao": "em-validacao",
       "lead": {
@@ -45,7 +45,7 @@
       },
       "slides": 30,
       "opcionais": [],
-      "hash": "2e7891b69bfa0f4600a481c9b190ba3e672b13cf"
+      "hash": "5a6975eb5b660a4ea3837f34356df16f06a64d18"
     }
   ]
 }

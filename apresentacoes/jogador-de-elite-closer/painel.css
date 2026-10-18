@@ -345,3 +345,37 @@ legend{padding:0 8px}
 .dossie-grupo[open] summary{border-bottom:1px solid var(--borda,#29364a)}
 .dossie-grupo>.dica{padding:16px 20px 0;margin-bottom:8px}
 .dossie-grupo>.grade{padding:12px 20px 20px}
+
+/* validade do link: o que vale agora, os atalhos e o dia e a hora à mão */
+.vd-info{margin:0 0 12px;font-size:15px;color:var(--white)}
+.vd-info small{display:block;color:var(--muted);font-size:13.5px;margin-top:2px}
+.vd-rapidos{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.vd-rapidos .filtro{border:1px solid var(--line2);background:#0A0D12;letter-spacing:.06em;font-size:13.5px}
+.vd-rapidos .filtro[disabled]{opacity:.4;cursor:not-allowed}
+.vd-linha{display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;margin-bottom:6px}
+.vd-linha .campo{flex:0 1 280px}
+
+/* Gerados: o que já foi gerado, o espaço de cada um e a exclusão em lote */
+.ger-resumo{margin:0 0 10px;font-size:15px;color:var(--white)}
+.ger-resumo b{color:var(--gold-l);font-weight:600}
+.ger-barra{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.ger-barra #ger-excluir{margin-left:auto}
+#ger-filtros{flex-wrap:wrap;max-width:100%}
+#ger-filtros .filtro{flex:1 1 auto}
+.ger-lista{display:flex;flex-direction:column;gap:8px;padding-bottom:40px}
+.ger-item{display:grid;grid-template-columns:auto auto minmax(0,1fr) auto;gap:12px 14px;align-items:center;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.ger-item.marcado{border-color:var(--gold-dim);background:rgba(232,206,142,.05)}
+.ger-item>input{width:22px;height:22px;accent-color:var(--gold);margin:0}
+.ger-item .av{width:48px;height:48px}
+.ger-item .av.ini{font-size:22px}
+.ger-item h3{font-family:var(--f-title);font-weight:800;text-transform:uppercase;color:var(--white);font-size:21px;line-height:1.05;margin:0;overflow-wrap:anywhere}
+.ger-item .meta{color:var(--muted);font-size:13.5px;margin:3px 0 6px}
+.ger-item .meta b{color:var(--body);font-weight:500}
+.ger-item .chips{display:flex;gap:6px;flex-wrap:wrap}
+.ger-item .acoes{margin:0;justify-content:flex-end}
+.ger-peso{font-family:var(--f-label);font-weight:600;letter-spacing:.08em;font-size:14px;color:var(--body);white-space:nowrap}
+@media (max-width:760px){
+  .ger-item{grid-template-columns:auto auto minmax(0,1fr)}
+  .ger-item .acoes{grid-column:1/-1;justify-content:flex-start}
+  .ger-barra #ger-excluir{margin-left:0}
+}

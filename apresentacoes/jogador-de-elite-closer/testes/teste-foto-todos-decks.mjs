@@ -6,7 +6,7 @@ import { sobe, RAIZES } from './servidor.mjs';
 import { Cliente, fotosDeTeste, b64 } from './_util.mjs';
 import { abreNavegador, espera } from './_chrome.mjs';
 
-test('todas as páginas aceitam foto, ficha vazia e exibem a imagem em um único slide', async () => {
+test('todas as páginas aceitam foto, ficha vazia e exibem a imagem no slide de escolha e nos quadros de foto do deck', async () => {
   const s = await sobe({ deck: true, decks: ['r2-anterior', 'r2-b', 'r1'] });
   const nav = await abreNavegador(), fotos = fotosDeTeste(RAIZES.r2);
   try {
@@ -24,7 +24,11 @@ test('todas as páginas aceitam foto, ficha vazia e exibem a imagem em um único
       const a=await nav.aba(s.decks[v.deck]+v.caminho+'?a='+t+'#2',{largura:1920,altura:1080});
       assert.ok(await a.ate(`document.querySelector('#stage>.slide.active img[data-src="selecaoFotoUrl"]')?.naturalWidth>0`),v.id+': foto no slide de escolha');
       const fotoEm=await a.avalia(`[...document.querySelectorAll('#stage>.slide')].flatMap((sl,i)=>[...sl.querySelectorAll('img')].some(img=>/api\\/foto/.test(img.src))?[i+1]:[])`);
-      assert.deepEqual(fotoEm,[2],v.id+': foto somente no slide 2');
+      // desde 18/10/2026 a foto vai pro slide 02 e pros quadros de foto que o deck tem (o R2 novo, o B e a Acompanhamento têm; o R1 e as
+      // outras páginas do R2 anterior só têm o slide 02)
+      const comQuadros = v.deck === 'r2' || v.deck === 'r2-b' || v.id === 'r2a-acompanhamento';
+      if (comQuadros) assert.ok(fotoEm.includes(1) && fotoEm.includes(2) && fotoEm.length >= 5, v.id + ': foto na capa, no slide 2 e nos quadros (' + fotoEm.join(', ') + ')');
+      else assert.deepEqual(fotoEm, [2], v.id + ': foto no slide 2 (o único quadro de foto deste deck)');
       assert.match(await a.avalia(`document.querySelector('#stage>.slide.active').innerText`),/Gabriel|GABRIEL/);
       assert.match(await a.avalia(`document.querySelector('.escolha-retrato-rodape strong').innerText`),/Gabriel|GABRIEL/);
       await a.avalia('document.fonts.ready.then(()=>1)'); await espera(500);

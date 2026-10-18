@@ -1,18 +1,23 @@
 // Os leads de cada atleta, um registro por atleta (atletas/<t>.json), de uma etapa: R1 (o SDR) ou R2 (o closer). Precisa de login.
-// GET                 os leads do usuário (o admin vê todos com ?todos=1), com a etiqueta de cada um e a etapa
+// GET                 os leads do usuário (o admin vê todos com ?todos=1), com a etiqueta de cada um e a etapa. Com ?gerados=1 (a seção
+//                     Gerados), também o espaço que cada um ocupa na loja (espaco: { ficha, foto, video, total }, em bytes) e o total
 // GET ?t=             o registro inteiro, o link, a etiqueta, o checklist e a presença (dono ou admin)
-// POST                cria { ficha, etapa? } e devolve { t, link, registro }; a personalização é opcional. A etapa é a do papel: o SDR cria R1, o closer
-//                     cria R2; o admin escolhe (R2 se não disser). Pedir a etapa de outro papel dá 403.
+// POST                cria { ficha, etapa?, link?: { venceEm?, apagarAoVencer? } } e devolve { t, link, registro }; a personalização é opcional. A
+//                     etapa é a do papel: o SDR cria R1, o closer cria R2; o admin escolhe (R2 se não disser). Pedir a etapa de outro papel dá 403.
+//                     link.venceEm: o dia e a hora em que o link expira, escolhidos por quem monta (sem ela, a automática: 7 dias depois da call);
+//                     link.apagarAoVencer: a limpeza diária apaga tudo do lead depois que o link vence
 // PUT ?t=             { ficha, base, nota?, conferido? } salva a ficha (dono ou admin). base é a versão da ficha que o
 //                     formulário carregou (fichaEm): se outra pessoa salvou depois, 409 com quem salvou e quando.
 //                     Foto, vídeo e link têm versão própria e não geram conflito com a ficha.
 // PUT ?t=             { previa: true } marca que a prévia foi olhada nesta versão da ficha e da foto
 // PUT ?t=             { dono: 'login' } troca o dono (só o admin); o dono novo tem que montar a etapa do lead
 // DELETE ?t=          apaga em cascata: registro, fotos, vídeo, presença e o item do índice do dono (dono ou admin)
+// DELETE              { ts: [códigos] } apaga vários de uma vez (a seção Gerados), até 50 por pedido; devolve { apagados, recusados }
 import {
   exige, manda, corpo, limpaFicha, versaoInvalida, textoLimpo, grava, le, conflito, novoCodigo, caminho, caminhoChamada, leRegistro, mudaRegistro,
   quem, podeMexer, anota, venceDoLink, maisTarde, estadoGuardado, pacote, leVersoesCom, resumo, mudaIndice, poeNoIndice, leIndice, leTodosIndices,
-  emCallAgora, apagaTudo, achaUsuario, chavesDaEtapa, etapaDe, podeEtapa, PRESENCA_MS, T_OK, R, registraErro
+  emCallAgora, apagaTudo, apagaArquivos, tiraDosIndices, achaUsuario, chavesDaEtapa, etapaDe, podeEtapa, validadePedida, espacoPorLead, PRESENCA_MS, T_OK, R,
+  registraErro
 } from './_base.js';
 
 // as palavras da etapa na tela: o R1 é do SDR, o R2 do closer
@@ -35,14 +40,17 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET' && !t) {
       const todos = eu.papel === 'admin' && String((req.query && req.query.todos) || '') === '1';
-      const itens = todos ? await leTodosIndices() : await leIndice(eu.login);
-      const emCall = await emCallAgora();
+      const gerados = String((req.query && req.query.gerados) || '') === '1';
+      const [itens, emCall, espaco] = await Promise.all([todos ? leTodosIndices() : leIndice(eu.login), emCallAgora(), gerados ? espacoPorLead() : null]);
+      const vazio = { ficha: 0, foto: 0, video: 0, total: 0 };
       const lista = Object.values(itens).map(it => Object.assign({}, it, {
         etapa: it.etapa === 'r1' ? 'r1' : 'r2', // o item de antes do R1 não tem a etapa: era R2
         estadoTela: it.estado === 'revogado' ? 'revogado' : it.venceEm && Date.parse(it.venceEm) <= Date.now() ? 'expirado' : it.estado || 'rascunho',
         emCall: emCall.has(it.t)
-      }));
-      return manda(res, 200, { itens: lista, hoje: R.hojeSP(), todos });
+      }, espaco ? { espaco: espaco[it.t] || vazio } : {}));
+      const saida = { itens: lista, hoje: R.hojeSP(), todos };
+      if (espaco) saida.totalBytes = lista.reduce((s, it) => s + it.espaco.total, 0);
+      return manda(res, 200, saida);
     }
 
     if (req.method === 'GET') {
@@ -61,16 +69,25 @@ export default async function handler(req, res) {
       const V = await leVersoesCom(entrada && entrada.versao);
       const ficha = limpaFicha(entrada, V, etapa);
       if (versaoInvalida(entrada, ficha, etapa)) return manda(res, 400, { erro: 'Essa variação do ' + rotulo(etapa) + ' não existe mais. Recarregue a página e escolha de novo.' });
+      // a validade que quem monta escolheu ao gerar (opcional); sem ela, a automática (7 dias depois da call)
+      const lk = b.link && typeof b.link === 'object' ? b.link : {};
+      let venceEscolhido = '';
+      if (lk.venceEm != null && lk.venceEm !== '') {
+        const v = validadePedida(lk.venceEm);
+        if (v.erro) return manda(res, 400, { erro: v.erro });
+        venceEscolhido = v.venceEm;
+      }
       const agora = new Date().toISOString();
       let reg = null;
       // o código é aleatório; se por acaso já existir, sorteia outro (gravação só se o arquivo não existe)
       for (let i = 0; i < 5 && !reg; i++) {
         const novo = {
           t: novoCodigo(), v: 1, rev: 1, etapa, estado: 'rascunho', donoLogin: eu.login, dono: quem(eu), criadoPor: quem(eu), criadoEm: agora,
-          atualizadoPor: quem(eu), atualizadoEm: agora, fichaPor: quem(eu), fichaEm: agora, venceEm: venceDoLink(ficha, agora, etapa),
+          atualizadoPor: quem(eu), atualizadoEm: agora, fichaPor: quem(eu), fichaEm: agora, venceEm: venceEscolhido || venceDoLink(ficha, agora, etapa),
+          venceManual: !!venceEscolhido, apagarAoVencer: lk.apagarAoVencer === true,
           ficha, foto: null, video: null, leitura: null, nota: '', conferido: {}, historico: []
         };
-        anota(novo, eu, 'criou o ' + rotulo(etapa));
+        anota(novo, eu, 'criou o ' + rotulo(etapa) + (venceEscolhido ? ' (o link expira em ' + R.dataCurta(venceEscolhido) + ')' : ''));
         novo.estado = estadoGuardado(novo, V);
         try { await grava(caminho(novo.t), novo, { novo: true }); reg = novo; } catch (e) { if (!conflito(e)) throw e; }
       }
@@ -141,8 +158,8 @@ export default async function handler(req, res) {
         r.conferido = Object.assign({}, r.conferido);
         if (b.conferido && b.conferido.nome === true) r.conferido.nome = r.ficha.nome;
         if (b.conferido && b.conferido.nome === false) delete r.conferido.nome;
-        // a call mudou de dia: o link passa a valer até 7 dias depois dela (nunca encurta)
-        if (mudou.includes('r2data')) r.venceEm = maisTarde(r.venceEm, venceDoLink(r.ficha, undefined, etapa));
+        // a call mudou de dia: o link passa a valer até 7 dias depois dela (nunca encurta). A validade que quem monta escolheu não muda
+        if (mudou.includes('r2data') && !r.venceManual) r.venceEm = maisTarde(r.venceEm, venceDoLink(r.ficha, undefined, etapa));
         const agora = new Date().toISOString();
         r.fichaEm = agora; r.fichaPor = quem(eu); r.atualizadoEm = agora; r.atualizadoPor = quem(eu);
         anota(r, eu, mudou.length ? 'salvou a ficha (' + mudou.join(', ') + ')' : 'salvou a ficha');
@@ -153,6 +170,30 @@ export default async function handler(req, res) {
       if (conflitoCom) return manda(res, 409, { erro: (conflitoCom.por || 'Outra pessoa') + ' salvou esta ficha depois que você abriu.', conflito: conflitoCom });
       await poeNoIndice(reg);
       return manda(res, 200, await pacote(reg));
+    }
+
+    // vários de uma vez (Gerados): cada um conferido (dono ou admin), os arquivos apagados e cada índice mexido uma vez só
+    if (req.method === 'DELETE' && !t) {
+      const b = await corpo(req);
+      const ts = [...new Set((Array.isArray(b.ts) ? b.ts : []).map(String))].filter(x => T_OK.test(x));
+      if (!ts.length) return manda(res, 400, { erro: 'Escolha o que excluir.' });
+      if (ts.length > 50) return manda(res, 400, { erro: 'Exclua no máximo 50 de uma vez.' });
+      const apagados = [], recusados = [], sumidos = [], porDono = {};
+      for (const x of ts) {
+        const r = await leRegistro(x);
+        if (!r) { sumidos.push(x); apagados.push(x); continue; }
+        if (!podeMexer(eu, r.dados)) { recusados.push(x); continue; }
+        await apagaArquivos(x);
+        (porDono[r.dados.donoLogin] = porDono[r.dados.donoLogin] || []).push(x);
+        apagados.push(x);
+      }
+      for (const [dono, lista] of Object.entries(porDono)) if (dono) await mudaIndice(dono, itens => { lista.forEach(x => { delete itens[x]; }); });
+      // o que já não existia sai do índice de quem pediu (e, pro admin, de qualquer índice que ainda tenha)
+      if (sumidos.length) {
+        await mudaIndice(eu.login, itens => { sumidos.forEach(x => { delete itens[x]; }); });
+        if (eu.papel === 'admin') await tiraDosIndices(sumidos);
+      }
+      return manda(res, 200, { ok: true, apagados, recusados });
     }
 
     if (req.method === 'DELETE' && t) {

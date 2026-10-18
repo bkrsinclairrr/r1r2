@@ -1,21 +1,37 @@
-/* A foto autorizada aparece em um único momento: o slide de escolha do atleta. */
+/* A foto autorizada do atleta. O slide de escolha (02) é o retrato grande; os outros quadros de foto do deck (a capa com o "Montado
+   para", o cartão do campo, os planos, a garantia e o Bem-vindo) usam a mesma foto, pelo fotoUrl e pelo avatarUrl que o deck monta.
+   Sem foto, com a foto fora da tela no painel ("Mostrar a foto do lead" desmarcado) ou com a foto que não carregou, cada quadro mostra
+   as iniciais do nome e do sobrenome (Carlos Eduardo Souza vira CS), nunca o ícone de imagem quebrada.
+   O nome da placa ("Apresentação preparada para", "Montado para") é sempre nome e sobrenome (nomeAssinatura do deck), mesmo quando os
+   títulos usam o apelido ou só o primeiro nome. O código do dossiê é o mesmo em todos os slides (os 8 últimos caracteres do link). */
 (function () {
   'use strict';
   const falhas = new Set();
   let ultimo;
+  const PARTICULAS = ['da', 'de', 'do', 'das', 'dos', 'e'];
+  const SUFIXOS = ['junior', 'jr', 'filho', 'neto', 'sobrinho', 'segundo', 'terceiro'];
+  const semAcento = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
+  // as iniciais: a primeira letra do primeiro nome e a do último sobrenome (sem "da", "de", "do" e sem Júnior, Filho...)
+  function iniciais(nome) {
+    const p = String(nome || '').replace(/[^\p{L}\p{N}\s'-]/gu, ' ').split(/\s+/).filter(Boolean);
+    const conta = p.filter((x, i) => PARTICULAS.indexOf(semAcento(x)) < 0 && !(i > 0 && SUFIXOS.indexOf(semAcento(x)) >= 0));
+    if (!conta.length) return '';
+    const letra = x => (x.match(/[\p{L}\p{N}]/u) || [''])[0].toUpperCase();
+    return conta.length > 1 ? letra(conta[0]) + letra(conta[conta.length - 1]) : letra(conta[0]);
+  }
   window.FotoAtleta = {
+    iniciais,
     derivados(f, d, aid, painel) {
       const ft = f.semFoto !== 'sim' && f.nomeTela !== 'sem' && f._foto && f._foto.ok ? f._foto : null;
       const versao = ft ? Number(ft.versao) : 0;
       const url = ft ? (aid && versao > 0 ? painel + '/api/foto?t=' + encodeURIComponent(aid) + '&v=retrato&n=' + versao : !aid ? String(ft.src || '') : '') : '';
-      const nome = String(d.nome || '');
+      const placa = String(d.nomeAssinatura || d.nome || '');
       return { selecaoFotoUrl: falhas.has(url) ? '' : url, selecaoFotoOk: url && !falhas.has(url) ? '1' : '',
-        selecaoInicial: (nome || 'JE').slice(0, nome ? 1 : 2).toUpperCase(),
+        selecaoNome: placa,
+        selecaoInicial: d.fotoIni || iniciais(placa) || 'JE',
         selecaoPerfil: [f.posicao, f.idade ? f.idade + ' anos' : '', f.cidade].filter(Boolean).join(' · '),
         selecaoContexto: f.caracteristicas || f.experiencia || '',
-        selecaoCodigo: aid ? aid.slice(-6).toUpperCase() : '',
-        // Os demais slides preservam seus nomes, iniciais e desenhos, sem repetir a imagem.
-        fotoUrl: '', avatarUrl: '', fotoOk: '', avatarOk: '' };
+        selecaoCodigo: d.dossieCod || (aid && f.nomeTela !== 'sem' ? aid.replace(/[^A-Za-z0-9]/g, '').slice(-8).toUpperCase() : '') };
     },
     atualiza(root, d) {
       ultimo = d;
@@ -29,6 +45,12 @@
       root.querySelectorAll('.escolha-nome').forEach(e => {
         e.style.fontSize = d.selecaoContexto ? '96px' : '106px';
         for (let i = 0; e.scrollWidth > 940 && i < 30; i++) e.style.fontSize = (parseFloat(e.style.fontSize) * .94) + 'px';
+      });
+      // a placa do retrato (nome e sobrenome) cabe numa linha: encolhe até 40 px, e só então quebra
+      root.querySelectorAll('.escolha-retrato-rodape strong').forEach(e => {
+        e.style.fontSize = '';
+        const larg = e.parentElement ? e.parentElement.clientWidth : 0;
+        for (let i = 0; larg && e.scrollWidth > larg && parseFloat(getComputedStyle(e).fontSize) > 40 && i < 20; i++) e.style.fontSize = (parseFloat(getComputedStyle(e).fontSize) * .94) + 'px';
       });
       // O titulo da formacao nunca cobre a grade, com o slide parado ou ativo (a navegacao troca a classe sem disparar hashchange, entao nao da pra esperar o .active):
       // primeiro tenta tres linhas (.fa-3 desce a grade e encolhe o cartao do 7); so se ainda nao couber o titulo diminui.
@@ -49,7 +71,7 @@
     '"[atleta], você foi escolhido para esta conversa. Esta apresentação foi preparada para o seu perfil e para o próximo passo que você busca no futebol."',
     'Mostre o nome e, se houver, a foto do jogador. Use o contexto preenchido no painel para explicar o que chamou atenção. Campo vazio não é uma conclusão sobre o atleta.',
     '"O objetivo é transformar a leitura do seu jogo em direção: entender o ponto de partida, trabalhar a evolução e escolher os próximos passos."'],
-    atencao: 'A foto é opcional e aparece somente neste slide. Dados e contexto vazios permanecem vazios. Escolha para a conversa não é promessa de vaga ou contratação.' };
+    atencao: 'A foto é opcional; com ela autorizada no painel, aparece aqui e nos quadros de foto do deck. Sem foto, os quadros mostram as iniciais. Dados e contexto vazios permanecem vazios. Escolha para a conversa não é promessa de vaga ou contratação.' };
   const formacao = document.querySelector('#stage > .formacao-atleta');
   if (formacao && window.ROTEIRO) {
     const indice = [...document.querySelectorAll('#stage > .slide')].indexOf(formacao);

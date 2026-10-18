@@ -96,6 +96,25 @@ ok(R.posicaoNoCampo('zagueiro') === 'ZAG-d' && R.posicaoNoCampo('ponta esquerda'
     'comoChama e nomeDossie nas escolhas do R2: primeiro sobrenome, só o primeiro nome (o apelido manda) e sem nome (nada na tela)');
 }
 
+// desde 18/10/2026 o R2 anterior e o R1 usam o mesmo nomesDoAtleta (o R2 anterior pra tela, o R1 pra placa do slide 02): o bloco é igual ao
+// do R2 novo, tirando o fim de linha
+{
+  const bloco = txt => { const s = txt.replace(/\r\n/g, '\n'), i = s.indexOf('  const NOME_PARTICULAS'), f = s.indexOf('\n  }\n', s.indexOf('  function nomesDoAtleta', i)); return i < 0 || f < 0 ? null : s.slice(i, f); };
+  const ref = bloco(fonte);
+  for (const d of ['jogador-de-elite-r2', 'jogador-de-elite-r1']) {
+    const b2 = bloco(fs.readFileSync(path.join(RAIZ_PAINEL, '..', d, 'assets', 'deck.js'), 'utf8'));
+    ok(!!ref && b2 === ref, 'nomesDoAtleta do ' + d + ' igual ao do R2 novo');
+  }
+  // as iniciais do quadro sem foto: o foto-atleta.js é o mesmo nos quatro decks, e o painel tem a mesma conta
+  const fa = d => fs.readFileSync(path.join(RAIZ_PAINEL, '..', d, 'assets', 'foto-atleta.js'), 'utf8').replace(/\r\n/g, '\n');
+  ok(['jogador-de-elite-r2', 'jogador-de-elite-r2-b', 'jogador-de-elite-r1'].every(d => fa(d) === fa('jogador-de-elite-r2-novo')), 'foto-atleta.js igual nos quatro decks (tirando o fim de linha)');
+  const cf = { window: {}, document: { querySelector: () => null, querySelectorAll: () => [] }, addEventListener() {} };
+  cf.window = cf; vm.createContext(cf);
+  vm.runInContext(fa('jogador-de-elite-r2-novo'), cf);
+  const casos = [['Carlos Eduardo Souza', 'CS'], ['Lucas Almeida da Silva', 'LS'], ['Pedro Henrique da Silva Júnior', 'PS'], ['Kaio', 'K'], ['Joãozinho', 'J'], ['Ícaro de Ávila', 'ÍÁ'], ['', '']];
+  ok(casos.every(([n, e]) => cf.FotoAtleta.iniciais(n) === e), 'as iniciais do quadro sem foto: ' + casos.map(([n]) => (n || '(vazio)') + ' → ' + cf.FotoAtleta.iniciais(n)).join(', '));
+}
+
 const a = fs.readFileSync(path.join(RAIZ_PAINEL, 'relatorio-leitura.js')), b = fs.readFileSync(path.join(RAIZ_DECK, 'assets', 'relatorio-leitura.js'));
 ok(Buffer.compare(a, b) === 0, 'relatorio-leitura.js igual byte a byte no painel e no deck');
 fim();

@@ -119,7 +119,7 @@ try {
   await Sf.ate(pronto, 15000); await espera(1800);
   ok(!(await Sf.avalia(fotoPedida)), 'com a foto fora da tela deste R2, a foto nem é pedida ao painel');
   ok((await Sf.avalia(NOME)) === 'Lucas Silva' && /Montado para Lucas Almeida da Silva\./.test(await Sf.avalia('document.body.textContent')), '... e o nome continua na tela (títulos e capa)');
-  ok(await Sf.avalia("Array.from(document.querySelectorAll('[data-bind=\"fotoIni\"]')).some(e => e.textContent.trim() === 'L')"), '... e o quadro da foto mostra a inicial do nome (L)');
+  ok(await Sf.avalia("Array.from(document.querySelectorAll('[data-bind=\"fotoIni\"]')).some(e => e.textContent.trim() === 'LS')"), '... e o quadro da foto mostra as iniciais do nome e sobrenome (LS)');
   await put(admin, 'tecnica', { lead: { nome: true, foto: false } });
   const tvf = await cria({ versao: 'tecnica' }, true);
   const Vf = await nav.aba(s.deck + '/?a=' + tvf + '#1', { largura: 1920, altura: 1080 });
@@ -196,7 +196,7 @@ try {
   // a foto do lead por R2, pela tela
   ok(await A.avalia("document.querySelector('#c-foto-tela').checked && !document.querySelector('#foto-tela-bloco').hidden"), 'a caixa "Mostrar a foto do lead na tela" começa marcada');
   await A.avalia("document.querySelector('#c-foto-tela').click(); 1");
-  ok(await A.avalia("document.querySelector('#ed-salvo').classList.contains('sujo') && /inicial do nome/.test(document.querySelector('#ex-nome-nota').textContent)"), 'desmarcar conta como mudança e a tela avisa que o quadro mostra a inicial');
+  ok(await A.avalia("document.querySelector('#ed-salvo').classList.contains('sujo') && document.querySelector('#ex-nome-nota').textContent.includes('mostram as iniciais (PC)')"), 'desmarcar conta como mudança e a tela avisa que os quadros mostram as iniciais (PC, de Pedro Henrique Costa)');
   ok(await A.avalia("/não vai pra tela/.test(document.querySelector('#ft-nota-sem').textContent) && !document.querySelector('#ft-nota-sem').hidden"), '... e a seção da foto explica que ela fica guardada');
   await A.avalia("document.querySelector('#ed-salvar').click(); 1");
   await A.ate("!document.querySelector('#ed-salvo').classList.contains('sujo')");

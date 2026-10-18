@@ -77,13 +77,13 @@
     { id: 'r2', etapa: 'r2', nome: 'R2 novo', prefixo: '', entrada: true, origem: 'https://jogador-de-elite-r2-novo.vercel.app',
       recursos: { nomeTela: true, foto: true, pular: true, leitura: true, previa: true } },
     { id: 'r2-anterior', etapa: 'r2', nome: 'R2 anterior', prefixo: 'r2a-', entrada: false, origem: 'https://jogador-de-elite-r2.vercel.app',
-      leadTxt: 'aparece o primeiro nome do lead; foto no slide de escolha; nome nos demais slides, sem escolha do formato do nome',
-      recursos: { nomeTela: false, nomeFixo: 'so-nome', apelido: false, foto: true, pular: false, leitura: true, previa: false } },
+      // desde 18/10/2026 segue "Nome na tela" e o apelido como o R2 novo (antes mostrava só o primeiro nome)
+      recursos: { nomeTela: true, foto: true, pular: false, leitura: true, previa: false } },
     { id: 'r2-b', etapa: 'r2', nome: 'R2 B', prefixo: 'r2b-', entrada: false, origem: 'https://jogador-de-elite-r2-b.vercel.app',
       leadTxt: 'aparecem o nome e o primeiro sobrenome do lead, com a foto dele; este deck não deixa escolher o nome na tela',
       recursos: { nomeTela: false, nomeFixo: 'primeiro-sobrenome', foto: true, pular: false, leitura: true, previa: true } },
     { id: 'r1', etapa: 'r1', nome: 'R1', prefixo: 'r1-', entrada: true, origem: 'https://jogador-de-elite-r1.vercel.app',
-      leadTxt: 'aparecem o primeiro nome do lead e a ficha dele (posição, idade e cidade); foto no slide de escolha',
+      leadTxt: 'o primeiro nome do lead nas frases, o nome e sobrenome na placa do slide de escolha, com a foto dele, e a ficha (posição, idade e cidade)',
       recursos: { nomeTela: false, nomeFixo: 'so-nome', apelido: false, foto: true, pular: false, leitura: false, previa: false } }
   ];
   const deckPor = id => DECKS.find(d => d.id === id) || null;

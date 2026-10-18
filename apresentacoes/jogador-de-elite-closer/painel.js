@@ -1,6 +1,7 @@
 /* Painel de Apresentações (R1 do SDR e R2 do closer): as telas. JS puro, sem biblioteca e sem CDN (a CSP só libera este domínio).
-   Rotas por #: #/ os leads do usuário, #/todos (admin), #/novo (o R2; pro SDR, o R1) ou #/novo/<slug da variação> (a etapa é a da variação),
-   #/novo-r1 (o admin) e #/r2/<código> o editor (de qualquer etapa; o código diz qual), #/versoes, #/usuarios (admin), #/senha.
+   Rotas por #: #/ os leads do usuário, #/todos (admin), #/gerados (o que já foi gerado, o espaço de cada um e a exclusão em lote), #/novo (o R2;
+   pro SDR, o R1) ou #/novo/<slug da variação> (a etapa é a da variação), #/novo-r1 (o admin) e #/r2/<código> o editor (de qualquer etapa; o
+   código diz qual), #/versoes, #/usuarios (admin), #/senha.
    Todo texto que vem do servidor (nome, ficha, histórico) entra escapado (esc) ou como textContent, nunca como HTML cru. */
 (function () {
   'use strict';
@@ -98,6 +99,15 @@
   }
   const callTxt = (data, hm) => [R.diaDaCall(data), R.horaDaCall(hm)].filter(Boolean).join(' · ');
   const inicial = nome => (String(nome || '').trim()[0] || '?').toUpperCase();
+  // as iniciais que o deck mostra no quadro sem foto (o mesmo FotoAtleta.iniciais dos decks): primeiro nome e último sobrenome, sem "da",
+  // "de", "do" e sem Júnior, Filho... (Carlos Eduardo Souza vira CS)
+  function iniciais(nome) {
+    const p = String(nome || '').replace(/[^\p{L}\p{N}\s'-]/gu, ' ').split(/\s+/).filter(Boolean);
+    const conta = p.filter((x, i) => !['da', 'de', 'do', 'das', 'dos', 'e'].includes(sem(x)) && !(i > 0 && ['junior', 'jr', 'filho', 'neto', 'sobrinho', 'segundo', 'terceiro'].includes(sem(x))));
+    if (!conta.length) return '';
+    const letra = x => (x.match(/[\p{L}\p{N}]/u) || [''])[0].toUpperCase();
+    return conta.length > 1 ? letra(conta[0]) + letra(conta[conta.length - 1]) : letra(conta[0]);
+  }
 
   /* ---------------- entrar e sair ---------------- */
   function mostraEntrar(msg) {
@@ -163,6 +173,7 @@
     if ((m = /^#\/novo(?:\/([a-z0-9-]+))?$/.exec(h))) return abreEditor(null, m[1]); // #/novo/<slug da variação>: já com a variação marcada (e a etapa dela)
     fechaEditor();
     if (h === '#/todos' && eu.papel === 'admin') return mostraLista(true);
+    if (h === '#/gerados') return mostraGerados();
     if (h === '#/usuarios' && eu.papel === 'admin') return mostraAba('usuarios');
     if (h === '#/versoes') return mostraAba('versoes');
     if (h === '#/senha') return mostraAba('senha');
@@ -183,7 +194,7 @@
   function marcaAba(nome) { $$('nav.abas .tab').forEach(t => t.setAttribute('aria-current', t.dataset.aba === nome ? 'page' : 'false')); }
   function mostraAba(nome) {
     $('#v-editor').hidden = true; $('#v-lista').hidden = false;
-    $('#aba-lista').hidden = true; $('#aba-usuarios').hidden = nome !== 'usuarios'; $('#aba-senha').hidden = nome !== 'senha'; $('#aba-versoes').hidden = nome !== 'versoes';
+    $('#aba-lista').hidden = true; $('#aba-gerados').hidden = true; $('#aba-usuarios').hidden = nome !== 'usuarios'; $('#aba-senha').hidden = nome !== 'senha'; $('#aba-versoes').hidden = nome !== 'versoes';
     marcaAba(nome);
     if (nome === 'usuarios') carregaUsuarios();
     if (nome === 'versoes') { desenhaCartoesVersoes(); carregaVersoes(); }
@@ -193,7 +204,7 @@
   async function mostraLista(todos) {
     listaTodos = !!todos;
     $('#v-editor').hidden = true; $('#v-lista').hidden = false;
-    $('#aba-lista').hidden = false; $('#aba-usuarios').hidden = true; $('#aba-senha').hidden = true; $('#aba-versoes').hidden = true;
+    $('#aba-lista').hidden = false; $('#aba-gerados').hidden = true; $('#aba-usuarios').hidden = true; $('#aba-senha').hidden = true; $('#aba-versoes').hidden = true;
     marcaAba(todos ? 'todos' : 'lista');
     $$('.filtro[data-filtro]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filtro === filtro)));
     $('#lista').innerHTML = '<div class="vazio">Carregando…</div>';
@@ -225,7 +236,8 @@
       const etapa = it.etapa === 'r1' ? 'r1' : 'r2';
       const [est, cor] = ESTADOS[it.estadoTela] || ESTADOS.rascunho;
       const call = callTxt(it.r2data, it.r2hm);
-      const av = it.foto ? `<img class="av" src="${esc(fotoUrl(it.t, 'avatar', it.foto))}" alt="" loading="lazy" data-ini="${esc(inicial(it.apelido || it.nome))}">` : `<span class="av ini" aria-hidden="true">${esc(inicial(it.apelido || it.nome))}</span>`;
+      const ini = iniciais(it.apelido || it.nome) || inicial(it.nome);
+      const av = it.foto ? `<img class="av" src="${esc(fotoUrl(it.t, 'avatar', it.foto))}" alt="" loading="lazy" data-ini="${esc(ini)}">` : `<span class="av ini" aria-hidden="true">${esc(ini)}</span>`;
       const link = linkDo(it.t, etapa);
       const ver = it.versao ? versaoPor(it.versao, etapa) : null;
       return `<article class="item${it.t === destaque ? ' novo' : ''}">
@@ -258,13 +270,126 @@
     }
   });
 
+  /* ---------------- Gerados: tudo o que já foi gerado, o espaço de cada um e a exclusão (um por um ou em lote) ----------------
+     Depois de apresentar, quem monta exclui o lead: a ficha, a foto e o vídeo saem da loja e o link para de funcionar na hora. O admin vê
+     os de todo mundo (com o nome de quem gerou); os outros, só os seus. O espaço vem do servidor (GET /api/atletas?gerados=1). */
+  let gerados = [], gerTotal = 0, gerFiltro = 'todos';
+  const gerSel = new Set();
+  const peso = n => { n = Number(n) || 0; return n >= 1048576 ? (n / 1048576).toFixed(n >= 104857600 ? 0 : 1).replace('.', ',') + ' MB' : n >= 1024 ? Math.max(1, Math.round(n / 1024)) + ' KB' : n + ' B'; };
+  const apresentado = it => it.estado === 'encerrado';
+  const foraDoAr = it => it.estadoTela === 'expirado' || it.estadoTela === 'revogado';
+  const filtraGer = it => (gerFiltro === 'apresentados' ? apresentado(it) : gerFiltro === 'vencidos' ? foraDoAr(it) : gerFiltro === 'ativos' ? !apresentado(it) && !foraDoAr(it) : true);
+  async function mostraGerados() {
+    $('#v-editor').hidden = true; $('#v-lista').hidden = false;
+    ['lista', 'usuarios', 'senha', 'versoes'].forEach(x => { $('#aba-' + x).hidden = true; });
+    $('#aba-gerados').hidden = false;
+    marcaAba('gerados');
+    if (!gerados.length) $('#ger-lista').innerHTML = '<div class="vazio">Carregando…</div>';
+    try {
+      const j = await api('atletas?gerados=1' + (eu.papel === 'admin' ? '&todos=1' : ''));
+      gerados = j.itens || []; gerTotal = Number(j.totalBytes) || 0;
+      Array.from(gerSel).forEach(t => { if (!gerados.some(g => g.t === t)) gerSel.delete(t); });
+      desenhaGerados();
+    } catch (err) { if (err.status !== 401) $('#ger-lista').innerHTML = '<div class="vazio">' + esc(err.message) + '</div>'; }
+  }
+  function desenhaGerados() {
+    $$('#ger-filtros .filtro').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.ger === gerFiltro)));
+    const vis = gerados.filter(filtraGer).sort((a, b) => String(b.criadoEm || '').localeCompare(String(a.criadoEm || '')));
+    const n = gerados.length, feitos = gerados.filter(it => apresentado(it) || foraDoAr(it));
+    const pesoFeitos = feitos.reduce((s, it) => s + ((it.espaco && it.espaco.total) || 0), 0);
+    $('#ger-resumo').innerHTML = !n ? '' : '<b>' + n + '</b> ' + (n === 1 ? 'apresentação gerada' : 'apresentações geradas') + ' · <b>' + esc(peso(gerTotal)) + '</b> ocupados' +
+      (feitos.length ? ' · ' + feitos.length + ' já ' + (feitos.length === 1 ? 'apresentada ou fora do ar' : 'apresentadas ou fora do ar') + ' (' + esc(peso(pesoFeitos)) + ')' : '');
+    const selVis = vis.filter(it => gerSel.has(it.t));
+    $('#ger-todos').checked = !!vis.length && selVis.length === vis.length;
+    $('#ger-todos').indeterminate = !!selVis.length && selVis.length < vis.length;
+    const pesoSel = gerados.filter(it => gerSel.has(it.t)).reduce((s, it) => s + ((it.espaco && it.espaco.total) || 0), 0);
+    $('#ger-excluir').disabled = !gerSel.size;
+    $('#ger-excluir').textContent = gerSel.size ? 'Excluir ' + gerSel.size + ' (' + peso(pesoSel) + ')' : 'Excluir selecionados';
+    $('#ger-sel-feitos').disabled = !feitos.length;
+    if (!n) { $('#ger-lista').innerHTML = '<div class="vazio"><p class="titulo">Nada gerado</p><p>As apresentações que você gerar aparecem aqui, com o espaço que ocupam.</p></div>'; return; }
+    if (!vis.length) { $('#ger-lista').innerHTML = '<div class="vazio">Nada neste filtro.</div>'; return; }
+    $('#ger-lista').innerHTML = vis.map(it => {
+      const etapa = it.etapa === 'r1' ? 'r1' : 'r2';
+      const [est, cor] = it.emCall ? ['Em call agora', 'pulsa'] : apresentado(it) && !foraDoAr(it) ? ['Apresentado', 'verde'] : (ESTADOS[it.estadoTela] || ESTADOS.rascunho);
+      const ini = iniciais(it.apelido || it.nome) || '?';
+      const av = it.foto ? `<img class="av" src="${esc(fotoUrl(it.t, 'avatar', it.foto))}" alt="" loading="lazy" data-ini="${esc(ini)}">` : `<span class="av ini" aria-hidden="true">${esc(ini)}</span>`;
+      const ver = it.versao ? versaoPor(it.versao, etapa) : versaoPor('', etapa);
+      const vence = it.venceEm ? (Date.parse(it.venceEm) <= Date.now() ? 'expirou ' + quando(it.venceEm) : 'expira ' + quando(it.venceEm)) : '';
+      const e = it.espaco || {};
+      const partes = [e.foto ? 'foto' : '', e.video ? 'vídeo' : ''].filter(Boolean).join(' e ');
+      const sel = gerSel.has(it.t);
+      return `<article class="ger-item${sel ? ' marcado' : ''}" data-t="${esc(it.t)}">
+        <input type="checkbox" data-ger-sel="${esc(it.t)}"${sel ? ' checked' : ''} aria-label="Selecionar ${esc(it.nome || 'sem nome')}">
+        ${av}
+        <div style="min-width:0"><h3>${esc(it.nome || 'Sem nome')}</h3>
+          <p class="meta">${ver.nome.startsWith(nomeEtapa(etapa)) ? '' : nomeEtapa(etapa) + ' · '}${esc(ver.nome)} · gerado ${esc(quando(it.criadoEm))}${vence ? ' · <b>' + esc(vence) + '</b>' : ''}${eu.papel === 'admin' && it.donoNome ? ' · de <b>' + esc(it.donoNome) + '</b>' : ''}</p>
+          <div class="chips"><span class="chip ${cor}">${esc(est)}</span>${it.apagarAoVencer ? '<span class="chip cinza" title="A limpeza diária apaga tudo deste lead depois que o link vencer">Apaga ao expirar</span>' : ''}${it.venceManual ? '<span class="chip cinza" title="Validade escolhida no editor">Validade escolhida</span>' : ''}</div></div>
+        <div class="acoes"><span class="ger-peso" title="Ficha ${esc(peso(e.ficha))}${e.foto ? ' · foto ' + esc(peso(e.foto)) : ''}${e.video ? ' · vídeo ' + esc(peso(e.video)) : ''}">${esc(peso(e.total))}${partes ? ' · ' + partes : ''}</span><a class="bt mini" href="#/r2/${esc(it.t)}">Editar</a>${it.estadoTela === 'revogado' ? '' : `<button class="bt mini" type="button" data-ger-apresentado="${esc(it.t)}">${apresentado(it) ? 'Desfazer apresentado' : 'Marcar como apresentado'}</button>`}<button class="bt mini perigo" type="button" data-ger-excluir="${esc(it.t)}">Excluir</button></div>
+      </article>`;
+    }).join('');
+  }
+  // apaga de vez (em pedidos de até 50): tira daqui, da lista de leads e da seleção, e diz quanto espaço voltou
+  async function excluiGerados(ts, bt) {
+    const alvo = gerados.filter(it => ts.includes(it.t));
+    const quem = alvo.length === 1 ? 'a apresentação de ' + (alvo[0].nome || 'um lead sem nome') : alvo.length + ' apresentações';
+    if (!alvo.length || !confirm('Excluir ' + quem + '? A ficha, a foto e o vídeo saem do painel e o link para de funcionar na hora. Não dá pra desfazer.')) return;
+    let feitos = [], recusados = [];
+    try {
+      await ocupado(bt, async () => {
+        for (let i = 0; i < ts.length; i += 50) {
+          const j = await api('atletas', { metodo: 'DELETE', dados: { ts: ts.slice(i, i + 50) } });
+          feitos = feitos.concat(j.apagados || []); recusados = recusados.concat(j.recusados || []);
+        }
+      });
+    } catch (err) { aviso(err.message, true); }
+    if (feitos.length) {
+      const livre = gerados.filter(it => feitos.includes(it.t)).reduce((s, it) => s + ((it.espaco && it.espaco.total) || 0), 0);
+      gerados = gerados.filter(it => !feitos.includes(it.t));
+      gerTotal = Math.max(0, gerTotal - livre);
+      itens = itens.filter(it => !feitos.includes(it.t));
+      feitos.forEach(t => gerSel.delete(t));
+      aviso((feitos.length === 1 ? '1 apresentação excluída' : feitos.length + ' apresentações excluídas') + ' · ' + peso(livre) + ' liberados.' + (recusados.length ? ' ' + recusados.length + ' de outra pessoa ficaram.' : ''), !!recusados.length);
+    } else if (recusados.length) aviso('Essas apresentações são de outra pessoa: só o dono ou o admin exclui.', true);
+    desenhaGerados();
+  }
+  $$('#ger-filtros .filtro').forEach(b => b.addEventListener('click', () => { gerFiltro = b.dataset.ger; desenhaGerados(); }));
+  $('#ger-todos').addEventListener('change', e => { gerados.filter(filtraGer).forEach(it => { if (e.target.checked) gerSel.add(it.t); else gerSel.delete(it.t); }); desenhaGerados(); });
+  $('#ger-sel-feitos').addEventListener('click', () => { gerados.filter(it => apresentado(it) || foraDoAr(it)).forEach(it => gerSel.add(it.t)); desenhaGerados(); });
+  $('#ger-excluir').addEventListener('click', e => excluiGerados(Array.from(gerSel), e.currentTarget));
+  $('#ger-lista').addEventListener('change', e => {
+    const c = e.target.closest('[data-ger-sel]'); if (!c) return;
+    if (c.checked) gerSel.add(c.dataset.gerSel); else gerSel.delete(c.dataset.gerSel);
+    desenhaGerados();
+  });
+  $('#ger-lista').addEventListener('click', async e => {
+    const ex = e.target.closest('[data-ger-excluir]');
+    if (ex) { excluiGerados([ex.dataset.gerExcluir], ex); return; }
+    const ap = e.target.closest('[data-ger-apresentado]');
+    if (ap) {
+      const it = gerados.find(x => x.t === ap.dataset.gerApresentado); if (!it) return;
+      try {
+        const j = await ocupado(ap, () => api('link?t=' + it.t + '&acao=' + (apresentado(it) ? 'reabrir' : 'encerrar'), { metodo: 'POST', dados: {} }));
+        it.estado = j.registro.estado; it.estadoTela = j.estado;
+        desenhaGerados();
+        aviso(apresentado(it) ? 'Marcado como apresentado. Quando quiser, exclua pra liberar o espaço.' : 'Voltou pra não apresentado.');
+      } catch (err) { aviso(err.message, true); }
+    }
+  });
+  // avatar que não carrega (foto vencida, link revogado): ficam as iniciais
+  $('#ger-lista').addEventListener('error', e => {
+    const img = e.target;
+    if (!(img instanceof HTMLImageElement) || !img.classList.contains('av')) return;
+    const s = document.createElement('span'); s.className = 'av ini'; s.setAttribute('aria-hidden', 'true'); s.textContent = img.dataset.ini || '?';
+    img.replaceWith(s);
+  }, true);
+
   /* ---------------- a aba Variações do R2: todas, a classificação de cada uma e o que ela mostra do lead ---------------- */
   // O admin cria variações novas (sobre a página de uma apresentação que já existe no deck), muda a classificação, a nota e o que
   // cada uma mostra do lead (nome e sobrenome, foto) e arquiva as que não servem mais: vale na hora, sem publicar
   // o que a variação mostra do lead, em texto: o deck que segue a escolha de nome (o R2 novo) diz pelo que o admin ajustou; os outros, pelo que o deck faz
   const textoLead = v => {
     const rec = v.recursos || { nomeTela: true, foto: true };
-    if (rec.dossie) return 'Foto somente no slide de escolha. Nome, relatório e oportunidades do jogador distribuídos na apresentação.';
+    if (rec.dossie) return 'Nome e sobrenome e foto do lead na capa (Montado para), no slide de escolha e nos quadros do perfil, relatório, oportunidades, oferta e Bem-vindo.';
     if (!rec.nomeTela) return (deckPor(v.deck) || {}).leadTxt || (R.deckPor(v.deck) || {}).leadTxt || (v.lead.nome ? 'aparece o nome do lead' : 'não mostra o nome do lead');
     return v.lead.nome ? 'aparecem o nome e o sobrenome do lead' + (v.lead.foto ? ', com a foto dele' : ', sem a foto dele') : 'não mostra o nome nem a foto do lead (apresentação geral)';
   };
@@ -566,7 +691,8 @@
     let etapa = etapaNova || etapaPadrao();
     const vi = versaoInicial && versoes.find(v => v.id === versaoInicial);
     if (vi && etapasDoPapel().includes(vi.etapa)) etapa = vi.etapa;
-    ed = { t: t || null, etapa, reg: null, base: '', sujo: false, emCall: null, check: null, vistos: new Set(), timer: 0 };
+    ed = { t: t || null, etapa, reg: null, base: '', sujo: false, emCall: null, check: null, vistos: new Set(), timer: 0, validadeNova: { venceEm: '', apagar: false } };
+    $('#vd-quando').dataset.mexeu = ''; $('#vd-erro').textContent = '';
     aplicaEtapa(etapa);
     montaVersoes();
     $('#ed-erro').textContent = ''; $('#ft-erro').textContent = '';
@@ -659,7 +785,7 @@
     const mostraTudo = leadNome && leadFoto && rec.nomeTela;
     $('#lead-nota').hidden = r1 || mostraTudo;
     const deck = deckPor(verMarcada.deck), leadTxtDoDeck = rec.dossie
-      ? 'Foto somente no slide de escolha. Primeiro nome no perfil, relatório, oportunidades e oferta. Os campos de personalização são opcionais.'
+      ? 'Nome e sobrenome e foto do lead na capa (Montado para), no slide de escolha e nos quadros do perfil, relatório, oportunidades, oferta e Bem-vindo. Os campos de personalização são opcionais.'
       : deck.leadTxt || (R.deckPor(verMarcada.deck) || {}).leadTxt;
     $('#lead-nota').textContent = !leadNome ? 'Esta variação não mostra o nome nem a foto do lead na tela (apresentação geral). A fala do apresentador continua com o nome dele.'
       : !rec.nomeTela ? 'No deck ' + deck.nome + ', ' + (leadTxtDoDeck || 'o nome do lead aparece do jeito do deck') + '.'
@@ -669,7 +795,7 @@
     $('#ex-nome').textContent = (chama ? chama + ', você' : 'Você') + ' foi escolhido.';
     $('#ex-nome-nota').textContent = [
       f.apelido && modo && modo !== 'sem' ? 'O campo “Como a gente chama ele” está preenchido e manda no nome da tela.' : '',
-      leadNome && modo !== 'sem' && !comFoto ? 'Sem a foto na tela: o quadro dela mostra a inicial do nome.' : ''
+      leadNome && modo !== 'sem' && !comFoto ? 'Sem a foto na tela: os quadros dela mostram as iniciais (' + (iniciais(chama || f.nome) || 'JE') + ').' : ''
     ].filter(Boolean).join(' ');
     const semFotoTxt = !leadNome ? 'Esta variação não mostra o nome nem a foto do lead: a tela não usa a foto, e ela não é pedida no checklist.'
       : modo === 'sem' ? 'Este R2 está em “Sem nome nem foto” (veja Nome na tela): a tela não usa a foto, e ela não é pedida no checklist.'
@@ -689,7 +815,7 @@
     // seções que só existem com o lead criado (e a leitura, só no R2)
     ['#s-link', '#s-hist', '#s-perigo'].forEach(x => { $(x).hidden = novo; });
     $('#s-leitura').hidden = novo || r1 || rec.leitura === false;
-    desenhaFoto(); desenhaChecklist(); desenhaLink(); desenhaHistorico();
+    desenhaFoto(); desenhaChecklist(); desenhaLink(); desenhaValidade(); desenhaHistorico();
   }
   // só os campos da ficha, a nota e o "conferi o nome" contam como mudança (a foto e o link têm botão próprio)
   const daFicha = el => !!el && (CHAVES.includes(el.name) || el.name === 'nota' || el.id === 'c-conferido' || el.id === 'c-foto-tela' || el.name === 'versao' || el.name === 'opcional');
@@ -721,7 +847,9 @@
     if (etapaEd() === 'r2' && ficha.vagas && !(+ficha.vagas >= 1 && +ficha.vagas <= 10)) { $('#ed-erro').textContent = 'Vagas: um número de 1 a 10, ou vazio.'; campo('vagas').focus(); return; }
     try {
       if (!ed.t) {
-        const j = await ocupado($('#ed-salvar'), () => api('atletas', { metodo: 'POST', dados: { ficha, etapa: etapaEd() } }));
+        // a validade escolhida antes de gerar (sem ela, a automática) vai junto
+        const vn = ed.validadeNova || {}, link = vn.venceEm || vn.apagar ? { venceEm: vn.venceEm || '', apagarAoVencer: !!vn.apagar } : undefined;
+        const j = await ocupado($('#ed-salvar'), () => api('atletas', { metodo: 'POST', dados: { ficha, etapa: etapaEd(), link } }));
         ed.sujo = false;
         destaque = j.t;
         aviso(nomeEtapa(etapaEd()) + ' criado. O link da apresentação foi gerado e já funciona (seção Link).');
@@ -839,10 +967,6 @@
     try { return await ocupado(bt, () => api('link?t=' + ed.t + '&acao=' + acao, { metodo: 'POST', dados: dados || {} })); }
     catch (err) { aviso(err.message, true); return null; }
   }
-  $('#lk-renovar').addEventListener('click', async e => {
-    const j = await acaoLink('renovar', { dias: +$('#lk-dias').value }, e.currentTarget);
-    if (j) { recebe(Object.assign(j, { emCall: ed.emCall }), false); aviso('Link renovado até ' + R.dataCurta(j.registro.venceEm) + '.'); atualizaPrevia(); }
-  });
   $('#lk-revogar').addEventListener('click', async e => {
     const revogar = ed.reg.estado !== 'revogado';
     if (revogar && !confirm('Revogar o link? A família deixa de ver na hora (o link continua existindo e dá pra reativar).')) return;
@@ -881,6 +1005,102 @@
       location.hash = '#/';
     } catch (err) { aviso(err.message, true); }
   });
+  /* ---------------- validade do link: quem monta escolhe quando o link expira ----------------
+     Atalhos (2 h depois da call, no fim do dia da call, em 24 horas...) ou o dia e a hora à mão, de 1 minuto a 60 dias a partir de agora.
+     Escolhida, a validade não segue mais o dia da call; "Automática" volta pra regra da casa (7 dias depois da call). Lead já gerado: vale na
+     hora (POST /api/link?acao=validade). Lead novo: vai junto com o "Criar e gerar o link". "Apagar tudo quando expirar" deixa a limpeza
+     diária apagar o lead vencido. */
+  const H = 3600e3;
+  // o instante da call (hora de São Paulo), da ficha que está no formulário
+  const instanteDaCall = f => (f.r2data && f.r2hm ? Date.parse(f.r2data + 'T' + f.r2hm + ':00-03:00') : NaN);
+  const fimDoDiaDaCall = f => (f.r2data ? Date.parse(f.r2data + 'T23:59:00-03:00') : NaN);
+  function quandoAtalho(id, f) {
+    const agora = Date.now();
+    if (id === 'call+2h') return instanteDaCall(f) + 2 * H;
+    if (id === 'call-fim') return fimDoDiaDaCall(f);
+    if (id === 'call+1d') return (Number.isFinite(instanteDaCall(f)) ? instanteDaCall(f) : fimDoDiaDaCall(f)) + 24 * H;
+    const m = /^agora\+(\d+)(h|d)$/.exec(id);
+    return m ? agora + Number(m[1]) * (m[2] === 'h' ? H : 24 * H) : NaN;
+  }
+  // a validade automática (a mesma conta do servidor): fim do dia da call mais 7 dias; sem call, 7 dias depois de agora (R1 sem data: 30)
+  function venceAutomatico(f, etapa) {
+    const base = f.r2data ? Date.parse(f.r2data + 'T23:59:59-03:00') : Date.now();
+    const dias = etapa === 'r1' && !f.r2data ? 30 : 7;
+    return new Date(Math.min(base + dias * 24 * H, Date.now() + 60 * 24 * H)).toISOString();
+  }
+  const SEMANA = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'];
+  // "sexta, 24/10 às 21h30" (hora de São Paulo)
+  function quandoLongo(iso) {
+    const d = new Date(iso); if (isNaN(d)) return '';
+    const p = {}; new Intl.DateTimeFormat('pt-BR', { timeZone: 'America/Sao_Paulo', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(d).forEach(x => { p[x.type] = x.value; });
+    const dia = SEMANA[new Date(Date.UTC(+p.year, +p.month - 1, +p.day, 12)).getUTCDay()];
+    return dia + ', ' + p.day + '/' + p.month + ' às ' + Number(p.hour) + 'h' + (p.minute === '00' ? '' : p.minute);
+  }
+  function falta(iso) {
+    const ms = Date.parse(iso) - Date.now();
+    if (!Number.isFinite(ms)) return '';
+    const a = Math.abs(ms), txt = a < H ? Math.max(1, Math.round(a / 60e3)) + ' min' : a < 48 * H ? Math.round(a / H) + ' h' : Math.round(a / (24 * H)) + ' dias';
+    return ms > 0 ? 'daqui a ' + txt : 'há ' + txt;
+  }
+  // o valor do campo datetime-local (hora deste computador) de uma data ISO, e o contrário
+  const pad2 = n => String(n).padStart(2, '0');
+  const praCampo = iso => { const d = new Date(iso); return isNaN(d) ? '' : d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate()) + 'T' + pad2(d.getHours()) + ':' + pad2(d.getMinutes()); };
+  function desenhaValidade() {
+    if (!ed) return;
+    const f = leFicha(), novo = !ed.t, reg = ed.reg || {};
+    const v = novo ? (ed.validadeNova || {}) : { venceEm: reg.venceEm, manual: !!reg.venceManual, apagar: !!reg.apagarAoVencer };
+    const venceEm = novo ? (v.venceEm || venceAutomatico(f, etapaEd())) : v.venceEm;
+    const manual = novo ? !!v.venceEm : v.manual;
+    const vencido = venceEm && Date.parse(venceEm) <= Date.now();
+    $('#vd-info').innerHTML = !venceEm ? '' : (vencido ? 'Expirou ' : novo ? 'O link vai expirar ' : 'O link expira ') + '<b>' + esc(quandoLongo(venceEm)) + '</b> (' + esc(falta(venceEm)) + ').' +
+      '<small>' + (manual ? 'Validade escolhida por você: mudar o dia da call não muda ela.' : 'Automática: até 7 dias depois da call' + (f.r2data ? '' : ' (sem dia marcado, 7 dias a partir de ' + (novo ? 'hoje' : 'quando foi gerado') + ')') + '.') +
+      (!novo && reg.estado === 'revogado' ? ' O link está revogado agora: reative na seção Link.' : '') + '</small>';
+    const temCall = Number.isFinite(instanteDaCall(f)), temDia = !!f.r2data;
+    $$('#vd-rapidos [data-vd]').forEach(b => {
+      const id = b.dataset.vd, precisa = id === 'call+2h' ? temCall : id.startsWith('call') ? temDia : true;
+      const t = id === 'auto' ? NaN : quandoAtalho(id, f);
+      b.disabled = !precisa || (id !== 'auto' && !(t > Date.now() + 60e3));
+      b.title = !precisa ? 'Preencha o dia' + (id === 'call+2h' ? ' e a hora' : '') + ' da call' : id === 'auto' ? 'Até 7 dias depois da call' : Number.isFinite(t) ? quandoLongo(new Date(t).toISOString()) : '';
+      b.setAttribute('aria-pressed', String(id === 'auto' ? !manual : false));
+    });
+    const campoQ = $('#vd-quando');
+    campoQ.min = praCampo(new Date(Date.now() + 60e3).toISOString()); campoQ.max = praCampo(new Date(Date.now() + 60 * 24 * H).toISOString());
+    if (document.activeElement !== campoQ && !campoQ.dataset.mexeu) campoQ.value = venceEm && !vencido ? praCampo(venceEm) : '';
+    $('#vd-apagar').checked = !!v.apagar;
+  }
+  // aplica a validade: no lead já gerado, na hora; no novo, guarda pra ir junto com o Criar
+  async function poeValidade(dados, bt) {
+    $('#vd-erro').textContent = '';
+    if (!ed) return;
+    if (!ed.t) {
+      ed.validadeNova = Object.assign({}, ed.validadeNova, dados.auto ? { venceEm: '' } : {}, dados.venceEm ? { venceEm: dados.venceEm } : {}, 'apagarAoVencer' in dados ? { apagar: dados.apagarAoVencer } : {});
+      $('#vd-quando').dataset.mexeu = '';
+      desenhaValidade();
+      return;
+    }
+    try {
+      const j = await ocupado(bt, () => api('link?t=' + ed.t + '&acao=validade', { metodo: 'POST', dados }));
+      $('#vd-quando').dataset.mexeu = '';
+      recebe(Object.assign(j, { emCall: ed.emCall }), false);
+      aviso(dados.auto ? 'Validade automática: o link expira ' + quandoLongo(j.registro.venceEm) + '.' : 'apagarAoVencer' in dados && !dados.venceEm ? (dados.apagarAoVencer ? 'Quando o link expirar, a limpeza diária apaga tudo deste lead.' : 'Este lead não é mais apagado sozinho.') : 'O link expira ' + quandoLongo(j.registro.venceEm) + '.');
+      atualizaPrevia();
+    } catch (err) { $('#vd-erro').textContent = err.message; }
+  }
+  $('#vd-rapidos').addEventListener('click', e => {
+    const b = e.target.closest('[data-vd]'); if (!b || b.disabled) return;
+    if (b.dataset.vd === 'auto') return poeValidade({ auto: true }, b);
+    const t = quandoAtalho(b.dataset.vd, leFicha());
+    if (!Number.isFinite(t)) return;
+    poeValidade({ venceEm: new Date(t).toISOString() }, b);
+  });
+  $('#vd-quando').addEventListener('input', e => { e.target.dataset.mexeu = '1'; });
+  $('#vd-usar').addEventListener('click', e => {
+    const v = $('#vd-quando').value, t = v ? new Date(v).getTime() : NaN;
+    if (!Number.isFinite(t)) { $('#vd-erro').textContent = 'Escolha o dia e a hora em que o link expira.'; return; }
+    poeValidade({ venceEm: new Date(t).toISOString() }, e.currentTarget);
+  });
+  $('#vd-apagar').addEventListener('change', e => poeValidade({ apagarAoVencer: e.target.checked }, e.target));
+
   function desenhaHistorico() {
     const h = (ed.reg && ed.reg.historico) || [];
     $('#hist').innerHTML = h.slice().reverse().map(x => `<li><time>${esc(quando(x.em))}</time> · ${esc(x.por)}: ${esc(x.o)}</li>`).join('') || '<li>Nada ainda.</li>';
@@ -1182,12 +1402,12 @@
       });
       fechaRecorte();
       recebe(Object.assign(j, { emCall: ed.emCall }), false);
-      aviso(j.aviso || 'Foto salva. Ela aparece no slide de escolha do jogador.', !!j.aviso);
+      aviso(j.aviso || 'Foto salva. Ela aparece no slide de escolha e nos quadros de foto do deck.', !!j.aviso);
       atualizaPrevia();
     } catch (err) { $('#ft-erro').textContent = err.message; }
   });
   $('#ft-apagar').addEventListener('click', async e => {
-    if (!confirm('Apagar a foto deste atleta? O R2 volta a mostrar a inicial do nome.')) return;
+    if (!confirm('Apagar a foto deste atleta? Os quadros de foto voltam a mostrar as iniciais do nome e sobrenome.')) return;
     try {
       const j = await ocupado(e.currentTarget, () => api('foto?t=' + ed.t, { metodo: 'DELETE' }));
       if (j.registro) recebe(Object.assign(j, { emCall: ed.emCall }), false);

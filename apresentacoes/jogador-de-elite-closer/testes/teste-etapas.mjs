@@ -90,7 +90,8 @@ try {
   ok(r2comR1.status === 400, 'variação do R1 num R2: 400');
   ok((await novo(carla, { ficha: { nome: 'Pedro Costa', versao: 'r2a-tecnica', nomeTela: 'sem', pular: 'leva' } })).status === 201, 'o closer escolhe uma variação de outro deck do R2 (a Técnica do R2 anterior)');
   const tAnt = (await novo(carla, { ficha: { nome: 'Pedro Costa', versao: 'r2a-tecnica', nomeTela: 'sem', pular: 'leva', semFoto: 'sim' } })).j;
-  ok(!('nomeTela' in tAnt.registro.ficha) && !('pular' in tAnt.registro.ficha) && tAnt.registro.ficha.semFoto === 'sim' && tAnt.registro.ficha.versao === 'r2a-tecnica', 'o R2 anterior não segue nome na tela, foto nem slide opcional: isso não fica na ficha');
+  // desde 18/10/2026 o R2 anterior segue o Nome na tela (como o R2 novo); slide opcional ele continua sem
+  ok(tAnt.registro.ficha.nomeTela === 'sem' && !('pular' in tAnt.registro.ficha) && tAnt.registro.ficha.semFoto === 'sim' && tAnt.registro.ficha.versao === 'r2a-tecnica', 'o R2 anterior segue o nome na tela e a foto, mas não tira slide: o slide opcional não fica na ficha');
   const tBp = (await novo(carla, { ficha: { nome: 'Pedro Costa', versao: 'r2b-principal', nomeTela: 'so-nome', semFoto: 'sim' } })).j;
   ok(!('nomeTela' in tBp.registro.ficha) && tBp.registro.ficha.semFoto === 'sim', 'o R2 B segue a foto (semFoto fica) mas não o nome na tela');
   const tNovo = (await novo(carla, { ficha: { nome: 'Pedro Costa' } })).j;
@@ -184,8 +185,9 @@ try {
   const tc1 = await novo(rafa, { ficha: Object.assign({}, fichaR1, { versao: slug1 }) });
   ok(tc1.status === 201 && (await publico(tc1.j.t)).versao.origem === dR1.url, 'o SDR gera um R1 com a variação criada');
   ok((await novo(carla, { ficha: { nome: 'Pedro Costa', versao: slug1 } })).status === 400, 'o closer não usa a variação do R1: 400');
-  const pl = await admin.put('/api/versoes?id=r2a-principal', { lead: { nome: false } });
-  ok(pl.status === 400, 'o admin não tira o nome do lead num deck que não segue isso (R2 anterior): 400');
+  const pl = await admin.put('/api/versoes?id=r2b-principal', { lead: { nome: false } });
+  ok(pl.status === 400, 'o admin não tira o nome do lead num deck que não segue isso (R2 B): 400');
+  ok((await admin.put('/api/versoes?id=r2a-principal', { lead: { nome: false } })).status === 200 && (await admin.put('/api/versoes?id=r2a-principal', { lead: { nome: true } })).status === 200, 'no R2 anterior (que segue o Nome na tela desde 18/10/2026) dá pra tirar e voltar o nome');
   ok((await admin.put('/api/versoes?id=r1-principal', { lead: { foto: true } })).status === 200, 'permite ligar a foto no R1: 200');
   ok((await admin.put('/api/versoes?id=r2b-principal', { lead: { foto: false } })).status === 200, 'no R2 B (que mostra a foto) dá pra tirar a foto');
   ok((await admin.put('/api/versoes?id=r1-principal', { arquivada: true })).status === 400 && (await admin.put('/api/versoes?id=principal', { arquivada: true })).status === 400, 'a principal de cada etapa não arquiva');

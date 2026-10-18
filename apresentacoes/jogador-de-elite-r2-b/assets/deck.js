@@ -194,7 +194,7 @@
     d.nomeCompleto = nomeCompleto;
     d.nomeAssinatura = nomes.tela; // a assinatura: nome e sobrenome do nome completo (o apelido não entra em documento)
     d.nomeDossie = d.nomeAssinatura.toUpperCase();
-    d.fotoIni = (d.nome[0] || '').toUpperCase();
+    d.fotoIni = window.FotoAtleta && window.FotoAtleta.iniciais ? window.FotoAtleta.iniciais(d.nome) : (d.nome[0] || '').toUpperCase(); // as iniciais do nome da tela (CS), no quadro sem foto
     d.montadoPara = nomeCompleto ? 'Montado para ' + nomeCompleto + '.' : '';
     d.callTxt = str(ficha.r2dia) ? 'Call de ' + str(ficha.r2dia) + (str(ficha.r2hora) ? ', ' + str(ficha.r2hora) : '') + '.' : '';
     // a foto do painel (ficha._foto, do carregaPainel): o retrato 3:4 e o avatar quadrado, sempre pelo código do link e
@@ -880,6 +880,14 @@
     });
     send({ t: 'state', i: cur, step });
     carregaPainel(() => { applyBind(document); send({ t: 'ficha', ficha }); });
+    // o closer mudou algo no painel com a apresentação aberta (nome, foto, variação, validade): ao voltar pra esta aba, o deck busca de
+    // novo (no máximo a cada 5 s). Link vencido ou revogado nesse meio tempo: a tela troca pelo aviso de link inativo
+    let buscouEm = Date.now();
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState !== 'visible' || !AID || Date.now() - buscouEm < 5000) return;
+      buscouEm = Date.now();
+      carregaPainel(() => { applyBind(document); send({ t: 'ficha', ficha }); });
+    });
   }
 
   /* =============================================================

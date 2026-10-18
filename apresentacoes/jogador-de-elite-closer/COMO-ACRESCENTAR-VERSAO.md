@@ -29,11 +29,11 @@ O painel só oferece, na tela, o que o deck faz de verdade. Está no `regras.js`
 | Deck | Escolher "Nome na tela" | "Como a gente chama ele" (apelido) | Foto do lead | Tirar slide opcional | Vídeo e leitura do atleta | Prévia dentro do painel | O que aparece do lead |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | R2 novo | sim | sim | sim | sim | sim | sim | nome e sobrenome, e a foto |
-| R2 anterior | não | não (o deck ignora) | não | não | sim | não (abre em outra aba) | primeiro nome |
+| R2 anterior | sim (desde 18/10/2026) | sim (desde 18/10/2026) | sim (slide 02; na Acompanhamento, também a capa e os quadros do dossiê) | não | sim | não (abre em outra aba) | nome e sobrenome (ou a escolha do painel), e a foto |
 | R2 B | não | sim | sim | não | sim | sim | nome e primeiro sobrenome, e a foto |
-| R1 | não | não (o deck ignora) | não | não | não | não (abre em outra aba) | primeiro nome e a ficha (posição, idade, cidade) |
+| R1 | não | não (o deck ignora) | sim (slide 02) | não | não | não (abre em outra aba) | primeiro nome nas frases, nome e sobrenome na placa do slide 02, a foto e a ficha (posição, idade, cidade) |
 
-Em `recursos`, `nomeTela`, `foto`, `pular`, `leitura` e `previa` são as colunas da tabela; `apelido: false` esconde o campo do apelido (falta = o deck usa) e `nomeFixo` (`so-nome` ou `primeiro-sobrenome`) diz o nome que um deck que não segue "Nome na tela" mostra sempre, pra o exemplo do campo bater com a tela. `previa: false` também tira o item "Prévia olhada" do checklist (o deck abre em outra aba, não há o que marcar). A foto é do servidor: a `/api/r2` só manda a foto ao deck quando a tela dela mostra (foto fora da tela por lead ou pela variação), então a escolha vale até no R2 B, que não conhece o `semFoto`. No R1 as rotas de foto, vídeo e leitura recusam (400). O checklist do R1 pede: nome conferido, ficha do slide 02 (posição, idade e cidade) e o dia e a hora da R2. O link do R1 vale 30 dias quando não tem data da R2.
+Em `recursos`, `nomeTela`, `foto`, `pular`, `leitura` e `previa` são as colunas da tabela; `apelido: false` esconde o campo do apelido (falta = o deck usa) e `nomeFixo` (`so-nome` ou `primeiro-sobrenome`) diz o nome que um deck que não segue "Nome na tela" mostra sempre, pra o exemplo do campo bater com a tela. `previa: false` também tira o item "Prévia olhada" do checklist (o deck abre em outra aba, não há o que marcar). A foto é do servidor: a `/api/r2` só manda a foto ao deck quando a tela dela mostra (foto fora da tela por lead ou pela variação), então a escolha vale até no R2 B, que não conhece o `semFoto`. No R1 as rotas de vídeo e leitura recusam (400); a foto vale (slide 02). O checklist do R1 pede: nome conferido, ficha do slide 02 (posição, idade e cidade) e o dia e a hora da R2. O link do R1 vale 30 dias quando não tem data da R2.
 
 ## 1. Página nova num deck (texto e slides próprios): o painel descobre sozinho
 

@@ -414,3 +414,8 @@
 .dz-rot .c:empty{display:none}
 .dz-ok{position:absolute;right:26px;top:24px;margin:0;padding:6px 16px 5px;border:3px solid var(--olive-l);background:rgba(6,11,20,.6);font:700 28px var(--f-label);letter-spacing:.22em;text-transform:uppercase;color:var(--olive-l);transform:rotate(-6deg)}
 .ia-linha .rl-linha.denso .rl-m{width:16px;height:16px;margin-left:-8px;top:8px;border-width:3px}
+/* nome longo no R2 anterior (18/10/2026): os titulos que levam o nome e sobrenome diminuem, como no R2 novo */
+.s4-longo,.s10-longo,.s18-longo{display:none}
+.slide:has(.s4-longo.on) .t-110{font-size:96px}
+.slide:has(.s10-longo.on) .t-96{font-size:80px}
+.slide:has(.s18-longo.on) h2.t{font-size:76px!important}

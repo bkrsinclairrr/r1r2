@@ -73,7 +73,7 @@ test('a oferta é descoberta pelo painel e funciona com o mesmo link, nome, plan
     } });
     assert.equal(criado.status, 201, criado.texto);
     const a = await nav.aba(s.decks.r2 + '/?a=' + criado.j.t, { largura: 1920, altura: 1080 });
-    assert.ok(await a.ate(`location.pathname === '${caminho}' && document.querySelector('#stage > .slide.active') && [...document.querySelectorAll('[data-bind="nome"]')].some(e => e.textContent === 'Lucas')`));
+    assert.ok(await a.ate(`location.pathname === '${caminho}' && document.querySelector('#stage > .slide.active') && [...document.querySelectorAll('[data-bind="nome"]')].some(e => e.textContent === 'Lucas Silva')`));
     assert.equal(await a.avalia('new URLSearchParams(location.search).get("a")'), criado.j.t);
     const dados = await a.avalia(`(() => {
       const ss = [...document.querySelectorAll('#stage > .slide')];
@@ -82,7 +82,7 @@ test('a oferta é descoberta pelo painel e funciona com o mesmo link, nome, plan
         finais: ss.slice(-3).map(e => e.textContent),
         total: ss.length, conteudo: ss.map(e => e.textContent).join(' ') };
     })()`);
-    assert.equal(dados.nome, 'Lucas');
+    assert.equal(dados.nome, 'Lucas Silva'); // nome e sobrenome na tela desde 18/10/2026
     assert.equal(dados.planos.length, 2);
     assert.deepEqual(dados.planos.map(p => p.preco), ['R$ 247,90', 'R$ 500']);
     assert.deepEqual(dados.planos.map(p => p.parcela), ['R$ 24,79', 'R$ 50']);

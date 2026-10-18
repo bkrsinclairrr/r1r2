@@ -63,7 +63,8 @@ test('o painel guarda o relatório e os matches, entrega só à oferta e mostra 
     const url = s.decks['r2-anterior'] + pagina + '?a=' + t;
     const a = await nav.aba(url + '#15', { largura: 1920, altura: 1080 });
     assert.ok(await a.ate(`document.querySelector('#stage > .slide.active [data-dossie="indicadores"]')?.textContent.includes('93')`));
-    assert.equal(await a.avalia(`document.querySelector('#stage>.slide.active img[data-src="avatarUrl"]').getAttribute('src')`),null,'foto não se repete no relatório');
+    // desde 18/10/2026 a foto autorizada vai pros quadros do dossiê (capa, relatório, oportunidades, oferta e Bem-vindo), não só pro slide 02
+    assert.ok(await a.ate(`/api\\/foto/.test(document.querySelector('#stage>.slide.active img[data-src="avatarUrl"]').getAttribute('src')||'')`), 'a foto aparece no avatar do relatório');
     assert.equal(await a.avalia(`document.querySelectorAll('#stage > .slide.active .zx-indicador').length`), 10);
     const limites = await a.avalia(`(() => {const box=e=>({classe:e.className,top:e.getBoundingClientRect().top,bottom:e.getBoundingClientRect().bottom,altura:e.offsetHeight});return [document.querySelector('.zx-report'),document.querySelector('.zx-topbar'),document.querySelector('.zx-report-ident'),document.querySelector('.zx-tabs'),...document.querySelectorAll('.zx-report-main > .zx-card')].map(box)})()`);
     assert.ok(limites.slice(4).every(e=>e.bottom<limites[0].bottom-10), 'o relatório completo cabe no quadro: '+JSON.stringify(limites));
@@ -91,7 +92,7 @@ test('o painel guarda o relatório e os matches, entrega só à oferta e mostra 
     await extensa.avalia('location.hash="#2";1'); await espera(250);
     await extensa.envia('Network.enable'); await extensa.envia('Network.setCacheDisabled', { cacheDisabled: true });
     await extensa.envia('Network.setBlockedURLs', { urls: ['*/api/foto*'] }); await extensa.envia('Page.reload', { ignoreCache: true });
-    assert.ok(await extensa.ate(`document.querySelector('#stage>.slide.active .escolha-inicial span')?.textContent==='G' && getComputedStyle(document.querySelector('#stage>.slide.active .escolha-inicial')).display==='flex' && !document.querySelector('#stage>.slide.active img[data-src="selecaoFotoUrl"]').getAttribute('src')`), 'foto indisponível usa inicial e remove a imagem quebrada');
+    assert.ok(await extensa.ate(`document.querySelector('#stage>.slide.active .escolha-inicial span')?.textContent==='GS' && getComputedStyle(document.querySelector('#stage>.slide.active .escolha-inicial')).display==='flex' && !document.querySelector('#stage>.slide.active img[data-src="selecaoFotoUrl"]').getAttribute('src')`), 'foto indisponível usa inicial e remove a imagem quebrada');
     const dois = Object.fromEntries(Object.entries(longo).filter(([k])=>!k.startsWith('match3')));
     const baseDois = (await admin.get('/api/atletas?t='+t)).j.registro.fichaEm;
     assert.equal((await admin.put('/api/atletas?t='+t,{ficha:dois,base:baseDois})).status,200);
@@ -102,14 +103,14 @@ test('o painel guarda o relatório e os matches, entrega só à oferta e mostra 
     assert.equal((await admin.put('/api/atletas?t='+t,{ficha:completo,base:depoisLonga})).status,200);
     for (const n of [1, 11, 18, 28, 30]) {
       await a.avalia(`location.hash='#${n}';1`); await espera(250);
-      assert.ok(await a.avalia(`![...document.querySelectorAll('#stage>.slide.active img')].some(i=>/api\\/foto/.test(i.src))`), 'foto concentrada no slide de escolha; nome presente no slide ' + n);
+      assert.ok(await a.avalia(`[...document.querySelectorAll('#stage>.slide.active img')].some(i=>/api\\/foto/.test(i.src))`), 'foto no quadro do slide ' + n);
     }
     assert.ok(await a.avalia(`document.querySelectorAll('#stage video#v-atleta').length === 0`));
     assert.ok(await a.avalia(`![...performance.getEntriesByType('resource')].some(r => /api\\/video/.test(r.name))`), 'não pede vídeo do lead');
     await a.avalia('location.hash="#28";1'); await espera(300);
-    assert.match(await a.avalia(`document.querySelector('#silencio .titulo-oferta').innerText`), /^Gabriel, você foi escolhido/i);
+    assert.match(await a.avalia(`document.querySelector('#silencio .titulo-oferta').innerText`), /^Gabriel Silva, você foi escolhido/i);
     const sem = await nav.aba(s.decks['r2-anterior'] + pagina + '?a=' + vazio.j.t + '#18');
-    assert.ok(await sem.ate(`document.querySelector('[data-bind="nome"]').textContent === 'Ana'`));
+    assert.ok(await sem.ate(`document.querySelector('[data-bind="nome"]').textContent === 'Ana Silva'`));
     assert.doesNotMatch(await sem.avalia(`document.querySelector('#stage > .slide.active').innerText`), /Estoril|96%|Gabriel/);
     assert.match(await sem.avalia(`document.querySelector('#stage > .slide.active').innerText`), /compatibilidade|perfil/i);
     await a.avalia('location.hash="#15";1'); await espera(400);

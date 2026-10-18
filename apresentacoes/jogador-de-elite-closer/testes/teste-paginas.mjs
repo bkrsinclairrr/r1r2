@@ -15,9 +15,9 @@ const IDS = ['r2', 'r2-anterior', 'r2-b', 'r1'];
 const PREFIXO = { r2: '', 'r2-anterior': 'r2a-', 'r2-b': 'r2b-', r1: 'r1-' };
 const PADRAO = { r1: 'r1-principal', r2: 'principal' }; // a variação padrão de cada etapa (não fica gravada no lead)
 const manifesto = id => JSON.parse(fs.readFileSync(path.join(RAIZES[id], 'variacoes.json'), 'utf8'));
-// o nome do lead (Lucas Almeida da Silva) como cada deck diz na tela: nome e último sobrenome (R2 novo), nome e primeiro sobrenome (R2 B) e só o
-// primeiro nome (R2 anterior e R1)
-const NOME_NA_TELA = { r2: /^Lucas Silva$/, 'r2-b': /^Lucas Almeida$/, 'r2-anterior': /^Lucas$/, r1: /^Lucas$/ };
+// o nome do lead (Lucas Almeida da Silva) como cada deck diz na tela: nome e último sobrenome (R2 novo e, desde 18/10/2026, R2 anterior), nome e
+// primeiro sobrenome (R2 B) e só o primeiro nome (o título do R1, que chama pelo primeiro nome)
+const NOME_NA_TELA = { r2: /^Lucas Silva$/, 'r2-b': /^Lucas Almeida$/, 'r2-anterior': /^Lucas Silva$/, r1: /^Lucas$/ };
 
 const s = await sobe({ deck: true, decks: ['r2-anterior', 'r2-b', 'r1'] });
 const fotos = fotosDeTeste(RAIZES.r2);

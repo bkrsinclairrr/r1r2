@@ -133,11 +133,53 @@
     t.textContent = 'VOCÊ';
   }
 
+  // os mesmos str e semAcento do R2 (só pro nome da placa)
+  const str = v => (typeof v === 'string' ? v.trim() : v == null ? '' : String(v));
+  const semAcento = s => str(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[-_/.,;:()]+/g, ' ').replace(/\s+/g, ' ').trim();
+  /* Os nomes do atleta, a partir do nome completo. primeiro: como se fala (o primeiro nome; os dois primeiros, se for
+     composto e comum, como João Pedro). tela: nome e sobrenome, o que aparece nos títulos, nas frases e no carimbo do
+     dossiê. Por padrão é o último sobrenome (com Júnior, Filho ou Neto junto); com regra 'primeiro' (a escolha "Nome e
+     primeiro sobrenome" do R2), o primeiro sobrenome (a primeira palavra depois do nome que não é "da", "de" ou "do", com o
+     Júnior ou Filho que vier logo depois). Nas duas, se o nome tiver até três palavras e nenhuma for "da", "de" ou "do",
+     ele todo. Até 24 letras; passou, perde o Júnior, depois o composto e por fim o que sobrar.
+     O mesmo código está no deck.js e no regras.js do painel: o testes/teste-igualdade.mjs confere os dois. */
+  const NOME_PARTICULAS = ['da', 'de', 'do', 'das', 'dos', 'e'];
+  const NOME_SUFIXOS = ['junior', 'jr', 'filho', 'neto', 'sobrinho', 'segundo', 'terceiro'];
+  const NOME_SEGUNDOS = ['pedro', 'henrique', 'vitor', 'victor', 'gabriel', 'felipe', 'eduardo', 'gustavo', 'miguel', 'guilherme', 'augusto', 'antonio', 'carlos', 'paulo',
+    'luiz', 'luis', 'fernando', 'rafael', 'matheus', 'mateus', 'lucas', 'davi', 'daniel', 'emanuel', 'francisco', 'jose', 'marcos', 'rodrigo', 'thiago', 'tiago', 'vinicius',
+    'arthur', 'artur', 'bernardo', 'enzo', 'heitor', 'joao', 'leonardo', 'murilo', 'nicolas', 'otavio', 'samuel', 'ricardo', 'roberto', 'andre', 'bruno', 'caio', 'diego',
+    'igor', 'kaua', 'leandro', 'renan', 'wesley', 'yago', 'yuri', 'lucca', 'maria', 'ana', 'clara', 'beatriz', 'eduarda', 'julia', 'luiza', 'vitoria', 'fernanda', 'helena', 'laura'];
+  function nomesDoAtleta(completo, regra) {
+    const t = str(completo).replace(/\s+/g, ' ').split(' ').filter(Boolean);
+    if (!t.length) return { primeiro: '', tela: '' };
+    const composto = t.length > 2 && NOME_SEGUNDOS.indexOf(semAcento(t[1])) >= 0 ? 2 : 1;
+    const primeiro = t.slice(0, composto).join(' ');
+    if (t.length === 1) return { primeiro: primeiro, tela: primeiro };
+    const resto = t.slice(composto);
+    let sobrenome, sufixo = '';
+    if (regra === 'primeiro') {
+      const i = resto.findIndex(x => NOME_PARTICULAS.indexOf(semAcento(x)) < 0); // a primeira palavra que não é "da", "de", "do"...
+      sobrenome = resto[i < 0 ? 0 : i];
+      const seguinte = i >= 0 ? resto[i + 1] : '';
+      sufixo = seguinte && NOME_SUFIXOS.indexOf(semAcento(seguinte)) >= 0 ? seguinte : '';
+    } else {
+      const ultimo = resto[resto.length - 1];
+      const comSufixo = resto.length > 1 && NOME_SUFIXOS.indexOf(semAcento(ultimo)) >= 0;
+      sobrenome = comSufixo ? resto[resto.length - 2] : ultimo;
+      sufixo = comSufixo ? ultimo : '';
+    }
+    const todos = t.length <= 3 && !t.some(x => NOME_PARTICULAS.indexOf(semAcento(x)) >= 0) ? t.join(' ') : '';
+    const lista = [todos, primeiro + ' ' + sobrenome + (sufixo ? ' ' + sufixo : ''), primeiro + ' ' + sobrenome, t[0] + ' ' + sobrenome].filter(Boolean);
+    return { primeiro: primeiro, tela: lista.find(x => x.length <= 24) || t[0] };
+  }
   /* ---------------- personalização (ficha → slides) ---------------- */
   function derived() {
     const d = {};
     const full = String(ficha.nome || '').trim();
     d.nome = full.split(/\s+/)[0] || '';
+    // a placa do slide 02 ("Apresentação preparada para"): nome e sobrenome, com a mesma regra do R2 (o título segue com o primeiro nome)
+    d.nomeAssinatura = nomesDoAtleta(full).tela;
+    d.fotoIni = window.FotoAtleta && window.FotoAtleta.iniciais ? window.FotoAtleta.iniciais(d.nomeAssinatura) : (d.nome[0] || '').toUpperCase();
     d.nomeOuVoce = (d.nome || 'Você').toUpperCase();
     d.posicao = String(ficha.posicao || '').trim();
     d.idade = String(ficha.idade || '').trim();
@@ -237,7 +279,28 @@
         depois();
         if (aviso) aviso('Apresentação do painel: ' + (f.nome || AID) + '. O que veio do painel vale sobre esta ficha; pra mudar de vez, mude no painel.', true);
       })
-      .catch(() => { if (aviso) aviso('Não consegui carregar a apresentação do painel (' + AID + '). A tela usa a ficha deste navegador.', false); });
+      .catch(e => {
+        // o painel respondeu 404 (o código não existe, foi apagado, revogado ou venceu): link inativo, como no R2 novo. Falha de rede não conta
+        if (e && e.message === '404') { linkInativo(aviso); depois(); return; }
+        if (aviso) aviso('Não consegui carregar a apresentação do painel (' + AID + '). A tela usa a ficha deste navegador.', false);
+      });
+  }
+  // link inativo: nada do atleta fica na tela nem neste navegador. A família vê só o aviso; o apresentador, o motivo
+  function linkInativo(aviso) {
+    try { localStorage.removeItem(FKEY); } catch (e) { /* armazenamento indisponível */ }
+    ficha = { _a: AID };
+    if (isPresenter) { if (aviso) aviso('Este link não está mais ativo (venceu, foi revogado ou apagado no painel): a família vê só o aviso de link inativo. Renove ou reative no painel.', false); return; }
+    qsa('video, audio').forEach(v => { try { v.pause(); } catch (e) { /* nada */ } });
+    const vp = qs('#viewport'); if (vp) vp.style.display = 'none';
+    ['#hud', '#progress', '#overview'].forEach(s => { const x = qs(s); if (x) x.style.display = 'none'; });
+    if (qs('#je-inativo')) return;
+    const el = document.createElement('div');
+    el.id = 'je-inativo'; el.setAttribute('role', 'status');
+    el.style.cssText = 'position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:32px;background:#060B14;text-align:center';
+    const p = document.createElement('p');
+    p.style.cssText = 'margin:0;max-width:960px;font:600 clamp(24px,3.4vw,44px)/1.3 Archivo,sans-serif;color:#E6DBB8';
+    p.textContent = 'Este link não está mais ativo. Fale com o seu gestor de carreiras.';
+    el.appendChild(p); document.body.appendChild(el);
   }
   function avisoPainel(txt, bom) {
     const p = qs('#pz-painel'); if (!p) return;
@@ -461,6 +524,14 @@
       else if (m.t === 'pause') pauseIn(slides[cur]);
     });
     carregaPainel(() => { applyBind(document); send({ t: 'ficha', ficha }); });
+    // o closer mudou algo no painel com a apresentação aberta (nome, foto, variação, validade): ao voltar pra esta aba, o deck busca de
+    // novo (no máximo a cada 5 s). Link vencido ou revogado nesse meio tempo: a tela troca pelo aviso de link inativo
+    let buscouEm = Date.now();
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState !== 'visible' || !AID || Date.now() - buscouEm < 5000) return;
+      buscouEm = Date.now();
+      carregaPainel(() => { applyBind(document); send({ t: 'ficha', ficha }); });
+    });
   }
 
   /* =============================================================

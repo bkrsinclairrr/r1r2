@@ -60,6 +60,42 @@
      window.CAMPO_POSICOES (roteiro.js) que casar. ZAG e VOL têm dois marcadores: com "esquerdo" ou "esquerda" no texto,
      o da esquerda; sem lado, o da direita. Não casou: vazio, e o campo fica sem destaque (nunca chuta posição) */
   const semAcento = s => str(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[-_/.,;:()]+/g, ' ').replace(/\s+/g, ' ').trim();
+  /* Os nomes do atleta, a partir do nome completo. primeiro: como se fala (o primeiro nome; os dois primeiros, se for
+     composto e comum, como João Pedro). tela: nome e sobrenome, o que aparece nos títulos, nas frases e no carimbo do
+     dossiê. Por padrão é o último sobrenome (com Júnior, Filho ou Neto junto); com regra 'primeiro' (a escolha "Nome e
+     primeiro sobrenome" do R2), o primeiro sobrenome (a primeira palavra depois do nome que não é "da", "de" ou "do", com o
+     Júnior ou Filho que vier logo depois). Nas duas, se o nome tiver até três palavras e nenhuma for "da", "de" ou "do",
+     ele todo. Até 24 letras; passou, perde o Júnior, depois o composto e por fim o que sobrar.
+     O mesmo código está no deck.js e no regras.js do painel: o testes/teste-igualdade.mjs confere os dois. */
+  const NOME_PARTICULAS = ['da', 'de', 'do', 'das', 'dos', 'e'];
+  const NOME_SUFIXOS = ['junior', 'jr', 'filho', 'neto', 'sobrinho', 'segundo', 'terceiro'];
+  const NOME_SEGUNDOS = ['pedro', 'henrique', 'vitor', 'victor', 'gabriel', 'felipe', 'eduardo', 'gustavo', 'miguel', 'guilherme', 'augusto', 'antonio', 'carlos', 'paulo',
+    'luiz', 'luis', 'fernando', 'rafael', 'matheus', 'mateus', 'lucas', 'davi', 'daniel', 'emanuel', 'francisco', 'jose', 'marcos', 'rodrigo', 'thiago', 'tiago', 'vinicius',
+    'arthur', 'artur', 'bernardo', 'enzo', 'heitor', 'joao', 'leonardo', 'murilo', 'nicolas', 'otavio', 'samuel', 'ricardo', 'roberto', 'andre', 'bruno', 'caio', 'diego',
+    'igor', 'kaua', 'leandro', 'renan', 'wesley', 'yago', 'yuri', 'lucca', 'maria', 'ana', 'clara', 'beatriz', 'eduarda', 'julia', 'luiza', 'vitoria', 'fernanda', 'helena', 'laura'];
+  function nomesDoAtleta(completo, regra) {
+    const t = str(completo).replace(/\s+/g, ' ').split(' ').filter(Boolean);
+    if (!t.length) return { primeiro: '', tela: '' };
+    const composto = t.length > 2 && NOME_SEGUNDOS.indexOf(semAcento(t[1])) >= 0 ? 2 : 1;
+    const primeiro = t.slice(0, composto).join(' ');
+    if (t.length === 1) return { primeiro: primeiro, tela: primeiro };
+    const resto = t.slice(composto);
+    let sobrenome, sufixo = '';
+    if (regra === 'primeiro') {
+      const i = resto.findIndex(x => NOME_PARTICULAS.indexOf(semAcento(x)) < 0); // a primeira palavra que não é "da", "de", "do"...
+      sobrenome = resto[i < 0 ? 0 : i];
+      const seguinte = i >= 0 ? resto[i + 1] : '';
+      sufixo = seguinte && NOME_SUFIXOS.indexOf(semAcento(seguinte)) >= 0 ? seguinte : '';
+    } else {
+      const ultimo = resto[resto.length - 1];
+      const comSufixo = resto.length > 1 && NOME_SUFIXOS.indexOf(semAcento(ultimo)) >= 0;
+      sobrenome = comSufixo ? resto[resto.length - 2] : ultimo;
+      sufixo = comSufixo ? ultimo : '';
+    }
+    const todos = t.length <= 3 && !t.some(x => NOME_PARTICULAS.indexOf(semAcento(x)) >= 0) ? t.join(' ') : '';
+    const lista = [todos, primeiro + ' ' + sobrenome + (sufixo ? ' ' + sufixo : ''), primeiro + ' ' + sobrenome, t[0] + ' ' + sobrenome].filter(Boolean);
+    return { primeiro: primeiro, tela: lista.find(x => x.length <= 24) || t[0] };
+  }
   function posicaoNoCampo(txt) {
     const t = semAcento(txt);
     if (!t) return '';
@@ -91,8 +127,27 @@
     const d = {};
     Object.keys(ficha).forEach(k => { d[k] = typeof ficha[k] === 'boolean' ? ficha[k] : str(ficha[k]); });
     ['gerente', 'analista', 'prazoContato', 'prazoZyron', 'faixaContrato', 'linkAgn'].forEach(k => { if (!filled(d[k])) d[k] = DADOS[k]; });
-    d.nome = str(ficha.nome).split(/\s+/)[0] || '';
+    // o nome, com a mesma regra do R2 novo: o da tela segue a escolha "Nome na tela" do painel (vazio: nome e último sobrenome;
+    // 'primeiro-sobrenome'; 'so-nome', só o primeiro nome nos títulos; 'sem', a apresentação sem nome e sem foto) e o apelido manda por
+    // cima. O falado (nomeCurto: a fala do apresentador e a mensagem de confirmação) é o apelido ou o primeiro nome. A placa e o dossiê
+    // (nomeAssinatura e nomeDossie: "Montado para", "Apresentação preparada para", o carimbo da capa) são sempre nome e sobrenome
+    const modoNome = str(ficha.nomeTela), semNome = modoNome === 'sem';
+    const nomeCompleto = str(ficha.nome).replace(/\s+/g, ' ');
+    const nomes = nomesDoAtleta(nomeCompleto, modoNome === 'primeiro-sobrenome' ? 'primeiro' : '');
+    d.nomeCurto = str(ficha.apelido) || nomes.primeiro;
+    d.nome = semNome ? '' : str(ficha.apelido) || (modoNome === 'so-nome' ? nomes.primeiro : nomes.tela);
     d.nomeUp = d.nome.toUpperCase();
+    // o chip do nome no campo (10 e 25) é pequeno: até 12 letras o nome da tela; passou, o nome falado, ou só o primeiro nome
+    d.nomeCampo = d.nome.length <= 12 ? d.nome : (d.nomeCurto.length <= 12 ? d.nomeCurto : (d.nomeCurto.split(' ')[0] || d.nome));
+    d.nomeCampoUp = d.nomeCampo.toUpperCase();
+    // nome longo: os títulos que levam o nome diminuem um pouco (marcadores data-if nos slides 4, 10 e 18, regras no fim do r2.css)
+    d.nomeLongo = d.nome.length > 12 ? '1' : ''; // 13 letras ou mais: o título do campo (10) quebra demais em 96 px
+    d.nome18Longo = d.nome.length > 16 ? '1' : ''; // 17 ou mais: o título das oportunidades (18 da Acompanhamento), numa coluna de 740 px
+    d.nome4Longo = d.nome.length > 21 ? '1' : ''; // 22 ou mais: o título do 4 (110 px) quebra em duas linhas
+    d.nomeCompleto = semNome ? '' : nomeCompleto;
+    d.nomeAssinatura = semNome ? '' : nomes.tela;
+    d.nomeDossie = d.nomeAssinatura.toUpperCase();
+    d.fotoIni = window.FotoAtleta && window.FotoAtleta.iniciais ? window.FotoAtleta.iniciais(d.nome) : (d.nome[0] || '').toUpperCase(); // as iniciais (CS), no quadro sem foto
     const idade = parseInt(str(ficha.idade), 10);
     d.idade = Number.isFinite(idade) ? String(idade) : '';
     d.idadeMais1 = Number.isFinite(idade) ? String(idade + 1) : '';
@@ -104,11 +159,11 @@
     d.alturaTxt = alturaTxt(ficha.altura);
     // o código do dossiê: os 8 caracteres finais do id do painel (?a=<id>), em caixa alta. É só o registro dele, nunca vaga ou fila
     const aid = AID || str(ficha._a);
-    d.dossieCod = aid ? aid.replace(/[^A-Za-z0-9]/g, '').slice(-8).toUpperCase() : '';
+    d.dossieCod = aid && !semNome ? aid.replace(/[^A-Za-z0-9]/g, '').slice(-8).toUpperCase() : '';
     d.dossieNo = d.dossieCod ? 'Nº ' + d.dossieCod : '';
     // a leitura do atleta (13): o vídeo e o relatório que o painel guardou (ficha._video e ficha._leitura, do carregaPainel).
     // Com o link do painel, o vídeo sai de /api/video; sem ele (teste com a ficha gravada à mão), de _video.src
-    const vid = ficha._video && typeof ficha._video === 'object' ? ficha._video : null;
+    const vid = !semNome && ficha._video && typeof ficha._video === 'object' ? ficha._video : null; // 'Sem nome nem foto': nem o vídeo dele
     const vidOk = !!(vid && vid.ok);
     d.videoSrc = vidOk ? (aid ? painelDoLead + '/api/video?id=' + encodeURIComponent(aid) : str(vid.src)) : '';
     d.posterUrl = vidOk && vid.temPoster ? (aid ? painelDoLead + '/api/video?id=' + encodeURIComponent(aid) + '&poster=1' : str(vid.posterSrc)) : '';
@@ -211,7 +266,7 @@
       '<path d="M116 171 H784" stroke="#E6DBB8" stroke-opacity=".65" stroke-width="2"/>' +
       '<rect x="170" y="280" width="450" height="164" rx="6" fill="#0A1422" stroke="#C8B88A" stroke-opacity=".75" stroke-width="1.5"/>' +
       '<text x="200" y="330" font-family="Barlow Condensed" font-weight="600" font-size="26" letter-spacing="6" fill="#C8B88A">DOSSIÊ DO ATLETA</text>' +
-      '<text x="198" y="400" font-family="Saira Condensed" font-weight="800" font-size="66" fill="#FFFFFF" data-bind="nomeUp" data-fit-svg="390"></text>' +
+      '<text x="198" y="400" font-family="Saira Condensed" font-weight="800" font-size="66" fill="#FFFFFF" data-bind="nomeDossie" data-fit-svg="390"></text>' +
       '<text x="200" y="432" font-family="Barlow Condensed" font-weight="600" font-size="26" letter-spacing="4" fill="#7F93A8" data-bind="dossieNo"></text>' +
       '<g transform="rotate(-8 566 226)"><rect x="472" y="196" width="188" height="60" rx="4" fill="rgba(6,11,20,.55)" stroke="#9DB06A" stroke-width="3"/><text x="566" y="237" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="32" letter-spacing="5" fill="#9DB06A">APROVADO</text></g>' +
       '<rect x="664" y="170" width="20" height="410" fill="#C8B88A" opacity=".85"/><rect x="664" y="170" width="4" height="410" fill="#F1E9CF" opacity=".6"/>' +
@@ -252,7 +307,7 @@
     // o chip do nome (ou o aviso sem posição): o ajustaChips acerta a largura depois que o nome entra
     const chip = (cx, cy, fs, txt, nome) => '<g class="chip" data-cx="' + n1(cx) + '"><rect x="' + n1(cx - 90) + '" y="' + n1(cy - fs * .75) + '" width="180" height="' + n1(fs * 1.5) + '" rx="4" fill="#060B14" stroke="#C8B88A" stroke-width="2"/>' +
       '<text x="' + n1(cx) + '" y="' + n1(cy) + '" text-anchor="middle" dominant-baseline="central" font-family="Saira Condensed" font-weight="800" font-size="' + fs + '" fill="#E6DBB8"' +
-      (nome ? ' data-bind="nomeUp" data-fb="VOCÊ" data-fit-svg="' + (CW - 60) + '"' : '') + '>' + esc(txt) + '</text></g>';
+      (nome ? ' data-bind="nomeCampoUp" data-fb="VOCÊ" data-fit-svg="' + (CW - 60) + '"' : '') + '>' + esc(txt) + '</text></g>';
     if (posId && CAMPO_XY[posId]) {
       const [fx, fy] = CAMPO_XY[posId], cx = m + fx * iw, cy = m + fy * ih, R = mini ? 40 : 38, fs = mini ? 64 : 40;
       s += '<circle cx="' + n1(cx) + '" cy="' + n1(cy) + '" r="' + (R + 24) + '" fill="none" stroke="rgba(127,196,234,.28)" stroke-width="2"/>' +
@@ -347,7 +402,8 @@
     if (!el.dataset.base) el.dataset.base = parseFloat(getComputedStyle(el).fontSize) || 40;
     let fs = parseFloat(el.dataset.base), guard = 0;
     el.style.fontSize = fs + 'px';
-    while (el.scrollWidth > max && fs > 16 && guard++ < 40) { fs *= .93; el.style.fontSize = fs.toFixed(1) + 'px'; }
+    // nunca abaixo de 24 px (regra da casa: nada na tela abaixo de 24 px)
+    while (el.scrollWidth > max && fs * .93 >= 24 && guard++ < 40) { fs *= .93; el.style.fontSize = fs.toFixed(1) + 'px'; }
   }
   function applyBind(root, d) {
     d = d || derived();
@@ -355,8 +411,8 @@
     qsa('#turma', root).forEach(s => drawTurma(s, d));
     // o campo: redesenha só quando a posição muda (o nome entra pelo data-bind logo abaixo)
     qsa('[data-campo]', root).forEach(e => {
-      const k = (d.posId || '-') + '|' + e.dataset.campo + '|' + d.nomeUp;
-      if (e.dataset.desenho !== k) { e.innerHTML = campoSvg(d.posId, e.dataset.campo === 'mini', d.nomeUp); e.dataset.desenho = k; }
+      const k = (d.posId || '-') + '|' + e.dataset.campo + '|' + d.nomeCampoUp;
+      if (e.dataset.desenho !== k) { e.innerHTML = campoSvg(d.posId, e.dataset.campo === 'mini', d.nomeCampoUp); e.dataset.desenho = k; }
     });
     drawPlanos(root);
     if (window.R2_PERSONAL) window.R2_PERSONAL.render(root, ficha, d);
@@ -445,7 +501,28 @@
         if (aviso) aviso('Apresentação do painel: ' + (f.nome || AID) + '. O que veio do painel vale sobre esta ficha; pra mudar de vez, mude no painel.' +
           (window.R2_PERSONAL ? ' O slide 12 mostra o relatório; os clubes compatíveis aparecem no 15.' : (j.video && j.video.ok ? (j.leitura ? '' : ' O vídeo está no painel, mas sem lances marcados: o 12 mostra só o vídeo.') : ' Sem vídeo no painel: o 12 vai pra leitura ao vivo.')), true);
       })
-      .catch(() => { if (aviso) aviso('Não consegui carregar a apresentação do painel (' + AID + '). A tela usa a ficha deste navegador.', false); });
+      .catch(e => {
+        // o painel respondeu 404 (o código não existe, foi apagado, revogado ou venceu): link inativo, como no R2 novo. Falha de rede não conta
+        if (e && e.message === '404') { linkInativo(aviso); depois(); return; }
+        if (aviso) aviso('Não consegui carregar a apresentação do painel (' + AID + '). A tela usa a ficha deste navegador.', false);
+      });
+  }
+  // link inativo: nada do atleta fica na tela nem neste navegador. A família vê só o aviso; o apresentador, o motivo
+  function linkInativo(aviso) {
+    try { localStorage.removeItem(FKEY); } catch (e) { /* armazenamento indisponível */ }
+    ficha = { _a: AID };
+    if (isPresenter) { if (aviso) aviso('Este link não está mais ativo (venceu, foi revogado ou apagado no painel): a família vê só o aviso de link inativo. Renove ou reative no painel.', false); return; }
+    qsa('video, audio').forEach(v => { try { v.pause(); } catch (e) { /* nada */ } });
+    const vp = qs('#viewport'); if (vp) vp.style.display = 'none';
+    ['#hud', '#progress', '#overview'].forEach(s => { const x = qs(s); if (x) x.style.display = 'none'; });
+    if (qs('#je-inativo')) return;
+    const el = document.createElement('div');
+    el.id = 'je-inativo'; el.setAttribute('role', 'status');
+    el.style.cssText = 'position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:32px;background:#060B14;text-align:center';
+    const p = document.createElement('p');
+    p.style.cssText = 'margin:0;max-width:960px;font:600 clamp(24px,3.4vw,44px)/1.3 Archivo,sans-serif;color:#E6DBB8';
+    p.textContent = 'Este link não está mais ativo. Fale com o seu gestor de carreiras.';
+    el.appendChild(p); document.body.appendChild(el);
   }
   function avisoPainel(txt, bom) {
     const p = qs('#pz-painel'); if (!p) return;
@@ -676,6 +753,14 @@
     });
     send({ t: 'state', i: cur, step });
     carregaPainel(() => { applyBind(document); send({ t: 'ficha', ficha }); });
+    // o closer mudou algo no painel com a apresentação aberta (nome, foto, variação, validade): ao voltar pra esta aba, o deck busca de
+    // novo (no máximo a cada 5 s). Link vencido ou revogado nesse meio tempo: a tela troca pelo aviso de link inativo
+    let buscouEm = Date.now();
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState !== 'visible' || !AID || Date.now() - buscouEm < 5000) return;
+      buscouEm = Date.now();
+      carregaPainel(() => { applyBind(document); send({ t: 'ficha', ficha }); });
+    });
   }
 
   /* =============================================================
@@ -723,7 +808,7 @@
     function fill(s) {
       const d = derived(), pl = planoDe(ficha.plano) || {};
       const map = {
-        '[atleta]': d.nome, '[responsável]': first(ficha.responsavel), '[pai]': first(ficha.pai), '[mãe]': first(ficha.mae), '[gerente]': d.gerente,
+        '[atleta]': d.nomeCurto, '[responsável]': first(ficha.responsavel), '[pai]': first(ficha.pai), '[mãe]': first(ficha.mae), '[gerente]': d.gerente,
         '[idade]': d.idade, '[idade + 1]': d.idadeMais1, '[característica]': d.caracteristicas, '[experiência]': d.experiencia, '[sonho]': d.sonho,
         '[primeiro foco]': d.trabalhar, '[locomoção]': d.locomocao, '[dor]': d.dor, '[peneiras]': d.peneiras, '[investido]': d.investido, '[vagas]': d.vagas,
         '[faixa]': d.faixaContrato, '[link AGN]': d.linkAgn,
@@ -1129,7 +1214,7 @@
         <div class="pz-actions"><button id="f-conf">Copiar mensagem de confirmação</button></div>`;
       qsa('[data-chk]', qs('#tab-ler')).forEach(c => c.addEventListener('change', () => { ficha['chk' + c.dataset.chk] = c.checked; store.set(FKEY, ficha); }));
       qs('#f-conf').addEventListener('click', e => {
-        const t = (first(ficha.pai) || '[pai]') + ', aqui é o ' + (str(ficha.gestor) || '[seu nome]') + ', gestor de carreiras. Tô com o planejamento de carreira do ' + (d.nome || '[atleta]') + ' pronto pra nossa conversa das ' + (str(ficha.r2hora) || '[hora]') + '. Você, a ' + (first(ficha.mae) || '[mãe]') + ' e ele confirmados?';
+        const t = (first(ficha.pai) || '[pai]') + ', aqui é o ' + (str(ficha.gestor) || '[seu nome]') + ', gestor de carreiras. Tô com o planejamento de carreira do ' + (d.nomeCurto || '[atleta]') + ' pronto pra nossa conversa das ' + (str(ficha.r2hora) || '[hora]') + '. Você, a ' + (first(ficha.mae) || '[mãe]') + ' e ele confirmados?';
         copy(t, e.target, 'Copiar mensagem de confirmação');
       });
     }

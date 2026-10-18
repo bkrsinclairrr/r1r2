@@ -386,6 +386,15 @@ export function venceDoLink(ficha, base, etapa) {
   return new Date(t).toISOString();
 }
 export const maisTarde = (a, b) => (Date.parse(a || 0) >= Date.parse(b || 0) ? a : b);
+// a validade que quem monta escolheu (o dia e a hora em que o link expira): daqui a pelo menos 1 minuto e no máximo linkMax dias.
+// Com ela, o link deixa de seguir a call (venceManual): mudar o dia da call não muda mais a validade
+export function validadePedida(v) {
+  const t = Date.parse(String(v == null ? '' : v));
+  if (!Number.isFinite(t)) return { erro: 'Escolha o dia e a hora em que o link expira.' };
+  if (t < Date.now() + 60e3) return { erro: 'Escolha um horário daqui pra frente (pelo menos 1 minuto). Pra tirar do ar agora, use Revogar.' };
+  if (t > Date.now() + VALIDADE.linkMax * DIA + 60e3) return { erro: 'O link vale no máximo ' + VALIDADE.linkMax + ' dias a partir de hoje.' };
+  return { venceEm: new Date(t).toISOString() };
+}
 export const fotoValida = f => !!(f && f.versao && f.autorizadoEm && f.venceEm && Date.parse(f.venceEm) > Date.now());
 export const fotoVencida = f => !!(f && f.versao && f.venceEm && Date.parse(f.venceEm) <= Date.now());
 export const linkVencido = reg => !!(reg && reg.venceEm && Date.parse(reg.venceEm) <= Date.now());
@@ -440,6 +449,7 @@ export function resumo(reg) {
   return {
     t: reg.t, etapa: etapaDe(reg), nome: f.nome || '', apelido: f.apelido || '', posicao: f.posicao || '', plano: f.plano || '', versao: f.versao || '',
     r2data: f.r2data || '', r2hm: f.r2hm || '', estado: reg.estado || 'rascunho', venceEm: reg.venceEm || '',
+    venceManual: !!reg.venceManual, apagarAoVencer: !!reg.apagarAoVencer, encerradoEm: reg.encerradoEm || '',
     foto: fotoValida(reg.foto) ? reg.foto.versao : 0, video: videoValido(reg.video),
     donoLogin: reg.donoLogin, donoNome: (reg.dono && reg.dono.nome) || (reg.criadoPor && reg.criadoPor.nome) || '',
     criadoEm: reg.criadoEm, atualizadoEm: reg.atualizadoEm, rev: reg.rev || 0
@@ -482,12 +492,42 @@ export async function emCallAgora() {
   }
   return out;
 }
+// o espaço que cada lead ocupa na loja (a seção Gerados): o registro, as fotos e o vídeo, somados pelo código. Três listagens no total,
+// nunca uma por lead. { <t>: { ficha, foto, video, total } } em bytes
+export async function espacoPorLead() {
+  const out = {};
+  const conta = (t, k, n) => {
+    if (!T_OK.test(String(t || ''))) return;
+    const o = out[t] || (out[t] = { ficha: 0, foto: 0, video: 0, total: 0 });
+    o[k] += Number(n) || 0; o.total += Number(n) || 0;
+  };
+  const [regs, fotos, videos] = await Promise.all([lista(PASTA), lista('fotos/'), lista(PASTA_VIDEO)]);
+  regs.forEach(b => conta(b.caminho.slice(PASTA.length).replace(/\.json$/, ''), 'ficha', b.tamanho));
+  fotos.forEach(b => conta(b.caminho.split('/')[1], 'foto', b.tamanho));
+  videos.forEach(b => conta(b.caminho.split('/')[1], 'video', b.tamanho));
+  return out;
+}
 // apaga tudo de um atleta: fotos, vídeo, presença, registro e o item do índice do dono
 export async function apagaTudo(t, donoLogin) {
-  await apagaPasta('fotos/' + t + '/');
-  await apagaPasta('videos/' + t + '/');
-  await apaga([caminhoChamada(t), caminho(t)]);
+  await apagaArquivos(t);
   if (donoLogin) await mudaIndice(donoLogin, itens => { delete itens[t]; });
+}
+// só os arquivos do atleta (fotos, vídeo, presença e registro); quem chama tira do índice (a exclusão em lote tira vários de uma vez)
+export async function apagaArquivos(t) {
+  await apagaPasta('fotos/' + t + '/');
+  await apagaPasta(PASTA_VIDEO + t + '/');
+  await apaga([caminhoChamada(t), caminho(t)]);
+}
+// tira códigos de todos os índices que ainda têm eles (item que sobrou no índice de alguém depois que o registro sumiu)
+export async function tiraDosIndices(ts) {
+  const alvo = new Set(ts);
+  for (const b of await lista('indices/')) {
+    const a = await le(b.caminho);
+    const itens = (a && a.dados && a.dados.itens) || {};
+    if (!Object.keys(itens).some(t => alvo.has(t))) continue;
+    const login = b.caminho.slice('indices/'.length).replace(/\.json$/, '');
+    if (loginValido(login)) await mudaIndice(login, it => { let mudou = false; alvo.forEach(t => { if (t in it) { delete it[t]; mudou = true; } }); return mudou ? undefined : false; });
+  }
 }
 
 /* ---------------- CORS das rotas públicas: só os endereços do deck ---------------- */

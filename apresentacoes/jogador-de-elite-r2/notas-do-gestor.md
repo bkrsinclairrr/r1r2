@@ -2,7 +2,7 @@
 
 Deck: `index.html` (30 slides, com os seis do bloco da página institucional: o método, o campo, o encaixe, os 326 atletas, os clubes e parceiros e o mosaico; nesta versão eles não saem pelo painel). Roteiro na mesma ordem do modo apresentador (tecla P), com preços no slide 28, garantia incondicional no 29 e Bem-vindo no 30. A técnica e a oferta de R$247,90 e R$500 usam suas próprias falas no apresentador, com a mesma numeração.
 
-Abra o deck em tela cheia e o apresentador em outra janela. Use o contexto já coletado pelo SDR. Os campos são opcionais; a foto do jogador aparece somente no slide 02.
+Abra o deck em tela cheia e o apresentador em outra janela. Use o contexto já coletado pelo SDR. Os campos são opcionais; a foto do jogador, com a autorização marcada no painel, aparece no slide 02 e nos quadros de foto do deck (sem ela, as iniciais do nome e sobrenome).
 
 As seções abaixo reproduzem o roteiro atual do deck principal. Números entre parênteses nas falas podem indicar seções do PLAYBOOK_CLOSER.
 
@@ -36,7 +36,7 @@ Etapa da Bíblia: Conexão.
 - Mostre o nome e, se houver, a foto do jogador. Use o contexto preenchido no painel para explicar o que chamou atenção. Campo vazio não é uma conclusão sobre o atleta.
 - "O objetivo é transformar a leitura do seu jogo em direção: entender o ponto de partida, trabalhar a evolução e escolher os próximos passos."
 
-**Atenção:** A foto é opcional e aparece somente neste slide. Dados e contexto vazios permanecem vazios. Escolha para a conversa não é promessa de vaga ou contratação.
+**Atenção:** A foto é opcional; com ela autorizada no painel, aparece aqui e nos quadros de foto do deck. Sem foto, os quadros mostram as iniciais. Dados e contexto vazios permanecem vazios. Escolha para a conversa não é promessa de vaga ou contratação.
 
 
 ## 03 · O olhômetro

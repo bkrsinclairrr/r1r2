@@ -70,14 +70,14 @@ try {
   /* ---------------- C. o R2 numa variação de outro deck: o deck de entrada leva o lead ---------------- */
   console.log('\nC. a variação é de outro deck: o deck de entrada leva o lead');
   const tAp = await novoR2({ versao: 'r2a-principal' });
-  ({ a: A, bom } = await abre(R2 + '/?a=' + tAp + '#3', "location.origin === " + JSON.stringify(ANT) + " && " + NOME + " === 'Lucas'"));
-  ok(bom, 'R2 na Principal do R2 anterior: o link do deck de entrada leva pro deck do R2 anterior, que carrega o lead pelo endereço de antes');
+  ({ a: A, bom } = await abre(R2 + '/?a=' + tAp + '#3', "location.origin === " + JSON.stringify(ANT) + " && " + NOME + " === 'Lucas Silva'"));
+  ok(bom, 'R2 na Principal do R2 anterior: o link do deck de entrada leva pro deck do R2 anterior, que carrega o lead pelo endereço de antes (nome e sobrenome: Lucas Silva)');
   ok((await A.avalia('location.pathname')) === '/' && (await A.avalia('location.search')) === '?a=' + tAp && (await A.avalia('location.hash')) === '#3', 'com o mesmo código e o mesmo slide');
   ok(/Lucas/.test(await A.avalia(NOME)), 'o R2 anterior mostra o nome do lead (' + await A.avalia(NOME) + ')');
   ok(JSON.parse(await A.avalia("localStorage.getItem('je-r2-ficha:" + tAp + "') || localStorage.getItem('je-r2-ficha-" + tAp + "') || 'null'")) !== null, 'e guardou a ficha dele neste navegador');
   await fechaAba(A);
   const tAt = await novoR2({ versao: 'r2a-tecnica' });
-  ({ a: A, bom } = await abre(R2 + '/?a=' + tAt, "location.origin === " + JSON.stringify(ANT) + " && location.pathname === '/variacoes/tecnica/' && " + NOME + " === 'Lucas'"));
+  ({ a: A, bom } = await abre(R2 + '/?a=' + tAt, "location.origin === " + JSON.stringify(ANT) + " && location.pathname === '/variacoes/tecnica/' && " + NOME + " === 'Lucas Silva'"));
   ok(bom, 'R2 na Técnica do R2 anterior: vai pra página técnica do deck dele');
   await fechaAba(A);
   const tBp = await novoR2({ versao: 'r2b-principal' });
@@ -91,7 +91,7 @@ try {
   const reg = await fichaDe(tP);
   const troca = await carla.put('/api/atletas?t=' + tP, { ficha: Object.assign({}, reg.ficha, { versao: 'r2a-principal' }), base: reg.fichaEm });
   ok(troca.status === 200 && troca.j.registro.ficha.versao === 'r2a-principal', 'a closer troca a variação do R2 pra Principal do R2 anterior (o link é o mesmo)');
-  ({ a: A, bom } = await abre(R2 + '/?a=' + tP, "location.origin === " + JSON.stringify(ANT) + " && " + NOME + " === 'Lucas'"));
+  ({ a: A, bom } = await abre(R2 + '/?a=' + tP, "location.origin === " + JSON.stringify(ANT) + " && " + NOME + " === 'Lucas Silva'"));
   ok(bom, 'o mesmo link do deck de entrada agora leva pro deck do R2 anterior');
   // abrir de novo no mesmo navegador: o destino guardado leva direto, sem passar pela página de antes
   await A.vai(R2 + '/?a=' + tP);
@@ -139,7 +139,7 @@ try {
   ok((await A.avalia(bind('selecaoPerfil'))).includes('meia · 14 anos · Recife'), 'com a ficha dele (posição, idade e cidade)');
   ok(antigo.pedidos.includes('GET /api/publico?id=' + idJoao), 'e o pedido foi ao painel de antes, no endereço de sempre (/api/publico?id=)');
   await fechaAba(A);
-  ({ a: A, bom } = await abre(ANT + '/?a=' + idMaria, NOME + " === 'Maria'"));
+  ({ a: A, bom } = await abre(ANT + '/?a=' + idMaria, NOME + " === 'Maria Souza'"));
   ok(bom, 'o deck do R2 anterior também (Maria)');
   ok(await aguarda(() => antigo.pedidos.some(p => p.startsWith('GET /api/video?id=' + idMaria))), 'e o vídeo dela é pedido ao painel de antes, de onde veio o lead');
   await fechaAba(A);
@@ -156,11 +156,13 @@ try {
   await espera(1500);
   ok(bom && !pediuAoAntigo(falsoNovo), 'um código no formato do painel novo que ele não conhece não é perguntado ao painel de antes');
   await fechaAba(A);
-  // um código que nenhum dos dois conhece: o deck pergunta aos dois e segue com a ficha deste navegador, sem quebrar
-  ({ a: A, bom } = await abre(R1 + '/?a=fantasma-zzzzzzzz', prontoSlide));
-  ok(bom && await aguarda(() => antigo.pedidos.includes('GET /api/publico?id=fantasma-zzzzzzzz')), 'um código de antes que nenhum painel conhece: o deck do R1 pergunta aos dois e abre mesmo assim');
+  // um código que nenhum dos dois conhece: o deck pergunta aos dois e mostra o aviso de link inativo (desde 18/10/2026, como o R2 novo; antes
+  // seguia com a ficha deste navegador)
+  const inativo = "(document.querySelector('#je-inativo')||{}).textContent === 'Este link não está mais ativo. Fale com o seu gestor de carreiras.'";
+  ({ a: A, bom } = await abre(R1 + '/?a=fantasma-zzzzzzzz', inativo));
+  ok(bom && await aguarda(() => antigo.pedidos.includes('GET /api/publico?id=fantasma-zzzzzzzz')), 'um código de antes que nenhum painel conhece: o deck do R1 pergunta aos dois e mostra o aviso de link inativo');
   await fechaAba(A);
-  ({ a: A, bom } = await abre(ANT + '/?a=fantasma-zzzzzzzz', prontoSlide));
+  ({ a: A, bom } = await abre(ANT + '/?a=fantasma-zzzzzzzz', inativo));
   ok(bom, '... e o do R2 anterior também');
   await fechaAba(A);
 

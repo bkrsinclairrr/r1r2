@@ -93,9 +93,10 @@ try {
   ok((await C.avalia("document.querySelectorAll('#versoes .chip.deck').length")) === IDS_R2.length, 'cada variação mostra de que deck é');
   await C.avalia("document.querySelector('#versoes input[value=r2a-principal]').click(); 1");
   await espera(300);
-  ok(!(await visivel(C, '#nt-bloco')) && (await visivel(C, '#foto-tela-bloco')) && /No deck R2 anterior, aparece o primeiro nome do lead/.test(await txt(C, '#lead-nota')), 'numa variação do R2 anterior: some o Nome na tela e a foto, e uma nota explica o que o deck faz');
+  // desde 18/10/2026 o R2 anterior segue o Nome na tela e o apelido, como o R2 novo (antes mostrava só o primeiro nome)
+  ok((await visivel(C, '#nt-bloco')) && (await visivel(C, '#foto-tela-bloco')) && !(await visivel(C, '#lead-nota')), 'numa variação do R2 anterior: o Nome na tela e a foto aparecem, como no R2 novo');
   ok(!(await visivel(C, '#opcionais')), '(e os slides opcionais, que esse deck não tem)');
-  ok(!(await visivel(C, '#apelido-bloco')), '(e o campo "Como a gente chama ele", que o R2 anterior ignora)');
+  ok((await visivel(C, '#apelido-bloco')) && (await C.avalia("document.querySelector('#f-editor [name=apelido]').placeholder")) === 'Lucas Silva', '(e o campo "Como a gente chama ele", com o nome e o último sobrenome)');
   ok((await C.avalia("document.querySelectorAll('#checklist li').length")) === 6 && !/Prévia olhada/.test(await txt(C, '#checklist')), '(e o checklist tem 5 itens e a nota, sem "Prévia olhada": o R2 anterior abre em outra aba)');
   await tela(C, 'etapas-3-closer-r2-anterior.png');
   await C.avalia("document.querySelector('#versoes input[value=r2b-principal]').click(); 1");
@@ -124,7 +125,7 @@ try {
   const cardAnt = await txt(A, '#versoes-lista [data-v=r2a-principal]');
   ok(/R2 anterior/.test(cardAnt) && /foto no slide de escolha/.test(cardAnt) && !/Slides que dá pra tirar/.test(cardAnt), 'o cartão do R2 anterior diz de que deck é e o que ele faz com o nome e a foto, sem slide opcional');
   const ajAnt = await A.avalia("(() => { const d = document.querySelector('#versoes-lista details[data-v=r2a-principal]'); return { nome: d.querySelector('[data-aj=nome]').disabled, foto: d.querySelector('[data-aj=foto]').disabled }; })()");
-  ok(ajAnt.nome === true && ajAnt.foto === false, 'nos ajustes do admin, o nome e a foto ficam travados nesse deck');
+  ok(ajAnt.nome === false && ajAnt.foto === false, 'nos ajustes do admin, o nome e a foto ficam livres no R2 anterior (segue o Nome na tela desde 18/10/2026)');
   const exemplo = await A.avalia("document.querySelector('#versoes-lista [data-v=r2a-principal] a[href^=http]').href");
   ok(exemplo === s.decks['r2-anterior'] + '/', '"Abrir exemplo" abre o deck da variação (o do R2 anterior)');
   await A.avalia("document.querySelector('#ver-etapa [data-etapa=r1]').click(); 1");

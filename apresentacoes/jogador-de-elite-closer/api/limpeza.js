@@ -4,7 +4,8 @@
 // - versões velhas de foto que sobraram de um envio interrompido somem;
 // - arquivos de um atleta que não existe mais somem;
 // - presença do apresentador com mais de um dia some;
-// - o registro inteiro (e tudo dele) some 180 dias depois que o link venceu.
+// - o registro inteiro (e tudo dele) some 180 dias depois que o link venceu;
+// - o lead que quem monta marcou pra apagar quando o link vencer (apagarAoVencer) some na primeira limpeza depois do vencimento.
 // - sincroniza com o deck (as variações do R2 e a saúde de cada página);
 // O log só tem contagem: nunca nome, foto ou conteúdo.
 import crypto from 'node:crypto';
@@ -21,7 +22,7 @@ export default async function handler(req, res) {
   if (req.method !== 'GET') return manda(res, 405, { erro: 'Use GET.' });
   const segredo = process.env.CRON_SECRET || '';
   if (segredo.length < 16 || !igual(req.headers.authorization || '', 'Bearer ' + segredo)) return manda(res, 401, { erro: 'Não autorizado.' });
-  const conta = { registros: 0, apagados: 0, fotosVencidas: 0, videosVencidos: 0, sobras: 0, presencas: 0 };
+  const conta = { registros: 0, apagados: 0, apagadosAoVencer: 0, fotosVencidas: 0, videosVencidos: 0, sobras: 0, presencas: 0 };
   try {
     const agora = Date.now();
     const V = await leVersoes();
@@ -33,6 +34,9 @@ export default async function handler(req, res) {
       conta.registros++;
       if (reg.venceEm && Date.parse(reg.venceEm) + VALIDADE.registroDepoisDoLink * DIA <= agora) {
         await apagaTudo(t, reg.donoLogin); conta.apagados++; continue;
+      }
+      if (reg.apagarAoVencer && reg.venceEm && Date.parse(reg.venceEm) <= agora) {
+        await apagaTudo(t, reg.donoLogin); conta.apagadosAoVencer++; continue;
       }
       vivos.add(t);
       let mudou = false;
