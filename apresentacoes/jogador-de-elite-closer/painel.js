@@ -12,13 +12,13 @@
   const sem = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
   const T_OK = /^[a-z2-7]{26}$/;
   const ESTADOS = { rascunho: ['Rascunho', 'cinza'], pronto: ['Pronto', 'verde'], encerrado: ['Call encerrada', 'cinza'], expirado: ['Link expirado', 'vermelho'], revogado: ['Link revogado', 'vermelho'] };
-  // os slides que a prévia abre (números do R2 novo de 27 slides; o deck confirma pelos títulos quando carrega)
+  // os slides que a prévia abre (números do R2 novo de 33 slides; o deck confirma pelos títulos quando carrega)
   const PREVIA = [
     { nome: 'Capa', n: 1, obrig: true, rot: '01 Capa' },
     { nome: 'Por que você', n: 2, obrig: true, rot: '02 Por que você' },
-    { nome: 'O seu lugar em campo', n: 11, obrig: true, rot: '11 Em campo' },
-    { nome: 'O que ele leva', n: 19, obrig: false, rot: '19 O que ele leva', opc: 'leva' }, // opc: o slide opcional (R.VERSOES[].opcionais)
-    { nome: 'Bem-vindo', n: 27, obrig: true, rot: '27 Bem-vindo' }
+    { nome: 'O seu lugar em campo', n: 12, obrig: true, rot: '12 Em campo' },
+    { nome: 'O que ele leva', n: 25, obrig: false, rot: '25 O que ele leva', opc: 'leva' }, // opc: o slide opcional (R.VERSOES[].opcionais)
+    { nome: 'Bem-vindo', n: 33, obrig: true, rot: '33 Bem-vindo' }
   ];
   let eu = null, config = { deckUrl: '', etapas: ['r2'], decks: [] }, itens = [], usuarios = [], filtro = 'proximos', listaTodos = false, destaque = null;
   let filtroEtapa = 'todas'; // a lista do admin: as duas etapas, só o R1 ou só o R2
@@ -683,8 +683,8 @@
     const pos = R.posicaoNoCampo(f.posicao), sp = $('#selo-pos');
     sp.textContent = !f.posicao ? 'Sem posição: o campo do perfil fica sem destaque.' : pos ? 'Reconhecida no campo: ' + pos : 'Não reconheci: o campo do perfil fica sem destaque. Escreva como goleiro, zagueiro, volante, meia, atacante...';
     sp.className = 'selo-pos ' + (!f.posicao ? '' : pos ? 'ok' : 'nao');
-    // a call: na capa do R2; no slide 16 do R1
-    $('#ex-call').textContent = f.r2data || f.r2hm ? (r1 ? 'No slide 16: R2 de ' : 'Na capa: Call de ') + callTxt(f.r2data, f.r2hm) + '.' : '';
+    // a call: na capa do R2; no slide 20 do R1
+    $('#ex-call').textContent = f.r2data || f.r2hm ? (r1 ? 'No slide 20: R2 de ' : 'Na capa: Call de ') + callTxt(f.r2data, f.r2hm) + '.' : '';
     $$('.so-legacy').forEach(el => el.classList.toggle('fora', f.plano !== R.LEGACY));
     // seções que só existem com o lead criado (e a leitura, só no R2)
     ['#s-link', '#s-hist', '#s-perigo'].forEach(x => { $(x).hidden = novo; });
@@ -784,7 +784,7 @@
       const itensR1 = [
         ['Nome conferido', !!(f.nome && $('#c-conferido').checked), 'Marque "Conferi a grafia do nome".'],
         ['A ficha do slide 02 (posição, idade e cidade)', !!(f.posicao && f.idade && f.cidade), 'O slide 02 do R1 mostra os três.'],
-        ['Dia e hora da R2', !!(f.r2data && f.r2hm), 'Aparecem no slide 16.']
+        ['Dia e hora da R2', !!(f.r2data && f.r2hm), 'Aparecem no slide 20.']
       ];
       const prontoR1 = itensR1.every(x => x[1]);
       $('#checklist').innerHTML = itensR1.map(([t, ok, dica]) => `<li class="${ok ? 'ok' : ''}"><i>${ok ? '✓' : ''}</i><span><b>${esc(t)}</b><small>${esc(ok ? '' : dica)}</small></span></li>`).join('') +
@@ -1195,7 +1195,7 @@
     } catch (err) { aviso(err.message, true); }
   });
 
-  /* ---------------- leitura do atleta: o vídeo dele e o relatório do slide 14 do R2 ----------------
+  /* ---------------- leitura do atleta: o vídeo dele e o relatório do slide 17 do R2 ----------------
      Portada do painel atual (o id virou o código t). O vídeo sobe direto do navegador pro Blob privado (vendor/blob-client.js
      é o upload() de @vercel/blob/client 2.8.1, empacotado com esbuild). A rota /api/leitura (POST) só libera o envio;
      depois, o painel registra o arquivo com PUT /api/leitura. A prévia usa o mesmo componente do deck (relatorio-leitura.js). */
@@ -1376,7 +1376,7 @@
   });
   $('#lt-cancelar').addEventListener('click', () => { if (envio) envio.abort(); });
   $('#lt-apagar').addEventListener('click', async e => {
-    if (!confirm('Apagar o vídeo, a capa e a leitura deste atleta? O slide 14 volta pra leitura ao vivo.')) return;
+    if (!confirm('Apagar o vídeo, a capa e a leitura deste atleta? O slide 17 volta pra leitura ao vivo.')) return;
     try {
       await ocupado(e.currentTarget, () => api('leitura?t=' + lt.t, { metodo: 'DELETE' }));
       if (urlLocal) { URL.revokeObjectURL(urlLocal); urlLocal = ''; }
@@ -1451,7 +1451,7 @@
     try {
       const j = await ocupado(e.currentTarget, () => api('leitura?t=' + lt.t, { metodo: 'PUT', dados: { leitura: l } }));
       lt.video = j.video; lt.leitura = Object.assign(lt.leitura, j.leitura); lt.sujo = false;
-      desenhaLances(); aviso('Leitura salva. Ela já aparece no slide 14.'); atualizaPrevia();
+      desenhaLances(); aviso('Leitura salva. Ela já aparece no slide 17.'); atualizaPrevia();
     } catch (err) { $('#lt-erro').textContent = err.message; }
   });
   function fechaLeitura() {

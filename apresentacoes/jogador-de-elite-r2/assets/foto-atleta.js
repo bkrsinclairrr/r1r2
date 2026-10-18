@@ -27,13 +27,18 @@
         img.addEventListener('error', () => { falhas.add(img.getAttribute('src')); window.dispatchEvent(new Event('je-foto-atleta')); });
       });
       root.querySelectorAll('.escolha-nome').forEach(e => {
-        e.style.fontSize = d.selecaoContexto ? '90px' : '106px';
+        e.style.fontSize = d.selecaoContexto ? '96px' : '106px';
         for (let i = 0; e.scrollWidth > 940 && i < 30; i++) e.style.fontSize = (parseFloat(e.style.fontSize) * .94) + 'px';
       });
-      root.querySelectorAll('.formacao-atleta.active .formacao-intro h2').forEach(e => {
-        e.style.fontSize = '96px';
-        const grid = e.closest('.formacao-atleta').querySelector('.formacao-grid');
-        for (let i = 0; e.getBoundingClientRect().bottom > grid.getBoundingClientRect().top - 15 && i < 20; i++) e.style.fontSize = (parseFloat(e.style.fontSize) * .94) + 'px';
+      // O titulo da formacao nunca cobre a grade, com o slide parado ou ativo (a navegacao troca a classe sem disparar hashchange, entao nao da pra esperar o .active):
+      // primeiro tenta tres linhas (.fa-3 desce a grade e encolhe o cartao do 7); so se ainda nao couber o titulo diminui.
+      root.querySelectorAll('.formacao-atleta').forEach(s => {
+        const h = s.querySelector('.formacao-intro h2'), grid = s.querySelector('.formacao-grid');
+        if (!h || !grid) return;
+        h.style.fontSize = ''; s.classList.remove('fa-3');
+        const folga = () => grid.getBoundingClientRect().top - h.getBoundingClientRect().bottom;
+        if (folga() < 15) s.classList.add('fa-3');
+        for (let i = 0; folga() < 15 && i < 20; i++) h.style.fontSize = (parseFloat(getComputedStyle(h).fontSize) * .94) + 'px';
       });
     }
   };

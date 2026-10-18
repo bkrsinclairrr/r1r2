@@ -7,6 +7,7 @@
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <link rel="stylesheet" href="assets/deck.css">
+<link rel="stylesheet" href="assets/bloco-r1.css">
 <!-- O Painel de Apresentações lê este bloco (pelo variacoes.json, que o gera-manifesto.mjs monta das páginas) e é assim que esta
      variação aparece lá, com o nome, o quando usar e o que ela mostra do lead. Mudou aqui? Rode: node gera-manifesto.mjs
      nome, resumo, quando: o que quem monta lê no painel. validacao: só a classificação de partida (o admin muda no painel).
@@ -15,10 +16,13 @@
 <script type="application/json" id="r2-variacao">
 {
   "nome": "R1 · Avaliação e convite para R2",
-  "resumo": "A apresentação do SDR em 16 slides: o Zyron, a IA na prática e a AGN, e fecha marcando a R2.",
+  "resumo": "A apresentação do SDR em 20 slides: o Zyron, a IA na prática, a rede (326 atletas enviados, clubes e parceiros) e a AGN, e fecha marcando a R2.",
   "quando": "A primeira apresentação do lead. Na dúvida, esta.",
   "validacao": "em-validacao",
-  "lead": { "nome": true, "foto": true },
+  "lead": {
+    "nome": true,
+    "foto": true
+  },
   "opcionais": []
 }
 </script>
@@ -118,15 +122,35 @@
   <p class="a b b-40" style="left:120px;top:888px;width:1480px;color:var(--white);font-weight:500">Os grandes clubes já escolhem jogador com dados há anos, por dentro. <span class="blue">Agora essa leitura joga do seu lado.</span></p>
 </section>
 
-<!-- ============ 07 O ENCAIXE ============ -->
+<!-- ============ 7 O CAMPO: OLHÔMETRO SEGUE A BOLA, A IA VÊ OS 22 (novo, 17/10/2026: da página /institucional) ============ -->
+<!-- O campo animado da institucional (bloco.js): 22 jogadores se movendo e a bola passando. Abre no olhômetro: o foco (laranja-sinal,
+     que é só do olhômetro) chega atrasado na bola e só quem está perto fica aceso ("3 de 22 observados"). Os dois botões do lado (clique) trocam
+     pra IA: os 22 acesos e rastreados, em gelo; é o mesmo slide, sem avanço de passo. O veredito fica sempre na tela. Nenhum jogador, escudo ou clube escalado: formação ilustrativa. Opcional. -->
+<section class="slide bl-slide bl-campo" data-bl="campo" data-bl-auto="7000">
+  <div class="fill" style="background:radial-gradient(40% 60% at 34% 64%,rgba(226,85,43,.06),rgba(6,11,20,0) 70%),radial-gradient(34% 56% at 88% 40%,rgba(127,196,234,.07),rgba(6,11,20,0) 70%)"></div>
+    <p class="a t rise" style="left:116px;top:84px;width:1700px;font-size:96px;white-space:nowrap;--d:.04s">O <span class="sig">olhômetro</span> segue a bola. A <span class="ice">IA</span> vê os 22.</p>
+  <div class="bl-pitch rise" style="left:120px;top:222px;width:1160px;height:742px;--d:.08s"><svg class="bl-pitch-svg" viewBox="0 0 1000 640" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="bl-grama" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14261F"/><stop offset="1" stop-color="#0D1A1B"/></linearGradient><radialGradient id="bl-focog"><stop offset="0%" stop-color="rgba(226,85,43,.36)"/><stop offset="70%" stop-color="rgba(226,85,43,.1)"/><stop offset="100%" stop-color="rgba(226,85,43,0)"/></radialGradient></defs><rect width="1000" height="640" fill="url(#bl-grama)"/><rect x="0" y="0" width="100" height="640" fill="rgba(157,176,106,.05)"/><rect x="200" y="0" width="100" height="640" fill="rgba(157,176,106,.05)"/><rect x="400" y="0" width="100" height="640" fill="rgba(157,176,106,.05)"/><rect x="600" y="0" width="100" height="640" fill="rgba(157,176,106,.05)"/><rect x="800" y="0" width="100" height="640" fill="rgba(157,176,106,.05)"/><g fill="none" stroke="rgba(200,184,138,.4)" stroke-width="2"><rect x="30" y="30" width="940" height="580"/><line x1="500" y1="30" x2="500" y2="610"/><circle cx="500" cy="320" r="78"/><rect x="30" y="170" width="140" height="300"/><rect x="830" y="170" width="140" height="300"/><rect x="30" y="250" width="50" height="140"/><rect x="920" y="250" width="50" height="140"/></g><circle class="bl-foco" r="150" cx="500" cy="320" fill="url(#bl-focog)"/><g class="bl-pl bl-pl-c" transform="translate(70 320)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-c" transform="translate(210 130)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-c" transform="translate(200 260)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-c" transform="translate(200 380)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-c" transform="translate(210 510)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-c" transform="translate(350 190)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-c" transform="translate(330 320)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-c" transform="translate(350 450)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-c" transform="translate(470 140)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-c" transform="translate(500 320)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-c" transform="translate(470 500)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-v" transform="translate(930 320)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-v" transform="translate(790 140)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-v" transform="translate(800 265)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-v" transform="translate(800 375)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-v" transform="translate(790 500)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-v" transform="translate(650 120)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-v" transform="translate(640 260)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-v" transform="translate(640 380)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-v" transform="translate(650 520)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-v" transform="translate(560 250)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><g class="bl-pl bl-pl-v" transform="translate(560 390)"><rect class="bl-pl-box" x="-17" y="-22" width="34" height="44" rx="3"/><circle class="bl-pl-dot" r="9"/></g><circle class="bl-bola" r="7" cx="500" cy="320"/></svg></div>
+  <div class="bl-side rise" style="left:1330px;top:222px;width:470px;--d:.12s">
+    <div class="bl-pills"><button type="button" class="bl-pill o" data-bl-modo="olho" aria-pressed="true">Olhômetro</button><button type="button" class="bl-pill i" data-bl-modo="ia" aria-pressed="false">Inteligência artificial</button></div>
+    <p class="bl-dica">Clique para alternar</p>
+    <p class="bl-conta"><strong>3</strong><span>de 22 jogadores observados agora</span></p>
+    <div class="bl-legenda">
+      <p class="o">No olhômetro, a atenção <b>segue a bola</b>. Quem está longe dela não é visto.</p>
+      <p class="i">Com IA, cada atleta é <b>identificado e medido</b> do primeiro ao último minuto.</p>
+    </div>
+  </div>
+  <p class="bl-veredito" style="left:1330px;top:836px;width:470px;font-size:38px">O problema nunca foi o talento. <span class="sig">Sempre foi o método.</span></p>
+</section>
+
+<!-- ============ 08 O ENCAIXE ============ -->
 <section class="slide">
   <p class="a t t-96 rise" style="left:116px;top:104px;width:1060px">Em algum lugar, um clube precisa exatamente do jogador que você já é.</p>
-  <p class="a b b-40 rise" style="left:120px;top:506px;width:980px;--d:.12s">Todo elenco tem uma lacuna. Você não precisa ser o melhor da peneira. Precisa ser encontrado por quem procura o seu perfil.</p>
+  <p class="a b b-40 rise" style="left:120px;top:506px;width:980px;--d:.12s">Todo elenco tem uma lacuna. Você não precisa ser o destaque da peneira. Precisa ser encontrado por quem procura o seu perfil.</p>
   <div class="a pieces rise" style="left:120px;top:748px;--d:.22s"><p class="pc-z">O Zyron encontra o seu perfil.</p><p class="pc-g">A gente faz a ponte.</p></div>
   <svg class="a" id="encaixe" style="left:1290px;top:96px" width="540" height="860" viewBox="0 0 540 860" aria-hidden="true"></svg>
 </section>
 
-<!-- ============ 08 IA NA PRÁTICA (leitura ao vivo do vídeo do atleta, no Meet) ============ -->
+<!-- ============ 09 IA NA PRÁTICA (leitura ao vivo do vídeo do atleta, no Meet) ============ -->
 <!-- O slide prepara a leitura ao vivo e não mostra resultado nenhum, de propósito: o resultado é dito na chamada, por quem conduz a leitura. -->
 <section class="slide">
   <div class="fill zgrid" style="opacity:.55;-webkit-mask-image:linear-gradient(90deg,transparent 35%,#000 70%);mask-image:linear-gradient(90deg,transparent 35%,#000 70%)"></div>
@@ -159,7 +183,7 @@
 
 </section>
 
-<!-- ============ 09 A BASE DO ZYRON ============ -->
+<!-- ============ 10 A BASE DO ZYRON ============ -->
 <section class="slide">
   <div class="fill" style="background:radial-gradient(38% 52% at 71% 50%,rgba(127,174,255,.10),rgba(7,8,10,0) 72%)"></div>
   <p class="a label blue" style="left:120px;top:128px">A base do Zyron</p>
@@ -170,10 +194,10 @@
   <svg class="a" id="rede" style="left:900px;top:40px;overflow:visible" width="980" height="1000" viewBox="0 0 980 1000" aria-hidden="true"></svg>
 </section>
 
-<!-- ============ 10 VOCÊ PARA DE JOGAR SOZINHO ============ -->
+<!-- ============ 11 VOCÊ PARA DE JOGAR SOZINHO ============ -->
 <section class="slide formacao-atleta"><div class="formacao-intro"><p class="label">Scout PRO · Formação incluída</p><h2><span data-bind="nome" data-fb="Você"></span>, seu jogo tem leitura.<br><span>Sua evolução tem método.</span></h2></div><div class="formacao-grid"><div class="formacao-sete"><b>7</b><strong>Módulos de formação</strong><p>Uma trilha para conectar conhecimento, rotina e desenvolvimento.</p></div><div class="formacao-corpo"><h3>Não basta entender o que melhorar.<br>É preciso aprender a trabalhar nisso.</h3><p>Conteúdos organizados em sete módulos para desenvolver o atleta além do lance isolado. A formação já faz parte do Scout PRO.</p><div class="formacao-temas"><span>Performance</span><span>Psicologia</span><span>Nutrição</span><span>Comportamento</span><span>Imagem</span></div><div class="formacao-pilares"><div><b>O Zyron lê</b><p>Os lances enviados viram uma leitura do seu jogo.</p></div><div><b>O analista acompanha</b><p>Relatório de evolução a cada 15 dias no Scout PRO.</p></div><div><b>Você desenvolve</b><p>Os sete módulos apoiam o aprendizado e a aplicação na sua rotina.</p></div></div></div></div><p class="formacao-fecho">Scout PRO: análise do seu jogo + acompanhamento da evolução + sete módulos de formação.</p></section>
 
-<!-- ============ 11 DO SEU LADO ============ -->
+<!-- ============ 12 DO SEU LADO ============ -->
 <section class="slide">
   <div class="a" style="left:0;top:0;width:600px;height:1080px;overflow:hidden"><img src="assets/joaozinho-03.jpg" alt="David Willer e equipe com Joãozinho no dia da assinatura com o Grêmio" style="width:100%;height:100%;object-fit:cover;object-position:50% 40%"></div>
   <div class="a" style="left:608px;top:0;width:290px;height:1080px;display:flex;flex-direction:column;gap:8px">
@@ -195,7 +219,40 @@
   <p class="a white" style="left:982px;top:906px;font-size:40px;font-weight:600">Isso não acontece uma vez. Acontece de novo.</p>
 </section>
 
-<!-- ============ 12 AGN FOOTBALL ============ -->
+<!-- ============ 13 326 ATLETAS ENVIADOS (novo, 17/10/2026: da página /institucional) ============ -->
+<!-- O cartão creme da institucional: o número sobe de 0 a 326 e a arte (a mesma publicada no Instagram da casa) cai do lado. "Enviados" é a
+     palavra da arte; não troque por "contratados": enviado é o que a casa fez, contratar é do clube. O número e o Instagram são da casa
+     (o dono confirmou). Opcional. -->
+<section class="slide bl-slide bl-registro">
+  <div class="fill" style="background:radial-gradient(46% 62% at 50% 50%,rgba(230,219,184,.08),rgba(6,11,20,0) 72%)"></div>
+    <div class="bl-creme rise" style="left:120px;top:100px;width:1680px;height:860px;--d:.04s">
+    <p class="k" style="left:84px;top:66px">Registro · Voxen | Zyron</p>
+    <p class="num" style="left:66px;top:150px"><span data-bl-conta="326">326</span></p>
+    <p class="tit" style="left:84px;top:480px">atletas enviados.</p>
+    <p class="txt" style="left:84px;top:604px;width:760px">Cada um com nome, posição e clube de destino. Tudo registrado no nosso Instagram.</p>
+    <p class="ig" style="left:84px;top:776px">@assessoria.voxen</p>
+    <div class="bl-moldura" style="left:996px;top:26px;width:600px;height:808px"><img src="assets/bloco/326-atletas.webp" alt="Arte Voxen | Zyron com o número 326 e a frase atletas enviados" width="538" height="732"></div>
+  </div>
+</section>
+
+<!-- ============ 14 CLUBES E PARCEIROS: DO SUL AO NORDESTE, DA INGLATERRA AO CANADÁ (novo, 17/10/2026: da página /institucional) ============ -->
+<!-- Duas faixas de escudos rolando em sentidos opostos (Brasil e mundo) e os parceiros comerciais (acordo confirmado pelo dono com cada um).
+     É a rede da casa, não clube que usa dados: a nota legal fica na tela e a fala nunca diz que o clube usa o Zyron nem que há vaga.
+     Escudos e marcas são dos titulares. Opcional. -->
+<section class="slide bl-slide bl-clubes">
+  <div class="fill" style="background:radial-gradient(52% 40% at 50% 42%,rgba(200,184,138,.07),rgba(6,11,20,0) 72%)"></div>
+    <p class="a label" style="left:120px;top:66px">Clubes e parceiros</p>
+  <p class="a t rise" style="left:116px;top:136px;width:1700px;font-size:96px;--d:.04s">Do Sul ao Nordeste.<br>Da <span class="sand-l">Inglaterra</span> ao <span class="sand-l">Canadá</span>.</p>
+  <p class="bl-rotulo" style="left:120px;top:336px;width:1680px">Clubes da nossa rede · Brasil</p>
+  <div class="bl-faixa" style="top:376px;--bl-seg:72s"><div class="bl-trilha"><span class="bl-escudo" title="Botafogo"><img src="assets/bloco/clubes/botafogo.webp" alt="Botafogo" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Grêmio"><img src="assets/bloco/clubes/gremio.webp" alt="Grêmio" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Internacional"><img src="assets/bloco/clubes/internacional.webp" alt="Internacional" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Corinthians"><img src="assets/bloco/clubes/corinthians.webp" alt="Corinthians" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Palmeiras"><img src="assets/bloco/clubes/palmeiras.webp" alt="Palmeiras" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Fluminense"><img src="assets/bloco/clubes/fluminense.webp" alt="Fluminense" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Vasco da Gama"><img src="assets/bloco/clubes/vasco.webp" alt="Vasco da Gama" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Athletico Paranaense"><img src="assets/bloco/clubes/athletico.webp" alt="Athletico Paranaense" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Goiás"><img src="assets/bloco/clubes/goias.webp" alt="Goiás" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Vila Nova"><img src="assets/bloco/clubes/vilanova.webp" alt="Vila Nova" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Gama"><img src="assets/bloco/clubes/gama.webp" alt="Gama" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Goianésia"><img src="assets/bloco/clubes/goianesia.webp" alt="Goianésia" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Náutico"><img src="assets/bloco/clubes/nautico.webp" alt="Náutico" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Sport Recife"><img src="assets/bloco/clubes/sport.webp" alt="Sport Recife" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Ceará"><img src="assets/bloco/clubes/ceara.webp" alt="Ceará" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Coritiba"><img src="assets/bloco/clubes/coritiba.webp" alt="Coritiba" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Chapecoense"><img src="assets/bloco/clubes/chapecoense.webp" alt="Chapecoense" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Ponte Preta"><img src="assets/bloco/clubes/pontepreta.webp" alt="Ponte Preta" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Mirassol"><img src="assets/bloco/clubes/mirassol.webp" alt="Mirassol" width="108" height="108" loading="eager" decoding="async"></span></div><div class="bl-trilha" aria-hidden="true"><span class="bl-escudo" title="Botafogo"><img src="assets/bloco/clubes/botafogo.webp" alt="Botafogo" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Grêmio"><img src="assets/bloco/clubes/gremio.webp" alt="Grêmio" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Internacional"><img src="assets/bloco/clubes/internacional.webp" alt="Internacional" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Corinthians"><img src="assets/bloco/clubes/corinthians.webp" alt="Corinthians" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Palmeiras"><img src="assets/bloco/clubes/palmeiras.webp" alt="Palmeiras" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Fluminense"><img src="assets/bloco/clubes/fluminense.webp" alt="Fluminense" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Vasco da Gama"><img src="assets/bloco/clubes/vasco.webp" alt="Vasco da Gama" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Athletico Paranaense"><img src="assets/bloco/clubes/athletico.webp" alt="Athletico Paranaense" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Goiás"><img src="assets/bloco/clubes/goias.webp" alt="Goiás" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Vila Nova"><img src="assets/bloco/clubes/vilanova.webp" alt="Vila Nova" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Gama"><img src="assets/bloco/clubes/gama.webp" alt="Gama" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Goianésia"><img src="assets/bloco/clubes/goianesia.webp" alt="Goianésia" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Náutico"><img src="assets/bloco/clubes/nautico.webp" alt="Náutico" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Sport Recife"><img src="assets/bloco/clubes/sport.webp" alt="Sport Recife" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Ceará"><img src="assets/bloco/clubes/ceara.webp" alt="Ceará" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Coritiba"><img src="assets/bloco/clubes/coritiba.webp" alt="Coritiba" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Chapecoense"><img src="assets/bloco/clubes/chapecoense.webp" alt="Chapecoense" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Ponte Preta"><img src="assets/bloco/clubes/pontepreta.webp" alt="Ponte Preta" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Mirassol"><img src="assets/bloco/clubes/mirassol.webp" alt="Mirassol" width="108" height="108" loading="eager" decoding="async"></span></div></div>
+  <p class="bl-rotulo" style="left:120px;top:514px;width:1680px">Clubes da nossa rede · Mundo</p>
+  <div class="bl-faixa rev" style="top:554px;--bl-seg:78s"><div class="bl-trilha"><span class="bl-escudo" title="A.E.K. London"><img src="assets/bloco/clubes/aeklondon.webp" alt="A.E.K. London" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Sport Club Montreal"><img src="assets/bloco/clubes/montreal.webp" alt="Sport Club Montreal" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Al-Nasr (Dubai)"><img src="assets/bloco/clubes/alnasr.webp" alt="Al-Nasr (Dubai)" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Adidas"><img class="marca" src="assets/bloco/parceiros/adidas.svg" alt="Adidas" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Brighton &amp; Hove Albion"><img src="assets/bloco/clubes/brighton.webp" alt="Brighton &amp; Hove Albion" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Real Betis"><img src="assets/bloco/clubes/betis.webp" alt="Real Betis" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Sporting Braga"><img src="assets/bloco/clubes/braga.webp" alt="Sporting Braga" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Feyenoord"><img src="assets/bloco/clubes/feyenoord.webp" alt="Feyenoord" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Nike"><img class="marca" src="assets/bloco/parceiros/nike.svg" alt="Nike" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="RC Lens"><img src="assets/bloco/clubes/lens.webp" alt="RC Lens" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="ACF Fiorentina"><img src="assets/bloco/clubes/fiorentina.webp" alt="ACF Fiorentina" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Club Brugge"><img src="assets/bloco/clubes/brugge.webp" alt="Club Brugge" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Villarreal"><img src="assets/bloco/clubes/villarreal.webp" alt="Villarreal" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Red Bull Salzburg"><img src="assets/bloco/clubes/salzburg.webp" alt="Red Bull Salzburg" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Estoril Praia"><img src="assets/bloco/clubes/estoril.webp" alt="Estoril Praia" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Girona"><img src="assets/bloco/clubes/girona.webp" alt="Girona" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Bologna"><img src="assets/bloco/clubes/bologna.webp" alt="Bologna" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="FC Midtjylland"><img src="assets/bloco/clubes/midtjylland.webp" alt="FC Midtjylland" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Real Sociedad"><img src="assets/bloco/clubes/realsociedad.webp" alt="Real Sociedad" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Olympiacos"><img src="assets/bloco/clubes/olympiacos.webp" alt="Olympiacos" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Anderlecht"><img src="assets/bloco/clubes/anderlecht.webp" alt="Anderlecht" width="108" height="108" loading="eager" decoding="async"></span></div><div class="bl-trilha" aria-hidden="true"><span class="bl-escudo" title="A.E.K. London"><img src="assets/bloco/clubes/aeklondon.webp" alt="A.E.K. London" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Sport Club Montreal"><img src="assets/bloco/clubes/montreal.webp" alt="Sport Club Montreal" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Al-Nasr (Dubai)"><img src="assets/bloco/clubes/alnasr.webp" alt="Al-Nasr (Dubai)" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Adidas"><img class="marca" src="assets/bloco/parceiros/adidas.svg" alt="Adidas" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Brighton &amp; Hove Albion"><img src="assets/bloco/clubes/brighton.webp" alt="Brighton &amp; Hove Albion" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Real Betis"><img src="assets/bloco/clubes/betis.webp" alt="Real Betis" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Sporting Braga"><img src="assets/bloco/clubes/braga.webp" alt="Sporting Braga" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Feyenoord"><img src="assets/bloco/clubes/feyenoord.webp" alt="Feyenoord" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Nike"><img class="marca" src="assets/bloco/parceiros/nike.svg" alt="Nike" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="RC Lens"><img src="assets/bloco/clubes/lens.webp" alt="RC Lens" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="ACF Fiorentina"><img src="assets/bloco/clubes/fiorentina.webp" alt="ACF Fiorentina" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Club Brugge"><img src="assets/bloco/clubes/brugge.webp" alt="Club Brugge" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Villarreal"><img src="assets/bloco/clubes/villarreal.webp" alt="Villarreal" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Red Bull Salzburg"><img src="assets/bloco/clubes/salzburg.webp" alt="Red Bull Salzburg" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Estoril Praia"><img src="assets/bloco/clubes/estoril.webp" alt="Estoril Praia" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Girona"><img src="assets/bloco/clubes/girona.webp" alt="Girona" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Bologna"><img src="assets/bloco/clubes/bologna.webp" alt="Bologna" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="FC Midtjylland"><img src="assets/bloco/clubes/midtjylland.webp" alt="FC Midtjylland" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Real Sociedad"><img src="assets/bloco/clubes/realsociedad.webp" alt="Real Sociedad" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Olympiacos"><img src="assets/bloco/clubes/olympiacos.webp" alt="Olympiacos" width="108" height="108" loading="eager" decoding="async"></span><span class="bl-escudo" title="Anderlecht"><img src="assets/bloco/clubes/anderlecht.webp" alt="Anderlecht" width="108" height="108" loading="eager" decoding="async"></span></div></div>
+  <p class="bl-rotulo" style="left:120px;top:690px;width:1680px">Parceiros comerciais · Quem caminha com a gente</p>
+  <div class="bl-parceiros" style="left:120px;top:742px"><div class="bl-parc"><span class="lg"><img src="assets/bloco/parceiros/adidas.svg" alt="" width="190" height="80"></span><span>Adidas</span></div><div class="bl-parc"><span class="lg"><img src="assets/bloco/parceiros/nike.svg" alt="" width="190" height="80"></span><span>Nike</span></div><div class="bl-parc"><span class="lg"><img src="assets/bloco/parceiros/cloudflare.svg" alt="" width="190" height="80"></span><span>Cloudflare</span></div><div class="bl-parc"><span class="lg"><img src="assets/bloco/parceiros/aws.svg" alt="" width="190" height="80"></span><span>AWS Amazon</span></div><div class="bl-parc"><span class="lg"><img src="assets/bloco/parceiros/aeklondon.webp" alt="" width="190" height="80"></span><span>A.E.K. London</span></div></div>
+  <p class="bl-legal" style="left:120px;top:972px;width:1560px">Escudos e marcas pertencem aos seus titulares e não indicam patrocínio, uso da plataforma nem promessa de clube.</p>
+</section>
+
+<!-- ============ 15 AGN FOOTBALL ============ -->
 <section class="slide">
   <div class="fill gold-glow"></div>
   <p class="a t t-96 rise" style="left:116px;top:112px;width:1000px">Nossos atletas<br>também aparecem aqui.</p>
@@ -205,7 +262,7 @@
   <div class="a device rise" style="left:1120px;top:190px;width:700px;--d:.1s"><img src="assets/agn-feed.png" alt="Perfil público da AGN Football com atletas e clubes"></div>
 </section>
 
-<!-- ============ 13 JOGADORES QUE PASSARAM PELA AGN ============ -->
+<!-- ============ 16 JOGADORES QUE PASSARAM PELA AGN ============ -->
 <section class="slide">
   <div class="fill gold-glow"></div>
   <p class="a label" style="left:120px;top:58px">AGN Football</p>
@@ -214,7 +271,7 @@
 
 </section>
 
-<!-- ============ 14 O PREÇO DA DISCIPLINA ============ -->
+<!-- ============ 17 O PREÇO DA DISCIPLINA ============ -->
 <section class="slide">
   <p class="a t t-96" style="left:116px;top:96px">Três perguntas. Resposta em voz alta.</p>
   <div class="a rule-h" style="left:120px;top:262px;width:1680px"></div>
@@ -227,7 +284,20 @@
   <p class="a sub gold-l" style="left:120px;top:880px;font-size:62px">Talento abre a porta. Disciplina mantém ela aberta.</p>
 </section>
 
-<!-- ============ 15 O PRÓXIMO ============ -->
+<!-- ============ 18 CADA ROSTO, UMA HISTÓRIA QUE ACOMPANHAMOS (novo, 17/10/2026: da página /institucional) ============ -->
+<!-- O mosaico de fotos da trajetória, em painel de 864 x 1080 (a proporção da imagem, sem cortar rostos) e não em tela cheia: a arte tem
+     1122 px de largura e esticada a 1920 ficaria mole. As 72 telhas se abrem do centro pra fora e a foto respira devagar. Fecha a prova:
+     o dono pediu este slide e o texto da institucional. Opcional. -->
+<section class="slide bl-slide bl-rostos">
+  <div class="fill" style="background:radial-gradient(44% 60% at 22% 58%,rgba(200,184,138,.08),rgba(6,11,20,0) 72%)"></div>
+    <div class="bl-mosaico"><img src="assets/bloco/mosaico.webp" alt="Mosaico com dezenas de fotos de atletas acompanhados pela equipe em clubes, campos, aeroportos e assinaturas" width="1122" height="1402"><div class="bl-veu"></div><div class="bl-telhas" aria-hidden="true"><i style="--d:1.05s"></i><i style="--d:0.95s"></i><i style="--d:0.87s"></i><i style="--d:0.83s"></i><i style="--d:0.83s"></i><i style="--d:0.87s"></i><i style="--d:0.95s"></i><i style="--d:1.05s"></i><i style="--d:0.96s"></i><i style="--d:0.84s"></i><i style="--d:0.74s"></i><i style="--d:0.69s"></i><i style="--d:0.69s"></i><i style="--d:0.74s"></i><i style="--d:0.84s"></i><i style="--d:0.96s"></i><i style="--d:0.88s"></i><i style="--d:0.74s"></i><i style="--d:0.62s"></i><i style="--d:0.55s"></i><i style="--d:0.55s"></i><i style="--d:0.62s"></i><i style="--d:0.74s"></i><i style="--d:0.88s"></i><i style="--d:0.83s"></i><i style="--d:0.68s"></i><i style="--d:0.53s"></i><i style="--d:0.41s"></i><i style="--d:0.41s"></i><i style="--d:0.53s"></i><i style="--d:0.68s"></i><i style="--d:0.83s"></i><i style="--d:0.81s"></i><i style="--d:0.65s"></i><i style="--d:0.49s"></i><i style="--d:0.33s"></i><i style="--d:0.33s"></i><i style="--d:0.49s"></i><i style="--d:0.65s"></i><i style="--d:0.81s"></i><i style="--d:0.83s"></i><i style="--d:0.68s"></i><i style="--d:0.53s"></i><i style="--d:0.41s"></i><i style="--d:0.41s"></i><i style="--d:0.53s"></i><i style="--d:0.68s"></i><i style="--d:0.83s"></i><i style="--d:0.88s"></i><i style="--d:0.74s"></i><i style="--d:0.62s"></i><i style="--d:0.55s"></i><i style="--d:0.55s"></i><i style="--d:0.62s"></i><i style="--d:0.74s"></i><i style="--d:0.88s"></i><i style="--d:0.96s"></i><i style="--d:0.84s"></i><i style="--d:0.74s"></i><i style="--d:0.69s"></i><i style="--d:0.69s"></i><i style="--d:0.74s"></i><i style="--d:0.84s"></i><i style="--d:0.96s"></i><i style="--d:1.05s"></i><i style="--d:0.95s"></i><i style="--d:0.87s"></i><i style="--d:0.83s"></i><i style="--d:0.83s"></i><i style="--d:0.87s"></i><i style="--d:0.95s"></i><i style="--d:1.05s"></i></div></div>
+  <p class="a label" style="left:120px;top:96px">Arquivo</p>
+  <p class="bl-rostos-t rise" style="left:116px;top:200px;width:940px;white-space:nowrap;--d:.04s">Cada rosto,<br><span class="sand-l">uma história</span><br>que acompanhamos.</p>
+  <p class="a b b-44 rise" style="left:120px;top:540px;width:800px;color:var(--white);--d:.16s">Um recorte das fotos da nossa trajetória.</p>
+  <p class="bl-ig rise" style="left:120px;top:680px;width:820px;--d:.22s">O arquivo completo está no Instagram:<br><b style="color:var(--white)">@assessoria.voxen</b></p>
+</section>
+
+<!-- ============ 19 O PRÓXIMO ============ -->
 <section class="slide">
   <p class="a b b-44 rise" style="left:120px;top:92px;color:var(--white)">Kaio foi visto. Joãozinho foi visto.</p>
   <p class="a t t-130 rise" style="left:116px;top:166px;--d:.1s">O próximo pode ser você.</p>
@@ -240,7 +310,7 @@
 
 </section>
 
-<!-- ============ 16 O PRÓXIMO PASSO ============ -->
+<!-- ============ 20 O PRÓXIMO PASSO ============ -->
 <section class="slide">
   <div class="a beam-gold" style="left:1080px;top:-260px;width:900px;height:1400px"></div>
   <div class="fill grain"></div>
@@ -266,7 +336,7 @@
 
 <div class="hud" id="hud">
   <button type="button" data-act="prev" aria-label="Slide anterior">◀</button>
-  <span class="pos" id="hud-pos">1 / 16</span>
+  <span class="pos" id="hud-pos">1 / 20</span>
   <button type="button" data-act="next" aria-label="Próximo slide">▶</button>
   <button type="button" data-act="overview">Slides</button>
   <button type="button" data-act="presenter">Apresentador</button>
@@ -279,5 +349,6 @@
 <script>window.VARIACAO_NOME = "R1 · Avaliação e convite para R2";</script>
 <script src="assets/foto-atleta.js"></script>
 <script src="assets/deck.js"></script>
+<script src="assets/bloco.js"></script>
 </body>
 </html>

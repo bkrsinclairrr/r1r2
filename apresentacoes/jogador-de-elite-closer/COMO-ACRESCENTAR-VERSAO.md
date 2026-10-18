@@ -4,8 +4,8 @@ O painel guarda as duas etapas da venda, cada uma com as suas apresentações:
 
 | Etapa | Quem monta | Decks que ela tem | Papel no painel |
 | --- | --- | --- | --- |
-| **R1** | o SDR | R1 (`jogador-de-elite-r1`, 16 slides) | `sdr` |
-| **R2** | o closer | R2 novo (`jogador-de-elite-r2-novo`, 27 slides), R2 anterior (`jogador-de-elite-r2`, 24 slides) e R2 B (`jogador-de-elite-r2-b`, 27 slides) | `closer` |
+| **R1** | o SDR | R1 (`jogador-de-elite-r1`, 20 slides) | `sdr` |
+| **R2** | o closer | R2 novo (`jogador-de-elite-r2-novo`, 33 slides), R2 anterior (`jogador-de-elite-r2`, 30 slides) e R2 B (`jogador-de-elite-r2-b`, 33 slides) | `closer` |
 
 O **admin** vê as duas etapas. Cada papel vê só as variações, os leads e os decks da etapa dele. O SDR cria o R1 de um lead (aba "Meus R1", botão **+ Novo R1**); quando o lead vai pro closer, ele cola o link do R1 em **Importar o R1 de um SDR** e a ficha já vem pronta no R2.
 
@@ -58,7 +58,7 @@ Não tem cadastro no painel nem nada pra publicar nele. A página diz quem ela �
    ```
 
    `nome` (até 40 letras, único na etapa), `resumo` e `quando` (até 300 letras) são obrigatórios. `validacao` é a classificação de partida (`nao-validada` se faltar) e vale até o admin decidir no painel. `lead` diz o que a variação mostra: `{ "nome": true, "foto": true }` se faltar; apresentação geral, sem personalização, `{ "nome": false, "foto": false }`. Num deck que não mostra foto (R2 anterior, R1), `foto` fica `false`. Sem `<`, `>` nem travessão nos textos.
-3. **Slides opcionais, se a página tiver** (só o R2 novo deixa tirar slide da sequência): `data-opcional="<id>"` na tag do próprio slide (`<section class="slide" data-opcional="extra">`) e a entrada em `opcionais` do bloco. O número do slide o gerador acha sozinho. O `rotulo` pode ter `{nome}` (vira o primeiro nome do lead). Desmarcado, o deck passa direto por ele ao avançar e voltar, sem renumerar nada; ir direto ao slide (número mais Enter, visão geral, `#N`) continua funcionando. Não deixe tirar slide com preço, garantia ou nota legal.
+3. **Slides opcionais, se a página tiver** (só o R2 novo deixa tirar slide da sequência; lá são sete por página, e o painel aceita até 10): `data-opcional="<id>"` na tag do próprio slide (`<section class="slide" data-opcional="extra">`) e a entrada em `opcionais` do bloco. O número do slide o gerador acha sozinho. O `rotulo` pode ter `{nome}` (vira o primeiro nome do lead). Desmarcado, o deck passa direto por ele ao avançar e voltar, sem renumerar nada; ir direto ao slide (número mais Enter, visão geral, `#N`) continua funcionando. Não deixe tirar slide com preço, garantia ou nota legal.
 4. **Gere e confira**: `node gera-manifesto.mjs` (na pasta do deck) escreve o `variacoes.json` (a lista das páginas com nome, quando usar, slides opcionais, número de slides e o hash de cada arquivo). Ele recusa a página com bloco faltando, JSON quebrado, opcional que não bate com o HTML, nome repetido, pasta com nome ruim e texto com travessão. `node gera-manifesto.mjs --confere` só confere, sem escrever. O gerador é o mesmo arquivo nos 4 decks.
 5. **Publique o deck** (`npx --yes vercel deploy --prod --yes` na pasta dele; o `PUBLICAR-R2-NOVO.bat` já roda o gerador antes e para se alguma página estiver errada). O painel pega a página nova sozinho, em até 2 minutos depois de alguém abrir a aba, no Cron das 9h ou no botão **Sincronizar agora**. Se você mexer numa página depois e esquecer de gerar de novo, o painel avisa o admin ("variacoes.json velho"), mas a página segue funcionando.
 

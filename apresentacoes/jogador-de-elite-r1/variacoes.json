@@ -1,21 +1,21 @@
 {
   "v": 1,
-  "gerado": "2026-10-13T21:07:02.988Z",
+  "gerado": "2026-10-17T22:45:47.238Z",
   "paginas": [
     {
       "id": "principal",
       "caminho": "/",
       "nome": "R1 · Avaliação e convite para R2",
-      "resumo": "A apresentação do SDR em 16 slides: o Zyron, a IA na prática e a AGN, e fecha marcando a R2.",
+      "resumo": "A apresentação do SDR em 20 slides: o Zyron, a IA na prática, a rede (326 atletas enviados, clubes e parceiros) e a AGN, e fecha marcando a R2.",
       "quando": "A primeira apresentação do lead. Na dúvida, esta.",
       "validacao": "em-validacao",
       "lead": {
         "nome": true,
         "foto": true
       },
-      "slides": 16,
+      "slides": 20,
       "opcionais": [],
-      "hash": "9473887a7e8bbe034a0c79434c80f5a172e1c6d4"
+      "hash": "e43a3f035b2dc8e782f72e0901f47d2e9d07b6a1"
     }
   ]
 }

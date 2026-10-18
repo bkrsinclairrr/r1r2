@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "gerado": "2026-10-13T21:07:03.393Z",
+  "gerado": "2026-10-17T21:10:29.122Z",
   "paginas": [
     {
       "id": "principal",
@@ -13,9 +13,9 @@
         "nome": true,
         "foto": true
       },
-      "slides": 27,
+      "slides": 33,
       "opcionais": [],
-      "hash": "a269999da2c533d0a1a7244f29155b0bf900e468"
+      "hash": "a4559fe7755549272dece420058394f967fb4c04"
     },
     {
       "id": "tecnica",
@@ -28,9 +28,9 @@
         "nome": true,
         "foto": true
       },
-      "slides": 27,
+      "slides": 33,
       "opcionais": [],
-      "hash": "8a55bb09bb786faca026388aca4e00116b9540cb"
+      "hash": "17302245e1c39e13bc7d81b090f6ff7349d13549"
     }
   ]
 }

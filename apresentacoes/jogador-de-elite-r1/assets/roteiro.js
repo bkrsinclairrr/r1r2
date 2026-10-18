@@ -62,9 +62,20 @@ window.ROTEIRO = [
     crm: [],
     atencao: 'Não cite nome de clube como exemplo de quem usa dados.'
   },
+  { nome: 'O campo: olhômetro × IA', min: 1,
+    fala: [
+      'Ponte, depois da comparação: "Deixa eu te mostrar a diferença na prática. Isto é um campo, 22 jogadores e uma bola."',
+      'O olhômetro (a tela vira sozinha pra IA em uns 7 segundos, ou quando você clicar no botão da IA): "Esse é o olhômetro: a atenção segue a bola. O número diz quantos dos 22 estão sendo vistos agora. Quem está longe da bola, ninguém viu."',
+      'Quando virar: "Com a inteligência artificial, os 22 acompanhados do primeiro ao último minuto: cada atleta identificado e medido."',
+      'Fecho, a frase que fica sempre na tela: "O problema nunca foi o talento. Sempre foi o método."'
+    ],
+    perguntas: ['Quantos dos 22 você acha que um avaliador consegue olhar de uma vez?'],
+    crm: [],
+    atencao: 'É uma ILUSTRAÇÃO (trazida da página /institucional): formação genérica, sem jogador, escudo ou clube escalado, e o número do contador é só da demonstração, não é dado do atleta. A tela vira sozinha do olhômetro pra IA em uns 7 segundos, e o botão "Inteligência artificial" (e o do olhômetro) troca na hora, com clique: não corra a fala. Se a animação travar no Meet, abra o deck com ?bloco=estatico no fim do endereço (campo parado, mesma mensagem). Não chame o avaliador de incompetente: o limite é humano. Nunca prometa clube, prazo ou contrato.'
+  },
   { nome: 'O encaixe', min: 1,
     fala: [
-      '"Ele não precisa ser o melhor entre 22. Precisa ser encontrado por quem procura o perfil dele. Todo elenco tem uma lacuna."',
+      '"Ele não precisa ser o destaque entre os 22. Precisa ser encontrado por quem procura o perfil dele. Todo elenco tem uma lacuna."',
       '"O Zyron encontra o perfil. A gente faz a ponte."'
     ],
     perguntas: [],
@@ -111,6 +122,24 @@ window.ROTEIRO = [
     crm: ['Respondeu "não faz sentido lucrar em cima"?'],
     atencao: 'Espere o "não" em voz alta. Quem responde passa a defender a ideia, e o Gestor ancora o valor em cima disso.'
   },
+  { nome: '326 atletas enviados', min: 0.5,
+    fala: [
+      'Ponte, depois do "Do seu lado": "E isso não aconteceu uma vez. A casa já enviou 326 atletas, cada um com nome, posição e clube de destino, tudo registrado no Instagram, o @assessoria.voxen."',
+      '"Enviado é o que a gente fez: o perfil chegou ao clube. Quem contrata é o clube."'
+    ],
+    perguntas: [],
+    crm: [],
+    atencao: 'O 326 é número da casa, confirmado pelo dono, e a palavra é "enviados", como na arte: nunca "contratados" nem "colocados em clube". Não cite atleta nem clube como resultado a esperar. Se perguntarem quem é o homem da foto, responda só o que o dono confirmou e anote a pergunta. O link do Instagram vai pelo WhatsApp, nunca no slide. Nunca prometa clube, prazo ou contrato.'
+  },
+  { nome: 'Clubes e parceiros', min: 0.5,
+    fala: [
+      'Apontando as faixas que rolam: "A rede na prática: do Sul ao Nordeste aqui no Brasil e da Inglaterra ao Canadá lá fora. São clubes onde atletas nossos estiveram e clubes da nossa base."',
+      '"E as marcas que caminham com a gente, como parceiros comerciais: Adidas, Nike, Cloudflare, AWS e a A.E.K. London."'
+    ],
+    perguntas: ['Algum desses clubes vocês já conheciam?'],
+    crm: [],
+    atencao: 'Slide de REDE, não de resultado (trazido da página /institucional): a base do Zyron (mais de 250 clubes) já apareceu; aqui são escudos e marcas. Eles são dos titulares e a nota legal fica na tela: nunca diga que o clube usa o Zyron ou dados, que patrocina, que tem vaga, nem que o [atleta] vai pra algum deles. Os parceiros comerciais (Adidas, Nike, Cloudflare, AWS Amazon, A.E.K. London) têm acordo comercial confirmado pelo dono: diga só "parceiros comerciais" e, se perguntarem do acordo, anote a pergunta. Nunca prometa clube, prazo ou contrato.'
+  },
   { nome: 'AGN Football', min: 0.5,
     fala: [
       '"A gente tem relação direta com a AGN Football. Tem jogador nosso publicado lá. Te mando o link logo depois da nossa conversa."'
@@ -144,6 +173,15 @@ window.ROTEIRO = [
     crm: ['Decisores e como decidem', 'Telefones dos decisores'],
     atencao: 'Cada "sim" dito em voz alta, na frente dos pais, vira compromisso que o próprio atleta cobra depois.'
   },
+  { nome: 'Cada rosto, uma história', min: 0.5,
+    fala: [
+      'Deixe a imagem falar uns segundos, com os rostos aparecendo: "Cada rosto aqui é um atleta que a gente acompanhou: no campo, no aeroporto, na assinatura. O arquivo completo está no Instagram, @assessoria.voxen."',
+      'Ponte: "O Kaio foi visto. O Joãozinho foi visto. E o próximo pode ser você."'
+    ],
+    perguntas: [],
+    crm: [],
+    atencao: 'São fotos de outros atletas da casa, do arquivo publicado no Instagram da própria casa: mostre como arquivo, não como promessa. Não aponte atleta pelo rosto nem diga "esse aqui foi pro [clube]". Nunca prometa clube, prazo ou contrato.'
+  },
   { nome: 'O próximo', min: 0.5,
     fala: [
       'Virada de valor percebido (6.5): "[atleta], imagina você entrando em campo com a camisa do [clube dos sonhos], sabendo que teve um gerente de carreira e o Zyron cuidando de cada detalhe até ali. É isso que a gente constrói."'
@@ -166,38 +204,38 @@ window.ROTEIRO = [
 ];
 
 window.OBJECOES = [
-  { q: 'Quanto custa?', slides: [16], resposta: [
+  { q: 'Quanto custa?', slides: [20], resposta: [
     '"Cada perfil é individual, então o plano do [atleta] é montado pra ele, e o investimento vem junto com o plano."',
     '"Olha o que entra nisso: um gerente de carreira acompanhando ele todo dia e o Zyron, com um estrategista de carreiras só dele."',
     '"E pensa comigo: faz sentido a gente querer lucrar em cima de vocês, sendo que a gente ganha no contrato profissional dele? O Gestor te mostra o plano e o valor juntos. Fica melhor [dia/hora] ou [dia/hora]?"',
     'Nunca passe preço. Nunca abra slide de valores.'
   ]},
-  { q: 'Isso é golpe? É peneira paga?', slides: [12, 13, 11], resposta: [
+  { q: 'Isso é golpe? É peneira paga?', slides: [15, 16, 12, 13, 14, 18], resposta: [
     '"Pergunta justa. Tem muita coisa errada nesse meio, e é por isso que a gente trabalha diferente."',
     '"Peneira paga cobra pra olhar o menino um dia, no olhômetro. Aqui ele é analisado com dados pelo Zyron, tem gerente de carreira todo dia, e a gente só ganha quando ele assina contrato."',
     'Mostre a AGN, o David nas assinaturas e a autorização expressa do responsável.'
   ]},
-  { q: 'Isso de inteligência artificial funciona mesmo?', slides: [4, 6, 8], resposta: [
+  { q: 'Isso de inteligência artificial funciona mesmo?', slides: [4, 6, 7, 9], resposta: [
     '"Clube grande já escolhe atleta assim há anos, aqui e lá fora, só que sempre por dentro, sem o atleta nem saber que foi visto desse jeito."',
     '"A novidade é que agora isso chegou até o atleta. Mas não é qualquer um que tem acesso: só quem passa pelo nosso filtro, como o [atleta] tá passando agora."',
-    'Se a leitura ao vivo já rodou (slide 8): "Vocês viram com o jogo do [atleta], ao vivo, aqui na nossa chamada."'
+    'Se a leitura ao vivo já rodou (slide 9): "Vocês viram com o jogo do [atleta], ao vivo, aqui na nossa chamada."'
   ]},
-  { q: 'Vou pensar / Agora não é o momento', slides: [16], resposta: [
+  { q: 'Vou pensar / Agora não é o momento', slides: [20], resposta: [
     '"Pensar sobre o quê exatamente? A conversa com o Gestor é justamente pra vocês decidirem com o plano do [atleta] na mão."',
     'Se for momento: "Com [idade] anos, cada mês conta. A base tem prazo."'
   ]},
-  { q: 'Preciso ver com meu marido / minha esposa', slides: [16], resposta: [
+  { q: 'Preciso ver com meu marido / minha esposa', slides: [20], resposta: [
     '"Perfeito, é exatamente por isso que a conversa com o Gestor é com vocês dois. Qual horário vocês dois conseguem juntos?"',
     '"Me passa o número dele(a)? Mando a confirmação pros dois."'
   ]},
-  { q: 'Me manda as informações por aqui', slides: [16], resposta: [
+  { q: 'Me manda as informações por aqui', slides: [20], resposta: [
     '"Não tem folder porque não é pacote: o plano é montado pro [atleta], com gerente de carreira e estrategista de carreiras do Zyron dele. Por isso a conversa. [dia/hora] ou [dia/hora]?"'
   ]},
-  { q: 'Não tenho tempo', slides: [10], resposta: [
+  { q: 'Não tenho tempo', slides: [11], resposta: [
     '"É rápido e no horário de vocês. Pode ser à noite ou no fim de semana. Qual fica melhor?"',
     '"E depois que o [atleta] entra, quem corre atrás é a gente. Vocês não vão precisar tirar tempo do trabalho pra tocar isso."'
   ]},
-  { q: 'Ele já tem empresário / já tá num clube', slides: [10, 5], resposta: [
+  { q: 'Ele já tem empresário / já tá num clube', slides: [11, 5], resposta: [
     '"Ótimo, isso mostra que ele tem nível. Me diz uma coisa: tem alguém acompanhando o desenvolvimento dele todo dia? Nesse último ano, em quantos testes ele foi levado?"',
     '"Aqui ele teria gerente de carreira todo dia e um estrategista de carreiras do Zyron só dele. O Gestor te mostra o que muda."'
   ]},
@@ -205,11 +243,11 @@ window.OBJECOES = [
     'Novo: "Novo é vantagem. Quanto antes começa, mais janela ele tem."',
     'Velho: "É exatamente por isso que não dá pra esperar. O Gestor te mostra como aproveitar a janela que ele tem agora."'
   ]},
-  { q: 'Ele não pode ir pra outro estado', slides: [10], resposta: [
+  { q: 'Ele não pode ir pra outro estado', slides: [11], resposta: [
     '"Hoje ele não precisa ir pra lugar nenhum. Isso só acontece quando o clube chamar, e o gerente de carreira cuida disso junto com vocês."',
     '"Me conta o que pesa mais: ele ir sozinho, ou a família não conseguir acompanhar?"'
   ]},
-  { q: 'Vocês são tipo uma escolinha?', slides: [6, 10], resposta: [
+  { q: 'Vocês são tipo uma escolinha?', slides: [6, 11], resposta: [
     '"Escolinha treina. A gente leva pro clube. Gerente de carreira todo dia, estrategista de carreiras do Zyron só dele e relação direta com a AGN Football."'
   ]}
 ];

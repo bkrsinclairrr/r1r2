@@ -217,7 +217,7 @@ window.ROTEIRO = [
     ],
     perguntas: ['Quanto vocês acham que custaria montar isso por conta?'],
     crm: [],
-    atencao: 'O slide abre só com a pergunta: espere o chute da família antes do primeiro avanço. Cada avanço mostra uma frente com o valor anual, e a soma da direita sobe junto; o último avanço destaca o total, R$ 30.000 por ano, com tudo junto. O apresentador mostra o que entra no próximo avanço. Ordem do fechamento: valor da estrutura, até lá, filtro, contrato, vaga, planos, investimento, garantia incondicional e Bem-vindo. Aqui é o valor da estrutura inteira, a do Legacy, não o preço de um plano. Previne "o valor tá muito alto".'
+    atencao: 'O slide abre só com a pergunta: espere o chute da família antes do primeiro avanço. Cada avanço mostra uma frente com o valor anual, e a soma da direita sobe junto; o último avanço destaca o total, R$ 30.000 por ano, com tudo junto. O apresentador mostra o que entra no próximo avanço. Ordem do fechamento: valor da estrutura, até lá, filtro, contrato, vaga, planos, investimento, garantia total e Bem-vindo. Aqui é o valor da estrutura inteira, a do Legacy, não o preço de um plano. Previne "o valor tá muito alto".'
   },
   { nome: 'Até lá, a gente investe', min: 2,
     fala: [
@@ -339,7 +339,7 @@ window.ROTEIRO = [
 window.ETAPAS = [
   { nome: 'Conexão', slides: [1, 2] },
   { nome: 'Dor e sonho', slides: [4, 12] },
-  { nome: 'O plano', slides: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] },
+  { nome: 'O plano', slides: [5, 6, 7, 8, 9, 101, 10, 102, 103, 11, 12, 13, 14, 15, 16, 104, 105, 106] },
   { nome: 'Fechamento', slides: [17, 18, 19, 20, 21, 22, 23, 24] },
   { nome: 'Próximo passo', slides: [25] }
 ];
@@ -400,7 +400,7 @@ window.OBJECOES = [
     '"E quanto antes começa, antes esse relógio anda. Decidindo hoje, os três meses começam hoje."',
     'Com o Scout PRO na tela: "O encaminhamento pra clubes vem a partir da Assessoria PRO." Com a Assessoria PRO: "Na Assessoria PRO, a gestão de carreiras faz pelo menos 5 encaminhamentos de oportunidades por mês, pra clubes do Brasil e do mundo, e os encontros com a equipe mostram o que falta pro [atleta] ser encaminhado." Os 93% e os três meses são do Legacy: não use como prazo do PRO nem do Scout PRO.'
   ], proibido: 'Prometer data de contrato ou clube. Encaminhamento não é contratação.' },
-  { q: 'Será que ele é bom o suficiente?', slides: [15, 2, 4, 10, 13, 19], prev: '"Se você está vendo isso, é porque tem o que é preciso" desde a capa, "não foi você, foi o olhômetro" (slide 04), o seu lugar em campo (slide 10), o jogo dele lido lance a lance (slide 13) e "nem tudo é talento" no slide 15.', resposta: [
+  { q: 'Será que ele é bom o suficiente?', slides: [15, 2, 4, 10, 103, 13, 19], prev: '"Se você está vendo isso, é porque tem o que é preciso" desde a capa, "não foi você, foi o olhômetro" (slide 04), o seu lugar em campo (slide 10), o jogo dele lido lance a lance (slide 13) e "nem tudo é talento" no slide 15.', resposta: [
     '"Se não fosse, ele não estaria nessa conversa. A equipe e o Zyron aprovaram o perfil dele: a gente só investe em quem acredita que vai chegar."',
     '"E nem tudo é talento. Talento ele tem. O que faltou até agora foi alguém levando ele até o clube certo, na hora certa."',
     'Com caso espelho: "O [caso] tinha o mesmo perfil, e a mesma dúvida em casa. Hoje tá no [clube do caso]."',
@@ -432,7 +432,7 @@ window.OBJECOES = [
     '"Hoje ele não precisa ir pra lugar nenhum. Isso só acontece quando o clube chamar." No Legacy, some: "e o gerente de carreira organiza a ida com vocês."',
     '"E vocês falaram pro estrategista esportivo: [locomoção]. Então isso a gente resolve junto quando chegar a hora."'
   ] },
-  { q: 'Já tentamos peneira / empresário e não deu', slides: [4, 11, 12, 15], prev: 'O olhômetro antes do plano (slide 04), a resposta nos slides 11 e 12 e o "nem tudo é talento" no 15.', resposta: [
+  { q: 'Já tentamos peneira / empresário e não deu', slides: [4, 102, 11, 12, 15], prev: 'O olhômetro antes do plano (slide 04), a resposta nos slides 11 e 12 e o "nem tudo é talento" no 15.', resposta: [
     '"Quantos garotos tinham nessa peneira? E quanto tempo olharam pra ele? Vinte minutos de coletivo?"',
     '"Então não foi ele que não deu certo. Foi o olhômetro. Ninguém analisou o jogo dele de verdade, e ninguém acompanhou ele depois. É exatamente isso que o Zyron e a gente fazem."',
     'No Legacy: "Nem tudo é talento: faltou quem levasse ele ao clube certo. Aqui, mais de 93% são encaminhados em até três meses."'
@@ -441,7 +441,7 @@ window.OBJECOES = [
     '"Com [idade + 1], a janela fica maior ou menor? Esperar um ano é um ano a menos de janela." No Legacy, com turma, some: "e é deixar a vaga dessa turma pra outro menino."',
     '"Os clubes estão pedindo jogador agora. Daqui a um ano, esse pedido vai pra quem começou hoje."'
   ] },
-  { q: 'Isso é confiável?', slides: [14, 15, 16, 21, 9], prev: 'O depoimento de uma mãe (14), os números (15), a AGN (16), a garantia (21) e a autorização expressa do responsável no "como o Zyron funciona" (09) antes da pergunta.', resposta: [
+  { q: 'Isso é confiável?', slides: [14, 15, 16, 104, 105, 106, 21, 9, 101], prev: 'O depoimento de uma mãe (14), os números (15), a AGN (16), a garantia (21) e a autorização expressa do responsável no "como o Zyron funciona" (09) antes da pergunta.', resposta: [
     '"Vocês ouviram a mãe. E mais de 93% dos nossos são encaminhados em até três meses."',
     '"A gente tem relação direta com a AGN Football, com jogador nosso publicado lá. O Joãozinho fechou com o Grêmio, o Kaio com o Internacional. Te mando o link agora." [link AGN]',
     'Com caso espelho: "E o [caso], que tem o perfil do [atleta], tá lá também: [link do caso]."',
@@ -451,7 +451,7 @@ window.OBJECOES = [
   { q: 'Manda por WhatsApp que eu vejo com calma', slides: [], resposta: [
     '"O plano é do [atleta], não é folder. Explicado aqui, com vocês, é que ele faz sentido. O que você precisa ver pra decidir?"'
   ], proibido: 'Mandar proposta ou valor por WhatsApp.' },
-  { q: 'Vou ver outras opções', slides: [12, 13, 16, 8, 4], prev: 'O olhômetro (04) e a comparação do slide 12 já fizeram as perguntas por eles; a leitura ao vivo do jogo dele (13) e o vídeo do Zyron (08) mostram o que ninguém mais tem.', resposta: [
+  { q: 'Vou ver outras opções', slides: [12, 13, 16, 104, 105, 8, 4], prev: 'O olhômetro (04) e a comparação do slide 12 já fizeram as perguntas por eles; a leitura ao vivo do jogo dele (13) e o vídeo do Zyron (08) mostram o que ninguém mais tem.', resposta: [
     '"Compara mesmo. Pergunta pra eles: analisam o atleta com dados reais ou no olhômetro? Tem alguém acompanhando de verdade, no ritmo que vocês escolheram? Tem um agente como o Zyron? Leem o jogo do atleta ao vivo, na frente de vocês? E como eles ganham: em cima de vocês, ou só quando o atleta fecha?"',
     'Com o Legacy na tela, some: "Tem gerente de carreira todo dia? Levam o atleta aos clubes? Têm relação direta com a AGN?" E, com turma: "Só lembra que a vaga do [atleta] aqui não fica aberta pra sempre. A turma é de 10."',
     'Com a Assessoria PRO na tela, a acessível: "E vê quem coloca uma equipe do lado dele toda semana, com sete módulos de aulas, um estrategista esportivo e pelo menos 5 encaminhamentos por mês, por esse investimento."'
@@ -463,7 +463,7 @@ window.OBJECOES = [
     'Legacy: "O completo: tudo do PRO, o estrategista de carreiras do lado dele todo dia, o gerente de carreira e assessoria individual com o David Willer todo mês, com acompanhamento direto no WhatsApp. E pelo menos 15 encaminhamentos de oportunidades por mês, mundo afora, com conexão direta com clubes e com a AGN, e as seletivas acompanhadas, com a logística planejada."',
     'Conduzir: "Pelo que vocês me falaram, eu recomendo o [plano]. Faz sentido?"'
   ], proibido: 'Responder pela diferença de preço em vez do ritmo, chamar o PRO de "o mais barato" ou de "o mais vendido", atribuir ao PRO o que é do Legacy (conexão direta com clubes e AGN, os 15 encaminhamentos por mês) ou encaminhamento ao Scout PRO.' },
-  { q: 'Isso de inteligência artificial funciona mesmo?', slides: [8, 9, 10, 11, 13, 2], prev: 'O Zyron trabalhando (08), os cinco verbos (09), o seu lugar em campo (10), olhômetro contra Zyron (11) e a leitura ao vivo do jogo dele (13).', resposta: [
+  { q: 'Isso de inteligência artificial funciona mesmo?', slides: [8, 9, 101, 102, 103, 10, 11, 13, 2], prev: 'O Zyron trabalhando (08), os cinco verbos (09), o seu lugar em campo (10), olhômetro contra Zyron (11) e a leitura ao vivo do jogo dele (13).', resposta: [
     '"Clube grande já escolhe atleta assim há anos, aqui e lá fora, só que sempre por dentro, sem o atleta nem saber que foi visto desse jeito. A novidade é que agora isso chegou até o atleta."',
     '"É o que vocês viram no vídeo: o Zyron cruza o jogo do atleta com o que cada clube precisa. Por isso mais de 93% são encaminhados em até três meses."',
     'Se a leitura ao vivo já rodou (slide 13): "E vocês viram com o jogo do [atleta], ao vivo, aqui na nossa chamada."'
@@ -624,7 +624,9 @@ window.CHECKLIST = [
   'Se não subi o vídeo, deixei o vídeo do atleta aberto pra leitura ao vivo no Meet (IA na Prática, slide 12)',
   'Conferi vagas e data da próxima turma (só aparecem com o Legacy)',
   'Confirmei pai, mãe e atleta na call',
-  'Deck aberto em tela cheia e apresentador em outra janela'
+  'Deck aberto em tela cheia e apresentador em outra janela',
+  'Revi os seis slides da página institucional (o método, o campo, o encaixe, os 326, os clubes e o mosaico): nesta versão eles não saem pelo painel, então pulo com a seta o que a call curta não comporta',
+  'Se a animação do campo travar no Meet, abro o deck com ?bloco=estatico no fim do endereço (campo parado, mesma mensagem)'
 ];
 
-window.PROIBIDOS = 'Proibido: começar do zero com quem já tem contexto; perguntar de novo o que está na ficha; prometer contrato, clube ou valor de contrato; inventar caso, clube ou número; trocar "encaminhado" por "contratado"; desconto; proposta por WhatsApp; correr atrás da família; pôr o perfil do atleta em dúvida; vender pela diferença de preço em vez do ritmo; atribuir ao PRO o que é do Legacy (conexão direta com clubes e AGN, os 15 encaminhamentos por mês) ou encaminhamento ao Scout PRO; descer de plano por desconto; mandar o link antes do sim; dar nota ou atributo ao atleta; dizer que o Zyron tem percentual de acerto; chamar o avaliador de incompetente; citar clube como quem usa dados; dizer que existe vaga num clube específico; dizer que o Zyron leu um relatório marcado à mão; dar nota geral, ranking, percentil ou comparação com outros atletas; mostrar o vídeo de um atleta a quem não é da família dele; prometer que o relatório da call é o do plano (o plano entrega a leitura de cada vídeo novo, no ritmo dele).';
+window.PROIBIDOS = 'Proibido: começar do zero com quem já tem contexto; perguntar de novo o que está na ficha; prometer contrato, clube ou valor de contrato; inventar caso, clube ou número; trocar "encaminhado" por "contratado"; desconto; proposta por WhatsApp; correr atrás da família; pôr o perfil do atleta em dúvida; vender pela diferença de preço em vez do ritmo; atribuir ao PRO o que é do Legacy (conexão direta com clubes e AGN, os 15 encaminhamentos por mês) ou encaminhamento ao Scout PRO; descer de plano por desconto; mandar o link antes do sim; dar nota ou atributo ao atleta; dizer que o Zyron tem percentual de acerto; chamar o avaliador de incompetente; citar clube como quem usa dados; dizer que existe vaga num clube específico; dizer que o Zyron leu um relatório marcado à mão; dar nota geral, ranking, percentil ou comparação com outros atletas; mostrar o vídeo de um atleta a quem não é da família dele; prometer que o relatório da call é o do plano (o plano entrega a leitura de cada vídeo novo, no ritmo dele); usar a foto de outro atleta no lugar da do atleta da call (o mosaico é arquivo público da casa, não é a foto dele); citar o escudo de um clube como se ele usasse o Zyron, patrocinasse ou tivesse vaga; trocar "enviados" por "contratados" no 326; comparar o atleta a Neymar ou a qualquer jogador.';

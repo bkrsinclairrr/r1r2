@@ -10,6 +10,9 @@ import { sobe, RAIZ_DECK } from './servidor.mjs';
 import { Cliente, verificador, fotosDeTeste } from './_util.mjs';
 import { abreNavegador, espera } from './_chrome.mjs';
 
+// a data da call fica sempre no futuro (passada a data, o painel marca "Call encerrada" e a etiqueta "Pronto" some); o texto esperado sai da mesma regra do painel: dia da semana do meio-dia UTC
+const R2DATA = new Date(Date.now() + 3 * 864e5).toISOString().slice(0, 10);
+const R2DIA = (() => { const [a, m, d] = R2DATA.split('-').map(Number); return ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'][new Date(Date.UTC(a, m - 1, d, 12)).getUTCDay()] + ', ' + String(d).padStart(2, '0') + '/' + String(m).padStart(2, '0'); })();
 const TELAS = process.argv[2] ? path.resolve(process.argv[2]) : '';
 if (TELAS) fs.mkdirSync(TELAS, { recursive: true });
 const tela = async (aba, nome) => { if (TELAS) await aba.foto(path.join(TELAS, nome + '.png')); };
@@ -118,9 +121,9 @@ try {
 
   /* ---------- a ficha até "Pronto" ---------- */
   for (const [k, v] of [['posicao', 'zagueiro'], ['idade', '15'], ['cidade', 'Natal'], ['pe', 'Destro'], ['altura', '178'], ['origem', 'Zyron'], ['caracteristicas', 'leitura de jogo'],
-    ['sonho', 'jogar na Europa'], ['plano', 'Assessoria de Elite Legacy'], ['vagas', '4'], ['r2data', '2026-10-15'], ['r2hm', '19:30'], ['gerente', 'Rafael'], ['prazoContato', 'ainda hoje'], ['prazoZyron', 'no dia seguinte']]) await poe(k, v);
+    ['sonho', 'jogar na Europa'], ['plano', 'Assessoria de Elite Legacy'], ['vagas', '4'], ['r2data', R2DATA], ['r2hm', '19:30'], ['gerente', 'Rafael'], ['prazoContato', 'ainda hoje'], ['prazoZyron', 'no dia seguinte']]) await poe(k, v);
   ok(/Reconhecida no campo: ZAG-d/.test(await P.avalia("document.querySelector('#selo-pos').textContent")), 'o selo da posição: "Reconhecida no campo: ZAG-d"');
-  ok((await P.avalia("document.querySelector('#ex-call').textContent")) === 'Na capa: Call de quinta, 15/10 · 19h30.', 'a call formatada: quinta, 15/10 · 19h30');
+  ok((await P.avalia("document.querySelector('#ex-call').textContent")) === 'Na capa: Call de ' + R2DIA + ' · 19h30.', 'a call formatada: ' + R2DIA + ' · 19h30');
   await P.avalia("document.querySelector('#c-conferido').click(); 1");
   await P.avalia("document.querySelector('#ed-salvar').click(); 1");
   ok(await P.ate("document.querySelector('#ed-estado').textContent === 'Pronto' && !document.querySelector('#ed-salvo').classList.contains('sujo')"), 'salvou: a etiqueta vira "Pronto" (foto, nome conferido, posição, plano, dia e hora)');

@@ -3,9 +3,11 @@
 .oferta-dupla .pl-pc .l{display:block;font-size:24px;margin:6px 0 4px}
 .oferta-dupla .pl-pc .n{display:block}
 .oferta-dupla .pl-col .pl-hd .pl-nm{font-size:56px;line-height:1}
-.oferta-dupla .pl-vant p{font-size:23px;line-height:1.17;margin-top:5px!important}
+.oferta-dupla .pl-vant p{font-size:24px;line-height:1.17;margin-top:5px!important}
 .oferta-dupla .pl-hd{padding-top:16px}
 .oferta-dupla .pl-rec{top:-42px}
+/* o descritor do plano (a leitura do seu jogo, sua carreira acompanhada) ja ficava com altura zero aqui: sai de vez, em vez de ficar escondido por baixo do nome */
+.oferta-dupla .pl-hd .pl-ds{display:none}
 
 /* Dossiê do atleta: linguagem visual do relatório Zyron dentro do deck. */
 .zx-frase{font:600 36px/1.25 var(--f-body);color:var(--sand);margin-top:32px!important}
@@ -16,11 +18,11 @@
 .zx-retrato-caption{position:absolute;inset:auto 0 0;padding:110px 42px 42px;background:linear-gradient(transparent,#061018 60%);display:flex;flex-direction:column;gap:10px}
 .zx-retrato-caption span{font:500 25px var(--f-body);color:#d6d2bd}
 .zx-retrato-caption strong{font:700 68px/1 var(--f-title);text-transform:uppercase;color:var(--sand)}
-.zx-retrato-caption small{font:400 23px var(--f-body);color:#aaa}
+.zx-retrato-caption small{font:400 24px var(--f-body);color:#aaa}
 .zx-card{background:#101515;border:1px solid #2d3331;border-radius:20px;padding:25px 28px;color:#f3f3eb}
 .zx-card h3{font:700 30px/1.1 var(--f-body);margin:0}
-.zx-muted{font:400 22px/1.35 var(--f-body);color:#b1b6ad;margin-top:8px!important}
-.zx-k{font:700 20px/1.2 var(--f-body);text-transform:uppercase;letter-spacing:1.1px;color:#56d4ab;margin-bottom:9px!important}
+.zx-muted{font:400 24px/1.3 var(--f-body);color:#b1b6ad;margin-top:8px!important}
+.zx-k{font:700 24px/1.2 var(--f-body);text-transform:uppercase;letter-spacing:.8px;color:#56d4ab;margin-bottom:9px!important}
 .zx-avatar{display:inline-flex;position:relative;flex-shrink:0;width:98px;height:98px;border-radius:50%;overflow:hidden;border:2px solid #cfa638;background:#35351e;vertical-align:middle}
 .zx-avatar img{width:100%;height:100%;object-fit:cover}
 .zx-avatar b{display:flex;width:100%;height:100%;align-items:center;justify-content:center;font:700 48px var(--f-title);color:#f4ce62}
@@ -28,74 +30,75 @@
 .zx-ident{display:flex;align-items:center;gap:24px;min-width:0}
 .zx-ident>div:not(.zx-geral){flex:1;min-width:0}
 .zx-ident h3{font:700 42px/1.1 var(--f-body);margin:0}
-.zx-ident .zx-muted{font-size:23px}
+.zx-ident .zx-muted{font-size:24px}
 .zx-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
-.zx-tags span{font:500 18px/1.2 var(--f-body);padding:6px 12px;border:1px solid #42483d;border-radius:20px;background:#ffffff05;color:#e5e9d6}
-.zx-geral{display:flex;flex:0 0 90px;flex-direction:column;align-items:center;justify-content:center;min-width:90px;height:90px;padding:6px;border-radius:18px;background:#efc23c;color:#22210c;font:800 45px/1 var(--f-body);box-shadow:0 0 30px #eac23522}
-.zx-geral small{font:700 15px/1.4 var(--f-body);text-transform:uppercase;margin-top:5px}
+.zx-tags span{font:500 24px/1.2 var(--f-body);padding:5px 14px;border:1px solid #42483d;border-radius:20px;background:#ffffff05;color:#e5e9d6}
+.zx-geral{display:flex;flex:0 0 108px;flex-direction:column;align-items:center;justify-content:center;min-width:108px;height:108px;padding:6px;border-radius:18px;background:#efc23c;color:#22210c;font:800 44px/1 var(--f-body);box-shadow:0 0 30px #eac23522}
+.zx-geral small{font:700 24px/1 var(--f-body);text-transform:uppercase;margin-top:4px}
 .zx-match{display:flex;align-items:center;gap:22px;min-width:0}
 .zx-clube-ini{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:64px;height:76px;background:linear-gradient(155deg,#eccc53,#687e33);color:#18281e;font:800 25px var(--f-body);clip-path:polygon(8% 0,92% 0,85% 65%,50% 100%,15% 65%)}
 .zx-match-text{flex:1;min-width:0}
 .zx-match h3{font:700 32px/1.1 var(--f-body);margin:0;overflow-wrap:anywhere}
-.zx-match .zx-muted{font-size:21px}
-.zx-match .zx-tags span{font-size:17px}
-.zx-percent{display:flex;flex-direction:column;align-items:center;flex-shrink:0;min-width:125px;font:700 42px/1 var(--f-body);color:#56d4ab}
-.zx-percent small{font:500 14px/1.3 var(--f-body);margin-top:9px;color:#99c9b8}
-.zx-motivo{font:400 21px/1.32 var(--f-body);color:#d5dacd;margin-top:12px!important;overflow-wrap:anywhere}
+.zx-match .zx-muted{font-size:24px}
+.zx-match .zx-tags span{font-size:24px}
+.zx-percent{display:flex;flex-direction:column;align-items:center;flex-shrink:0;min-width:176px;font:700 42px/1 var(--f-body);color:#56d4ab}
+.zx-percent small{font:500 24px/1.2 var(--f-body);margin-top:6px;color:#99c9b8}
+.zx-motivo{font:400 24px/1.3 var(--f-body);color:#d5dacd;margin-top:12px!important;overflow-wrap:anywhere}
 .zx-tatica{padding:0;overflow:hidden}
 .zx-tatica-h{display:flex;justify-content:space-between;align-items:center;padding:28px 30px;background:linear-gradient(130deg,#262315,#101915);font:700 25px var(--f-body);text-transform:uppercase}
-.zx-tatica-h b{color:#f2c744;border:1px solid #8b732a;padding:8px 17px;border-radius:20px;font-size:20px}
+.zx-tatica-h b{color:#f2c744;border:1px solid #8b732a;padding:8px 17px;border-radius:20px;font-size:24px}
 .zx-tatica svg{display:block;width:100%;height:auto}
-.zx-tatica>.zx-muted{padding:22px 30px;margin:0!important;font-size:21px}
+.zx-tatica>.zx-muted{padding:22px 30px;margin:0!important;font-size:24px}
 .zx-report{border:1px solid #505137;border-radius:24px;background:#0b100f;color:#f4f4eb;overflow:hidden;box-shadow:0 30px 95px #0005}
 .zx-topbar{display:flex;align-items:center;gap:25px;height:65px;padding:0 32px;border-bottom:1px solid #252c26;background:#11120f;font:700 25px var(--f-body)}
 .zx-topbar>b{display:flex;align-items:center;gap:13px;letter-spacing:3px}
 .zx-z{display:inline-flex;align-items:center;justify-content:center;background:#f1c33e;color:#141809;border-radius:9px;width:38px;height:38px;letter-spacing:0}
-.zx-status{font:500 17px var(--f-body);color:#58d4ad;background:#14372c;padding:9px 16px;border-radius:22px;border:1px solid #27634b}
-.zx-top-label{margin-left:auto;font:400 20px var(--f-body);color:#a4aba2}
-.zx-report-ident{padding:15px 32px}
+.zx-status{font:500 24px var(--f-body);color:#58d4ad;background:#14372c;padding:6px 18px;border-radius:22px;border:1px solid #27634b}
+.zx-top-label{margin-left:auto;font:400 24px var(--f-body);color:#a4aba2}
+.zx-report-ident{padding:8px 32px}
 .zx-report-ident .zx-k{display:none}
 .zx-report-ident .zx-avatar{width:90px;height:90px}
-.zx-tabs{display:flex;gap:35px;padding:0 32px;border-bottom:1px solid #272c25;font:500 21px var(--f-body);color:#9ba097}
+.zx-tabs{display:flex;gap:35px;padding:0 32px;border-bottom:1px solid #272c25;font:500 24px var(--f-body);color:#9ba097}
 .zx-tabs>span{padding:12px 0}
 .zx-tabs .active{color:#f4c849;border-bottom:2px solid #f4c849}
-.zx-report-grid{display:grid;grid-template-columns:360px 1fr;gap:24px;padding:22px 32px}
-.zx-report-main{display:grid;gap:12px;align-content:start}
-.zx-report-main>.zx-card{padding:12px 25px}
+.zx-report-grid{display:grid;grid-template-columns:360px 1fr;gap:24px;padding:14px 32px}
+.zx-report-main{display:grid;gap:10px;align-content:start}
+.zx-report-main>.zx-card{padding:10px 25px}
 .zx-perfil h3{font-size:24px}
 .zx-perfil dl{margin:28px 0 0}
-.zx-perfil dl>div{display:flex;justify-content:space-between;align-items:baseline;gap:20px;border-bottom:1px solid #292e29;padding:16px 0;font:400 21px/1.3 var(--f-body)}
+.zx-perfil dl>div{display:flex;justify-content:space-between;align-items:baseline;gap:20px;border-bottom:1px solid #292e29;padding:16px 0;font:400 24px/1.3 var(--f-body)}
 .zx-perfil dt{color:#a4aaa0;flex-shrink:0}
 .zx-perfil dd{margin:0;text-align:right;font-weight:600;overflow-wrap:anywhere}
 .zx-section-h{display:flex;align-items:center;justify-content:space-between;gap:22px;margin-bottom:10px}
 .zx-section-h h3{font-size:26px}
-.zx-section-h>span{font:500 17px var(--f-body);padding:7px 13px;border:1px solid #625126;border-radius:20px;color:#e5bd44;white-space:nowrap}
-.zx-indicadores{display:grid;grid-template-columns:1fr 1fr;gap:10px 44px}
-.zx-indicador>div{display:flex;align-items:center;justify-content:space-between;font:500 17px/1.2 var(--f-body);margin-bottom:5px}
+.zx-section-h>span{font:500 24px var(--f-body);padding:6px 16px;border:1px solid #625126;border-radius:20px;color:#e5bd44;white-space:nowrap}
+.zx-indicadores{display:grid;grid-template-columns:1fr 1fr;gap:4px 44px}
+.zx-indicador>div{display:flex;align-items:center;justify-content:space-between;font:500 24px/1.2 var(--f-body);margin-bottom:5px}
 .zx-indicador strong{color:#e6c44e}
 .zx-bar{display:block;width:100%;height:5px;background:#30362f;border-radius:9px;overflow:hidden}
 .zx-bar i{display:block;height:100%;background:#e6c44e;border-radius:9px}
 .zx-indicador:nth-child(3n) .zx-bar i{background:#51cfa5}
-.zx-leitura h3{font-size:23px;color:#f2cc63}
-.zx-leitura p{font:400 19px/1.3 var(--f-body);margin-top:8px!important;color:#d5dbce;overflow-wrap:anywhere}
-.zx-leitura h4{font:600 19px var(--f-body);margin:10px 0 0;color:#62d6b0}
+.zx-leitura h3{font-size:24px;color:#f2cc63}
+.zx-leitura p{font:400 24px/1.25 var(--f-body);margin-top:4px!important;color:#d5dbce;overflow-wrap:anywhere}
+.zx-leitura h4{font:600 24px var(--f-body);margin:6px 0 0;color:#62d6b0}
 .zx-report .zx-match h3{font-size:27px}
-.zx-report .zx-match .zx-tags{margin-top:8px}
-.zx-report .zx-match .zx-k{font-size:17px}
+/* na tela do relatorio o card do clube perde as etiquetas: com texto de 24 px elas nao cabem (as etiquetas aparecem no slide dos clubes) */
+.zx-report .zx-match .zx-tags{display:none}
+.zx-report .zx-match .zx-k{font-size:24px}
 .zx-report .zx-match .zx-motivo{display:none}
-.zx-report .zx-clube-ini{width:48px;height:60px;font-size:20px}
+.zx-report .zx-clube-ini{width:56px;height:68px;font-size:24px}
 .zx-vazio{padding:16px 0;font:400 24px/1.4 var(--f-body);color:#aeb6a5;grid-column:1/-1}
 .zx-oportunidade-atleta{display:flex;align-items:center;gap:23px}
 .zx-oportunidade-atleta .zx-avatar{width:86px;height:86px}
 .zx-oportunidade-atleta p{font:400 27px/1.3 var(--f-body);color:#c2cabe}
 .zx-oportunidade-atleta strong{color:var(--sand)}
-.zx-escopo{font:400 21px/1.35 var(--f-body);color:#b5beb2;margin-top:20px!important;max-width:690px}
+.zx-escopo{font:400 24px/1.35 var(--f-body);color:#b5beb2;margin-top:20px!important;max-width:690px}
 .zx-clubes{display:grid;gap:18px;margin-top:22px}
 .zx-clubes>.zx-match{padding:25px 24px;border:1px solid #336348;border-radius:20px;background:linear-gradient(120deg,#172a1f,#101914)}
 .zx-clubes .zx-match h3{font-size:31px}
-.zx-clubes .zx-match .zx-k{font-size:17px}
+.zx-clubes .zx-match .zx-k{font-size:24px}
 .zx-proximo{margin-top:24px;border-left:3px solid var(--sand);padding:5px 0 5px 25px}
-.zx-proximo span{font:600 22px var(--f-body);color:var(--sand)}
+.zx-proximo span{font:600 24px var(--f-body);color:var(--sand)}
 .zx-proximo p{font:400 24px/1.35 var(--f-body);color:#c1c9bb;margin-top:9px!important}
 .zx-oferta-h{display:flex;align-items:center;gap:28px}
 .zx-oferta-h .zx-avatar{width:108px;height:108px}
@@ -103,23 +106,29 @@
 .resposta-completa td.c3{font-size:27px;line-height:1.2;color:#eee8d3;font-weight:500}
 .zx-player{padding:22px 26px}
 .zx-player .zx-avatar{width:80px;height:80px}
-.zx-player .zx-geral{height:80px;flex-basis:80px;min-width:80px}
+.zx-player .zx-geral{height:100px;flex-basis:100px;min-width:100px;font-size:40px}
 .zx-player .zx-ident h3{font-size:37px}
 .zx-player~[data-dossie="destaque"]{padding:18px 24px}
-.zx-player~[data-dossie="destaque"] .zx-k{font-size:17px;margin-bottom:6px!important}
+.zx-player~[data-dossie="destaque"] .zx-k{font-size:24px;margin-bottom:6px!important}
 .zx-player~[data-dossie="destaque"] .zx-match h3{font-size:28px}
-.zx-player~[data-dossie="destaque"] .zx-match .zx-muted{font-size:19px}
+.zx-player~[data-dossie="destaque"] .zx-match .zx-muted{font-size:24px}
+/* Slide 11 (o seu perfil em campo): o título de 96 px deixava 80 px de folga antes do cartão do atleta, e com o clube de nome muito longo o cartão do match passava do rodapé. A folga cai pra 24 px e o nome do clube vai até 2 linhas (o nome inteiro aparece no slide dos clubes) */
+div.a:has(> .zx-player) > h2.t{margin-bottom:24px!important}
+.zx-player~[data-dossie="destaque"] .zx-match h3{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .zx-player~[data-dossie="destaque"] .zx-tags{display:none}
 [data-dossie="destaque"] .zx-motivo{display:none}
 .zx-compacto .zx-clubes{gap:12px;margin-top:16px}
 .zx-compacto .zx-clubes>.zx-match{padding:16px 20px;gap:16px}
 .zx-compacto .zx-match .zx-k{display:none}
 .zx-compacto .zx-match h3{font-size:25px}
-.zx-compacto .zx-match .zx-muted{font-size:18px;line-height:1.25;margin-top:5px!important}
+.zx-compacto .zx-match .zx-muted{font-size:24px;line-height:1.25;margin-top:5px!important}
 .zx-compacto .zx-match .zx-tags{gap:7px;margin-top:9px}
-.zx-compacto .zx-match .zx-tags span{font-size:15px;padding:4px 9px}
-.zx-compacto .zx-match .zx-motivo{font-size:18px;line-height:1.25;margin-top:9px!important}
-.zx-compacto .zx-percent{min-width:106px;font-size:35px}
-.zx-compacto .zx-percent small{font-size:12px}
+.zx-compacto .zx-match .zx-tags span{font-size:24px;padding:3px 12px}
+/* Dois ou três clubes com textos muito longos (liga e motivo de 4 linhas) empurravam o "próximo passo" pro rodapé: a liga vai até 1 linha e o motivo até 3 (o texto inteiro fica na ficha do painel) */
+.zx-compacto .zx-clubes .zx-match .zx-muted{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.zx-compacto .zx-clubes .zx-match .zx-motivo{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.zx-compacto .zx-match .zx-motivo{font-size:24px;line-height:1.25;margin-top:9px!important}
+.zx-compacto .zx-percent{min-width:176px;font-size:35px}
+.zx-compacto .zx-percent small{font-size:24px}
 .zx-compacto .zx-proximo{margin-top:18px}
-.zx-compacto .zx-proximo p{font-size:22px}
+.zx-compacto .zx-proximo p{font-size:24px}

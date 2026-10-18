@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "gerado": "2026-10-13T21:07:03.256Z",
+  "gerado": "2026-10-17T21:10:28.849Z",
   "paginas": [
     {
       "id": "principal",
@@ -13,16 +13,52 @@
         "nome": true,
         "foto": true
       },
-      "slides": 27,
+      "slides": 33,
       "opcionais": [
         {
+          "id": "metodo",
+          "slide": 10,
+          "rotulo": "O método: a IA encontra, a gente conduz",
+          "ajuda": "Mostra como a IA lê dez indicadores e o que a equipe faz com a leitura. Sem ele, a apresentação passa da plataforma direto para \"Quem olha por ele\"."
+        },
+        {
+          "id": "campo",
+          "slide": 13,
+          "rotulo": "O campo: olhômetro × IA",
+          "ajuda": "O campo animado: o olhômetro só vê quem está perto da bola, a IA vê os 22. Sem ele, a apresentação vai do seu lugar em campo direto para o encaixe."
+        },
+        {
+          "id": "encaixe",
+          "slide": 14,
+          "rotulo": "Você não precisa ser o próximo Neymar",
+          "ajuda": "O perfil do atleta se encaixando no que o clube procura. Sem ele, a apresentação vai do campo direto para a tabela do olhômetro × Zyron."
+        },
+        {
+          "id": "registro",
+          "slide": 22,
+          "rotulo": "326 atletas enviados",
+          "ajuda": "O número da casa e a arte do Instagram. Sem ele, a apresentação passa da rede direto para os clubes e parceiros."
+        },
+        {
+          "id": "clubes",
+          "slide": 23,
+          "rotulo": "Clubes e parceiros",
+          "ajuda": "As faixas de escudos e os parceiros comerciais, com a nota legal. Sem ele, a apresentação segue direto para o mosaico de rostos."
+        },
+        {
+          "id": "rostos",
+          "slide": 24,
+          "rotulo": "Cada rosto, uma história",
+          "ajuda": "O mosaico de fotos da trajetória da casa. Sem ele, a apresentação segue direto para \"O que ele leva\"."
+        },
+        {
           "id": "leva",
-          "slide": 19,
+          "slide": 25,
           "rotulo": "O que o {nome} leva",
-          "ajuda": "Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai do 18 direto pro 20."
+          "ajuda": "Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai direto para \"O valor real\"."
         }
       ],
-      "hash": "ddca93a0ec803867195ad287ea2f5a702caca181"
+      "hash": "0a7ae146cf67ba796c7271047a3602e96d28afc3"
     },
     {
       "id": "tecnica",
@@ -35,16 +71,52 @@
         "nome": true,
         "foto": true
       },
-      "slides": 27,
+      "slides": 33,
       "opcionais": [
         {
+          "id": "metodo",
+          "slide": 10,
+          "rotulo": "O método: a IA encontra, a gente conduz",
+          "ajuda": "Mostra como a IA lê dez indicadores e o que a equipe faz com a leitura. Sem ele, a apresentação passa da plataforma direto para \"Quem olha por ele\"."
+        },
+        {
+          "id": "campo",
+          "slide": 13,
+          "rotulo": "O campo: observação × IA",
+          "ajuda": "O campo animado: a observação só vê quem está perto da bola, a IA vê os 22. Sem ele, a apresentação vai do seu lugar em campo direto para o encaixe."
+        },
+        {
+          "id": "encaixe",
+          "slide": 14,
+          "rotulo": "Você não precisa ser o próximo Neymar",
+          "ajuda": "O perfil do atleta se encaixando no que o clube procura. Sem ele, a apresentação vai do campo direto para a tabela do Zyron."
+        },
+        {
+          "id": "registro",
+          "slide": 22,
+          "rotulo": "326 atletas enviados",
+          "ajuda": "O número da casa e a arte do Instagram. Sem ele, a apresentação passa da rede direto para os clubes e parceiros."
+        },
+        {
+          "id": "clubes",
+          "slide": 23,
+          "rotulo": "Clubes e parceiros",
+          "ajuda": "As faixas de escudos e os parceiros comerciais, com a nota legal. Sem ele, a apresentação segue direto para o mosaico de rostos."
+        },
+        {
+          "id": "rostos",
+          "slide": 24,
+          "rotulo": "Cada rosto, uma história",
+          "ajuda": "O mosaico de fotos da trajetória da casa. Sem ele, a apresentação segue direto para \"O que ele leva\"."
+        },
+        {
           "id": "leva",
-          "slide": 19,
+          "slide": 25,
           "rotulo": "O que o {nome} leva",
-          "ajuda": "Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai do 18 direto pro 20."
+          "ajuda": "Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai direto para \"O valor real\"."
         }
       ],
-      "hash": "d1963ccc129eadd4e4be0975c0e5fe8eb73d484e"
+      "hash": "e4fa9aa85686b298ce6027fd78afcf0fd2f7f25f"
     }
   ]
 }

@@ -4,16 +4,15 @@
 //   cenários: legacy-foto, pro-foto, scouting-foto, legacy-sem-foto, foto-404, nome-longo, apelido, vazia, vencido, cor
 import fs from 'node:fs';
 import path from 'node:path';
-import { pathToFileURL } from 'node:url';
 import { sobe, RAIZ_DECK } from './servidor.mjs';
 import { Cliente, fotosDeTeste, b64, espera } from './_util.mjs';
 
-const { abreChrome } = await import(pathToFileURL(path.resolve(RAIZ_DECK, '..', 'ferramentas-r2', 'cdp.mjs')).href);
+const { abreChrome } = await import('./_cdp.mjs');
 const SAIDA = path.resolve(process.argv[2] || 'telas');
 const VARIANTE = process.argv[3] || 'padrao';
 const PEDIDOS = process.argv.slice(4);
 fs.mkdirSync(SAIDA, { recursive: true });
-const SLIDES = [1, 2, 9, 10, 11, 18, 19, 24, 26, 27];
+const SLIDES = [1, 2, 9, 10, 11, 12, 13, 14, 21, 22, 23, 24, 25, 30, 32, 33]; // numeração de 33 slides (os seis do bloco da página institucional: 10, 13, 14, 22, 23 e 24)
 
 const s = await sobe({ deck: true });
 const fotos = fotosDeTeste(RAIZ_DECK);

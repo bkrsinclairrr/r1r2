@@ -1,9 +1,9 @@
-// Leitura do atleta (o slide 14 do R2) e "Importar do painel atual", com o painel e o R2 novo locais e o driver de arquivo.
+// Leitura do atleta (o slide 17 do R2) e "Importar do painel atual", com o painel e o R2 novo locais e o driver de arquivo.
 // Uso: node testes/teste-leitura.mjs
 // Leitura: com o driver de arquivo, a rota do envio responde 501 (o envio direto pro Blob só existe no ar). O teste põe o
 // vídeo na pasta dos dados no mesmo caminho que o navegador usaria na loja (videos/<código>/<nome aleatório>.mp4) e segue
 // pelas rotas de verdade: autorização, registro do vídeo, lances, /api/r2, /api/video com Range, outro closer, link
-// revogado, vídeo vencido, trocar e apagar. No Chrome: o 14 do deck pelo link e a Leitura no painel (abrir, importar o
+// revogado, vídeo vencido, trocar e apagar. No Chrome: o 17 do deck pelo link e a Leitura no painel (abrir, importar o
 // JSON, salvar). O vídeo é o filme do Zyron que já está no deck: nenhum vídeo de atleta de verdade.
 // Importação: as rotas rodam neste processo, então o fetch do painel atual é trocado aqui dentro. Nada sai pra internet.
 import fs from 'node:fs';
@@ -137,18 +137,18 @@ try {
     'link revogado: a família e outro closer recebem 404; o dono ainda vê o vídeo (pra marcar os lances)');
   await admin.post('/api/link?t=' + t + '&acao=reativar', {});
 
-  /* ---------- o 14 do deck pelo link ---------- */
-  const D = await nav.aba(s.deck + '/?a=' + t + '#14', { largura: 1920, altura: 1080 });
+  /* ---------- o 17 do deck pelo link ---------- */
+  const D = await nav.aba(s.deck + '/?a=' + t + '#17', { largura: 1920, altura: 1080 });
   const SRC = s.painel + '/api/video?t=' + t;
   const ATIVO = "document.querySelector('#stage > .slide.active')";
   const VIS = "(el => { for (let e = el; e && e !== document.body; e = e.parentElement) { const cs = getComputedStyle(e); if (cs.display === 'none' || cs.visibility === 'hidden') return false; } return true; })";
-  ok(await D.ate(`(document.querySelector('#v-atleta') || {}).getAttribute && document.querySelector('#v-atleta').getAttribute('src') === ${JSON.stringify(SRC)}`), 'o 14 aponta o vídeo pra /api/video?t=<código> do painel');
+  ok(await D.ate(`(document.querySelector('#v-atleta') || {}).getAttribute && document.querySelector('#v-atleta').getAttribute('src') === ${JSON.stringify(SRC)}`), 'o 17 aponta o vídeo pra /api/video?t=<código> do painel');
   ok(await D.ate(`document.querySelector('#v-atleta').readyState >= 1 && Math.abs(document.querySelector('#v-atleta').duration - ${dur}) < 1`, 20000), 'o vídeo carrega no deck, vindo do painel (' + dur + ' s)');
   ok((await D.avalia("document.querySelector('#v-atleta').getAttribute('poster')")) === SRC + '&poster=1', 'a capa do vídeo vem de /api/video?poster=1');
   ok((await D.avalia("document.querySelectorAll('[data-rl=\"capitulos\"] li').length")) === 6, 'os 6 lances viram capítulos do vídeo');
   const TXT = `(() => { const vis = ${VIS}, out = [], w = document.createTreeWalker(${ATIVO}, NodeFilter.SHOW_TEXT); while (w.nextNode()) { const n = w.currentNode; if (n.textContent.trim() && vis(n.parentElement)) out.push(n.textContent.trim()); } return out.join(' '); })()`;
   const texto14 = await D.avalia(TXT);
-  ok(/O jogo do Lucas Prado/.test(texto14) && /Relatório de Lucas Prado/.test(texto14) && /Leitura do Zyron/.test(texto14), 'o 14 mostra "O jogo do Lucas Prado", "Relatório de Lucas Prado" e a fonte (Leitura do Zyron)');
+  ok(/O jogo do Lucas Prado/.test(texto14) && /Relatório de Lucas Prado/.test(texto14) && /Leitura do Zyron/.test(texto14), 'o 17 mostra "O jogo do Lucas Prado", "Relatório de Lucas Prado" e a fonte (Leitura do Zyron)');
   ok(!(await D.avalia(`[...${ATIVO}.querySelectorAll('[data-ifnot="videoOk"]')].some(${VIS})`)), 'a leitura ao vivo (sem vídeo) não aparece');
   for (let i = 0; i < 3; i++) { await D.avalia("document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true })); 1"); await espera(250); }
   ok(await D.ate(`${ATIVO}.querySelector('[data-rl="rosca"]').innerHTML.length > 50 && /Passe vertical/.test(${ATIVO}.querySelector('[data-rl="fortes"]').textContent) && /Tempo do bote/.test(${ATIVO}.querySelector('[data-rl="prioridades"]').textContent)`, 5000),
@@ -173,11 +173,11 @@ try {
   ok(await P.ate("!document.querySelector('#lt-json-erros').hidden && /Bicicleta/.test(document.querySelector('#lt-json-erros').textContent) && document.querySelectorAll('#lt-lances tr[data-i]').length === 5"),
     'importar o JSON: o lance com tipo fora da lista fica de fora e aparece na lista de erros');
   await P.avalia("document.querySelector('#lt-salvar').click(); 1");
-  ok(await P.ate("/Leitura salva/.test(document.querySelector('#aviso').textContent)"), 'salvar a leitura: "Leitura salva. Ela já aparece no slide 14."');
+  ok(await P.ate("/Leitura salva/.test(document.querySelector('#aviso').textContent)"), 'salvar a leitura: "Leitura salva. Ela já aparece no slide 17."');
   const gEq = await admin.get('/api/leitura?t=' + t);
   ok(gEq.j.leitura.origem === 'equipe' && gEq.j.leitura.lances.length === 5 && gEq.j.leitura.criterio === 'todos', 'o que a tela salvou chegou na rota (Equipe, 5 lances, todos)');
-  await D.vai('about:blank'); await D.vai(s.deck + '/?a=' + t + '#14');
-  ok(await D.ate(`/Leitura da equipe/.test(${TXT}) && !/Leitura do Zyron/.test(${TXT})`, 8000), 'com Equipe, o 14 diz "Leitura da equipe" e não fala em leitura do Zyron');
+  await D.vai('about:blank'); await D.vai(s.deck + '/?a=' + t + '#17');
+  ok(await D.ate(`/Leitura da equipe/.test(${TXT}) && !/Leitura do Zyron/.test(${TXT})`, 8000), 'com Equipe, o 17 diz "Leitura da equipe" e não fala em leitura do Zyron');
   await P.avalia("document.querySelector('#lt-fechar').click(); 1");
 
   /* ---------- vencido, trocar e apagar ---------- */
@@ -188,8 +188,8 @@ try {
   const pubV = await anon.get('/api/r2?t=' + t, { origem: s.deck });
   const [vV, vVDono] = [await faixa(anon, 0, 9), await faixa(admin, 0, 9)];
   ok(pubV.status === 200 && pubV.j.estado === 'ok' && !pubV.j.video && !pubV.j.leitura && vV.status === 404 && vVDono.status === 404, 'vídeo vencido: some do /api/r2 e /api/video dá 404, até pro dono');
-  await D.vai('about:blank'); await D.vai(s.deck + '/?a=' + t + '#14');
-  ok(await D.ate(`!document.querySelector('#v-atleta').getAttribute('src') && [...${ATIVO}.querySelectorAll('[data-ifnot="videoOk"]')].some(${VIS})`, 8000), 'no deck, o 14 volta sozinho pra leitura ao vivo');
+  await D.vai('about:blank'); await D.vai(s.deck + '/?a=' + t + '#17');
+  ok(await D.ate(`!document.querySelector('#v-atleta').getAttribute('src') && [...${ATIVO}.querySelectorAll('[data-ifnot="videoOk"]')].some(${VIS})`, 8000), 'no deck, o 17 volta sozinho pra leitura ao vivo');
   const lv = await admin.get('/api/leitura?t=' + t);
   ok(lv.j.vencido === true && lv.j.valido === false, 'o painel mostra o vídeo como vencido');
   const limpa = await admin.put('/api/leitura?t=' + t, { autorizar: true });

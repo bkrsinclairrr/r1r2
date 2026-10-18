@@ -585,9 +585,9 @@
     /* ficha da R1 */
     const F = [
       ['Personaliza o deck (a família vê)', [
-        ['nome', 'Nome do atleta', 'text', 'Aparece nos slides 02, 08, 09 e 15. Só o primeiro nome vai pra tela'],
+        ['nome', 'Nome do atleta', 'text', 'Aparece nos slides 02, 09, 10 e 19. Só o primeiro nome vai pra tela'],
         ['posicao', 'Posição', 'text', 'Slide 02'], ['idade', 'Idade', 'text', 'Slide 02'], ['cidade', 'Cidade', 'text', 'Slide 02'],
-        ['r2dia', 'Dia da R2', 'text', 'Slide 16. Ex.: quinta, 02/10'], ['r2hora', 'Hora da R2', 'text', 'Slide 16. Ex.: 19h30']
+        ['r2dia', 'Dia da R2', 'text', 'Slide 20. Ex.: quinta, 02/10'], ['r2hora', 'Hora da R2', 'text', 'Slide 20. Ex.: 19h30']
       ]],
       ['Contexto do lead (vai pro CRM, não aparece nos slides)', [
         ['origem', 'Origem do lead', 'select', '', ['', 'Zyron', 'Formulário do Instagram', 'Frio, sem vídeo', 'Outro']],

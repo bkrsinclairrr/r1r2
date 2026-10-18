@@ -1,13 +1,13 @@
 # Notas do apresentador · R1 do Estrategista Esportivo
 
-Deck: `index.html` (16 slides). Roteiro-base: PLAYBOOK_SDR.md v10 (números entre parênteses), CASOS.md e APRESENTACAO_R1.md.
+Deck: `index.html` (20 slides). Roteiro-base: PLAYBOOK_SDR.md v10 (números entre parênteses), CASOS.md e APRESENTACAO_R1.md.
 Estas notas também aparecem no modo apresentador (tecla P no deck), com a ficha da R1 e as objeções.
 
 Como apresentar
 - Abra `index.html` no Chrome (duplo clique funciona; não precisa de internet).
 - Antes da call, cadastre o atleta no painel (jogador-de-elite-painel.vercel.app) e abra o deck pelo link dele (termina em `?a=` e o código do atleta). Nome, posição, idade e cidade entram sozinhos no slide 02, e o nome também nos slides 08, 09 e 15. Sem o painel, aperte P pra abrir o modo apresentador e preencha a ficha: o deck se personaliza do mesmo jeito, e o dia e a hora da R2 entram no slide 16. Origem, o que chamou atenção no Zyron e experiência vão só pro CRM.
 - Na chamada, compartilhe só a guia do deck, com áudio ligado (pro vídeo do Zyron). A janela do apresentador fica só com você.
-- IA na Prática (slide 08): o Zyron lê ao vivo, no Meet, o vídeo do atleta. Deixe o vídeo dele aberto antes da call e troque o compartilhamento na hora. O slide não mostra resultado: quem fala o resultado é quem conduz a leitura, na chamada.
+- IA na Prática (slide 09): o Zyron lê ao vivo, no Meet, o vídeo do atleta. Deixe o vídeo dele aberto antes da call e troque o compartilhamento na hora. O slide não mostra resultado: quem fala o resultado é quem conduz a leitura, na chamada.
 - F põe o deck em tela cheia. Ao fim da call, copie a ficha pro CRM e clique em "Nova call".
 
 Regra da casa: a R1 não vende. Ela qualifica, faz a família sentir a dor, mostra que a oportunidade é agora e vende a conversa com o Gestor de Carreiras. Nunca do zero: chame o atleta pelo nome e cite o que ele já contou. Nunca passe preço.
@@ -31,6 +31,7 @@ Tempo sugerido: 1 min (acumulado: 1 min)
 
 **Atenção:** Espere a resposta. Sem ela, não passe pro Zyron: o produto só entra depois que a família disse o que quer.
 
+
 ## 02 · Ficha do atleta
 
 Tempo sugerido: 1 min (acumulado: 2 min)
@@ -47,6 +48,7 @@ Tempo sugerido: 1 min (acumulado: 2 min)
 
 **Atenção:** Nome, posição, idade e cidade vêm do painel: cadastre o atleta antes da call e abra o deck pelo link dele (?a=). Sem o painel, preencha a ficha no apresentador. Sem nome, o slide mostra "Você". Só o primeiro nome vai pra tela.
 
+
 ## 03 · Zyron
 
 Tempo sugerido: 1 min (acumulado: 3 min)
@@ -57,6 +59,7 @@ Tempo sugerido: 1 min (acumulado: 3 min)
 - "Vou te mostrar ele trabalhando."
 
 **Atenção:** Exclusividade: o acesso ao Zyron é pra quem passa pelo filtro.
+
 
 ## 04 · O Zyron trabalhando (vídeo)
 
@@ -73,6 +76,7 @@ Tempo sugerido: 3 min (acumulado: 6 min)
 
 **Capítulos do vídeo (2:06), clicáveis no slide:** 0:00 O olhômetro · 0:24 A leitura lance a lance · 0:36 O relatório · 0:40 A IA e o seu estrategista de carreiras · 1:00 A base de clubes · 1:21 O plano até o grande clube · 1:37 O Zyron na prática
 
+
 ## 05 · Como o Zyron funciona
 
 Tempo sugerido: 0,5 min (acumulado: 6,5 min)
@@ -81,6 +85,7 @@ Tempo sugerido: 0,5 min (acumulado: 6,5 min)
 - "O que você viu, em cinco verbos: a ficha e o vídeo entram, o Zyron lê cada lance, sai o relatório, o estrategista de carreiras acompanha, e a gente conecta."
 
 **Atenção:** 30 segundos, sem travar a conversa. Reforce a autorização expressa do responsável: é resposta pronta pro "isso é golpe?".
+
 
 ## 06 · Olhômetro ou dados reais
 
@@ -95,19 +100,36 @@ Tempo sugerido: 1 min (acumulado: 7,5 min)
 
 **Atenção:** Não cite nome de clube como exemplo de quem usa dados.
 
-## 07 · O encaixe
+
+## 07 · O campo: olhômetro × IA
 
 Tempo sugerido: 1 min (acumulado: 8,5 min)
 
 **Fale**
-- "Ele não precisa ser o melhor entre 22. Precisa ser encontrado por quem procura o perfil dele. Todo elenco tem uma lacuna."
+- Ponte, depois da comparação: "Deixa eu te mostrar a diferença na prática. Isto é um campo, 22 jogadores e uma bola."
+- O olhômetro (a tela vira sozinha pra IA em uns 7 segundos, ou quando você clicar no botão da IA): "Esse é o olhômetro: a atenção segue a bola. O número diz quantos dos 22 estão sendo vistos agora. Quem está longe da bola, ninguém viu."
+- Quando virar: "Com a inteligência artificial, os 22 acompanhados do primeiro ao último minuto: cada atleta identificado e medido."
+- Fecho, a frase que fica sempre na tela: "O problema nunca foi o talento. Sempre foi o método."
+
+**Pergunte e espere a resposta**
+- Quantos dos 22 você acha que um avaliador consegue olhar de uma vez?
+
+**Atenção:** É uma ILUSTRAÇÃO (trazida da página /institucional): formação genérica, sem jogador, escudo ou clube escalado, e o número do contador é só da demonstração, não é dado do atleta. A tela vira sozinha do olhômetro pra IA em uns 7 segundos, e o botão "Inteligência artificial" (e o do olhômetro) troca na hora, com clique: não corra a fala. Se a animação travar no Meet, abra o deck com ?bloco=estatico no fim do endereço (campo parado, mesma mensagem). Não chame o avaliador de incompetente: o limite é humano. Nunca prometa clube, prazo ou contrato.
+
+## 08 · O encaixe
+
+Tempo sugerido: 1 min (acumulado: 9,5 min)
+
+**Fale**
+- "Ele não precisa ser o destaque entre os 22. Precisa ser encontrado por quem procura o perfil dele. Todo elenco tem uma lacuna."
 - "O Zyron encontra o perfil. A gente faz a ponte."
 
 **Atenção:** É aqui que a família entende o que é a assessoria: a IA encontra, a gente conecta. Nunca prometa clube, prazo ou contrato.
 
-## 08 · IA na Prática (ao vivo)
 
-Tempo sugerido: 3 min (acumulado: 11,5 min)
+## 09 · IA na Prática (ao vivo)
+
+Tempo sugerido: 3 min (acumulado: 12,5 min)
 
 **Fale**
 - Ponte, logo depois do encaixe: "Até aqui eu te mostrei o Zyron com o jogo dos outros. Agora eu quero te mostrar com o teu, [atleta]. Ao vivo, aqui na nossa chamada."
@@ -125,9 +147,10 @@ Tempo sugerido: 3 min (acumulado: 11,5 min)
 
 **Atenção:** O slide não mostra resultado de propósito: quem fala o resultado é quem conduz a leitura, ao vivo, no Meet. Não antecipe, não resuma antes da hora e não diga nada que a análise não mostrou. Teste antes da call: o vídeo do [atleta] aberto e o compartilhamento de tela com áudio. Vídeo e dados só com autorização expressa do responsável. Sem vídeo do atleta (lead frio, sem vídeo), pule este slide.
 
-## 09 · A base do Zyron
 
-Tempo sugerido: 1 min (acumulado: 12,5 min)
+## 10 · A base do Zyron
+
+Tempo sugerido: 1 min (acumulado: 13,5 min)
 
 **Fale**
 - "O perfil do [atleta] é cruzado com a base do Zyron: mais de 250 clubes parceiros, aqui e lá fora. Esses 10 são só o começo."
@@ -135,9 +158,10 @@ Tempo sugerido: 1 min (acumulado: 12,5 min)
 
 **Atenção:** Fale de rede e de encaixe, nunca de "vaga garantida" em clube. Se perguntarem qual clube: "Isso depende do perfil dele, e é o Gestor de Carreiras que te mostra o plano."
 
-## 10 · Você para de jogar sozinho
 
-Tempo sugerido: 1,5 min (acumulado: 14 min)
+## 11 · Você para de jogar sozinho
+
+Tempo sugerido: 1,5 min (acumulado: 15 min)
 
 **Fale**
 - Diferencial (6.11): "Aqui o [atleta] não fica solto. Ele vai ter um gerente de carreira acompanhando o desenvolvimento dele todo dia. E um estrategista de carreiras do Zyron só dele. Isso não existe em escolinha, em peneira, em lugar nenhum."
@@ -152,9 +176,10 @@ Tempo sugerido: 1,5 min (acumulado: 14 min)
 
 **Atenção:** Se perguntarem de viagem: "Quando o clube chamar, o gerente de carreira cuida disso junto com vocês." Não diga que a empresa paga viagem.
 
-## 11 · Do seu lado
 
-Tempo sugerido: 1 min (acumulado: 15 min)
+## 12 · Do seu lado
+
+Tempo sugerido: 1 min (acumulado: 16 min)
 
 **Fale**
 - "Ele vai ter um gerente de carreira acompanhando o desenvolvimento dele todo dia."
@@ -169,9 +194,33 @@ Tempo sugerido: 1 min (acumulado: 15 min)
 
 **Atenção:** Espere o "não" em voz alta. Quem responde passa a defender a ideia, e o Gestor ancora o valor em cima disso.
 
-## 12 · AGN Football
 
-Tempo sugerido: 0,5 min (acumulado: 15,5 min)
+## 13 · 326 atletas enviados
+
+Tempo sugerido: 0,5 min (acumulado: 16,5 min)
+
+**Fale**
+- Ponte, depois do "Do seu lado": "E isso não aconteceu uma vez. A casa já enviou 326 atletas, cada um com nome, posição e clube de destino, tudo registrado no Instagram, o @assessoria.voxen."
+- "Enviado é o que a gente fez: o perfil chegou ao clube. Quem contrata é o clube."
+
+**Atenção:** O 326 é número da casa, confirmado pelo dono, e a palavra é "enviados", como na arte: nunca "contratados" nem "colocados em clube". Não cite atleta nem clube como resultado a esperar. Se perguntarem quem é o homem da foto, responda só o que o dono confirmou e anote a pergunta. O link do Instagram vai pelo WhatsApp, nunca no slide. Nunca prometa clube, prazo ou contrato.
+
+## 14 · Clubes e parceiros
+
+Tempo sugerido: 0,5 min (acumulado: 17 min)
+
+**Fale**
+- Apontando as faixas que rolam: "A rede na prática: do Sul ao Nordeste aqui no Brasil e da Inglaterra ao Canadá lá fora. São clubes onde atletas nossos estiveram e clubes da nossa base."
+- "E as marcas que caminham com a gente, como parceiros comerciais: Adidas, Nike, Cloudflare, AWS e a A.E.K. London."
+
+**Pergunte e espere a resposta**
+- Algum desses clubes vocês já conheciam?
+
+**Atenção:** Slide de REDE, não de resultado (trazido da página /institucional): a base do Zyron (mais de 250 clubes) já apareceu; aqui são escudos e marcas. Eles são dos titulares e a nota legal fica na tela: nunca diga que o clube usa o Zyron ou dados, que patrocina, que tem vaga, nem que o [atleta] vai pra algum deles. Os parceiros comerciais (Adidas, Nike, Cloudflare, AWS Amazon, A.E.K. London) têm acordo comercial confirmado pelo dono: diga só "parceiros comerciais" e, se perguntarem do acordo, anote a pergunta. Nunca prometa clube, prazo ou contrato.
+
+## 15 · AGN Football
+
+Tempo sugerido: 0,5 min (acumulado: 17,5 min)
 
 **Fale**
 - "A gente tem relação direta com a AGN Football. Tem jogador nosso publicado lá. Te mando o link logo depois da nossa conversa."
@@ -181,9 +230,10 @@ Tempo sugerido: 0,5 min (acumulado: 15,5 min)
 
 **Atenção:** Prova que a família confere sozinha. Mande o link com a confirmação da R2.
 
-## 13 · Jogadores que passaram pela AGN
 
-Tempo sugerido: 0,5 min (acumulado: 16 min)
+## 16 · Jogadores que passaram pela AGN
+
+Tempo sugerido: 0,5 min (acumulado: 18 min)
 
 **Fale**
 - Apontando a tela: "E pra vocês terem noção do nível: esses são jogadores que passaram pela AGN Football. É nesse canal que estão publicados atletas nossos."
@@ -194,9 +244,10 @@ Tempo sugerido: 0,5 min (acumulado: 16 min)
 
 **Atenção:** Precisão: são jogadores que passaram pela AGN, não atletas da Jogador de Elite. Nunca diga que são nossos, que a AGN contrata ou que garante clube, e não cite clube, valor ou história de nenhum deles além do que está na tela. Se a família reconhecer alguém, deixe ela falar: é a prova mais forte do slide.
 
-## 14 · O preço da disciplina
 
-Tempo sugerido: 1,5 min (acumulado: 17,5 min)
+## 17 · O preço da disciplina
+
+Tempo sugerido: 1,5 min (acumulado: 19,5 min)
 
 **Fale**
 - Escada do sim: uma pergunta por vez, esperando cada resposta. A terceira é pro pai e pra mãe.
@@ -216,18 +267,30 @@ Tempo sugerido: 1,5 min (acumulado: 17,5 min)
 
 **Atenção:** Cada "sim" dito em voz alta, na frente dos pais, vira compromisso que o próprio atleta cobra depois.
 
-## 15 · O próximo
 
-Tempo sugerido: 0,5 min (acumulado: 18 min)
+## 18 · Cada rosto, uma história
+
+Tempo sugerido: 0,5 min (acumulado: 20 min)
+
+**Fale**
+- Deixe a imagem falar uns segundos, com os rostos aparecendo: "Cada rosto aqui é um atleta que a gente acompanhou: no campo, no aeroporto, na assinatura. O arquivo completo está no Instagram, @assessoria.voxen."
+- Ponte: "O Kaio foi visto. O Joãozinho foi visto. E o próximo pode ser você."
+
+**Atenção:** São fotos de outros atletas da casa, do arquivo publicado no Instagram da própria casa: mostre como arquivo, não como promessa. Não aponte atleta pelo rosto nem diga "esse aqui foi pro [clube]". Nunca prometa clube, prazo ou contrato.
+
+## 19 · O próximo
+
+Tempo sugerido: 0,5 min (acumulado: 20,5 min)
 
 **Fale**
 - Virada de valor percebido (6.5): "[atleta], imagina você entrando em campo com a camisa do [clube dos sonhos], sabendo que teve um gerente de carreira e o Zyron cuidando de cada detalhe até ali. É isso que a gente constrói."
 
 **Atenção:** Fale do resultado final, nunca do entregável e nunca com número de preço.
 
-## 16 · O próximo passo
 
-Tempo sugerido: 2 min (acumulado: 20 min)
+## 20 · O próximo passo
+
+Tempo sugerido: 2 min (acumulado: 22,5 min)
 
 **Fale**
 - Missão do atleta (6.14): "[atleta], na conversa com o Gestor de Carreiras eu quero você lá, com teu pai e tua mãe, contando pra eles o que me contou hoje. Combinado?"
@@ -249,38 +312,38 @@ Tempo sugerido: 2 min (acumulado: 20 min)
 
 ## Objeções: responda, pule pro slide de socorro e volte
 
-**Quanto custa?** (slide 16)
+**Quanto custa?** (slide 20)
 - "Cada perfil é individual, então o plano do [atleta] é montado pra ele, e o investimento vem junto com o plano."
 - "Olha o que entra nisso: um gerente de carreira acompanhando ele todo dia e o Zyron, com um estrategista de carreiras só dele."
 - "E pensa comigo: faz sentido a gente querer lucrar em cima de vocês, sendo que a gente ganha no contrato profissional dele? O Gestor te mostra o plano e o valor juntos. Fica melhor [dia/hora] ou [dia/hora]?"
 - Nunca passe preço. Nunca abra slide de valores.
 
-**Isso é golpe? É peneira paga?** (slides 12, 13, 11)
+**Isso é golpe? É peneira paga?** (slides 15, 16, 12, 13, 14, 18)
 - "Pergunta justa. Tem muita coisa errada nesse meio, e é por isso que a gente trabalha diferente."
 - "Peneira paga cobra pra olhar o menino um dia, no olhômetro. Aqui ele é analisado com dados pelo Zyron, tem gerente de carreira todo dia, e a gente só ganha quando ele assina contrato."
 - Mostre a AGN, o David nas assinaturas e a autorização expressa do responsável.
 
-**Isso de inteligência artificial funciona mesmo?** (slides 4, 6, 8)
+**Isso de inteligência artificial funciona mesmo?** (slides 4, 6, 7, 9)
 - "Clube grande já escolhe atleta assim há anos, aqui e lá fora, só que sempre por dentro, sem o atleta nem saber que foi visto desse jeito."
 - "A novidade é que agora isso chegou até o atleta. Mas não é qualquer um que tem acesso: só quem passa pelo nosso filtro, como o [atleta] tá passando agora."
-- Se a leitura ao vivo já rodou (slide 8): "Vocês viram com o jogo do [atleta], ao vivo, aqui na nossa chamada."
+- Se a leitura ao vivo já rodou (slide 9): "Vocês viram com o jogo do [atleta], ao vivo, aqui na nossa chamada."
 
-**Vou pensar / Agora não é o momento** (slide 16)
+**Vou pensar / Agora não é o momento** (slide 20)
 - "Pensar sobre o quê exatamente? A conversa com o Gestor é justamente pra vocês decidirem com o plano do [atleta] na mão."
 - Se for momento: "Com [idade] anos, cada mês conta. A base tem prazo."
 
-**Preciso ver com meu marido / minha esposa** (slide 16)
+**Preciso ver com meu marido / minha esposa** (slide 20)
 - "Perfeito, é exatamente por isso que a conversa com o Gestor é com vocês dois. Qual horário vocês dois conseguem juntos?"
 - "Me passa o número dele(a)? Mando a confirmação pros dois."
 
-**Me manda as informações por aqui** (slide 16)
+**Me manda as informações por aqui** (slide 20)
 - "Não tem folder porque não é pacote: o plano é montado pro [atleta], com gerente de carreira e estrategista de carreiras do Zyron dele. Por isso a conversa. [dia/hora] ou [dia/hora]?"
 
-**Não tenho tempo** (slide 10)
+**Não tenho tempo** (slide 11)
 - "É rápido e no horário de vocês. Pode ser à noite ou no fim de semana. Qual fica melhor?"
 - "E depois que o [atleta] entra, quem corre atrás é a gente. Vocês não vão precisar tirar tempo do trabalho pra tocar isso."
 
-**Ele já tem empresário / já tá num clube** (slides 10, 5)
+**Ele já tem empresário / já tá num clube** (slides 11, 5)
 - "Ótimo, isso mostra que ele tem nível. Me diz uma coisa: tem alguém acompanhando o desenvolvimento dele todo dia? Nesse último ano, em quantos testes ele foi levado?"
 - "Aqui ele teria gerente de carreira todo dia e um estrategista de carreiras do Zyron só dele. O Gestor te mostra o que muda."
 
@@ -288,11 +351,11 @@ Tempo sugerido: 2 min (acumulado: 20 min)
 - Novo: "Novo é vantagem. Quanto antes começa, mais janela ele tem."
 - Velho: "É exatamente por isso que não dá pra esperar. O Gestor te mostra como aproveitar a janela que ele tem agora."
 
-**Ele não pode ir pra outro estado** (slide 10)
+**Ele não pode ir pra outro estado** (slide 11)
 - "Hoje ele não precisa ir pra lugar nenhum. Isso só acontece quando o clube chamar, e o gerente de carreira cuida disso junto com vocês."
 - "Me conta o que pesa mais: ele ir sozinho, ou a família não conseguir acompanhar?"
 
-**Vocês são tipo uma escolinha?** (slides 6, 10)
+**Vocês são tipo uma escolinha?** (slides 6, 11)
 - "Escolinha treina. A gente leva pro clube. Gerente de carreira todo dia, estrategista de carreiras do Zyron só dele e relação direta com a AGN Football."
 
 ## Atalhos do deck

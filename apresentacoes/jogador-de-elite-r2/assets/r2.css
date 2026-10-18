@@ -60,11 +60,11 @@
 
 /* 08: contrato */
 .contract{padding:34px 40px 30px;background:linear-gradient(180deg,#0F1B2C,#09111C);border:1px solid rgba(200,184,138,.5);transform:rotate(-4deg);box-shadow:0 40px 90px rgba(0,0,0,.65),0 0 70px rgba(230,219,184,.14)}
-.contract .h{font-family:var(--f-label);font-weight:600;font-size:22px;letter-spacing:.3em;text-transform:uppercase;color:var(--sand);margin:0 0 24px}
+.contract .h{font-family:var(--f-label);font-weight:600;font-size:24px;letter-spacing:.3em;text-transform:uppercase;color:var(--sand);margin:0 0 24px}
 .contract i{display:block;height:8px;border-radius:2px;background:#1F324D;margin:0 0 14px}
 .contract .sig{margin-top:30px}
 .contract .sig .nm{min-height:58px;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:46px;line-height:1.1;color:var(--sand-l);margin:0;padding:0 0 8px;border-bottom:2px solid rgba(230,219,184,.7)}
-.contract .sig .ln{font-family:var(--f-label);font-weight:600;font-size:20px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin:10px 0 0}
+.contract .sig .ln{font-family:var(--f-label);font-weight:600;font-size:24px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin:10px 0 0}
 
 /* 09: até lá, a gente investe */
 .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
@@ -101,11 +101,11 @@
 /* 08: AGN, quatro quadros com o caso espelho */
 .cases .case{width:226px;height:284px}
 .cases .case .nm{font-size:42px}
-.cases .case .cl{font-size:22px}
+.cases .case .cl{font-size:24px}
 .case.mirror{background:radial-gradient(90% 70% at 50% 30%,rgba(230,219,184,.18),rgba(6,11,20,0) 75%),linear-gradient(180deg,#0F1B2C,#080F19);border:2px solid var(--sand)}
-.case.mirror .tag{position:absolute;left:20px;right:16px;top:20px;font-family:var(--f-label);font-weight:600;font-size:21px;line-height:1.25;letter-spacing:.2em;text-transform:uppercase;color:var(--sand-l)}
+.case.mirror .tag{position:absolute;left:20px;right:16px;top:20px;font-family:var(--f-label);font-weight:600;font-size:24px;line-height:1.25;letter-spacing:.2em;text-transform:uppercase;color:var(--sand-l)}
 .case.mirror .nm{white-space:nowrap}
-.case.mirror .ct{font-family:var(--f-label);font-weight:600;font-size:20px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.case.mirror .ct{font-family:var(--f-label);font-weight:600;font-size:24px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px}
 
 /* 14: a vaga (turma de 10 e o caminho até a assinatura) */
 .turma .hd{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--f-label);font-weight:600;font-size:26px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
@@ -138,7 +138,7 @@
 .post-hd{display:flex;align-items:center;gap:16px;padding:20px 24px}
 .post-hd .av{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#F1E9CF,#C8B88A);color:#060B14;font:800 24px var(--f-title)}
 .post-hd .h{font:600 26px var(--f-body);color:#fff}
-.post-hd .s{font:500 20px var(--f-body);color:var(--muted)}
+.post-hd .s{font:500 24px var(--f-body);color:var(--muted)}
 .post-art{position:relative;height:540px;padding:44px 40px;background:radial-gradient(80% 60% at 50% 38%,rgba(230,219,184,.3),rgba(6,11,20,0) 70%),linear-gradient(180deg,#122135,#070D16);border-top:1px solid rgba(200,184,138,.35);border-bottom:1px solid rgba(200,184,138,.35);overflow:hidden}
 .post-art::after{content:"";position:absolute;inset:18px;border:1px solid rgba(230,219,184,.28);pointer-events:none}
 .post-art .off{display:inline-block;font:600 24px var(--f-label);letter-spacing:.34em;text-transform:uppercase;color:#060B14;background:var(--sand-l);padding:6px 14px}
@@ -146,7 +146,7 @@
 .post-art .what{font:600 32px var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand-l);margin-top:14px!important}
 .post-art .sig{position:absolute;left:40px;right:40px;bottom:48px}
 .post-art .sn{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:56px;line-height:1.1;color:var(--sand-l);padding-bottom:8px;border-bottom:2px solid rgba(230,219,184,.7)}
-.post-art .sl{font:600 20px var(--f-label);letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:10px!important}
+.post-art .sl{font:600 24px var(--f-label);letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:10px!important}
 .post-cap{padding:20px 24px 24px;font-size:24px;line-height:1.4;color:var(--body)}
 .post-cap b{color:#fff;font-weight:600}
 
@@ -250,6 +250,11 @@
 /* benefícios do investimento */
 .beneficios p{position:relative;padding-left:42px;font-size:32px;line-height:1.25;color:var(--white);margin:12px 0 0!important}
 .beneficios p::before{content:"";position:absolute;left:6px;top:.18em;width:10px;height:20px;border-right:4px solid var(--sand);border-bottom:4px solid var(--sand);transform:rotate(40deg)}
+/* Plano com "Também vem" (Scout PRO) no 28: a coluna da esquerda ganha a lista a mais e a nota do contrato e, sem apertar, passava de 990px e cobria a nota legal do rodapé */
+#silencio:has([data-if="planoExtras"].on) > div.a[style*="left:120px"]{top:78px!important}
+#silencio:has([data-if="planoExtras"].on) > div.a[style*="left:120px"] > div.rise{margin-top:16px!important}
+#silencio:has([data-if="planoExtras"].on) .beneficios p{margin-top:5px!important;line-height:1.2}
+#silencio:has([data-if="planoExtras"].on) [data-if="planoExtras"]{margin-top:10px!important}
 
 /* ========== reformulação de 08/10/2026: o inimigo comum, o dossiê do atleta e o campo, na pele navy-seal ==========
    Cores por papel (tokens no deck.css): areia é carreira e o nome do atleta, gelo é o Zyron e os dados,

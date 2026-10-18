@@ -1,0 +1,188 @@
+/* Bloco Voxen | Zyron para o R1 (17/10/2026): o bloco.css do R2 novo com a paleta do R1 (preto, dourado e azul; o olhometro vai em dourado,
+   porque o laranja-sinal e so do R2). Gerado por ferramentas-r2/gera-bloco-r1-css.mjs: mudou o bloco.css? Gere de novo. */
+/* Bloco Voxen | Zyron (17/10/2026): seis slides trazidos da pagina /institucional (aizyron.com/institucional).
+   Metodo (IA + equipe), campo olhometro x IA, o encaixe (Neymar), 326 atletas, clubes e parceiros, mosaico de rostos.
+   Mesma paleta navy do deck; o laranja-sinal fica so no olhometro. Animacao so com o slide ativo (.slide.active), igual ao .rise.
+   Chave de desligar: ?bloco=estatico na URL, window.BLOCO.animar = false, ou "reduzir movimento" no aparelho (ver bloco.js). */
+
+.bl-slide .bl-f{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none}
+
+/* ---------- cartoes (metodo) ---------- */
+.bl-card{position:absolute;background:var(--panel);border:1px solid rgba(201,162,74,.28);border-radius:14px;padding:30px 36px 26px;box-shadow:0 30px 60px -36px rgba(0,0,0,.85)}
+.bl-card.ia{border-color:rgba(127,174,255,.4)}
+.bl-card .hd{display:flex;align-items:center;gap:22px;margin-bottom:22px}
+.bl-card .nm{margin:0;font:800 42px/1 var(--f-title);text-transform:uppercase;color:var(--white)}
+.bl-card .tg{margin:6px 0 0;font:600 26px/1.15 var(--f-label);letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+.bl-card.eq .tg{color:var(--gold)}
+
+.bl-barras{list-style:none;margin:0;padding:0}
+.bl-barras li{display:grid;grid-template-columns:250px 1fr 40px;gap:18px;align-items:center;height:46px;font:500 27px/1 var(--f-body);color:var(--body)}
+.bl-barras i{display:block;height:10px;border-radius:5px;background:rgba(127,174,255,.12);overflow:hidden}
+.bl-barras b{display:block;width:100%;height:100%;border-radius:5px;background:linear-gradient(90deg,rgba(127,174,255,.55),var(--blue))}
+.bl-barras em{font:700 28px/1 var(--f-label);font-style:normal;color:var(--blue);text-align:right}
+.bl-barras .bl-n{display:none}
+html.bl-numeros .bl-barras .bl-n{display:inline}
+.slide.active .bl-barras b{transform-origin:left;animation:bl-enche 1.1s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0s)}
+.slide.active .bl-barras em{animation:bl-surge .5s ease both;animation-delay:calc(var(--d,0s) + .9s)}
+@keyframes bl-enche{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes bl-surge{from{opacity:0}to{opacity:1}}
+.bl-nota{margin:14px 0 0;font:400 26px/1.3 var(--f-body);color:var(--muted)}
+
+.bl-passos{list-style:none;margin:0;padding:0}
+.bl-passos li{display:flex;gap:26px;align-items:flex-start;padding:0 0 38px}
+.bl-passos li:last-child{padding-bottom:0}
+.bl-passos .n{flex:none;width:64px;height:64px;border-radius:50%;border:3px solid var(--gold);display:flex;align-items:center;justify-content:center;font:800 34px/1 var(--f-title);color:var(--gold-l);background:rgba(201,162,74,.08)}
+.bl-passos h4{margin:4px 0 8px;font:800 42px/1.05 var(--f-title);text-transform:uppercase;color:var(--white)}
+.bl-passos p{margin:0;font:400 29px/1.32 var(--f-body);color:var(--body)}
+
+/* ---------- campo: olhometro x IA ---------- */
+.bl-pitch{position:absolute;border:1px solid rgba(201,162,74,.28);border-radius:12px;overflow:hidden;background:#0D1A1B;box-shadow:0 36px 70px -40px rgba(0,0,0,.9)}
+.bl-pitch-svg{display:block;width:100%;height:100%}
+.bl-pl{opacity:.22;transition:opacity .45s}
+.bl-pl.lit{opacity:1}
+.bl-pl-dot{stroke:rgba(0,0,0,.45);stroke-width:2}
+.bl-pl-c .bl-pl-dot{fill:var(--gold-l)}
+.bl-pl-v .bl-pl-dot{fill:#8FA2B5}
+.bl-pl-box{fill:none;stroke:var(--blue);stroke-width:2;opacity:0;transition:opacity .45s}
+.bl-pl-vel{fill:var(--blue);font:700 24px var(--f-label);opacity:0;transition:opacity .45s}
+.bl-bola{fill:#fff;stroke:rgba(0,0,0,.5);stroke-width:2}
+.bl-foco{transition:opacity .6s}
+.bl-campo.bl-ia .bl-pitch .bl-foco{opacity:0}
+.bl-campo.bl-ia .bl-pitch .bl-pl-box,.bl-campo.bl-ia .bl-pitch .bl-pl-vel{opacity:1}
+html:not(.bl-numeros) .bl-pl-vel{display:none}
+
+.bl-side{position:absolute}
+.bl-pills{display:flex;flex-direction:column;gap:14px}
+.bl-pill{display:block;width:100%;margin:0;text-align:left;appearance:none;-webkit-appearance:none;background:transparent;cursor:pointer;padding:17px 26px;border-radius:12px;border:2px solid rgba(200,214,232,.2);font:600 31px/1.1 var(--f-label);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:background .45s,color .45s,border-color .45s,box-shadow .45s}
+.bl-pill.o{background:rgba(201,162,74,.16);border-color:var(--gold);color:#F3E3B8;box-shadow:0 0 36px -8px rgba(201,162,74,.6)}
+.bl-campo.bl-ia .bl-side .bl-pill.o{background:transparent;border-color:rgba(200,214,232,.2);color:var(--muted);box-shadow:none}
+.bl-campo.bl-ia .bl-side .bl-pill.i{background:rgba(127,174,255,.14);border-color:var(--blue);color:var(--white);box-shadow:0 0 36px -8px rgba(127,174,255,.65)}
+.bl-conta{margin:34px 0 0;display:flex;align-items:baseline;gap:18px}
+.bl-conta strong{font:800 190px/.85 var(--f-title);color:var(--white);min-width:178px;transition:color .45s}
+.bl-conta span{font:500 32px/1.2 var(--f-body);color:var(--body)}
+.bl-campo.bl-ia .bl-side .bl-conta strong{color:var(--blue)}
+.bl-legenda{position:relative;height:150px;margin-top:18px}
+.bl-legenda p{position:absolute;left:0;top:0;width:100%;margin:0;font:400 35px/1.32 var(--f-body);color:var(--body);transition:opacity .5s}
+.bl-legenda .i{opacity:0}
+.bl-legenda .i b,.bl-legenda .o b{font-weight:600;color:var(--white)}
+.bl-campo.bl-ia .bl-side .bl-legenda .o{opacity:0}
+.bl-campo.bl-ia .bl-side .bl-legenda .i{opacity:1}
+.bl-veredito{position:absolute;margin:0;font:600 50px/1.12 var(--f-body);color:var(--white)}
+.bl-veredito .sig{color:var(--gold)}
+
+/* ---------- o encaixe (Neymar) ---------- */
+.bl-sub{position:absolute;margin:0;font:400 44px/1.25 var(--f-body);color:var(--body)}
+.bl-sub b{font-weight:600;color:var(--white)}
+.bl-cadeia{position:absolute;margin:0;padding:0;list-style:none}
+.bl-cadeia li{position:relative;display:flex;gap:26px;align-items:flex-start;padding:0 0 30px}
+.bl-cadeia li:last-child{padding-bottom:0}
+.bl-cadeia .n{position:relative;z-index:1;flex:none;width:64px;height:64px;border-radius:50%;border:3px solid var(--blue);background:var(--bg);display:flex;align-items:center;justify-content:center;font:800 34px/1 var(--f-title);color:var(--blue);box-shadow:0 0 26px rgba(127,174,255,.45)}
+.bl-cadeia li.fim .n{border-color:var(--gold);color:var(--gold-l);box-shadow:0 0 26px rgba(201,162,74,.5);font-size:36px}
+.bl-cadeia li::before{content:"";position:absolute;left:31px;top:-30px;width:3px;height:30px;background:var(--blue);transform:scaleY(0);transform-origin:top;transition:transform .5s ease .15s}
+.bl-cadeia li.shown::before{transform:scaleY(1)}
+.bl-cadeia li:first-child::before{display:none}
+.bl-cadeia h4{margin:2px 0 6px;font:800 40px/1.05 var(--f-title);text-transform:uppercase;color:var(--white)}
+.bl-cadeia li.fim h4{color:var(--gold-l)}
+.bl-cadeia p{margin:0;font:400 28px/1.3 var(--f-body);color:var(--body)}
+.bl-cadeia li.fim p{font:600 32px/1.2 var(--f-body);color:var(--white)}
+
+.bl-radar{position:absolute}
+.bl-radar svg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
+.bl-r-grade{fill:none;stroke:rgba(200,214,232,.12);stroke-width:1.5}
+.bl-r-eixo{stroke:rgba(200,214,232,.1);stroke-width:1.5}
+.bl-r-clube{fill:none;stroke:#fff;stroke-width:3;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.7,.2,1) .15s}
+.bl-r-atleta{fill:rgba(201,162,74,.28);stroke:var(--gold-l);stroke-width:4;transform:scale(0);transform-origin:0 0;transition:transform 1.3s cubic-bezier(.2,.7,.2,1) .1s}
+.bl-radar .rot{position:absolute;margin:0;font:500 26px/1 var(--f-body);color:var(--muted);white-space:nowrap}
+.bl-radar .rot.cima{transform:translate(-50%,-100%)}
+.bl-radar .rot.baixo{transform:translate(-50%,0)}
+.bl-radar .rot.dir{transform:translate(0,-50%)}
+.bl-radar .rot.esq{transform:translate(-100%,-50%)}
+.bl-encaixe-sel{position:absolute;display:flex;align-items:center;gap:16px;margin:0;font:600 30px/1.1 var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:var(--blue)}
+.bl-encaixe-sel i{display:block;width:16px;height:16px;border-radius:50%;background:var(--blue);box-shadow:0 0 18px 4px rgba(127,174,255,.55)}
+.bl-encaixe-sel .bl-n{display:none;font:800 54px/1 var(--f-title);letter-spacing:0;color:var(--white)}
+html.bl-numeros .bl-encaixe-sel .bl-n{display:inline}
+.bl-legenda-radar{position:absolute;display:flex;gap:34px;margin:0;font:500 27px/1 var(--f-body);color:var(--body)}
+.bl-legenda-radar span{display:flex;align-items:center;gap:12px}
+.bl-legenda-radar i{display:block;flex:none;width:22px;height:22px;border-radius:50%}
+.bl-legenda-radar .at{background:var(--gold-l)}
+.bl-legenda-radar .cl{border:3px solid #fff}
+.bl-aviso{position:absolute;margin:0;font:400 25px/1.3 var(--f-body);color:var(--muted)}
+.bl-encaixe .bl-f1.shown ~ .bl-radar .bl-r-atleta{transform:scale(1)}
+.bl-encaixe .bl-f2.shown ~ .bl-radar .bl-r-clube{stroke-dashoffset:0}
+
+/* ---------- 326 atletas (cartao creme) ---------- */
+.bl-creme{position:absolute;border-radius:12px;background:linear-gradient(160deg,#F8F6F0,#EFE7CF);box-shadow:inset 0 0 0 1px rgba(89,103,44,.28),0 40px 80px -40px rgba(0,0,0,.9);color:#17190F}
+.bl-creme .k{position:absolute;margin:0;font:600 30px/1.2 var(--f-label);letter-spacing:.3em;text-transform:uppercase;color:#59672C}
+.bl-creme .k::after{content:"";display:block;width:96px;height:3px;margin-top:16px;background:linear-gradient(90deg,#59672C,transparent)}
+.bl-creme .num{position:absolute;margin:0;font:800 400px/.8 var(--f-title);color:#6B7B45;letter-spacing:-.01em}
+.bl-creme .tit{position:absolute;margin:0;font:700 96px/1 var(--f-title);text-transform:uppercase;font-style:italic;color:#4A5A26}
+.bl-creme .txt{position:absolute;margin:0;font:400 40px/1.3 var(--f-body);color:rgba(23,25,15,.78)}
+.bl-creme .ig{position:absolute;margin:0;font:700 44px/1 var(--f-body);color:#4A5A26}
+.bl-moldura{position:absolute;padding:12px;background:#fff;border-radius:4px;box-shadow:0 40px 60px -28px rgba(23,25,15,.55);transform:rotate(2deg)}
+.bl-moldura img{display:block;width:100%;height:100%;object-fit:cover;border-radius:2px}
+.slide.active .bl-moldura{animation:bl-dealt .9s cubic-bezier(.2,.7,.2,1) .25s both}
+@keyframes bl-dealt{from{opacity:0;transform:translateY(60px) rotate(0deg) scale(.94)}to{opacity:1;transform:rotate(2deg)}}
+
+/* ---------- clubes e parceiros ---------- */
+.bl-rotulo{position:absolute;display:flex;align-items:center;gap:22px;margin:0;font:600 28px/1 var(--f-label);letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.bl-rotulo::after{content:"";flex:1;height:1px;background:var(--line)}
+.bl-faixa{position:absolute;left:0;width:1920px;display:flex;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)}
+.bl-trilha{display:flex;flex-shrink:0;align-items:center;gap:84px;padding-right:84px}
+.slide.active .bl-trilha{animation:bl-faixa var(--bl-seg,70s) linear infinite;will-change:transform}
+.slide.active .bl-faixa.rev .bl-trilha{animation-direction:reverse}
+@keyframes bl-faixa{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+.bl-escudo{display:grid;place-items:center;width:112px;height:112px;flex-shrink:0}
+.bl-escudo img{width:108px;height:108px;object-fit:contain}
+.bl-escudo img.marca{width:84px;height:84px}
+.bl-parceiros{position:absolute;display:flex;gap:24px}
+.bl-parc{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;width:316px;height:208px;border:1px solid rgba(201,162,74,.28);border-radius:14px;background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.015))}
+.bl-parc .lg{display:flex;align-items:center;justify-content:center;height:84px}
+.bl-parc img{display:block;max-width:190px;max-height:80px;width:auto;height:80px;object-fit:contain}
+.bl-parc span{font:600 29px/1.1 var(--f-body);color:rgba(255,255,255,.9)}
+.bl-legal{position:absolute;margin:0;font:400 25px/1.35 var(--f-body);color:var(--muted)}
+
+/* ---------- mosaico de rostos ---------- */
+.bl-mosaico{position:absolute;right:0;top:0;width:864px;height:1080px;overflow:hidden;background:#0A0D12}
+.bl-mosaico img{display:block;width:864px;height:1080px;object-fit:cover}
+.slide.active .bl-mosaico img{animation:bl-kb 42s ease-in-out infinite alternate}
+@keyframes bl-kb{from{transform:scale(1)}to{transform:scale(1.07) translateY(-1.5%)}}
+.bl-mosaico::before,.bl-mosaico::after{content:"";position:absolute;left:0;right:0;z-index:2;pointer-events:none}
+.bl-mosaico::before{top:0;height:130px;background:linear-gradient(rgba(7,8,10,.8),rgba(7,8,10,0))}
+.bl-mosaico::after{bottom:0;height:150px;background:linear-gradient(rgba(7,8,10,0),rgba(7,8,10,.88))}
+.bl-veu{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,var(--bg) 0,rgba(7,8,10,.55) 9%,rgba(7,8,10,0) 26%)}
+.bl-telhas{position:absolute;inset:0;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(9,1fr);pointer-events:none}
+.bl-telhas i{background:var(--bg);opacity:0}
+.slide.active .bl-telhas i{animation:bl-telha .7s ease both;animation-delay:var(--d,0s)}
+@keyframes bl-telha{from{opacity:1}to{opacity:0}}
+.bl-rostos-t{position:absolute;margin:0;font:800 104px/.94 var(--f-title);text-transform:uppercase;color:var(--white)}
+.bl-ig{position:absolute;margin:0;font:600 38px/1.2 var(--f-body);color:var(--gold-l)}
+
+@media (prefers-reduced-motion:reduce){
+  .slide.active .bl-trilha,.slide.active .bl-mosaico img,.slide.active .bl-telhas i,.slide.active .bl-moldura,.slide.active .bl-barras b,.slide.active .bl-barras em{animation:none!important}
+  .bl-telhas{display:none}
+}
+html.bl-estatico .slide.active .bl-trilha,html.bl-estatico .slide.active .bl-mosaico img,html.bl-estatico .slide.active .bl-telhas i,html.bl-estatico .slide.active .bl-moldura,html.bl-estatico .slide.active .bl-barras b,html.bl-estatico .slide.active .bl-barras em{animation:none!important}
+html.bl-estatico .bl-telhas{display:none}
+@media print{.bl-telhas{display:none}.slide .bl-moldura{animation:none!important;opacity:1!important}}
+.bl-barras .ok{font:700 30px/1 var(--f-label);color:var(--blue)}
+html.bl-numeros .bl-barras .ok{display:none}
+
+.bl-pill:hover{border-color:rgba(200,214,232,.5);color:var(--white)}
+.bl-pill:focus{outline:none}
+.bl-pill:focus-visible{outline:3px solid var(--white);outline-offset:3px}
+/* o deck zera a margem de todo p do slide (.slide p{margin:0}): a dica e o contador precisam de um seletor mais forte pra o espaço valer */
+.bl-side .bl-dica{margin:12px 0 0;font:500 26px/1.2 var(--f-body);color:var(--muted)}
+.bl-side .bl-conta{margin-top:22px}
+
+/* ---------- tema do R1 ---------- */
+.bl-slide p{margin:0}
+.bl-slide .sand-l{color:var(--gold-l)}
+.bl-slide .ice{color:var(--blue)}
+.bl-slide .sig{color:var(--gold)}
+#bl-focog stop:nth-child(1){stop-color:rgba(201,162,74,.36)}
+#bl-focog stop:nth-child(2){stop-color:rgba(201,162,74,.1)}
+#bl-focog stop:nth-child(3){stop-color:rgba(201,162,74,0)}
+/* o R1 nao tem o avanco por passo do R2: o campo revela o que tem data-step sozinho (data-bl-auto, em bloco.js) */
+.bl-slide [data-step]{opacity:0;transform:translateY(14px);transition:opacity .4s ease,transform .4s ease}
+.bl-slide [data-step].shown{opacity:1;transform:none}
+@media print{.bl-slide [data-step]{opacity:1!important;transform:none!important}}

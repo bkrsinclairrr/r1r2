@@ -1,5 +1,5 @@
 /* Regras do R2 novo que o Painel do Closer usa nas telas (navegador) e nas rotas (servidor, por import).
-   São cópias de partes do assets/roteiro.js do R2 novo: CAMPO_POSICOES (o campo do slide 11), PRAZOS (as listas fixas
+   São cópias de partes do assets/roteiro.js do R2 novo: CAMPO_POSICOES (o campo do slide 12), PRAZOS (as listas fixas
    de prazo, "promessa travada": o closer escolhe, não digita) e os nomes dos planos. testes/teste-igualdade.mjs confere
    que as cópias batem com o deck: mudou lá, muda aqui.
    Sem import e sem export: no navegador entra como script comum; no servidor, por import, e fica em globalThis.R2_REGRAS. */
@@ -97,14 +97,30 @@
       resumo: 'O deck completo: explica o caminho do começo, com o olhômetro, o Zyron e a AGN.',
       quando: 'Na dúvida, esta.',
       validacao: 'em-validacao', lead: { nome: true, foto: true },
-      opcionais: [{ id: 'leva', rotulo: 'O que o {nome} leva', slide: 19, ajuda: 'Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai do 18 direto pro 20.' }]
+      opcionais: [
+        { id: 'metodo', rotulo: 'O método: a IA encontra, a gente conduz', slide: 10, ajuda: 'Mostra como a IA lê dez indicadores e o que a equipe faz com a leitura. Sem ele, a apresentação passa da plataforma direto para "Quem olha por ele".' },
+        { id: 'campo', rotulo: 'O campo: olhômetro × IA', slide: 13, ajuda: 'O campo animado: o olhômetro só vê quem está perto da bola, a IA vê os 22. Sem ele, a apresentação vai do seu lugar em campo direto para o encaixe.' },
+        { id: 'encaixe', rotulo: 'Você não precisa ser o próximo Neymar', slide: 14, ajuda: 'O perfil do atleta se encaixando no que o clube procura. Sem ele, a apresentação vai do campo direto para a tabela do olhômetro × Zyron.' },
+        { id: 'registro', rotulo: '326 atletas enviados', slide: 22, ajuda: 'O número da casa e a arte do Instagram. Sem ele, a apresentação passa da rede direto para os clubes e parceiros.' },
+        { id: 'clubes', rotulo: 'Clubes e parceiros', slide: 23, ajuda: 'As faixas de escudos e os parceiros comerciais, com a nota legal. Sem ele, a apresentação segue direto para o mosaico de rostos.' },
+        { id: 'rostos', rotulo: 'Cada rosto, uma história', slide: 24, ajuda: 'O mosaico de fotos da trajetória da casa. Sem ele, a apresentação segue direto para "O que ele leva".' },
+        { id: 'leva', rotulo: 'O que o {nome} leva', slide: 25, ajuda: 'Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai direto para "O valor real".' }
+      ]
     },
     {
       id: 'tecnica', nome: 'R2 · Técnica para quem conhece futebol', caminho: '/variacoes/tecnica/',
       resumo: 'Fala de par pra par: não explica o básico, a AGN aparece uma vez só e o foco é a operação e o interesse alinhado.',
       quando: 'Citou a AGN pelo nome, tem vivência no meio (base de clube, federado, ex-jogador, técnico, contato com empresário) ou fez pergunta técnica na R1.',
       validacao: 'em-validacao', lead: { nome: true, foto: true },
-      opcionais: [{ id: 'leva', rotulo: 'O que o {nome} leva', slide: 19, ajuda: 'Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai do 18 direto pro 20.' }]
+      opcionais: [
+        { id: 'metodo', rotulo: 'O método: a IA encontra, a gente conduz', slide: 10, ajuda: 'Mostra como a IA lê dez indicadores e o que a equipe faz com a leitura. Sem ele, a apresentação passa da plataforma direto para "Quem olha por ele".' },
+        { id: 'campo', rotulo: 'O campo: observação × IA', slide: 13, ajuda: 'O campo animado: a observação só vê quem está perto da bola, a IA vê os 22. Sem ele, a apresentação vai do seu lugar em campo direto para o encaixe.' },
+        { id: 'encaixe', rotulo: 'Você não precisa ser o próximo Neymar', slide: 14, ajuda: 'O perfil do atleta se encaixando no que o clube procura. Sem ele, a apresentação vai do campo direto para a tabela do Zyron.' },
+        { id: 'registro', rotulo: '326 atletas enviados', slide: 22, ajuda: 'O número da casa e a arte do Instagram. Sem ele, a apresentação passa da rede direto para os clubes e parceiros.' },
+        { id: 'clubes', rotulo: 'Clubes e parceiros', slide: 23, ajuda: 'As faixas de escudos e os parceiros comerciais, com a nota legal. Sem ele, a apresentação segue direto para o mosaico de rostos.' },
+        { id: 'rostos', rotulo: 'Cada rosto, uma história', slide: 24, ajuda: 'O mosaico de fotos da trajetória da casa. Sem ele, a apresentação segue direto para "O que ele leva".' },
+        { id: 'leva', rotulo: 'O que o {nome} leva', slide: 25, ajuda: 'Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai direto para "O valor real".' }
+      ]
     }
   ];
   /* A reserva de cada deck: as páginas que valem se o painel nunca conseguiu ler o variacoes.json dele. Os ids são os da página no
@@ -114,14 +130,14 @@
     'r2-anterior': [
       {
         id: 'principal', nome: 'R2 · Roteiro clássico completo', caminho: '/',
-        resumo: 'O R2 de 24 slides, o de antes do R2 novo, com os planos e O investimento. A foto aparece no slide de escolha.',
-        quando: 'Só se precisar da versão de 24 slides. Na dúvida, use o R2 novo.',
+        resumo: 'O R2 de 30 slides, o de antes do R2 novo, com os planos e O investimento. A foto aparece no slide de escolha.',
+        quando: 'Só se precisar da versão de 30 slides. Na dúvida, use o R2 novo.',
         validacao: 'em-validacao', lead: { nome: true, foto: true }, opcionais: []
       },
       {
         id: 'tecnica', nome: 'R2 · Técnica com roteiro clássico', caminho: '/variacoes/tecnica/',
-        resumo: 'A versão técnica do R2 de 24 slides: fala de par pra par, sem explicar o básico. A foto aparece no slide de escolha.',
-        quando: 'Lead com vivência no meio (base de clube, federado, ex-jogador, técnico) e só se precisar da versão de 24 slides.',
+        resumo: 'A versão técnica do R2 de 30 slides: fala de par pra par, sem explicar o básico. A foto aparece no slide de escolha.',
+        quando: 'Lead com vivência no meio (base de clube, federado, ex-jogador, técnico) e só se precisar da versão de 30 slides.',
         validacao: 'em-validacao', lead: { nome: true, foto: true }, opcionais: []
       }
     ],
@@ -142,7 +158,7 @@
     r1: [
       {
         id: 'principal', nome: 'R1 · Avaliação e convite para R2', caminho: '/',
-        resumo: 'A apresentação do SDR em 16 slides: o Zyron, a IA na prática e a AGN, e fecha marcando a R2.',
+        resumo: 'A apresentação do SDR em 20 slides: o Zyron, a IA na prática, a rede (326 atletas enviados, clubes e parceiros) e a AGN, e fecha marcando a R2.',
         quando: 'A primeira apresentação do lead. Na dúvida, esta.',
         validacao: 'em-validacao', lead: { nome: true, foto: true }, opcionais: []
       }
@@ -181,7 +197,7 @@
     { id: 'sem', nome: 'Sem nome nem foto' }
   ];
 
-  /* O campo do slide 11 (e a miniatura do Bem-vindo): cópia de window.CAMPO_POSICOES do roteiro.js do R2 novo.
+  /* O campo do slide 12 (e a miniatura do Bem-vindo): cópia de window.CAMPO_POSICOES do roteiro.js do R2 novo.
      A posição (texto livre) é comparada em caixa baixa, sem acento e com hífen virando espaço; vale a primeira linha
      que casar. [termos, marcador]: o termo como palavra inteira. [termos, marcador, true]: só o texto inteiro (siglas).
      ZAG e VOL: com "esquerdo" ou "esquerda" no texto, o da esquerda; sem lado, o da direita. Não casou: vazio. */

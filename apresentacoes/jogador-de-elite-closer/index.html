@@ -230,7 +230,7 @@
           <div class="grade">
             <label class="campo"><span>Dia <b>*</b></span><input class="in" name="r2data" type="date"></label>
             <label class="campo"><span>Hora <b>*</b></span><input class="in" name="r2hm" type="time" step="300"></label>
-            <p class="exemplo largo" id="ex-call"></p><small class="largo" id="call-r1" hidden>A R2 que ficou marcada com o closer: o R1 mostra o dia e a hora no slide 16.</small>
+            <p class="exemplo largo" id="ex-call"></p><small class="largo" id="call-r1" hidden>A R2 que ficou marcada com o closer: o R1 mostra o dia e a hora no slide 20.</small>
             <label class="campo largo" data-so="r2"><span>Plano que vai recomendar <b>*</b></span><select class="in" name="plano"><option value="">escolha</option></select><small>A tela destaca este plano no slide dos planos e no Bem-vindo. Turma e vagas só aparecem no Legacy.</small></label>
             <label class="campo so-legacy"><span>Vagas restantes nesta turma</span><input class="in" name="vagas" type="number" inputmode="numeric" min="1" max="10"><small>Só o número real da semana, de 1 a 10.</small></label>
             <label class="campo so-legacy"><span>Próxima turma abre em</span><input class="in" name="proximaTurma" maxlength="40"></label>
@@ -270,7 +270,7 @@
 
         <section class="sec" id="s-leitura" data-so="r2" hidden>
           <h2 class="label">Leitura do atleta</h2>
-          <p class="nota" id="lt-resumo">O vídeo dele e os lances marcados aparecem no slide 14 (IA na Prática). Sem vídeo, o 14 é a leitura ao vivo no Meet.</p>
+          <p class="nota" id="lt-resumo">O vídeo dele e os lances marcados aparecem no slide 17 (IA na Prática). Sem vídeo, o 17 é a leitura ao vivo no Meet.</p>
           <button class="bt" type="button" id="bt-leitura">Abrir a Leitura do atleta</button>
         </section>
 
@@ -336,12 +336,12 @@
   </form>
 </dialog>
 
-<!-- leitura do atleta: o vídeo dele e o relatório do slide 14 do R2 (portada do painel atual) -->
+<!-- leitura do atleta: o vídeo dele e o relatório do slide 17 do R2 (portada do painel atual) -->
 <dialog id="leitura" class="largo" aria-labelledby="lt-titulo">
   <div class="dlg">
     <div class="dlg-topo"><h2 class="titulo" id="lt-titulo">Leitura do atleta</h2><button class="bt mini fantasma" type="button" id="lt-fechar">Fechar</button></div>
     <div class="dlg-corpo">
-      <p class="lt-aviso" style="margin:0 0 14px">O que você salvar aqui aparece no slide 14 do R2 (IA na Prática), na tela da família: o vídeo dele, o nome e o relatório. Sem vídeo, o slide fica como sempre, com a leitura ao vivo no Meet.</p>
+      <p class="lt-aviso" style="margin:0 0 14px">O que você salvar aqui aparece no slide 17 do R2 (IA na Prática), na tela da família: o vídeo dele, o nome e o relatório. Sem vídeo, o slide fica como sempre, com a leitura ao vivo no Meet.</p>
       <fieldset class="lt-passo" id="lt-p1"><legend><span class="label">1 · Autorização</span></legend>
         <label class="lt-ck"><input type="checkbox" id="lt-autoriza"> <span>Tenho a autorização expressa do responsável legal pra usar o vídeo deste atleta.</span></label>
         <p class="lt-ok" id="lt-autorizado" hidden></p>
@@ -388,7 +388,7 @@
       <fieldset class="lt-passo off" id="lt-p5"><legend><span class="label">5 · Capa, prévia e JSON</span></legend>
         <div class="lt-poster">
           <img id="lt-poster-img" alt="Quadro de capa do vídeo" hidden>
-          <div><button class="bt" type="button" id="lt-poster">Usar o quadro de agora como capa</button><p class="lt-teclas">Pause o vídeo no quadro que você quer. Ele vira a capa do slide 14 e, sem foto do atleta, a capa do deck.</p></div>
+          <div><button class="bt" type="button" id="lt-poster">Usar o quadro de agora como capa</button><p class="lt-teclas">Pause o vídeo no quadro que você quer. Ele vira a capa do slide 17 e, sem foto do atleta, a capa do deck.</p></div>
         </div>
         <div class="lt-linha" style="margin-top:12px">
           <button class="bt" type="button" id="lt-ver">Ver relatório</button>
@@ -407,7 +407,7 @@
 <div id="aviso" role="status" aria-live="polite"></div>
 
 <script src="/regras.js"></script>
-<!-- o mesmo componente do relatório do slide 14 do R2 (cópia idêntica de jogador-de-elite-r2-novo/assets/relatorio-leitura.js) -->
+<!-- o mesmo componente do relatório do slide 17 do R2 (cópia idêntica de jogador-de-elite-r2-novo/assets/relatorio-leitura.js) -->
 <script src="/relatorio-leitura.js"></script>
 <script src="/painel.js"></script>
 </body>

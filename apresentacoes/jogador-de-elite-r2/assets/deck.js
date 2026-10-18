@@ -259,14 +259,20 @@
         '<circle cx="' + n1(cx) + '" cy="' + n1(cy) + '" r="' + (R + 12) + '" fill="none" stroke="#7FC4EA" stroke-width="3"/>' +
         '<circle cx="' + n1(cx) + '" cy="' + n1(cy) + '" r="' + R + '" fill="#C8B88A"/>' +
         '<text x="' + n1(cx) + '" y="' + n1(cy) + '" text-anchor="middle" dominant-baseline="central" font-family="Barlow Condensed" font-weight="700" font-size="' + (mini ? 44 : 28) + '" letter-spacing="1" fill="#060B14">' + sigla(posId) + '</text>';
-      // o nome embaixo do marcador; se ali ele cobre outro marcador ou sai do campo, em cima, à direita ou à esquerda
-      // (vale o lugar que cobre menos, nessa ordem de preferência)
+      // o nome embaixo do marcador; se ali ele cobre outro marcador, em cima, à direita ou à esquerda (vale o lugar que cobre
+      // menos, nessa ordem de preferência). Cada lugar é puxado pra dentro do campo antes de contar, e cobrir o marcador do
+      // próprio atleta (e o anel dele) nunca vale: com nome e sobrenome o rótulo é largo e, na ponta ou no gol, não cabe do lado
       const gap = R + 30 + fs * .75, hw = (String(nome || 'VOCÊ').length * fs * .5 + fs) / 2, hh = fs * .75, lado = R + 20 + hw;
-      const cobre = ([x, y]) => (y - hh < 8 || y + hh > CH - 8 || x - hw < 8 || x + hw > CW - 8 ? 1e9 : 0) + Object.keys(CAMPO_XY).filter(id => id !== posId).reduce((a, id) => {
-        const ox = Math.max(0, hw + r - Math.abs(m + CAMPO_XY[id][0] * iw - x)), oy = Math.max(0, hh + r - Math.abs(m + CAMPO_XY[id][1] * ih - y));
-        return a + ox * oy;
-      }, 0);
-      const lugares = [[cx, cy + gap], [cx, cy - gap], [cx + lado, cy], [cx - lado, cy]];
+      const dentro = ([x, y]) => [Math.max(8 + hw, Math.min(CW - 8 - hw, x)), Math.max(8 + hh, Math.min(CH - 8 - hh, y))];
+      const cobre = ([x, y]) => {
+        const px = Math.max(0, hw + R + 24 - Math.abs(cx - x)), py = Math.max(0, hh + R + 24 - Math.abs(cy - y));
+        return (px > 0 && py > 0 ? 1e9 + px * py : 0) + Object.keys(CAMPO_XY).filter(id => id !== posId).reduce((a, id) => {
+          const ox = Math.max(0, hw + r - Math.abs(m + CAMPO_XY[id][0] * iw - x)), oy = Math.max(0, hh + r - Math.abs(m + CAMPO_XY[id][1] * ih - y));
+          return a + ox * oy;
+        }, 0);
+      };
+      const lugares = [[cx, cy + gap], [cx, cy - gap], [cx + lado, cy], [cx - lado, cy],
+        [cx + hw * .5, cy + gap], [cx - hw * .5, cy + gap], [cx + hw * .5, cy - gap], [cx - hw * .5, cy - gap]].map(dentro);
       const [xc, yc] = lugares.reduce((melhor, l) => (cobre(l) < cobre(melhor) ? l : melhor));
       s += chip(xc, yc, fs, 'VOCÊ', true);
     } else if (!mini) {
@@ -946,7 +952,7 @@
       ]],
       ['Contrato, garantia e AGN', [
         ['faixaContrato', 'Quanto um atleta nosso fecha', 'text', 'Aparece no contrato, seguido de "por mês". Padrão: R$ 20 a 30 mil+. Só o que vocês comprovam com contrato'],
-        ['garantiaPrazo', 'Prazo da garantia (se houver)', 'text', 'Prazo real da garantia incondicional. Vazio: a linha do prazo fica fora da tela'],
+        ['garantiaPrazo', 'Prazo da garantia (se houver)', 'text', 'Prazo real da garantia. Vazio: a linha do prazo fica fora da tela'],
         ['linkAgn', 'Link da AGN Football', 'text', 'Pra mandar no WhatsApp durante a apresentação da AGN']
       ]],
       ['Turma e investimento', [
@@ -1096,7 +1102,7 @@
 
     /* ----- ler antes ----- */
     const LER = [
-      ['Nome do atleta', 'nome', '01, 02, 05, 10, 13, 16, 18, 19, 20, 22, 23 e 25 (e o selo de dossiê no canto)'], ['Origem do lead', 'origem', '01 e 02 (muda o texto)'],
+      ['Nome do atleta', 'nome', '01, 02, 05, 10, 13, 16, 18, 19, 20, 22, 23, 25, 101, 102, 103, 104, 105 e 106 (e o selo de dossiê no canto)'], ['Origem do lead', 'origem', '01 e 02 (muda o texto)'],
       ['O que chamou atenção no Zyron', 'caracteristicas', '02, se veio do Zyron'], ['Experiência do formulário', 'experiencia', '02, se veio do formulário'],
       ['Posição, idade, cidade', 'posicao|idade|cidade', '02, 05 e o cartão do 10'], ['Posição que desenha o campo', 'posCampo', '10 (o campo) e 25 (a miniatura); vazio: campo sem destaque'],
       ['Pé e altura', 'peTxt|alturaTxt', 'cartão do 10 (vazio: a linha some)'], ['Código do dossiê (link do painel)', 'dossieCod', '01, 02, 10 e o selo no canto'],

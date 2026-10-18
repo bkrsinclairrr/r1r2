@@ -25,7 +25,7 @@ test('a garantia dos dois R2 anteriores vem depois do investimento e antes do Be
     const html = le(pagina);
     const slides = html.match(/<section class="slide(?: [^"]+)?"[\s\S]*?<\/section>/g);
     assert.match(slides.at(-3), /id="silencio"/);
-    assert.match(slides.at(-2), /Garantia[\s\S]*incondicional/i);
+    assert.match(slides.at(-2), /Garantia[\s\S]*total/i);
     assert.doesNotMatch(slides.at(-2), /é preciso comprovar|se vocês aplicarem o método/i);
     assert.match(slides.at(-1), /Bem-vindo/);
   }
@@ -91,7 +91,7 @@ test('a oferta é descoberta pelo painel e funciona com o mesmo link, nome, plan
     assert.match(dados.conteudo, /acompanhamento diário/i);
     assert.doesNotMatch(dados.conteudo, /o mais completo|R\$ 997|R\$ 1\.497|R\$ 2\.997/i);
     assert.match(dados.finais[0], /247,90/);
-    assert.match(dados.finais[1], /incondicional/i);
+    assert.match(dados.finais[1], /Garantia\s*total/i); // o título quebra a linha com <br>, e o textContent não põe espaço
     assert.match(dados.finais[2], /Bem-vindo/);
     const oferta = dados.total - 2;
     await a.vai(s.decks['r2-anterior'] + caminho + '?a=' + criado.j.t + '#' + oferta);
@@ -119,7 +119,7 @@ test('a oferta é descoberta pelo painel e funciona com o mesmo link, nome, plan
     const p = await nav.aba(s.decks['r2-anterior'] + caminho + '?presenter&a=' + criado.j.t + '#' + oferta);
     assert.ok(await p.ate('!!document.querySelector("#pz-var")'));
     assert.equal(await p.avalia('window.ROTEIRO[window.ROTEIRO.length - 3].nome'), 'Os dois planos');
-    assert.equal(await p.avalia('window.ROTEIRO[window.ROTEIRO.length - 2].nome'), 'Garantia incondicional');
+    assert.equal(await p.avalia('window.ROTEIRO[window.ROTEIRO.length - 2].nome'), 'Garantia total');
     assert.match(await p.avalia('document.body.textContent'), /247,90/);
     assert.doesNotMatch(await p.avalia('document.body.textContent'), /o mais completo|R\$ 997|R\$ 1\.497|R\$ 2\.997/i);
     await p.avalia(`document.querySelector('[data-plano-troca="scouting"]').click(); 1`);
@@ -134,14 +134,14 @@ test('o roteiro, as objeções e a referência do apresentador acompanham a gara
   const nav = await abreNavegador();
   try {
     for (const pagina of ['/', '/variacoes/tecnica/']) {
-      const a = await nav.aba(s.decks['r2-anterior'] + pagina + '?presenter#23');
+      const a = await nav.aba(s.decks['r2-anterior'] + pagina + '?presenter#29');
       assert.ok(await a.ate('!!document.querySelector("#pz-var")'));
       const fim = await a.avalia('window.ROTEIRO.slice(-3).map(r => r.nome)');
       assert.match(fim[0], /investimento/i);
-      assert.equal(fim[1], 'Garantia incondicional');
+      assert.equal(fim[1], 'Garantia total');
       assert.equal(fim[2], 'Bem-vindo');
-      assert.equal(await a.avalia('window.OBJECOES.find(o => /Tem garantia/.test(o.q)).slides[0]'), 23);
-      assert.equal(await a.avalia('window.R2_REFERENCIA("21 (vazio: some)")'), '23 (vazio: some)');
+      assert.equal(await a.avalia('window.OBJECOES.find(o => /Tem garantia/.test(o.q)).slides[0]'), 29);
+      assert.equal(await a.avalia('window.R2_REFERENCIA("21 (vazio: some)")'), '29 (vazio: some)');
       assert.ok(!a.console_.some(e => e.startsWith('EXC')));
     }
   } finally { await nav.fecha(); await s.fecha(); }
