@@ -9,7 +9,7 @@
   const matches = f => [1, 2, 3].map(n => ({ clube: f['match' + n + 'Clube'], pais: f['match' + n + 'Pais'],
     liga: f['match' + n + 'Liga'], posicao: f['match' + n + 'Posicao'], categoria: f['match' + n + 'Categoria'],
     motivo: f['match' + n + 'Motivo'], compatibilidade: nota(f['match' + n + 'Compatibilidade']) })).filter(m => m.clube);
-  const avatar = '<span class="zx-avatar"><img data-if="avatarOk" data-src="avatarUrl" alt="Foto do atleta"><b data-ifnot="avatarOk" data-bind="fotoIni"></b></span>';
+  const avatar = '<span class="zx-avatar"><img data-if="avatarOk" data-src="avatarUrl" alt="Foto do atleta"><b data-ifnot="avatarOk" data-bind="fotoIni" data-fb="JE"></b></span>';
   const percent = m => m.compatibilidade === null ? '' : '<strong class="zx-percent">' + m.compatibilidade + '%<small>compatibilidade</small></strong>';
   const clube = m => '<article class="zx-match"><div class="zx-clube-ini" aria-hidden="true">' + esc(String(m.clube).slice(0, 2).toUpperCase()) + '</div><div class="zx-match-text"><p class="zx-k">Perfil compatível</p><h3>' + esc(m.clube) + '</h3><p class="zx-muted">' + esc([m.pais, m.liga].filter(Boolean).join(' · ')) + '</p>'
     + '<div class="zx-tags">' + [m.posicao, m.categoria].filter(Boolean).map(t => '<span>' + esc(t) + '</span>').join('') + '</div>'
