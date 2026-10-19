@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "gerado": "2026-10-18T22:31:20.789Z",
+  "gerado": "2026-10-19T04:13:06.524Z",
   "paginas": [
     {
       "id": "principal",
@@ -58,7 +58,7 @@
           "ajuda": "Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai direto para \"O valor real\"."
         }
       ],
-      "hash": "67ff2695320eef9f66cc2a1bf15777b8acb7962c"
+      "hash": "12612774bd0b74a6a8def63a01f9d88dd87156b5"
     },
     {
       "id": "tecnica",
@@ -116,7 +116,7 @@
           "ajuda": "Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai direto para \"O valor real\"."
         }
       ],
-      "hash": "ea48316ec47da9c93aa53ed98d13f02bb3fbae17"
+      "hash": "ffa8d81ff826191e512a0ce754aceba2b9843590"
     }
   ]
 }

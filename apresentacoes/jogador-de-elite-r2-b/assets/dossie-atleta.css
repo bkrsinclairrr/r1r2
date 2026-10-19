@@ -109,7 +109,11 @@
 .slide.active .ds-plano li::after{animation:ds-linha .7s ease .8s both}
 @keyframes ds-linha{from{transform:scaleY(0)}to{transform:none}}
 /* o plano embaixo das oportunidades: cada passo numa linha corrida (o nome e o texto juntos), ate duas linhas, pra caber com seis clubes */
-.ds-com-o .ds-direita .ds-plano li{padding-bottom:9px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ds-com-o .ds-direita .ds-plano li{padding-bottom:9px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+/* com cinco ou seis clubes (dossie-atleta.js liga o .ds-muitas): ate duas linhas por passo, e o "agora" usa a frase curta */
+.ds-muitas.ds-com-o .ds-direita .ds-plano li{-webkit-line-clamp:2}
+.ds-muitas .ds-direita .ds-plano [data-if="trabalhar"]{display:none!important}
+.ds-muitas .ds-direita .ds-plano [data-ifnot="trabalhar"]{display:inline!important}
 .ds-com-o .ds-direita .ds-plano li b{display:inline;margin-right:10px}
 .ds-com-o .ds-direita .ds-plano li>span{display:inline;margin:0}
 .ds-com-o .ds-direita .ds-plano li>span>span{display:inline}

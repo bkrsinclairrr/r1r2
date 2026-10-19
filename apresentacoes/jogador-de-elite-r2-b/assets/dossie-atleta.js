@@ -92,6 +92,7 @@
         s.classList.toggle('ds-com-v', !!d.dsV);
         s.classList.toggle('ds-com-m', !!d.dsM);
         s.classList.toggle('ds-com-o', !!d.dsO);
+        s.classList.toggle('ds-muitas', (d.dsOps || []).length >= 5); // cinco ou seis clubes: o plano ao lado fica mais curto
         // o vídeo do dossiê é o vídeo do slide (o espaço dá play e pausa) só quando ele está na tela
         if (d.dsV) s.dataset.video = 'v-dossie'; else delete s.dataset.video;
         const ops = d.dsOps || [], dados = d.dsDados || [];
