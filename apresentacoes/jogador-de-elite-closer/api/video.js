@@ -4,7 +4,7 @@
 // autorização do responsável registrada e dentro da validade do vídeo; fora disso, 404. Nunca mostra o caminho do arquivo.
 // Logado como dono ou admin, o painel vê o vídeo mesmo com o link revogado ou vencido (pra marcar os lances).
 // Em stream e em pedaços (Range, 206), pra a barra do player pular sem baixar o vídeo inteiro.
-import { leRegistro, videoValido, linkVencido, podeMexer, sessaoOpcional, T_OK, registraErro } from './_base.js';
+import { leRegistro, videoValido, foraDoAr, podeMexer, sessaoOpcional, T_OK, registraErro } from './_base.js';
 import { leBin } from './_armazenamento.js';
 
 function nao(res) {
@@ -24,7 +24,7 @@ export default async function handler(req, res) {
     const r = await leRegistro(t);
     const reg = r && r.dados;
     if (!reg || reg.movendo) return nao(res);
-    if (reg.estado === 'revogado' || linkVencido(reg)) {
+    if (foraDoAr(reg, req.query && req.query.p)) { // revogado, vencido ou rascunho sem link (a prévia do painel passa com a chave)
       const eu = req.headers.cookie ? await sessaoOpcional(req) : null;
       if (!podeMexer(eu, reg)) return nao(res);
     }

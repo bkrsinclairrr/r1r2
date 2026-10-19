@@ -161,8 +161,12 @@ try {
   await P.avalia(`(() => { const f = document.querySelector('#f-entrar'); f.login.value = ${JSON.stringify(s.adminLogin)}; f.senha.value = ${JSON.stringify(s.adminSenha)}; f.requestSubmit(); return 1; })()`);
   await P.ate("!document.querySelector('#v-app').hidden");
   await P.avalia(`location.hash = '#/r2/${t}'; 1`);
-  await P.ate("!document.querySelector('#v-editor').hidden && !document.querySelector('#bt-leitura').disabled");
-  await P.avalia("document.querySelector('#bt-leitura').click(); 1");
+  // desde 18/10/2026 o vídeo e os lances ficam em "Vídeo analisado": o "Tenho o vídeo do jogador" liga a seção e, com o vídeo no painel,
+  // o "Marcar lances" abre a Leitura
+  await P.ate("!document.querySelector('#v-editor').hidden && /Vídeo enviado/.test(document.querySelector('#va-info').textContent)", 15000);
+  await P.avalia("(() => { const c = document.querySelector('#c-tem-video'); if (!c.checked) c.click(); return 1; })()");
+  ok(await P.ate("!document.querySelector('#vd-bloco').hidden && !document.querySelector('#va-lances').hidden", 8000), 'com "Tenho o vídeo do jogador", a seção mostra o vídeo enviado e o "Marcar lances"');
+  await P.avalia("document.querySelector('#va-lances').click(); 1");
   ok(await P.ate(`document.querySelector('#leitura').open && document.querySelector('#lt-video').getAttribute('src') === '/api/video?t=${t}' && document.querySelector('#lt-video').readyState >= 1`, 20000),
     'no painel, a Leitura abre com o vídeo do atleta tocando pelo /api/video (com o login)');
   ok(/Autorizado por/.test(await P.avalia("document.querySelector('#lt-autorizado').textContent")) && (await P.avalia("document.querySelectorAll('#lt-lances tr[data-i]').length")) === 6,

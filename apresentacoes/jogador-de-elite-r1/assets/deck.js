@@ -261,7 +261,9 @@
   }
   // o lead de um painel, pelo endereço que o deck sempre usou (/api/publico?id=)
   let painelDoLead = PAINEL;
-  const buscaLead = base => fetch(base + '/api/publico?id=' + encodeURIComponent(AID), { cache: 'no-store' })
+  // a prévia do painel (o link ainda não foi gerado): a chave &p= vai junto (foto-atleta.js); sem ela, o painel responde como se o código não existisse
+  const comChave = u => (window.FotoAtleta && window.FotoAtleta.comChave ? window.FotoAtleta.comChave(u) : u);
+  const buscaLead = base => fetch(comChave(base + '/api/publico?id=' + encodeURIComponent(AID)), { cache: 'no-store' })
     .then(r => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
     .then(j => { painelDoLead = base; return j; });
   function carregaPainel(depois, aviso) {

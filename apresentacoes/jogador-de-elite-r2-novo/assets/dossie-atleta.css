@@ -1,0 +1,195 @@
+/* O dossie do atleta e o inimigo em comum (18/10/2026): os dois slides logo depois da IA na Pratica. Igual nos tres decks do R2.
+   Regra da casa: nada na tela abaixo de 24 px. Paleta por papel, a mesma do deck: areia pro atleta e o plano, gelo pra IA e os dados
+   (o video e o mapa), oliva pro destino, laranja-sinal so pro inimigo. As entradas rodam quando o slide entra (.slide.active), uma vez,
+   e param com "reduzir movimento"; fora do palco (miniaturas, apresentador) tudo aparece no quadro final. */
+
+/* ---------------- o dossie ---------------- */
+.ds-slide{background:var(--bg)}
+.ds-grade{opacity:.3;-webkit-mask-image:radial-gradient(64% 76% at 50% 46%,#000 26%,transparent 76%);mask-image:radial-gradient(64% 76% at 50% 46%,#000 26%,transparent 76%)}
+/* tres luzes: areia no atleta, gelo na analise, oliva nas oportunidades */
+.ds-luz{background:radial-gradient(26% 46% at 16% 52%,rgba(200,184,138,.10),rgba(6,11,20,0) 70%),radial-gradient(30% 50% at 49% 40%,rgba(127,196,234,.11),rgba(6,11,20,0) 72%),radial-gradient(24% 44% at 84% 54%,rgba(157,176,106,.08),rgba(6,11,20,0) 70%)}
+.ds-titulo{font-size:84px;white-space:nowrap}
+.ds-h{margin:0;font:600 26px/1.15 var(--f-label);letter-spacing:.24em;text-transform:uppercase;color:var(--sand)}
+.ds-h.ice{color:var(--ice)}
+.ds-h span{letter-spacing:.12em;color:var(--muted)}
+
+/* o perfil: o nome em cima da foto, os dados embaixo */
+.ds-perfil{display:flex;flex-direction:column;gap:16px}
+.ds-nome{flex:none;margin:0;font:800 52px/.98 var(--f-title);text-transform:uppercase;color:var(--sand-l);overflow-wrap:anywhere;text-wrap:balance}
+.ds-foto{position:relative;flex:1 1 auto;min-height:300px;max-height:480px;border:1px solid rgba(185,166,109,.5);border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#344434,#0d1720 80%);box-shadow:0 26px 70px rgba(0,0,0,.45),0 0 0 6px rgba(200,184,138,.05)}
+.ds-foto>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.ds-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,11,20,0) 58%,rgba(6,11,20,.5));pointer-events:none}
+.ds-ini{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:800 190px/1 var(--f-title);color:rgba(200,184,138,.42);background:radial-gradient(circle at center,rgba(230,219,184,.08),transparent 65%)}
+/* a linha de leitura passa uma vez pela foto quando o slide entra */
+.ds-scan{position:absolute;left:0;right:0;top:0;height:3px;z-index:2;background:var(--ice);box-shadow:0 0 18px 4px rgba(127,196,234,.5),0 0 60px 10px rgba(127,196,234,.16);opacity:0;pointer-events:none}
+.slide.active .ds-scan{animation:ds-scan 1.7s cubic-bezier(.45,0,.55,1) .55s 1 both}
+@keyframes ds-scan{0%{top:0;opacity:0}10%{opacity:.95}88%{opacity:.95}100%{top:100%;opacity:0}}
+.ds-dados{flex:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 22px}
+.ds-dados>div{min-width:0;border-top:1px solid var(--line);padding-top:10px}
+.ds-dados .k{margin:0;font:600 24px/1.1 var(--f-label);letter-spacing:.18em;text-transform:uppercase;color:var(--sand)}
+.ds-dados .v{margin:4px 0 0;font:600 28px/1.15 var(--f-body);color:var(--white);overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.slide.active .ds-dados>div{animation:ds-sobe .6s cubic-bezier(.2,.7,.2,1) both}
+.slide.active .ds-dados>div:nth-child(1){animation-delay:.34s}
+.slide.active .ds-dados>div:nth-child(2){animation-delay:.4s}
+.slide.active .ds-dados>div:nth-child(3){animation-delay:.46s}
+.slide.active .ds-dados>div:nth-child(4){animation-delay:.52s}
+.slide.active .ds-dados>div:nth-child(5){animation-delay:.58s}
+.slide.active .ds-dados>div:nth-child(6){animation-delay:.64s}
+
+/* o centro: o video analisado e o mapa de calor embaixo dele */
+.ds-centro{display:flex;flex-direction:column;justify-content:center;gap:16px}
+.ds-video{position:relative;flex:none}
+.ds-centro .player.ds-player{position:relative;width:100%;aspect-ratio:16/9;border:1px solid rgba(127,196,234,.4);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 70px rgba(127,196,234,.08)}
+/* o video que a IA fez pode ter textos nas bordas: inteiro na tela, sem corte */
+.ds-player video{object-fit:contain}
+.ds-player .play .disc{width:132px;height:132px}
+.ds-video .ds-br{inset:0}
+.slide.active .ds-br i{animation:ds-canto .7s cubic-bezier(.2,.7,.2,1) .42s both}
+@keyframes ds-canto{from{opacity:0;transform:scale(1.7)}to{opacity:1;transform:none}}
+.ds-chip{position:absolute;left:18px;top:18px;z-index:3;display:flex;align-items:center;gap:10px;margin:0;padding:8px 14px;border:1px solid rgba(127,196,234,.55);background:rgba(6,11,20,.78);font:600 24px/1 var(--f-label);letter-spacing:.16em;text-transform:uppercase;color:var(--ice);pointer-events:none}
+.ds-chip i{display:block;width:10px;height:10px;border-radius:50%;background:var(--ice);box-shadow:0 0 12px var(--ice)}
+.ds-player.playing .ds-chip{opacity:.0;transition:opacity .4s}
+.ds-centro .ds-legal{flex:none;margin:8px 0 0;font:400 24px/1.25 var(--f-body);color:var(--muted)}
+.ds-mapa{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:10px}
+.ds-mapa-img{position:relative;flex:1 1 auto;min-height:200px;border:1px solid var(--line);background-color:#0A1422;background-image:linear-gradient(rgba(127,196,234,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(127,196,234,.06) 1px,transparent 1px);background-size:40px 40px;overflow:hidden}
+.ds-mapa-img>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+/* o calor se espalha do centro quando o slide entra */
+.slide.active .ds-mapa-img>img{animation:ds-calor 1.4s cubic-bezier(.2,.7,.2,1) .6s both}
+@keyframes ds-calor{from{clip-path:circle(0% at 50% 50%);filter:saturate(.3) brightness(.7)}to{clip-path:circle(75% at 50% 50%);filter:none}}
+/* so o mapa (sem o video): ele ocupa o centro */
+.ds-slide:not(.ds-com-v) .ds-mapa{flex:none;height:620px}
+
+/* a direita: as oportunidades e o plano de carreira */
+.ds-direita{display:flex;flex-direction:column;gap:26px}
+.ds-ops{flex:none;display:flex;flex-direction:column;gap:12px}
+.ds-lista{list-style:none;margin:0;padding:0}
+.ds-lista li{display:flex;align-items:center;gap:16px;padding:11px 0;border-bottom:1px solid var(--line)}
+.ds-escudo{position:relative;flex:none;width:52px;height:60px;display:flex;align-items:center;justify-content:center}
+.ds-escudo svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ds-escudo path{fill:rgba(200,184,138,.12);stroke:var(--sand);stroke-width:2.5;stroke-linejoin:round;stroke-dasharray:180;stroke-dashoffset:0}
+.ds-escudo b{position:relative;font:800 24px/1 var(--f-title);color:var(--sand-l);letter-spacing:.02em}
+.ds-op-t{min-width:0}
+.ds-clube{margin:0;font:600 30px/1.1 var(--f-body);color:var(--white);overflow-wrap:anywhere}
+.ds-op-t .ds-det{margin:3px 0 0;font:400 24px/1.2 var(--f-body);color:var(--ice);overflow-wrap:anywhere}
+.ds-lista.ds-compacto li{padding:5px 0}
+.ds-lista.ds-compacto .ds-clube{font-size:28px}
+.ds-lista.ds-compacto .ds-escudo{width:46px;height:54px}
+.ds-lista.ds-compacto .ds-det{margin-top:1px}
+.ds-ops .ds-nota{margin:2px 0 0;font:400 24px/1.3 var(--f-body);color:var(--muted)}
+.slide.active .ds-lista li{animation:ds-entra .62s cubic-bezier(.2,.7,.2,1) both}
+.slide.active .ds-lista li:nth-child(1){animation-delay:.42s}
+.slide.active .ds-lista li:nth-child(2){animation-delay:.5s}
+.slide.active .ds-lista li:nth-child(3){animation-delay:.58s}
+.slide.active .ds-lista li:nth-child(4){animation-delay:.66s}
+.slide.active .ds-lista li:nth-child(5){animation-delay:.74s}
+.slide.active .ds-lista li:nth-child(6){animation-delay:.82s}
+.slide.active .ds-escudo path{animation:ds-traco 1.1s ease .55s both}
+.slide.active .ds-nota{animation:ds-sobe .6s ease 1s both}
+@keyframes ds-entra{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+@keyframes ds-traco{from{stroke-dashoffset:180;fill:rgba(200,184,138,0)}60%{fill:rgba(200,184,138,0)}to{stroke-dashoffset:0}}
+@keyframes ds-sobe{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* o plano de carreira: do agora ao destino, a linha cresce enquanto os passos entram */
+.ds-plano{flex:none}
+.ds-direita .ds-plano{margin-top:auto}
+.ds-plano ol{list-style:none;margin:14px 0 0;padding:0;counter-reset:ds}
+.ds-plano li{position:relative;padding:0 0 14px 46px;counter-increment:ds}
+.ds-plano li::before{content:counter(ds,decimal-leading-zero);position:absolute;left:0;top:2px;font:700 24px/1 var(--f-label);letter-spacing:.06em;color:var(--sand)}
+.ds-plano li::after{content:"";position:absolute;left:12px;top:32px;bottom:4px;width:1px;background:var(--sand-dim);transform-origin:top}
+.ds-plano li:last-child::after{display:none}
+.ds-plano li b{display:block;font:700 26px/1.1 var(--f-title);text-transform:uppercase;color:var(--sand-l)}
+.ds-plano li>span{display:block;margin-top:4px;font:400 24px/1.25 var(--f-body);color:var(--body);overflow-wrap:anywhere}
+.ds-plano li.ds-meta b{color:var(--white)}
+.ds-plano li.ds-meta::before{color:var(--olive-l)}
+.ds-plano li.ds-meta>span{color:var(--olive-l);font-weight:600}
+.slide.active .ds-plano li{animation:ds-sobe .6s cubic-bezier(.2,.7,.2,1) both}
+.slide.active .ds-plano li:nth-child(1){animation-delay:.62s}
+.slide.active .ds-plano li:nth-child(2){animation-delay:.76s}
+.slide.active .ds-plano li:nth-child(3){animation-delay:.9s}
+.slide.active .ds-plano li::after{animation:ds-linha .7s ease .8s both}
+@keyframes ds-linha{from{transform:scaleY(0)}to{transform:none}}
+/* o plano embaixo das oportunidades: cada passo numa linha corrida (o nome e o texto juntos), ate duas linhas, pra caber com seis clubes */
+.ds-com-o .ds-direita .ds-plano li{padding-bottom:9px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ds-com-o .ds-direita .ds-plano li b{display:inline;margin-right:10px}
+.ds-com-o .ds-direita .ds-plano li>span{display:inline;margin:0}
+.ds-com-o .ds-direita .ds-plano li>span>span{display:inline}
+.ds-com-o .ds-direita .ds-plano li::after{top:30px;bottom:2px}
+/* o plano sozinho (no centro, ou a direita sem as oportunidades): maior */
+.ds-centro .ds-plano li,.ds-slide:not(.ds-com-o) .ds-direita .ds-plano li{padding:0 0 30px 64px}
+.ds-centro .ds-plano li::before,.ds-slide:not(.ds-com-o) .ds-direita .ds-plano li::before{font-size:32px}
+.ds-centro .ds-plano li::after,.ds-slide:not(.ds-com-o) .ds-direita .ds-plano li::after{left:16px;top:42px}
+.ds-centro .ds-plano li b,.ds-slide:not(.ds-com-o) .ds-direita .ds-plano li b{font-size:40px}
+.ds-centro .ds-plano li>span,.ds-slide:not(.ds-com-o) .ds-direita .ds-plano li>span{font-size:30px;margin-top:8px}
+.ds-slide:not(.ds-com-o) .ds-direita .ds-plano{margin-top:0}
+
+/* ---------------- o inimigo em comum ---------------- */
+.in-slide{background:var(--bg)}
+/* a luz do avaliador: varre o campo uma vez e para longe de quem nao estava perto da bola */
+.in-luz{background-image:radial-gradient(34% 46% at 22% 30%,rgba(226,85,43,.13),rgba(6,11,20,0) 70%),radial-gradient(40% 60% at 84% 64%,rgba(226,85,43,.07),rgba(6,11,20,0) 70%);background-repeat:no-repeat}
+.slide.active .in-luz{animation:in-varre 2.8s cubic-bezier(.45,0,.55,1) both}
+@keyframes in-varre{from{background-position:-520px -60px,0 0;opacity:.2}to{background-position:0 0,0 0;opacity:1}}
+.in-label{color:var(--signal)}
+.in-titulo{line-height:.92}
+.in-frase{margin:0;font:600 46px/1.2 var(--f-body);color:var(--sand-l)}
+.in-frase b{font-weight:800;color:var(--white);text-transform:uppercase;letter-spacing:.02em}
+.slide.active .in-frase b{animation:in-brilho 2.6s ease 1.1s both}
+@keyframes in-brilho{0%{text-shadow:0 0 0 rgba(230,219,184,0)}40%{text-shadow:0 0 34px rgba(230,219,184,.75)}100%{text-shadow:0 0 0 rgba(230,219,184,0)}}
+.in-lista{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:26px}
+.in-lista li{position:relative;padding-left:58px;font:400 34px/1.25 var(--f-body);color:var(--body)}
+.in-lista li b{font-weight:600;color:var(--white)}
+/* o sinal de "nao visto": o circulo e o traco */
+.in-lista li::before{content:"";position:absolute;left:0;top:8px;width:30px;height:30px;border:3px solid var(--signal);border-radius:50%;box-sizing:border-box}
+.in-lista li::after{content:"";position:absolute;left:-2px;top:22px;width:34px;height:3px;background:var(--signal);transform:rotate(-45deg)}
+.slide.active .in-lista li{animation:ds-sobe .6s cubic-bezier(.2,.7,.2,1) both}
+.slide.active .in-lista li:nth-child(1){animation-delay:.24s}
+.slide.active .in-lista li:nth-child(2){animation-delay:.36s}
+.slide.active .in-lista li:nth-child(3){animation-delay:.48s}
+.slide.active .in-lista li::after{animation:in-risca .45s ease both}
+.slide.active .in-lista li:nth-child(1)::after{animation-delay:.62s}
+.slide.active .in-lista li:nth-child(2)::after{animation-delay:.74s}
+.slide.active .in-lista li:nth-child(3)::after{animation-delay:.86s}
+@keyframes in-risca{from{transform:rotate(-45deg) scaleX(0)}to{transform:rotate(-45deg) scaleX(1)}}
+.in-fecho{margin:0;font:600 38px/1.25 var(--f-body);color:var(--white)}
+.in-fecho span{color:var(--sand-l)}
+/* o campo do avaliador: a luz vai com a bola, e voce fica no escuro */
+.in-campo svg{display:block;overflow:visible}
+.in-gramado{fill:rgba(10,20,34,.72);stroke:rgba(200,214,232,.22);stroke-width:2}
+.in-linhas *{fill:none;stroke:rgba(200,214,232,.16);stroke-width:2}
+.in-jog circle{stroke-width:2}
+.in-jog .a{fill:rgba(201,211,223,.32);stroke:rgba(201,211,223,.42)}
+.in-jog .b{fill:rgba(127,147,168,.16);stroke:rgba(127,147,168,.4)}
+.in-jog .v{fill:#FFE3D6;stroke:var(--signal)}
+.in-bola{fill:#fff;stroke:rgba(6,11,20,.6);stroke-width:2}
+.in-eu{fill:var(--sand-l);stroke:var(--bg);stroke-width:2}
+.in-anel{fill:none;stroke:var(--sand-l);stroke-width:2;transform-box:fill-box;transform-origin:center}
+.in-voce text{font:600 24px var(--f-label);letter-spacing:.2em;fill:var(--sand-l)}
+.slide.active .in-olho{animation:in-olho 6.5s ease-in-out .8s infinite alternate}
+.slide.active .in-anel{animation:in-anel 2.4s ease-out 1.2s infinite}
+@keyframes in-olho{0%{transform:translate(0,0)}35%{transform:translate(26px,-10px)}70%{transform:translate(8px,22px)}100%{transform:translate(34px,12px)}}
+@keyframes in-anel{from{transform:scale(.7);opacity:.95}to{transform:scale(2.4);opacity:0}}
+
+/* o preco de procurar no escuro: os numeros contam do zero quando o slide entra (dossie-atleta.js) */
+.in-conta{padding:36px 44px 38px;border:1px solid rgba(226,85,43,.45);background:linear-gradient(160deg,rgba(226,85,43,.09),rgba(10,20,34,.94) 45%);box-shadow:inset 3px 0 0 var(--signal),0 30px 80px rgba(0,0,0,.4)}
+.in-conta .ds-h{color:var(--signal);font-size:24px;letter-spacing:.12em}
+.in-nums{display:grid;grid-template-columns:1fr 1fr;column-gap:20px}
+.in-num{margin-top:20px;min-width:0}
+.in-num.in-gasto{grid-column:1/-1;padding-top:20px;border-top:1px solid var(--line)}
+.in-num b{display:inline-block;max-width:100%;font:800 80px/.9 var(--f-title);color:var(--white);white-space:nowrap;font-variant-numeric:tabular-nums}
+.in-num span{display:block;margin-top:6px;font:500 28px/1.2 var(--f-body);color:var(--body)}
+/* so um dos dois de cima (dossie-atleta.js liga o .in-um): ele ocupa a linha toda */
+.in-nums.in-um>.in-num:not(.in-gasto){grid-column:1/-1}
+.in-sem{list-style:none;margin:26px 0 0;padding:0}
+.in-sem li{position:relative;padding:14px 0 14px 34px;border-bottom:1px solid var(--line);font:500 32px/1.2 var(--f-body);color:var(--white)}
+.in-sem li::before{content:"";position:absolute;left:0;top:27px;width:12px;height:12px;background:var(--signal);transform:rotate(45deg)}
+.slide.active .in-sem li{animation:ds-sobe .6s cubic-bezier(.2,.7,.2,1) both}
+.slide.active .in-sem li:nth-child(1){animation-delay:.4s}
+.slide.active .in-sem li:nth-child(2){animation-delay:.5s}
+.slide.active .in-sem li:nth-child(3){animation-delay:.6s}
+.slide.active .in-sem li:nth-child(4){animation-delay:.7s}
+.in-conta .in-pe{margin:28px 0 0;font:600 30px/1.3 var(--f-body);color:var(--sand-l)}
+
+@media (prefers-reduced-motion:reduce){
+  .slide.active .ds-scan,.slide.active .ds-dados>div,.slide.active .ds-br i,.slide.active .ds-mapa-img>img,.slide.active .ds-lista li,
+  .slide.active .ds-escudo path,.slide.active .ds-nota,.slide.active .ds-plano li,.slide.active .ds-plano li::after,.slide.active .in-luz,
+  .slide.active .in-frase b,.slide.active .in-lista li,.slide.active .in-lista li::after,.slide.active .in-sem li{animation:none!important}
+}

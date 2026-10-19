@@ -1,12 +1,13 @@
 /* Jogador de Elite · Deck R2 (Gestor de Carreiras)
    Modo família (a tela compartilhada) e modo apresentador (?presenter), sincronizados.
-   Vinte e sete slides, na ordem da Bíblia das Vendas (processo-r2): conexão (capa com o inimigo comum, por que você),
+   Trinta e cinco slides, na ordem da Bíblia das Vendas (processo-r2): conexão (capa com o inimigo comum, por que você),
    a dor (03, o olhômetro), o plano (04, com o tripé), o bloco do Zyron (05 a 08: e se, Zyron, vídeo, cinco verbos), a plataforma (09, tela ilustrativa),
    quem olha por ele (11), o seu lugar em campo (12, o campo e o cartão do atleta), olhômetro contra Zyron (15), o que ninguém mais tem, IA na Prática (17, a leitura ao
-   vivo), o depoimento de uma mãe (18, áudio), nem tudo é talento, AGN, a rede (21: AGN, clubes e o David), valor real (revelado item a item), até lá a gente investe,
-   o filtro e a escada do sim, contrato, a vaga (o começo, fora do Legacy), os planos e o número (31, os três com o investimento de cada um, o da
-   ficha destacado e o Silêncio), a garantia com os três valores na tela (32) e boas-vindas (33, com a miniatura do campo). Três planos (window.PLANOS, roteiro.js): o da
-   ficha muda o 31 e o 33, e turma e vaga só aparecem no Legacy. Sem link de pagamento no deck. Elementos com data-step
+   vivo), o dossiê do atleta (18: a foto e os dados, o vídeo analisado pela IA, o mapa de calor, as oportunidades e o plano de carreira; só
+   com dado do painel) e o inimigo em comum (19: o avaliador que não olha todo mundo, e o que as peneiras custam), o depoimento de uma mãe (20, áudio), nem tudo é talento, AGN, a rede (23: AGN, clubes e o David), valor real (revelado item a item), até lá a gente investe,
+   o filtro e a escada do sim, contrato, a vaga (o começo, fora do Legacy), os planos e o número (33, os três com o investimento de cada um, o da
+   ficha destacado e o Silêncio), a garantia com os três valores na tela (34) e boas-vindas (35, com a miniatura do campo). Três planos (window.PLANOS, roteiro.js): o da
+   ficha muda o 33 e o 35, e turma e vaga só aparecem no Legacy. Sem link de pagamento no deck. Elementos com data-step
    aparecem um avanço por vez. A leitura do atleta (17): com o vídeo dele no painel (?a=<id>), o 17 mostra o vídeo, o nome e o
    relatório que o Gestor deixou pronto (relatorio-leitura.js); sem vídeo, painel fora do ar ou vídeo que não carrega, o 17 de
    sempre, com a leitura ao vivo no Meet, sem erro na tela da família (o apresentador é que fica sabendo). */
@@ -15,6 +16,8 @@
   /* o Painel do Closer (projeto jogador-de-elite-closer): o único lugar de onde o deck lê o atleta do link (?a=<código>) */
   const PAINEL = 'https://jogador-de-elite-closer.vercel.app';
   const PAINEL_ORIGEM = new URL(PAINEL).origin;
+  // a prévia do painel (o link ainda não foi gerado): a chave &p= vai em todo pedido ao painel (foto-atleta.js)
+  const comChave = u => (window.FotoAtleta && window.FotoAtleta.comChave ? window.FotoAtleta.comChave(u) : u);
   const qs = (s, r = document) => r.querySelector(s);
   const qsa = (s, r = document) => Array.from(r.querySelectorAll(s));
   // o código do link: 26 letras (a-z e 2-7), sem nome nenhum. Outro formato não vale: o deck age como sem link
@@ -228,9 +231,9 @@
     d.nomeCurto = str(ficha.apelido) || nomes.primeiro;
     d.nome = semNome ? '' : str(ficha.apelido) || (modoNome === 'so-nome' ? nomes.primeiro : nomes.tela);
     d.nomeUp = d.nome.toUpperCase();
-    d.nomeLongo = d.nome.length > 12 ? '1' : ''; // 13 letras ou mais: o titulo do 25 quebra em duas linhas e a lista precisa de menos folga
+    d.nomeLongo = d.nome.length > 12 ? '1' : ''; // 13 letras ou mais: o titulo do 27 quebra em duas linhas e a lista precisa de menos folga
     d.nomeMuitoLongo = d.nome.length > 21 ? '1' : ''; // 22 letras ou mais: o titulo do 4 (110 px) quebra em duas linhas
-    // o rótulo do nome no campo (12 e 33) é pequeno: até 12 letras leva o nome da tela; passou, o nome falado, ou só o primeiro nome
+    // o rótulo do nome no campo (12 e 35) é pequeno: até 12 letras leva o nome da tela; passou, o nome falado, ou só o primeiro nome
     d.nomeCampo = d.nome.length <= 12 ? d.nome : (d.nomeCurto.length <= 12 ? d.nomeCurto : (d.nomeCurto.split(' ')[0] || d.nome));
     d.nomeCampoUp = d.nomeCampo.toUpperCase();
     d.nomeCompleto = nomeCompleto;
@@ -244,8 +247,8 @@
     // Foto que não carrega: cai na inicial do nome, nunca no ícone de imagem quebrada
     const ft = !semNome && !semFoto && ficha._foto && typeof ficha._foto === 'object' && ficha._foto.ok ? ficha._foto : null;
     const fv = ft ? parseInt(ft.versao, 10) || 0 : 0;
-    d.fotoUrl = ft ? (AID ? (fv ? PAINEL + '/api/foto?t=' + AID + '&v=retrato&n=' + fv : '') : str(ft.src)) : '';
-    d.avatarUrl = ft ? (AID ? (fv ? PAINEL + '/api/foto?t=' + AID + '&v=avatar&n=' + fv : '') : str(ft.avatarSrc || ft.src)) : '';
+    d.fotoUrl = ft ? (AID ? (fv ? comChave(PAINEL + '/api/foto?t=' + AID + '&v=retrato&n=' + fv) : '') : str(ft.src)) : '';
+    d.avatarUrl = ft ? (AID ? (fv ? comChave(PAINEL + '/api/foto?t=' + AID + '&v=avatar&n=' + fv) : '') : str(ft.avatarSrc || ft.src)) : '';
     d.fotoOk = d.fotoUrl && !fotoFalhou ? '1' : '';
     d.avatarOk = d.avatarUrl && !avatarFalhou ? '1' : '';
     d.fotoTxt = d.fotoOk ? 'sim' + (AID ? ', do painel, com a autorização do responsável' : ' (teste)') : '';
@@ -254,7 +257,7 @@
     d.garantiaTitulo = str(G.titulo); d.garantiaDestaque = str(G.destaque); d.garantiaCondicao = str(G.condicao);
     // a camada a mais (opção B do D1, ex.: 7 dias incondicionais) só existe se o contrato disser; vazia, some
     d.garantiaCamada1 = Array.isArray(G.camadas) && G.camadas.length ? str(G.camadas[0]) : '';
-    // o tempo (slide 25, o que ele leva): o que a casa controla, nos prazos da lista fixa
+    // o tempo (slide 27, o que ele leva): o que a casa controla, nos prazos da lista fixa
     const comeca = s => (s ? s[0].toUpperCase() + s.slice(1) : '');
     d.tempoContato = (comeca(d.prazoContato) || 'Confirmado') + ', ' + (planoDe(ficha.plano) && planoDe(ficha.plano).id === 'legacy' ? 'o gerente de carreira' : 'a equipe') + ' entra em contato.';
     d.tempoZyron = (comeca(d.prazoZyron) || 'Em seguida') + ', o Zyron começa.';
@@ -263,20 +266,20 @@
     d.idadeMais1 = Number.isFinite(idade) ? String(idade + 1) : '';
     d.posicaoMin = str(ficha.posicao).toLowerCase();
     d.posicaoUp = str(ficha.posicao).toUpperCase();
-    d.posId = posicaoNoCampo(ficha.posicao); // o marcador do atleta no campo (12 e 33): GOL, LD, ZAG-d, VOL-e...
+    d.posId = posicaoNoCampo(ficha.posicao); // o marcador do atleta no campo (12 e 35): GOL, LD, ZAG-d, VOL-e...
     d.posCampo = d.posId ? str(ficha.posicao) + ' (' + d.posId.split('-')[0] + ')' : '';
     d.peTxt = peTxt(ficha.pe);
     d.alturaTxt = alturaTxt(ficha.altura);
     // o código do dossiê: os 8 caracteres finais do id do painel (?a=<id>), em caixa alta. É só o registro dele, nunca vaga ou fila
     const aid = AID || str(ficha._a);
-    d.dossieCod = aid && !semNome ? aid.replace(/[^A-Za-z0-9]/g, '').slice(-8).toUpperCase() : '';
-    d.dossieNo = d.dossieCod ? 'Nº ' + d.dossieCod : '';
+    d.dossieCod = ''; // o número do dossiê saiu da tela (pedido do dono, 18/10/2026): nada na tela mostra o código do link
+    d.dossieNo = '';
     // a leitura do atleta (17): o vídeo e o relatório que o painel guardou (ficha._video e ficha._leitura, do carregaPainel).
     // Com o link do painel, o vídeo sai de /api/video; sem ele (teste com a ficha gravada à mão), de _video.src
     const vid = !semNome && ficha._video && typeof ficha._video === 'object' ? ficha._video : null;
     const vidOk = !!(vid && vid.ok);
-    d.videoSrc = vidOk ? (AID ? PAINEL + '/api/video?t=' + AID : str(vid.src)) : '';
-    d.posterUrl = vidOk && vid.temPoster ? (AID ? PAINEL + '/api/video?t=' + AID + '&poster=1' : str(vid.posterSrc)) : '';
+    d.videoSrc = vidOk ? (AID ? comChave(PAINEL + '/api/video?t=' + AID) : str(vid.src)) : '';
+    d.posterUrl = vidOk && vid.temPoster ? (AID ? comChave(PAINEL + '/api/video?t=' + AID + '&poster=1') : str(vid.posterSrc)) : '';
     d.videoOk = d.videoSrc && !videoFalhou ? '1' : '';
     d.posterOk = d.posterUrl && !posterFalhou ? '1' : '';
     const RL = window.RelatorioLeitura;
@@ -299,13 +302,18 @@
     d.planoNome = str(pl.nome);
     ['descritor', 'promessa', 'ritmo', 'preco', 'parcela', 'rotulo', 'relacao', 'bemVindo', 'rotina', 'proximo'].forEach(k => { d['plano' + cap(k)] = str(pl[k]); });
     ['turma', 'garantia', 'contrato', 'ancora', 'retorno'].forEach(k => { d['plano' + cap(k)] = pl[k] ? '1' : ''; });
-    d.planoSelo = str(pl.selo || pl.descritor); // o papel no cartão do 33, sem conta de preço
+    d.planoSelo = str(pl.selo || pl.descritor); // o papel no cartão do 35, sem conta de preço
     d.planoExtras = Array.isArray(pl.extras) && pl.extras.length ? '1' : '';
-    // cada plano, pra matriz do 31 e o tripé do 04: data-bind="pro.descritor", "legacy.ritmo", "scouting.passo"...
+    // cada plano, pra matriz do 33 e o tripé do 04: data-bind="pro.descritor", "legacy.ritmo", "scouting.passo"...
     PLANOS.forEach(p => ['nome', 'curto', 'descritor', 'ritmo', 'preco', 'parcela', 'passo'].forEach(k => { d[p.id + '.' + k] = str(p[k]); }));
-    // o rótulo da parte de cada plano no 31: o primeiro degrau tem tudo, vitalício; os outros, tudo do degrau de baixo, mais
+    // o rótulo da parte de cada plano no 33: o primeiro degrau tem tudo, vitalício; os outros, tudo do degrau de baixo, mais
     PLANOS.forEach((p, i) => { d[p.id + '.mais'] = i ? 'Tudo ' + doPlano(PLANOS[i - 1]) + ', mais' : 'Vitalício, você tem'; });
     if (window.FotoAtleta) Object.assign(d, window.FotoAtleta.derivados(ficha, d, AID, PAINEL));
+    // o dossiê do atleta (18) e o inimigo em comum (19): dossie-atleta.js
+    if (window.DossieAtleta) Object.assign(d, window.DossieAtleta.derivados(ficha, d, AID, PAINEL));
+    // "Tenho o vídeo do jogador" ligado e sem lances marcados: o vídeo analisado vai pro dossiê (18) e o 17 fica a ponte, a leitura ao
+    // vivo de sempre (nunca o mesmo vídeo duas vezes seguidas, um deles com "Leitura em preparação")
+    if (d.dsV && !d.leituraOk) { d.videoOk = ''; d.videoSrc = ''; d.leituraResumo = 'vídeo analisado: no dossiê (18), com o 17 de ponte'; }
     return d;
   }
 
@@ -330,7 +338,14 @@
      avançar e voltar passam direto por eles, sem renumerar (os números dos outros slides, o roteiro e as notas seguem como estão).
      Ir direto a um deles (hash, número + Enter, visão geral, apresentador) continua valendo: é a saída pra quando a família pergunta */
   const tirados = () => str(ficha.pular).split(',').map(s => s.trim()).filter(Boolean);
-  const pulaSlide = i => { const o = i >= 0 && i < N ? slides[i].dataset.opcional : ''; return !!o && tirados().indexOf(o) >= 0; };
+  // e o slide que só existe com dado do painel (data-so-se: o dossiê do 18, sem vídeo, mapa nem oportunidades) também sai da sequência
+  let dAtual = null; // os dados da última pintura (applyBind)
+  const pulaSlide = i => {
+    if (!(i >= 0 && i < N)) return false;
+    const o = slides[i].dataset.opcional, c = slides[i].dataset.soSe;
+    if (o && tirados().indexOf(o) >= 0) return true;
+    return !!c && !cond(c, dAtual || derived());
+  };
   // o primeiro slide a partir de i, andando em dir (1 ou -1), que não foi tirado; -1 se acabou
   const vizinho = (i, dir) => { let k = i; while (k >= 0 && k < N && pulaSlide(k)) k += dir; return k >= 0 && k < N ? k : -1; };
   // data-soma mostra a soma dos data-valor já revelados (sobe a cada avanço); data-marca="n" ganha destaque a partir do passo n
@@ -383,17 +398,16 @@
       '<rect x="170" y="280" width="450" height="164" rx="6" fill="#0A1422" stroke="#C8B88A" stroke-opacity=".75" stroke-width="1.5"/>' +
       '<text x="200" y="330" font-family="Barlow Condensed" font-weight="600" font-size="26" letter-spacing="6" fill="#C8B88A">DOSSIÊ DO ATLETA</text>' +
       '<text x="198" y="400" font-family="Saira Condensed" font-weight="800" font-size="66" fill="#FFFFFF" data-bind="nomeDossie" data-fit-svg="390"></text>' +
-      '<text x="200" y="432" font-family="Barlow Condensed" font-weight="600" font-size="26" letter-spacing="4" fill="#7F93A8" data-bind="dossieNo"></text>' +
       '<g transform="rotate(-8 566 226)"><rect x="472" y="196" width="188" height="60" rx="4" fill="rgba(6,11,20,.55)" stroke="#9DB06A" stroke-width="3"/><text x="566" y="237" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="32" letter-spacing="5" fill="#9DB06A">APROVADO</text></g>' +
       '<rect x="664" y="170" width="20" height="410" fill="#C8B88A" opacity=".85"/><rect x="664" y="170" width="4" height="410" fill="#F1E9CF" opacity=".6"/>' +
       '</svg>';
   }
   qsa('[data-dossier="closed"]').forEach(el => { el.innerHTML = dossierClosed(); });
 
-  /* o campo (data-campo="cheio" no 12, "mini" no 33): formação 4-3-3 ilustrativa, vista de cima, com o ataque pra cima.
+  /* o campo (data-campo="cheio" no 12, "mini" no 35): formação 4-3-3 ilustrativa, vista de cima, com o ataque pra cima.
      O atleta (posId) vem preenchido em areia, com anel gelo estático e o nome num chip; os outros marcadores ficam apagados
      (aço sobre navy). Nenhum jogador, escudo ou clube. Sem posição reconhecida: o 12 fica sem destaque, com "O seu lugar entra
-     aqui.", e o 33 esconde a miniatura (data-if="posId"). Na miniatura, os outros marcadores viram pontos, sem sigla. */
+     aqui.", e o 35 esconde a miniatura (data-if="posId"). Na miniatura, os outros marcadores viram pontos, sem sigla. */
   const CAMPO_XY = { CA: [.5, .15], ALE: [.17, .25], ADD: [.83, .25], MC: [.5, .42], 'VOL-e': [.27, .56], 'VOL-d': [.73, .56],
     LE: [.12, .73], 'ZAG-e': [.37, .78], 'ZAG-d': [.63, .78], LD: [.88, .73], GOL: [.5, .92] };
   const CW = 500, CH = 773;
@@ -481,7 +495,7 @@
       (n ? '<p class="you-l">Vaga reservada' + (d.nome ? ': ' + esc(d.nomeUp) : '') + '</p>' : '');
   }
 
-  /* planos: o nome com a cor da marca (data-plano-marca="pro" ou "atual"), a parte de cada plano no 31, cargo por cargo
+  /* planos: o nome com a cor da marca (data-plano-marca="pro" ou "atual"), a parte de cada plano no 33, cargo por cargo
      (data-plano-vantagens="pro", de window.PLANOS[].vantagens), as listas do plano da ficha (data-plano-lista="inclui", sem tela por ora)
      e um texto do plano da ficha com o Zyron em azul (data-plano-campo="rotina") */
   const comZyron = t => esc(t).replace(/Zyron/g, '<span class="ice">Zyron</span>');
@@ -494,7 +508,7 @@
     const porId = id => (id === 'atual' ? atual : PLANOS.find(p => p.id === id)) || null;
     qsa('[data-plano-atual]', root).forEach(e => { e.dataset.planoAtual = atual ? atual.id : ''; }); // a cor da etiqueta segue o plano
     qsa('[data-plano-marca]', root).forEach(e => { e.innerHTML = marcaHtml(porId(e.dataset.planoMarca)); });
-    // a parte de cada plano no 31: [cargo, benefício], só o que ele acrescenta ao degrau de baixo
+    // a parte de cada plano no 33: [cargo, benefício], só o que ele acrescenta ao degrau de baixo
     qsa('[data-plano-vantagens]', root).forEach(e => {
       const p = porId(e.dataset.planoVantagens), v = p && Array.isArray(p.vantagens) ? p.vantagens : [];
       // [cargo, benefício, chave]: com chave, a linha só aparece se o plano tiver a chave (ex.: turma, P5)
@@ -566,6 +580,8 @@
     qsa('[data-ifnot]', root).forEach(e => e.classList.toggle('off', cond(e.dataset.ifnot, d)));
     if (root === document) { qsa('[data-fit-svg]').forEach(fitSvg); qsa('[data-fit]').forEach(fitHtml); ajustaChips(document); }
     if (window.FotoAtleta) window.FotoAtleta.atualiza(root, d);
+    if (window.DossieAtleta) window.DossieAtleta.atualiza(root, d);
+    dAtual = d;
     return d;
   }
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -604,7 +620,7 @@
   };
   function carregaPainel(depois, aviso, vai) {
     if (!AID || typeof fetch !== 'function') { liberaTela(); return; }
-    fetch(PAINEL + '/api/r2?t=' + AID, { cache: 'no-store' })
+    fetch(comChave(PAINEL + '/api/r2?t=' + AID), { cache: 'no-store' })
       .then(r => r.json().then(j => ({ status: r.status, j }), () => ({ status: r.status, j: null })))
       .then(({ status, j }) => {
         const est = j && j.estado;
@@ -620,6 +636,8 @@
           if (j.video && j.video.ok) ficha._video = j.video; else delete ficha._video;
           if (j.video && j.video.ok && j.leitura) ficha._leitura = j.leitura; else delete ficha._leitura;
           if (j.foto && j.foto.ok && Number(j.foto.versao) > 0) ficha._foto = { ok: true, versao: Number(j.foto.versao) }; else delete ficha._foto;
+          // o mapa de calor do dossiê (18): só vem com "Tenho o vídeo do jogador" ligado; a versão vai no endereço
+          if (j.mapa && j.mapa.ok && Number(j.mapa.versao) > 0) ficha._mapa = { ok: true, versao: Number(j.mapa.versao) }; else delete ficha._mapa;
           if (JSON.stringify(ficha._video || null) !== videoAntes) { videoFalhou = false; posterFalhou = false; }
           if ((ficha._foto ? ficha._foto.versao : 0) !== fotoAntes) { fotoFalhou = false; avatarFalhou = false; }
           ficha._a = AID; ficha._p = Object.keys(f); ficha._vistoEm = Date.now();
@@ -630,7 +648,8 @@
           liberaTela();
           depois();
           if (aviso) aviso('O atleta deste link veio do painel' + (f.nome ? ': ' + f.nome : '') + '. O que veio do painel vale sobre esta ficha; pra mudar de vez, mude no painel.' +
-            (j.video && j.video.ok ? (j.leitura ? '' : ' O vídeo está no painel, mas sem lances marcados: o 17 mostra só o vídeo.') : ' Sem vídeo no painel: o 17 vai pra leitura ao vivo.'), true);
+            (f.temVideo === 'sim' && j.video && j.video.ok ? (j.leitura ? ' O vídeo analisado entra no 17 (lance a lance) e no dossiê (18).' : ' O vídeo analisado entra no dossiê (18); o 17 fica de ponte, com a leitura ao vivo.')
+              : j.video && j.video.ok ? (j.leitura ? '' : ' O vídeo está no painel, mas sem lances marcados: o 17 mostra só o vídeo.') : ' Sem vídeo no painel: o 17 vai pra leitura ao vivo.'), true);
           return;
         }
         if ((status === 200 || status === 404) && MOTIVO[est]) { linkInativo(est, aviso); depois(); return; }
@@ -721,6 +740,8 @@
     else if (k === 'avatarUrl' && !avatarFalhou) { avatarFalhou = true; applyBind(document); send({ t: 'fotoFalhou' }); }
   }, true);
   window.addEventListener('je-foto-atleta', () => applyBind(document));
+  // o vídeo, o quadro ou o mapa do dossiê não carregou: some da tela (dossie-atleta.js)
+  window.addEventListener('je-dossie', () => applyBind(document));
   applyBind(document);
   // as medidas do nome (data-fit, o chip do campo) dependem da fonte: refaz quando ela termina de carregar
   try { document.fonts.ready.then(() => applyBind(document)); } catch (e) { /* sem document.fonts */ }
@@ -937,7 +958,7 @@
       else if (m.t === 'local') applyBind(document);
       else if (m.t === 'seek') { go(m.slide); seek(document.getElementById(m.id), m.time); }
       else if (m.t === 'pause') pauseIn(slides[cur]);
-      else if (m.t === 'som' && va) { va.muted = !va.muted; }
+      else if (m.t === 'som') { const v = document.getElementById(m.id || 'v-atleta'); if (v) v.muted = !v.muted; }
     });
     send({ t: 'state', i: cur, step });
     carregaPainel(() => { applyBind(document); send({ t: 'ficha', ficha }); }, null, true);
@@ -999,7 +1020,8 @@
       const map = {
         '[atleta]': d.nomeCurto, '[responsável]': first(ficha.responsavel), '[pai]': first(ficha.pai), '[mãe]': first(ficha.mae), '[gerente]': d.gerente,
         '[idade]': d.idade, '[idade + 1]': d.idadeMais1, '[característica]': d.caracteristicas, '[experiência]': d.experiencia, '[sonho]': d.sonho,
-        '[primeiro foco]': d.trabalhar, '[locomoção]': d.locomocao, '[dor]': d.dor, '[peneiras]': d.peneiras, '[investido]': d.investido, '[vagas]': d.vagas,
+        '[primeiro foco]': d.trabalhar, '[locomoção]': d.locomocao, '[dor]': d.dor, '[peneiras]': d.peneiras || d.inPeneirasTxt, '[investido]': d.investido || d.inGasto,
+        '[nº de peneiras]': d.inPeneirasTxt, '[gasto com peneiras]': d.inGasto, '[anos tentando]': d.inAnosTxt, '[oportunidades]': (d.dsOps || []).map(o => o.clube).join(', ').replace(/, ([^,]*)$/, ' e $1'), '[vagas]': d.vagas,
         '[faixa]': d.faixaContrato, '[link AGN]': d.linkAgn,
         '[caso]': str(ficha.casoNome), '[clube do caso]': str(ficha.casoClube), '[país do caso]': str(ficha.casoPais), '[link do caso]': str(ficha.casoLink),
         '[hora]': str(ficha.horaRetorno), '[posição]': str(ficha.posicao).toLowerCase(),
@@ -1020,7 +1042,7 @@
       refreshAll(applyBind(document));
     }
 
-    /* ----- trocar de plano (31 e aba Fechamento): a tela da família acompanha ----- */
+    /* ----- trocar de plano (33 e aba Fechamento): a tela da família acompanha ----- */
     let troca = null; // a última troca: { de, para }, pra mostrar o que sai ao descer e o que entra ao subir
     const emLista = arr => (arr.length > 1 ? arr.slice(0, -1).join(', ') + ' e ' + arr[arr.length - 1] : arr[0] || '');
     function trocaHtml() {
@@ -1084,6 +1106,7 @@
         const el = document.getElementById(vid);
         // depoimento em áudio: tocar do início e pausar na tela da família
         if (el && el.tagName === 'AUDIO') h = `<div class="pz-ctl"><p class="pz-h">Áudio na tela da família (compartilhe com áudio)</p><div class="pz-mode"><button data-seek="0" data-vid="${vid}">Tocar do início</button><button data-a="vpause">Pausar</button></div><p class="pz-small">Espaço no deck também dá play e pausa.</p></div>`;
+        else if (vid === 'v-dossie') h = `<div class="pz-ctl"><p class="pz-h">O vídeo analisado pela IA, na tela da família (compartilhe com áudio)</p><div class="pz-mode"><button data-seek="0" data-vid="v-dossie">Do início</button><button data-a="som" data-vid="v-dossie">Som</button><button data-a="vpause">Pausar</button></div><p class="pz-small">O vídeo começa mudo: Som liga o áudio. Espaço no deck também dá play e pausa.</p></div>`;
         else {
           const ch = qsa('.chapters li', slides[cur]).map(li => [li.dataset.t, qs('.tm', li).textContent, qs('.ct', li).textContent]);
           const atleta = vid === 'v-atleta', d = derived();
@@ -1091,7 +1114,8 @@
             (atleta ? (d.leituraOk ? `<p class="pz-small"><b>Fonte desta leitura: ${d.leituraFonte === 'zyron' ? 'o Zyron' : 'a equipe'}.</b> ${d.leituraFonte === 'zyron' ? 'Pode dizer que o Zyron leu.' : 'Diga "a nossa equipe leu o seu vídeo". Não diga que o Zyron leu: esses lances foram marcados à mão.'} O vídeo começa mudo: Som liga o áudio.</p>` : '<p class="pz-small"><b>Só o vídeo, sem lances:</b> a tela mostra "Leitura em preparação". Marque os lances no painel (Leitura do atleta) e recarregue o deck.</p>') : '') + '</div>';
         }
       } else if (slides[cur].dataset.videoSe) {
-        h = '<div class="pz-ctl warn"><p class="pz-h">Sem vídeo do atleta no painel</p><p class="pz-say">O 17 está na leitura ao vivo, como sempre: troque o compartilhamento pro vídeo dele no Meet. Pra mostrar o jogo dele lance a lance, suba o vídeo na Leitura do atleta, no painel.</p></div>';
+        h = derived().dsV ? '<div class="pz-ctl"><p class="pz-h">O vídeo analisado entra no próximo slide (o dossiê, 18)</p><p class="pz-say">Com "Tenho o vídeo do jogador" ligado e sem lances marcados, o 17 é a ponte: "agora é com o seu". Não rode a leitura no Meet: avance e dê o play no dossiê.</p></div>'
+          : '<div class="pz-ctl warn"><p class="pz-h">Sem vídeo do atleta no painel</p><p class="pz-say">O 17 está na leitura ao vivo, como sempre: troque o compartilhamento pro vídeo dele no Meet. Pra mostrar o jogo dele lance a lance, suba o vídeo na Leitura do atleta, no painel.</p></div>';
       }
       if (cur <= 1) h = `<div class="pz-ctl"><p class="pz-h">Origem do lead (muda o texto na tela)</p><div class="pz-mode">${[['Zyron', 'Zyron'], ['Formulário do Instagram', 'Formulário'], ['Frio, sem vídeo', 'Sem contexto']].map(([v, l]) => `<button data-origem="${esc(v)}" class="${o === v ? 'on' : ''}">${l}</button>`).join('')}</div></div>`;
       // os planos são também o slide do número: o último avanço destaca o plano da ficha; trocar aqui move o destaque na tela
@@ -1102,7 +1126,17 @@
         h = `<div class="pz-ctl"><p class="pz-h">Fale o número e pare</p><p class="pz-say">${fala}</p><p class="pz-small"><b>Na tela, os três planos; o último avanço destaca:</b> ${esc(p.nome || '')}, ${esc(p.preco || '')} vitalício e 10x sem juros de ${esc(p.parcela || '')}. Link de pagamento: fora do deck, pelo WhatsApp, só depois do sim.</p></div>` +
           planoCtl('Plano da ficha (o último avanço destaca na tela como a sua recomendação). Trocar de plano é pelo escopo, nunca por desconto');
       }
-      // o campo (12) e a miniatura (33) dependem da posição da ficha
+      // o dossiê (18): o que está na tela agora; vazio, as setas passam direto. O inimigo em comum (19): os números da família
+      if (slides[cur].classList.contains('ds-slide')) {
+        const d = derived();
+        h += d.dsMostra ? `<div class="pz-ctl"><p class="pz-h">No dossiê agora</p><p class="pz-say">${esc(d.dsResumo)}. Embaixo da foto: ${esc((d.dsDados || []).map(x => x[0].toLowerCase()).join(', ') || 'nenhum dado')}.</p><p class="pz-small">Oportunidades são clubes que procuram esse perfil, mapeados pela equipe: nunca diga que o clube já pediu o [atleta] nem prometa vaga, clube ou prazo.</p></div>`
+          : '<div class="pz-ctl warn"><p class="pz-h">Dossiê vazio: as setas passam direto por ele</p><p class="pz-say">Pra ele aparecer: no painel, ligue "Tenho o vídeo do jogador" e suba o vídeo analisado ou o mapa de calor, ou preencha as oportunidades. Depois, Atualizar do painel.</p></div>';
+      }
+      if (slides[cur].classList.contains('in-slide')) {
+        const d = derived(), nums = [d.inPeneirasTxt, d.inGasto ? d.inGasto + ' gastos' : '', d.inAnosTxt ? d.inAnosTxt + ' tentando' : ''].filter(Boolean);
+        h += `<div class="pz-ctl"><p class="pz-h">O preço de procurar no escuro</p><p class="pz-say">${nums.length ? 'Na tela, os números da família: ' + esc(nums.join(', ')) + '. Eles contam do zero quando o slide entra.' : 'Sem números no painel: a tela mostra a conta sem números (inscrição, viagem, o dia de trabalho, a espera). Pergunte e anote no painel, em As peneiras dele.'}</p></div>`;
+      }
+      // o campo (12) e a miniatura (35) dependem da posição da ficha
       const campo = qs('[data-campo]', slides[cur]);
       if (campo) {
         const d = derived(), pos = str(ficha.posicao);
@@ -1135,7 +1169,7 @@
       if (b.dataset.seek != null) { send({ t: 'seek', id: b.dataset.vid, slide: cur, time: parseFloat(b.dataset.seek) }); return; }
       const a = b.dataset.a;
       if (a === 'vpause') send({ t: 'pause' });
-      if (a === 'som') send({ t: 'som' });
+      if (a === 'som') send({ t: 'som', id: b.dataset.vid || 'v-atleta' });
       if (a === 'prev') send({ t: 'prev' });
       if (a === 'next') send({ t: 'next' });
       if (a === 'timer') toggleTimer();
@@ -1188,7 +1222,7 @@
       if (!silOn) {
         silOn = true; silStart = Date.now(); silReturn = null; b.classList.add('on');
         // nos pontos de pergunta e silêncio do roteiro (03 e 17, campo silencio), conta ali mesmo; de qualquer outro slide,
-        // o Silêncio leva ao momento do número (31, data-silencio), sem revelar o que vem depois dele, e volta quando para
+        // o Silêncio leva ao momento do número (33, data-silencio), sem revelar o que vem depois dele, e volta quando para
         const aqui = cur === SILENCE_SLIDE || !!(ROT[cur] && ROT[cur].silencio);
         if (!aqui) { silReturn = cur; const ps = parseInt(slides[SILENCE_SLIDE].dataset.silencio, 10); send({ t: 'goto', i: SILENCE_SLIDE, step: Number.isFinite(ps) ? ps : undefined }); }
       }
@@ -1206,9 +1240,10 @@
       ['Atleta (a família vê)', [
         ['nome', 'Nome completo do atleta', 'text', 'Vai na capa (Montado para). A tela usa o nome e o último sobrenome daqui (João Pedro da Silva vira João Pedro Silva); com o link, a escolha "Nome na tela" do painel pode mudar isso'],
         ['apelido', 'Como a gente chama ele', 'text', 'Vazio: a tela usa nome e sobrenome e a fala, o primeiro nome. Escreva só se for outro jeito (Joãozinho, ou Lucas Almeida)'], ['idade', 'Idade', 'number'],
-        ['posicao', 'Posição', 'text', 'Desenha o campo do slide 12 (e a miniatura do 33). Ex.: goleiro, lateral direito, zagueiro, volante, meia, ponta esquerda, atacante. Posição que o deck não reconhece: o campo fica sem destaque'], ['cidade', 'Cidade', 'text'],
+        ['posicao', 'Posição', 'text', 'Desenha o campo do slide 12 (e a miniatura do 35). Ex.: goleiro, lateral direito, zagueiro, volante, meia, ponta esquerda, atacante. Posição que o deck não reconhece: o campo fica sem destaque'], ['cidade', 'Cidade', 'text'],
         ['pe', 'Pé', 'select', 'Cartão do slide 12. Vazio: a linha some', ['', 'Destro', 'Canhoto', 'Ambidestro']],
-        ['altura', 'Altura (cm)', 'number', 'Cartão do slide 12, em metros. Vazio: a linha some'],
+        ['altura', 'Altura (cm)', 'number', 'Cartão do slide 12 e dossiê (18), em metros. Vazio: a linha some'],
+        ['categoria', 'Categoria', 'text', 'Dossiê (18), embaixo da foto. Ex.: Sub-17'], ['clubeAtual', 'Onde joga hoje', 'text', 'Dossiê (18), embaixo da foto. Ex.: Sub-17 do Vasco'],
         ['origem', 'Origem do lead', 'select', 'Muda os slides 01 e 02: Zyron (o Zyron viu), formulário (a história dele) ou sem contexto', ORIGENS],
         ['caracteristicas', 'O que chamou atenção no Zyron', 'text', 'Do Contexto do CRM. Aparece no 02 se veio do Zyron'],
         ['experiencia', 'Experiência que ele contou no formulário', 'text', 'Do Contexto do CRM. Ex.: Sub-15 do América de Natal. Aparece no 02 se veio do formulário']
@@ -1224,25 +1259,29 @@
         ['prazoContato', 'Quando o gerente entra em contato', 'select', 'Lista fixa: só o que a operação cumpre', [''].concat((window.PRAZOS || {}).contato || [])],
         ['prazoZyron', 'Quando o Zyron começa', 'select', 'Lista fixa: só o que a operação cumpre', [''].concat((window.PRAZOS || {}).zyron || [])]
       ]],
-      ['Caso espelho (a família vê no 20)', [
-        ['casoNome', 'Atleta nosso com o mesmo perfil', 'text', 'O "ele me lembra muito você". Só caso real: tabela do CASOS.md ou publicado na AGN. Vazio: o quadro some do 20'],
+      ['Caso espelho (a família vê no 22)', [
+        ['casoNome', 'Atleta nosso com o mesmo perfil', 'text', 'O "ele me lembra muito você". Só caso real: tabela do CASOS.md ou publicado na AGN. Vazio: o quadro some do 22'],
         ['casoClube', 'Clube que ele fechou', 'text', 'Ex.: Wigan Athletic'], ['casoPais', 'País do clube', 'text', 'Ex.: Inglaterra'],
         ['casoLink', 'Link da publicação dele na AGN', 'text', 'Pra mandar no WhatsApp na hora em que você fala o nome']
       ]],
       ['Contrato, garantia e AGN', [
-        ['faixaContrato', 'Quanto um atleta nosso fecha', 'text', 'Aparece no 29, seguido de "por mês". Padrão: R$ 20 a 30 mil+. Só o que vocês comprovam com contrato'],
-        ['garantiaPrazo', 'Prazo da garantia (se houver)', 'text', 'Ex.: nos primeiros 7 dias. Vazio: a linha some do 32'],
-        ['linkAgn', 'Link da AGN Football', 'text', 'Pra mandar no WhatsApp durante os slides 20 e 21']
+        ['faixaContrato', 'Quanto um atleta nosso fecha', 'text', 'Aparece no 31, seguido de "por mês". Padrão: R$ 20 a 30 mil+. Só o que vocês comprovam com contrato'],
+        ['garantiaPrazo', 'Prazo da garantia (se houver)', 'text', 'Ex.: nos primeiros 7 dias. Vazio: a linha some do 34'],
+        ['linkAgn', 'Link da AGN Football', 'text', 'Pra mandar no WhatsApp durante os slides 22 e 23']
       ]],
       ['Turma e investimento', [
-        ['vagas', 'Vagas restantes (número real da semana)', 'number', 'Só no Legacy (18, 28 e 30)'], ['proximaTurma', 'Próxima turma abre em', 'text', 'Só no Legacy (30)'],
-        ['plano', 'Plano que vou recomendar', 'select', 'A tela da família mostra este plano: o destaque e o número do 31 e o 33 (turma e vaga só no Legacy). Regra da casa: Legacy se a ficha não mostra aperto financeiro; Assessoria PRO se a dor financeira é forte ou na objeção de caixa depois do Legacy; Scouting só se o caixa não comporta o PRO. Vazio ou nome antigo: a tela mostra o Legacy', [''].concat(PLANOS.map(p => p.nome))],
+        ['vagas', 'Vagas restantes (número real da semana)', 'number', 'Só no Legacy (20, 30 e 32)'], ['proximaTurma', 'Próxima turma abre em', 'text', 'Só no Legacy (32)'],
+        ['plano', 'Plano que vou recomendar', 'select', 'A tela da família mostra este plano: o destaque e o número do 33 e o 35 (turma e vaga só no Legacy). Regra da casa: Legacy se a ficha não mostra aperto financeiro; Assessoria PRO se a dor financeira é forte ou na objeção de caixa depois do Legacy; Scouting só se o caixa não comporta o PRO. Vazio ou nome antigo: a tela mostra o Legacy', [''].concat(PLANOS.map(p => p.nome))],
         ['horaRetorno', 'Hora do retorno (Modo B)', 'text', 'Ex.: 19h']
+      ]],
+      ['Peneiras (a família vê no 19)', [
+        ['peneirasFeitas', 'Peneiras que ele já fez', 'number', 'O quadro do preço de procurar no escuro (19). Vazio: a conta sem números'],
+        ['gastoPeneiras', 'Quanto já gastaram com peneiras (R$)', 'number'], ['anosTentando', 'Há quantos anos ele tenta', 'number']
       ]],
       ['Da R1 (só você vê)', [
         ['responsavel', 'Quem fala pela família', 'text'], ['pai', 'Pai', 'text'], ['mae', 'Mãe', 'text'], ['outro', 'Outro responsável', 'text'],
         ['decisores', 'Decisores e como decidem', 'area'], ['telefones', 'Telefones dos decisores', 'text'], ['dadosZyron', 'Dados do Zyron', 'area'],
-        ['times', 'Times e experiências', 'area'], ['peneiras', 'Peneiras e avaliações', 'area', 'Falado no 03 (o olhômetro), no 15 e no 16'], ['investido', 'Já investiram (a régua, só falada)', 'text'],
+        ['times', 'Times e experiências', 'area'], ['peneiras', 'Peneiras e avaliações', 'area', 'Falado no 03 (o olhômetro), no 15, no 16 e no 19'], ['investido', 'Já investiram (a régua, só falada)', 'text'],
         ['lucro', 'Respondeu que não faz sentido a gente lucrar em cima', 'check'], ['precomp', 'Pré-compromisso de decidir na R2', 'check'], ['empolgacao', 'Empolgação do atleta (0 a 10)', 'number'],
         ['objecoes', 'Objeções que apareceram', 'area'], ['budget', 'Sinais de budget', 'area'], ['confirmados', 'Todos os decisores confirmados', 'check'], ['r2dia', 'R2: dia', 'text'], ['r2hora', 'R2: hora', 'text']
       ]],
@@ -1283,7 +1322,7 @@
       const id = t.id.slice(2);
       const antes = planoDe(ficha.plano);
       ficha[id] = t.type === 'checkbox' ? t.checked : t.value;
-      // trocar o plano pela ficha também mostra o que sai ou o que entra (no 31 e no Fechamento)
+      // trocar o plano pela ficha também mostra o que sai ou o que entra (no 33 e no Fechamento)
       if (id === 'plano') { const depois = planoDe(ficha.plano); if (antes && depois && antes !== depois) troca = { de: antes, para: depois }; }
       if (id === 'resultado' && t.value === 'Venda' && !str(ficha.planoFechado) && planoPorNome(ficha.plano)) { ficha.planoFechado = ficha.plano; setVal('planoFechado', ficha.plano); }
       save();
@@ -1383,22 +1422,24 @@
 
     /* ----- ler antes ----- */
     const LER = [
-      ['Foto do atleta (painel)', 'fotoTxt', '01, 02, 12, 25 e 33 (grande); 09, 11, 21, 30 e 32 (pequena); sem foto, a inicial do nome no mesmo lugar'],
-      ['Nome na tela (nome e sobrenome)', 'nome', '01, 02, 04, 09, 10, 11, 12, 13, 14, 17, 20, 21, 22, 23, 24, 25, 27, 28, 30, 31, 32 e 33 (e o selo de dossiê no canto)'], ['Como chamar (apelido)', 'apelido', 'no lugar do nome e sobrenome da tela e da fala; vazio: a tela usa nome e sobrenome e a fala, o primeiro nome'],
-      ['Nome completo', 'nomeCompleto', '01 (Montado para), 29 (o contrato de exemplo) e 33 (o anúncio e o cartão do plano)'], ['Dia e hora da call', 'r2dia&r2hora', '01 (Call de ...)'],
+      ['Foto do atleta (painel)', 'fotoTxt', '01, 02, 12, 18, 27 e 35 (grande); 09, 11, 23, 32 e 34 (pequena); sem foto, a inicial do nome no mesmo lugar'],
+      ['Nome na tela (nome e sobrenome)', 'nome', '01, 02, 04, 09, 10, 11, 12, 13, 14, 17, 18, 19, 22, 23, 24, 25, 26, 27, 29, 30, 32, 33, 34 e 35 (e o selo de dossiê no canto)'], ['Como chamar (apelido)', 'apelido', 'no lugar do nome e sobrenome da tela e da fala; vazio: a tela usa nome e sobrenome e a fala, o primeiro nome'],
+      ['Nome completo', 'nomeCompleto', '01 (Montado para), 31 (o contrato de exemplo) e 35 (o anúncio e o cartão do plano)'], ['Dia e hora da call', 'r2dia&r2hora', '01 (Call de ...)'],
       ['Origem do lead', 'origem', '01 e 02 (muda o texto)'],
       ['O que chamou atenção no Zyron', 'caracteristicas', '02, se veio do Zyron'], ['Experiência do formulário', 'experiencia', '02, se veio do formulário'],
-      ['Posição, idade, cidade', 'posicao|idade|cidade', '02, 04 e o cartão do 12'], ['Posição que desenha o campo', 'posCampo', '12 (o campo) e 33 (a miniatura); vazio: campo sem destaque'],
-      ['Pé e altura', 'peTxt|alturaTxt', 'cartão do 12 (vazio: a linha some)'], ['Código do dossiê (link do painel)', 'dossieCod', '01, 02, 12 e o selo no canto'],
-      ['Sonho do atleta', 'sonho', '04'], ['O que falta', 'falta', 'só falado'],
-      ['Dor com as palavras deles', 'dor', 'só falado'], ['Treina hoje', 'treina', 'só falado'], ['Locomoção', 'locomocao', 'só falado'], ['Primeiro foco do plano', 'trabalhar', '04, falado no 08 e o primeiro foco do relatório do 17'],
+      ['Posição, idade, cidade', 'posicao|idade|cidade', '02, 04, 18 (embaixo da foto, no dossiê) e o cartão do 12'], ['Posição que desenha o campo', 'posCampo', '12 (o campo) e 35 (a miniatura); vazio: campo sem destaque'],
+      ['Pé e altura', 'peTxt|alturaTxt', 'cartão do 12 e 18 (embaixo da foto); vazio: a linha some'], ['Categoria e onde joga', 'categoria|clubeAtual', '18 (embaixo da foto, no dossiê); vazio: some'],
+      ['Sonho do atleta', 'sonho', '04 e 18 (o destino do plano de carreira)'], ['O que falta', 'falta', 'só falado'],
+      ['Dor com as palavras deles', 'dor', 'só falado'], ['Treina hoje', 'treina', 'só falado'], ['Locomoção', 'locomocao', 'só falado'], ['Primeiro foco do plano', 'trabalhar', '04, 18 (o "agora" do plano de carreira), falado no 08 e o primeiro foco do relatório do 17'],
       ['Vídeo e leitura do painel', 'leituraResumo', '17 (o jogo dele, lance a lance), 01 (o quadro na capa, sem foto), 04 e 09 (o quadro no cartão do vídeo); sem vídeo, o 17 é a leitura ao vivo'],
-      ['Peneiras que ele fez', 'peneiras', '03, 15 e 16, só falado'], ['Caso espelho (nome, clube, país)', 'casoNome&casoClube', '02 (plantar), 20 (tela), 29 e 33'], ['Link do caso espelho', 'casoLink', '20, no WhatsApp'],
-      ['Link da AGN', 'linkAgn', '20 e 21, no WhatsApp'], ['Já investiram (régua)', 'investido', '26, só falado'],
-      ['Não faz sentido lucrar em cima', 'lucro', '29, só falado'], ['Quanto um atleta nosso fecha', 'faixaContrato', '29'], ['Prazo da garantia', 'garantiaPrazo', '32 (vazio: some)'],
-      ['Plano que vou recomendar', 'plano', '11 (o selo "O seu plano"), 21 (a linha do plano e o "pronto pra encaminhar"), 25 (o que ele leva), 31 (o investimento de cada um, o destaque no último avanço e o número falado), 32 (os três valores de uma vez) e 33; turma e vaga (18, 28 e 30) só no Legacy; vazio mostra o Legacy'],
-      ['Vagas e próxima turma', 'vagas', '30, só no Legacy'], ['Gerente de carreira', 'gerente', '33, só no Legacy (e falado no 30 e no 31)'],
-      ['Prazos confirmados (lista fixa)', 'prazoContato&prazoZyron', '25 (o tempo), 30 e 33 (o contato do gerente, só no Legacy)'], ['Hora do retorno', 'horaRetorno', '31, Modo B']
+      ['O dossiê do atleta (painel)', 'dsResumo', '18: o vídeo analisado pela IA, o mapa de calor embaixo dele e as oportunidades; vazio, as setas passam direto pelo 18. Com o vídeo analisado e sem lances marcados, o 17 fica de ponte'],
+      ['Peneiras, gasto e anos tentando (painel)', 'inPeneirasTxt|inGasto|inAnosTxt', '19 (o preço de procurar no escuro, contando do zero na tela); vazio: a conta sem números'],
+      ['Peneiras que ele fez', 'peneiras', '03, 15, 16 e 19, só falado'], ['Caso espelho (nome, clube, país)', 'casoNome&casoClube', '02 (plantar), 22 (tela), 31 e 35'], ['Link do caso espelho', 'casoLink', '22, no WhatsApp'],
+      ['Link da AGN', 'linkAgn', '22 e 23, no WhatsApp'], ['Já investiram (régua)', 'investido', '28, só falado'],
+      ['Não faz sentido lucrar em cima', 'lucro', '31, só falado'], ['Quanto um atleta nosso fecha', 'faixaContrato', '31'], ['Prazo da garantia', 'garantiaPrazo', '34 (vazio: some)'],
+      ['Plano que vou recomendar', 'plano', '11 (o selo "O seu plano"), 23 (a linha do plano e o "pronto pra encaminhar"), 27 (o que ele leva), 33 (o investimento de cada um, o destaque no último avanço e o número falado), 34 (os três valores de uma vez) e 35; turma e vaga (20, 30 e 32) só no Legacy; vazio mostra o Legacy'],
+      ['Vagas e próxima turma', 'vagas', '32, só no Legacy'], ['Gerente de carreira', 'gerente', '35, só no Legacy (e falado no 32 e no 33)'],
+      ['Prazos confirmados (lista fixa)', 'prazoContato&prazoZyron', '27 (o tempo), 32 e 35 (o contato do gerente, só no Legacy)'], ['Hora do retorno', 'horaRetorno', '33, Modo B']
     ];
     function renderLer(d) {
       d = d || derived();
@@ -1428,7 +1469,7 @@
       const p = planoDe(ficha.plano) || {}, n2 = i => String(i + 1).padStart(2, '0');
       qs('#tab-fech').innerHTML = `
         <div class="pz-chips">${TURMA >= 0 ? `<button data-go="${TURMA}">${p.turma ? 'A vaga' : 'O começo'} (${n2(TURMA)})</button>` : ''}${MATRIZ >= 0 ? `<button data-go="${MATRIZ}">Os planos e o número (${n2(MATRIZ)})</button>` : ''}<button data-a="silence">Silêncio (S)</button><button data-go="${N - 1}">Bem-vindo (${n2(N - 1)})</button></div>
-        ${PLANOS.length ? `<div class="pz-sec plano"><p class="pz-h">Plano na tela da família (31 e 33)</p>
+        ${PLANOS.length ? `<div class="pz-sec plano"><p class="pz-h">Plano na tela da família (33 e 35)</p>
           <div class="pz-plan on"><div class="pz-plan-hd"><p class="pz-plan-nm">${esc(p.nome || '')}</p><b class="pz-plan-tk">${esc(p.ticket || '')}</b></div><p class="pz-plan-ds">${esc(p.descritor || '')} · ${/^A cada \d+ dias$/i.test(p.ritmo || '') ? '' : esc(p.ritmo || '') + ' · '}${esc(p.preco || '')} vitalício, 10x sem juros de ${esc(p.parcela || '')}</p></div>
           ${planoCtl('Trocar de plano, pelo escopo (a tela da família troca junto)')}
           <p class="pz-small">Link de pagamento: fora do deck. Depois do sim, mande no WhatsApp o link do plano fechado, na própria call, e acompanhe o pagamento na linha. Antes do sim, link nenhum.</p></div>` : ''}

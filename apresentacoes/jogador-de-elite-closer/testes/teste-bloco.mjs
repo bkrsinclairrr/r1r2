@@ -12,17 +12,18 @@ import { abreNavegador, espera } from './_chrome.mjs';
 const { ok, fim } = verificador('Bloco da página institucional');
 
 const SEIS = ['metodo', 'campo', 'encaixe', 'registro', 'clubes', 'rostos'];
-const R2 = { metodo: 10, campo: 13, encaixe: 14, registro: 22, clubes: 23, rostos: 24 };
-const ANT = { metodo: 9, campo: 11, encaixe: 12, registro: 19, clubes: 20, rostos: 21 };
+// desde 18/10/2026 (o dossiê e o inimigo em comum logo depois da IA na Prática), do 18 em diante andou duas casas
+const R2 = { metodo: 10, campo: 13, encaixe: 14, registro: 24, clubes: 25, rostos: 26 };
+const ANT = { metodo: 9, campo: 11, encaixe: 12, registro: 21, clubes: 22, rostos: 23 };
 // deck, o endereço, as páginas (caminho, quantos slides e onde ficam os do bloco) e se o deck deixa tirar slide (os opcionais do manifesto)
 const DECKS = [
   { id: 'r2', nome: 'R2 novo', opcionais: true, paginas: [
-    { caminho: '/', total: 33, pos: R2 }, { caminho: '/variacoes/tecnica/', total: 33, pos: R2, tecnica: true }] },
+    { caminho: '/', total: 35, pos: R2 }, { caminho: '/variacoes/tecnica/', total: 35, pos: R2, tecnica: true }] },
   { id: 'r2-b', nome: 'R2 B', opcionais: false, paginas: [
-    { caminho: '/', total: 33, pos: R2 }, { caminho: '/variacoes/tecnica/', total: 33, pos: R2, tecnica: true }] },
+    { caminho: '/', total: 35, pos: R2 }, { caminho: '/variacoes/tecnica/', total: 35, pos: R2, tecnica: true }] },
   { id: 'r2-anterior', nome: 'R2 anterior', opcionais: false, paginas: [
-    { caminho: '/', total: 30, pos: ANT }, { caminho: '/variacoes/tecnica/', total: 30, pos: ANT, tecnica: true },
-    { caminho: '/variacoes/acompanhamento/', total: 30, pos: Object.assign({}, ANT, { encaixe: 10, campo: 12 }) }] },
+    { caminho: '/', total: 32, pos: ANT }, { caminho: '/variacoes/tecnica/', total: 32, pos: ANT, tecnica: true },
+    { caminho: '/variacoes/acompanhamento/', total: 32, pos: Object.assign({}, ANT, { encaixe: 10, campo: 12 }) }] },
   { id: 'r1', nome: 'R1', opcionais: false, r1: true, paginas: [
     { caminho: '/', total: 20, pos: { campo: 7, registro: 13, clubes: 14, rostos: 18 } }] }
 ];

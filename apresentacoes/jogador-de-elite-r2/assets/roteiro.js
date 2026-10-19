@@ -151,7 +151,7 @@ window.ROTEIRO = [
     ],
     perguntas: [],
     crm: [],
-    atencao: 'Depois do olhômetro (04) e do bloco do Zyron (06 a 11), use este slide como resumo do serviço inteiro: passe rápido por "quem analisa", que o 04 e o 11 já mostraram, e demore em quem acompanha, quem leva aos clubes e quem corre o risco. Este slide desarma três objeções antes de aparecerem: "já tentamos peneira", "isso de IA funciona?" e "vou ver outras opções". As peneiras a família já contou no 04: use os números dela, sem perguntar de novo. Termine na virada: a peneira que não viu ele vira prova de que o problema não era ele. A coluna "Com a gente" é a estrutura completa, a da Assessoria de Elite Legacy (a nota no pé da tela diz isso). Com o PRO ou o Scout PRO na ficha, fale da estrutura, não do plano: gerente de carreira todo dia e a ida aos clubes são do Legacy. O 23 volta a estas linhas, plano por plano.'
+    atencao: 'Depois do olhômetro (04) e do bloco do Zyron (06 a 11), use este slide como resumo do serviço inteiro: passe rápido por "quem analisa", que o 04 e o 11 já mostraram, e demore em quem acompanha, quem leva aos clubes e quem corre o risco. Este slide desarma três objeções antes de aparecerem: "já tentamos peneira", "isso de IA funciona?" e "vou ver outras opções". As peneiras a família já contou no 04: use os números dela, sem perguntar de novo. Termine na virada: a peneira que não viu ele vira prova de que o problema não era ele. A coluna "Com a gente" é a estrutura completa, a da Assessoria de Elite Legacy. Com o PRO ou o Scout PRO na ficha, fale da estrutura, não do plano: gerente de carreira todo dia e a ida aos clubes são do Legacy. O 23 volta a estas linhas, plano por plano.'
   },
   { nome: 'IA na Prática', min: 5,
     fala: [
@@ -163,7 +163,8 @@ window.ROTEIRO = [
       'Peça pra família escolher um lance da lista e comente esse. No apresentador, os lances são capítulos: clique e o vídeo pula pra ele, 2 s antes.',
       'A fonte, sempre como o painel diz: com "Leitura do Zyron", "o Zyron leu o teu vídeo"; com "Leitura da equipe", "a nossa equipe leu o teu vídeo, lance a lance", e o Zyron não entra nessa frase.',
       'Fecho, apontando a frase de baixo: "Isso existe porque o [atleta] mandou este vídeo. Outro vídeo, outro relatório. A cada vídeo novo, um relatório novo."',
-      'Sem vídeo no painel, a tela é a leitura ao vivo de sempre: "Eu falei que o Zyron viu. Agora eu quero que vocês vejam com os próprios olhos o jogo do [atleta] do jeito que o Zyron vê. Ao vivo, aqui na nossa chamada." Antes do play: "[atleta], presta atenção: o que aparecer agora fala só de você." Troque o compartilhamento do Meet pro vídeo do [atleta], rode a leitura na frente da família e fique quieto. O resultado é dito ao vivo, por quem conduz a leitura; o slide não antecipa nada.'
+      'Sem vídeo no painel, a tela é a leitura ao vivo de sempre: "Eu falei que o Zyron viu. Agora eu quero que vocês vejam com os próprios olhos o jogo do [atleta] do jeito que o Zyron vê. Ao vivo, aqui na nossa chamada." Antes do play: "[atleta], presta atenção: o que aparecer agora fala só de você." Troque o compartilhamento do Meet pro vídeo do [atleta], rode a leitura na frente da família e fique quieto. O resultado é dito ao vivo, por quem conduz a leitura; o slide não antecipa nada.',
+      'Com "Tenho o vídeo do jogador" ligado no painel e sem lances marcados, a tela é a leitura ao vivo, e ela vira a ponte: "Agora vocês vão ver o jogo do [atleta] do jeito que a IA leu." Não rode a leitura no Meet: avance pro dossiê do atleta, logo depois, onde o vídeo analisado entra.'
     ],
     silencio: '"[pai], [mãe], o que vocês sentiram vendo o jogo dele lido assim?" E pare. Deixe a família falar primeiro.',
     perguntas: ['[atleta], alguém já tinha olhado o teu jogo desse jeito?', '[pai], [mãe], o que vocês sentiram vendo o jogo dele lido assim?', 'Qual lance vocês querem que eu comente?'],
@@ -338,8 +339,8 @@ window.ROTEIRO = [
    o 03 e o 12 cobrem duas. A Bíblia cita estes números: mudou aqui, muda lá. */
 window.ETAPAS = [
   { nome: 'Conexão', slides: [1, 2] },
-  { nome: 'Dor e sonho', slides: [4, 12] },
-  { nome: 'O plano', slides: [5, 6, 7, 8, 9, 101, 10, 102, 103, 11, 12, 13, 14, 15, 16, 104, 105, 106] },
+  { nome: 'Dor e sonho', slides: [4, 12, 108] },
+  { nome: 'O plano', slides: [5, 6, 7, 8, 9, 101, 10, 102, 103, 11, 12, 13, 107, 108, 14, 15, 16, 104, 105, 106] },
   { nome: 'Fechamento', slides: [17, 18, 19, 20, 21, 22, 23, 24] },
   { nome: 'Próximo passo', slides: [25] }
 ];
@@ -366,7 +367,7 @@ window.CAMPO_POSICOES = [
 
 /* slides: números dos slides que respondem a objeção; prev: como evitar que ela apareça */
 window.OBJECOES = [
-  { q: 'O valor tá muito alto', slides: [17, 18, 20, 21, 23, 24], prev: 'Cenário comprado, a estrutura e o Zyron apresentados, a conta da estrutura (slide 17), o contrato (slide 20) e os planos (slide 23) antes do número.', resposta: [
+  { q: 'O valor tá muito alto', slides: [17, 18, 20, 21, 23, 24, 108], prev: 'Cenário comprado, a estrutura e o Zyron apresentados, a conta da estrutura (slide 17), o contrato (slide 20) e os planos (slide 23) antes do número.', resposta: [
     'Acolher e isolar: "Entendo. Tirando o valor, tem mais alguma coisa que impede o [atleta] de começar?"',
     'Diagnosticar: "Quando você fala que tá alto: você não vê o retorno, ou é o dinheiro agora?"',
     'Se for retorno, com o Legacy na tela: "É o completo: o estrategista de carreiras e o gerente de carreira do lado dele todo dia, assessoria individual com o David Willer todo mês e pelo menos 15 encaminhamentos de oportunidades por mês, mundo afora, além de tudo do PRO. Sozinhos, vocês iam pagar R$ 30.000 por ano por essa estrutura, e sem certeza nenhuma."',
@@ -400,7 +401,7 @@ window.OBJECOES = [
     '"E quanto antes começa, antes esse relógio anda. Decidindo hoje, os três meses começam hoje."',
     'Com o Scout PRO na tela: "O encaminhamento pra clubes vem a partir da Assessoria PRO." Com a Assessoria PRO: "Na Assessoria PRO, a gestão de carreiras faz pelo menos 5 encaminhamentos de oportunidades por mês, pra clubes do Brasil e do mundo, e os encontros com a equipe mostram o que falta pro [atleta] ser encaminhado." Os 93% e os três meses são do Legacy: não use como prazo do PRO nem do Scout PRO.'
   ], proibido: 'Prometer data de contrato ou clube. Encaminhamento não é contratação.' },
-  { q: 'Será que ele é bom o suficiente?', slides: [15, 2, 4, 10, 103, 13, 19], prev: '"Se você está vendo isso, é porque tem o que é preciso" desde a capa, "não foi você, foi o olhômetro" (slide 04), o seu lugar em campo (slide 10), o jogo dele lido lance a lance (slide 13) e "nem tudo é talento" no slide 15.', resposta: [
+  { q: 'Será que ele é bom o suficiente?', slides: [15, 2, 4, 10, 103, 13, 107, 108, 19], prev: '"Se você está vendo isso, é porque tem o que é preciso" desde a capa, "não foi você, foi o olhômetro" (slide 04), o seu lugar em campo (slide 10), o jogo dele lido lance a lance (slide 13) e "nem tudo é talento" no slide 15.', resposta: [
     '"Se não fosse, ele não estaria nessa conversa. A equipe e o Zyron aprovaram o perfil dele: a gente só investe em quem acredita que vai chegar."',
     '"E nem tudo é talento. Talento ele tem. O que faltou até agora foi alguém levando ele até o clube certo, na hora certa."',
     'Com caso espelho: "O [caso] tinha o mesmo perfil, e a mesma dúvida em casa. Hoje tá no [clube do caso]."',
@@ -432,7 +433,7 @@ window.OBJECOES = [
     '"Hoje ele não precisa ir pra lugar nenhum. Isso só acontece quando o clube chamar." No Legacy, some: "e o gerente de carreira organiza a ida com vocês."',
     '"E vocês falaram pro estrategista esportivo: [locomoção]. Então isso a gente resolve junto quando chegar a hora."'
   ] },
-  { q: 'Já tentamos peneira / empresário e não deu', slides: [4, 102, 11, 12, 15], prev: 'O olhômetro antes do plano (slide 04), a resposta nos slides 11 e 12 e o "nem tudo é talento" no 15.', resposta: [
+  { q: 'Já tentamos peneira / empresário e não deu', slides: [4, 102, 11, 12, 108, 15], prev: 'O olhômetro antes do plano (slide 04), a resposta nos slides 11 e 12 e o "nem tudo é talento" no 15.', resposta: [
     '"Quantos garotos tinham nessa peneira? E quanto tempo olharam pra ele? Vinte minutos de coletivo?"',
     '"Então não foi ele que não deu certo. Foi o olhômetro. Ninguém analisou o jogo dele de verdade, e ninguém acompanhou ele depois. É exatamente isso que o Zyron e a gente fazem."',
     'No Legacy: "Nem tudo é talento: faltou quem levasse ele ao clube certo. Aqui, mais de 93% são encaminhados em até três meses."'
@@ -451,7 +452,7 @@ window.OBJECOES = [
   { q: 'Manda por WhatsApp que eu vejo com calma', slides: [], resposta: [
     '"O plano é do [atleta], não é folder. Explicado aqui, com vocês, é que ele faz sentido. O que você precisa ver pra decidir?"'
   ], proibido: 'Mandar proposta ou valor por WhatsApp.' },
-  { q: 'Vou ver outras opções', slides: [12, 13, 16, 104, 105, 8, 4], prev: 'O olhômetro (04) e a comparação do slide 12 já fizeram as perguntas por eles; a leitura ao vivo do jogo dele (13) e o vídeo do Zyron (08) mostram o que ninguém mais tem.', resposta: [
+  { q: 'Vou ver outras opções', slides: [12, 13, 108, 16, 104, 105, 8, 4], prev: 'O olhômetro (04) e a comparação do slide 12 já fizeram as perguntas por eles; a leitura ao vivo do jogo dele (13) e o vídeo do Zyron (08) mostram o que ninguém mais tem.', resposta: [
     '"Compara mesmo. Pergunta pra eles: analisam o atleta com dados reais ou no olhômetro? Tem alguém acompanhando de verdade, no ritmo que vocês escolheram? Tem um agente como o Zyron? Leem o jogo do atleta ao vivo, na frente de vocês? E como eles ganham: em cima de vocês, ou só quando o atleta fecha?"',
     'Com o Legacy na tela, some: "Tem gerente de carreira todo dia? Levam o atleta aos clubes? Têm relação direta com a AGN?" E, com turma: "Só lembra que a vaga do [atleta] aqui não fica aberta pra sempre. A turma é de 10."',
     'Com a Assessoria PRO na tela, a acessível: "E vê quem coloca uma equipe do lado dele toda semana, com sete módulos de aulas, um estrategista esportivo e pelo menos 5 encaminhamentos por mês, por esse investimento."'
@@ -463,7 +464,7 @@ window.OBJECOES = [
     'Legacy: "O completo: tudo do PRO, o estrategista de carreiras do lado dele todo dia, o gerente de carreira e assessoria individual com o David Willer todo mês, com acompanhamento direto no WhatsApp. E pelo menos 15 encaminhamentos de oportunidades por mês, mundo afora, com conexão direta com clubes e com a AGN, e as seletivas acompanhadas, com a logística planejada."',
     'Conduzir: "Pelo que vocês me falaram, eu recomendo o [plano]. Faz sentido?"'
   ], proibido: 'Responder pela diferença de preço em vez do ritmo, chamar o PRO de "o mais barato" ou de "o mais vendido", atribuir ao PRO o que é do Legacy (conexão direta com clubes e AGN, os 15 encaminhamentos por mês) ou encaminhamento ao Scout PRO.' },
-  { q: 'Isso de inteligência artificial funciona mesmo?', slides: [8, 9, 101, 102, 103, 10, 11, 13, 2], prev: 'O Zyron trabalhando (08), os cinco verbos (09), o seu lugar em campo (10), olhômetro contra Zyron (11) e a leitura ao vivo do jogo dele (13).', resposta: [
+  { q: 'Isso de inteligência artificial funciona mesmo?', slides: [8, 9, 101, 102, 103, 10, 11, 13, 107, 2], prev: 'O Zyron trabalhando (08), os cinco verbos (09), o seu lugar em campo (10), olhômetro contra Zyron (11) e a leitura ao vivo do jogo dele (13).', resposta: [
     '"Clube grande já escolhe atleta assim há anos, aqui e lá fora, só que sempre por dentro, sem o atleta nem saber que foi visto desse jeito. A novidade é que agora isso chegou até o atleta."',
     '"É o que vocês viram no vídeo: o Zyron cruza o jogo do atleta com o que cada clube precisa. Por isso mais de 93% são encaminhados em até três meses."',
     'Se a leitura ao vivo já rodou (slide 13): "E vocês viram com o jogo do [atleta], ao vivo, aqui na nossa chamada."'
@@ -621,7 +622,9 @@ window.CHECKLIST = [
   'Subi o vídeo do atleta no painel (Leitura do atleta), com a autorização do responsável, marquei os lances e olhei a prévia',
   'Testei o vídeo no deck (play, som, pular pelos lances no apresentador)',
   'Conferi se a fonte do relatório é Zyron ou Equipe, de verdade',
-  'Se não subi o vídeo, deixei o vídeo do atleta aberto pra leitura ao vivo no Meet (IA na Prática, slide 12)',
+  'Se não subi o vídeo, deixei o vídeo do atleta aberto pra leitura ao vivo no Meet (IA na Prática)',
+  'Com o vídeo analisado: conferi no painel o "Tenho o vídeo do jogador", o vídeo, o mapa de calor e as oportunidades, e olhei o dossiê do atleta na prévia',
+  'Anotei no painel as peneiras, o gasto e os anos tentando que a família contou (o quadro do inimigo em comum)',
   'Conferi vagas e data da próxima turma (só aparecem com o Legacy)',
   'Confirmei pai, mãe e atleta na call',
   'Deck aberto em tela cheia e apresentador em outra janela',

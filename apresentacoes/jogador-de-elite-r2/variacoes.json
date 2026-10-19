@@ -1,21 +1,21 @@
 {
   "v": 1,
-  "gerado": "2026-10-18T17:44:29.151Z",
+  "gerado": "2026-10-19T03:48:54.581Z",
   "paginas": [
     {
       "id": "principal",
       "caminho": "/",
       "nome": "R2 · Roteiro clássico completo",
-      "resumo": "O R2 de 30 slides, o de antes do R2 novo, com os planos e O investimento. Nome e sobrenome do lead na tela (com a escolha do painel) e a foto no slide de escolha.",
-      "quando": "Só se precisar da versão de 30 slides. Na dúvida, use o R2 novo.",
+      "resumo": "O R2 de 32 slides, o de antes do R2 novo, com os planos e O investimento. Nome e sobrenome do lead na tela (com a escolha do painel) e a foto no slide de escolha.",
+      "quando": "Só se precisar da versão de 32 slides. Na dúvida, use o R2 novo.",
       "validacao": "em-validacao",
       "lead": {
         "nome": true,
         "foto": true
       },
-      "slides": 30,
+      "slides": 32,
       "opcionais": [],
-      "hash": "f014b253c424a2f06e9f67308effdec17907f6a2"
+      "hash": "7fb1a11fee80cfc27820ebe9e9b77b021fc3447b"
     },
     {
       "id": "acompanhamento",
@@ -28,24 +28,24 @@
         "nome": true,
         "foto": true
       },
-      "slides": 30,
+      "slides": 32,
       "opcionais": [],
-      "hash": "1a0ab63720aeb96ce86b19ab81784e4c5f9c7c1f"
+      "hash": "980ed9211fb6160b6b87d711e8473d11d3db5a05"
     },
     {
       "id": "tecnica",
       "caminho": "/variacoes/tecnica/",
       "nome": "R2 · Técnica com roteiro clássico",
-      "resumo": "A versão técnica do R2 de 30 slides: fala de par pra par, sem explicar o básico. Nome e sobrenome do lead na tela e a foto no slide de escolha.",
-      "quando": "Lead com vivência no meio (base de clube, federado, ex-jogador, técnico) e só se precisar da versão de 30 slides.",
+      "resumo": "A versão técnica do R2 de 32 slides: fala de par pra par, sem explicar o básico. Nome e sobrenome do lead na tela e a foto no slide de escolha.",
+      "quando": "Lead com vivência no meio (base de clube, federado, ex-jogador, técnico) e só se precisar da versão de 32 slides.",
       "validacao": "em-validacao",
       "lead": {
         "nome": true,
         "foto": true
       },
-      "slides": 30,
+      "slides": 32,
       "opcionais": [],
-      "hash": "5a6975eb5b660a4ea3837f34356df16f06a64d18"
+      "hash": "10a13e734c5f2626aa1a303aab6628a922dab2ea"
     }
   ]
 }

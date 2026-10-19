@@ -15,9 +15,9 @@ Onde cada deck leva o bloco:
 
 | Deck | Slides | Opcionais no painel | Comando |
 | --- | --- | --- | --- |
-| R2 novo | 10, 13, 14, 22, 23 e 24 | sim, os seis | `node ferramentas-bloco/aplica-bloco.mjs jogador-de-elite-r2-novo index.html assets/ --refaz` e, na técnica, `... variacoes/tecnica/index.html ../../assets/ --tom=tecnica --refaz` |
+| R2 novo | 10, 13, 14, 24, 25 e 26 (eram 22, 23 e 24 até o dossiê e o inimigo em comum entrarem no 18 e no 19, em 18/10/2026) | sim, os seis | `node ferramentas-bloco/aplica-bloco.mjs jogador-de-elite-r2-novo index.html assets/ --refaz` e, na técnica, `... variacoes/tecnica/index.html ../../assets/ --tom=tecnica --refaz` |
 | R2 B | os mesmos | não (o deck não tira slide) | os mesmos comandos, com `--sem-opcional` |
-| R2 anterior (principal, técnica e acompanhamento) | 9, 11, 12, 19, 20 e 21 (na acompanhamento, 9, 10, 12, 19, 20 e 21) | não | `--layout=origem --ancoras=10,11,17 --numeros=9,11,12,19,20,21 --sem-opcional --extras=bloco-roteiro.js` (na técnica, `--tom=tecnica --extras=bloco-roteiro-tecnica.js`; na acompanhamento, `--numeros=9,12,10,19,20,21 --grupos="metodo,encaixe\|campo\|registro,clubes,rostos"`) |
+| R2 anterior (principal, técnica e acompanhamento) | 9, 11, 12, 21, 22 e 23 (na acompanhamento, 9, 10, 12, 21, 22 e 23) | não | `--layout=origem --ancoras=10,11,17 --numeros=9,11,12,21,22,23 --sem-opcional --extras=bloco-roteiro.js` (na técnica, `--tom=tecnica --extras=bloco-roteiro-tecnica.js`; na acompanhamento, `--numeros=9,12,10,21,22,23 --grupos="metodo,encaixe\|campo\|registro,clubes,rostos"`) |
 | R1 | 7, 13, 14 e 18 | não | `--layout=posicao --tema=r1 --ancoras=7,12,15 --grupos="campo\|registro,clubes\|rostos" --sem-opcional --numeros=0,7,0,13,14,18` |
 
 Depois de rodar, sempre: `node gera-manifesto.mjs` na pasta do deck (e `--confere` antes de publicar).

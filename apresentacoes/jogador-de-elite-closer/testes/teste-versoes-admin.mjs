@@ -208,7 +208,7 @@ try {
   // criar R2 e gerar o link
   await A.avalia("location.hash = '#/novo'; 1");
   await A.ate("!document.querySelector('#v-editor').hidden");
-  ok((await A.avalia("document.querySelector('#ed-salvar').textContent")) === 'Criar R2 e gerar o link', 'o botão do R2 novo diz "Criar R2 e gerar o link"');
+  ok((await A.avalia("document.querySelector('#ed-salvar').textContent")) === 'Salvar rascunho' && (await A.avalia("document.querySelector('#bt-gerar-link').textContent")) === 'Gerar link do R2', 'no R2 novo, o Salvar guarda rascunho e o link nasce no "Gerar link do R2", no fim do editor');
 
   const excP = [A, C].flatMap(a => a.console_.filter(m => /^EXC/.test(m)));
   ok(!excP.length, 'nenhuma exceção de JavaScript no painel' + (excP.length ? ': ' + excP.slice(0, 2).join(' | ') : ''));

@@ -20,7 +20,7 @@
       // a foto do painel em todos os quadros (capa, perfil, relatório, oportunidades, oferta e Bem-vindo); fora da tela no painel, as iniciais.
       // Sem link (teste com a ficha gravada à mão), _foto.src e _foto.avatarSrc
       const foto = f._foto && f._foto.ok && f.semFoto !== 'sim' && f.nomeTela !== 'sem';
-      const url = tipo => !foto ? '' : aid ? (Number(f._foto.versao) > 0 ? painel + '/api/foto?t=' + encodeURIComponent(aid) + '&v=' + tipo + '&n=' + Number(f._foto.versao) : '')
+      const url = tipo => !foto ? '' : aid ? (Number(f._foto.versao) > 0 ? (window.FotoAtleta && window.FotoAtleta.comChave ? window.FotoAtleta.comChave : u => u)(painel + '/api/foto?t=' + encodeURIComponent(aid) + '&v=' + tipo + '&n=' + Number(f._foto.versao)) : '')
         : String((tipo === 'avatar' ? f._foto.avatarSrc || f._foto.src : f._foto.src) || '');
       const ret = url('retrato'), av = url('avatar');
       const geral = nota(f.zyronGeral);

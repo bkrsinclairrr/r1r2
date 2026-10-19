@@ -6,6 +6,8 @@
 //                     etapa é a do papel: o SDR cria R1, o closer cria R2; o admin escolhe (R2 se não disser). Pedir a etapa de outro papel dá 403.
 //                     link.venceEm: o dia e a hora em que o link expira, escolhidos por quem monta (sem ela, a automática: 7 dias depois da call);
 //                     link.apagarAoVencer: a limpeza diária apaga tudo do lead depois que o link vence
+//                     rascunho: true cria a apresentação SEM link (o painel monta a foto, o vídeo e a ficha e só no fim aperta "Gerar link",
+//                     POST /api/link?acao=gerar). Sem o rascunho, o link já nasce valendo (como sempre foi)
 // PUT ?t=             { ficha, base, nota?, conferido? } salva a ficha (dono ou admin). base é a versão da ficha que o
 //                     formulário carregou (fichaEm): se outra pessoa salvou depois, 409 com quem salvou e quando.
 //                     Foto, vídeo e link têm versão própria e não geram conflito com a ficha.
@@ -45,7 +47,7 @@ export default async function handler(req, res) {
       const vazio = { ficha: 0, foto: 0, video: 0, total: 0 };
       const lista = Object.values(itens).map(it => Object.assign({}, it, {
         etapa: it.etapa === 'r1' ? 'r1' : 'r2', // o item de antes do R1 não tem a etapa: era R2
-        estadoTela: it.estado === 'revogado' ? 'revogado' : it.venceEm && Date.parse(it.venceEm) <= Date.now() ? 'expirado' : it.estado || 'rascunho',
+        estadoTela: it.linkGerado === false ? 'preparo' : it.estado === 'revogado' ? 'revogado' : it.venceEm && Date.parse(it.venceEm) <= Date.now() ? 'expirado' : it.estado || 'rascunho',
         emCall: emCall.has(it.t)
       }, espaco ? { espaco: espaco[it.t] || vazio } : {}));
       const saida = { itens: lista, hoje: R.hojeSP(), todos };
@@ -84,10 +86,10 @@ export default async function handler(req, res) {
         const novo = {
           t: novoCodigo(), v: 1, rev: 1, etapa, estado: 'rascunho', donoLogin: eu.login, dono: quem(eu), criadoPor: quem(eu), criadoEm: agora,
           atualizadoPor: quem(eu), atualizadoEm: agora, fichaPor: quem(eu), fichaEm: agora, venceEm: venceEscolhido || venceDoLink(ficha, agora, etapa),
-          venceManual: !!venceEscolhido, apagarAoVencer: lk.apagarAoVencer === true,
+          venceManual: !!venceEscolhido, apagarAoVencer: lk.apagarAoVencer === true, linkGerado: b.rascunho !== true,
           ficha, foto: null, video: null, leitura: null, nota: '', conferido: {}, historico: []
         };
-        anota(novo, eu, 'criou o ' + rotulo(etapa) + (venceEscolhido ? ' (o link expira em ' + R.dataCurta(venceEscolhido) + ')' : ''));
+        anota(novo, eu, b.rascunho === true ? 'começou o ' + rotulo(etapa) + ' (rascunho, ainda sem link)' : 'criou o ' + rotulo(etapa) + ' e gerou o link' + (venceEscolhido ? ' (expira em ' + R.dataCurta(venceEscolhido) + ')' : ''));
         novo.estado = estadoGuardado(novo, V);
         try { await grava(caminho(novo.t), novo, { novo: true }); reg = novo; } catch (e) { if (!conflito(e)) throw e; }
       }

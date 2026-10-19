@@ -12,13 +12,13 @@ const raiz = RAIZES['r2-anterior'], pagina = '/variacoes/acompanhamento/';
 test('a oferta tem resposta completa, relatório sem vídeo e ancoragem de R$20 mil', () => {
   const html = fs.readFileSync(path.join(raiz, 'variacoes/acompanhamento/index.html'), 'utf8');
   const slides = html.match(/<section class="slide(?: [^"]+)?"[\s\S]*?<\/section>/g);
-  assert.equal(slides.length, 30, 'a oferta está no slide 28');
+  assert.equal(slides.length, 32, 'a oferta está no slide 30 (desde 18/10/2026 o dossiê do atleta e o inimigo em comum entram depois do relatório)');
   assert.ok(!/<td class="c3"><\/td>/.test(slides[2]), 'A resposta tem conteúdo em todas as linhas');
   assert.doesNotMatch(slides[14], /v-atleta|data-video|ao vivo|nesta chamada|data-rl|Resultado aparece/i);
-  const valores = [...slides[21].matchAll(/data-valor="(\d+)"/g)].map(m => Number(m[1]));
+  const valores = [...slides[23].matchAll(/data-valor="(\d+)"/g)].map(m => Number(m[1]));
   assert.equal(valores.reduce((a, b) => a + b, 0), 20000);
-  assert.doesNotMatch(slides[21], /30\.000/);
-  assert.match(slides[27], /data-bind="nome"/);
+  assert.doesNotMatch(slides[23], /30\.000/);
+  assert.match(slides[29], /data-bind="nome"/);
 });
 
 test('o painel guarda o relatório e os matches, entrega só à oferta e mostra foto sem vídeo', async () => {
@@ -70,7 +70,7 @@ test('o painel guarda o relatório e os matches, entrega só à oferta e mostra 
     assert.ok(limites.slice(4).every(e=>e.bottom<limites[0].bottom-10), 'o relatório completo cabe no quadro: '+JSON.stringify(limites));
     const texto = await a.avalia(`document.querySelector('#stage > .slide.active').innerText`);
     assert.match(texto, /Gabriel/); assert.match(texto, /87/); assert.doesNotMatch(texto, /Gabriel Rocha(?! da Silva)|ao vivo|vídeo do atleta/i);
-    await a.avalia('location.hash="#18";1'); await espera(500);
+    await a.avalia('location.hash="#20";1'); await espera(500);
     const clubes = await a.avalia(`document.querySelector('#stage > .slide.active').innerText`);
     assert.match(clubes, /Estoril Praia/); assert.match(clubes, /96%/); assert.match(clubes, /Gabriel/i);
     assert.match(clubes, /Clube de Teste/);
@@ -82,7 +82,7 @@ test('o painel guarda o relatório e os matches, entrega só à oferta e mostra 
     for (const n of [1, 2, 3]) Object.assign(longo, { ['match'+n+'Clube']: 'Clube de Futebol da Cidade e Associação Esportiva de Formação', ['match'+n+'Liga']: 'Campeonato Nacional de Futebol da Segunda Divisão', ['match'+n+'Posicao']: 'Meia-atacante pelo lado esquerdo', ['match'+n+'Categoria']: 'Sub-20 e equipe de desenvolvimento', ['match'+n+'Motivo']: completo.match3Motivo });
     const baseLonga = (await admin.get('/api/atletas?t='+t)).j.registro.fichaEm;
     assert.equal((await admin.put('/api/atletas?t='+t,{ficha:longo,base:baseLonga})).status,200);
-    const extensa = await nav.aba(url+'#18',{largura:1920,altura:1080});
+    const extensa = await nav.aba(url+'#20',{largura:1920,altura:1080});
     assert.ok(await extensa.ate(`document.querySelectorAll('.zx-clubes .zx-match').length===3`));
     assert.ok(await extensa.avalia(`document.querySelector('.zx-proximo').getBoundingClientRect().bottom<document.querySelector('#stage').getBoundingClientRect().bottom-85`), 'os três matches longos cabem integralmente');
     await extensa.avalia('location.hash="#15";1'); await espera(250);
@@ -96,20 +96,20 @@ test('o painel guarda o relatório e os matches, entrega só à oferta e mostra 
     const dois = Object.fromEntries(Object.entries(longo).filter(([k])=>!k.startsWith('match3')));
     const baseDois = (await admin.get('/api/atletas?t='+t)).j.registro.fichaEm;
     assert.equal((await admin.put('/api/atletas?t='+t,{ficha:dois,base:baseDois})).status,200);
-    const dupla = await nav.aba(url+'#18',{largura:1920,altura:1080});
+    const dupla = await nav.aba(url+'#20',{largura:1920,altura:1080});
     assert.ok(await dupla.ate(`document.querySelectorAll('.zx-clubes .zx-match').length===2`));
     assert.ok(await dupla.avalia(`document.querySelector('.zx-proximo').getBoundingClientRect().bottom<document.querySelector('#stage').getBoundingClientRect().bottom-85`), 'dois matches longos também cabem integralmente');
     const depoisLonga = (await admin.get('/api/atletas?t='+t)).j.registro.fichaEm;
     assert.equal((await admin.put('/api/atletas?t='+t,{ficha:completo,base:depoisLonga})).status,200);
-    for (const n of [1, 11, 18, 28, 30]) {
+    for (const n of [1, 11, 16, 20, 30, 32]) { // desde 18/10/2026: o dossiê do atleta (16) também tem a foto; oportunidades 20, oferta 30, Bem-vindo 32
       await a.avalia(`location.hash='#${n}';1`); await espera(250);
       assert.ok(await a.avalia(`[...document.querySelectorAll('#stage>.slide.active img')].some(i=>/api\\/foto/.test(i.src))`), 'foto no quadro do slide ' + n);
     }
     assert.ok(await a.avalia(`document.querySelectorAll('#stage video#v-atleta').length === 0`));
     assert.ok(await a.avalia(`![...performance.getEntriesByType('resource')].some(r => /api\\/video/.test(r.name))`), 'não pede vídeo do lead');
-    await a.avalia('location.hash="#28";1'); await espera(300);
+    await a.avalia('location.hash="#30";1'); await espera(300);
     assert.match(await a.avalia(`document.querySelector('#silencio .titulo-oferta').innerText`), /^Gabriel Silva, você foi escolhido/i);
-    const sem = await nav.aba(s.decks['r2-anterior'] + pagina + '?a=' + vazio.j.t + '#18');
+    const sem = await nav.aba(s.decks['r2-anterior'] + pagina + '?a=' + vazio.j.t + '#20');
     assert.ok(await sem.ate(`document.querySelector('[data-bind="nome"]').textContent === 'Ana Silva'`));
     assert.doesNotMatch(await sem.avalia(`document.querySelector('#stage > .slide.active').innerText`), /Estoril|96%|Gabriel/);
     assert.match(await sem.avalia(`document.querySelector('#stage > .slide.active').innerText`), /compatibilidade|perfil/i);
@@ -119,7 +119,7 @@ test('o painel guarda o relatório e os matches, entrega só à oferta e mostra 
     await ui.avalia(`(() => { const f=document.querySelector('#f-entrar');f.login.value=${JSON.stringify(s.adminLogin)};f.senha.value=${JSON.stringify(s.adminSenha)};f.requestSubmit();return 1;})()`);
     assert.ok(await ui.ate(`document.querySelector('#f-editor [name="match1Clube"]')?.value === 'Estoril Praia'`));
     assert.equal(await ui.avalia(`document.querySelector('#s-dossie').hidden`), false);
-    assert.equal(await ui.avalia(`document.querySelector('#s-leitura').hidden`), true);
+    assert.equal(await ui.avalia(`document.querySelector('#va-lances').hidden`), true, 'na Acompanhamento, sem marcar lances (a variação não tem a IA na Prática)');
     await ui.avalia(`const geral=document.querySelector('#f-editor [name="zyronGeral"]');geral.value='101';geral.dispatchEvent(new Event('input',{bubbles:true}));document.querySelector('#ed-salvar').click();1`);
     assert.ok(await ui.ate(`/0 a 100/.test(document.querySelector('#ed-erro').textContent)`), 'nota inválida é explicada antes de salvar');
     assert.equal((await admin.get('/api/publico?id=' + t)).j.ficha.zyronGeral, '87');

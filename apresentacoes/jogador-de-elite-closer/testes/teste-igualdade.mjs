@@ -117,4 +117,21 @@ ok(R.posicaoNoCampo('zagueiro') === 'ZAG-d' && R.posicaoNoCampo('ponta esquerda'
 
 const a = fs.readFileSync(path.join(RAIZ_PAINEL, 'relatorio-leitura.js')), b = fs.readFileSync(path.join(RAIZ_DECK, 'assets', 'relatorio-leitura.js'));
 ok(Buffer.compare(a, b) === 0, 'relatorio-leitura.js igual byte a byte no painel e no deck');
+// o escudo das oportunidades (18/10/2026): a sigla do painel (regras.js) igual à do slide do dossiê (dossie-atleta.js), e o dossie-atleta.js e o
+// dossie-atleta.css iguais nos três decks do R2 (fora o fim de linha)
+{
+  const ds = { window: {}, document: { fonts: null }, addEventListener: () => {} }; ds.window = ds; vm.createContext(ds);
+  vm.runInContext(fs.readFileSync(path.join(RAIZ_DECK, 'assets', 'dossie-atleta.js'), 'utf8'), ds);
+  const CLUBES = ['Ferroviária', 'Benfica', 'Athletico-PR', 'Red Bull Bragantino', 'Esporte Clube Bahia', 'Sporting Clube de Portugal', 'Grêmio Novorizontino', 'CR Flamengo',
+    'Associação Ferroviária de Esportes', 'São Paulo FC', 'A.D. São Caetano', '1º de Maio', 'Clube', 'Vasco da Gama', 'Ceará SC', 'Club Athletico Paranaense'];
+  const difs = CLUBES.filter(c => R.siglaClube(c) !== ds.DossieAtleta.sigla(c));
+  ok(!difs.length, 'a sigla do escudo é a mesma no painel e no slide em ' + CLUBES.length + ' clubes' + (difs.length ? ' (diferente: ' + difs.join(', ') + ')' : ''));
+  ok(R.siglaClube('Red Bull Bragantino') === 'RB' && R.siglaClube('Esporte Clube Bahia') === 'B' && R.siglaClube('Athletico-PR') === 'AP', 'exemplos: Red Bull Bragantino é RB, Esporte Clube Bahia é B, Athletico-PR é AP');
+  const le = (d, a) => fs.readFileSync(path.join(RAIZ_PAINEL, '..', d, 'assets', a), 'utf8').replace(/\r\n/g, '\n');
+  for (const a of ['dossie-atleta.js', 'dossie-atleta.css']) {
+    const base = le('jogador-de-elite-r2-novo', a);
+    ok(['jogador-de-elite-r2-b', 'jogador-de-elite-r2'].every(d => le(d, a) === base), a + ' igual no R2 novo, no R2 B e no R2 anterior');
+  }
+}
+
 fim();

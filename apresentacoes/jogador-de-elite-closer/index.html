@@ -66,10 +66,11 @@
       <details class="ajuda" id="ajuda-r1">
         <summary>Como funciona o R1</summary>
         <ol>
-          <li><b>Novo R1</b>: o nome completo do atleta. Salve: o link sai na hora.</li>
-          <li><b>A ficha</b>: posição, idade e cidade (vão pro slide 02 do R1), de onde veio o lead e o que chamou atenção.</li>
+          <li><b>Novo R1</b>: o nome completo do atleta. Monte com calma: <b>Salvar rascunho</b> guarda sem criar link.</li>
+          <li><b>A ficha</b>: posição, idade, cidade, pé, altura, onde joga e a categoria (vão pro slide 02 do R1 e chegam prontos no R2), de onde veio o lead, o que chamou atenção e as peneiras que ele já fez.</li>
           <li><b>Variação</b>: escolha a apresentação do R1 pra esse lead (veja todas em <b>Variações do R1</b>, a mais validada primeiro).</li>
           <li><b>A R2</b>: o dia e a hora que ficaram marcados pra R2. O checklist diz o que falta pro R1 ficar <b>pronto</b>.</li>
+          <li>No fim da página, <b>Gerar link do R1</b>: só aí o link passa a existir.</li>
           <li>Na call, abra o link (botão <b>Abrir o R1</b>), compartilhe a aba e aperte <b>P</b> pro apresentador.</li>
           <li>Quando o lead for pro closer, ele cola o link do R1 em <b>Importar o R1 de um SDR</b> e a ficha já vem pronta.</li>
         </ol>
@@ -77,11 +78,15 @@
       <details class="ajuda" id="ajuda-r2">
         <summary>Como funciona</summary>
         <ol>
-          <li><b>Novo R2</b>: o nome completo do atleta e, se quiser, como a gente chama ele. Salve: o link sai na hora.</li>
+          <li><b>Novo R2</b>: o nome completo do atleta e, se quiser, como a gente chama ele. Monte com calma: <b>Salvar rascunho</b> guarda sem criar link.</li>
           <li><b>Foto</b>: escolha a foto (do WhatsApp, da galeria ou da câmera), ajuste o rosto na moldura e marque a autorização do responsável.</li>
           <li><b>Variação</b>: escolha a variação do R2 pra esse lead (veja todas em <b>Variações do R2</b>, a mais validada primeiro), se aparecem o nome, o sobrenome e a foto dele, e se algum slide fica de fora. O link é um só por lead, qualquer que seja a variação.</li>
-          <li><b>A call</b>: posição, plano, dia e hora. O checklist diz o que falta pro R2 ficar <b>pronto</b>.</li>
+          <li><b>Os dados do atleta</b>: posição, idade, altura, pé, cidade, onde joga e a categoria (vão pro dossiê do atleta).</li>
+          <li><b>Vídeo analisado</b>: marque <b>Tenho o vídeo do jogador</b>, envie o vídeo que a IA analisou e o mapa de calor (fica embaixo do vídeo). Em <b>Oportunidades</b>, os clubes que a equipe mapeou pro perfil dele. Tudo isso vira o slide do dossiê, logo depois da IA na Prática.</li>
+          <li><b>As peneiras dele</b>: quantas fez, quanto gastaram e há quanto tempo tenta. Vão pro slide do inimigo comum, logo depois do dossiê.</li>
+          <li><b>A call</b>: plano, dia e hora. O checklist diz o que falta pro R2 ficar <b>pronto</b>.</li>
           <li><b>Prévia</b>: confira os slides com o rosto e o nome dele antes da call.</li>
+          <li>No fim da página, <b>Gerar link do R2</b>: só aí o link passa a existir pra família.</li>
           <li>Na call, abra o link (botão <b>Abrir o R2</b>), compartilhe a aba e aperte <b>P</b> pro apresentador, como sempre.</li>
           <li><b>Validade</b>: no editor, escolha quando o link expira (2 h depois da call, no fim do dia, numa data sua...). Depois de apresentar, exclua em <b>Gerados</b> pra liberar espaço.</li>
         </ol>
@@ -98,7 +103,7 @@
             <button class="filtro" type="button" data-ger="ativos">Ainda não apresentados</button>
           </div>
         </div>
-        <p class="nota" style="margin:0 0 14px">Toda apresentação gerada, com o espaço que ocupa (ficha, foto e vídeo). Depois de apresentar, exclua: o link para de funcionar na hora e o espaço volta. <b>Marcar como apresentado</b> só muda a etiqueta (o link segue valendo até a validade). Pra o lead sumir sozinho, escolha a validade no editor e marque “apagar tudo quando o link expirar”.</p>
+        <p class="nota" style="margin:0 0 14px">Toda apresentação gerada (e os rascunhos em preparo), com o espaço que ocupa (ficha, foto, mapa de calor e vídeo). Depois de apresentar, exclua: o link para de funcionar na hora e o espaço volta. <b>Marcar como apresentado</b> só muda a etiqueta (o link segue valendo até a validade). Pra o lead sumir sozinho, escolha a validade no editor e marque “apagar tudo quando o link expirar”.</p>
         <p class="ger-resumo" id="ger-resumo" aria-live="polite"></p>
         <div class="ger-barra">
           <label class="ck"><input type="checkbox" id="ger-todos"> <span>Selecionar todos da lista</span></label>
@@ -226,9 +231,12 @@
             <label class="campo"><span>Posição</span><input class="in" name="posicao" maxlength="40" list="posicoes" placeholder="Ex.: zagueiro"><datalist id="posicoes"></datalist><span class="selo-pos" id="selo-pos" data-so="r2"></span><small data-r1="Slide 02 do R1." hidden></small></label>
             <label class="campo"><span>Idade</span><input class="in" name="idade" type="number" inputmode="numeric" min="6" max="40" placeholder="Ex.: 15"><small data-r1="Slide 02 do R1." hidden></small></label>
             <label class="campo"><span>Cidade</span><input class="in" name="cidade" maxlength="60" placeholder="Ex.: Natal"></label>
-            <label class="campo" data-so="r2"><span>Pé</span><select class="in" name="pe"><option value="">escolha</option></select></label>
-            <label class="campo" data-so="r2"><span>Altura (cm)</span><input class="in" name="altura" type="number" inputmode="numeric" min="100" max="230" placeholder="Ex.: 176"><small>Cartão do jogador. Vazio: a linha some.</small></label>
+            <label class="campo"><span>Pé</span><select class="in" name="pe"><option value="">escolha</option></select></label>
+            <label class="campo"><span>Altura (cm)</span><input class="in" name="altura" type="number" inputmode="numeric" min="100" max="230" placeholder="Ex.: 176"><small data-r1="Vai pro slide 02 do R1 e chega pronto no R2.">Cartão do jogador. Vazio: a linha some.</small></label>
+            <label class="campo"><span>Onde joga hoje</span><input class="in" name="clubeAtual" maxlength="60" placeholder="Ex.: Sub-17 do América de Natal"></label>
+            <label class="campo"><span>Categoria</span><select class="in" name="categoria"><option value="">escolha</option></select></label>
           </div>
+          <p class="nota">Quem tiver os dados preenche (o SDR no R1, o closer no R2): tudo o que entra aqui vai pro dossiê do atleta na apresentação. Campo vazio não aparece.</p>
         </section>
 
         <section class="sec" id="s-origem">
@@ -245,6 +253,49 @@
           <h2 class="label">Dossiê do Zyron para esta apresentação</h2>
           <p class="nota">Transcreva o relatório já pronto. Os indicadores e clubes abaixo aparecem somente na oferta de R$247,90 e R$500. Deixe vazio o que não consta no relatório.</p>
           <div id="dossie-campos"></div>
+        </section>
+
+        <section class="sec" id="s-video" data-so="r2">
+          <h2 class="label">Vídeo analisado</h2>
+          <p class="nota" style="margin:0 0 10px">Vira o slide do dossiê do atleta, logo depois da IA na Prática: a foto e os dados dele à esquerda, o vídeo analisado no centro com o mapa de calor embaixo, e as oportunidades à direita.</p>
+          <label class="ck"><input type="checkbox" id="c-tem-video"> <span>Tenho o vídeo do jogador<small class="ck-ajuda">Marcado: o dossiê mostra o vídeo que a IA analisou, com o mapa de calor embaixo. Desmarcado: o dossiê só aparece se tiver oportunidades (e o centro mostra o plano de carreira); sem elas, a apresentação pula o dossiê.</small></span></label>
+          <div id="vd-bloco" hidden>
+            <div class="vd-parte">
+              <p class="vd-k">O vídeo que a IA analisou</p>
+              <p class="vd-estado" id="va-info">Nenhum vídeo enviado ainda.</p>
+              <div class="acoes"><button class="bt ouro" type="button" id="va-enviar">Enviar o vídeo analisado</button><button class="bt" type="button" id="va-lances" hidden>Marcar lances (opcional)</button></div>
+              <small class="dica">mp4 de preferência, até 5 minutos e 250 MB, com a autorização do responsável. O vídeo vale 90 dias.</small>
+            </div>
+            <div class="vd-parte">
+              <p class="vd-k">Mapa de calor (fica embaixo do vídeo)</p>
+              <div class="mc-atual" id="mc-atual" hidden><img id="mc-img" alt="Mapa de calor do atleta"><div class="acoes"><button class="bt" type="button" id="mc-trocar">Trocar</button><button class="bt perigo" type="button" id="mc-apagar">Apagar</button></div></div>
+              <div class="acoes" id="mc-zona"><button class="bt" type="button" id="mc-escolher">Escolher o mapa de calor</button><input type="file" id="mc-arquivo" accept="image/*" hidden></div>
+              <small class="dica">A imagem do mapa de calor do jogo dele (PNG ou JPG). Aparece embaixo do vídeo, no mesmo slide.</small>
+              <p class="erro" id="mc-erro" role="alert"></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="sec" id="s-oportunidades" data-so="r2">
+          <h2 class="label">Oportunidades</h2>
+          <p class="nota" style="margin:0 0 10px">Os clubes que a equipe mapeou pro perfil dele. Aparecem à direita do slide do dossiê, na ordem daqui (até 6), cada um com um escudo com as iniciais. A tela diz que foram mapeados pela equipe e que quem decide é o clube.</p>
+          <div class="op-nova">
+            <label class="campo"><span>Clube</span><input class="in" id="op-clube" maxlength="50" placeholder="Ex.: Ferroviária" autocomplete="off"></label>
+            <label class="campo"><span>Detalhe (opcional)</span><input class="in" id="op-detalhe" maxlength="40" placeholder="Ex.: Série C, Sub-20, Portugal" autocomplete="off"></label>
+            <button class="bt" type="button" id="op-adicionar">Adicionar</button>
+          </div>
+          <ol class="op-lista" id="op-lista"></ol>
+          <p class="erro" id="op-erro" role="alert"></p>
+        </section>
+
+        <section class="sec" id="s-peneiras">
+          <h2 class="label">As peneiras dele</h2>
+          <p class="nota" style="margin:0 0 10px" data-r1="Anote o que a família contar: chega pronto pro closer, no R2.">Vão pro slide do inimigo comum (depois do dossiê): o tempo e o dinheiro que a família já gastou procurando um avaliador que olhasse de verdade. Na tela, os números contam do zero quando o slide entra. Vazio: o slide mostra o custo sem números.</p>
+          <div class="grade">
+            <label class="campo"><span>Peneiras que ele já fez</span><input class="in" name="peneirasFeitas" type="number" inputmode="numeric" min="0" max="200" placeholder="Ex.: 6"></label>
+            <label class="campo"><span>Quanto já gastaram com peneiras (R$)</span><input class="in" name="gastoPeneiras" type="number" inputmode="numeric" min="0" max="5000000" step="1" placeholder="Ex.: 4800"></label>
+            <label class="campo"><span>Há quantos anos ele tenta</span><input class="in" name="anosTentando" type="number" inputmode="numeric" min="0" max="30" placeholder="Ex.: 3"></label>
+          </div>
         </section>
 
         <section class="sec" id="s-call">
@@ -307,10 +358,11 @@
           <p class="erro" id="vd-erro" role="alert"></p>
         </section>
 
-        <section class="sec" id="s-leitura" data-so="r2" hidden>
-          <h2 class="label">Leitura do atleta</h2>
-          <p class="nota" id="lt-resumo">O vídeo dele e os lances marcados aparecem no slide 17 (IA na Prática). Sem vídeo, o 17 é a leitura ao vivo no Meet.</p>
-          <button class="bt" type="button" id="bt-leitura">Abrir a Leitura do atleta</button>
+        <section class="sec gerar-sec" id="s-gerar">
+          <h2 class="label">Gerar o link</h2>
+          <p class="nota" id="gr-texto" style="margin:0 0 12px">Monte tudo acima com calma: nada vai pra família antes deste botão. O link só passa a existir quando você gerar (até lá, o que você salva fica como rascunho).</p>
+          <button class="bt ouro grande" type="button" id="bt-gerar-link">Gerar link da apresentação</button>
+          <p class="erro" id="gr-erro" role="alert"></p>
         </section>
 
         <section class="sec" id="s-hist" hidden>
@@ -378,9 +430,9 @@
 <!-- leitura do atleta: o vídeo dele e o relatório do slide 17 do R2 (portada do painel atual) -->
 <dialog id="leitura" class="largo" aria-labelledby="lt-titulo">
   <div class="dlg">
-    <div class="dlg-topo"><h2 class="titulo" id="lt-titulo">Leitura do atleta</h2><button class="bt mini fantasma" type="button" id="lt-fechar">Fechar</button></div>
+    <div class="dlg-topo"><h2 class="titulo" id="lt-titulo">Vídeo analisado</h2><button class="bt mini fantasma" type="button" id="lt-fechar">Fechar</button></div>
     <div class="dlg-corpo">
-      <p class="lt-aviso" style="margin:0 0 14px">O que você salvar aqui aparece no slide 17 do R2 (IA na Prática), na tela da família: o vídeo dele, o nome e o relatório. Sem vídeo, o slide fica como sempre, com a leitura ao vivo no Meet.</p>
+      <p class="lt-aviso" style="margin:0 0 14px">O vídeo que a IA analisou vai pro slide do dossiê do atleta (com "Tenho o vídeo do jogador" marcado): no centro, com o mapa de calor embaixo. Os passos 3 a 5 são opcionais: com os lances marcados, o slide da IA na Prática também mostra o vídeo, lance a lance.</p>
       <fieldset class="lt-passo" id="lt-p1"><legend><span class="label">1 · Autorização</span></legend>
         <label class="lt-ck"><input type="checkbox" id="lt-autoriza"> <span>Tenho a autorização expressa do responsável legal pra usar o vídeo deste atleta.</span></label>
         <p class="lt-ok" id="lt-autorizado" hidden></p>
@@ -397,7 +449,7 @@
         <p class="lt-ok" id="lt-video-info" hidden></p>
         <p class="erro" id="lt-video-erro" role="alert"></p>
       </fieldset>
-      <fieldset class="lt-passo off" id="lt-p3"><legend><span class="label">3 · Marcar os lances</span></legend>
+      <fieldset class="lt-passo off" id="lt-p3"><legend><span class="label">3 · Marcar os lances (opcional)</span></legend>
         <div class="lt-grade">
           <div>
             <video class="lt-video" id="lt-video" controls playsinline preload="metadata"></video>
@@ -412,7 +464,7 @@
           <div class="lt-lances" id="lt-lances"></div>
         </div>
       </fieldset>
-      <fieldset class="lt-passo off" id="lt-p4"><legend><span class="label">4 · Pontos fortes, prioridades e a fonte</span></legend>
+      <fieldset class="lt-passo off" id="lt-p4"><legend><span class="label">4 · Pontos fortes, prioridades e a fonte (opcional)</span></legend>
         <div class="lt-textos">
           <label class="campo"><span>Pontos fortes (até 3)</span><input class="in" maxlength="70" data-forte="0"><input class="in" maxlength="70" data-forte="1"><input class="in" maxlength="70" data-forte="2"></label>
           <label class="campo"><span>Prioridades (até 3)</span><input class="in" maxlength="70" data-prior="0"><input class="in" maxlength="70" data-prior="1"><input class="in" maxlength="70" data-prior="2"></label>
@@ -424,7 +476,7 @@
             <small>Vai escrito no rodapé do slide. Só marque "todos" se marcou todos mesmo.</small></div>
         </div>
       </fieldset>
-      <fieldset class="lt-passo off" id="lt-p5"><legend><span class="label">5 · Capa, prévia e JSON</span></legend>
+      <fieldset class="lt-passo off" id="lt-p5"><legend><span class="label">5 · Capa, prévia e JSON (opcional)</span></legend>
         <div class="lt-poster">
           <img id="lt-poster-img" alt="Quadro de capa do vídeo" hidden>
           <div><button class="bt" type="button" id="lt-poster">Usar o quadro de agora como capa</button><p class="lt-teclas">Pause o vídeo no quadro que você quer. Ele vira a capa do slide 17 e, sem foto do atleta, a capa do deck.</p></div>

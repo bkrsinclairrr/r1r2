@@ -1,6 +1,6 @@
 // A validade que quem monta escolhe, a seção Gerados (o espaço de cada lead e a exclusão em lote), a limpeza do lead marcado pra sumir
 // quando vence e o link vencido em todos os decks (o R2 anterior e o R1 também mostram "link inativo"). Também confere a capa da
-// variação Acompanhamento: "Montado para" com a foto, o nome e o sobrenome e o "Dossiê nº".
+// variação Acompanhamento: "Montado para" com a foto e o nome e o sobrenome (o "Dossiê nº" saiu da tela em 18/10/2026).
 // Uso: node testes/teste-validade-gerados.mjs
 import fs from 'node:fs';
 import path from 'node:path';
@@ -92,13 +92,14 @@ try {
   const capa = await nav.aba(s.decks[verAc.deck] + verAc.caminho + '?a=' + ac.j.t + '#1', { largura: 1920, altura: 1080 });
   ok(await capa.ate(`document.querySelector('.zx-retrato>img')?.naturalWidth>0`, 12000), 'a foto aparece no quadro do "Montado para"');
   const cap = await capa.avalia(`document.querySelector('.zx-retrato-caption').innerText.replace(/\\s+/g,' ')`);
-  ok(/Montado para CARLOS EDUARDO SOUZA/i.test(cap) && /Dossiê nº [A-Z2-7]{8}/.test(cap), 'a placa: "Montado para", nome e sobrenome e "Dossiê nº" (' + cap + ')');
+  ok(/Montado para CARLOS EDUARDO SOUZA/i.test(cap) && !/Dossiê nº|nº [A-Z2-7]{8}/i.test(cap), 'a placa: "Montado para" e nome e sobrenome, sem o número do dossiê (' + cap + ')');
   ok(await capa.avalia(`(()=>{const e=document.querySelector('.zx-retrato-caption strong');return e.scrollWidth<=e.parentElement.clientWidth+1&&parseFloat(getComputedStyle(e).fontSize)>=24})()`), 'o nome cabe na placa, em 24 px ou mais');
   ok(/CARLOS EDUARDO SOUZA,/i.test(await capa.avalia(`document.querySelector('#stage>.slide.active h1').innerText.replace(/\\s+/g,' ')`)), 'o título da capa chama pelo nome e sobrenome');
   const fotoEm = await capa.avalia(`[...document.querySelectorAll('#stage>.slide')].flatMap((sl,i)=>[...sl.querySelectorAll('img')].some(img=>/api\\/foto/.test(img.getAttribute('src')||''))?[i+1]:[])`);
   ok(fotoEm.includes(1) && fotoEm.includes(2) && fotoEm.length >= 5, 'a foto vai pros quadros do deck, não só pro slide 02 (' + fotoEm.join(', ') + ')');
-  const cods = await capa.avalia(`[...new Set([...document.querySelectorAll('[data-bind="dossieCod"],[data-bind="selecaoCodigo"]')].map(e=>e.textContent).filter(Boolean))]`);
-  ok(cods.length === 1 && cods[0] === ac.j.t.slice(-8).toUpperCase(), 'o código do dossiê é o mesmo em todos os slides (' + cods.join(', ') + ')');
+  // o número do dossiê (o fim do código do link) não aparece em slide nenhum (pedido do dono, 18/10/2026)
+  const todoTexto = await capa.avalia(`[...document.querySelectorAll('#stage>.slide')].map(sl=>sl.innerText).join(' ')`);
+  ok(!todoTexto.toUpperCase().includes(ac.j.t.slice(-8).toUpperCase()) && !/Dossiê nº/i.test(todoTexto), 'nenhum slide mostra o número do dossiê');
   // a foto fora da tela: os quadros mostram as iniciais do nome e sobrenome
   let rr = (await ana.get('/api/atletas?t=' + ac.j.t)).j.registro;
   await ana.put('/api/atletas?t=' + ac.j.t, { base: rr.fichaEm, ficha: Object.assign({}, rr.ficha, { semFoto: 'sim' }) });
@@ -153,8 +154,8 @@ try {
   ok(!(await P.avalia(`document.querySelector('[data-vd="call+2h"]').disabled`)), 'com o dia e a hora da call: os atalhos ligam');
   await P.avalia(`document.querySelector('[data-vd="call+2h"]').click();document.querySelector('#vd-apagar').click();1`);
   ok(/escolhida por você/.test(await P.avalia(`document.querySelector('#vd-info').textContent`)), 'escolhida antes de gerar: o texto muda');
-  await P.avalia(`document.querySelector('#ed-salvar').click();1`);
-  ok(await P.ate(`location.hash.length===31 && !document.querySelector('#s-link').hidden`), 'gerou o link');
+  await P.avalia(`document.querySelector('#bt-gerar-link').click();1`);
+  ok(await P.ate(`location.hash.length===31 && !document.querySelector('#s-link').hidden`), 'Gerar link: gerou o link');
   const tP = await P.avalia(`location.hash.slice(5)`);
   let regP = (await ana.get('/api/atletas?t=' + tP)).j.registro;
   ok(regP.venceManual && regP.apagarAoVencer && perto(regP.venceEm, new Date(Date.parse(amanha + 'T19:30:00-03:00') + 2 * H).toISOString()), 'o servidor guardou 2 h depois da call e o apagar ao vencer');

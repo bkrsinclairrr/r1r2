@@ -1,44 +1,46 @@
 # Notas do Gestor de Carreiras · R2 (projeto novo)
 
-Deck: `index.html` (33 slides). Mesmo conteúdo do modo apresentador (tecla P no deck). Tempo de tela somado: 66 min; a call inteira fica entre 45 e 60 min, então os seis slides do bloco da página institucional (10, 13, 14, 22, 23 e 24) não saem pelo Painel do Closer nesta versão (o R2 B não tira slide da sequência): se faltar tempo, pule com a seta os de prova (22, 23 e 24) e, depois, o 10 e o 13.
+Deck: `index.html` (35 slides). Mesmo conteúdo do modo apresentador (tecla P no deck). Tempo de tela somado: 71 min; a call inteira fica entre 45 e 60 min, então os seis slides do bloco da página institucional (10, 13, 14, 24, 25 e 26) não saem pelo Painel do Closer nesta versão (o R2 B não tira slide da sequência): se faltar tempo, pule com a seta os de prova (24, 25 e 26) e, depois, o 10 e o 13.
 
-A R2 não começa do zero. O estrategista esportivo já coletou tudo: o Gestor confirma o que já sabe, nomeia o inimigo comum (o olhômetro: avaliar a olho, em poucos minutos, sem dado e sem acompanhamento), apresenta o planejamento de carreira do atleta com o tripé, mostra como o Zyron lê o jogo dele, mostra a plataforma onde tudo isso vive (tela ilustrativa) e quem olha por ele (a IA e um agente humano), põe o atleta no lugar dele em campo, lê o jogo dele ao vivo (IA na Prática), prova com o depoimento de uma mãe, com a AGN, com a rede (AGN, clubes e o David) e com os números da casa, junta numa tela só o que ele leva, com o rosto e o nome dele (25), mostra quanto custaria montar tudo por conta (R$ 30.000 por ano) e apresenta os três planos (31), fechando ali mesmo com o número do plano escolhido, que o último avanço destaca: Scouting, R$ 997 vitalício; Assessoria PRO, R$ 1.497 vitalício; Assessoria de Elite Legacy, R$ 2.997 vitalício, todos em 10x sem juros. A garantia total vem logo depois (32), com os três valores na tela de uma vez. A gente só lucra quando ele fecha contrato; até lá, a gente investe nele, e a família paga só o custeio dos profissionais parceiros, porque ele passou no filtro. A ordem segue a Bíblia das Vendas (processo padrão da R2): conexão (01 e 02), dor e sonho (03 e 16), o plano (04 a 25), fechamento (26 a 32) e próximo passo (33). Base: PLAYBOOK_CLOSER v9 (números entre parênteses são as seções dele; "slide NN" é o slide do deck).
+A R2 não começa do zero. O estrategista esportivo já coletou tudo: o Gestor confirma o que já sabe, nomeia o inimigo comum (o olhômetro: avaliar a olho, em poucos minutos, sem dado e sem acompanhamento), apresenta o planejamento de carreira do atleta com o tripé, mostra como o Zyron lê o jogo dele, mostra a plataforma onde tudo isso vive (tela ilustrativa) e quem olha por ele (a IA e um agente humano), põe o atleta no lugar dele em campo, lê o jogo dele ao vivo (IA na Prática), abre o dossiê do atleta (18: a foto e os dados dele, o vídeo que a IA analisou, o mapa de calor, as oportunidades que a equipe mapeou e o plano de carreira) e nomeia de novo o inimigo em comum, agora com o tempo e o dinheiro que as peneiras custaram à família (19), prova com o depoimento de uma mãe, com a AGN, com a rede (AGN, clubes e o David) e com os números da casa, junta numa tela só o que ele leva, com o rosto e o nome dele (27), mostra quanto custaria montar tudo por conta (R$ 30.000 por ano) e apresenta os três planos (33), fechando ali mesmo com o número do plano escolhido, que o último avanço destaca: Scouting, R$ 997 vitalício; Assessoria PRO, R$ 1.497 vitalício; Assessoria de Elite Legacy, R$ 2.997 vitalício, todos em 10x sem juros. A garantia total vem logo depois (34), com os três valores na tela de uma vez. A gente só lucra quando ele fecha contrato; até lá, a gente investe nele, e a família paga só o custeio dos profissionais parceiros, porque ele passou no filtro. A ordem segue a Bíblia das Vendas (processo padrão da R2): conexão (01 e 02), dor e sonho (03 e 16), o plano (04 a 27), fechamento (28 a 34) e próximo passo (35). Base: PLAYBOOK_CLOSER v9 (números entre parênteses são as seções dele; "slide NN" é o slide do deck).
 
 Como usar
-- Antes da call, no Painel do Closer: crie o R2 do atleta, suba a foto (recortada ali mesmo, com a autorização do responsável marcada), preencha o nome completo (a tela usa o nome e o sobrenome dele, do jeito que você escolher em "Nome na tela": último sobrenome, primeiro sobrenome, só o primeiro nome, ou sem nome nem foto; o painel mostra ao vivo como fica), "Como a gente chama ele" só se a tela deve dizer outra coisa (Joãozinho, ou um nome composto que o painel cortou) e a ficha da call, escolha a variação do R2 na seção "Variação do R2", que é a primeira do R2 (ao lado do nome de cada variação está a classificação do admin, Validada, Em validação ou Não validada, e a mais validada vem primeiro; os slides opcionais, como o 25, ficam marcados ou não), confira a prévia (capa, 02, 11, 19 e 27) e copie o link da apresentação (botão "Criar R2 e gerar o link"). O link é só daquele atleta: um código de 26 letras, sem nome na URL. Não tem deploy por atleta.
+- Antes da call, no Painel do Closer: crie o R2 do atleta, suba a foto (recortada ali mesmo, com a autorização do responsável marcada), preencha o nome completo (a tela usa o nome e o sobrenome dele, do jeito que você escolher em "Nome na tela": último sobrenome, primeiro sobrenome, só o primeiro nome, ou sem nome nem foto; o painel mostra ao vivo como fica), "Como a gente chama ele" só se a tela deve dizer outra coisa (Joãozinho, ou um nome composto que o painel cortou) e a ficha da call, escolha a variação do R2 na seção "Variação do R2", que é a primeira do R2 (ao lado do nome de cada variação está a classificação do admin, Validada, Em validação ou Não validada, e a mais validada vem primeiro; os slides opcionais, como o 27, ficam marcados ou não), ligue "Tenho o vídeo do jogador" se tiver o vídeo que a IA analisou (e suba o vídeo e o mapa de calor, que fica embaixo dele), preencha as oportunidades (os clubes que a equipe mapeou) e as peneiras dele, confira a prévia (capa, 02, 12, 18 e 35) e, só no fim, aperte "Gerar link da apresentação". Até lá o R2 é um rascunho: salva, aparece na lista como "Em preparo · sem link" e a família não acha nada pelo código. O link é só daquele atleta: um código de 26 letras, sem nome na URL. Não tem deploy por atleta.
 - Abra o link do atleta em tela cheia e o apresentador em outra janela (tecla P). Compartilhe só a janela do deck, com áudio. Cada link tem a sua ficha, o seu canal e a sua janela de apresentador: duas calls no mesmo computador, ou dois closers, não misturam atletas.
 - Com o link, a ficha já vem do painel (foto, nome, apelido, posição, plano, dia e hora da call e os prazos). Mudou algo no painel com a call aberta: Atualizar do painel, no apresentador. Sem link (o deck aberto puro), na aba Ficha, cole a ficha da R1 (texto do botão Copiar ficha pro CRM) e clique em Ler ficha. Confira o que foi lido.
 - O mesmo R2 aberto em outro lugar: o apresentador avisa no topo, com a hora. Assumir passa o aviso pra outra janela; não bloqueia nada.
 - Confira no Contexto do lead no CRM: origem (Zyron ou formulário), o que chamou atenção no Zyron, a experiência que ele contou no formulário. Os slides 01 e 02 mudam sozinhos com a origem.
-- Foto e nome: a foto entra na capa (01), no cartão do 02, na plataforma (09), no centro do 11, no cartão do 12, no selo "Perfil do ..." do 21, no 25, na turma ou no título do 30, no selo do 32 e no 33. Sem foto, ou com a foto que não carrega, o mesmo quadro mostra a inicial do nome: a família não vê erro, e o apresentador avisa. A tela chama o atleta pelo nome e sobrenome, nos títulos, nas frases e no carimbo do dossiê: o primeiro nome e o último sobrenome do nome completo (Lucas Almeida da Silva vira Lucas Silva; João Pedro Silva e Pedro Henrique ficam inteiros; Júnior e Filho vão junto). Esse é o padrão: no R2 do atleta, em "Nome na tela", o closer pode escolher nome e primeiro sobrenome (Lucas Almeida), só o primeiro nome (Lucas) ou sem nome nem foto (a tela fica geral, com "você", e o vídeo do atleta também não vai pra tela). A caixa "Mostrar a foto do lead na tela" tira só a foto: o nome continua e o quadro mostra a inicial. Cada variação diz se mostra o nome e a foto do lead (o admin ajusta na aba "Variações do R2"); numa variação que não mostra, o painel não oferece a escolha e o checklist não pede o que a tela não usa. Se o campo "Como a gente chama ele" estiver preenchido, vale o que está lá, em tudo. A capa diz "Montado para" com o nome completo. Até 24 letras: nome muito longo perde o composto ou o Júnior. O rótulo do nome no campo (12 e 33) é menor: até 12 letras leva o nome da tela, depois só o primeiro nome. Na fala (as frases entre aspas e a mensagem de confirmação), o apresentador usa só o primeiro nome (ou o apelido). Confira na capa que a foto é dele e que o dia e a hora da call estão certos. Não comente a foto nem a aparência dele: fale do plano.
-- Posição, pé e altura: a posição desenha o campo do 12 (e a miniatura do 33), com o atleta marcado no lugar dele. Escreva como goleiro, lateral direito, zagueiro, volante, meia, ponta esquerda ou atacante. Posição que o deck não reconhece (só "lateral", por exemplo): o campo fica sem destaque e o apresentador avisa. Pé e altura aparecem no cartão do 12; vazios, a linha some.
-- Complete o que só você sabe: primeiro foco do plano (04), caso espelho e link da AGN (20 e 21), faixa de contrato que vocês comprovam (23; padrão R$ 20 a 30 mil+), prazo da garantia (32), vagas e próxima turma (30, só no Legacy), o plano que vai recomendar (11, 21, 31 e 33). Os prazos de contato e do Zyron (25, 30 e 33) saem só da lista fixa, no painel ou no apresentador: ninguém escreve prazo à mão. O sonho, o que falta, a dor, o que ele treina hoje e a locomoção já vêm da ficha da R1: só o sonho aparece na tela (04), o resto você fala.
-- Plano da ficha: Legacy se a ficha não mostra aperto financeiro; Assessoria PRO se a dor financeira é forte; Scouting só se o caixa não comporta o PRO. Vazio ou nome antigo, a tela mostra o Legacy. O plano da ficha muda a tela: o selo "O seu plano" do 11, a linha do plano do 21, as linhas do 25, o destaque e o número do 31 e o 33. Turma e vaga (18, 28 e 30) só aparecem no Legacy, e com o PRO ou o Scouting o 30 vira "o começo".
-- Até o 30, a tela mostra a estrutura completa, a do Legacy (o 16 diz isso numa nota no pé), menos o 25, que já segue o plano da ficha. Com o PRO ou o Scouting na ficha, fale da estrutura, não do plano: o 31 mostra o que cada plano entrega.
+- Foto e nome: a foto entra na capa (01), no cartão do 02, na plataforma (09), no centro do 11, no cartão do 12, no selo "Perfil do ..." do 23, no 27, na turma ou no título do 32, no selo do 34 e no 35. Sem foto, ou com a foto que não carrega, o mesmo quadro mostra a inicial do nome: a família não vê erro, e o apresentador avisa. A tela chama o atleta pelo nome e sobrenome, nos títulos, nas frases e no carimbo do dossiê: o primeiro nome e o último sobrenome do nome completo (Lucas Almeida da Silva vira Lucas Silva; João Pedro Silva e Pedro Henrique ficam inteiros; Júnior e Filho vão junto). Esse é o padrão: no R2 do atleta, em "Nome na tela", o closer pode escolher nome e primeiro sobrenome (Lucas Almeida), só o primeiro nome (Lucas) ou sem nome nem foto (a tela fica geral, com "você", e o vídeo do atleta também não vai pra tela). A caixa "Mostrar a foto do lead na tela" tira só a foto: o nome continua e o quadro mostra a inicial. Cada variação diz se mostra o nome e a foto do lead (o admin ajusta na aba "Variações do R2"); numa variação que não mostra, o painel não oferece a escolha e o checklist não pede o que a tela não usa. Se o campo "Como a gente chama ele" estiver preenchido, vale o que está lá, em tudo. A capa diz "Montado para" com o nome completo. Até 24 letras: nome muito longo perde o composto ou o Júnior. O rótulo do nome no campo (12 e 35) é menor: até 12 letras leva o nome da tela, depois só o primeiro nome. Na fala (as frases entre aspas e a mensagem de confirmação), o apresentador usa só o primeiro nome (ou o apelido). Confira na capa que a foto é dele e que o dia e a hora da call estão certos. Não comente a foto nem a aparência dele: fale do plano.
+- Posição, pé e altura: a posição desenha o campo do 12 (e a miniatura do 35), com o atleta marcado no lugar dele. Escreva como goleiro, lateral direito, zagueiro, volante, meia, ponta esquerda ou atacante. Posição que o deck não reconhece (só "lateral", por exemplo): o campo fica sem destaque e o apresentador avisa. Pé e altura aparecem no cartão do 12; vazios, a linha some.
+- Complete o que só você sabe: primeiro foco do plano (04), caso espelho e link da AGN (22 e 23), faixa de contrato que vocês comprovam (23; padrão R$ 20 a 30 mil+), prazo da garantia (34), vagas e próxima turma (32, só no Legacy), o plano que vai recomendar (11, 23, 33 e 35). Os prazos de contato e do Zyron (27, 32 e 35) saem só da lista fixa, no painel ou no apresentador: ninguém escreve prazo à mão. O sonho, o que falta, a dor, o que ele treina hoje e a locomoção já vêm da ficha da R1: só o sonho aparece na tela (04), o resto você fala.
+- Plano da ficha: Legacy se a ficha não mostra aperto financeiro; Assessoria PRO se a dor financeira é forte; Scouting só se o caixa não comporta o PRO. Vazio ou nome antigo, a tela mostra o Legacy. O plano da ficha muda a tela: o selo "O seu plano" do 11, a linha do plano do 23, as linhas do 27, o destaque e o número do 33 e o 35. Turma e vaga (20, 30 e 32) só aparecem no Legacy, e com o PRO ou o Scouting o 32 vira "o começo".
+- Até o 32, a tela mostra a estrutura completa, a do Legacy (o 16 diz isso numa nota no pé), menos o 27, que já segue o plano da ficha. Com o PRO ou o Scouting na ficha, fale da estrutura, não do plano: o 33 mostra o que cada plano entrega.
 - O dossiê: com o link do Painel do Closer (?a=<código>), a capa, o 02, o cartão do 12 e o selo no canto dos slides levam o número do dossiê (os 8 caracteres finais do código). Sem link, o selo mostra só o nome.
 - O link vale até 7 dias depois do dia da call (o painel renova até 60 dias); a foto e o vídeo saem do ar sozinhos em 90 dias. Link revogado, vencido ou trocado por outro: a tela da família mostra só "Este link não está mais ativo. Fale com o seu gestor de carreiras." e o apresentador diz o motivo. Painel fora do ar: o deck segue com a última ficha deste link guardada no navegador (ou sem o nome dele), sem erro na tela, e o apresentador avisa.
 - A foto e o vídeo do atleta são de menor: só sobem com a autorização do responsável marcada no painel (quem autorizou e quando), só aparecem pelo link da apresentação dele e saem do ar sozinhos em 90 dias. Com o quadro de capa salvo no painel, o 04 diz "feito a partir do seu vídeo e da sua história", o 09 mostra o quadro no cartão do vídeo e, sem foto, a capa mostra o quadro do vídeo dele.
 - O inimigo comum: o olhômetro tem cor própria, o laranja; o Zyron, a resposta, é azul-gelo. O 03 mostra só a coluna do olhômetro, com a coluna "A resposta" vazia; o 15 repete a tabela e preenche com o Zyron. Ataque o método, nunca o avaliador nem clube nenhum.
-- Caso espelho: um atleta nosso de verdade, com o mesmo perfil (posição, idade, nível), do CASOS.md ou publicado na AGN. Plante no 02, revele no 20 com o link, retome no 29 e no 33.
+- Caso espelho: um atleta nosso de verdade, com o mesmo perfil (posição, idade, nível), do CASOS.md ou publicado na AGN. Plante no 02, revele no 22 com o link, retome no 31 e no 35.
 - Bloco do Zyron (05 a 08), trazido da R1: e se, Zyron (a resposta ao olhômetro), o vídeo do Zyron trabalhando (07) e os cinco verbos. Se todos os decisores viram isso na R1, passe rápido e use só os capítulos do vídeo; se um decisor não estava, mostre inteiro. O campo (12) e o olhômetro contra o Zyron (15) são sempre inteiros.
-- A plataforma (09): tela ILUSTRATIVA, com a nota no rodapé. Mostra o vídeo, o mapa de calor, os clipes por tipo de lance e o relatório, um cartão por avanço. Não é dado dele: sem nota, sem percentil, sem comparação com outros atletas, e o Zyron não tem percentual de acerto. Confirme com o dono o que da plataforma já está no ar e fale só disso. A referência visual está em imagesr2 (REFERENCIAS_R2.md).
+- A plataforma (09): tela ILUSTRATIVA (desde 18/10/2026 a tela não diz isso: diga você). Mostra o vídeo, o mapa de calor, os clipes por tipo de lance e o relatório, um cartão por avanço. Não é dado dele: sem nota, sem percentil, sem comparação com outros atletas, e o Zyron não tem percentual de acerto. Confirme com o dono o que da plataforma já está no ar e fale só disso. A referência visual está em imagesr2 (REFERENCIAS_R2.md).
 - Quem olha por ele (11): o Zyron, a IA, fica ligado 24 horas e lê cada vídeo novo. A parte humana segue o ritmo do plano: Scouting a cada 15 dias (relatório do analista de performance), Assessoria PRO toda semana (o estrategista de carreiras liga), Legacy todo dia (estrategista de carreiras e gerente de carreira de perto). O selo "O seu plano" segue a ficha. Não diga "24/7" pro acompanhamento humano.
-- A rede (21): a AGN descrita como o site dela se descreve (agnfootball.com), os números de clubes da casa e o David. O site da AGN não cita o David nem a Jogador de Elite: a relação direta é da casa. A linha de baixo segue o plano: Legacy, conexão direta com clubes e AGN e pelo menos 15 encaminhamentos por mês; Assessoria PRO, pelo menos 5; Scouting, o começo. Mande o link da AGN no WhatsApp. Encaminhamos e viabilizamos, nunca "garantido" nem "certo".
-- Bloco da página institucional (17/10/2026), seis slides: o método, "a IA encontra, a gente conduz" (10); o campo animado, olhômetro × IA (13); o encaixe, "você não precisa ser o próximo Neymar", com o radar (14); os 326 atletas enviados (22); os clubes e parceiros, com a nota legal (23); e o mosaico "cada rosto, uma história" (24). Animação: o campo (13) vira do olhômetro pra IA com o avanço; as barras, a cadeia e o radar seguem os avanços; as faixas de escudos e o mosaico rolam sozinhos. Se a animação travar no Meet, abra o deck com ?bloco=estatico no fim do endereço. A tela não mostra nota, percentual nem velocidade de ninguém (o campo e o radar são ilustrações, com valores fictícios, e a tela diz isso). "Enviados" é a palavra da arte do 326: nunca "contratados". Os escudos são dos titulares: nunca diga que o clube usa o Zyron, patrocina ou tem vaga.
-- O que ele leva (25): logo depois da rede e antes do valor real. Seis linhas, uma por avanço (IA, gente, conexões, oportunidades, tempo e garantia), com o retrato dele do lado. Cada linha segue o plano da ficha; no Scouting, conexões e oportunidades dizem "A partir da Assessoria PRO". O tempo sai dos prazos da lista fixa e, só no Legacy, da referência dos 93% em até 3 meses, com a legenda na tela: nunca prazo de contrato. A garantia é a do 32, com a condição no pé.
-- Vídeo do Zyron (07) e depoimento da mãe (18): teste antes, com o áudio no compartilhamento. Espaço dá play e pausa; o apresentador tem os capítulos do vídeo e o Tocar do início do áudio.
+- A rede (23): a AGN descrita como o site dela se descreve (agnfootball.com), os números de clubes da casa e o David. O site da AGN não cita o David nem a Jogador de Elite: a relação direta é da casa. A linha de baixo segue o plano: Legacy, conexão direta com clubes e AGN e pelo menos 15 encaminhamentos por mês; Assessoria PRO, pelo menos 5; Scouting, o começo. Mande o link da AGN no WhatsApp. Encaminhamos e viabilizamos, nunca "garantido" nem "certo".
+- Bloco da página institucional (17/10/2026), seis slides: o método, "a IA encontra, a gente conduz" (10); o campo animado, olhômetro × IA (13); o encaixe, "você não precisa ser o próximo Neymar", com o radar (14); os 326 atletas enviados (24); os clubes e parceiros, com a nota legal (25); e o mosaico "cada rosto, uma história" (26). Animação: o campo (13) vira do olhômetro pra IA com o avanço; as barras, a cadeia e o radar seguem os avanços; as faixas de escudos e o mosaico rolam sozinhos. Se a animação travar no Meet, abra o deck com ?bloco=estatico no fim do endereço. A tela não mostra nota, percentual nem velocidade de ninguém (o campo e o radar são ilustrações, com valores fictícios, e a tela diz isso). "Enviados" é a palavra da arte do 326: nunca "contratados". Os escudos são dos titulares: nunca diga que o clube usa o Zyron, patrocina ou tem vaga.
+- O que ele leva (27): logo depois da rede e antes do valor real. Seis linhas, uma por avanço (IA, gente, conexões, oportunidades, tempo e garantia), com o retrato dele do lado. Cada linha segue o plano da ficha; no Scouting, conexões e oportunidades dizem "A partir da Assessoria PRO". O tempo sai dos prazos da lista fixa e, só no Legacy, da referência dos 93% em até 3 meses, com a legenda na tela: nunca prazo de contrato. A garantia é a do 34, com a condição no pé.
+- Vídeo do Zyron (07) e depoimento da mãe (20): teste antes, com o áudio no compartilhamento. Espaço dá play e pausa; o apresentador tem os capítulos do vídeo e o Tocar do início do áudio.
+- Dossiê do atleta (18), logo depois da IA na Prática: o nome em cima da foto e os dados embaixo (posição, idade, altura, pé, categoria e onde joga), o vídeo analisado pela IA no centro, com o mapa de calor embaixo, e à direita as oportunidades (clubes que procuram esse perfil, mapeados pela equipe) e o plano de carreira. Só aparece com "Tenho o vídeo do jogador" ligado (vídeo ou mapa) ou com oportunidades; sem nada disso, as setas passam direto. Com o vídeo analisado e sem lances marcados, o 17 vira a ponte (a leitura ao vivo de sempre) e o vídeo entra no 18. Nunca diga que um clube da lista já pediu o atleta.
+- O inimigo em comum (19): o avaliador que olha 22 em vinte minutos e só vê quem está perto da bola, e o quadro "O preço de procurar no escuro" com as peneiras, o gasto e os anos que a família contou no painel (os números contam do zero quando o slide entra). Sem os números, o quadro mostra a conta sem números. Nada de estatística inventada.
 - IA na Prática (17): com o vídeo do atleta no painel (Leitura do atleta, na página do R2 dele no Painel do Closer), o slide mostra o vídeo dele, o nome e o relatório que você deixou pronto: a linha do tempo com os lances, a rosca (com 5 lances ou mais), os pontos fortes, as prioridades e o primeiro foco, um avanço por vez. O vídeo começa mudo (Som liga o áudio), e no apresentador cada lance é um capítulo: clique e o vídeo pula pra ele. A fonte (Zyron ou Equipe) é a que o painel diz: com Equipe, ninguém diz que o Zyron leu. Sem vídeo no painel, com o painel fora do ar ou com o vídeo que não carrega, o 17 volta sozinho pra leitura ao vivo de sempre (o apresentador avisa): deixe o vídeo dele aberto e troque o compartilhamento do Meet na hora; o slide não mostra resultado.
-- Pergunta e silêncio: três pontos, marcados no apresentador. No 03 (o avaliador analisou o teu jogo de verdade?) e no 17 (o que vocês sentiram vendo o jogo dele lido assim?), a tecla S conta o silêncio ali mesmo; no 31 (o número), como sempre. De qualquer outro slide, S leva ao 31, já com o plano da ficha destacado.
-- A escada do sim (28): três degraus, um por avanço, só com a pergunta. Avance depois de cada sim.
-- O valor real (26) abre só com a pergunta. Cada avanço (→ ou espaço) mostra uma frente com o valor anual e a soma da direita sobe junto (6.500, 11.500, 14.000, 17.000, 20.500, 23.500, 30.000); o último avanço destaca o total, R$ 30.000 por ano, com tudo junto. O apresentador mostra o que entra no próximo avanço e a soma que vai aparecer.
-- Os planos e o número (31): os três lado a lado, cada um na sua parte: papel, nome, ritmo com o passo do tripé, o investimento (valor vitalício e a parcela das 10x em destaque) e o que o plano acrescenta ao degrau de baixo, cargo por cargo. Um avanço por coluna (Scouting, Assessoria PRO e Legacy), com a pergunta do ritmo; o último avanço destaca o plano da ficha como a sua recomendação. É aqui que você fala o número do plano, uma vez, e aperta S. Pra recomendar outro, troque o plano no apresentador (botões no 31 e na aba Fechamento): a tela da família troca junto, e o apresentador mostra o que sai ou o que entra.
-- Rodapé do 31: "Valor único e vitalício, destinado ao custeio dos profissionais parceiros"; a linha de que a remuneração vem do contrato do atleta só aparece com o Legacy na ficha. A âncora de R$ 30.000 por ano e o "R$ 30 mil+ por mês" não têm mais tela própria: se precisar, fale (a âncora está no 26 e a faixa de contrato no 29).
-- Garantia total (32): vem logo depois do número, com os três valores na tela de uma vez (é o único slide em que os três aparecem sem avanço), o "100% de volta" e a média de três meses só com o Legacy. A condição (método aplicado, nos termos do contrato) está no rodapé: não diga "incondicional".
+- Pergunta e silêncio: três pontos, marcados no apresentador. No 03 (o avaliador analisou o teu jogo de verdade?) e no 17 (o que vocês sentiram vendo o jogo dele lido assim?), a tecla S conta o silêncio ali mesmo; no 33 (o número), como sempre. De qualquer outro slide, S leva ao 33, já com o plano da ficha destacado.
+- A escada do sim (30): três degraus, um por avanço, só com a pergunta. Avance depois de cada sim.
+- O valor real (28) abre só com a pergunta. Cada avanço (→ ou espaço) mostra uma frente com o valor anual e a soma da direita sobe junto (6.500, 11.500, 14.000, 17.000, 20.500, 23.500, 30.000); o último avanço destaca o total, R$ 30.000 por ano, com tudo junto. O apresentador mostra o que entra no próximo avanço e a soma que vai aparecer.
+- Os planos e o número (33): os três lado a lado, cada um na sua parte: papel, nome, ritmo com o passo do tripé, o investimento (valor vitalício e a parcela das 10x em destaque) e o que o plano acrescenta ao degrau de baixo, cargo por cargo. Um avanço por coluna (Scouting, Assessoria PRO e Legacy), com a pergunta do ritmo; o último avanço destaca o plano da ficha como a sua recomendação. É aqui que você fala o número do plano, uma vez, e aperta S. Pra recomendar outro, troque o plano no apresentador (botões no 33 e na aba Fechamento): a tela da família troca junto, e o apresentador mostra o que sai ou o que entra.
+- Rodapé do 33: "Valor único e vitalício, destinado ao custeio dos profissionais parceiros"; a linha de que a remuneração vem do contrato do atleta só aparece com o Legacy na ficha. A âncora de R$ 30.000 por ano e o "R$ 30 mil+ por mês" não têm mais tela própria: se precisar, fale (a âncora está no 28 e a faixa de contrato no 31).
+- Garantia total (34): vem logo depois do número, com os três valores na tela de uma vez (é o único slide em que os três aparecem sem avanço), o "100% de volta" e a média de três meses só com o Legacy. A condição (método aplicado, nos termos do contrato) está no rodapé: não diga "incondicional".
 - Link de pagamento: não fica no deck. Tenha o link de cada plano à mão, fora do deck, e mande pelo WhatsApp só depois do sim, na própria call.
 - Variações (outra copy pro mesmo deck): a variação se escolhe no Painel do Closer, no R2 do atleta (a aba "Variações do R2" mostra todas, a mais validada primeiro, e quando usar cada uma; o admin cria variações novas ali, e as páginas novas do deck entram na lista sozinhas). O link do atleta é um só e abre a variação marcada, mesmo que já tenha sido enviado. O painel confere se cada página está funcionando: se alguma quebrar ou sair do deck, o link do atleta abre a Principal em vez de dar erro. Com link, o botão Variações da barra do deck e a tecla V abrem o R2 do atleta no painel; sem link, a página de exemplos. Slide fora da sequência: as setas passam direto, e número mais Enter ainda abre, se a família perguntar.
 - Depois: Resultado da R2 e Copiar resultado pro CRM. Com link: Encerrar e limpar, no apresentador (a ficha deste link sai deste navegador; o link continua valendo pra família rever até a validade), e Marcar call como encerrada, no painel. Sem link: Nova call (limpar ficha).
 
-Regra: a tela mostra o valor de referência de mercado da estrutura (26, R$ 30.000 por ano), a faixa de contrato como referência, nunca como promessa (29), e os três planos com o investimento de cada um e o plano da ficha destacado (31). O Gestor fala o número uma vez e fica em silêncio. Encaminhado nunca vira contratado na fala. A conexão direta com clubes e AGN, os 15 encaminhamentos por mês e a turma são do Legacy; o encaminhamento vem a partir da Assessoria PRO. O Zyron não tem percentual de acerto, o cartão do 12 não tem nota nem atributo, e nenhum slide diz que existe vaga num clube específico. A foto é do atleta certo, com a autorização marcada no painel; sem isso, o link sai sem foto.
+Regra: a tela mostra o valor de referência de mercado da estrutura (28, R$ 30.000 por ano), a faixa de contrato como referência, nunca como promessa (31), e os três planos com o investimento de cada um e o plano da ficha destacado (33). O Gestor fala o número uma vez e fica em silêncio. Encaminhado nunca vira contratado na fala. A conexão direta com clubes e AGN, os 15 encaminhamentos por mês e a turma são do Legacy; o encaminhamento vem a partir da Assessoria PRO. O Zyron não tem percentual de acerto, o cartão do 12 não tem nota nem atributo, e nenhum slide diz que existe vaga num clube específico. A foto é do atleta certo, com a autorização marcada no painel; sem isso, o link sai sem foto.
 
 No apresentador, cada slide mostra a etapa da Bíblia e o que ele desarma (as objeções que ele responde): clique e a resposta abre na aba Objeções. Aqui nas notas, a mesma coisa vem na linha "Etapa da Bíblia" de cada slide.
 
@@ -72,7 +74,7 @@ Etapa da Bíblia: Conexão. Desarma: "Preciso ver com minha esposa / meu marido"
 - Veio do formulário: "[atleta], você contou pra gente: [experiência]. Foi isso que a equipe viu. Você já é jogador, o que falta é o caminho."
 - Sem contexto: "A equipe analisou o teu jogo e aprovou o teu perfil. Por isso vocês estão aqui."
 - Exclusividade (03): "Eu não falo com toda família. Se o [atleta] chegou até aqui, é porque tem o perfil que a gente procura."
-- Plante o espelho, como quem acabou de perceber: "Sabe que, lendo o teu perfil, você me lembrou muito um atleta nosso? Daqui a pouco eu te mostro quem é." Não fale o nome ainda: a curiosidade segura a atenção até o slide 20.
+- Plante o espelho, como quem acabou de perceber: "Sabe que, lendo o teu perfil, você me lembrou muito um atleta nosso? Daqui a pouco eu te mostro quem é." Não fale o nome ainda: a curiosidade segura a atenção até o slide 22.
 - O plano é dele, apontando o cartão com o retrato dele: "Esse é o teu perfil aprovado, [atleta]. E esse plano é só teu: nenhum outro atleta tem este plano. Ele sai da tua história e do teu jogo."
 - Ponte: "Hoje eu trago o plano pra levar você até lá."
 
@@ -124,7 +126,7 @@ Etapa da Bíblia: O plano. Desarma: "E se ele for dos que não chegam lá?", "El
 **Pergunte e espere a resposta**
 - Faz sentido esse caminho pra vocês?
 
-**Atenção:** Amarre cada etapa ao que eles disseram até aqui, na ficha e na conversa. Não prometa prazo, clube ou contrato. O tripé da Bíblia fica escrito na tela: Ser visto, Ser preparado e Ser apresentado são o passo de cada plano do 31, um por degrau. Previne "ele não pode ir pra outro estado": hoje ele não vai pra lugar nenhum, isso só acontece quando o clube chamar. O caminho da tela é a estrutura completa, a do Legacy: gerente de carreira, vitrine com clubes e AGN e a ida organizada. Com o PRO ou o Scout PRO na ficha, não diga que o plano dele entrega isso: o 31 mostra o que cada plano entrega.
+**Atenção:** Amarre cada etapa ao que eles disseram até aqui, na ficha e na conversa. Não prometa prazo, clube ou contrato. O tripé da Bíblia fica escrito na tela: Ser visto, Ser preparado e Ser apresentado são o passo de cada plano do 33, um por degrau. Previne "ele não pode ir pra outro estado": hoje ele não vai pra lugar nenhum, isso só acontece quando o clube chamar. O caminho da tela é a estrutura completa, a do Legacy: gerente de carreira, vitrine com clubes e AGN e a ida organizada. Com o PRO ou o Scout PRO na ficha, não diga que o plano dele entrega isso: o 33 mostra o que cada plano entrega.
 
 ## 05 · E se?
 
@@ -202,7 +204,7 @@ Etapa da Bíblia: O plano. Desarma: "Vou ver outras opções", "Isso de intelig�
 **Anote na ficha**
 - O que a família mais quer ver: clipes, mapa de calor ou relatório, com as palavras dela.
 
-**Atenção:** É uma tela ILUSTRATIVA (a nota está no rodapé): diga isso em voz alta e não leia nada como dado dele. Não há nota, percentil nem comparação com outros atletas, e o Zyron não tem percentual de acerto. O mapa de calor é só a ideia: só fale de mapa de calor dele se a leitura do painel de fato trouxer isso. O quadro do vídeo aparece no primeiro cartão só se o vídeo dele estiver no painel, com a autorização do responsável. Antes da call, confirme com o dono o que da plataforma já está no ar e fale só do que está. A referência visual está em imagesr2 (REFERENCIAS_R2.md). A foto no topo é a autorizada no painel; a tela continua ilustrativa, então não diga que a plataforma dele já está pronta.
+**Atenção:** É uma tela ILUSTRATIVA, e a tela não diz mais isso (pedido do dono, 18/10/2026): diga você, em voz alta, e não leia nada como dado dele. Não há nota, percentil nem comparação com outros atletas, e o Zyron não tem percentual de acerto. O mapa de calor é só a ideia: só fale de mapa de calor dele se a leitura do painel de fato trouxer isso. O quadro do vídeo aparece no primeiro cartão só se o vídeo dele estiver no painel, com a autorização do responsável. Antes da call, confirme com o dono o que da plataforma já está no ar e fale só do que está. A referência visual está em imagesr2 (REFERENCIAS_R2.md). A foto no topo é a autorizada no painel; a tela continua ilustrativa, então não diga que a plataforma dele já está pronta.
 
 ## 10 · O método: a IA encontra, a gente conduz
 
@@ -310,7 +312,7 @@ Etapa da Bíblia: O plano. Desarma: "Será que ele é bom o suficiente?", "Isso 
 **Anote na ficha**
 - Se a família achava que precisava ser craque pra chegar, com as palavras dela.
 
-**Atenção:** O radar é ILUSTRATIVO, com valores fictícios (a tela diz isso): não é do atleta e não tem nome, nota nem percentual. "Encaixe" é a ideia, não um fato sobre um clube: nunca diga que um clube específico procura o [atleta], que existe vaga, nem prometa clube, prazo ou contrato; diga "clubes que procuram esse perfil" e "quem decide é o clube". O Neymar é só contraste: não compare o [atleta] a nenhum jogador nem diga que ele "pode chegar lá". Não use "certo" como garantia ("o clube certo"). Complementa o 12 (o seu lugar em campo): lá o atleta se vê no campo, aqui o perfil dele encontra o que o clube procura. Nesta versão (R2 B) o slide não sai pelo painel: pule com a seta se precisar.
+**Atenção:** O radar é ILUSTRATIVO, com valores fictícios, e a tela não diz mais isso (pedido do dono, 18/10/2026; se perguntarem, é um exemplo): não é do atleta e não tem nome, nota nem percentual. "Encaixe" é a ideia, não um fato sobre um clube: nunca diga que um clube específico procura o [atleta], que existe vaga, nem prometa clube, prazo ou contrato; diga "clubes que procuram esse perfil" e "quem decide é o clube". O Neymar é só contraste: não compare o [atleta] a nenhum jogador nem diga que ele "pode chegar lá". Não use "certo" como garantia ("o clube certo"). Complementa o 12 (o seu lugar em campo): lá o atleta se vê no campo, aqui o perfil dele encontra o que o clube procura. Nesta versão (R2 B) o slide não sai pelo painel: pule com a seta se precisar.
 
 ## 15 · Olhômetro × Zyron
 
@@ -340,7 +342,7 @@ Etapa da Bíblia: Dor e sonho · O plano. Desarma: "Já tentamos peneira / empre
 - A virada, pro atleta: "[atleta], o olhômetro pode não ter te visto. O Zyron viu. Se não tivesse visto, você não estaria nessa conversa."
 - Pro atleta (6.3), com o Legacy na ficha: "Gerente de carreira todo dia e um agente só teu. Isso é estrutura de atleta profissional. Você vai começar a viver como um."
 
-**Atenção:** Depois do olhômetro (03) e do bloco do Zyron (05 a 15), use este slide como resumo do serviço inteiro: passe rápido por "quem analisa", que o 03 e o 15 já mostraram, e demore em quem acompanha, quem leva aos clubes e quem corre o risco. Este slide desarma três objeções antes de aparecerem: "já tentamos peneira", "isso de IA funciona?" e "vou ver outras opções". As peneiras a família já contou no 03: use os números dela, sem perguntar de novo. Termine na virada: a peneira que não viu ele vira prova de que o problema não era ele. A coluna "Com a gente" é a estrutura completa, a da Assessoria de Elite Legacy (a nota no pé da tela diz isso). Com o PRO ou o Scout PRO na ficha, fale da estrutura, não do plano: gerente de carreira todo dia e a ida aos clubes são do Legacy. O 31 volta a estas linhas, plano por plano.
+**Atenção:** Depois do olhômetro (03) e do bloco do Zyron (05 a 15), use este slide como resumo do serviço inteiro: passe rápido por "quem analisa", que o 03 e o 15 já mostraram, e demore em quem acompanha, quem leva aos clubes e quem corre o risco. Este slide desarma três objeções antes de aparecerem: "já tentamos peneira", "isso de IA funciona?" e "vou ver outras opções". As peneiras a família já contou no 03: use os números dela, sem perguntar de novo. Termine na virada: a peneira que não viu ele vira prova de que o problema não era ele. A coluna "Com a gente" é a estrutura completa, a da Assessoria de Elite Legacy. Com o PRO ou o Scout PRO na ficha, fale da estrutura, não do plano: gerente de carreira todo dia e a ida aos clubes são do Legacy. O 33 volta a estas linhas, plano por plano.
 
 ## 17 · IA na Prática
 
@@ -360,6 +362,7 @@ Etapa da Bíblia: O plano. Desarma: "Será que ele é bom o suficiente?", "Vou v
 - A fonte, sempre como o painel diz: com "Leitura do Zyron", "o Zyron leu o teu vídeo"; com "Leitura da equipe", "a nossa equipe leu o teu vídeo, lance a lance", e o Zyron não entra nessa frase.
 - Fecho, apontando a frase de baixo: "Isso existe porque o [atleta] mandou este vídeo. Outro vídeo, outro relatório. A cada vídeo novo, um relatório novo."
 - Sem vídeo no painel, a tela é a leitura ao vivo de sempre: "Eu falei que o Zyron viu. Agora eu quero que vocês vejam com os próprios olhos o jogo do [atleta] do jeito que o Zyron vê. Ao vivo, aqui na nossa chamada." Antes do play: "[atleta], presta atenção: o que aparecer agora fala só de você." Troque o compartilhamento do Meet pro vídeo do [atleta], rode a leitura na frente da família e fique quieto. O resultado é dito ao vivo, por quem conduz a leitura; o slide não antecipa nada.
+- Com "Tenho o vídeo do jogador" ligado no painel e sem lances marcados, a tela é a leitura ao vivo, e ela vira a ponte: "Agora vocês vão ver o jogo do [atleta] do jeito que a IA leu." Não rode a leitura no Meet: avance pro 18 (o dossiê do atleta), onde o vídeo analisado entra.
 
 **Pergunte e espere a resposta**
 - [atleta], alguém já tinha olhado o teu jogo desse jeito?
@@ -372,9 +375,54 @@ Etapa da Bíblia: O plano. Desarma: "Será que ele é bom o suficiente?", "Vou v
 
 **Atenção:** Com vídeo no painel, o slide só mostra o que o painel guardou, na fonte que o painel diz (Zyron ou Equipe). Não diga nada que os lances e os textos não mostram: nada de nota geral, ranking, percentil ou comparação com outros atletas. Com "Leitura da equipe", nada na sua fala atribui a leitura ao Zyron. A rosca é só a conta dos lances marcados: leia pontos fortes e prioridades, os dois, sem inflar. O relatório da call é deste vídeo: não prometa que é o relatório do plano (o plano entrega a leitura de cada vídeo novo, no ritmo dele). Privacidade: vídeo de menor, só com a autorização do responsável registrada no painel, só pelo link da apresentação dele, e ele sai do ar sozinho em 90 dias; nunca mostre o vídeo de um atleta a quem não é da família dele. Sem vídeo no painel, com o painel fora do ar ou com o vídeo que não carrega, o slide volta sozinho pra leitura ao vivo (o apresentador avisa) e vale a regra de sempre: o slide não mostra resultado, quem fala é quem conduz a leitura, ao vivo, no Meet. Teste antes da call: play, som e pular pelos lances. Vem logo depois do 16 de propósito: a virada "o olhômetro pode não ter visto você" vira prova na hora, com o jogo dele. Depois da pergunta, o silêncio: aperte S (aqui conta sem trocar de slide).
 
-## 18 · Depoimento de uma mãe
+## 18 · O dossiê do atleta
 
-Tempo: 1 min (acumulado: 31,5 min)
+Tempo: 3 min (acumulado: 33,5 min)
+
+Etapa da Bíblia: O plano. Desarma: "Será que ele é bom o suficiente?", "Isso de inteligência artificial funciona mesmo?".
+
+**Fale**
+- Ponte, logo depois do 17: "[atleta], agora é o teu jogo na tela, do jeito que nenhum avaliador parou pra olhar."
+- Com o vídeo analisado na tela ("Tenho o vídeo do jogador" ligado no painel): dê o play (espaço ou o botão; o vídeo começa mudo e o Som liga o áudio) e deixe a análise falar. Depois do vídeo: "Isso aqui é o teu jogo lido pela IA. Ninguém numa peneira para pra fazer isso."
+- O mapa de calor, embaixo do vídeo, se estiver na tela: "E esse é o teu mapa de calor: onde o teu jogo acontece. É assim que um clube enxerga um [posição]."
+- As oportunidades, à direita: "Aqui estão clubes que procuram um perfil como o teu, mapeados pela nossa equipe a partir do teu jogo: [oportunidades]. Quem decide é o clube. O nosso trabalho é colocar o teu perfil na frente de quem procura."
+- O plano de carreira, embaixo das oportunidades: "E o caminho é este: agora, a leitura e o primeiro foco; depois, a vitrine; e o destino é o teu: [sonho]."
+- Pro atleta, olhando pra ele: "[atleta], em algum lugar tem um clube precisando de um jogador exatamente como você. A gente vai trabalhar pra colocar o teu jogo na frente dele."
+
+**Pergunte e espere a resposta**
+- [atleta], qual dessas oportunidades mais mexeu com você?
+- [pai], [mãe], vocês já tinham visto o jogo dele lido desse jeito?
+
+**Anote na ficha**
+- A oportunidade que mais animou o atleta e a reação da família ao vídeo analisado e ao mapa, com as palavras deles.
+
+**Atenção:** Só aparece com "Tenho o vídeo do jogador" ligado no painel (o vídeo analisado ou o mapa de calor) ou com oportunidades preenchidas; sem nada disso, as setas passam direto. Com o vídeo analisado e sem lances marcados, o 17 é a ponte e o vídeo entra aqui. As oportunidades são clubes que a equipe mapeou pro perfil: nunca diga que o clube já pediu o [atleta], que existe vaga, nem prometa clube, prazo ou contrato; diga "clubes que procuram esse perfil" e "quem decide é o clube". No Scout PRO, o encaminhamento pra clubes vem a partir da Assessoria PRO: fale da estrutura, não do plano. Leia o vídeo como ele é: não acrescente nota, ranking ou comparação que a análise não mostra. Vídeo de menor: só com a autorização do responsável registrada no painel. Teste antes da call: play, som e o mapa.
+
+## 19 · O inimigo em comum
+
+Tempo: 2 min (acumulado: 35,5 min)
+
+Etapa da Bíblia: Dor e sonho · O plano. Desarma: "O valor tá muito alto", "Será que ele é bom o suficiente?", "Já tentamos peneira / empresário e não deu", "Vou ver outras opções".
+
+**Fale**
+- Direto, olhando pra família: "[pai], [mãe], deixa eu dizer uma coisa que pouca gente fala: o [atleta] não foi mal nas peneiras por falta de talento. Foi falta de quem olhasse."
+- "Numa peneira, é um avaliador pra vinte e dois em campo. Ele olha quem está perto da bola, em vinte minutos de coletivo. O lance que ele não viu, pra ele, não existiu. E a resposta vem sempre igual: a gente te liga."
+- A frase do meio, devagar: "Em algum lugar, em algum time, tem alguém precisando de um jogador exatamente como o [atleta]. Só não era quem estava na beira daquele campo."
+- O quadro da direita, com os números do painel: "Vocês me contaram: [nº de peneiras], [gasto com peneiras] e [anos tentando] nisso. E cada peneira que passa é tempo de base que não volta." Sem os números, leia o quadro: a inscrição, a viagem, o dia de trabalho, os meses esperando uma resposta.
+- Fecho: "Por isso a peneira não deu certo. O problema nunca foi o jogo dele. É por isso que a gente não deixa o jogo dele na mão de um olhômetro."
+
+**Pergunte e espere a resposta**
+- Quantas peneiras ele já fez? E quanto vocês já gastaram com isso, somando viagem e tudo?
+- Quanto tempo mais vocês querem procurar no escuro?
+
+**Anote na ficha**
+- As peneiras, o gasto e o tempo que a família contou, com as palavras deles (anote no painel, em As peneiras dele).
+
+**Atenção:** O inimigo é o método, o olhômetro: nunca uma pessoa, um avaliador pelo nome, um clube ou um concorrente. Os números do quadro vêm do painel (peneiras, gasto e anos tentando) e são os que a família contou: não arredonde pra cima, não aumente e não invente estatística do mercado; vazio, o quadro mostra a conta sem números. Não diga que o [atleta] seria aprovado se tivesse sido visto: diga que ele não foi visto. Depois da pergunta, espere a resposta.
+
+## 20 · Depoimento de uma mãe
+
+Tempo: 1 min (acumulado: 36,5 min)
 
 Etapa da Bíblia: O plano. Desarma: "Isso é confiável?".
 
@@ -393,9 +441,9 @@ Etapa da Bíblia: O plano. Desarma: "Isso é confiável?".
 
 **Áudio do depoimento (0:37), no slide:** play no botão do áudio ou no espaço; a onda acende conforme toca; clique na onda pra pular. No apresentador: Tocar do início e Pausar. Trocar de slide pausa o áudio.
 
-## 19 · Nem tudo é talento
+## 21 · Nem tudo é talento
 
-Tempo: 2 min (acumulado: 33,5 min)
+Tempo: 2 min (acumulado: 38,5 min)
 
 Etapa da Bíblia: O plano. Desarma: "Quanto tempo até ele ir pra um clube?", "Será que ele é bom o suficiente?", "E se ele for dos que não chegam lá?", "Já tentamos peneira / empresário e não deu", "Isso é confiável?".
 
@@ -410,9 +458,9 @@ Etapa da Bíblia: O plano. Desarma: "Quanto tempo até ele ir pra um clube?", "S
 
 **Atenção:** Encaminhar é apresentar o atleta a clubes da rede que precisam do perfil dele. Não é contrato: nunca troque as palavras. Se perguntarem "e depois do encaminhamento?", é o jogo dele, com o gerente de carreira preparando todo dia. Responde "quanto tempo demora?" e "ele é bom o suficiente?" antes da pergunta.
 
-## 20 · AGN Football
+## 22 · AGN Football
 
-Tempo: 2 min (acumulado: 35,5 min)
+Tempo: 2 min (acumulado: 40,5 min)
 
 Etapa da Bíblia: O plano. Desarma: "Isso é confiável?", "Vou ver outras opções".
 
@@ -429,11 +477,11 @@ Etapa da Bíblia: O plano. Desarma: "Isso é confiável?", "Vou ver outras opç�
 - [atleta], se imagina aí, do lado deles?
 - [atleta], conhece algum desses jogadores?
 
-**Atenção:** Como ser sagaz com o espelho: fale como quem acabou de perceber, não como quem leu. Plante no 02 ("você me lembrou um atleta nosso"), revele aqui com nome, clube e link, e retome no 29 ("igual o [caso]") e no 33. Escolha o perfil mais parecido em posição, idade e nível, na tabela do CASOS.md ou nos publicados da AGN: é a semelhança que faz o atleta se enxergar ali. Só caso real e nosso: a família abre o link na hora, e um caso inventado derruba a venda e a empresa. Quanto mais nomes, com o link de cada um, mais a família entende que não é sorte, é método (18). A AGN divulga: não diga que ela contrata ou garante clube. A arte do avanço mostra jogadores que passaram pela AGN, não atletas da Jogador de Elite: nunca diga que são nossos e não cite clube, valor ou história de nenhum deles além do que está na tela. Se a família reconhecer alguém, deixe ela falar.
+**Atenção:** Como ser sagaz com o espelho: fale como quem acabou de perceber, não como quem leu. Plante no 02 ("você me lembrou um atleta nosso"), revele aqui com nome, clube e link, e retome no 31 ("igual o [caso]") e no 35. Escolha o perfil mais parecido em posição, idade e nível, na tabela do CASOS.md ou nos publicados da AGN: é a semelhança que faz o atleta se enxergar ali. Só caso real e nosso: a família abre o link na hora, e um caso inventado derruba a venda e a empresa. Quanto mais nomes, com o link de cada um, mais a família entende que não é sorte, é método (20). A AGN divulga: não diga que ela contrata ou garante clube. A arte do avanço mostra jogadores que passaram pela AGN, não atletas da Jogador de Elite: nunca diga que são nossos e não cite clube, valor ou história de nenhum deles além do que está na tela. Se a família reconhecer alguém, deixe ela falar.
 
-## 21 · A rede
+## 23 · A rede
 
-Tempo: 2 min (acumulado: 37,5 min)
+Tempo: 2 min (acumulado: 42,5 min)
 
 Etapa da Bíblia: O plano. Desarma: "Quanto tempo até ele ir pra um clube?", "E se ele for dos que não chegam lá?", "Isso é confiável?".
 
@@ -454,9 +502,9 @@ Etapa da Bíblia: O plano. Desarma: "Quanto tempo até ele ir pra um clube?", "E
 
 **Atenção:** O site da AGN (agnfootball.com) descreve a AGN como uma agência que administra a carreira de atletas, administrada por Augusto Nogueira e Matheus Assaf; o Augusto tem 25 anos de gestão de atletas. O site NÃO cita o David nem a Jogador de Elite: a relação direta é da casa, não do site, e não achei informação pública sobre o David, então não invente currículo dele: o cargo dele nunca foi definido, diga "o David" e use só os números da casa. A nota legal do rodapé (não há promessa de contratação ou de clube específico) fica na tela. Não diga que a AGN representa o [atleta], que vai publicar ou contratar: nenhuma vinculação a clube ou atleta é oferecida (a nota legal está no rodapé). Nomes de craques que o site cita como revelados pelo Augusto (Alexandre Pato, Luiz Adriano e Emerson da Rosa) só em resposta a pergunta, atribuídos ao site, nunca como nossos. A conexão direta com clubes e AGN, os 15 encaminhamentos por mês e o David de perto são do Legacy; o PRO encaminha pelo menos 5 por mês; o Scout PRO não encaminha. Não use "garantido", "certo" nem "vai chegar": diga "encaminhamos" e "viabilizamos". "Pronto pra encaminhar" é sobre o perfil montado, nunca promessa de clube ou contrato.
 
-## 22 · 326 atletas enviados
+## 24 · 326 atletas enviados
 
-Tempo: 1 min (acumulado: 38,5 min)
+Tempo: 1 min (acumulado: 43,5 min)
 
 Etapa da Bíblia: O plano. Desarma: "Isso é confiável?", "Vou ver outras opções".
 
@@ -473,9 +521,9 @@ Etapa da Bíblia: O plano. Desarma: "Isso é confiável?", "Vou ver outras opç�
 
 **Atenção:** O 326 é número da casa, confirmado pelo dono, e a palavra é "enviados", como na arte: nunca "contratados" nem "colocados em clube" ("encaminhado" não é "contratado"). Não diga que cada um dos 326 foi contratado, nem cite atleta ou clube como resultado a esperar. A arte é a publicada no Instagram da casa. Se perguntarem quem é o homem da foto, responda só o que o dono confirmou e anote a pergunta; não invente currículo. O link do Instagram vai pelo WhatsApp, nunca no slide. Nesta versão (R2 B) o slide não sai pelo painel: pule com a seta se precisar.
 
-## 23 · Clubes e parceiros
+## 25 · Clubes e parceiros
 
-Tempo: 1 min (acumulado: 39,5 min)
+Tempo: 1 min (acumulado: 44,5 min)
 
 Etapa da Bíblia: O plano. Desarma: "Isso é confiável?", "Vou ver outras opções".
 
@@ -493,9 +541,9 @@ Etapa da Bíblia: O plano. Desarma: "Isso é confiável?", "Vou ver outras opç�
 
 **Atenção:** Slide de REDE, não de resultado (trazido da página /institucional). Os escudos e marcas são dos titulares, e a nota legal fica na tela: a fala nunca diz que o clube usa dados ou o Zyron, que patrocina, que tem vaga, nem que o [atleta] vai pra algum deles. Os parceiros comerciais (Adidas, Nike, Cloudflare, AWS Amazon, A.E.K. London) têm acordo comercial confirmado pelo dono; diga só "parceiros comerciais". Se perguntarem do acordo, responda só o que o dono confirmou e anote a pergunta. Se algum clube pedir pra sair da faixa, avise o dono. Nesta versão (R2 B) o slide não sai pelo painel: pule com a seta se precisar.
 
-## 24 · Cada rosto, uma história
+## 26 · Cada rosto, uma história
 
-Tempo: 0,5 min (acumulado: 40 min)
+Tempo: 0,5 min (acumulado: 45 min)
 
 Etapa da Bíblia: O plano. Desarma: "Isso é confiável?".
 
@@ -506,9 +554,9 @@ Etapa da Bíblia: O plano. Desarma: "Isso é confiável?".
 
 **Atenção:** São fotos de outros atletas da casa, do arquivo publicado no Instagram da própria casa. Mostre como arquivo, não como promessa: nunca diga que o [atleta] terá o mesmo caminho de alguém da foto, nem aponte um atleta pelo rosto ou diga "esse aqui foi pro [clube]". Se a família for sensível a foto de menores, passe direto com a seta: a apresentação segue pro "O que ele leva".
 
-## 25 · O que ele leva
+## 27 · O que ele leva
 
-Tempo: 1,5 min (acumulado: 41,5 min)
+Tempo: 1,5 min (acumulado: 46,5 min)
 
 Etapa da Bíblia: O plano. Desarma: "O valor tá muito alto", "Quanto tempo até ele ir pra um clube?", "Qual a diferença entre os planos?".
 
@@ -528,11 +576,11 @@ Etapa da Bíblia: O plano. Desarma: "O valor tá muito alto", "Quanto tempo até
 **Anote na ficha**
 - O que a família disse que pesa mais (IA, gente, conexões, oportunidades, tempo ou garantia), com as palavras deles.
 
-**Atenção:** Junta numa tela só, com o rosto e o nome dele, o que ele leva no plano da ficha: cada linha muda com o plano. Diga só o que está na tela: no Scout PRO, conexões e oportunidades começam na Assessoria PRO. Só a IA fica ligada 24 horas; a parte humana segue o ritmo do plano. O tempo é o que a casa controla (contato e começo do Zyron, da lista fixa de prazos) e, só no Legacy, a referência dos 93% em até 3 meses, com a legenda na tela: nunca prazo de contrato, clube ou renda pra ele. A garantia é do investimento, nos termos do contrato (o rodapé do 32 diz a condição): não diga "incondicional". O retrato é o que a família autorizou: não comente a foto nem a aparência dele, fale do plano. Vem antes do "quanto custaria montar isso por conta?" de propósito: o "isso" já está na tela, com o nome dele.
+**Atenção:** Junta numa tela só, com o rosto e o nome dele, o que ele leva no plano da ficha: cada linha muda com o plano. Diga só o que está na tela: no Scout PRO, conexões e oportunidades começam na Assessoria PRO. Só a IA fica ligada 24 horas; a parte humana segue o ritmo do plano. O tempo é o que a casa controla (contato e começo do Zyron, da lista fixa de prazos) e, só no Legacy, a referência dos 93% em até 3 meses, com a legenda na tela: nunca prazo de contrato, clube ou renda pra ele. A garantia é do investimento, nos termos do contrato (o rodapé do 34 diz a condição): não diga "incondicional". O retrato é o que a família autorizou: não comente a foto nem a aparência dele, fale do plano. Vem antes do "quanto custaria montar isso por conta?" de propósito: o "isso" já está na tela, com o nome dele.
 
-## 26 · O valor real
+## 28 · O valor real
 
-Tempo: 3,5 min (acumulado: 45 min)
+Tempo: 3,5 min (acumulado: 50 min)
 
 Etapa da Bíblia: Fechamento. Desarma: "O valor tá muito alto".
 
@@ -548,11 +596,11 @@ Etapa da Bíblia: Fechamento. Desarma: "O valor tá muito alto".
 **Pergunte e espere a resposta**
 - Quanto vocês acham que custaria montar isso por conta?
 
-**Atenção:** O slide abre só com a pergunta: espere o chute da família antes do primeiro avanço. Cada avanço mostra uma frente com o valor anual, e a soma da direita sobe junto; o último avanço destaca o total, R$ 30.000 por ano, com tudo junto. O apresentador mostra o que entra no próximo avanço. Ordem do playbook: régua, conta, sem certeza (este slide), até lá e filtro (27 e 28), contrato (29), a vaga (30), os planos e o número (31), silêncio e a garantia (32). Aqui é o valor da estrutura inteira, a do Legacy, não o preço de um plano. Previne "o valor tá muito alto".
+**Atenção:** O slide abre só com a pergunta: espere o chute da família antes do primeiro avanço. Cada avanço mostra uma frente com o valor anual, e a soma da direita sobe junto; o último avanço destaca o total, R$ 30.000 por ano, com tudo junto. O apresentador mostra o que entra no próximo avanço. Ordem do playbook: régua, conta, sem certeza (este slide), até lá e filtro (29 e 30), contrato (31), a vaga (32), os planos e o número (33), silêncio e a garantia (34). Aqui é o valor da estrutura inteira, a do Legacy, não o preço de um plano. Previne "o valor tá muito alto".
 
-## 27 · Até lá, a gente investe
+## 29 · Até lá, a gente investe
 
-Tempo: 2 min (acumulado: 47 min)
+Tempo: 2 min (acumulado: 52 min)
 
 Etapa da Bíblia: Fechamento. Desarma: "O valor tá muito alto", "Mas vocês não ganham no contrato? Por que cobram?".
 
@@ -561,11 +609,11 @@ Etapa da Bíblia: Fechamento. Desarma: "O valor tá muito alto", "Mas vocês nã
 - "O que vocês investem é só o custo mínimo pra essa estrutura existir, com o gerente de carreira e os profissionais dedicados a ele. O resto é investimento nosso, porque a gente acredita nele."
 - Esforço zero (6.6): "E a partir de agora isso não é mais um peso de vocês. Vocês não precisam aprender nada novo, não precisam mudar a rotina, não precisam sair correndo atrás de clube. A única coisa que fica com vocês é continuar apoiando o [atleta] em casa."
 
-**Atenção:** Resposta pronta pro "mas vocês não ganham no contrato? Por que cobram?": o lucro vem do contrato; isso aqui é o custo mínimo da estrutura até o contrato sair. Nunca fale "onboarding", "etapas", "acessos": é promessa pro pai e pra mãe, não fluxo de produto. Aqui é a estrutura inteira, a do Legacy. Com o PRO ou o Scout PRO na ficha, não prometa ao plano o gerente de carreira todo dia; Os sete módulos de formação já estão no Scout PRO. O acompanhamento humano e os encaminhamentos seguem o escopo de cada plano. O 31 mostra o que cada plano entrega.
+**Atenção:** Resposta pronta pro "mas vocês não ganham no contrato? Por que cobram?": o lucro vem do contrato; isso aqui é o custo mínimo da estrutura até o contrato sair. Nunca fale "onboarding", "etapas", "acessos": é promessa pro pai e pra mãe, não fluxo de produto. Aqui é a estrutura inteira, a do Legacy. Com o PRO ou o Scout PRO na ficha, não prometa ao plano o gerente de carreira todo dia; Os sete módulos de formação já estão no Scout PRO. O acompanhamento humano e os encaminhamentos seguem o escopo de cada plano. O 33 mostra o que cada plano entrega.
 
-## 28 · Não é pra qualquer um
+## 30 · Não é pra qualquer um
 
-Tempo: 3 min (acumulado: 50 min)
+Tempo: 3 min (acumulado: 55 min)
 
 Etapa da Bíblia: Fechamento. Desarma: "Será que ele é bom o suficiente?", "E se ele for dos que não chegam lá?".
 
@@ -583,9 +631,9 @@ Etapa da Bíblia: Fechamento. Desarma: "Será que ele é bom o suficiente?", "E 
 
 **Atenção:** A família tem que sentir que está sendo avaliada, não vendida (03). O sim do atleta na frente dos pais pesa mais que qualquer argumento. Pergunte, não mande; se o atleta hesitar, volte pro sonho dele, nunca pressione. Previne "e se ele for dos que não chegam lá?". A tela mostra os três degraus, um por avanço, só com a pergunta: quem responde é o atleta e a família, em voz alta. A turma de 10 é do Legacy: com o PRO ou o Scout PRO na ficha, a tela não mostra turma nem a linha do gerente de carreira, e você fica no filtro.
 
-## 29 · Quando a gente ganha
+## 31 · Quando a gente ganha
 
-Tempo: 2,5 min (acumulado: 52,5 min)
+Tempo: 2,5 min (acumulado: 57,5 min)
 
 Etapa da Bíblia: Fechamento. Desarma: "O valor tá muito alto", "Mas vocês não ganham no contrato? Por que cobram?".
 
@@ -602,9 +650,9 @@ Etapa da Bíblia: Fechamento. Desarma: "O valor tá muito alto", "Mas vocês nã
 
 **Atenção:** O número é referência do que já acontece, nunca promessa: cada contrato depende do clube, da categoria e do desempenho. Depois da pergunta do "o que muda", silêncio: quem descreve o futuro em voz alta já se vê nele. Previne "por que vocês cobram?". A faixa é referência da casa, de atleta nosso que fechou, não entrega de nenhum plano. Com o Scout PRO na ficha, não diga que o plano leva a esse contrato: o encaminhamento pra clubes vem a partir da Assessoria PRO.
 
-## 30 · A vaga
+## 32 · A vaga
 
-Tempo: 2 min (acumulado: 54,5 min)
+Tempo: 2 min (acumulado: 59,5 min)
 
 Etapa da Bíblia: Fechamento. Desarma: "Quanto tempo até ele ir pra um clube?", "Ele ainda é novo / Ano que vem a gente vê".
 
@@ -616,11 +664,11 @@ Etapa da Bíblia: Fechamento. Desarma: "Quanto tempo até ele ir pra um clube?",
 - Com o Legacy e o número real de vagas, apontando a vaga dele na turma, com a foto: "Essa é a vaga do [atleta]." Sem número de vagas, a foto fica ao lado do título: aponte o título, sem falar de vaga.
 - Ponte pros planos: "Agora eu te mostro como ter isso do lado do [atleta]."
 
-**Atenção:** Vagas só com o número real da semana; prazo só com o prazo confirmado (campos da ficha). Turma, vagas, os 93% em até três meses e o dia da assinatura são do Legacy: com o PRO ou o Scout PRO na ficha, a tela não mostra nada disso, e a fala também não. O 31 mostra os planos com o investimento de cada um e fecha com o plano da ficha, o do número falado. A foto na vaga é pra ele se ver dentro da turma, não pra criar pressa: nada de "últimas vagas" além do número real.
+**Atenção:** Vagas só com o número real da semana; prazo só com o prazo confirmado (campos da ficha). Turma, vagas, os 93% em até três meses e o dia da assinatura são do Legacy: com o PRO ou o Scout PRO na ficha, a tela não mostra nada disso, e a fala também não. O 33 mostra os planos com o investimento de cada um e fecha com o plano da ficha, o do número falado. A foto na vaga é pra ele se ver dentro da turma, não pra criar pressa: nada de "últimas vagas" além do número real.
 
-## 31 · Os planos
+## 33 · Os planos
 
-Tempo: 7 min (acumulado: 61,5 min)
+Tempo: 7 min (acumulado: 66,5 min)
 
 Etapa da Bíblia: Fechamento. Desarma: "O valor tá muito alto", "Vou pensar", "Mas vocês não ganham no contrato? Por que cobram?", "Não tenho o dinheiro agora", "Qual a diferença entre os planos?".
 
@@ -644,7 +692,7 @@ Etapa da Bíblia: Fechamento. Desarma: "O valor tá muito alto", "Vou pensar", "
 - Fechamento (Modo A, 08): "Confirmando hoje, eu já aviso o [gerente]. Fica melhor no Pix ou no cartão?" No PRO e no Scout PRO: "eu já aviso a equipe".
 - Depois do "Pix ou cartão?": mande no WhatsApp o link de pagamento do [plano], na própria call, e faça o pagamento com a família na linha. O link não está no deck: tenha o de cada plano à mão.
 - Objeção: acolha, isole e volte: "Resolvido isso, eu confirmo agora. Pix ou cartão?"
-- Trocar de plano, pelo escopo e nunca por desconto. Pra descer: "Existe um formato mais enxuto, a Assessoria PRO, e o que muda é isto." Pra subir: "Se vocês quiserem o completo, o Legacy acrescenta isto." Use os botões de plano no apresentador: a tela do 31 troca junto, e o apresentador mostra o que sai ou o que entra. Descendo pro Scout PRO, diga em voz alta: "o encaminhamento pra clubes vem a partir da Assessoria PRO." Saindo do Legacy: "a conexão direta com clubes e AGN e os 15 encaminhamentos por mês são do Legacy; na Assessoria PRO, são pelo menos 5."
+- Trocar de plano, pelo escopo e nunca por desconto. Pra descer: "Existe um formato mais enxuto, a Assessoria PRO, e o que muda é isto." Pra subir: "Se vocês quiserem o completo, o Legacy acrescenta isto." Use os botões de plano no apresentador: a tela do 33 troca junto, e o apresentador mostra o que sai ou o que entra. Descendo pro Scout PRO, diga em voz alta: "o encaminhamento pra clubes vem a partir da Assessoria PRO." Saindo do Legacy: "a conexão direta com clubes e AGN e os 15 encaminhamentos por mês são do Legacy; na Assessoria PRO, são pelo menos 5."
 - "Vocês combinaram de decidir hoje, lembra? Pode ser não, tudo bem. O que tá faltando pro sim?"
 
 **Modo B, se precisar (a tela não muda)**
@@ -664,11 +712,11 @@ Etapa da Bíblia: Fechamento. Desarma: "O valor tá muito alto", "Vou pensar", "
 - Resultado, plano fechado e forma de pagamento.
 - Modo B: a hora do retorno e o "estamos dentro".
 
-**Atenção:** O título volta ao 16 ("Sozinho, na peneira"): é a dor que a família já contou, e cada coluna responde com quem fica do lado do atleta. Deixe o título pesar um segundo antes da primeira coluna. Ao lado do ritmo, o passo do tripé do 04 (Ser visto, Ser preparado, Ser apresentado), um por degrau. O 31 mostra cada plano na sua parte, com o investimento no topo da coluna, pra família ver tudo (decisão do dono, 06/10/2026). Cada coluna é a parte de um plano: o topo com o ritmo e o investimento, embaixo o que ele acrescenta ao degrau de baixo, cargo por cargo. Não leia tudo: aponte o que muda de um degrau pro outro. O Legacy aparece em destaque, com a moldura que brilha e o rótulo "O ideal": é o completo e tem a lista mais longa. Se a ficha recomendar outro plano, fale com franqueza: "o ideal é o Legacy; pro momento de vocês, a Assessoria PRO coloca uma equipe do lado dele toda semana, por metade do valor". Apresente pelo ritmo, não pelo preço: o número falado com silêncio é o do plano recomendado, o destacado no último avanço. Ordem da casa: o Legacy abre (tudo o que a família viu até o 30 é a estrutura dele), a Assessoria PRO entra como o formato mais enxuto: uma equipe do lado dele toda semana, por metade do Legacy, e o Scout PRO só se o caixa realmente pedir. BANT não é interrogatório: as perguntas são de ritmo, não de dinheiro. A conexão direta com clubes e AGN, os 15 encaminhamentos por mês, a turma e os 93% são do Legacy: não atribua ao PRO nem ao Scout PRO. O encaminhamento vem a partir da Assessoria PRO, com pelo menos 5 por mês. Nunca "o mais barato", "o mais vendido" ou "o mais escolhido". Se perguntarem qual compensa, responda pelo ritmo, não pela diferença de preço. O número e o fechamento ficam neste mesmo slide. O número é o do plano da ficha, o destacado no último avanço, já com o parcelamento (10 x a parcela = o valor total): Scout PRO, R$ 997 vitalício, 10x de R$ 99,70; Assessoria PRO, R$ 1.497 vitalício, 10x de R$ 149,70; Legacy, R$ 2.997 vitalício, 10x de R$ 299,70. Fale o número uma vez e aperte S. Regra de ouro: depois do número, silêncio. Quem fala primeiro depois do preço perde. Os 3 meses do "por dia" são só a conta: no PRO e no Scout PRO, não diga "prazo médio" nem ligue esses 3 meses ao encaminhamento: os 93% em até três meses são dado do Legacy. Travou no valor: isole ("tirando o valor, tem mais alguma coisa?"), diagnostique (retorno ou dinheiro agora) e volte no slide 26, 29, 32 ou 31. Modo B só se a análise da equipe for real, e a tela não muda. Link de pagamento: fora do deck, pelo WhatsApp, só depois do sim.
+**Atenção:** O título volta ao 16 ("Sozinho, na peneira"): é a dor que a família já contou, e cada coluna responde com quem fica do lado do atleta. Deixe o título pesar um segundo antes da primeira coluna. Ao lado do ritmo, o passo do tripé do 04 (Ser visto, Ser preparado, Ser apresentado), um por degrau. O 33 mostra cada plano na sua parte, com o investimento no topo da coluna, pra família ver tudo (decisão do dono, 06/10/2026). Cada coluna é a parte de um plano: o topo com o ritmo e o investimento, embaixo o que ele acrescenta ao degrau de baixo, cargo por cargo. Não leia tudo: aponte o que muda de um degrau pro outro. O Legacy aparece em destaque, com a moldura que brilha e o rótulo "O ideal": é o completo e tem a lista mais longa. Se a ficha recomendar outro plano, fale com franqueza: "o ideal é o Legacy; pro momento de vocês, a Assessoria PRO coloca uma equipe do lado dele toda semana, por metade do valor". Apresente pelo ritmo, não pelo preço: o número falado com silêncio é o do plano recomendado, o destacado no último avanço. Ordem da casa: o Legacy abre (tudo o que a família viu até o 32 é a estrutura dele), a Assessoria PRO entra como o formato mais enxuto: uma equipe do lado dele toda semana, por metade do Legacy, e o Scout PRO só se o caixa realmente pedir. BANT não é interrogatório: as perguntas são de ritmo, não de dinheiro. A conexão direta com clubes e AGN, os 15 encaminhamentos por mês, a turma e os 93% são do Legacy: não atribua ao PRO nem ao Scout PRO. O encaminhamento vem a partir da Assessoria PRO, com pelo menos 5 por mês. Nunca "o mais barato", "o mais vendido" ou "o mais escolhido". Se perguntarem qual compensa, responda pelo ritmo, não pela diferença de preço. O número e o fechamento ficam neste mesmo slide. O número é o do plano da ficha, o destacado no último avanço, já com o parcelamento (10 x a parcela = o valor total): Scout PRO, R$ 997 vitalício, 10x de R$ 99,70; Assessoria PRO, R$ 1.497 vitalício, 10x de R$ 149,70; Legacy, R$ 2.997 vitalício, 10x de R$ 299,70. Fale o número uma vez e aperte S. Regra de ouro: depois do número, silêncio. Quem fala primeiro depois do preço perde. Os 3 meses do "por dia" são só a conta: no PRO e no Scout PRO, não diga "prazo médio" nem ligue esses 3 meses ao encaminhamento: os 93% em até três meses são dado do Legacy. Travou no valor: isole ("tirando o valor, tem mais alguma coisa?"), diagnostique (retorno ou dinheiro agora) e volte no slide 28, 31, 34 ou 33. Modo B só se a análise da equipe for real, e a tela não muda. Link de pagamento: fora do deck, pelo WhatsApp, só depois do sim.
 
-## 32 · Garantia total
+## 34 · Garantia total
 
-Tempo: 1,5 min (acumulado: 63 min)
+Tempo: 1,5 min (acumulado: 68 min)
 
 Etapa da Bíblia: Fechamento. Desarma: "O valor tá muito alto", "Vou pensar", "E se não der certo? / Tem garantia?", "Isso é confiável?".
 
@@ -680,11 +728,11 @@ Etapa da Bíblia: Fechamento. Desarma: "O valor tá muito alto", "Vou pensar", "
 - "O risco de começar fica com a gente. O único risco de verdade é o [atleta] ficar parado mais um ano."
 - A diferença, com franqueza: "A garantia é do investimento. Contrato ninguém sério garante: quem te promete contrato tá mentindo. O que a gente garante é o trabalho, todo dia."
 
-**Atenção:** Confira o prazo e as condições da devolução antes da call (campo Prazo da garantia na ficha). Se houver prazo, fale o prazo. A garantia vem logo depois do número, com os três valores na tela de uma vez (pedido do dono, 11/10/2026): é o único slide em que os três aparecem sem avanço. Fale só o valor do plano da ficha, uma vez, e use a garantia pra tirar o medo de errar na hora de decidir. A condição (método aplicado, nos termos do contrato) fica no rodapé: não diga "incondicional". Responde "tem garantia?", "e se não der certo?" e parte do "vou pensar". Pra acionar, a família comprova que aplicou o método, como diz o rodapé do 32: se perguntarem, diga com clareza, sem esconder. A média de três meses só aparece com o Legacy na ficha; é dado da casa, não prazo.
+**Atenção:** Confira o prazo e as condições da devolução antes da call (campo Prazo da garantia na ficha). Se houver prazo, fale o prazo. A garantia vem logo depois do número, com os três valores na tela de uma vez (pedido do dono, 11/10/2026): é o único slide em que os três aparecem sem avanço. Fale só o valor do plano da ficha, uma vez, e use a garantia pra tirar o medo de errar na hora de decidir. A condição (método aplicado, nos termos do contrato) fica no rodapé: não diga "incondicional". Responde "tem garantia?", "e se não der certo?" e parte do "vou pensar". Pra acionar, a família comprova que aplicou o método, como diz o rodapé do 34: se perguntarem, diga com clareza, sem esconder. A média de três meses só aparece com o Legacy na ficha; é dado da casa, não prazo.
 
-## 33 · Bem-vindo
+## 35 · Bem-vindo
 
-Tempo: 3 min (acumulado: 66 min)
+Tempo: 3 min (acumulado: 71 min)
 
 Etapa da Bíblia: Próximo passo.
 
@@ -705,7 +753,7 @@ Etapa da Bíblia: Próximo passo.
 - A indicação.
 - O dia do primeiro contato (no Legacy, do gerente).
 
-**Atenção:** A imaginação sela a decisão: quem descreve o dia da assinatura em voz alta não volta atrás no dia seguinte. O post da tela é ilustrativo: diga "imagina", nunca "vai ser". Com caso espelho, feche com ele: "igual o [caso]". Na indicação, peça o contato do responsável do colega, não do menino. Só prometa prazo confirmado. No PRO e no Scout PRO, a tela não tem post, contrato nem AGN: fique no ritmo do plano e no próximo passo, sem prazo. A miniatura do campo só aparece com posição reconhecida na ficha. Com a foto dele, o anúncio continua ilustrativo (o rodapé diz): é "imagina", nunca "vai ser", e a foto não promete contrato.
+**Atenção:** A imaginação sela a decisão: quem descreve o dia da assinatura em voz alta não volta atrás no dia seguinte. O post da tela é ilustrativo: diga "imagina", nunca "vai ser". Com caso espelho, feche com ele: "igual o [caso]". Na indicação, peça o contato do responsável do colega, não do menino. Só prometa prazo confirmado. No PRO e no Scout PRO, a tela não tem post, contrato nem AGN: fique no ritmo do plano e no próximo passo, sem prazo. A miniatura do campo só aparece com posição reconhecida na ficha. Com a foto dele, o anúncio continua ilustrativo (a tela não diz; quem diz é você): é "imagina", nunca "vai ser", e a foto não promete contrato.
 
 ## Como falar de cada plano
 
@@ -717,8 +765,8 @@ Os planos são cumulativos: a Assessoria PRO tem tudo do Scouting, e o Legacy te
 | Promessa | Seu jogo lido de 15 em 15 dias. | Toda semana, o estrategista de carreiras liga. Todo mês, pelo menos 5 encaminhamentos. | O caminho inteiro, todo dia, direto com o David. |
 | Ritmo | A cada 15 dias | Toda semana | Todo dia |
 | Passo da tese da R2 | Ser visto | Ser preparado | Ser apresentado |
-| Cor | Gelo (o Zyron, a leitura) | Branco e areia no nome, com o filete gelo e areia no 31 (a leitura e o time) | Areia (gente e carreira) |
-| Investimento (31) | R$ 997 vitalício, 10x sem juros de R$ 99,70 | R$ 1.497 vitalício, 10x sem juros de R$ 149,70 | R$ 2.997 vitalício, 10x sem juros de R$ 299,70 |
+| Cor | Gelo (o Zyron, a leitura) | Branco e areia no nome, com o filete gelo e areia no 33 (a leitura e o time) | Areia (gente e carreira) |
+| Investimento (33) | R$ 997 vitalício, 10x sem juros de R$ 99,70 | R$ 1.497 vitalício, 10x sem juros de R$ 149,70 | R$ 2.997 vitalício, 10x sem juros de R$ 299,70 |
 | Ticket (CRM e Vendas) | R$ 997,00 | R$ 1.497,00 | R$ 2.997,00 |
 | Por dia (só na fala) | menos de R$ 12 | menos de R$ 17 | menos de R$ 34 |
 
@@ -732,7 +780,7 @@ Os planos são cumulativos: a Assessoria PRO tem tudo do Scouting, e o Legacy te
   - Relatório de entrada: de onde você parte.
   - Histórico de evolução: todos os relatórios num lugar só.
   - Guia de preparação pra peneira: o que o avaliador olha.
-- No slide 31, a parte dele:
+- No slide 33, a parte dele:
   - O Zyron: lê cada vídeo novo e aponta pontos fortes e prioridades.
   - Analista de performance: relatório da sua evolução a cada 15 dias.
   - Relatório de entrada: de onde você parte.
@@ -750,7 +798,7 @@ Os planos são cumulativos: a Assessoria PRO tem tudo do Scouting, e o Legacy te
   - Pelo menos 5 encaminhamentos de oportunidades por mês.
   - Networking com outros atletas e aulas extras.
   - Encaminhamento para clubes do Brasil e do mundo.
-- No slide 31, tudo do Scouting, mais:
+- No slide 33, tudo do Scouting, mais:
   - Estrategista de carreiras: liga toda semana pra acompanhar você.
   - Sete Módulos de aulas: performance, psicologia, nutrição, comportamento e imagem.
   - Estrategista esportivo: você conta com ele nos próximos passos.
@@ -771,7 +819,7 @@ Os planos são cumulativos: a Assessoria PRO tem tudo do Scouting, e o Legacy te
   - Pelo menos 15 encaminhamentos por mês, mundo afora.
   - Conexão direta com clubes e AGN Football.
   - Seletivas acompanhadas, com a logística planejada com vocês.
-- No slide 31, tudo da Assessoria PRO, mais:
+- No slide 33, tudo da Assessoria PRO, mais:
   - Estrategista de carreiras: do seu lado, todo dia.
   - Gerente de carreira: de perto, todo dia.
   - David Willer: assessoria individual todo mês e acompanhamento direto no WhatsApp.
@@ -783,15 +831,15 @@ Os planos são cumulativos: a Assessoria PRO tem tudo do Scouting, e o Legacy te
   - Seletivas: acompanhamento e logística planejada com vocês.
   - Turma de 10: atenção máxima no seu desenvolvimento.
 - O que não entra: nada; é o completo.
-- O completo: o único com o estrategista de carreiras e o gerente de carreira todo dia, assessoria individual com o David Willer todo mês, com acompanhamento direto no WhatsApp, o estrategista esportivo ligando toda semana, pelo menos 15 encaminhamentos de oportunidades por mês, mundo afora, a conexão direta com clubes e AGN, as seletivas acompanhadas e o plano de carreira feito pro jogo dele, além de tudo da Assessoria PRO. É o plano que abre a conversa: tudo o que a família vê até o 30 é a estrutura dele.
+- O completo: o único com o estrategista de carreiras e o gerente de carreira todo dia, assessoria individual com o David Willer todo mês, com acompanhamento direto no WhatsApp, o estrategista esportivo ligando toda semana, pelo menos 15 encaminhamentos de oportunidades por mês, mundo afora, a conexão direta com clubes e AGN, as seletivas acompanhadas e o plano de carreira feito pro jogo dele, além de tudo da Assessoria PRO. É o plano que abre a conversa: tudo o que a família vê até o 32 é a estrutura dele.
 - Pra descer pra Assessoria PRO: "Existe um formato mais enxuto, a Assessoria PRO. O que muda: sai o estrategista de carreiras todo dia (na Assessoria PRO, ele liga toda semana), o gerente de carreira todo dia, a assessoria individual com o David Willer todo mês e o acompanhamento direto no WhatsApp, a ligação do estrategista esportivo toda semana, os 15 encaminhamentos de oportunidades por mês, mundo afora (na Assessoria PRO, são pelo menos 5), a conexão direta com clubes e AGN e as seletivas acompanhadas, com a logística planejada." E diga em voz alta: a conexão direta com clubes e AGN e os 15 encaminhamentos por mês são do Legacy; na Assessoria PRO, são pelo menos 5.
 
 ### Alavancas do acessível e do completo
 
-1. Papel escrito na tela: Scouting, "Pra começar"; Assessoria PRO, "Uma equipe do seu lado, por metade do Legacy"; Assessoria de Elite Legacy, "O mais completo" (no 31).
-2. A diferença pro degrau de cima, em uma linha: na tela, só a matriz do 31; na fala, a frase de subir ou descer que o apresentador mostra ao trocar de plano.
-3. A relação de preço, que é verdadeira: a Assessoria PRO custa cerca de metade do Legacy, e o Scouting cerca de um terço. No 31 os três valores ficam lado a lado, e o papel do PRO diz "Uma equipe do seu lado, por metade do Legacy" (no 31), sem o número do outro plano.
-4. A parcela como número grande no 31: 10x sem juros de R$ 149,70 na Assessoria PRO.
+1. Papel escrito na tela: Scouting, "Pra começar"; Assessoria PRO, "Uma equipe do seu lado, por metade do Legacy"; Assessoria de Elite Legacy, "O mais completo" (no 33).
+2. A diferença pro degrau de cima, em uma linha: na tela, só a matriz do 33; na fala, a frase de subir ou descer que o apresentador mostra ao trocar de plano.
+3. A relação de preço, que é verdadeira: a Assessoria PRO custa cerca de metade do Legacy, e o Scouting cerca de um terço. No 33 os três valores ficam lado a lado, e o papel do PRO diz "Uma equipe do seu lado, por metade do Legacy" (no 33), sem o número do outro plano.
+4. A parcela como número grande no 33: 10x sem juros de R$ 149,70 na Assessoria PRO.
 5. Por dia, só na fala: menos de R$ 12 no Scouting, menos de R$ 17 na Assessoria PRO, menos de R$ 34 no Legacy. No Legacy é "no prazo médio de 3 meses"; no PRO e no Scouting, "dividido nos primeiros 3 meses", sem ligar esses 3 meses ao encaminhamento: os 93% em até três meses são dado do Legacy.
 6. A ordem da conversa: o Legacy abre, a Assessoria PRO entra como o formato mais enxuto e acessível, e o Scouting só quando o caixa realmente pedir.
 
@@ -803,9 +851,9 @@ Método: Acolher → Isolar: "tirando isso, tem mais alguma coisa?" → Diagnost
 
 Um "não" é informação. Proibido: desconto, "vou ver com meu gerente", baixar valor sem mudar o escopo, proposta por WhatsApp.
 
-### O valor tá muito alto (slides 25, 26, 27, 29, 32, 31)
+### O valor tá muito alto (slides 27, 28, 29, 31, 34, 33, 19)
 
-Prevenção: Cenário comprado, a estrutura e o Zyron apresentados, a conta da estrutura (slide 26), o contrato (slide 29) e os planos (slide 31) antes do número.
+Prevenção: Cenário comprado, a estrutura e o Zyron apresentados, a conta da estrutura (slide 28), o contrato (slide 31) e os planos (slide 33) antes do número.
 
 - Acolher e isolar: "Entendo. Tirando o valor, tem mais alguma coisa que impede o [atleta] de começar?"
 - Diagnosticar: "Quando você fala que tá alto: você não vê o retorno, ou é o dinheiro agora?"
@@ -833,7 +881,7 @@ Prevenção: O SDR marca a R2 com os dois; você confirma os dois antes de come�
 
 Proibido: Mandar a proposta por WhatsApp "pra você mostrar pra ela".
 
-### Vou pensar (slides 31, 32)
+### Vou pensar (slides 33, 34)
 
 Prevenção: O combinado que o SDR fechou na marcação (decidir hoje, os dois juntos) e o silêncio depois do número.
 
@@ -844,9 +892,9 @@ Prevenção: O combinado que o SDR fechou na marcação (decidir hoje, os dois j
 - "Vocês combinaram com o estrategista esportivo de decidir hoje. O que tá faltando?"
 - Modo B: "Pensem hoje, que eu levo o [atleta] pra equipe. Amanhã às [hora] eu te dou o retorno, e aí vocês me dizem se estão dentro."
 
-### Quanto tempo até ele ir pra um clube? (slides 19, 30, 21, 25)
+### Quanto tempo até ele ir pra um clube? (slides 21, 32, 23, 27)
 
-Prevenção: Os 93% em até três meses no slide 19 e o caminho da tela no slide 30.
+Prevenção: Os 93% em até três meses no slide 21 e o caminho da tela no slide 32.
 
 - "Mais de 93% dos nossos atletas são encaminhados pra clubes em até três meses."
 - "Encaminhar é o clube que precisa do perfil dele receber ele pra avaliação. Dali em diante é o jogo dele, com o gerente de carreira preparando ele todo dia pra esse momento."
@@ -855,9 +903,9 @@ Prevenção: Os 93% em até três meses no slide 19 e o caminho da tela no slide
 
 Proibido: Prometer data de contrato ou clube. Encaminhamento não é contratação.
 
-### Será que ele é bom o suficiente? (slides 19, 02, 03, 12, 14, 17, 28)
+### Será que ele é bom o suficiente? (slides 21, 02, 03, 12, 14, 17, 18, 19, 30)
 
-Prevenção: "Se você está vendo isso, é porque tem o que é preciso" desde a capa, "não foi você, foi o olhômetro" (slide 03), o seu lugar em campo (slide 12), o jogo dele lido lance a lance (slide 17) e "nem tudo é talento" no slide 19.
+Prevenção: "Se você está vendo isso, é porque tem o que é preciso" desde a capa, "não foi você, foi o olhômetro" (slide 03), o seu lugar em campo (slide 12), o jogo dele lido lance a lance (slide 17) e "nem tudo é talento" no slide 21.
 
 - "Se não fosse, ele não estaria nessa conversa. A equipe e o Zyron aprovaram o perfil dele: a gente só investe em quem acredita que vai chegar."
 - "E nem tudo é talento. Talento ele tem. O que faltou até agora foi alguém levando ele até o clube certo, na hora certa."
@@ -866,37 +914,37 @@ Prevenção: "Se você está vendo isso, é porque tem o que é preciso" desde a
 
 Proibido: Pôr o perfil do atleta em dúvida, nem pra "ser sincero". Dar nota geral ou comparar com outros atletas.
 
-### Mas vocês não ganham no contrato? Por que cobram? (slides 29, 27, 31)
+### Mas vocês não ganham no contrato? Por que cobram? (slides 31, 29, 33)
 
-Prevenção: O "até lá, a gente investe" (slide 27) e o contrato (slide 29) antes do número.
+Prevenção: O "até lá, a gente investe" (slide 29) e o contrato (slide 31) antes do número.
 
 - "Exatamente: o nosso lucro vem do contrato. Isso aqui não é lucro, é o custo mínimo com os profissionais dedicados ao [atleta] até o contrato sair. Sem eles, não tem contrato pra ninguém ganhar." No Legacy, nomeie o gerente de carreira e as sete frentes; na Assessoria PRO, o estrategista de carreiras, o estrategista esportivo e os sete módulos de aulas.
 - "Até lá, quem investe tempo, esforço, profissionais e tecnologia nele somos nós."
 
-### E se ele for dos que não chegam lá? (slides 28, 19, 04, 21)
+### E se ele for dos que não chegam lá? (slides 30, 21, 04, 23)
 
-Prevenção: Escada do sim no slide 28, com o atleta dizendo em voz alta que faz a parte dele.
+Prevenção: Escada do sim no slide 30, com o atleta dizendo em voz alta que faz a parte dele.
 
 - No Legacy: "Mais de 93% dos nossos são encaminhados em até três meses. Quem fica pra trás, quase sempre, é por falta de disciplina e de compromisso: a parte que depende dele."
 - "É por isso que a gente escolhe com quem trabalha. Ele passou no filtro." No Legacy, some: "e ele tem o gerente de carreira e o Zyron em cima todo dia." Na Assessoria PRO: "e ele tem o estrategista de carreiras ligando toda semana e a equipe olhando o que falta."
 - Não pergunte pro atleta "você vai ser dos que não chegam?": é pressão direta sobre o menino.
 
-### E se não der certo? / Tem garantia? (slides 32)
+### E se não der certo? / Tem garantia? (slides 34)
 
-Prevenção: A garantia aparece logo depois do número, no slide 32, com os três valores na tela.
+Prevenção: A garantia aparece logo depois do número, no slide 34, com os três valores na tela.
 
 - "Tem, garantia total, todo o valor investido de volta, sem burocracia, se vocês aplicarem o método e entenderem que não faz sentido."
 - Como acionar, se perguntarem: "Vocês mostram que aplicaram o método, como tá no contrato, e o valor volta inteiro." No Legacy, some: "E a média de fechamento dos nossos atletas é de cerca de três meses."
 - "O que ninguém sério garante é contrato: quem te promete contrato tá mentindo. O que a gente tem é o trabalho, no ritmo que vocês escolheram, o Zyron, e a gente só ganha quando ele ganha. Se ele não avançar, quem perde primeiro somos nós." No Legacy, nomeie: o gerente de carreira todo dia.
 - "O risco de verdade é ele ficar parado mais um ano."
 
-### Não tenho o dinheiro agora (slides 31)
+### Não tenho o dinheiro agora (slides 33)
 
-Prevenção: Sinais de budget da ficha pra escolher o plano antes do 31: Legacy se a ficha não mostra aperto financeiro, Assessoria PRO se a dor financeira é forte.
+Prevenção: Sinais de budget da ficha pra escolher o plano antes do 33: Legacy se a ficha não mostra aperto financeiro, Assessoria PRO se a dor financeira é forte.
 
 - "Se tivesse, ele começava hoje?"
 - "Então o problema é só a forma. Dá pra fazer em 10x sem juros, ou num formato mais enxuto. Qual cabe melhor?"
-- Do Legacy pra Assessoria PRO, pelo escopo: "Existe um formato mais enxuto, a Assessoria PRO: o estrategista de carreiras liga toda semana em vez de estar do lado dele todo dia, e saem o gerente de carreira, a assessoria individual com o David Willer, a ligação semanal do estrategista esportivo, a conexão direta com clubes e AGN e o acompanhamento das seletivas. O encaminhamento continua: pelo menos 5 oportunidades por mês, pra clubes do Brasil e do mundo, em vez de 15." Troque no apresentador: o 31 mostra o PRO.
+- Do Legacy pra Assessoria PRO, pelo escopo: "Existe um formato mais enxuto, a Assessoria PRO: o estrategista de carreiras liga toda semana em vez de estar do lado dele todo dia, e saem o gerente de carreira, a assessoria individual com o David Willer, a ligação semanal do estrategista esportivo, a conexão direta com clubes e AGN e o acompanhamento das seletivas. O encaminhamento continua: pelo menos 5 oportunidades por mês, pra clubes do Brasil e do mundo, em vez de 15." Troque no apresentador: o 33 mostra o PRO.
 - Da Assessoria PRO pro Scout PRO, só se o caixa não comporta o PRO: "O Scout PRO é o começo: o Zyron lendo cada vídeo novo e o relatório do analista de performance a cada 15 dias. Os sete módulos continuam no Scout PRO. Saem a ligação do estrategista de carreiras e o estrategista esportivo, o networking e as aulas extras, os encontros com a equipe e o encaminhamento pra clubes."
 - "Assim que resolver a forma, a equipe já entra em contato. Isso não espera."
 
@@ -909,24 +957,24 @@ Prevenção: A locomoção que a família contou na R1 e o "quando o clube chama
 - "Hoje ele não precisa ir pra lugar nenhum. Isso só acontece quando o clube chamar." No Legacy, some: "e o gerente de carreira organiza a ida com vocês."
 - "E vocês falaram pro estrategista esportivo: [locomoção]. Então isso a gente resolve junto quando chegar a hora."
 
-### Já tentamos peneira / empresário e não deu (slides 03, 13, 15, 16, 19)
+### Já tentamos peneira / empresário e não deu (slides 03, 13, 15, 16, 19, 21)
 
-Prevenção: O olhômetro antes do plano (slide 03), a resposta nos slides 15 e 16 e o "nem tudo é talento" no 19.
+Prevenção: O olhômetro antes do plano (slide 03), a resposta nos slides 15 e 16 e o "nem tudo é talento" no 21.
 
 - "Quantos garotos tinham nessa peneira? E quanto tempo olharam pra ele? Vinte minutos de coletivo?"
 - "Então não foi ele que não deu certo. Foi o olhômetro. Ninguém analisou o jogo dele de verdade, e ninguém acompanhou ele depois. É exatamente isso que o Zyron e a gente fazem."
 - No Legacy: "Nem tudo é talento: faltou quem levasse ele ao clube certo. Aqui, mais de 93% são encaminhados em até três meses."
 
-### Ele ainda é novo / Ano que vem a gente vê (slides 30, 04)
+### Ele ainda é novo / Ano que vem a gente vê (slides 32, 04)
 
 Prevenção: A janela de idade no plano (slide 04).
 
 - "Com [idade + 1], a janela fica maior ou menor? Esperar um ano é um ano a menos de janela." No Legacy, com turma, some: "e é deixar a vaga dessa turma pra outro menino."
 - "Os clubes estão pedindo jogador agora. Daqui a um ano, esse pedido vai pra quem começou hoje."
 
-### Isso é confiável? (slides 18, 19, 20, 22, 23, 24, 32, 08, 10, 11, 21)
+### Isso é confiável? (slides 20, 21, 22, 24, 25, 26, 34, 08, 10, 11, 23)
 
-Prevenção: O depoimento de uma mãe (18), os números (19), a AGN (20), a garantia (32) e a autorização expressa do responsável no "como o Zyron funciona" (08) antes da pergunta.
+Prevenção: O depoimento de uma mãe (20), os números (21), a AGN (22), a garantia (34) e a autorização expressa do responsável no "como o Zyron funciona" (08) antes da pergunta.
 
 - "Vocês ouviram a mãe. E mais de 93% dos nossos são encaminhados em até três meses."
 - "A gente tem relação direta com a AGN Football, com jogador nosso publicado lá. O Joãozinho fechou com o Grêmio, o Kaio com o Internacional. Te mando o link agora." [link AGN]
@@ -940,7 +988,7 @@ Prevenção: O depoimento de uma mãe (18), os números (19), a AGN (20), a gara
 
 Proibido: Mandar proposta ou valor por WhatsApp.
 
-### Vou ver outras opções (slides 16, 17, 20, 22, 23, 07, 03, 09)
+### Vou ver outras opções (slides 16, 17, 19, 22, 24, 25, 07, 03, 09)
 
 Prevenção: O olhômetro (03) e a comparação do slide 16 já fizeram as perguntas por eles; a leitura ao vivo do jogo dele (17) e o vídeo do Zyron (07) mostram o que ninguém mais tem.
 
@@ -948,9 +996,9 @@ Prevenção: O olhômetro (03) e a comparação do slide 16 já fizeram as pergu
 - Com o Legacy na tela, some: "Tem gerente de carreira todo dia? Levam o atleta aos clubes? Têm relação direta com a AGN?" E, com turma: "Só lembra que a vaga do [atleta] aqui não fica aberta pra sempre. A turma é de 10."
 - Com a Assessoria PRO na tela, a acessível: "E vê quem coloca uma equipe do lado dele toda semana, com sete módulos de aulas, um estrategista esportivo e pelo menos 5 encaminhamentos por mês, por esse investimento."
 
-### Qual a diferença entre os planos? (slides 31, 25, 16)
+### Qual a diferença entre os planos? (slides 33, 27, 16)
 
-Prevenção: A matriz do 31 responde antes da pergunta: as linhas do 16, em três ritmos.
+Prevenção: A matriz do 33 responde antes da pergunta: as linhas do 16, em três ritmos.
 
 - O ritmo, antes do valor: "A diferença é com que frequência tem alguém olhando pro [atleta]: a cada 15 dias, toda semana ou todo dia. O Zyron tá nos três."
 - Scout PRO: "Pra começar: o Zyron lê cada vídeo novo, e um analista de performance manda relatório a cada 15 dias."
@@ -960,7 +1008,7 @@ Prevenção: A matriz do 31 responde antes da pergunta: as linhas do 16, em trê
 
 Proibido: Responder pela diferença de preço em vez do ritmo, chamar o PRO de "o mais barato" ou de "o mais vendido", atribuir ao PRO o que é do Legacy (conexão direta com clubes e AGN, os 15 encaminhamentos por mês) ou encaminhamento ao Scout PRO.
 
-### Isso de inteligência artificial funciona mesmo? (slides 07, 08, 10, 13, 14, 12, 15, 17, 02, 09, 11)
+### Isso de inteligência artificial funciona mesmo? (slides 07, 08, 10, 13, 14, 12, 15, 17, 18, 02, 09, 11)
 
 Prevenção: O Zyron trabalhando (07), os cinco verbos (08), o seu lugar em campo (12), olhômetro contra Zyron (15) e a leitura ao vivo do jogo dele (17).
 
@@ -1001,18 +1049,20 @@ O Gestor volta sempre com motivo (retorno da equipe, um caso, o plano do atleta)
 - [ ] Conferi a faixa de contrato que posso citar e o prazo da garantia
 - [ ] Link da AGN pronto pra mandar no WhatsApp
 - [ ] Conferi posição, pé e altura do atleta (o campo do slide 12 depende da posição)
-- [ ] Testei o vídeo do Zyron (slide 07) e o depoimento da mãe (slide 18) com o áudio no compartilhamento de tela
+- [ ] Testei o vídeo do Zyron (slide 07) e o depoimento da mãe (slide 20) com o áudio no compartilhamento de tela
 - [ ] Subi o vídeo do atleta no painel (Leitura do atleta), com a autorização do responsável, marquei os lances e olhei a prévia
 - [ ] Testei o vídeo no deck (play, som, pular pelos lances no apresentador)
 - [ ] Conferi se a fonte do relatório é Zyron ou Equipe, de verdade
 - [ ] Se não subi o vídeo, deixei o vídeo do atleta aberto pra leitura ao vivo no Meet (IA na Prática, slide 17)
+- [ ] Com o vídeo analisado: conferi no painel o "Tenho o vídeo do jogador", o vídeo, o mapa de calor e as oportunidades, e olhei o dossiê do atleta (18) na prévia
+- [ ] Anotei no painel as peneiras, o gasto e os anos tentando que a família contou (o quadro do 19)
 - [ ] Conferi vagas e data da próxima turma (só aparecem com o Legacy)
 - [ ] Confirmei pai, mãe e atleta na call
 - [ ] Deck aberto em tela cheia e apresentador em outra janela
 - [ ] Confirmei com o dono o que da plataforma já está no ar: a tela do 09 é ilustrativa e eu só falo do que existe
 - [ ] Se for falar do David, confirmei com o dono o que posso dizer dele (o site da AGN não cita o David nem a Jogador de Elite)
-- [ ] Mandei o [link AGN] pelo WhatsApp na hora do 21 e conferi o plano da ficha (o selo "O seu plano" e a linha do 21 seguem ele)
-- [ ] Escolhi quais dos seis slides da página institucional vou usar (10, 13, 14, 22, 23 e 24: nesta versão eles não saem pelo painel) e, se a call for curta, pulo com a seta os de prova (22, 23 e 24)
+- [ ] Mandei o [link AGN] pelo WhatsApp na hora do 23 e conferi o plano da ficha (o selo "O seu plano" e a linha do 23 seguem ele)
+- [ ] Escolhi quais dos seis slides da página institucional vou usar (10, 13, 14, 24, 25 e 26: nesta versão eles não saem pelo painel) e, se a call for curta, pulo com a seta os de prova (24, 25 e 26)
 - [ ] Se a animação do campo (13) travar no Meet, abro o deck com ?bloco=estatico no fim do endereço (campo parado, mesma mensagem)
 
-Proibido: dizer "24/7" pro acompanhamento humano (só a IA fica ligada 24 horas); usar a foto de outro atleta no lugar da do atleta da call (o mosaico do 24 é arquivo público da casa, não é a foto dele); mostrar a foto sem a autorização registrada no painel; chamar o atleta de "especial", "único" ou "o melhor"; prometer prazo de contrato; dizer "incondicional" se o contrato tiver condição; dizer que a AGN representa, publica ou contrata o atleta; "garantido", "certo" ou "vai chegar" pro encaminhamento; inventar currículo do David; começar do zero com quem já tem contexto; perguntar de novo o que está na ficha; prometer contrato, clube ou valor de contrato; inventar caso, clube ou número; trocar "encaminhado" por "contratado"; desconto; proposta por WhatsApp; correr atrás da família; pôr o perfil do atleta em dúvida; vender pela diferença de preço em vez do ritmo; atribuir ao PRO o que é do Legacy (conexão direta com clubes e AGN, os 15 encaminhamentos por mês) ou encaminhamento ao Scout PRO; descer de plano por desconto; mandar o link antes do sim; dar nota ou atributo ao atleta; dizer que o Zyron tem percentual de acerto; chamar o avaliador de incompetente; citar clube como quem usa dados; dizer que existe vaga num clube específico; dizer que o Zyron leu um relatório marcado à mão; dar nota geral, ranking, percentil ou comparação com outros atletas; mostrar o vídeo de um atleta a quem não é da família dele; prometer que o relatório da call é o do plano (o plano entrega a leitura de cada vídeo novo, no ritmo dele); citar o escudo de um clube como se ele usasse o Zyron, patrocinasse ou tivesse vaga; trocar "enviados" por "contratados" no 326; comparar o atleta a Neymar ou a qualquer jogador.
+Proibido: dizer "24/7" pro acompanhamento humano (só a IA fica ligada 24 horas); usar a foto de outro atleta no lugar da do atleta da call (o mosaico do 26 é arquivo público da casa, não é a foto dele); mostrar a foto sem a autorização registrada no painel; chamar o atleta de "especial", "único" ou "o melhor"; prometer prazo de contrato; dizer "incondicional" se o contrato tiver condição; dizer que a AGN representa, publica ou contrata o atleta; "garantido", "certo" ou "vai chegar" pro encaminhamento; inventar currículo do David; começar do zero com quem já tem contexto; perguntar de novo o que está na ficha; prometer contrato, clube ou valor de contrato; inventar caso, clube ou número; trocar "encaminhado" por "contratado"; desconto; proposta por WhatsApp; correr atrás da família; pôr o perfil do atleta em dúvida; vender pela diferença de preço em vez do ritmo; atribuir ao PRO o que é do Legacy (conexão direta com clubes e AGN, os 15 encaminhamentos por mês) ou encaminhamento ao Scout PRO; descer de plano por desconto; mandar o link antes do sim; dar nota ou atributo ao atleta; dizer que o Zyron tem percentual de acerto; chamar o avaliador de incompetente; citar clube como quem usa dados; dizer que existe vaga num clube específico; dizer que o Zyron leu um relatório marcado à mão; dar nota geral, ranking, percentil ou comparação com outros atletas; mostrar o vídeo de um atleta a quem não é da família dele; prometer que o relatório da call é o do plano (o plano entrega a leitura de cada vídeo novo, no ritmo dele); citar o escudo de um clube como se ele usasse o Zyron, patrocinasse ou tivesse vaga; trocar "enviados" por "contratados" no 326; comparar o atleta a Neymar ou a qualquer jogador.

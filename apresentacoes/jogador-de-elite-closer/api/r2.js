@@ -11,7 +11,7 @@
 // O formato dos decks de antes (GET /api/publico?id=<código>, que o vercel.json reescreve pra cá): os decks do R1 e do R2 anterior leem
 // o lead por ele. Responde { id, ficha, atualizadoEm, video?, leitura?, versao } e, pra link que não vale (não existe, revogado ou
 // vencido), 404 { erro }: esses decks só olham se deu certo. Sem foto: eles não usam.
-import { manda, cors, le, caminho, fichaPublica, fotoValida, linkVencido, videoValido, limpaLeitura, novoCodigo, leVersoesCom, etapaDe, T_OK, R, registraErro } from './_base.js';
+import { manda, cors, le, caminho, fichaPublica, fotoValida, linkVencido, linkGerado, previaOk, videoValido, limpaLeitura, novoCodigo, leVersoesCom, etapaDe, T_OK, R, registraErro } from './_base.js';
 
 export default async function handler(req, res) {
   cors(req, res, 'GET, OPTIONS');
@@ -26,9 +26,10 @@ export default async function handler(req, res) {
     const r = await le(caminho(T_OK.test(t) ? t : novoCodigo()));
     const reg = T_OK.test(t) && r ? r.dados : null;
     const nao = () => (legado ? manda(res, 404, { erro: 'Apresentação não encontrada.' }) : null);
-    if (!reg || reg.movendo) return legado ? nao() : manda(res, 404, { estado: 'nao-encontrado' });
+    // o rascunho (o link ainda não foi gerado no painel) responde igual a um código que não existe
+    if (!reg || reg.movendo || (!linkGerado(reg) && !previaOk(t, q.p))) return legado ? nao() : manda(res, 404, { estado: 'nao-encontrado' });
     if (reg.estado === 'revogado') return legado ? nao() : manda(res, 200, { estado: 'revogado' });
-    if (linkVencido(reg)) return legado ? nao() : manda(res, 200, { estado: 'expirado' });
+    if (linkGerado(reg) && linkVencido(reg)) return legado ? nao() : manda(res, 200, { estado: 'expirado' }); // o rascunho não vence: não tem link
     // versao: a página do deck que mostra este atleta (o link é um só por etapa; o deck abre a variação escolhida no painel)
     // as variações como valem agora: o admin pode ter mudado o que a variação mostra do lead (nome e foto) depois que o lead foi salvo
     const etapa = etapaDe(reg);
@@ -49,9 +50,13 @@ export default async function handler(req, res) {
     // ela existe. Vale também pros decks que não conhecem o semFoto (o R2 B): a promessa do painel é do servidor, não do deck
     if (ficha.semFoto !== 'sim' && fotoValida(reg.foto)) saida.foto = { ok: true, versao: reg.foto.versao };
     const v = reg.video;
-    if (!R.temDossie(ver) && videoValido(v)) {
+    // "tenho o vídeo do jogador": o vídeo analisado e o mapa de calor vão pro slide do dossiê em qualquer página (também na Acompanhamento,
+    // que sem isso não usa vídeo). Sem nome nem foto na tela (apresentação geral), nada do atleta vai
+    const comVideo = ficha.temVideo === 'sim' && ficha.nomeTela !== 'sem';
+    if (comVideo && reg.mapa && reg.mapa.versao) saida.mapa = { ok: true, versao: reg.mapa.versao, largura: reg.mapa.largura || 0, altura: reg.mapa.altura || 0 };
+    if (videoValido(v) && (!R.temDossie(ver) || comVideo)) {
       saida.video = { ok: true, duracaoS: v.duracaoS, temPoster: !!v.poster };
-      const l = reg.leitura && limpaLeitura(reg.leitura, v.duracaoS).leitura;
+      const l = !R.temDossie(ver) && reg.leitura && limpaLeitura(reg.leitura, v.duracaoS).leitura;
       if (l && l.origem && l.lances.length) saida.leitura = { origem: l.origem, criterio: l.criterio, lances: l.lances, fortes: l.fortes, prioridades: l.prioridades };
     }
     manda(res, 200, saida);

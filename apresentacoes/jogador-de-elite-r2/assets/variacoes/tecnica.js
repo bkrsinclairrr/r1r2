@@ -116,7 +116,7 @@
       ],
       perguntas: ['O que faltou em cada uma das tentativas?'],
       crm: ['O diagnóstico do [pai] sobre o que faltou, com as palavras dele.'],
-      atencao: 'Depois da observação (04) e do bloco do Zyron (06 a 11), este slide fecha o raciocínio pelo lado da operação. Este é o insight da variação: o gargalo de uma família que conhece o meio não é saber, é operar todo dia com dado e acesso. Reconheça o que eles sabem e mostre o limite; nunca diminua. Desarma "a gente mesmo consegue fazer isso" e "vou ver outras opções" antes de aparecerem. A coluna "Com a gente" é a estrutura completa, a da Assessoria de Elite Legacy (a nota no pé da tela diz isso). Com o PRO ou o Scout PRO na ficha, fale da estrutura, não do plano: gerente de carreira todo dia e a rede de clubes são do Legacy. O 23 volta a estas linhas, plano por plano.'
+      atencao: 'Depois da observação (04) e do bloco do Zyron (06 a 11), este slide fecha o raciocínio pelo lado da operação. Este é o insight da variação: o gargalo de uma família que conhece o meio não é saber, é operar todo dia com dado e acesso. Reconheça o que eles sabem e mostre o limite; nunca diminua. Desarma "a gente mesmo consegue fazer isso" e "vou ver outras opções" antes de aparecerem. A coluna "Com a gente" é a estrutura completa, a da Assessoria de Elite Legacy. Com o PRO ou o Scout PRO na ficha, fale da estrutura, não do plano: gerente de carreira todo dia e a rede de clubes são do Legacy. O 23 volta a estas linhas, plano por plano.'
     },
     // IA na Prática (13) e depoimento de uma mãe (14): os mesmos slides e o mesmo roteiro do padrão
     Object.assign(doPadrao('IA na Prática'), {

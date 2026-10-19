@@ -152,7 +152,6 @@ export function slidesBloco({ pre = 'assets/bloco/', numeros = [10, 13, 14, 22, 
   <div class="bl-radar rise" style="left:1060px;top:200px;width:740px;height:640px;--d:.14s">${rd.svg}${rd.rotulos}</div>
   <p class="bl-legenda-radar" style="left:1100px;top:858px"><span><i class="at"></i>Perfil do atleta</span><span><i class="cl"></i>O que o clube procura</span></p>
   <p class="bl-encaixe-sel" data-step="2" style="left:1100px;top:908px"><i></i>Encaixe encontrado<span class="bl-n">${rd.compat}%</span></p>
-  <p class="bl-aviso" style="left:1100px;top:960px;width:700px">Ilustração com valores fictícios, não do atleta.</p>
 </section>
 ` });
 

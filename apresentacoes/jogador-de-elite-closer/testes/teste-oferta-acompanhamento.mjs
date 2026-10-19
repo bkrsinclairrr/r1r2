@@ -134,14 +134,14 @@ test('o roteiro, as objeções e a referência do apresentador acompanham a gara
   const nav = await abreNavegador();
   try {
     for (const pagina of ['/', '/variacoes/tecnica/']) {
-      const a = await nav.aba(s.decks['r2-anterior'] + pagina + '?presenter#29');
+      const a = await nav.aba(s.decks['r2-anterior'] + pagina + '?presenter#31'); // a garantia: 29 até 18/10/2026, 31 desde o dossiê e o inimigo em comum
       assert.ok(await a.ate('!!document.querySelector("#pz-var")'));
       const fim = await a.avalia('window.ROTEIRO.slice(-3).map(r => r.nome)');
       assert.match(fim[0], /investimento/i);
       assert.equal(fim[1], 'Garantia incondicional');
       assert.equal(fim[2], 'Bem-vindo');
-      assert.equal(await a.avalia('window.OBJECOES.find(o => /Tem garantia/.test(o.q)).slides[0]'), 29);
-      assert.equal(await a.avalia('window.R2_REFERENCIA("21 (vazio: some)")'), '29 (vazio: some)');
+      assert.equal(await a.avalia('window.OBJECOES.find(o => /Tem garantia/.test(o.q)).slides[0]'), 31);
+      assert.equal(await a.avalia('window.R2_REFERENCIA("21 (vazio: some)")'), '31 (vazio: some)');
       assert.ok(!a.console_.some(e => e.startsWith('EXC')));
     }
   } finally { await nav.fecha(); await s.fecha(); }

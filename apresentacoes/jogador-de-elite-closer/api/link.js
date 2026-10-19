@@ -1,4 +1,5 @@
 // O link do R2 de um atleta. Precisa de login (dono ou admin). POST ?t=&acao= com corpo JSON:
+// gerar       o rascunho ganha o link (só aqui o link passa a existir pra família). Validade escolhida fica; a automática conta de agora
 // revogar     a família deixa de ver na hora (/api/r2 responde "revogado", foto e vídeo saem do ar)
 // reativar    volta a valer (se ainda estiver dentro da validade)
 // renovar     { dias } nova validade a partir de hoje, de 1 a 60 dias
@@ -11,7 +12,7 @@
 //             responder "nao-encontrado"
 import {
   exige, manda, corpo, le, grava, apaga, apagaPasta, lista, conflito, novoCodigo, caminho, caminhoChamada, mudaRegistro, mudaIndice, poeNoIndice,
-  podeMexer, quem, anota, estadoGuardado, pacote, leVersoes, resumo, venceDoLink, validadePedida, etapaDe, T_OK, VALIDADE, DIA, R, registraErro
+  podeMexer, quem, anota, estadoGuardado, pacote, leVersoes, resumo, venceDoLink, validadePedida, etapaDe, PASTA_MAPA, T_OK, VALIDADE, DIA, R, registraErro
 } from './_base.js';
 import { copia } from './_armazenamento.js';
 
@@ -36,7 +37,7 @@ export default async function handler(req, res) {
     let proibido = false, erro = null;
     const agora = () => new Date().toISOString();
 
-    if (['revogar', 'reativar', 'renovar', 'encerrar', 'reabrir', 'validade'].includes(acao)) {
+    if (['gerar', 'revogar', 'reativar', 'renovar', 'encerrar', 'reabrir', 'validade'].includes(acao)) {
       const dias = Math.round(Number(b.dias));
       if (acao === 'renovar' && !(dias >= 1 && dias <= VALIDADE.linkMax)) return manda(res, 400, { erro: 'A validade nova vai de 1 a ' + VALIDADE.linkMax + ' dias.' });
       // a validade escolhida: conferida antes de abrir o registro
@@ -49,6 +50,15 @@ export default async function handler(req, res) {
       const reg = await mudaRegistro(t, r => {
         erro = null;
         if (!podeMexer(eu, r)) { proibido = true; return false; }
+        if (acao === 'gerar') {
+          if (r.linkGerado !== false) return false; // já tem link: nada muda
+          r.linkGerado = true; r.linkGeradoEm = agora();
+          // a validade escolhida no rascunho já passou: o link não nasce vencido, volta pra automática (e o histórico diz)
+          const vencida = r.venceManual && (!r.venceEm || Date.parse(r.venceEm) <= Date.now() + 60000);
+          if (vencida) r.venceManual = false;
+          if (!r.venceManual) r.venceEm = venceDoLink(r.ficha, agora(), etapaDe(r));
+          anota(r, eu, vencida ? 'gerou o link (a validade escolhida já tinha passado: voltou pra automática)' : 'gerou o link');
+        }
         if (acao === 'revogar') { r.estado = 'revogado'; r.revogadoEm = agora(); anota(r, eu, 'revogou o link'); }
         if (acao === 'reativar') {
           if (r.estado !== 'revogado') return false;
@@ -94,7 +104,7 @@ export default async function handler(req, res) {
       let t2 = '';
       for (let i = 0; i < 5 && !t2; i++) { const c = novoCodigo(); if (!(await le(caminho(c)))) t2 = c; }
       if (!t2) throw new Error('não consegui sortear um código livre');
-      const arquivos = (await lista('fotos/' + t + '/')).concat(await lista('videos/' + t + '/'));
+      const arquivos = (await lista('fotos/' + t + '/')).concat(await lista('videos/' + t + '/'), await lista(PASTA_MAPA + t + '/'));
       for (const a of arquivos) await copia(a.caminho, a.caminho.replace('/' + t + '/', '/' + t2 + '/'), tipoDe(a.caminho));
       const novo = JSON.parse(JSON.stringify(atual));
       novo.t = t2; novo.rev = (atual.rev || 0) + 1;
@@ -108,6 +118,7 @@ export default async function handler(req, res) {
       // 3. o antigo some (registro, fotos, vídeo e presença) e o índice troca o código
       await apagaPasta('fotos/' + t + '/');
       await apagaPasta('videos/' + t + '/');
+      await apagaPasta(PASTA_MAPA + t + '/');
       await apaga([caminhoChamada(t), caminho(t)]);
       await mudaIndice(novo.donoLogin, itens => { delete itens[t]; itens[t2] = resumo(novo); });
       return manda(res, 200, Object.assign({ t: t2 }, await pacote(novo)));

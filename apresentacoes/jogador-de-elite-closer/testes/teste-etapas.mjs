@@ -83,7 +83,7 @@ try {
   ok(fR1.nome === fichaR1.nome && fR1.posicao === 'volante' && fR1.idade === '15' && fR1.cidade === 'Natal' && fR1.origem === 'Zyron' && fR1.r2data === hoje && fR1.r2hm === '19:30', 'a ficha do R1 guarda nome, posição, idade, cidade, origem, o que chamou atenção, experiência e o dia e a hora da R2');
   const suja = await novo(rafa, { ficha: Object.assign({}, fichaR1, { plano: 'Scouting', apelido: 'Luquinhas', gerente: 'Fulano', pe: 'Destro', altura: '170', nomeTela: 'sem', semFoto: 'sim', pular: 'leva', vagas: '3', prazoContato: 'ainda hoje' }) });
   const fs1 = suja.j.registro.ficha;
-  ok(!('plano' in fs1) && !('apelido' in fs1) && !('gerente' in fs1) && !('pe' in fs1) && !('altura' in fs1) && !('nomeTela' in fs1) && fs1.semFoto === 'sim' && !('pular' in fs1) && !('vagas' in fs1) && !('prazoContato' in fs1), 'o que é só do R2 (plano, apelido, gerente, pé, altura, nome na tela, foto, slide opcional, prazos) não fica no R1');
+  ok(!('plano' in fs1) && !('apelido' in fs1) && !('gerente' in fs1) && fs1.pe === 'Destro' && fs1.altura === '170' && !('nomeTela' in fs1) && fs1.semFoto === 'sim' && !('pular' in fs1) && !('vagas' in fs1) && !('prazoContato' in fs1), 'o que é só do R2 (plano, apelido, gerente, nome na tela, foto, slide opcional, prazos) não fica no R1; pé e altura ficam (desde 18/10/2026)');
   const comVar = await novo(rafa, { ficha: Object.assign({}, fichaR1, { versao: 'tecnica' }) });
   ok(comVar.status === 400, 'variação do R2 num R1: 400');
   const r2comR1 = await novo(carla, { ficha: { nome: 'Pedro Costa', versao: 'r1-principal' } });

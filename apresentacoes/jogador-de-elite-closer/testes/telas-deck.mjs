@@ -12,7 +12,7 @@ const SAIDA = path.resolve(process.argv[2] || 'telas');
 const VARIANTE = process.argv[3] || 'padrao';
 const PEDIDOS = process.argv.slice(4);
 fs.mkdirSync(SAIDA, { recursive: true });
-const SLIDES = [1, 2, 9, 10, 11, 12, 13, 14, 21, 22, 23, 24, 25, 30, 32, 33]; // numeração de 33 slides (os seis do bloco da página institucional: 10, 13, 14, 22, 23 e 24)
+const SLIDES = [1, 2, 9, 10, 11, 12, 13, 14, 18, 19, 23, 24, 25, 26, 27, 32, 34, 35]; // numeração de 35 slides (o bloco da página institucional: 10, 13, 14, 24, 25 e 26; o dossiê e o inimigo em comum: 18 e 19)
 
 const s = await sobe({ deck: true });
 const fotos = fotosDeTeste(RAIZ_DECK);

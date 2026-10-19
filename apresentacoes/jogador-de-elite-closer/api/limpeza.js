@@ -11,7 +11,7 @@
 import crypto from 'node:crypto';
 import {
   manda, le, lista, apaga, apagaPasta, mudaRegistro, mudaIndice, poeNoIndice, resumo, apagaTudo, fotoVencida, videoVencido, estadoGuardado, leVersoes,
-  caminhoFoto, PASTA, VALIDADE, DIA, registraErro
+  caminhoFoto, caminhoMapa, PASTA, PASTA_MAPA, VALIDADE, DIA, registraErro
 } from './_base.js';
 import { sincroniza } from './_sincroniza.js';
 
@@ -35,7 +35,8 @@ export default async function handler(req, res) {
       if (reg.venceEm && Date.parse(reg.venceEm) + VALIDADE.registroDepoisDoLink * DIA <= agora) {
         await apagaTudo(t, reg.donoLogin); conta.apagados++; continue;
       }
-      if (reg.apagarAoVencer && reg.venceEm && Date.parse(reg.venceEm) <= agora) {
+      // só o link que existe vence: o rascunho marcado pra apagar espera o link nascer
+      if (reg.apagarAoVencer && reg.linkGerado !== false && reg.venceEm && Date.parse(reg.venceEm) <= agora) {
         await apagaTudo(t, reg.donoLogin); conta.apagadosAoVencer++; continue;
       }
       vivos.add(t);
@@ -48,6 +49,10 @@ export default async function handler(req, res) {
         const sobra = (await lista('fotos/' + t + '/')).map(f => f.caminho).filter(c => !certos.includes(c));
         if (sobra.length) { await apaga(sobra); conta.sobras += sobra.length; }
       }
+      // versão velha do mapa de calor que sobrou de um envio interrompido
+      const certoMapa = reg.mapa && reg.mapa.versao ? caminhoMapa(t, reg.mapa.versao) : '';
+      const sobraMapa = (await lista(PASTA_MAPA + t + '/')).map(f => f.caminho).filter(c => c !== certoMapa);
+      if (sobraMapa.length) { await apaga(sobraMapa); conta.sobras += sobraMapa.length; }
       if (videoVencido(reg.video)) { await apagaPasta('videos/' + t + '/'); conta.videosVencidos++; mudou = true; }
       if (mudou) {
         const novo = await mudaRegistro(t, x => {
@@ -59,7 +64,7 @@ export default async function handler(req, res) {
       }
     }
     // arquivos de atleta que não existe mais
-    for (const pasta of ['fotos/', 'videos/']) {
+    for (const pasta of ['fotos/', 'videos/', PASTA_MAPA]) {
       const orfaos = (await lista(pasta)).map(f => f.caminho).filter(c => !vivos.has(codigoDe(c, pasta)));
       if (orfaos.length) { await apaga(orfaos); conta.sobras += orfaos.length; }
     }

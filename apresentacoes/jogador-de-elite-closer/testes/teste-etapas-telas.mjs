@@ -47,13 +47,14 @@ try {
   ok(/Nenhum R1 ainda/.test(await txt(S, '#lista')), 'a lista vazia diz "Nenhum R1 ainda"');
   await S.avalia("location.hash = '#/novo'; 1");
   await S.ate("!document.querySelector('#v-editor').hidden");
-  ok((await txt(S, '#ed-titulo')) === 'Novo R1' && (await txt(S, '#ed-salvar')) === 'Criar R1 e gerar o link' && (await txt(S, '#ed-voltar')) === '← Meus R1', '#/novo pro SDR abre o editor do R1 (Novo R1, Criar R1 e gerar o link)');
-  const ocultos = ['#nt-bloco', '#f-editor [name=apelido]', '#f-editor [name=pe]', '#f-editor [name=altura]', '#f-editor [name=sonho]', '#f-editor [name=plano]', '#f-editor [name=gerente]', '#f-editor [name=prazoContato]', '#f-editor [name=prazoZyron]', '#s-leitura', '#selo-pos'];
+  ok((await txt(S, '#ed-titulo')) === 'Novo R1' && (await txt(S, '#ed-salvar')) === 'Salvar rascunho' && (await txt(S, '#bt-gerar-link')) === 'Gerar link do R1' && (await txt(S, '#ed-voltar')) === '← Meus R1', '#/novo pro SDR abre o editor do R1 (Novo R1, Salvar rascunho e, no fim, Gerar link do R1)');
+  // desde 18/10/2026 o R1 também guarda pé, altura, categoria e onde joga (e as peneiras); o vídeo analisado e as oportunidades são só do R2
+  const ocultos = ['#nt-bloco', '#f-editor [name=apelido]', '#f-editor [name=sonho]', '#f-editor [name=plano]', '#f-editor [name=gerente]', '#f-editor [name=prazoContato]', '#f-editor [name=prazoZyron]', '#s-leitura', '#selo-pos', '#s-video', '#s-oportunidades'];
   const vis = [];
   for (const sel of ocultos) if (await visivel(S, sel)) vis.push(sel);
-  ok(!vis.length, 'o formulário do R1 esconde o que é só do R2 (foto, nome na tela, apelido, pé, altura, sonho, plano, gerente, prazos, leitura)' + (vis.length ? ': aparecem ' + vis.join(', ') : ''));
+  ok(!vis.length, 'o formulário do R1 esconde o que é só do R2 (nome na tela, apelido, sonho, plano, gerente, prazos, leitura, vídeo analisado e oportunidades)' + (vis.length ? ': aparecem ' + vis.join(', ') : ''));
   const mostra = [];
-  for (const sel of ['#f-editor [name=nome]', '#f-editor [name=posicao]', '#f-editor [name=idade]', '#f-editor [name=cidade]', '#f-editor [name=origem]', '#f-editor [name=caracteristicas]', '#f-editor [name=experiencia]', '#f-editor [name=r2data]', '#f-editor [name=r2hm]', '#c-conferido']) if (!(await visivel(S, sel))) mostra.push(sel);
+  for (const sel of ['#f-editor [name=nome]', '#f-editor [name=posicao]', '#f-editor [name=idade]', '#f-editor [name=cidade]', '#f-editor [name=origem]', '#f-editor [name=caracteristicas]', '#f-editor [name=experiencia]', '#f-editor [name=r2data]', '#f-editor [name=r2hm]', '#c-conferido', '#f-editor [name=pe]', '#f-editor [name=altura]', '#f-editor [name=categoria]', '#f-editor [name=clubeAtual]', '#f-editor [name=peneirasFeitas]', '#bt-gerar-link']) if (!(await visivel(S, sel))) mostra.push(sel);
   ok(!mostra.length, 'e mostra o que o R1 usa (nome, posição, idade, cidade, origem, o que chamou atenção, experiência, dia e hora da R2, nome conferido)' + (mostra.length ? ': faltam ' + mostra.join(', ') : ''));
   ok((await txt(S, '#s-versao > h2')) === 'Variação do R1' && (await txt(S, '#call-titulo')) === 'A R2 marcada', 'os títulos falam do R1 ("Variação do R1", "A R2 marcada")');
   const radios = await S.avalia("Array.from(document.querySelectorAll('#versoes input[name=versao]')).map(i => i.value).join()");
@@ -64,8 +65,8 @@ try {
   await S.avalia("document.querySelector('#c-conferido').click(); 1");
   const lis = await S.avalia("Array.from(document.querySelectorAll('#checklist li')).slice(0, 3).map(l => l.classList.contains('ok')).join()");
   ok((await S.avalia("document.querySelectorAll('#checklist li').length")) === 4 && lis === 'true,true,true', 'o checklist do R1 tem 3 itens (nome conferido, a ficha do slide 02, dia e hora da R2), todos feitos');
-  await S.avalia("document.querySelector('#ed-salvar').click(); 1");
-  ok(await S.ate("/R1 criado/.test(document.querySelector('#aviso').textContent) && /#\\/r2\\/[a-z2-7]{26}/.test(location.hash)", 10000), 'salvar cria o R1 (aviso "R1 criado") e abre o editor dele');
+  await S.avalia("document.querySelector('#bt-gerar-link').click(); 1");
+  ok(await S.ate("/R1 pronto/.test(document.querySelector('#aviso').textContent) && /#\\/r2\\/[a-z2-7]{26}/.test(location.hash)", 10000), 'Gerar link do R1 cria o R1 já com o link (aviso "R1 pronto") e abre o editor dele');
   await S.ate("document.querySelector('#ed-estado').textContent === 'Pronto' && !document.querySelector('#pv-fora').hidden", 10000); // o aviso sai antes de o salvar do nome conferido terminar
   const link = await S.avalia("document.querySelector('#lk-url').value");
   ok(link.startsWith(s.decks.r1 + '/?a=') && (await txt(S, '#lk-abrir')) === 'Abrir o R1' && (await txt(S, '#ed-estado')) === 'Pronto', 'o link é o do deck do R1, o botão diz "Abrir o R1" e a etiqueta é Pronto');

@@ -159,14 +159,14 @@
     d.alturaTxt = alturaTxt(ficha.altura);
     // o código do dossiê: os 8 caracteres finais do id do painel (?a=<id>), em caixa alta. É só o registro dele, nunca vaga ou fila
     const aid = AID || str(ficha._a);
-    d.dossieCod = aid && !semNome ? aid.replace(/[^A-Za-z0-9]/g, '').slice(-8).toUpperCase() : '';
-    d.dossieNo = d.dossieCod ? 'Nº ' + d.dossieCod : '';
+    d.dossieCod = ''; // o número do dossiê saiu da tela (pedido do dono, 18/10/2026): nada na tela mostra o código do link
+    d.dossieNo = '';
     // a leitura do atleta (13): o vídeo e o relatório que o painel guardou (ficha._video e ficha._leitura, do carregaPainel).
     // Com o link do painel, o vídeo sai de /api/video; sem ele (teste com a ficha gravada à mão), de _video.src
     const vid = !semNome && ficha._video && typeof ficha._video === 'object' ? ficha._video : null; // 'Sem nome nem foto': nem o vídeo dele
     const vidOk = !!(vid && vid.ok);
-    d.videoSrc = vidOk ? (aid ? painelDoLead + '/api/video?id=' + encodeURIComponent(aid) : str(vid.src)) : '';
-    d.posterUrl = vidOk && vid.temPoster ? (aid ? painelDoLead + '/api/video?id=' + encodeURIComponent(aid) + '&poster=1' : str(vid.posterSrc)) : '';
+    d.videoSrc = vidOk ? (aid ? comChave(painelDoLead + '/api/video?id=' + encodeURIComponent(aid)) : str(vid.src)) : '';
+    d.posterUrl = vidOk && vid.temPoster ? (aid ? comChave(painelDoLead + '/api/video?id=' + encodeURIComponent(aid) + '&poster=1') : str(vid.posterSrc)) : '';
     d.videoOk = d.videoSrc && !videoFalhou ? '1' : '';
     d.posterOk = d.posterUrl && !posterFalhou ? '1' : '';
     const RL = window.RelatorioLeitura;
@@ -197,6 +197,11 @@
     PLANOS.forEach((p, i) => { d[p.id + '.mais'] = i ? 'Tudo ' + doPlano(PLANOS[i - 1]) + ', mais' : 'Vitalício, você tem'; });
     if (window.R2_PERSONAL) Object.assign(d, window.R2_PERSONAL.derivados(ficha, d, aid, painelDoLead));
     if (window.FotoAtleta) Object.assign(d, window.FotoAtleta.derivados(ficha, d, AID, painelDoLead));
+    // o dossiê do atleta e o inimigo em comum (logo depois da IA na Prática): dossie-atleta.js
+    if (window.DossieAtleta) Object.assign(d, window.DossieAtleta.derivados(ficha, d, AID, painelDoLead));
+    // "Tenho o vídeo do jogador" ligado e sem lances marcados: o vídeo analisado vai pro dossiê e a IA na Prática fica a ponte, a leitura
+    // ao vivo de sempre (nunca o mesmo vídeo duas vezes seguidas, um deles com "Leitura em preparação")
+    if (d.dsV && !d.leituraOk) { d.videoOk = ''; d.videoSrc = ''; d.leituraResumo = 'vídeo analisado: no dossiê, com a IA na Prática de ponte'; }
     return d;
   }
 
@@ -217,6 +222,11 @@
   // só conta o que está ligado na tela (data-if, data-ifnot): o 13 só tem avanços quando a leitura veio do painel
   const ligado = e => !e.closest('[data-if]:not(.on), [data-ifnot].off');
   const stepsIn = i => (i >= 0 && i < N ? qsa('[data-step]', slides[i]).filter(ligado).reduce((m, e) => Math.max(m, parseInt(e.dataset.step, 10) || 0), 0) : 0);
+  // os slides que só existem com dado do painel (data-so-se: o dossiê, sem vídeo, mapa nem oportunidades): avançar e voltar passam
+  // direto por eles, sem renumerar. Ir direto a um deles (hash, número + Enter, visão geral, apresentador) continua valendo
+  let dAtual = null; // os dados da última pintura (applyBind)
+  const pulaSlide = i => !!(i >= 0 && i < N && slides[i].dataset.soSe) && !cond(slides[i].dataset.soSe, dAtual || derived());
+  const vizinho = (i, dir) => { let k = i; while (k >= 0 && k < N && pulaSlide(k)) k += dir; return k >= 0 && k < N ? k : -1; };
   // data-soma mostra a soma dos data-valor já revelados (sobe a cada avanço); data-marca="n" ganha destaque a partir do passo n
   const brl = v => 'R$ ' + Math.round(v).toLocaleString('pt-BR');
   const somaAte = (root, n) => qsa('[data-step][data-valor]', root).filter(e => n == null || (parseInt(e.dataset.step, 10) || 0) <= n).reduce((t, e) => t + (parseFloat(e.dataset.valor) || 0), 0);
@@ -267,7 +277,6 @@
       '<rect x="170" y="280" width="450" height="164" rx="6" fill="#0A1422" stroke="#C8B88A" stroke-opacity=".75" stroke-width="1.5"/>' +
       '<text x="200" y="330" font-family="Barlow Condensed" font-weight="600" font-size="26" letter-spacing="6" fill="#C8B88A">DOSSIÊ DO ATLETA</text>' +
       '<text x="198" y="400" font-family="Saira Condensed" font-weight="800" font-size="66" fill="#FFFFFF" data-bind="nomeDossie" data-fit-svg="390"></text>' +
-      '<text x="200" y="432" font-family="Barlow Condensed" font-weight="600" font-size="26" letter-spacing="4" fill="#7F93A8" data-bind="dossieNo"></text>' +
       '<g transform="rotate(-8 566 226)"><rect x="472" y="196" width="188" height="60" rx="4" fill="rgba(6,11,20,.55)" stroke="#9DB06A" stroke-width="3"/><text x="566" y="237" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="32" letter-spacing="5" fill="#9DB06A">APROVADO</text></g>' +
       '<rect x="664" y="170" width="20" height="410" fill="#C8B88A" opacity=".85"/><rect x="664" y="170" width="4" height="410" fill="#F1E9CF" opacity=".6"/>' +
       '</svg>';
@@ -443,6 +452,8 @@
     qsa('[data-ifnot]', root).forEach(e => e.classList.toggle('off', cond(e.dataset.ifnot, d)));
     if (root === document) { qsa('[data-fit-svg]').forEach(fitSvg); qsa('[data-fit]').forEach(fitHtml); ajustaChips(document); }
     if (window.FotoAtleta) window.FotoAtleta.atualiza(root, d);
+    if (window.DossieAtleta) window.DossieAtleta.atualiza(root, d);
+    dAtual = d;
     return d;
   }
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -471,6 +482,8 @@
   // O painel (jogador-de-elite-closer, o Painel de Apresentações) guarda o que a família vê de cada atleta. Os campos que vêm de lá valem
   // sobre os deste navegador (e o que foi apagado lá some daqui); o resto da ficha, o que se anota na call, continua aqui.
   const PAINEL = 'https://jogador-de-elite-closer.vercel.app';
+  // a prévia do painel (o link ainda não foi gerado): a chave &p= vai em todo pedido ao painel (foto-atleta.js)
+  const comChave = u => (window.FotoAtleta && window.FotoAtleta.comChave ? window.FotoAtleta.comChave(u) : u);
   /* O painel de antes (jogador-de-elite-painel) guardou os leads que já receberam o link: este painel responde 404 pra um código que não
      é dele, e o código dele tem 26 letras (a-z e 2-7), diferente dos de antes (nome-8letras). Só nesse caso, e só nesse endereço fixo,
      o deck pergunta ao painel de antes: os links já enviados seguem abrindo. */
@@ -478,7 +491,7 @@
   const CODIGO_NOVO = /^[a-z2-7]{26}$/;
   let painelDoLead = PAINEL; // o painel de onde veio o lead (o vídeo dele sai do mesmo)
   // o lead de um painel, pelo endereço que o deck sempre usou (/api/publico?id=)
-  const buscaLead = base => fetch(base + '/api/publico?id=' + encodeURIComponent(AID), { cache: 'no-store' })
+  const buscaLead = base => fetch(comChave(base + '/api/publico?id=' + encodeURIComponent(AID)), { cache: 'no-store' })
     .then(r => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
     .then(j => { painelDoLead = base; return j; });
   function carregaPainel(depois, aviso) {
@@ -494,12 +507,15 @@
         // a leitura do atleta (13): o vídeo e o relatório vêm só do painel; o que sumiu lá some daqui
         if (j.video && j.video.ok) ficha._video = j.video; else delete ficha._video;
         if (j.video && j.video.ok && j.leitura) ficha._leitura = j.leitura; else delete ficha._leitura;
+        // o mapa de calor do dossiê: só vem com "Tenho o vídeo do jogador" ligado; a versão vai no endereço
+        if (j.mapa && j.mapa.ok && Number(j.mapa.versao) > 0) ficha._mapa = { ok: true, versao: Number(j.mapa.versao) }; else delete ficha._mapa;
         videoFalhou = false; posterFalhou = false;
         ficha._a = AID; ficha._p = Object.keys(f);
         store.set(FKEY, ficha);
         depois();
         if (aviso) aviso('Apresentação do painel: ' + (f.nome || AID) + '. O que veio do painel vale sobre esta ficha; pra mudar de vez, mude no painel.' +
-          (window.R2_PERSONAL ? ' O slide 12 mostra o relatório; os clubes compatíveis aparecem no 15.' : (j.video && j.video.ok ? (j.leitura ? '' : ' O vídeo está no painel, mas sem lances marcados: o 12 mostra só o vídeo.') : ' Sem vídeo no painel: o 12 vai pra leitura ao vivo.')), true);
+          (f.temVideo === 'sim' && j.video && j.video.ok ? ' O vídeo analisado entra no dossiê do atleta, logo depois ' + (window.R2_PERSONAL ? 'do relatório.' : 'da IA na Prática' + (j.leitura ? ' (que mostra os lances marcados).' : ', que fica de ponte, com a leitura ao vivo.')) : '') +
+          (window.R2_PERSONAL ? ' O relatório e os clubes compatíveis vêm do painel.' : (j.video && j.video.ok ? (j.leitura || f.temVideo === 'sim' ? '' : ' O vídeo está no painel, mas sem lances marcados: a IA na Prática mostra só o vídeo.') : ' Sem vídeo no painel: a IA na Prática vai pra leitura ao vivo.')), true);
       })
       .catch(e => {
         // o painel respondeu 404 (o código não existe, foi apagado, revogado ou venceu): link inativo, como no R2 novo. Falha de rede não conta
@@ -556,6 +572,8 @@
   }
 
   window.addEventListener('je-foto-atleta', () => applyBind(document));
+  // o vídeo, o quadro ou o mapa do dossiê não carregou: some da tela (dossie-atleta.js)
+  window.addEventListener('je-dossie', () => applyBind(document));
   applyBind(document);
   // as medidas do nome (data-fit, o chip do campo) dependem da fonte: refaz quando ela termina de carregar
   try { document.fonts.ready.then(() => applyBind(document)); } catch (e) { /* sem document.fonts */ }
@@ -598,8 +616,8 @@
       updateHud();
       send({ t: 'state', i: cur, step });
     }
-    const next = () => { if (step < stepsIn(cur)) go(cur, step + 1); else go(cur + 1, 0); };
-    const prev = () => { if (step > 0) go(cur, step - 1); else go(cur - 1); };
+    const next = () => { if (step < stepsIn(cur)) go(cur, step + 1); else { const k = vizinho(cur + 1, 1); if (k >= 0) go(k, 0); } };
+    const prev = () => { if (step > 0) go(cur, step - 1); else { const k = vizinho(cur - 1, -1); if (k >= 0) go(k); } };
     function updateHud() {
       qs('#hud-pos').textContent = posLabel(cur);
       qs('#progress').style.width = ((cur + 1) / N * 100) + '%';
@@ -730,7 +748,11 @@
       }
       ov.classList.toggle('on', !!on);
       if (on) {
-        qsa('.ov-item', ov).forEach((it, i) => { it.classList.toggle('cur', i === cur); mountThumb(qs('.th', it), i); });
+        qsa('.ov-item', ov).forEach((it, i) => {
+          it.classList.toggle('cur', i === cur); mountThumb(qs('.th', it), i);
+          const fora = pulaSlide(i); // fora da sequência deste atleta: o clique ainda abre, as setas passam direto
+          it.style.opacity = fora ? '.4' : ''; it.title = fora ? 'Fora da sequência desta apresentação (as setas passam direto)' : '';
+        });
         const c = qsa('.ov-item', ov)[cur]; if (c) c.scrollIntoView({ block: 'center' });
       }
     }
@@ -749,7 +771,7 @@
       else if (m.t === 'local') applyBind(document);
       else if (m.t === 'seek') { go(m.slide); seek(document.getElementById(m.id), m.time); }
       else if (m.t === 'pause') pauseIn(slides[cur]);
-      else if (m.t === 'som' && va) { va.muted = !va.muted; }
+      else if (m.t === 'som') { const v = document.getElementById(m.id || 'v-atleta'); if (v) v.muted = !v.muted; }
     });
     send({ t: 'state', i: cur, step });
     carregaPainel(() => { applyBind(document); send({ t: 'ficha', ficha }); });
@@ -810,7 +832,8 @@
       const map = {
         '[atleta]': d.nomeCurto, '[responsável]': first(ficha.responsavel), '[pai]': first(ficha.pai), '[mãe]': first(ficha.mae), '[gerente]': d.gerente,
         '[idade]': d.idade, '[idade + 1]': d.idadeMais1, '[característica]': d.caracteristicas, '[experiência]': d.experiencia, '[sonho]': d.sonho,
-        '[primeiro foco]': d.trabalhar, '[locomoção]': d.locomocao, '[dor]': d.dor, '[peneiras]': d.peneiras, '[investido]': d.investido, '[vagas]': d.vagas,
+        '[primeiro foco]': d.trabalhar, '[locomoção]': d.locomocao, '[dor]': d.dor, '[peneiras]': d.peneiras || d.inPeneirasTxt, '[investido]': d.investido || d.inGasto,
+        '[nº de peneiras]': d.inPeneirasTxt, '[gasto com peneiras]': d.inGasto, '[anos tentando]': d.inAnosTxt, '[oportunidades]': (d.dsOps || []).map(o => o.clube).join(', ').replace(/, ([^,]*)$/, ' e $1'), '[vagas]': d.vagas,
         '[faixa]': d.faixaContrato, '[link AGN]': d.linkAgn,
         '[caso]': str(ficha.casoNome), '[clube do caso]': str(ficha.casoClube), '[país do caso]': str(ficha.casoPais), '[link do caso]': str(ficha.casoLink),
         '[hora]': str(ficha.horaRetorno), '[posição]': str(ficha.posicao).toLowerCase(),
@@ -892,6 +915,7 @@
         const el = document.getElementById(vid);
         // depoimento em áudio: tocar do início e pausar na tela da família
         if (el && el.tagName === 'AUDIO') h = `<div class="pz-ctl"><p class="pz-h">Áudio na tela da família (compartilhe com áudio)</p><div class="pz-mode"><button data-seek="0" data-vid="${vid}">Tocar do início</button><button data-a="vpause">Pausar</button></div><p class="pz-small">Espaço no deck também dá play e pausa.</p></div>`;
+        else if (vid === 'v-dossie') h = `<div class="pz-ctl"><p class="pz-h">O vídeo analisado pela IA, na tela da família (compartilhe com áudio)</p><div class="pz-mode"><button data-seek="0" data-vid="v-dossie">Do início</button><button data-a="som" data-vid="v-dossie">Som</button><button data-a="vpause">Pausar</button></div><p class="pz-small">O vídeo começa mudo: Som liga o áudio. Espaço no deck também dá play e pausa.</p></div>`;
         else {
           const ch = qsa('.chapters li', slides[cur]).map(li => [li.dataset.t, qs('.tm', li).textContent, qs('.ct', li).textContent]);
           const atleta = vid === 'v-atleta', d = derived();
@@ -899,7 +923,8 @@
             (atleta ? (d.leituraOk ? `<p class="pz-small"><b>Fonte desta leitura: ${d.leituraFonte === 'zyron' ? 'o Zyron' : 'a equipe'}.</b> ${d.leituraFonte === 'zyron' ? 'Pode dizer que o Zyron leu.' : 'Diga "a nossa equipe leu o seu vídeo". Não diga que o Zyron leu: esses lances foram marcados à mão.'} O vídeo começa mudo: Som liga o áudio.</p>` : '<p class="pz-small"><b>Só o vídeo, sem lances:</b> a tela mostra "Leitura em preparação". Marque os lances no painel (Leitura do atleta) e recarregue o deck.</p>') : '') + '</div>';
         }
       } else if (slides[cur].dataset.videoSe) {
-        h = '<div class="pz-ctl warn"><p class="pz-h">Sem vídeo do atleta no painel</p><p class="pz-say">O 12 está na leitura ao vivo, como sempre: troque o compartilhamento pro vídeo dele no Meet. Pra mostrar o jogo dele lance a lance, suba o vídeo na Leitura do atleta, no painel.</p></div>';
+        h = derived().dsV ? '<div class="pz-ctl"><p class="pz-h">O vídeo analisado entra no próximo slide (o dossiê do atleta)</p><p class="pz-say">Com "Tenho o vídeo do jogador" ligado e sem lances marcados, a IA na Prática é a ponte: "agora é com o seu". Não rode a leitura no Meet: avance e dê o play no dossiê.</p></div>'
+          : '<div class="pz-ctl warn"><p class="pz-h">Sem vídeo do atleta no painel</p><p class="pz-say">A IA na Prática está na leitura ao vivo, como sempre: troque o compartilhamento pro vídeo dele no Meet. Pra mostrar o jogo dele lance a lance, suba o vídeo na Leitura do atleta, no painel.</p></div>';
       }
       if (cur <= 1) h = `<div class="pz-ctl"><p class="pz-h">Origem do lead (muda o texto na tela)</p><div class="pz-mode">${[['Zyron', 'Zyron'], ['Formulário do Instagram', 'Formulário'], ['Frio, sem vídeo', 'Sem contexto']].map(([v, l]) => `<button data-origem="${esc(v)}" class="${o === v ? 'on' : ''}">${l}</button>`).join('')}</div></div>`;
       // os planos: a recomendação é o plano da ficha, destacado no último avanço; trocar aqui move o destaque na tela
@@ -910,6 +935,16 @@
         const fala = fill('"[pai], [mãe], o investimento no [plano] é de [preço], em 10x sem juros de [parcela]."');
         h = `<div class="pz-ctl"><p class="pz-h">Fale o número e pare</p><p class="pz-say">${fala}</p><p class="pz-small"><b>Na tela, um plano só:</b> ${esc(p.nome || '')}, ${esc(p.preco || '')} vitalício e 10x sem juros de ${esc(p.parcela || '')}. Link de pagamento: fora do deck, pelo WhatsApp, só depois do sim.</p></div>` +
           planoCtl('Trocar de plano, pelo escopo (a tela da família troca junto)');
+      }
+      // o dossiê do atleta: o que está na tela agora; vazio, as setas passam direto. O inimigo em comum: os números da família
+      if (slides[cur].classList.contains('ds-slide')) {
+        const d = derived();
+        h += d.dsMostra ? `<div class="pz-ctl"><p class="pz-h">No dossiê agora</p><p class="pz-say">${esc(d.dsResumo)}. Embaixo da foto: ${esc((d.dsDados || []).map(x => x[0].toLowerCase()).join(', ') || 'nenhum dado')}.</p><p class="pz-small">Oportunidades são clubes que procuram esse perfil, mapeados pela equipe: nunca diga que o clube já pediu o atleta nem prometa vaga, clube ou prazo.</p></div>`
+          : '<div class="pz-ctl warn"><p class="pz-h">Dossiê vazio: as setas passam direto por ele</p><p class="pz-say">Pra ele aparecer: no painel, ligue "Tenho o vídeo do jogador" e suba o vídeo analisado ou o mapa de calor, ou preencha as oportunidades. Depois, recarregue o deck.</p></div>';
+      }
+      if (slides[cur].classList.contains('in-slide')) {
+        const d = derived(), nums = [d.inPeneirasTxt, d.inGasto ? d.inGasto + ' gastos' : '', d.inAnosTxt ? d.inAnosTxt + ' tentando' : ''].filter(Boolean);
+        h += `<div class="pz-ctl"><p class="pz-h">O preço de procurar no escuro</p><p class="pz-say">${nums.length ? 'Na tela, os números da família: ' + esc(nums.join(', ')) + '. Eles contam do zero quando o slide entra.' : 'Sem números no painel: a tela mostra a conta sem números (inscrição, viagem, o dia de trabalho, a espera). Pergunte e anote no painel, em As peneiras dele.'}</p></div>`;
       }
       // o campo (10) e a miniatura (25) dependem da posição da ficha
       const campo = qs('[data-campo]', slides[cur]);
@@ -944,7 +979,7 @@
       if (b.dataset.seek != null) { send({ t: 'seek', id: b.dataset.vid, slide: cur, time: parseFloat(b.dataset.seek) }); return; }
       const a = b.dataset.a;
       if (a === 'vpause') send({ t: 'pause' });
-      if (a === 'som') send({ t: 'som' });
+      if (a === 'som') send({ t: 'som', id: b.dataset.vid || 'v-atleta' });
       if (a === 'prev') send({ t: 'prev' });
       if (a === 'next') send({ t: 'next' });
       if (a === 'timer') toggleTimer();
@@ -971,7 +1006,7 @@
       const total = stepsIn(cur), s = curStep == null ? total : curStep;
       mountThumb(qs('#pz-cur'), cur, s);
       if (s < total) mountThumb(qs('#pz-next'), cur, s + 1);
-      else mountThumb(qs('#pz-next'), cur + 1 < N ? cur + 1 : null, 0);
+      else { const prox = vizinho(cur + 1, 1); mountThumb(qs('#pz-next'), prox >= 0 ? prox : null, 0); }
     }
     function posLabelPz() {
       const total = stepsIn(cur), s = curStep == null ? total : curStep;
@@ -1016,7 +1051,8 @@
         ['nome', 'Nome do atleta', 'text', 'Só o primeiro nome aparece na tela'], ['idade', 'Idade', 'number'],
         ['posicao', 'Posição', 'text', 'Desenha o campo e a miniatura de boas-vindas. Ex.: goleiro, lateral direito, zagueiro, volante, meia, ponta esquerda, atacante. Posição que o deck não reconhece: o campo fica sem destaque'], ['cidade', 'Cidade', 'text'],
         ['pe', 'Pé', 'select', 'Cartão do perfil em campo. Vazio: a linha some', ['', 'Destro', 'Canhoto', 'Ambidestro']],
-        ['altura', 'Altura (cm)', 'number', 'Cartão do perfil em campo, em metros. Vazio: a linha some'],
+        ['altura', 'Altura (cm)', 'number', 'Cartão do perfil em campo e dossiê do atleta, em metros. Vazio: a linha some'],
+        ['categoria', 'Categoria', 'text', 'Dossiê do atleta, embaixo da foto. Ex.: Sub-17'], ['clubeAtual', 'Onde joga hoje', 'text', 'Dossiê do atleta, embaixo da foto. Ex.: Sub-17 do Vasco'],
         ['origem', 'Origem do lead', 'select', 'Muda os slides 01 e 02: Zyron (o Zyron viu), formulário (a história dele) ou sem contexto', ORIGENS],
         ['caracteristicas', 'O que chamou atenção no Zyron', 'text', 'Do Contexto do CRM. Aparece no 02 se veio do Zyron'],
         ['experiencia', 'Experiência que ele contou no formulário', 'text', 'Do Contexto do CRM. Ex.: Sub-15 do América de Natal. Aparece no 02 se veio do formulário']
@@ -1044,6 +1080,10 @@
         ['vagas', 'Vagas restantes (número real da semana)', 'number', 'Só no Legacy, na turma e no começo'], ['proximaTurma', 'Próxima turma abre em', 'text', 'Só no Legacy, no começo'],
         ['plano', 'Plano que vou recomendar', 'select', 'A tela da família mostra este plano: o destaque dos planos, o investimento e as boas-vindas (turma e vaga só no Legacy). Regra da casa: Legacy se a ficha não mostra aperto financeiro; Assessoria PRO se a dor financeira é forte ou na objeção de caixa depois do Legacy; Scouting só se o caixa não comporta o PRO. Vazio ou nome antigo: a tela mostra o Legacy', [''].concat(PLANOS.map(p => p.nome))],
         ['horaRetorno', 'Hora do retorno (Modo B)', 'text', 'Ex.: 19h']
+      ]],
+      ['Peneiras (a família vê no inimigo em comum)', [
+        ['peneirasFeitas', 'Peneiras que ele já fez', 'number', 'O quadro do preço de procurar no escuro. Vazio: a conta sem números'],
+        ['gastoPeneiras', 'Quanto já gastaram com peneiras (R$)', 'number'], ['anosTentando', 'Há quantos anos ele tenta', 'number']
       ]],
       ['Da R1 (só você vê)', [
         ['responsavel', 'Quem fala pela família', 'text'], ['pai', 'Pai', 'text'], ['mae', 'Mãe', 'text'], ['outro', 'Outro responsável', 'text'],
@@ -1187,17 +1227,19 @@
 
     /* ----- ler antes ----- */
     const LER = [
-      ['Nome do atleta', 'nome', '01, 02, 05, 10, 13, 16, 18, 19, 20, 22, 23, 25, 101, 102, 103, 104, 105 e 106 (e o selo de dossiê no canto)'], ['Origem do lead', 'origem', '01 e 02 (muda o texto)'],
+      ['Nome do atleta', 'nome', '01, 02, 05, 10, 13, 107, 108, 16, 18, 19, 20, 22, 23, 25, 101, 102, 103, 104, 105 e 106 (e o selo de dossiê no canto)'], ['Origem do lead', 'origem', '01 e 02 (muda o texto)'],
       ['O que chamou atenção no Zyron', 'caracteristicas', '02, se veio do Zyron'], ['Experiência do formulário', 'experiencia', '02, se veio do formulário'],
-      ['Posição, idade, cidade', 'posicao|idade|cidade', '02, 05 e o cartão do 10'], ['Posição que desenha o campo', 'posCampo', '10 (o campo) e 25 (a miniatura); vazio: campo sem destaque'],
-      ['Pé e altura', 'peTxt|alturaTxt', 'cartão do 10 (vazio: a linha some)'], ['Código do dossiê (link do painel)', 'dossieCod', '01, 02, 10 e o selo no canto'],
-      ['Sonho do atleta', 'sonho', '05'],
+      ['Posição, idade, cidade', 'posicao|idade|cidade', '02, 05, 107 (embaixo da foto, no dossiê) e o cartão do 10'], ['Posição que desenha o campo', 'posCampo', '10 (o campo) e 25 (a miniatura); vazio: campo sem destaque'],
+      ['Pé e altura', 'peTxt|alturaTxt', 'cartão do 10 e 107 (embaixo da foto, no dossiê); vazio: a linha some'], ['Categoria e onde joga', 'categoria|clubeAtual', '107 (embaixo da foto, no dossiê); vazio: some'],
+      ['Sonho do atleta', 'sonho', '05 e 107 (o destino do plano de carreira)'],
       ['Locomoção', 'locomocao', '05'], ['Primeiro foco do plano', 'trabalhar', '05, falado no 09 e o primeiro foco do relatório do 13'],
       ...(window.R2_PERSONAL ? [
         ['Relatório preparado no painel', 'zyronResumo|zyronFoco', '13 (a leitura e a prioridade do atleta)'],
         ['Clubes compatíveis do relatório', 'match1Clube|match2Clube|match3Clube', '16 (oportunidades preenchidas para este perfil)']
       ] : [['Vídeo e leitura do painel', 'leituraResumo', '13 (o jogo dele, lance a lance), 01 (o quadro na capa) e 05; sem vídeo, o 13 é a leitura ao vivo']]),
-      ['Peneiras que ele fez', 'peneiras', '04, 11 e 12, só falado'], ['Caso espelho (nome, clube, país)', 'casoNome&casoClube', '02 (plantar), 16 (tela), 20 e 25'], ['Link do caso espelho', 'casoLink', '16, no WhatsApp'],
+      ['O dossiê do atleta (painel)', 'dsResumo', '107: o vídeo analisado pela IA, o mapa de calor embaixo dele e as oportunidades; vazio, as setas passam direto pelo 107'],
+      ['Peneiras, gasto e anos tentando (painel)', 'inPeneirasTxt|inGasto|inAnosTxt', '108 (o preço de procurar no escuro, contando do zero na tela); vazio: a conta sem números'],
+      ['Peneiras que ele fez', 'peneiras', '04, 11, 12 e 108, só falado'], ['Caso espelho (nome, clube, país)', 'casoNome&casoClube', '02 (plantar), 16 (tela), 20 e 25'], ['Link do caso espelho', 'casoLink', '16, no WhatsApp'],
       ['Link da AGN', 'linkAgn', '16, no WhatsApp'], ['Já investiram (régua)', 'investido', '17, só falado'],
       ['Não faz sentido lucrar em cima', 'lucro', '20, só falado'], ['Quanto um atleta nosso fecha', 'faixaContrato', '20'], ['Prazo da garantia', 'garantiaPrazo', 'Garantia, depois dos preços (vazio: some)'],
       ['Plano que vou recomendar', 'plano', '23 (destaque no último avanço), 24 (o número e o que inclui) e 25; turma e vaga (14, 19 e 22) só no Legacy; vazio mostra o Legacy'],

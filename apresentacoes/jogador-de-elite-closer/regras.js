@@ -101,10 +101,10 @@
         { id: 'metodo', rotulo: 'O método: a IA encontra, a gente conduz', slide: 10, ajuda: 'Mostra como a IA lê dez indicadores e o que a equipe faz com a leitura. Sem ele, a apresentação passa da plataforma direto para "Quem olha por ele".' },
         { id: 'campo', rotulo: 'O campo: olhômetro × IA', slide: 13, ajuda: 'O campo animado: o olhômetro só vê quem está perto da bola, a IA vê os 22. Sem ele, a apresentação vai do seu lugar em campo direto para o encaixe.' },
         { id: 'encaixe', rotulo: 'Você não precisa ser o próximo Neymar', slide: 14, ajuda: 'O perfil do atleta se encaixando no que o clube procura. Sem ele, a apresentação vai do campo direto para a tabela do olhômetro × Zyron.' },
-        { id: 'registro', rotulo: '326 atletas enviados', slide: 22, ajuda: 'O número da casa e a arte do Instagram. Sem ele, a apresentação passa da rede direto para os clubes e parceiros.' },
-        { id: 'clubes', rotulo: 'Clubes e parceiros', slide: 23, ajuda: 'As faixas de escudos e os parceiros comerciais, com a nota legal. Sem ele, a apresentação segue direto para o mosaico de rostos.' },
-        { id: 'rostos', rotulo: 'Cada rosto, uma história', slide: 24, ajuda: 'O mosaico de fotos da trajetória da casa. Sem ele, a apresentação segue direto para "O que ele leva".' },
-        { id: 'leva', rotulo: 'O que o {nome} leva', slide: 25, ajuda: 'Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai direto para "O valor real".' }
+        { id: 'registro', rotulo: '326 atletas enviados', slide: 24, ajuda: 'O número da casa e a arte do Instagram. Sem ele, a apresentação passa da rede direto para os clubes e parceiros.' },
+        { id: 'clubes', rotulo: 'Clubes e parceiros', slide: 25, ajuda: 'As faixas de escudos e os parceiros comerciais, com a nota legal. Sem ele, a apresentação segue direto para o mosaico de rostos.' },
+        { id: 'rostos', rotulo: 'Cada rosto, uma história', slide: 26, ajuda: 'O mosaico de fotos da trajetória da casa. Sem ele, a apresentação segue direto para "O que ele leva".' },
+        { id: 'leva', rotulo: 'O que o {nome} leva', slide: 27, ajuda: 'Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai direto para "O valor real".' }
       ]
     },
     {
@@ -116,10 +116,10 @@
         { id: 'metodo', rotulo: 'O método: a IA encontra, a gente conduz', slide: 10, ajuda: 'Mostra como a IA lê dez indicadores e o que a equipe faz com a leitura. Sem ele, a apresentação passa da plataforma direto para "Quem olha por ele".' },
         { id: 'campo', rotulo: 'O campo: observação × IA', slide: 13, ajuda: 'O campo animado: a observação só vê quem está perto da bola, a IA vê os 22. Sem ele, a apresentação vai do seu lugar em campo direto para o encaixe.' },
         { id: 'encaixe', rotulo: 'Você não precisa ser o próximo Neymar', slide: 14, ajuda: 'O perfil do atleta se encaixando no que o clube procura. Sem ele, a apresentação vai do campo direto para a tabela do Zyron.' },
-        { id: 'registro', rotulo: '326 atletas enviados', slide: 22, ajuda: 'O número da casa e a arte do Instagram. Sem ele, a apresentação passa da rede direto para os clubes e parceiros.' },
-        { id: 'clubes', rotulo: 'Clubes e parceiros', slide: 23, ajuda: 'As faixas de escudos e os parceiros comerciais, com a nota legal. Sem ele, a apresentação segue direto para o mosaico de rostos.' },
-        { id: 'rostos', rotulo: 'Cada rosto, uma história', slide: 24, ajuda: 'O mosaico de fotos da trajetória da casa. Sem ele, a apresentação segue direto para "O que ele leva".' },
-        { id: 'leva', rotulo: 'O que o {nome} leva', slide: 25, ajuda: 'Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai direto para "O valor real".' }
+        { id: 'registro', rotulo: '326 atletas enviados', slide: 24, ajuda: 'O número da casa e a arte do Instagram. Sem ele, a apresentação passa da rede direto para os clubes e parceiros.' },
+        { id: 'clubes', rotulo: 'Clubes e parceiros', slide: 25, ajuda: 'As faixas de escudos e os parceiros comerciais, com a nota legal. Sem ele, a apresentação segue direto para o mosaico de rostos.' },
+        { id: 'rostos', rotulo: 'Cada rosto, uma história', slide: 26, ajuda: 'O mosaico de fotos da trajetória da casa. Sem ele, a apresentação segue direto para "O que ele leva".' },
+        { id: 'leva', rotulo: 'O que o {nome} leva', slide: 27, ajuda: 'Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai direto para "O valor real".' }
       ]
     }
   ];
@@ -130,14 +130,14 @@
     'r2-anterior': [
       {
         id: 'principal', nome: 'R2 · Roteiro clássico completo', caminho: '/',
-        resumo: 'O R2 de 30 slides, o de antes do R2 novo, com os planos e O investimento. A foto aparece no slide de escolha.',
-        quando: 'Só se precisar da versão de 30 slides. Na dúvida, use o R2 novo.',
+        resumo: 'O R2 de 32 slides, o de antes do R2 novo, com os planos e O investimento. A foto aparece no slide de escolha e no dossiê do atleta.',
+        quando: 'Só se precisar da versão de 32 slides. Na dúvida, use o R2 novo.',
         validacao: 'em-validacao', lead: { nome: true, foto: true }, opcionais: []
       },
       {
         id: 'tecnica', nome: 'R2 · Técnica com roteiro clássico', caminho: '/variacoes/tecnica/',
-        resumo: 'A versão técnica do R2 de 30 slides: fala de par pra par, sem explicar o básico. A foto aparece no slide de escolha.',
-        quando: 'Lead com vivência no meio (base de clube, federado, ex-jogador, técnico) e só se precisar da versão de 30 slides.',
+        resumo: 'A versão técnica do R2 de 32 slides: fala de par pra par, sem explicar o básico. A foto aparece no slide de escolha e no dossiê do atleta.',
+        quando: 'Lead com vivência no meio (base de clube, federado, ex-jogador, técnico) e só se precisar da versão de 32 slides.',
         validacao: 'em-validacao', lead: { nome: true, foto: true }, opcionais: []
       }
     ],
@@ -305,8 +305,45 @@
   // como a fala chama o atleta: o apelido, ou o primeiro nome
   const comoFala = (nome, apelido) => str(apelido) || nomesDoAtleta(nome).primeiro;
 
+  /* A ficha do atleta: a categoria em que ele joga (lista fixa, pro cartão do dossiê). */
+  const CATEGORIAS = ['Sub-11', 'Sub-13', 'Sub-15', 'Sub-17', 'Sub-20', 'Profissional', 'Amador'];
+
+  /* As oportunidades do atleta: os clubes que a equipe mapeou pro perfil dele (o lado direito do slide do dossiê). Na ficha ficam num
+     texto só, "Clube~detalhe|Clube~detalhe" (até 6, na ordem escolhida): o clube é o nome como aparece no slide e o detalhe, opcional,
+     é a liga, o país ou a categoria (Série B, Portugal, Sub-20...). */
+  const OPORTUNIDADES_MAX = 6;
+  const normClube = s => semAcento(s).replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
+  const limpaParte = (s, max) => str(s).replace(/<[^>]*>/g, ' ').replace(/[<>|~]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, max);
+  // o texto da ficha em lista: [{ clube, detalhe }]
+  const oportunidadesDe = texto => str(texto).split('|').map(p => {
+    const i = p.indexOf('~');
+    return i < 0 ? { clube: p.trim(), detalhe: '' } : { clube: p.slice(0, i).trim(), detalhe: p.slice(i + 1).trim() };
+  }).filter(o => o.clube);
+  const textoOportunidades = lista => lista.map(o => o.clube + (o.detalhe ? '~' + o.detalhe : '')).join('|');
+  // confere a lista (painel e servidor): sem HTML e sem os separadores, clube com até 50 letras e detalhe com até 40, sem repetir, até 6
+  // a sigla do escudo no slide do dossiê: as iniciais das duas primeiras palavras que contam (sem "de", "da", "do" e sem FC, EC, Clube...).
+  // A mesma regra do assets/dossie-atleta.js dos decks (o teste-igualdade confere os dois)
+  const FORA_DA_SIGLA = ['de', 'da', 'do', 'das', 'dos', 'e', 'fc', 'ec', 'sc', 'ac', 'cf', 'cr', 'se', 'aa', 'ca', 'clube', 'club', 'futebol', 'esporte', 'associacao', 'sociedade'];
+  function siglaClube(clube) {
+    const p = str(clube).normalize('NFD').replace(/[\u0300-\u036f]/g, '').split(/[^A-Za-z0-9]+/).filter(Boolean);
+    const conta = p.filter(x => FORA_DA_SIGLA.indexOf(x.toLowerCase()) < 0);
+    return (conta.length ? conta : p).slice(0, 2).map(x => x[0].toUpperCase()).join('');
+  }
+  function limpaOportunidades(texto) {
+    const out = [], vistos = [];
+    oportunidadesDe(texto).forEach(o => {
+      if (out.length >= OPORTUNIDADES_MAX) return;
+      const clube = limpaParte(o.clube, 50), detalhe = limpaParte(o.detalhe, 40), chave = normClube(clube);
+      if (!clube || !chave || vistos.indexOf(chave) >= 0) return;
+      vistos.push(chave);
+      out.push({ clube, detalhe });
+    });
+    return textoOportunidades(out);
+  }
+
   raiz.R2_REGRAS = { PLANOS, planosDaVersao, temDossie, recursosDaPagina, CAMPOS_DOSSIE, INDICADORES, LEGACY, PLANOS_ANTIGOS, PRAZOS, PES, ORIGENS, SUGESTOES, CAMPO_POSICOES, DATA_OK, HORA_OK,
     VERSOES, VERSAO_PADRAO, VALIDACOES, VALIDACAO_PADRAO, SLUG_OK, NOMES_TELA, versaoPor, ordenaVersoes,
     ETAPAS, DECKS, RESERVA, RESERVA_TODAS, deckPor, entradaDe, padraoDe, comoVariacao,
-    semAcento, posicaoNoCampo, diaDaCall, horaDaCall, hojeSP, dataCurta, nomeDossie, comoChama, comoFala, nomesDoAtleta };
+    semAcento, posicaoNoCampo, diaDaCall, horaDaCall, hojeSP, dataCurta, nomeDossie, comoChama, comoFala, nomesDoAtleta,
+    CATEGORIAS, OPORTUNIDADES_MAX, normClube, oportunidadesDe, textoOportunidades, limpaOportunidades, siglaClube };
 })(typeof window !== 'undefined' ? window : globalThis);

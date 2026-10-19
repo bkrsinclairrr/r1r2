@@ -4,14 +4,14 @@
    (window.OBJECOES) e acrescenta itens ao checklist (window.CHECKLIST). Os três planos (window.PLANOS),
    follow-up e proibidos continuam os do padrão; o deck não tem link de pagamento. Nada do deck padrão é alterado.
 
-   Os 33 slides ficam nas mesmas posições do padrão, pra aba Ler antes (números fixos no deck.js)
+   Os 35 slides ficam nas mesmas posições do padrão, pra aba Ler antes (números fixos no deck.js)
    continuar certa, inclusive os dois da reformulação de 08/10/2026: o 03 (o que a avaliação por observação
    deixa passar, o inimigo comum na voz de quem conhece o meio) e o 12 (o perfil dele em campo). Muda a copy e a persuasão:
    - Conversa de par pra par: nunca explicar o básico (peneira, olhômetro, o que é a AGN).
    - Insight central: informação a família já tem; o que falta é operação todo dia, com dado e acesso.
    - Perguntas de calibração: o pai mostra o que sabe e chega sozinho à conclusão.
    - Precisão no lugar de entusiasmo: cada número uma vez, sem adjetivo, "encaminhado" definido.
-   - A AGN aparece uma vez (slide 20), como referência que eles já têm, não como prova.
+   - A AGN aparece uma vez (slide 22), como referência que eles já têm, não como prova.
    - Interesse alinhado (a gente só lucra no contrato) contra o ceticismo de quem já viu promessa no meio.
    Mesma doutrina do PLAYBOOK_CLOSER: combinado de decidir hoje, necessidade explícita, ancoragem antes
    do número, garantia logo depois do número (pedido do dono, 11/10/2026), silêncio, Modo A e Modo B. */
@@ -138,6 +138,15 @@
     atencao: (doPadrao('Cada rosto, uma história').atencao || '') + ' Variação técnica: não aponte atleta pelo rosto nem diga o clube de nenhum deles.'
   });
 
+  // o dossiê do atleta (18) e o inimigo em comum (19), de 18/10/2026: a mesma tela do padrão, a fala de igual pra igual
+  const DOSSIE_T = Object.assign(doPadrao('O dossiê do atleta'), {
+    fala: ['Ponte, no idioma deles: "Vocês leem jogo com o olho treinado. Agora olhem o jogo do [atleta] lido pela IA, com o mapa de onde ele joga e os clubes que procuram esse perfil."'].concat(doPadrao('O dossiê do atleta').fala.slice(1)),
+    atencao: doPadrao('O dossiê do atleta').atencao + ' Variação técnica: deixe o [pai] comentar o mapa e as oportunidades; se ele conhecer um dos clubes, pergunte o que sabe do momento dele. Não discuta a escolha do clube: quem decide é o clube.'
+  });
+  const INIMIGO_T = Object.assign(doPadrao('O inimigo em comum'), {
+    fala: ['De igual pra igual: "Vocês conhecem a peneira por dentro. Então sabem: um avaliador pra vinte e dois, vinte minutos de coletivo. Não é falta de talento: é falta de quem olhe."'].concat(doPadrao('O inimigo em comum').fala.slice(2)),
+    atencao: doPadrao('O inimigo em comum').atencao + ' Variação técnica: família do meio sabe como a peneira funciona. Não explique: confirme com ela ("vocês já viram isso acontecer, né?") e vá pro quadro dos números.'
+  });
   window.ROTEIRO = [
     { nome: 'Capa', min: 1,
       fala: [
@@ -158,7 +167,7 @@
         'Veio do formulário: "[atleta], você contou: [experiência]. A equipe leu isso e aprovou o perfil. Jogador você já é."',
         'Sem contexto: "A equipe analisou o teu jogo e aprovou o teu perfil."',
         'Calibração, pro [pai]: "Vocês que acompanham o jogo dele de perto: isso bate com o que vocês veem? O que vocês acrescentariam?" Escute e anote. As palavras dele voltam no slide 04.',
-        'Plante o espelho, só com caso real na ficha: "Lendo o perfil dele, me veio um atleta nosso com o mesmo perfil. Daqui a pouco eu mostro quem é." Não fale o nome ainda: a revelação é no slide 20.',
+        'Plante o espelho, só com caso real na ficha: "Lendo o perfil dele, me veio um atleta nosso com o mesmo perfil. Daqui a pouco eu mostro quem é." Não fale o nome ainda: a revelação é no slide 22.',
         'Apontando o cartão com o retrato, sem enfeite: "É o perfil aprovado do [atleta]. Nenhum outro atleta tem este plano."',
         'Ponte: "Hoje eu mostro o caminho daqui até o clube."'
       ],
@@ -191,7 +200,7 @@
       ],
       perguntas: ['Faz sentido esse caminho? Alguma etapa que vocês fariam diferente?'],
       crm: ['O que a família sugeriu mudar no plano, se sugeriu.'],
-      atencao: 'Pergunta aberta de propósito: quem é do meio quer opinar. Se sugerirem algo, responda o que cabe dentro do plano, sem prometer o que a operação não faz. Não prometa prazo, clube ou contrato. Previne "ele não pode ir pra outro estado": hoje ele não vai pra lugar nenhum, isso só acontece quando o clube chamar. O caminho da tela é a estrutura completa, a do Legacy: gerente de carreira, a ponte com a rede de clubes e a ida organizada. Com o PRO ou o Scout PRO na ficha, não diga que o plano entrega isso: o 31 mostra o que cada plano entrega.'
+      atencao: 'Pergunta aberta de propósito: quem é do meio quer opinar. Se sugerirem algo, responda o que cabe dentro do plano, sem prometer o que a operação não faz. Não prometa prazo, clube ou contrato. Previne "ele não pode ir pra outro estado": hoje ele não vai pra lugar nenhum, isso só acontece quando o clube chamar. O caminho da tela é a estrutura completa, a do Legacy: gerente de carreira, a ponte com a rede de clubes e a ida organizada. Com o PRO ou o Scout PRO na ficha, não diga que o plano entrega isso: o 33 mostra o que cada plano entrega.'
     },
     ...BLOCO_ZYRON,
     PLATAFORMA,
@@ -212,15 +221,17 @@
       ],
       perguntas: ['O que faltou em cada uma das tentativas?'],
       crm: ['O diagnóstico do [pai] sobre o que faltou, com as palavras dele.'],
-      atencao: 'Depois da observação (03) e do bloco do Zyron (05 a 15), este slide fecha o raciocínio pelo lado da operação. Este é o insight da variação: o gargalo de uma família que conhece o meio não é saber, é operar todo dia com dado e acesso. Reconheça o que eles sabem e mostre o limite; nunca diminua. Desarma "a gente mesmo consegue fazer isso" e "vou ver outras opções" antes de aparecerem. A coluna "Com a gente" é a estrutura completa, a da Assessoria de Elite Legacy (a nota no pé da tela diz isso). Com o PRO ou o Scout PRO na ficha, fale da estrutura, não do plano: gerente de carreira todo dia e a rede de clubes são do Legacy. O 31 volta a estas linhas, plano por plano.'
+      atencao: 'Depois da observação (03) e do bloco do Zyron (05 a 15), este slide fecha o raciocínio pelo lado da operação. Este é o insight da variação: o gargalo de uma família que conhece o meio não é saber, é operar todo dia com dado e acesso. Reconheça o que eles sabem e mostre o limite; nunca diminua. Desarma "a gente mesmo consegue fazer isso" e "vou ver outras opções" antes de aparecerem. A coluna "Com a gente" é a estrutura completa, a da Assessoria de Elite Legacy. Com o PRO ou o Scout PRO na ficha, fale da estrutura, não do plano: gerente de carreira todo dia e a rede de clubes são do Legacy. O 33 volta a estas linhas, plano por plano.'
     },
-    // IA na Prática (17) e depoimento de uma mãe (18): os mesmos slides e o mesmo roteiro do padrão
+    // IA na Prática (17) e depoimento de uma mãe (20): os mesmos slides e o mesmo roteiro do padrão
     Object.assign(doPadrao('IA na Prática'), {
       fala: [
         'Com o vídeo dele no painel, a ponte no idioma deles: "Vocês leem jogo com o olho treinado. Agora eu quero que vocês vejam o jogo do [atleta] lido lance a lance, com o minuto e o porquê."'
       ].concat((PADRAO.find(r => r.nome === 'IA na Prática') || { fala: [] }).fala.slice(1)),
       atencao: (PADRAO.find(r => r.nome === 'IA na Prática') || { atencao: '' }).atencao + ' Variação técnica: família do meio quer opinar sobre o jogo. Deixe o [pai] comentar depois da leitura, não durante, e pergunte qual lance ele quer ver de novo.'
     }),
+    DOSSIE_T,
+    INIMIGO_T,
     doPadrao('Depoimento de uma mãe'),
     { nome: 'Talento é o mínimo', min: 2,
       fala: [
@@ -248,7 +259,7 @@
     REGISTRO_T,
     CLUBES_T,
     ROSTOS_T,
-    // o 25 (11/10/2026, painel do closer): o mesmo slide do padrão, lido como inventário
+    // o 27 (11/10/2026, painel do closer): o mesmo slide do padrão, lido como inventário
     { nome: 'O que ele leva', min: 1.5,
       fala: [
         'Ponte, sem enfeite: "Antes do valor, numa tela só, o que entra pro [atleta] a partir de hoje." Um avanço por linha.',
@@ -273,7 +284,7 @@
       ],
       perguntas: ['Quanto vocês acham que dá por ano, por conta?', 'Bate com o que vocês já pesquisaram?'],
       crm: ['O número que a família chutou.'],
-      atencao: 'O slide abre só com a pergunta: espere o número deles antes do primeiro avanço; quem é do meio gosta de acertar. Cada avanço mostra uma frente com o valor anual, e a soma da direita sobe junto; o último avanço destaca o total, R$ 30.000 por ano, com tudo junto. Família do meio pode contestar um valor: não brigue, concorde que varia (o rodapé diz isso) e volte pro ponto: o que ninguém monta sozinho é a integração e o acesso. Ordem: régua, conta, sem certeza (este slide), até lá e critério (27 e 28), contrato (29), a vaga (30), os planos e o número (31), silêncio e a garantia (32). Aqui é o valor da estrutura inteira, a do Legacy, não o preço de um plano.'
+      atencao: 'O slide abre só com a pergunta: espere o número deles antes do primeiro avanço; quem é do meio gosta de acertar. Cada avanço mostra uma frente com o valor anual, e a soma da direita sobe junto; o último avanço destaca o total, R$ 30.000 por ano, com tudo junto. Família do meio pode contestar um valor: não brigue, concorde que varia (o rodapé diz isso) e volte pro ponto: o que ninguém monta sozinho é a integração e o acesso. Ordem: régua, conta, sem certeza (este slide), até lá e critério (29 e 30), contrato (31), a vaga (32), os planos e o número (33), silêncio e a garantia (34). Aqui é o valor da estrutura inteira, a do Legacy, não o preço de um plano.'
     },
     { nome: 'Até lá, a gente banca', min: 2,
       fala: [
@@ -283,7 +294,7 @@
       ],
       perguntas: [],
       crm: [],
-      atencao: 'A frase do "voltam a ser pai e mãe, não o empresário dele" é pra família que hoje toca a carreira sozinha: é alívio, não crítica. Resposta pronta pro "por que cobram?": o lucro vem do contrato; isso é o custo mínimo da estrutura até lá. Nunca fale "onboarding", "etapas", "acessos". Aqui é a operação inteira, a do Legacy. Com o PRO ou o Scout PRO na ficha, não prometa ao plano o gerente de carreira todo dia; Os sete módulos de formação já estão incluídos no Scout PRO. O acompanhamento humano e os encaminhamentos seguem cada plano. O 31 mostra o que cada plano entrega.'
+      atencao: 'A frase do "voltam a ser pai e mãe, não o empresário dele" é pra família que hoje toca a carreira sozinha: é alívio, não crítica. Resposta pronta pro "por que cobram?": o lucro vem do contrato; isso é o custo mínimo da estrutura até lá. Nunca fale "onboarding", "etapas", "acessos". Aqui é a operação inteira, a do Legacy. Com o PRO ou o Scout PRO na ficha, não prometa ao plano o gerente de carreira todo dia; Os sete módulos de formação já estão incluídos no Scout PRO. O acompanhamento humano e os encaminhamentos seguem cada plano. O 33 mostra o que cada plano entrega.'
     },
     { nome: 'Critério, não volume', min: 3,
       fala: [
@@ -317,7 +328,7 @@
       ],
       perguntas: [],
       crm: [],
-      atencao: 'Vagas só com o número real da semana; prazo só com o prazo confirmado (campos da ficha). Turma, vagas, os 93% em até três meses e o dia da assinatura são do Legacy: com o PRO ou o Scout PRO na ficha, a tela não mostra nada disso, e a fala também não. O 31 mostra os planos com o investimento de cada um e fecha com o plano da ficha, o do número falado.'
+      atencao: 'Vagas só com o número real da semana; prazo só com o prazo confirmado (campos da ficha). Turma, vagas, os 93% em até três meses e o dia da assinatura são do Legacy: com o PRO ou o Scout PRO na ficha, a tela não mostra nada disso, e a fala também não. O 33 mostra os planos com o investimento de cada um e fecha com o plano da ficha, o do número falado.'
     },
     { nome: 'Os planos', min: 7,
       silencio: 'O número, uma vez, com a parcela. E silêncio: quem fala primeiro depois do preço perde.',
@@ -339,14 +350,14 @@
         'Fechamento (Modo A, 08): "Confirmando hoje, eu já aviso o [gerente]. Fica melhor no Pix ou no cartão?" No PRO e no Scout PRO: "eu já aviso a equipe".',
         'Depois do "Pix ou cartão?": mande no WhatsApp o link de pagamento do [plano], na própria call, e faça o pagamento com a família na linha. O link não está no deck: tenha o de cada plano à mão.',
         'Objeção: acolha, isole e volte: "Resolvido isso, eu confirmo agora. Pix ou cartão?"',
-        'Trocar de plano, pelo escopo e nunca por desconto: "Existe um formato mais enxuto, a Assessoria PRO, e o que muda é isto." / "Se vocês quiserem a operação completa, o Legacy acrescenta isto." Use os botões de plano no apresentador: a tela do 31 troca junto, e o apresentador mostra o que sai ou o que entra. Descendo pro Scout PRO: "o encaminhamento pra clubes vem a partir da Assessoria PRO." Saindo do Legacy: "a conexão direta com clubes e AGN e os 15 encaminhamentos por mês são do Legacy; na Assessoria PRO, são pelo menos 5."',
+        'Trocar de plano, pelo escopo e nunca por desconto: "Existe um formato mais enxuto, a Assessoria PRO, e o que muda é isto." / "Se vocês quiserem a operação completa, o Legacy acrescenta isto." Use os botões de plano no apresentador: a tela do 33 troca junto, e o apresentador mostra o que sai ou o que entra. Descendo pro Scout PRO: "o encaminhamento pra clubes vem a partir da Assessoria PRO." Saindo do Legacy: "a conexão direta com clubes e AGN e os 15 encaminhamentos por mês são do Legacy; na Assessoria PRO, são pelo menos 5."',
         '"Vocês combinaram de decidir hoje, lembra? Pode ser não, tudo bem. O que tá faltando pro sim?"'
       ],
       fechaDe: 7,
       modoB: VAGA_PADRAO.modoB || [],
       perguntas: ['Que acompanhamento o jogo dele pede: relatório, equipe semanal ou acompanhamento diário?', 'Um estrategista junto para orientar a rotina faz diferença pra ele agora?', 'O David Willer de perto, com assessoria individual todo mês, é o que vocês querem agora?', 'Pix ou cartão?'],
       crm: ['O ritmo que a família escolheu, com as palavras do [pai], e o plano que você recomendou.', 'Resultado, plano fechado e forma de pagamento.', 'Modo B: a hora do retorno e o "estamos dentro".'],
-      atencao: 'O 31 mostra cada plano na sua parte, com o investimento no topo da coluna (decisão do dono, 06/10/2026). Cada coluna é a parte de um plano, com o que ele acrescenta ao de baixo, cargo por cargo: aponte o que muda, não leia tudo. O Legacy vem em destaque, como o ideal: é a operação completa, com a lista mais longa. Se a ficha recomendar outro plano, diga com franqueza que o ideal é o Legacy e que o PRO coloca uma equipe do lado dele toda semana, por metade do valor. Apresente pelo ritmo, não pelo preço; o número falado com silêncio é o do plano recomendado, o destacado no último avanço. Família do meio compara linha por linha: deixe o [pai] ler as colunas e opinar antes de recomendar. Ordem da casa: o Legacy abre (a operação que eles viram até o 30 é a dele), a Assessoria PRO entra como o formato mais enxuto: uma equipe do lado dele toda semana, por metade do Legacy, e o Scout PRO só se o caixa realmente pedir. A conexão direta com clubes e AGN, os 15 encaminhamentos por mês, a turma e os 93% são do Legacy: não atribua ao PRO nem ao Scout PRO. O encaminhamento vem a partir da Assessoria PRO, com pelo menos 5 por mês. Nunca "o mais barato", "o mais vendido" ou "o mais escolhido". O número e o fechamento ficam neste mesmo slide. O número é o do plano da ficha, o destacado no último avanço, já com o parcelamento (10 x a parcela = o valor total): Scout PRO, R$ 997 vitalício, 10x de R$ 99,70; Assessoria PRO, R$ 1.497 vitalício, 10x de R$ 149,70; Legacy, R$ 2.997 vitalício, 10x de R$ 299,70. Fale o número uma vez e aperte S. Regra de ouro: depois do número, silêncio. Quem fala primeiro depois do preço perde. Os 3 meses do "por dia" são só a conta: no PRO e no Scout PRO, não ligue esses 3 meses ao encaminhamento: os 93% em até três meses são dado do Legacy. Travou no valor: isole ("tirando o valor, tem mais alguma coisa?"), diagnostique (retorno ou dinheiro agora) e volte no slide 26, 29, 32 ou 31. Família do meio que pede pra "pensar com calma" quase sempre quer sentir controle: Modo B, se a análise da equipe for real. A tela não muda. Link de pagamento: fora do deck, pelo WhatsApp, só depois do sim.'
+      atencao: 'O 33 mostra cada plano na sua parte, com o investimento no topo da coluna (decisão do dono, 06/10/2026). Cada coluna é a parte de um plano, com o que ele acrescenta ao de baixo, cargo por cargo: aponte o que muda, não leia tudo. O Legacy vem em destaque, como o ideal: é a operação completa, com a lista mais longa. Se a ficha recomendar outro plano, diga com franqueza que o ideal é o Legacy e que o PRO coloca uma equipe do lado dele toda semana, por metade do valor. Apresente pelo ritmo, não pelo preço; o número falado com silêncio é o do plano recomendado, o destacado no último avanço. Família do meio compara linha por linha: deixe o [pai] ler as colunas e opinar antes de recomendar. Ordem da casa: o Legacy abre (a operação que eles viram até o 32 é a dele), a Assessoria PRO entra como o formato mais enxuto: uma equipe do lado dele toda semana, por metade do Legacy, e o Scout PRO só se o caixa realmente pedir. A conexão direta com clubes e AGN, os 15 encaminhamentos por mês, a turma e os 93% são do Legacy: não atribua ao PRO nem ao Scout PRO. O encaminhamento vem a partir da Assessoria PRO, com pelo menos 5 por mês. Nunca "o mais barato", "o mais vendido" ou "o mais escolhido". O número e o fechamento ficam neste mesmo slide. O número é o do plano da ficha, o destacado no último avanço, já com o parcelamento (10 x a parcela = o valor total): Scout PRO, R$ 997 vitalício, 10x de R$ 99,70; Assessoria PRO, R$ 1.497 vitalício, 10x de R$ 149,70; Legacy, R$ 2.997 vitalício, 10x de R$ 299,70. Fale o número uma vez e aperte S. Regra de ouro: depois do número, silêncio. Quem fala primeiro depois do preço perde. Os 3 meses do "por dia" são só a conta: no PRO e no Scout PRO, não ligue esses 3 meses ao encaminhamento: os 93% em até três meses são dado do Legacy. Travou no valor: isole ("tirando o valor, tem mais alguma coisa?"), diagnostique (retorno ou dinheiro agora) e volte no slide 28, 31, 34 ou 33. Família do meio que pede pra "pensar com calma" quase sempre quer sentir controle: Modo B, se a análise da equipe for real. A tela não muda. Link de pagamento: fora do deck, pelo WhatsApp, só depois do sim.'
     },
     { nome: 'Garantia total', min: 1.5,
       fala: [
@@ -359,7 +370,7 @@
       ],
       perguntas: [],
       crm: [],
-      atencao: 'Confira o prazo e as condições da devolução antes da call (campo Prazo da garantia na ficha). Se houver prazo, fale o prazo. A garantia vem logo depois do número, com os três valores na tela de uma vez (pedido do dono, 11/10/2026): é o único slide em que os três aparecem sem avanço. Fale só o valor do plano da ficha, uma vez, e use a garantia pra tirar o medo de errar na hora de decidir. A condição (método aplicado, nos termos do contrato) fica no rodapé: não diga "incondicional". Responde "tem garantia?", "e se não der certo?" e parte do "vou pensar". Pra acionar, a família comprova que aplicou o método, como diz o rodapé do 32: se perguntarem, diga com clareza, sem esconder. A média de três meses só aparece com o Legacy na ficha; é dado da casa, não prazo.'
+      atencao: 'Confira o prazo e as condições da devolução antes da call (campo Prazo da garantia na ficha). Se houver prazo, fale o prazo. A garantia vem logo depois do número, com os três valores na tela de uma vez (pedido do dono, 11/10/2026): é o único slide em que os três aparecem sem avanço. Fale só o valor do plano da ficha, uma vez, e use a garantia pra tirar o medo de errar na hora de decidir. A condição (método aplicado, nos termos do contrato) fica no rodapé: não diga "incondicional". Responde "tem garantia?", "e se não der certo?" e parte do "vou pensar". Pra acionar, a família comprova que aplicou o método, como diz o rodapé do 34: se perguntarem, diga com clareza, sem esconder. A média de três meses só aparece com o Legacy na ficha; é dado da casa, não prazo.'
     },
     { nome: 'Bem-vindo', min: 3,
       fala: [
@@ -377,19 +388,19 @@
 
   /* objeções de quem conhece o meio, na frente das do padrão (os números de slide valem nas duas versões) */
   const OBJ_TECNICA = [
-    { q: 'A gente mesmo consegue fazer isso / conhecemos gente no meio', slides: [16, 27, 26], prev: 'O "conhecer o caminho não é estar nele" (16) e o "quem banca a operação" (27) antes do número.', resposta: [
+    { q: 'A gente mesmo consegue fazer isso / conhecemos gente no meio', slides: [16, 29, 28], prev: 'O "conhecer o caminho não é estar nele" (16) e o "quem banca a operação" (29) antes do número.', resposta: [
       'Acolher, de verdade: "Vocês conseguem muita coisa, e o [atleta] chegou até aqui por causa de vocês."',
       'Isolar: "Tirando isso, tem mais alguma coisa que impede ele de começar?"',
       'Diagnosticar: "Hoje, quanto tempo por semana vocês conseguem dedicar a isso? E quantos clubes vocês alcançam com dado do jogo dele, sabendo quem tem carência daquela posição agora?"',
       'Responder, com o Legacy na tela: "Contato vocês têm. O que a gente soma é operação todo dia, o Zyron lendo o jogo dele com dado e a rede de mais de 250 clubes dizendo o que precisa. Contato abre uma porta. Operação abre a certa, na hora certa." Com a Assessoria PRO na tela: "Contato vocês têm. O que a gente soma é uma equipe do lado dele toda semana, com dado do jogo dele: o estrategista de carreiras, os sete módulos de aulas, um estrategista e a gestão de carreiras, com pelo menos 5 encaminhamentos por mês."',
       'Conduzir: "Então a pergunta é se vocês querem continuar operando sozinhos ou ter essa operação do lado dele. Eu confirmo a vaga?"'
     ], proibido: 'Diminuir o que a família sabe ou os contatos que ela tem.' },
-    { q: 'A gente já conhece a AGN, a gente mesmo manda o vídeo', slides: [20, 16, 21], prev: 'O "antes do post" (20): o post mostra a assinatura, não o caminho até ela.', resposta: [
+    { q: 'A gente já conhece a AGN, a gente mesmo manda o vídeo', slides: [22, 16, 23], prev: 'O "antes do post" (22): o post mostra a assinatura, não o caminho até ela.', resposta: [
       '"A AGN é a vitrine de quem já fechou. O que leva até ali vem antes do post: o vídeo lido com dado, o gerente todo dia e o perfil apresentado a quem tem a carência." Gerente todo dia e perfil apresentado aos clubes são do Legacy: com o PRO ou o Scout PRO na tela, fique no vídeo lido com dado e no ritmo do plano.',
       '"Mandar o vídeo é a parte fácil. Difícil é saber pra quem, quando, e o que acompanhar depois. É isso que a gente opera."',
       'Conduzir: "Faz sentido ter isso do lado do [atleta]?"'
     ], proibido: 'Falar mal da AGN ou dizer que ela contrata, garante clube ou depende da gente.' },
-    { q: 'Empresário só cobra quando sai o contrato. Por que pagar antes?', slides: [29, 27, 32, 31], prev: 'O custo da operação (27) e o interesse alinhado (29) antes do número, e a garantia (32) logo depois.', resposta: [
+    { q: 'Empresário só cobra quando sai o contrato. Por que pagar antes?', slides: [31, 29, 34, 33], prev: 'O custo da operação (29) e o interesse alinhado (31) antes do número, e a garantia (34) logo depois.', resposta: [
       '"Faz sentido perguntar. A gente também ganha no contrato: nesse ponto, o modelo é o mesmo."',
       '"A diferença é o que acontece até o contrato. Quem só ganha no fim não tem como bancar estrutura antes disso. Aqui tem gente e o Zyron trabalhando nele desde hoje. Isso tem custo, e o investimento cobre só esse custo mínimo." No Legacy, nomeie: o gerente de carreira todo dia e as sete frentes. Na Assessoria PRO: o estrategista de carreiras toda semana, o estrategista esportivo e os sete módulos de aulas.',
       '"E se vocês aplicarem o método e não fizer sentido, é [garantia]. O risco de começar é nosso."',

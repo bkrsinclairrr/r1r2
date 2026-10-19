@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "gerado": "2026-10-18T16:42:11.003Z",
+  "gerado": "2026-10-18T22:31:20.789Z",
   "paginas": [
     {
       "id": "principal",
@@ -13,7 +13,7 @@
         "nome": true,
         "foto": true
       },
-      "slides": 33,
+      "slides": 35,
       "opcionais": [
         {
           "id": "metodo",
@@ -35,30 +35,30 @@
         },
         {
           "id": "registro",
-          "slide": 22,
+          "slide": 24,
           "rotulo": "326 atletas enviados",
           "ajuda": "O número da casa e a arte do Instagram. Sem ele, a apresentação passa da rede direto para os clubes e parceiros."
         },
         {
           "id": "clubes",
-          "slide": 23,
+          "slide": 25,
           "rotulo": "Clubes e parceiros",
           "ajuda": "As faixas de escudos e os parceiros comerciais, com a nota legal. Sem ele, a apresentação segue direto para o mosaico de rostos."
         },
         {
           "id": "rostos",
-          "slide": 24,
+          "slide": 26,
           "rotulo": "Cada rosto, uma história",
           "ajuda": "O mosaico de fotos da trajetória da casa. Sem ele, a apresentação segue direto para \"O que ele leva\"."
         },
         {
           "id": "leva",
-          "slide": 25,
+          "slide": 27,
           "rotulo": "O que o {nome} leva",
           "ajuda": "Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai direto para \"O valor real\"."
         }
       ],
-      "hash": "2dd70e091e969ca40088ed9c19f271dc584f4e51"
+      "hash": "67ff2695320eef9f66cc2a1bf15777b8acb7962c"
     },
     {
       "id": "tecnica",
@@ -71,7 +71,7 @@
         "nome": true,
         "foto": true
       },
-      "slides": 33,
+      "slides": 35,
       "opcionais": [
         {
           "id": "metodo",
@@ -93,30 +93,30 @@
         },
         {
           "id": "registro",
-          "slide": 22,
+          "slide": 24,
           "rotulo": "326 atletas enviados",
           "ajuda": "O número da casa e a arte do Instagram. Sem ele, a apresentação passa da rede direto para os clubes e parceiros."
         },
         {
           "id": "clubes",
-          "slide": 23,
+          "slide": 25,
           "rotulo": "Clubes e parceiros",
           "ajuda": "As faixas de escudos e os parceiros comerciais, com a nota legal. Sem ele, a apresentação segue direto para o mosaico de rostos."
         },
         {
           "id": "rostos",
-          "slide": 24,
+          "slide": 26,
           "rotulo": "Cada rosto, uma história",
           "ajuda": "O mosaico de fotos da trajetória da casa. Sem ele, a apresentação segue direto para \"O que ele leva\"."
         },
         {
           "id": "leva",
-          "slide": 25,
+          "slide": 27,
           "rotulo": "O que o {nome} leva",
           "ajuda": "Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai direto para \"O valor real\"."
         }
       ],
-      "hash": "1d0a36360540b78e16d4a917de3c4fe452c7dc25"
+      "hash": "ea48316ec47da9c93aa53ed98d13f02bb3fbae17"
     }
   ]
 }

@@ -26,6 +26,8 @@ const DIA = 864e5;
 // r1SemData: o R1 vem antes da R2 e muitas vezes ainda sem dia marcado: o link dele vale 30 dias a partir de quando foi criado
 export const VALIDADE = { linkDepoisDaCall: 7, r1SemData: 30, linkMax: 60, fotoDias: 90, videoDias: 90, registroDepoisDoLink: 180 };
 export const FOTO = { retrato: { largura: 960, altura: 1280, maxBytes: 600 * 1024 }, avatar: { largura: 400, altura: 400, maxBytes: 150 * 1024 } };
+// o mapa de calor do atleta (fica embaixo do vídeo no slide do dossiê): JPEG sem EXIF, normalizado no navegador, de 300 a 2400 px de lado
+export const MAPA = { min: 300, max: 2400, maxBytes: 900 * 1024 };
 
 /* ---------------- respostas, corpo e log ---------------- */
 export function manda(res, status, corpo) {
@@ -172,11 +174,18 @@ const CAMPOS = {
   // a versão do R2 (R.VERSOES), como o nome aparece na tela (R.NOMES_TELA), a foto do lead fora da tela (semFoto: "sim") e os
   // slides opcionais tirados da sequência (ids separados por vírgula, dos opcionais da versão escolhida). Só o que sai do
   // padrão fica gravado.
-  versao: { dinamica: true }, nomeTela: { opcoes: R.NOMES_TELA.map(n => n.id).filter(Boolean) }, semFoto: { opcoes: ['sim'] }, pular: { lista: true }
+  versao: { dinamica: true }, nomeTela: { opcoes: R.NOMES_TELA.map(n => n.id).filter(Boolean) }, semFoto: { opcoes: ['sim'] }, pular: { lista: true },
+  // 18/10/2026: os dados do atleta pro dossiê (onde joga hoje e a categoria), o custo das peneiras (o slide do inimigo comum), "tenho o
+  // vídeo do jogador" (liga o vídeo analisado e o mapa de calor no slide do dossiê) e as oportunidades (os clubes, "Clube~detalhe|...", até 6)
+  clubeAtual: { max: 60 }, categoria: { opcoes: R.CATEGORIAS },
+  peneirasFeitas: { numero: [0, 200] }, gastoPeneiras: { numero: [0, 5000000] }, anosTentando: { numero: [0, 30] },
+  temVideo: { opcoes: ['sim'] }, oportunidades: { oportunidades: true }
 };
 export const CHAVES_FICHA = Object.keys(CAMPOS);
 // o R1 usa só o que o deck dele mostra (a ficha do atleta e o dia e a hora da R2) e o que vai pro CRM; plano, vídeo e prazos são do R2
-const CHAVES_R1 = ['nome', 'idade', 'posicao', 'cidade', 'origem', 'caracteristicas', 'experiencia', 'r2data', 'r2hm', 'versao', 'semFoto'];
+// (desde 18/10/2026 o SDR também anota pé, altura, onde joga, categoria e as peneiras: vai pro slide 02 do R1 e chega pronto no R2 do closer)
+const CHAVES_R1 = ['nome', 'idade', 'posicao', 'cidade', 'pe', 'altura', 'clubeAtual', 'categoria', 'origem', 'caracteristicas', 'experiencia',
+  'peneirasFeitas', 'gastoPeneiras', 'anosTentando', 'r2data', 'r2hm', 'versao', 'semFoto'];
 export const chavesDaEtapa = etapa => (etapa === 'r1' ? CHAVES_R1 : CHAVES_FICHA);
 // texto aparado e sem HTML, opção fora da lista e número fora da faixa ficam de fora. versoes: as variações como valem agora
 // (leVersoes); sem ela, a reserva do código. etapa: r1 ou r2 (sem ela, r2): só valem os campos e as variações dela
@@ -189,6 +198,7 @@ export function limpaFicha(entrada, versoes, etapa) {
   const chaves = chavesDaEtapa(et);
   for (const [k, regra] of Object.entries(CAMPOS)) {
     if (!chaves.includes(k) || e[k] == null) continue;
+    if (regra.oportunidades) { const o = R.limpaOportunidades(String(e[k])); if (o) f[k] = o; continue; } // antes do corte de 300 letras
     const v = textoLimpo(e[k], 300);
     if (!v) continue;
     if (regra.dinamica) { if (ids.includes(v)) f[k] = v; continue; } // a variação: uma das que existem agora nesta etapa
@@ -348,8 +358,9 @@ export function fichaEfetiva(f, ver) {
 }
 // o que a família vê (o deck lê pela /api/r2): o dia e a hora já no formato da tela. O R1 só leva a ficha do atleta e o que vai pro CRM
 // (o deck dele não usa apelido, plano nem escolha do formato do nome); o R2, tudo
-const PUBLICOS_R2 = ['nome', 'apelido', 'idade', 'posicao', 'cidade', 'pe', 'altura', 'origem', 'caracteristicas', 'experiencia', 'sonho', 'plano', 'gerente', 'prazoContato', 'prazoZyron', 'nomeTela', 'semFoto', 'pular'];
-const PUBLICOS_R1 = ['semFoto', 'nome', 'idade', 'posicao', 'cidade', 'origem', 'caracteristicas', 'experiencia'];
+const PUBLICOS_R2 = ['nome', 'apelido', 'idade', 'posicao', 'cidade', 'pe', 'altura', 'origem', 'caracteristicas', 'experiencia', 'sonho', 'plano', 'gerente', 'prazoContato', 'prazoZyron', 'nomeTela', 'semFoto', 'pular',
+  'clubeAtual', 'categoria', 'peneirasFeitas', 'gastoPeneiras', 'anosTentando', 'temVideo', 'oportunidades'];
+const PUBLICOS_R1 = ['semFoto', 'nome', 'idade', 'posicao', 'cidade', 'pe', 'altura', 'clubeAtual', 'categoria', 'origem', 'caracteristicas', 'experiencia'];
 export function fichaPublica(f0, ver) {
   const f = fichaEfetiva(f0, ver), out = {};
   const r1 = !!(ver && ver.etapa === 'r1');
@@ -398,6 +409,27 @@ export function validadePedida(v) {
 export const fotoValida = f => !!(f && f.versao && f.autorizadoEm && f.venceEm && Date.parse(f.venceEm) > Date.now());
 export const fotoVencida = f => !!(f && f.versao && f.venceEm && Date.parse(f.venceEm) <= Date.now());
 export const linkVencido = reg => !!(reg && reg.venceEm && Date.parse(reg.venceEm) <= Date.now());
+// o rascunho (linkGerado false): a apresentação está sendo montada e o link ainda não existe pra família (só o "Gerar link" cria).
+// Registro de antes do rascunho não tem o campo: o link dele já existe
+export const linkGerado = reg => !!reg && reg.linkGerado !== false;
+/* a prévia do rascunho: o painel mostra a apresentação antes de o link existir. O deck abre com ?a=<código>&p=<chave>; a chave é
+   assinada com PAINEL_SEGREDO, vale 3 horas e só serve pra este código. Sem ela, o rascunho responde como um código que não existe */
+const PREVIA_HORAS = 3;
+export function chavePrevia(t) {
+  const exp = Math.floor(Date.now() / 1000) + PREVIA_HORAS * 3600;
+  return exp.toString(36) + '.' + assina('previa|' + t + '|' + exp).slice(0, 24);
+}
+export function previaOk(t, p) {
+  const [e, a] = String(p || '').split('.');
+  const exp = parseInt(e, 36);
+  if (!a || !(exp > Date.now() / 1000) || !T_OK.test(String(t || ''))) return false;
+  const certo = Buffer.from(assina('previa|' + t + '|' + exp).slice(0, 24)), dado = Buffer.from(a);
+  return dado.length === certo.length && crypto.timingSafeEqual(dado, certo);
+}
+// a família não vê nada: link revogado, vencido ou ainda não gerado (o dono e o admin seguem vendo no painel; o rascunho, com a chave de
+// prévia do painel)
+// a validade só conta depois que o link existe: o rascunho fica no ar só pra prévia (com a chave), mesmo com a data planejada no passado
+export const foraDoAr = (reg, p) => !reg || reg.estado === 'revogado' || (linkGerado(reg) ? linkVencido(reg) : !previaOk(reg.t, p));
 // o que falta pra apresentar: os cinco primeiros dão a etiqueta "pronto"; a prévia é o sexto (só nos decks que abrem no quadro de prévia
 // do painel: nos outros ela abre em outra aba e o item vem cumprido). versoes: as versões como valem agora (leVersoes): o que a versão do
 // R2 mostra do lead decide se a foto e o nome conferido são pedidos
@@ -410,6 +442,7 @@ export function checklist(reg, versoes) {
   if (etapaDe(reg) === 'r1') return { foto: true, nome: semNome || !!(f.nome && c.nome === f.nome), posicao: !!(f.posicao && f.idade && f.cidade), plano: true, call: !!(f.r2data && f.r2hm), previa: true };
   const semFoto = semNome || f.semFoto === 'sim'; // a tela não mostra a foto: não há o que autorizar
   return {
+    video: f.temVideo !== 'sim' || videoValido(reg.video),
     foto: semFoto || fotoValida(reg.foto),
     nome: semNome || !!(f.nome && c.nome === f.nome),
     posicao: !!R.posicaoNoCampo(f.posicao),
@@ -418,7 +451,7 @@ export function checklist(reg, versoes) {
     previa: semPrevia || !!(c.previa && c.previa === reg.fichaEm && c.previaFoto === ((reg.foto && reg.foto.versao) || 0))
   };
 }
-const prontoPraApresentar = (reg, versoes) => { const c = checklist(reg, versoes); return c.foto && c.nome && c.posicao && c.plano && c.call; };
+const prontoPraApresentar = (reg, versoes) => { const c = checklist(reg, versoes); return c.foto && c.nome && c.posicao && c.plano && c.call && c.video !== false; };
 // o estado guardado: revogado e encerrado ficam até alguém mudar; o resto segue o checklist
 export function estadoGuardado(reg, versoes) {
   if (reg.estado === 'revogado' || reg.estado === 'encerrado') return reg.estado;
@@ -433,11 +466,16 @@ export const versaoInvalida = (entrada, ficha, etapa) => {
 // o pacote que as rotas devolvem ao painel: o registro, o link (sempre /?a=<código>), a etiqueta e o checklist
 export async function pacote(reg) {
   const versoes = await leVersoesCom((reg.ficha || {}).versao);
-  return { registro: reg, link: linkDo(reg.t, etapaDe(reg)), etapa: etapaDe(reg), estado: estadoDe(reg), checklist: checklist(reg, versoes) };
+  // o link só existe depois do "Gerar link" (no rascunho, vai vazio)
+  const out = { registro: reg, link: linkGerado(reg) ? linkDo(reg.t, etapaDe(reg)) : '', linkGerado: linkGerado(reg), etapa: etapaDe(reg), estado: estadoDe(reg), checklist: checklist(reg, versoes) };
+  // o rascunho ganha o endereço da prévia (só pro painel): a mesma apresentação, com a chave que vale 3 horas
+  if (!out.linkGerado) out.previa = linkDo(reg.t, etapaDe(reg)) + '&p=' + chavePrevia(reg.t);
+  return out;
 }
 // o estado que a tela mostra: vencido vira expirado (revogado vale mais)
 export function estadoDe(reg) {
   if (reg.estado === 'revogado') return 'revogado';
+  if (!linkGerado(reg)) return 'preparo'; // o rascunho: sem link, nada vence ainda
   if (linkVencido(reg)) return 'expirado';
   return reg.estado || 'rascunho';
 }
@@ -450,7 +488,7 @@ export function resumo(reg) {
     t: reg.t, etapa: etapaDe(reg), nome: f.nome || '', apelido: f.apelido || '', posicao: f.posicao || '', plano: f.plano || '', versao: f.versao || '',
     r2data: f.r2data || '', r2hm: f.r2hm || '', estado: reg.estado || 'rascunho', venceEm: reg.venceEm || '',
     venceManual: !!reg.venceManual, apagarAoVencer: !!reg.apagarAoVencer, encerradoEm: reg.encerradoEm || '',
-    foto: fotoValida(reg.foto) ? reg.foto.versao : 0, video: videoValido(reg.video),
+    foto: fotoValida(reg.foto) ? reg.foto.versao : 0, video: videoValido(reg.video), linkGerado: linkGerado(reg), mapa: !!(reg.mapa && reg.mapa.versao),
     donoLogin: reg.donoLogin, donoNome: (reg.dono && reg.dono.nome) || (reg.criadoPor && reg.criadoPor.nome) || '',
     criadoEm: reg.criadoEm, atualizadoEm: reg.atualizadoEm, rev: reg.rev || 0
   };
@@ -498,13 +536,14 @@ export async function espacoPorLead() {
   const out = {};
   const conta = (t, k, n) => {
     if (!T_OK.test(String(t || ''))) return;
-    const o = out[t] || (out[t] = { ficha: 0, foto: 0, video: 0, total: 0 });
+    const o = out[t] || (out[t] = { ficha: 0, foto: 0, mapa: 0, video: 0, total: 0 });
     o[k] += Number(n) || 0; o.total += Number(n) || 0;
   };
-  const [regs, fotos, videos] = await Promise.all([lista(PASTA), lista('fotos/'), lista(PASTA_VIDEO)]);
+  const [regs, fotos, videos, mapas] = await Promise.all([lista(PASTA), lista('fotos/'), lista(PASTA_VIDEO), lista(PASTA_MAPA)]);
   regs.forEach(b => conta(b.caminho.slice(PASTA.length).replace(/\.json$/, ''), 'ficha', b.tamanho));
   fotos.forEach(b => conta(b.caminho.split('/')[1], 'foto', b.tamanho));
   videos.forEach(b => conta(b.caminho.split('/')[1], 'video', b.tamanho));
+  mapas.forEach(b => conta(b.caminho.split('/')[1], 'mapa', b.tamanho));
   return out;
 }
 // apaga tudo de um atleta: fotos, vídeo, presença, registro e o item do índice do dono
@@ -516,6 +555,7 @@ export async function apagaTudo(t, donoLogin) {
 export async function apagaArquivos(t) {
   await apagaPasta('fotos/' + t + '/');
   await apagaPasta(PASTA_VIDEO + t + '/');
+  await apagaPasta(PASTA_MAPA + t + '/');
   await apaga([caminhoChamada(t), caminho(t)]);
 }
 // tira códigos de todos os índices que ainda têm eles (item que sobrou no índice de alguém depois que o registro sumiu)
@@ -577,6 +617,9 @@ export function jpegInfo(buf) {
   return null;
 }
 export const caminhoFoto = (t, v, n) => 'fotos/' + t + '/' + v + '-' + n + '.jpg';
+// o mapa de calor mora numa pasta própria (a foto vence em 90 dias e a pasta dela some inteira; o mapa vai até o registro sumir)
+export const PASTA_MAPA = 'mapas/';
+export const caminhoMapa = (t, n) => PASTA_MAPA + t + '/mapa-' + n + '.jpg';
 
 /* ---------------- leitura do atleta: o vídeo dele e os lances marcados (o slide IA na Prática) ---------------- */
 // O relatório é feito de dados guardados aqui (marcados no painel ou importados de um JSON do Zyron). Nada é estimado.

@@ -4,12 +4,17 @@
 //              Confere cada arquivo: começo FF D8 FF, fim FF D9, sem EXIF (o recorte em canvas já tira; aqui é a garantia),
 //              dimensões exatas pelo marcador SOF e tamanho máximo. Grava com versão nova e apaga a anterior.
 // DELETE ?t=   apaga as duas (dono ou admin)
+// O mapa de calor do atleta (slide do dossiê, embaixo do vídeo) usa esta mesma rota (o plano da Vercel não tem função sobrando):
+// PUT ?t=      { mapa } (JPEG em base64, normalizado no navegador, de 300 a 2400 px de lado, sem EXIF, até 900 KB): versão nova, apaga a anterior
+// DELETE ?t=&v=mapa   apaga só o mapa
+// GET ?t=&v=mapa&n=<versão>   pública, com as mesmas regras do link (fora do ar, só o dono e o admin veem)
 // GET ?t=&v=retrato|avatar&n=<versão>   pública, com o código: serve a imagem só se o link vale (não revogado nem vencido),
 //              a autorização está registrada, a foto está dentro da validade (90 dias) e n é a versão atual. Senão, 404.
 //              Logado como dono ou admin, o painel vê a foto mesmo com o link revogado ou vencido.
 import {
   exige, sessaoOpcional, manda, corpo, deBase64, jpegInfo, caminhoFoto, leRegistro, mudaRegistro, mudaIndice, poeNoIndice, podeMexer, quem, anota,
-  estadoGuardado, pacote, leVersoes, resumo, fotoValida, linkVencido, venceFoto, apaga, apagaPasta, conflito, etapaDe, T_OK, FOTO, registraErro
+  estadoGuardado, pacote, leVersoes, resumo, fotoValida, foraDoAr, venceFoto, apaga, apagaPasta, conflito, etapaDe, caminhoMapa, PASTA_MAPA, T_OK, FOTO, MAPA,
+  registraErro
 } from './_base.js';
 import { gravaBin, leBin } from './_armazenamento.js';
 
@@ -33,23 +38,34 @@ function confereJpeg(b64, v) {
   if (info.largura !== regra.largura || info.altura !== regra.altura) return { erro: nome + ' precisa ter ' + regra.largura + ' x ' + regra.altura + '. Use o recorte do painel.' };
   return { buf };
 }
+// o mapa de calor: JPEG sem EXIF, de 300 a 2400 px de lado e até 900 KB (o painel já manda assim)
+function confereMapa(b64) {
+  const buf = deBase64(b64);
+  if (!buf) return { erro: 'O mapa de calor não chegou inteiro. Tente de novo.' };
+  if (buf.length > MAPA.maxBytes) return { erro: 'O mapa de calor passou de ' + Math.round(MAPA.maxBytes / 1024) + ' KB.' };
+  const info = jpegInfo(buf);
+  if (!info) return { erro: 'O mapa de calor não é uma imagem válida. Escolha de novo.' };
+  if (info.exif) return { erro: 'O mapa de calor ainda tem dados da câmera (EXIF). Escolha pelo painel.' };
+  if ([info.largura, info.altura].some(x => x < MAPA.min || x > MAPA.max)) return { erro: 'O mapa de calor precisa ter de ' + MAPA.min + ' a ' + MAPA.max + ' px de lado.' };
+  return { buf, largura: info.largura, altura: info.altura };
+}
 
 export default async function handler(req, res) {
   const t = String((req.query && req.query.t) || '');
   try {
     if (req.method === 'GET' || req.method === 'HEAD') {
       const v = String((req.query && req.query.v) || ''), n = parseInt(String((req.query && req.query.n) || ''), 10);
-      if (!T_OK.test(t) || !FOTO[v] || !(n > 0)) return nao(res);
+      if (!T_OK.test(t) || !(FOTO[v] || v === 'mapa') || !(n > 0)) return nao(res);
       const r = await leRegistro(t);
       const reg = r && r.dados;
       if (!reg || reg.movendo) return nao(res);
-      if (reg.estado === 'revogado' || linkVencido(reg)) {
+      if (foraDoAr(reg, req.query && req.query.p)) { // revogado, vencido ou rascunho sem link (a prévia do painel passa com a chave)
         // fora do ar pra família; o dono e o admin continuam vendo no painel
         const eu = req.headers.cookie ? await sessaoOpcional(req) : null;
         if (!podeMexer(eu, reg)) return nao(res);
       }
-      if (!fotoValida(reg.foto) || reg.foto.versao !== n) return nao(res);
-      const b = await leBin(caminhoFoto(t, v, n));
+      if (v === 'mapa' ? !(reg.mapa && reg.mapa.versao === n) : (!fotoValida(reg.foto) || reg.foto.versao !== n)) return nao(res);
+      const b = await leBin(v === 'mapa' ? caminhoMapa(t, n) : caminhoFoto(t, v, n));
       if (!b) return nao(res);
       res.statusCode = 200;
       res.setHeader('Content-Type', 'image/jpeg');
@@ -76,6 +92,32 @@ export default async function handler(req, res) {
 
     if (req.method === 'PUT') {
       const b = await corpo(req);
+      if (b.mapa !== undefined) {
+        if (etapaDe(r0.dados) === 'r1') return manda(res, 400, { erro: 'O R1 não usa o mapa de calor.' });
+        const m = confereMapa(b.mapa);
+        if (m.erro) return manda(res, 400, { erro: m.erro });
+        let versao = ((r0.dados.mapa && r0.dados.mapa.versao) || 0) + 1, gravou = false;
+        for (let i = 0; i < 6 && !gravou; i++) {
+          try { await gravaBin(caminhoMapa(t, versao), m.buf, { tipo: 'image/jpeg', novo: true }); gravou = true; } catch (e) { if (!conflito(e)) throw e; versao++; }
+        }
+        if (!gravou) throw new Error('não consegui gravar o mapa');
+        const agora = new Date().toISOString();
+        let anterior = 0, valeu = false;
+        const reg = await mudaRegistro(t, r => {
+          const atual = (r.mapa && r.mapa.versao) || 0;
+          valeu = atual < versao;
+          if (!valeu) return false;
+          anterior = atual;
+          r.mapa = { versao, largura: m.largura, altura: m.altura, enviadoEm: agora, enviadoPor: eu.login };
+          r.atualizadoEm = agora; r.atualizadoPor = quem(eu);
+          anota(r, eu, anterior ? 'trocou o mapa de calor' : 'enviou o mapa de calor');
+        });
+        if (!reg) { await apaga([caminhoMapa(t, versao)]); return manda(res, 404, { erro: 'Esse lead não foi encontrado. Pode ter sido apagado.' }); }
+        if (!valeu) await apaga([caminhoMapa(t, versao)]);
+        else if (anterior) await apaga([caminhoMapa(t, anterior)]);
+        await poeNoIndice(reg);
+        return manda(res, 200, await pacote(reg));
+      }
       if (b.autorizo !== true) return manda(res, 400, { erro: 'Marque a autorização do responsável legal antes de enviar a foto.' });
       const ret = confereJpeg(b.retrato, 'retrato');
       if (ret.erro) return manda(res, 400, { erro: ret.erro });
@@ -110,6 +152,18 @@ export default async function handler(req, res) {
       await poeNoIndice(reg);
       // duas fotos ao mesmo tempo: vale a de versão maior, e quem mandou a outra fica sabendo
       return manda(res, 200, Object.assign(await pacote(reg), valeu ? {} : { aviso: 'Outra foto deste atleta foi salva no mesmo instante e ficou valendo. Confira a foto.' }));
+    }
+
+    if (req.method === 'DELETE' && String((req.query && req.query.v) || '') === 'mapa') {
+      await apagaPasta(PASTA_MAPA + t + '/');
+      const reg = await mudaRegistro(t, r => {
+        if (!r.mapa) return false;
+        r.mapa = null;
+        r.atualizadoEm = new Date().toISOString(); r.atualizadoPor = quem(eu);
+        anota(r, eu, 'apagou o mapa de calor');
+      });
+      if (reg) await poeNoIndice(reg);
+      return manda(res, 200, reg ? await pacote(reg) : { ok: true });
     }
 
     if (req.method === 'DELETE') {

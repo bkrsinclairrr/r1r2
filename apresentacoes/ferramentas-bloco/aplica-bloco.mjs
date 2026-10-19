@@ -15,7 +15,8 @@
 //     --grupos=metodo|campo,encaixe|registro,clubes,rostos   quais slides entram em cada ancora (padrao). Na acompanhamento: metodo,encaixe|campo|registro,clubes,rostos
 //   --layout=posicao     R1 (sem data-slide-origem): ancora pela posicao do slide; --ancoras=7,12,15 e --grupos="campo|registro,clubes|rostos"
 //   --tema=r1            paleta do R1 (assets/bloco-r1.css), sem selo de dossie, e o campo vira sozinho pra IA
-// No layout padrao (R2 novo e R2 B): ancora pelos cabecalhos de comentario 11, 15 e 25 (a numeracao de 33 slides).
+// No layout padrao (R2 novo e R2 B): ancora pelos cabecalhos de comentario 11, 15 e 27 (a numeracao de 35 slides, desde o dossie do
+// atleta e o inimigo em comum, 18 e 19, de 18/10/2026; ate entao era o 25, na numeracao de 33).
 // Idempotente: se a pagina ja tem o bloco, nao faz nada (sem --refaz). Preserva CRLF.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -51,7 +52,7 @@ const secoes = s => (s.replace(/<!--[\s\S]*?-->/g, '').match(/<section\b[^>]*\bc
 const antesN = secoes(t);
 
 // numeros finais dos slides novos (so aparecem no comentario de cabecalho de cada um)
-const NUM = (opt('numeros') || '10,13,14,22,23,24').split(',').map(Number);
+const NUM = (opt('numeros') || '10,13,14,24,25,26').split(',').map(Number);
 const SEM_OPC = args.includes('--sem-opcional'); // decks antigos, sem o recurso de tirar slide da sequencia (nao tem pulaSlide no deck.js)
 const slides = Object.fromEntries(slidesBloco({ pre: assets + 'bloco/', numeros: NUM, tom: TOM, origem: ORIGEM, opcional: !SEM_OPC, tema: TEMA }).map(s => [s.id, s.html]));
 let inseridos = 6;
@@ -74,11 +75,11 @@ if (POSICAO) {
   inseridos = gs.reduce((a, g) => a + g.length, 0);
   for (let k = gs.length - 1; k >= 0; k--) inserirAntesDe(idx[k], gs[k].map(id => slides[id])); // do fim pro comeco
 } else if (!ORIGEM) {
-  // o cabecalho de comentario dos slides antigos JA renumerados (11 = "Quem olha por ele", 15 = "Olhometro x Zyron", 25 = "O que ele leva")
+  // o cabecalho de comentario dos slides antigos JA renumerados (11 = "Quem olha por ele", 15 = "Olhometro x Zyron", 27 = "O que ele leva")
   const ancora = num => { const m = new RegExp('<!-- ============ ' + num + ' ').exec(t); if (!m) throw new Error('nao achei o cabecalho do slide ' + num + ' em ' + rel); return m.index; };
   inserirAntesDe(ancora('11'), [slides.metodo]);
   inserirAntesDe(ancora('15'), [slides.campo, slides.encaixe]);
-  inserirAntesDe(ancora('25'), [slides.registro, slides.clubes, slides.rostos]);
+  inserirAntesDe(ancora('27'), [slides.registro, slides.clubes, slides.rostos]);
 } else {
   // a tag <section data-slide-origem="N">, ou o primeiro dos comentarios que vem colado antes dela
   const [a1, a2, a3] = (opt('ancoras') || '10,11,17').split(',');

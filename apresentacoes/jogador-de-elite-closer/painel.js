@@ -12,14 +12,17 @@
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const sem = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
   const T_OK = /^[a-z2-7]{26}$/;
-  const ESTADOS = { rascunho: ['Rascunho', 'cinza'], pronto: ['Pronto', 'verde'], encerrado: ['Call encerrada', 'cinza'], expirado: ['Link expirado', 'vermelho'], revogado: ['Link revogado', 'vermelho'] };
-  // os slides que a prévia abre (números do R2 novo de 33 slides; o deck confirma pelos títulos quando carrega)
+  const ESTADOS = { rascunho: ['Rascunho', 'cinza'], pronto: ['Pronto', 'verde'], encerrado: ['Call encerrada', 'cinza'], expirado: ['Link expirado', 'vermelho'], revogado: ['Link revogado', 'vermelho'],
+    preparo: ['Em preparo · sem link', 'azul'] }; // preparo: o rascunho, montado no painel, com o link ainda não gerado
+  // os slides que a prévia abre (números do R2 novo de 35 slides; o deck confirma pelos títulos quando carrega)
   const PREVIA = [
     { nome: 'Capa', n: 1, obrig: true, rot: '01 Capa' },
     { nome: 'Por que você', n: 2, obrig: true, rot: '02 Por que você' },
     { nome: 'O seu lugar em campo', n: 12, obrig: true, rot: '12 Em campo' },
-    { nome: 'O que ele leva', n: 25, obrig: false, rot: '25 O que ele leva', opc: 'leva' }, // opc: o slide opcional (R.VERSOES[].opcionais)
-    { nome: 'Bem-vindo', n: 33, obrig: true, rot: '33 Bem-vindo' }
+    // dossie: só abre com o que o dossiê mostra (o vídeo analisado, o mapa ou as oportunidades); vazio, o deck pula ele
+    { nome: 'O dossiê do atleta', n: 18, obrig: false, rot: '18 Dossiê', dossie: true },
+    { nome: 'O que ele leva', n: 27, obrig: false, rot: '27 O que ele leva', opc: 'leva' }, // opc: o slide opcional (R.VERSOES[].opcionais)
+    { nome: 'Bem-vindo', n: 35, obrig: true, rot: '35 Bem-vindo' }
   ];
   let eu = null, config = { deckUrl: '', etapas: ['r2'], decks: [] }, itens = [], usuarios = [], filtro = 'proximos', listaTodos = false, destaque = null;
   let filtroEtapa = 'todas'; // a lista do admin: as duas etapas, só o R1 ou só o R2
@@ -244,7 +247,7 @@
         <div class="item-topo">${av}<div style="min-width:0"><h3>${esc(it.nome)}</h3>
           <p class="meta">${call ? '<b>' + esc(call) + '</b>' : 'Sem dia marcado'}${it.posicao ? ' · ' + esc(it.posicao) : ''}${listaTodos && it.donoNome ? ' · de <b>' + esc(it.donoNome) + '</b>' : ''}</p></div></div>
         <div class="chips">${duas ? `<span class="chip ${etapa}" title="${etapa === 'r1' ? 'R1, do SDR' : 'R2, do closer'}">${nomeEtapa(etapa)}</span>` : ''}${it.emCall ? '<span class="chip pulsa">Em call agora</span>' : ''}<span class="chip ${cor}">${esc(est)}</span>${etapa === 'r1' ? '' : it.plano ? '<span class="chip">' + esc(it.plano) + '</span>' : '<span class="chip cinza">Sem plano</span>'}${ver ? '<span class="chip ' + (COR_VAL[ver.validacao] || 'azul') + '" title="Variação do ' + nomeEtapa(etapa) + ' (' + esc(nomeVal(ver.validacao).toLowerCase()) + ')">' + esc(ver.nome) + '</span>' : ''}${it.video ? '<span class="chip azul">Vídeo</span>' : ''}</div>
-        <div class="acoes"><a class="bt ouro" href="${esc(link)}" target="_blank" rel="noopener noreferrer">Abrir o ${nomeEtapa(etapa)}</a><button class="bt" type="button" data-copia="${esc(link)}">Copiar link</button><a class="bt" href="#/r2/${esc(it.t)}">Editar</a>${listaTodos ? `<button class="bt perigo" type="button" data-apaga="${esc(it.t)}">Apagar</button>` : ''}</div>
+        <div class="acoes">${it.estadoTela === 'preparo' ? `<a class="bt ouro" href="#/r2/${esc(it.t)}">Continuar montando</a>` : `<a class="bt ouro" href="${esc(link)}" target="_blank" rel="noopener noreferrer">Abrir o ${nomeEtapa(etapa)}</a><button class="bt" type="button" data-copia="${esc(link)}">Copiar link</button><a class="bt" href="#/r2/${esc(it.t)}">Editar</a>`}${listaTodos ? `<button class="bt perigo" type="button" data-apaga="${esc(it.t)}">Apagar</button>` : ''}</div>
       </article>`;
     }).join('');
   }
@@ -314,9 +317,9 @@
       const ini = iniciais(it.apelido || it.nome) || '?';
       const av = it.foto ? `<img class="av" src="${esc(fotoUrl(it.t, 'avatar', it.foto))}" alt="" loading="lazy" data-ini="${esc(ini)}">` : `<span class="av ini" aria-hidden="true">${esc(ini)}</span>`;
       const ver = it.versao ? versaoPor(it.versao, etapa) : versaoPor('', etapa);
-      const vence = it.venceEm ? (Date.parse(it.venceEm) <= Date.now() ? 'expirou ' + quando(it.venceEm) : 'expira ' + quando(it.venceEm)) : '';
+      const vence = it.estadoTela === 'preparo' ? 'sem link ainda' : it.venceEm ? (Date.parse(it.venceEm) <= Date.now() ? 'expirou ' + quando(it.venceEm) : 'expira ' + quando(it.venceEm)) : '';
       const e = it.espaco || {};
-      const partes = [e.foto ? 'foto' : '', e.video ? 'vídeo' : ''].filter(Boolean).join(' e ');
+      const partes = [e.foto ? 'foto' : '', e.mapa ? 'mapa de calor' : '', e.video ? 'vídeo' : ''].filter(Boolean).join(', ').replace(/, ([^,]*)$/, ' e $1');
       const sel = gerSel.has(it.t);
       return `<article class="ger-item${sel ? ' marcado' : ''}" data-t="${esc(it.t)}">
         <input type="checkbox" data-ger-sel="${esc(it.t)}"${sel ? ' checked' : ''} aria-label="Selecionar ${esc(it.nome || 'sem nome')}">
@@ -324,7 +327,7 @@
         <div style="min-width:0"><h3>${esc(it.nome || 'Sem nome')}</h3>
           <p class="meta">${ver.nome.startsWith(nomeEtapa(etapa)) ? '' : nomeEtapa(etapa) + ' · '}${esc(ver.nome)} · gerado ${esc(quando(it.criadoEm))}${vence ? ' · <b>' + esc(vence) + '</b>' : ''}${eu.papel === 'admin' && it.donoNome ? ' · de <b>' + esc(it.donoNome) + '</b>' : ''}</p>
           <div class="chips"><span class="chip ${cor}">${esc(est)}</span>${it.apagarAoVencer ? '<span class="chip cinza" title="A limpeza diária apaga tudo deste lead depois que o link vencer">Apaga ao expirar</span>' : ''}${it.venceManual ? '<span class="chip cinza" title="Validade escolhida no editor">Validade escolhida</span>' : ''}</div></div>
-        <div class="acoes"><span class="ger-peso" title="Ficha ${esc(peso(e.ficha))}${e.foto ? ' · foto ' + esc(peso(e.foto)) : ''}${e.video ? ' · vídeo ' + esc(peso(e.video)) : ''}">${esc(peso(e.total))}${partes ? ' · ' + partes : ''}</span><a class="bt mini" href="#/r2/${esc(it.t)}">Editar</a>${it.estadoTela === 'revogado' ? '' : `<button class="bt mini" type="button" data-ger-apresentado="${esc(it.t)}">${apresentado(it) ? 'Desfazer apresentado' : 'Marcar como apresentado'}</button>`}<button class="bt mini perigo" type="button" data-ger-excluir="${esc(it.t)}">Excluir</button></div>
+        <div class="acoes"><span class="ger-peso" title="Ficha ${esc(peso(e.ficha))}${e.foto ? ' · foto ' + esc(peso(e.foto)) : ''}${e.mapa ? ' · mapa de calor ' + esc(peso(e.mapa)) : ''}${e.video ? ' · vídeo ' + esc(peso(e.video)) : ''}">${esc(peso(e.total))}${partes ? ' · ' + partes : ''}</span><a class="bt mini" href="#/r2/${esc(it.t)}">Editar</a>${it.estadoTela === 'revogado' || it.estadoTela === 'preparo' ? '' : `<button class="bt mini" type="button" data-ger-apresentado="${esc(it.t)}">${apresentado(it) ? 'Desfazer apresentado' : 'Marcar como apresentado'}</button>`}<button class="bt mini perigo" type="button" data-ger-excluir="${esc(it.t)}">Excluir</button></div>
       </article>`;
     }).join('');
   }
@@ -574,7 +577,7 @@
   const F = $('#f-editor');
   const campo = n => F.elements.namedItem(n);
   // os campos que são um valor só do formulário; a variação (radio) e os slides desmarcados (checkbox) têm funções próprias
-  const CHAVES = ['nome', 'apelido', 'nomeTela', 'posicao', 'idade', 'cidade', 'pe', 'altura', 'origem', 'sonho', 'caracteristicas', 'experiencia', 'r2data', 'r2hm', 'plano', 'vagas', 'proximaTurma', 'gerente', 'prazoContato', 'prazoZyron', ...R.CAMPOS_DOSSIE.map(c => c.chave)];
+  const CHAVES = ['nome', 'apelido', 'nomeTela', 'posicao', 'idade', 'cidade', 'pe', 'altura', 'clubeAtual', 'categoria', 'peneirasFeitas', 'gastoPeneiras', 'anosTentando', 'origem', 'sonho', 'caracteristicas', 'experiencia', 'r2data', 'r2hm', 'plano', 'vagas', 'proximaTurma', 'gerente', 'prazoContato', 'prazoZyron', ...R.CAMPOS_DOSSIE.map(c => c.chave)];
   const campoDossie = c => `<label class="campo${c.area ? ' largo' : ''}"><span>${esc(c.nome)}</span>${c.area
     ? `<textarea class="in" name="${c.chave}" rows="2" maxlength="${c.max}"></textarea>`
     : `<input class="in" name="${c.chave}" ${c.numero ? `type="number" min="${c.numero[0]}" max="${c.numero[1]}" step="1" placeholder="0 a 100"` : `maxlength="${c.max}"`}>`}</label>`;
@@ -583,12 +586,12 @@
     + R.CAMPOS_DOSSIE.filter(c => c.indicador).map(campoDossie).join('') + '</div></details>'
     + [1, 2, 3].map(n => `<details class="dossie-grupo"${n === 1 ? ' open' : ''}><summary>Clube compatível ${n}</summary><p class="dica">Clube, posição, categoria e motivo do encaixe. O percentual é opcional e deve ser o do relatório. Compatibilidade de perfil não confirma vaga ou convite.</p><div class="grade">${R.CAMPOS_DOSSIE.filter(c => c.clube === n).map(campoDossie).join('')}</div></details>`).join('');
   // o R1 usa só a ficha do atleta, o que vai pro CRM e o dia e a hora da R2 (o resto é do R2)
-  const CHAVES_R1 = ['nome', 'posicao', 'idade', 'cidade', 'origem', 'caracteristicas', 'experiencia', 'r2data', 'r2hm'];
+  const CHAVES_R1 = ['nome', 'posicao', 'idade', 'cidade', 'pe', 'altura', 'clubeAtual', 'categoria', 'origem', 'caracteristicas', 'experiencia', 'peneirasFeitas', 'gastoPeneiras', 'anosTentando', 'r2data', 'r2hm'];
   // a etapa do editor aberto (a do lead, ou a do R1 ou R2 novo) e o que o deck da variação marcada faz com a escolha do painel
   const etapaEd = () => (ed && ed.etapa) || etapaPadrao();
   const recursosDe = id => (versaoPor(id, etapaEd()).recursos || { nomeTela: true, foto: true, pular: true });
   const opcoes = (sel, lista) => { sel.innerHTML = '<option value="">escolha</option>' + lista.map(v => `<option value="${esc(v)}">${esc(v)}</option>`).join(''); };
-  opcoes(campo('pe'), R.PES); opcoes(campo('origem'), R.ORIGENS); opcoes(campo('plano'), R.PLANOS.slice().reverse());
+  opcoes(campo('pe'), R.PES); opcoes(campo('categoria'), R.CATEGORIAS); opcoes(campo('origem'), R.ORIGENS); opcoes(campo('plano'), R.PLANOS.slice().reverse());
   opcoes(campo('prazoContato'), R.PRAZOS.contato); opcoes(campo('prazoZyron'), R.PRAZOS.zyron);
   $('#posicoes').innerHTML = R.SUGESTOES.map(p => `<option value="${esc(p)}"></option>`).join('');
 
@@ -603,6 +606,12 @@
     if (rec.foto && !$('#c-foto-tela').checked) f.semFoto = 'sim'; // só a foto fica de fora (o nome continua)
     const tirados = tiradosAgora();
     if (rec.pular && tirados.length) f.pular = tirados.join(',');
+    // o vídeo analisado e as oportunidades (só o R2): o slide do dossiê do atleta
+    if (et === 'r2') {
+      if ($('#c-tem-video').checked) f.temVideo = 'sim';
+      const ops = R.limpaOportunidades(R.textoOportunidades((ed && ed.oportunidades) || []));
+      if (ops) f.oportunidades = ops;
+    }
     return f;
   }
   function poeFicha(f) {
@@ -614,6 +623,10 @@
     montaVersoes(f && f.versao); // a variação que o R2 já usa aparece mesmo arquivada
     marcaVersao(f && f.versao);
     desenhaOpcionais(String((f && f.pular) || '').split(',').filter(Boolean));
+    $('#c-tem-video').checked = !!(f && f.temVideo === 'sim');
+    if (ed) ed.oportunidades = R.oportunidadesDe((f && f.oportunidades) || '');
+    $('#op-clube').value = ''; $('#op-detalhe').value = ''; $('#op-erro').textContent = '';
+    desenhaOportunidades();
   }
 
   /* ---------------- variação do R2, nome na tela e slides da sequência ---------------- */
@@ -672,7 +685,7 @@
   function aplicaEtapa(et) {
     const r1 = et === 'r1';
     $$('[data-so="r2"]').forEach(el => { el.hidden = r1; });
-    $$('small[data-r1]').forEach(el => { if (!('r2' in el.dataset)) el.dataset.r2 = el.textContent; el.textContent = r1 ? el.dataset.r1 : el.dataset.r2; el.hidden = !el.textContent; });
+    $$('small[data-r1], p[data-r1]').forEach(el => { if (!('r2' in el.dataset)) el.dataset.r2 = el.textContent; el.textContent = r1 ? el.dataset.r1 : el.dataset.r2; el.hidden = !el.textContent; });
     $('#s-versao > h2').textContent = 'Variação do ' + nomeEtapa(et);
     $('#versoes').setAttribute('aria-label', 'Variação do ' + nomeEtapa(et));
     $('#call-titulo').textContent = r1 ? 'A R2 marcada' : 'A call';
@@ -739,7 +752,7 @@
   function recebe(j, comFormulario) {
     const etapa = j.etapa === 'r1' || (j.registro && j.registro.etapa === 'r1') ? 'r1' : 'r2';
     if (ed.etapa !== etapa) { ed.etapa = etapa; aplicaEtapa(etapa); montaVersoes(); }
-    ed.reg = j.registro; ed.base = j.registro.fichaEm; ed.estado = j.estado; ed.check = j.checklist; ed.link = j.link;
+    ed.reg = j.registro; ed.base = j.registro.fichaEm; ed.estado = j.estado; ed.check = j.checklist; ed.link = j.link; ed.previa = j.previa || '';
     if ('emCall' in j) ed.emCall = j.emCall;
     if (comFormulario) {
       poeFicha(j.registro.ficha);
@@ -757,9 +770,12 @@
     seletorPlano.value = planos.includes(planoAtual) ? planoAtual : '';
     const et = etapaEd(), r1 = et === 'r1', f = leFicha(), novo = !ed.t, reg = ed.reg;
     $('#ed-titulo').textContent = f.nome || (novo ? 'Novo ' + nomeEtapa(et) : 'Sem nome');
-    const [est, cor] = ESTADOS[ed.estado] || (novo ? ['Novo', 'cinza'] : ESTADOS.rascunho);
+    const gerado = linkJaGerado();
+    const [est, cor] = novo ? ['Novo · sem link', 'cinza'] : !gerado ? ESTADOS.preparo : (ESTADOS[ed.estado] || ESTADOS.rascunho);
     const chip = $('#ed-estado'); chip.textContent = ed.emCall ? 'Em call agora' : est; chip.className = 'chip ' + (ed.emCall ? 'pulsa' : cor);
-    $('#ed-salvar').textContent = novo ? 'Criar ' + nomeEtapa(et) + ' e gerar o link' : 'Salvar';
+    // o link só nasce no "Gerar link", no fim da página: até lá, o botão de cima salva o rascunho
+    $('#ed-salvar').textContent = gerado ? 'Salvar' : 'Salvar rascunho';
+    $('#bt-gerar-link').textContent = 'Gerar link do ' + nomeEtapa(et);
     $('#ed-salvo').textContent = ed.sujo ? 'Mudanças não salvas' : reg ? 'Salvo ' + ha(reg.fichaEm) : '';
     $('#ed-salvo').classList.toggle('sujo', !!ed.sujo);
     // o nome e a foto como a tela mostra: a variação diz o que pode aparecer do lead (o admin ajusta), e quem monta escolhe dentro disso.
@@ -813,12 +829,12 @@
     $('#ex-call').textContent = f.r2data || f.r2hm ? (r1 ? 'No slide 20: R2 de ' : 'Na capa: Call de ') + callTxt(f.r2data, f.r2hm) + '.' : '';
     $$('.so-legacy').forEach(el => el.classList.toggle('fora', f.plano !== R.LEGACY));
     // seções que só existem com o lead criado (e a leitura, só no R2)
-    ['#s-link', '#s-hist', '#s-perigo'].forEach(x => { $(x).hidden = novo; });
-    $('#s-leitura').hidden = novo || r1 || rec.leitura === false;
-    desenhaFoto(); desenhaChecklist(); desenhaLink(); desenhaValidade(); desenhaHistorico();
+    ['#s-hist', '#s-perigo'].forEach(x => { $(x).hidden = novo; });
+    $('#s-link').hidden = !gerado; $('#s-gerar').hidden = gerado;
+    desenhaFoto(); desenhaVideo(); desenhaChecklist(); desenhaLink(); desenhaValidade(); desenhaHistorico();
   }
   // só os campos da ficha, a nota e o "conferi o nome" contam como mudança (a foto e o link têm botão próprio)
-  const daFicha = el => !!el && (CHAVES.includes(el.name) || el.name === 'nota' || el.id === 'c-conferido' || el.id === 'c-foto-tela' || el.name === 'versao' || el.name === 'opcional');
+  const daFicha = el => !!el && (CHAVES.includes(el.name) || el.name === 'nota' || el.id === 'c-conferido' || el.id === 'c-foto-tela' || el.id === 'c-tem-video' || el.name === 'versao' || el.name === 'opcional');
   F.addEventListener('input', e => {
     if (!ed || !daFicha(e.target)) return;
     if (e.target.name === 'nome' && $('#c-conferido').checked) $('#c-conferido').checked = false; // mudou o nome: conferir de novo
@@ -831,9 +847,14 @@
   });
   F.addEventListener('submit', e => { e.preventDefault(); salva(); });
   $('#ed-salvar').addEventListener('click', () => salva());
+  // o link deste lead já existe? (o rascunho tem o código, mas o link só nasce no "Gerar link"; registro de antes não tem o campo: já existe)
+  const linkJaGerado = () => !!(ed && ed.t && ed.reg && ed.reg.linkGerado !== false);
+  // a foto, o vídeo e o mapa de calor precisam do lead salvo: o primeiro envio salva o rascunho (o link continua sem existir)
+  async function garanteRascunho() { if (ed && ed.t) return true; await salva(); return !!(ed && ed.t); }
 
-  async function salva(baseForcada) {
-    if (!ed) return;
+  // op.gerar: o lead novo já nasce com o link (o botão "Gerar link"); sem isso, o lead novo vira rascunho. op.bt: o botão que espera
+  async function salva(baseForcada, op = {}) {
+    if (!ed) return false;
     const ficha = leFicha();
     $('#ed-erro').textContent = '';
     if (recursosDe(versaoMarcada()).dossie) {
@@ -841,18 +862,22 @@
       if (invalido) {
         $('#ed-erro').textContent = invalido.nome + ': use um número inteiro de 0 a 100, ou deixe vazio.';
         const el = campo(invalido.chave), grupo = el.closest('details'); if (grupo) grupo.open = true;
-        el.focus(); return;
+        el.focus(); return false;
       }
     }
-    if (etapaEd() === 'r2' && ficha.vagas && !(+ficha.vagas >= 1 && +ficha.vagas <= 10)) { $('#ed-erro').textContent = 'Vagas: um número de 1 a 10, ou vazio.'; campo('vagas').focus(); return; }
+    if (etapaEd() === 'r2' && ficha.vagas && !(+ficha.vagas >= 1 && +ficha.vagas <= 10)) { $('#ed-erro').textContent = 'Vagas: um número de 1 a 10, ou vazio.'; campo('vagas').focus(); return false; }
+    // os números das peneiras: inteiros, dentro do que o servidor aceita
+    const numeroRuim = ['peneirasFeitas', 'gastoPeneiras', 'anosTentando', 'altura'].find(k => campo(k).value && !campo(k).validity.valid);
+    if (numeroRuim) { $('#ed-erro').textContent = 'Confira o número de "' + campo(numeroRuim).closest('.campo').querySelector('span').textContent + '".'; campo(numeroRuim).focus(); return false; }
     try {
       if (!ed.t) {
         // a validade escolhida antes de gerar (sem ela, a automática) vai junto
         const vn = ed.validadeNova || {}, link = vn.venceEm || vn.apagar ? { venceEm: vn.venceEm || '', apagarAoVencer: !!vn.apagar } : undefined;
-        const j = await ocupado($('#ed-salvar'), () => api('atletas', { metodo: 'POST', dados: { ficha, etapa: etapaEd(), link } }));
+        const rascunho = op.gerar !== true;
+        const j = await ocupado(op.bt || $('#ed-salvar'), () => api('atletas', { metodo: 'POST', dados: { ficha, etapa: etapaEd(), link, rascunho } }));
         ed.sujo = false;
         destaque = j.t;
-        aviso(nomeEtapa(etapaEd()) + ' criado. O link da apresentação foi gerado e já funciona (seção Link).');
+        aviso(rascunho ? 'Rascunho salvo. O link ainda não existe: gere no fim da página quando estiver tudo pronto.' : nomeEtapa(etapaEd()) + ' pronto: o link foi gerado e já funciona (seção Link).');
         // o mesmo atleta, agora com código: abre o editor dele (sem perguntar de mudança, já salvou)
         history.replaceState(null, '', '#/r2/' + j.t);
         hashAtual = '#/r2/' + j.t;
@@ -863,18 +888,40 @@
         } else recebe(Object.assign({ emCall: null }, j), false);
         montaPrevia();
         ed.timer = setInterval(confereDeFora, 30000);
-        return;
+        return true;
       }
-      const j = await ocupado($('#ed-salvar'), () => api('atletas?t=' + ed.t, { metodo: 'PUT', dados: { ficha, base: baseForcada || ed.base, nota: campo('nota').value, conferido: { nome: $('#c-conferido').checked } } }));
+      const j = await ocupado(op.bt || $('#ed-salvar'), () => api('atletas?t=' + ed.t, { metodo: 'PUT', dados: { ficha, base: baseForcada || ed.base, nota: campo('nota').value, conferido: { nome: $('#c-conferido').checked } } }));
       ed.sujo = false;
       recebe(j, false);
-      aviso('Salvo. A prévia e o R2 já mostram.');
+      if (!op.quieto) aviso(linkJaGerado() ? 'Salvo. A prévia e o ' + nomeEtapa(etapaEd()) + ' já mostram.' : 'Rascunho salvo. A prévia já mostra; o link só nasce no "Gerar link".');
       atualizaPrevia();
+      return true;
     } catch (err) {
-      if (err.status === 409 && err.j && err.j.conflito) return conflito(err.j.conflito);
+      if (err.status === 409 && err.j && err.j.conflito) { conflito(err.j.conflito); return false; }
       $('#ed-erro').textContent = err.message;
+      return false;
     }
   }
+  /* "Gerar link", no fim da página: o único lugar onde o link nasce. Lead novo: salva e gera junto. Rascunho: salva o que mudou e gera */
+  async function geraLink(bt) {
+    $('#gr-erro').textContent = '';
+    if (!ed) return;
+    if (!ed.t) {
+      const ok = await salva(undefined, { gerar: true, bt });
+      if (!ok) { $('#gr-erro').textContent = $('#ed-erro').textContent; return; }
+      $('#s-link').scrollIntoView({ block: 'center', behavior: 'smooth' });
+      return;
+    }
+    if (ed.sujo && !(await salva(undefined, { bt, quieto: true }))) { $('#gr-erro').textContent = $('#ed-erro').textContent || 'Salve a ficha antes de gerar o link.'; return; }
+    try {
+      const j = await ocupado(bt, () => api('link?t=' + ed.t + '&acao=gerar', { metodo: 'POST', dados: {} }));
+      recebe(Object.assign(j, { emCall: ed.emCall }), false);
+      montaPrevia();
+      aviso('Link gerado: já funciona. Copie e mande pra família.');
+      $('#s-link').scrollIntoView({ block: 'center', behavior: 'smooth' });
+    } catch (err) { $('#gr-erro').textContent = err.message; }
+  }
+  $('#bt-gerar-link').addEventListener('click', e => geraLink(e.currentTarget));
   // 409: outra pessoa salvou depois que o formulário carregou. Nada do que foi digitado se perde até a pessoa escolher
   let conflitoAtual = null;
   function conflito(c) {
@@ -898,8 +945,9 @@
       ed.emCall = j.emCall; ed.estado = j.estado;
       if (mudou && !ed.sujo) { recebe(j, true); aviso((j.registro.fichaPor && j.registro.fichaPor.nome || 'Alguém') + ' salvou esta ficha. O formulário já mostra.'); atualizaPrevia(); return; }
       if (mudou && ed.sujo) $('#ed-erro').textContent = (j.registro.fichaPor && j.registro.fichaPor.nome || 'Alguém') + ' salvou esta ficha ' + ha(j.registro.fichaEm) + '. Ao salvar, você escolhe: recarregar ou sobrescrever.';
-      ed.reg = Object.assign({}, ed.reg, { venceEm: j.registro.venceEm, estado: j.registro.estado, foto: j.registro.foto, video: j.registro.video, historico: j.registro.historico });
-      ed.check = Object.assign({}, ed.check, { foto: j.checklist.foto, previa: j.checklist.previa });
+      ed.reg = Object.assign({}, ed.reg, { venceEm: j.registro.venceEm, estado: j.registro.estado, foto: j.registro.foto, video: j.registro.video, mapa: j.registro.mapa, linkGerado: j.registro.linkGerado, historico: j.registro.historico });
+      if (j.previa) ed.previa = j.previa; // a chave da prévia do rascunho é renovada a cada conferência (vale 3 horas)
+      ed.check = Object.assign({}, ed.check, { foto: j.checklist.foto, previa: j.checklist.previa, video: j.checklist.video });
       desenhaEditor();
     } catch (e) { /* tenta de novo daqui a pouco */ }
   }
@@ -932,10 +980,12 @@
     ];
     // a prévia só é item nos decks que abrem no quadro de prévia (nos outros ela abre em outra aba e não há o que marcar); segue a variação marcada,
     // como a foto e o nome (o servidor, que dá a etiqueta, usa a salva: depois de salvar, as duas são a mesma)
+    if ($('#c-tem-video').checked) itensCk.push(['Vídeo analisado enviado', !!(ed.check && ed.check.video !== false && ed.reg && ed.reg.video), 'Envie o vídeo na seção Vídeo analisado (ou desmarque "Tenho o vídeo do jogador").']);
+    const obrigatorios = itensCk.length; // a prévia não entra na etiqueta Pronto
     if (!(ver.recursos && ver.recursos.previa === false)) itensCk.push(['Prévia olhada', !!(ed.check && ed.check.previa && !ed.sujo), 'Abra na prévia os slides marcados com •.']);
-    const pronto = itensCk.slice(0, 5).every(x => x[1]);
+    const pronto = itensCk.slice(0, obrigatorios).every(x => x[1]);
     $('#checklist').innerHTML = itensCk.map(([t, ok, dica]) => `<li class="${ok ? 'ok' : ''}"><i>${ok ? '✓' : ''}</i><span><b>${esc(t)}</b><small>${esc(ok && !/^(Some|Não precisa)/.test(dica) ? '' : dica)}</small></span></li>`).join('') +
-      `<li><span class="nota" style="margin:0">${pronto ? 'Com os cinco primeiros feitos, a etiqueta é <b>Pronto</b>' + (ed.sujo ? ' (depois de salvar)' : '') + '.' : 'Você já pode gerar e abrir a apresentação. Preencha apenas o que quiser personalizar.'}</span></li>`;
+      `<li><span class="nota" style="margin:0">${pronto ? 'Com ' + (obrigatorios === 5 ? 'os cinco primeiros' : 'os seis primeiros') + ' feitos, a etiqueta é <b>Pronto</b>' + (ed.sujo ? ' (depois de salvar)' : '') + '.' : 'Preencha o que quiser personalizar. O link só nasce no "Gerar link", no fim da página.'}</span></li>`;
   }
 
   /* ---------------- link ---------------- */
@@ -1047,13 +1097,14 @@
   const praCampo = iso => { const d = new Date(iso); return isNaN(d) ? '' : d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate()) + 'T' + pad2(d.getHours()) + ':' + pad2(d.getMinutes()); };
   function desenhaValidade() {
     if (!ed) return;
-    const f = leFicha(), novo = !ed.t, reg = ed.reg || {};
+    const f = leFicha(), novo = !ed.t, reg = ed.reg || {}, semLink = novo || reg.linkGerado === false;
     const v = novo ? (ed.validadeNova || {}) : { venceEm: reg.venceEm, manual: !!reg.venceManual, apagar: !!reg.apagarAoVencer };
-    const venceEm = novo ? (v.venceEm || venceAutomatico(f, etapaEd())) : v.venceEm;
     const manual = novo ? !!v.venceEm : v.manual;
+    // sem link ainda (lead novo ou rascunho), a validade automática conta de quando o link for gerado: aqui, a estimativa de agora
+    const venceEm = semLink && !manual ? venceAutomatico(f, etapaEd()) : v.venceEm;
     const vencido = venceEm && Date.parse(venceEm) <= Date.now();
-    $('#vd-info').innerHTML = !venceEm ? '' : (vencido ? 'Expirou ' : novo ? 'O link vai expirar ' : 'O link expira ') + '<b>' + esc(quandoLongo(venceEm)) + '</b> (' + esc(falta(venceEm)) + ').' +
-      '<small>' + (manual ? 'Validade escolhida por você: mudar o dia da call não muda ela.' : 'Automática: até 7 dias depois da call' + (f.r2data ? '' : ' (sem dia marcado, 7 dias a partir de ' + (novo ? 'hoje' : 'quando foi gerado') + ')') + '.') +
+    $('#vd-info').innerHTML = !venceEm ? '' : (vencido ? 'Expirou ' : semLink ? 'O link vai expirar ' : 'O link expira ') + '<b>' + esc(quandoLongo(venceEm)) + '</b> (' + esc(falta(venceEm)) + ').' +
+      '<small>' + (manual ? 'Validade escolhida por você: mudar o dia da call não muda ela.' : 'Automática: até 7 dias depois da call' + (f.r2data ? '' : ' (sem dia marcado, 7 dias a partir de ' + (semLink ? 'quando o link for gerado' : 'quando foi gerado') + ')') + '.') +
       (!novo && reg.estado === 'revogado' ? ' O link está revogado agora: reative na seção Link.' : '') + '</small>';
     const temCall = Number.isFinite(instanteDaCall(f)), temDia = !!f.r2data;
     $$('#vd-rapidos [data-vd]').forEach(b => {
@@ -1119,7 +1170,7 @@
     q.innerHTML = '';
     $('#pv-fora').hidden = true;
     if (!ed || !ed.t || !origemDeEntrada(et)) {
-      q.innerHTML = '<p class="pv-vazio">' + (et === 'r1' ? 'O R1 abre em outra aba depois de salvar o nome.' : 'A prévia aparece depois de salvar o nome.') + '</p>';
+      q.innerHTML = '<p class="pv-vazio">' + (et === 'r1' ? 'O R1 abre em outra aba depois de salvar o rascunho.' : 'A prévia aparece depois de salvar o rascunho (o link continua sem existir até você gerar).') + '</p>';
       $('#pv-bts').innerHTML = '';
       $('#pv-nota').textContent = et === 'r1' ? 'Salve o nome pra gerar o link do R1.' : 'Olhe os slides marcados com • antes da call: é o último item do checklist.';
       return;
@@ -1128,7 +1179,7 @@
       q.innerHTML = '<p class="pv-vazio">' + (et === 'r1' ? 'O R1' : 'Este deck') + ' abre em outra aba: não tem prévia aqui.</p>';
       $('#pv-bts').innerHTML = '';
       $('#pv-fora').hidden = false;
-      $('#pv-fora').innerHTML = '<a class="bt ouro" href="' + esc(ed.link || linkDo(ed.t, et)) + '" target="_blank" rel="noopener noreferrer">Abrir o ' + nomeEtapa(et) + ' em outra aba</a>';
+      $('#pv-fora').innerHTML = '<a class="bt ouro" href="' + esc(ed.link || ed.previa || linkDo(ed.t, et)) + '" target="_blank" rel="noopener noreferrer">' + (ed.link ? 'Abrir o ' + nomeEtapa(et) + ' em outra aba' : 'Ver a prévia em outra aba') + '</a>';
       $('#pv-nota').textContent = et === 'r1' ? 'Abra o R1 e olhe a ficha do atleta (slide 02) antes da call.' : 'Abra o deck e olhe os slides antes da call.';
       return;
     }
@@ -1138,7 +1189,7 @@
     fr.title = 'Prévia do R2 deste atleta';
     fr.setAttribute('referrerpolicy', 'no-referrer');
     fr.setAttribute('sandbox', 'allow-scripts allow-same-origin');
-    fr.src = linkDo(ed.t, 'r2') + '#1';
+    fr.src = (ed.link || ed.previa || linkDo(ed.t, 'r2')) + '#1';
     q.appendChild(fr);
     pvMapa = {};
     desenhaBotoesPrevia();
@@ -1147,10 +1198,18 @@
   function desenhaBotoesPrevia() {
     if (!ed || !ed.t || !previaEmbutida()) { $('#pv-bts').innerHTML = ''; return; }
     const fora = String((ed.reg && ed.reg.ficha && ed.reg.ficha.pular) || '').split(',').filter(Boolean);
+    const semDossie = !dossieTemConteudo();
     $('#pv-bts').innerHTML = PREVIA.map(p => {
-      const pulado = !!(p.opc && fora.includes(p.opc));
-      return `<button class="pv-bt${p.obrig ? ' obrig' : ''}${ed.vistos.has(p.nome) ? ' visto' : ''}${pulado ? ' fora' : ''}" type="button" data-pv="${esc(p.nome)}" aria-pressed="false"${pulado ? ' disabled title="Fora da sequência desta apresentação"' : ''}>${esc(p.rot)}</button>`;
+      const pulado = !!(p.opc && fora.includes(p.opc)) || !!(p.dossie && semDossie);
+      const porque = p.dossie ? 'Sem vídeo analisado, mapa de calor nem oportunidades: o deck pula o dossiê' : 'Fora da sequência desta apresentação';
+      return `<button class="pv-bt${p.obrig ? ' obrig' : ''}${ed.vistos.has(p.nome) ? ' visto' : ''}${pulado ? ' fora' : ''}" type="button" data-pv="${esc(p.nome)}" aria-pressed="false"${pulado ? ' disabled title="' + esc(porque) + '"' : ''}>${esc(p.rot)}</button>`;
     }).join('');
+  }
+  // o dossiê tem o que mostrar? "Tenho o vídeo do jogador" com o vídeo ou o mapa salvos, ou oportunidades salvas (o que está salvo é o que a prévia mostra)
+  function dossieTemConteudo() {
+    const reg = (ed && ed.reg) || {}, f = reg.ficha || {}, v = reg.video;
+    const video = !!(v && v.arquivo && v.venceEm && Date.parse(v.venceEm) > Date.now());
+    return (f.temVideo === 'sim' && (video || !!(reg.mapa && reg.mapa.versao))) || !!String(f.oportunidades || '').trim();
   }
   const pvJanela = () => { const fr = $('#pv'); return fr && fr.contentWindow; };
   function atualizaPrevia() {
@@ -1189,6 +1248,97 @@
      sem GPS e sem nada da câmera. Os dois vão num pedido só, com a autorização marcada. */
   const FT = { fonte: null, W: 0, H: 0, esc: 1, min: 1, max: 4, x: 0, y: 0, fw: 0, fh: 0, dpr: 1, q: { x: 0, y: 0, lado: 0 }, ponteiros: new Map(), modo: '', pinca: 0 };
   const cv = $('#ft-canvas');
+  /* ---------------- vídeo analisado e mapa de calor (o centro do slide do dossiê) ----------------
+     "Tenho o vídeo do jogador" liga a parte: o vídeo (o mesmo diálogo de antes: autorização, envio e, se quiser, os lances) e o mapa de
+     calor (uma imagem, normalizada aqui em JPEG e guardada pela rota da foto). Desmarcado, o centro do slide mostra o plano de carreira. */
+  function desenhaVideo() {
+    if (!ed) return;
+    const tem = $('#c-tem-video').checked, reg = ed.reg || {}, v = reg.video;
+    $('#vd-bloco').hidden = !tem;
+    const ok = !!(v && v.arquivo && v.venceEm && Date.parse(v.venceEm) > Date.now());
+    $('#va-info').textContent = ok ? 'Vídeo enviado: ' + RL.mmss(v.duracaoS) + ', ' + (v.bytes / 1048576).toFixed(1).replace('.', ',') + ' MB. Sai do ar em ' + R.dataCurta(v.venceEm) + '.'
+      : 'Nenhum vídeo enviado ainda.' + (ed.t ? '' : ' Ao enviar, a apresentação fica salva como rascunho (o link continua sem existir).');
+    $('#va-info').classList.toggle('ok', ok);
+    $('#va-enviar').textContent = ok ? 'Trocar o vídeo' : 'Enviar o vídeo analisado';
+    // marcar lances só onde eles aparecem (a IA na Prática); a Acompanhamento não tem esse slide (recursos.leitura falso)
+    $('#va-lances').hidden = !ok || !recursosDe(versaoMarcada()).leitura;
+    const m = reg.mapa, temMapa = !!(m && m.versao && ed.t);
+    $('#mc-atual').hidden = !temMapa; $('#mc-zona').hidden = temMapa;
+    if (temMapa) { const src = fotoUrl(ed.t, 'mapa', m.versao); if ($('#mc-img').getAttribute('src') !== src) $('#mc-img').src = src; }
+  }
+  // a imagem do mapa de calor em JPEG: de 300 a 1600 px de lado (sem distorcer), fundo escuro onde for transparente, até ~880 KB
+  async function mapaEmJpeg(arq) {
+    const url = URL.createObjectURL(arq);
+    try {
+      const img = await new Promise((ok, erro) => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => erro(new Error('Essa imagem não abriu aqui. Mande o mapa de calor em PNG ou JPG.')); i.src = url; });
+      let w = img.naturalWidth, h = img.naturalHeight;
+      if (!w || !h) throw new Error('Essa imagem não abriu aqui. Mande o mapa de calor em PNG ou JPG.');
+      const reduz = Math.min(1, 1600 / Math.max(w, h)); w *= reduz; h *= reduz;
+      const amplia = Math.max(1, 300 / Math.min(w, h)); w = Math.round(w * amplia); h = Math.round(h * amplia);
+      if (Math.max(w, h) > 2400) throw new Error('Essa imagem é estreita demais pra um mapa de calor. Use a imagem inteira do mapa.');
+      const c = document.createElement('canvas'); c.width = w; c.height = h;
+      const x = c.getContext('2d'); x.fillStyle = '#0B1517'; x.fillRect(0, 0, w, h); x.drawImage(img, 0, 0, w, h);
+      for (let q = .9; q > .35; q -= .1) { const b = await jpeg(c, q); if (b && b.size <= 880 * 1024) return b; }
+      throw new Error('O mapa de calor ficou grande demais. Tente uma imagem menor.');
+    } finally { URL.revokeObjectURL(url); }
+  }
+  async function enviaMapa(arq) {
+    $('#mc-erro').textContent = '';
+    const bt = $('#mc-atual').hidden ? $('#mc-escolher') : $('#mc-trocar');
+    try {
+      const j = await ocupado(bt, async () => {
+        const b = await mapaEmJpeg(arq);
+        if (!(await garanteRascunho())) throw new Error($('#ed-erro').textContent || 'Não consegui salvar o rascunho. Tente de novo.');
+        return api('foto?t=' + ed.t, { metodo: 'PUT', dados: { mapa: await emBase64(b) } });
+      });
+      recebe(Object.assign(j, { emCall: ed.emCall }), false);
+      aviso('Mapa de calor salvo: aparece embaixo do vídeo, no slide do dossiê.');
+      atualizaPrevia();
+    } catch (err) { $('#mc-erro').textContent = err.message; }
+  }
+  $('#mc-escolher').addEventListener('click', () => $('#mc-arquivo').click());
+  $('#mc-trocar').addEventListener('click', () => $('#mc-arquivo').click());
+  $('#mc-arquivo').addEventListener('change', e => { const a = e.target.files && e.target.files[0]; e.target.value = ''; if (a) enviaMapa(a); });
+  $('#mc-apagar').addEventListener('click', async e => {
+    if (!ed || !ed.t || !confirm('Apagar o mapa de calor deste atleta? O slide do dossiê fica só com o vídeo.')) return;
+    try {
+      const j = await ocupado(e.currentTarget, () => api('foto?t=' + ed.t + '&v=mapa', { metodo: 'DELETE' }));
+      if (j.registro) recebe(Object.assign(j, { emCall: ed.emCall }), false);
+      aviso('Mapa de calor apagado.'); atualizaPrevia();
+    } catch (err) { $('#mc-erro').textContent = err.message; }
+  });
+
+  /* ---------------- oportunidades: os clubes do lado direito do slide do dossiê (até 6, na ordem daqui) ---------------- */
+  function desenhaOportunidades() {
+    const l = (ed && ed.oportunidades) || [];
+    $('#op-lista').innerHTML = l.map((o, i) => `<li><span class="n">${String(i + 1).padStart(2, '0')}</span><span class="esc" aria-hidden="true" title="Assim aparece no slide do dossiê"><svg viewBox="0 0 56 64"><path d="M28 2 L53 10 V30 C53 46 42 56 28 62 C14 56 3 46 3 30 V10 Z"/></svg><b>${esc(R.siglaClube(o.clube))}</b></span><span class="c">${esc(o.clube)}${o.detalhe ? `<small>${esc(o.detalhe)}</small>` : ''}</span>
+      <button class="bt mini" type="button" data-op-move="${i}" data-dir="-1"${i ? '' : ' disabled'} aria-label="Subir ${esc(o.clube)}">↑</button><button class="bt mini" type="button" data-op-move="${i}" data-dir="1"${i < l.length - 1 ? '' : ' disabled'} aria-label="Descer ${esc(o.clube)}">↓</button><button class="bt mini perigo" type="button" data-op-tira="${i}" aria-label="Tirar ${esc(o.clube)}">✕</button></li>`).join('');
+    $('#op-adicionar').disabled = l.length >= R.OPORTUNIDADES_MAX;
+    $('#op-clube').disabled = l.length >= R.OPORTUNIDADES_MAX;
+  }
+  const mudouOportunidades = () => { ed.sujo = true; desenhaOportunidades(); desenhaEditor(); };
+  function adicionaOportunidade() {
+    if (!ed) return;
+    const clube = $('#op-clube').value.trim(), detalhe = $('#op-detalhe').value.trim(), l = ed.oportunidades || [];
+    $('#op-erro').textContent = '';
+    if (!clube) { $('#op-erro').textContent = 'Escreva o nome do clube.'; $('#op-clube').focus(); return; }
+    if (l.length >= R.OPORTUNIDADES_MAX) { $('#op-erro').textContent = 'No máximo ' + R.OPORTUNIDADES_MAX + ' clubes (é o que cabe no slide).'; return; }
+    if (l.some(o => R.normClube(o.clube) === R.normClube(clube))) { $('#op-erro').textContent = 'Esse clube já está na lista.'; $('#op-clube').select(); return; }
+    ed.oportunidades = R.oportunidadesDe(R.limpaOportunidades(R.textoOportunidades(l.concat([{ clube, detalhe }]))));
+    $('#op-clube').value = ''; $('#op-detalhe').value = '';
+    mudouOportunidades();
+    $('#op-clube').focus();
+  }
+  $('#op-adicionar').addEventListener('click', adicionaOportunidade);
+  // Enter no clube ou no detalhe adiciona (sem salvar o formulário inteiro)
+  ['#op-clube', '#op-detalhe'].forEach(s => $(s).addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); adicionaOportunidade(); } }));
+  $('#op-lista').addEventListener('click', e => {
+    const mv = e.target.closest('[data-op-move]'), tira = e.target.closest('[data-op-tira]');
+    const l = (ed && ed.oportunidades) || [];
+    if (mv) { const i = +mv.dataset.opMove, k = i + (+mv.dataset.dir); if (k < 0 || k >= l.length) return; [l[i], l[k]] = [l[k], l[i]]; mudouOportunidades(); }
+    if (tira) { l.splice(+tira.dataset.opTira, 1); mudouOportunidades(); }
+  });
+
   function desenhaFoto() {
     const novo = !ed.t, reg = ed.reg;
     const valida = !!(ed.check && ed.check.foto && reg && reg.foto);
@@ -1429,7 +1579,10 @@
   const leMinuto = s => { const m = /^\s*(\d+)(?::(\d{1,2})(?:[.,](\d))?)?\s*$/.exec(String(s)); if (!m) return NaN; return m[2] == null ? Number(m[1]) : Number(m[1]) * 60 + Number(m[2]) + (m[3] ? Number(m[3]) / 10 : 0); };
   const vencimento = iso => iso ? new Date(iso).toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo' }) : '';
 
-  $('#bt-leitura').addEventListener('click', () => { if (ed && ed.t) abreLeitura(ed.t); });
+  // "Enviar o vídeo analisado" e "Marcar lances": o mesmo diálogo (autorização, envio com progresso e, se quiser, os lances)
+  const abreVideo = async bt => { $('#mc-erro').textContent = ''; if (!(await ocupado(bt, garanteRascunho))) return; abreLeitura(ed.t); };
+  $('#va-enviar').addEventListener('click', e => abreVideo(e.currentTarget));
+  $('#va-lances').addEventListener('click', e => abreVideo(e.currentTarget));
   async function abreLeitura(t) {
     $('#lt-erro').textContent = ''; $('#lt-video-erro').textContent = ''; $('#lt-json-erros').hidden = true; $('#lt-previa').hidden = true;
     $('#leitura').showModal();
@@ -1438,7 +1591,7 @@
       const l = j.leitura || {};
       lt = { t, nome: j.nome, apelido: j.apelido, video: j.video, valido: j.valido, vencido: j.vencido, regras: j.regras, sujo: false, ultima: 'bom',
         leitura: { origem: l.origem || '', criterio: l.criterio || 'selecao', lances: (l.lances || []).slice(), fortes: (l.fortes || []).slice(), prioridades: (l.prioridades || []).slice() } };
-      $('#lt-titulo').textContent = 'Leitura do atleta · ' + (j.nome || '');
+      $('#lt-titulo').textContent = 'Vídeo analisado · ' + (j.nome || '');
       $('#lt-dias').textContent = j.regras.validadeDias;
       $('#lt-tipo').innerHTML = j.regras.tipos.map(x => `<option>${esc(x)}</option>`).join('');
       desenhaLeitura(true);

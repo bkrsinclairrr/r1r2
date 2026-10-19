@@ -6,8 +6,9 @@
   const slides = Array.from(document.querySelectorAll('#stage > .slide'));
   const mapa = {};
   slides.forEach((s, i) => { if (s.dataset.slideOrigem) mapa[Number(s.dataset.slideOrigem)] = i + 1; });
-  // 101 a 106 são as origens dos seis slides do bloco da página institucional (bloco-roteiro.js): entram na aba Ler antes
-  const numeros = t => t.replace(/\b(10[1-6]|0?[1-9]|1\d|2[0-5])\b/g,
+  // 101 a 106 são as origens dos seis slides do bloco da página institucional (bloco-roteiro.js), 107 a do dossiê do atleta e 108 a do
+  // inimigo em comum (18/10/2026, logo depois da IA na Prática): entram na aba Ler antes
+  const numeros = t => t.replace(/\b(10[1-8]|0?[1-9]|1\d|2[0-5])\b/g,
     n => mapa[Number(n)] ? String(mapa[Number(n)]).padStart(Math.min(n.length, 2), '0') : n);
   const texto = t => String(t)
     // Só os títulos de telas identificam referências entre parênteses. Seções do playbook permanecem intactas.

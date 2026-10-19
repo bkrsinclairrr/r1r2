@@ -194,7 +194,7 @@ try {
   const ordemPicker = picker.split(',');
   ok(ordemPicker.indexOf(vNova.id) >= 0 && ordemPicker.indexOf(vNova.id) < ordemPicker.indexOf('principal'), 'no seletor, a validada vem antes da Principal em validação (' + ordemPicker.slice(0, 4).join(', ') + ')');
   await C.avalia(`(() => { const f = document.querySelector('#f-editor'); const e = f.elements.namedItem('nome'); e.value = 'Marcos Antônio Pereira'; e.dispatchEvent(new Event('input', { bubbles: true })); return 1; })()`);
-  await C.avalia("document.querySelector('#ed-salvar').click(); 1");
+  await C.avalia("document.querySelector('#bt-gerar-link').click(); 1");
   ok(await C.ate("/^#\\/r2\\/[a-z2-7]{26}$/.test(location.hash)"), 'a closer gera a apresentação do lead (o R2 nasce)');
   const tC = (await C.avalia('location.hash')).slice(5);
   ok((await le(tC)).registro.ficha.versao === vNova.id, 'e o R2 fica com a variação criada pelo admin (' + vNova.id + ')');

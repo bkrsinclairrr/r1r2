@@ -28,7 +28,8 @@ test('todas as páginas aceitam foto, ficha vazia e exibem a imagem no slide de 
       // outras páginas do R2 anterior só têm o slide 02)
       const comQuadros = v.deck === 'r2' || v.deck === 'r2-b' || v.id === 'r2a-acompanhamento';
       if (comQuadros) assert.ok(fotoEm.includes(1) && fotoEm.includes(2) && fotoEm.length >= 5, v.id + ': foto na capa, no slide 2 e nos quadros (' + fotoEm.join(', ') + ')');
-      else assert.deepEqual(fotoEm, [2], v.id + ': foto no slide 2 (o único quadro de foto deste deck)');
+      // e desde a segunda rodada de 18/10/2026, o dossiê do atleta (logo depois da IA na Prática) também tem o quadro da foto: o 16 no R2 anterior
+      else assert.deepEqual(fotoEm, v.deck === 'r1' ? [2] : [2, 16], v.id + ': foto no slide 2' + (v.deck === 'r1' ? ' (o único quadro de foto deste deck)' : ' e no dossiê do atleta (16)'));
       assert.match(await a.avalia(`document.querySelector('#stage>.slide.active').innerText`),/Gabriel|GABRIEL/);
       assert.match(await a.avalia(`document.querySelector('.escolha-retrato-rodape strong').innerText`),/Gabriel|GABRIEL/);
       await a.avalia('document.fonts.ready.then(()=>1)'); await espera(500);
@@ -63,7 +64,7 @@ test('todas as páginas aceitam foto, ficha vazia e exibem a imagem no slide de 
     assert.ok(await a.ate(`!document.querySelector('#ft-atual').hidden && location.hash.startsWith('#/r2/') && location.hash.length===31`), 'foto cria apresentação sem exigir os campos: '+JSON.stringify(await a.avalia(`({foto:document.querySelector('#ft-erro').textContent,ficha:document.querySelector('#ed-erro').textContent,aviso:document.querySelector('#aviso').textContent,hash:location.hash})`)));
     assert.equal(await a.avalia(`document.querySelector('#f-editor [name="nome"]').value`),'');
     await a.avalia(`location.hash='#/novo/r2a-acompanhamento';1`); await espera(400);
-    await a.avalia(`document.querySelector('#ed-salvar').click();1`);
+    await a.avalia(`document.querySelector('#bt-gerar-link').click();1`);
     assert.ok(await a.ate(`location.hash.startsWith('#/r2/') && location.hash.length===31 && !document.querySelector('#s-link').hidden`));
     assert.equal(await a.avalia(`document.querySelector('#f-editor [name="nome"]').value`),'');
     assert.ok(!a.console_.some(e=>e.startsWith('EXC')));

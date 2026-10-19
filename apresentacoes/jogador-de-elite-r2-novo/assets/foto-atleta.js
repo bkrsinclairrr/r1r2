@@ -3,11 +3,15 @@
    Sem foto, com a foto fora da tela no painel ("Mostrar a foto do lead" desmarcado) ou com a foto que não carregou, cada quadro mostra
    as iniciais do nome e do sobrenome (Carlos Eduardo Souza vira CS), nunca o ícone de imagem quebrada.
    O nome da placa ("Apresentação preparada para", "Montado para") é sempre nome e sobrenome (nomeAssinatura do deck), mesmo quando os
-   títulos usam o apelido ou só o primeiro nome. O código do dossiê é o mesmo em todos os slides (os 8 últimos caracteres do link). */
+   títulos usam o apelido ou só o primeiro nome. */
 (function () {
   'use strict';
   const falhas = new Set();
   let ultimo;
+  // a prévia do painel: com o link ainda não gerado, o painel abre a apresentação com &p=<chave>, e todo pedido ao painel (a ficha, a
+  // foto, o vídeo e o mapa) leva a chave junto. Sem ela, o painel responde como se o código não existisse. Fora do formato, não vale
+  const CHAVE = (() => { try { const p = (new URLSearchParams(location.search).get('p') || '').trim(); return /^[0-9a-z]{1,12}\.[A-Za-z0-9_-]{24}$/.test(p) ? p : ''; } catch (e) { return ''; } })();
+  const comChave = u => (u && CHAVE ? u + (u.indexOf('?') >= 0 ? '&' : '?') + 'p=' + encodeURIComponent(CHAVE) : u);
   const PARTICULAS = ['da', 'de', 'do', 'das', 'dos', 'e'];
   const SUFIXOS = ['junior', 'jr', 'filho', 'neto', 'sobrinho', 'segundo', 'terceiro'];
   const semAcento = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
@@ -20,18 +24,17 @@
     return conta.length > 1 ? letra(conta[0]) + letra(conta[conta.length - 1]) : letra(conta[0]);
   }
   window.FotoAtleta = {
-    iniciais,
+    iniciais, comChave, chave: CHAVE,
     derivados(f, d, aid, painel) {
       const ft = f.semFoto !== 'sim' && f.nomeTela !== 'sem' && f._foto && f._foto.ok ? f._foto : null;
       const versao = ft ? Number(ft.versao) : 0;
-      const url = ft ? (aid && versao > 0 ? painel + '/api/foto?t=' + encodeURIComponent(aid) + '&v=retrato&n=' + versao : !aid ? String(ft.src || '') : '') : '';
+      const url = ft ? (aid && versao > 0 ? comChave(painel + '/api/foto?t=' + encodeURIComponent(aid) + '&v=retrato&n=' + versao) : !aid ? String(ft.src || '') : '') : '';
       const placa = String(d.nomeAssinatura || d.nome || '');
       return { selecaoFotoUrl: falhas.has(url) ? '' : url, selecaoFotoOk: url && !falhas.has(url) ? '1' : '',
         selecaoNome: placa,
         selecaoInicial: d.fotoIni || iniciais(placa) || 'JE',
         selecaoPerfil: [f.posicao, f.idade ? f.idade + ' anos' : '', f.cidade].filter(Boolean).join(' · '),
-        selecaoContexto: f.caracteristicas || f.experiencia || '',
-        selecaoCodigo: d.dossieCod || (aid && f.nomeTela !== 'sem' ? aid.replace(/[^A-Za-z0-9]/g, '').slice(-8).toUpperCase() : '') };
+        selecaoContexto: f.caracteristicas || f.experiencia || '' };
     },
     atualiza(root, d) {
       ultimo = d;

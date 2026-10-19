@@ -55,8 +55,8 @@ try {
   await poe('apelido', 'Luquinhas');
   ok((await P.avalia("document.querySelector('#ex-nome').textContent")) === 'Luquinhas, você foi escolhido.', 'com apelido, o exemplo usa o apelido');
   await poe('apelido', '');
-  await P.avalia("document.querySelector('#ed-salvar').click(); 1");
-  ok(await P.ate("/^#\\/r2\\/[a-z2-7]{26}$/.test(location.hash) && !document.querySelector('#s-link').hidden"), 'cria o R2: o endereço vira #/r2/<código> e o link aparece');
+  await P.avalia("document.querySelector('#bt-gerar-link').click(); 1");
+  ok(await P.ate("/^#\\/r2\\/[a-z2-7]{26}$/.test(location.hash) && !document.querySelector('#s-link').hidden"), 'Gerar link do R2: o R2 nasce com o link, o endereço vira #/r2/<código> e o link aparece');
   const t = (await P.avalia('location.hash')).slice(5);
 
   /* ---------- foto pelo recorte: EXIF e GPS na entrada, nada na saída ---------- */
@@ -145,7 +145,7 @@ try {
   ok((await carla.get('/api/atletas?t=' + t)).j.registro.ficha.cidade === 'Recife', 'no servidor ficou o que foi sobrescrito');
 
   /* ---------- a prévia ---------- */
-  ok(await P.ate("!!document.querySelector('#pv') && document.querySelectorAll('.pv-bt').length === 5", 10000), 'a prévia carrega o deck de verdade num quadro');
+  ok(await P.ate("!!document.querySelector('#pv') && document.querySelectorAll('.pv-bt').length === 6 && [...document.querySelectorAll('.pv-bt')].find(b => b.dataset.pv === 'O dossiê do atleta').disabled", 10000), 'a prévia carrega o deck de verdade num quadro (6 botões; o do dossiê desligado: este lead não tem vídeo, mapa nem oportunidades)');
   await espera(2500);
   for (const nome of ['Capa', 'Por que você', 'O seu lugar em campo', 'Bem-vindo']) {
     await P.avalia(`(() => { const b = [...document.querySelectorAll('.pv-bt')].find(x => x.dataset.pv === ${JSON.stringify(nome)}); b.click(); return 1; })()`);

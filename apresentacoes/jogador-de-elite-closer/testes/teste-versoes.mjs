@@ -32,10 +32,10 @@ for (const v of R.VERSOES) {
   paginas[v.id] = html;
   const secoes = [...html.matchAll(/<section class="slide[^>]*>/g)].map(m => m[0]);
   const marcados = [...html.matchAll(/data-opcional="([a-z0-9-]+)"/g)].map(m => m[1]);
-  ok(secoes.length === 33, 'a página ' + v.id + ' tem 33 slides (' + secoes.length + ')');
+  ok(secoes.length === 35, 'a página ' + v.id + ' tem 35 slides (' + secoes.length + ')');
   ok(v.opcionais.every(o => secoes[o.slide - 1] && secoes[o.slide - 1].includes('data-opcional="' + o.id + '"')), 'em ' + v.id + ', cada slide opcional do cadastro está marcado no slide certo (' + v.opcionais.map(o => o.id + '=' + o.slide).join(', ') + ')');
   ok(marcados.length === v.opcionais.length && marcados.every(id => v.opcionais.some(o => o.id === id)), 'em ' + v.id + ', nenhum data-opcional fica fora do cadastro (' + marcados.join(', ') + ')');
-  ok(v.opcionais.every(o => /^[a-z0-9-]+$/.test(o.id) && o.slide >= 1 && o.slide <= 33 && o.rotulo && o.ajuda), 'em ' + v.id + ', os opcionais têm id simples, slide de 1 a 33, rótulo e ajuda');
+  ok(v.opcionais.every(o => /^[a-z0-9-]+$/.test(o.id) && o.slide >= 1 && o.slide <= 35 && o.rotulo && o.ajuda), 'em ' + v.id + ', os opcionais têm id simples, slide de 1 a 35, rótulo e ajuda');
 }
 
 const s = await sobe({ deck: true });
@@ -141,34 +141,34 @@ try {
   // C2. o slide tirado da sequência: as setas passam direto, o salto direto continua valendo
   const nSlide = h => parseInt(String(h).replace('#', ''), 10);
   const tp = await cria({ pular: 'leva' }), tn = await cria({});
-  const Pu = await nav.aba(s.deck + '/?a=' + tp + '#24', { largura: 1920, altura: 1080 });
+  const Pu = await nav.aba(s.deck + '/?a=' + tp + '#26', { largura: 1920, altura: 1080 });
   await Pu.ate("document.querySelectorAll('#stage > .slide.active').length === 1 && document.querySelector('[data-opcional]') && (window.getComputedStyle(document.querySelector('#viewport')).visibility !== 'hidden')");
   await espera(800);
-  ok(nSlide(await anda(Pu, 'ArrowRight')) === 26, 'principal com o 25 tirado: do 24, a seta pra frente vai pro 26');
-  ok(nSlide(await anda(Pu, 'ArrowLeft')) === 24, 'e a seta pra trás, do 26, volta pro 24');
-  await Pu.avalia("location.hash = '#25'; 1"); await espera(500);
-  ok(await Pu.avalia("document.querySelector('#stage > .slide.active').dataset.opcional === 'leva'"), 'ir direto ao 25 (hash) ainda abre o slide: é a saída quando a família pergunta');
-  ok(nSlide(await anda(Pu, 'ArrowRight')) === 26, 'e dali a seta pra frente segue pro 26');
-  const Pn = await nav.aba(s.deck + '/?a=' + tn + '#24', { largura: 1920, altura: 1080 });
+  ok(nSlide(await anda(Pu, 'ArrowRight')) === 28, 'principal com o 27 tirado: do 26, a seta pra frente vai pro 28');
+  ok(nSlide(await anda(Pu, 'ArrowLeft')) === 26, 'e a seta pra trás, do 28, volta pro 26');
+  await Pu.avalia("location.hash = '#27'; 1"); await espera(500);
+  ok(await Pu.avalia("document.querySelector('#stage > .slide.active').dataset.opcional === 'leva'"), 'ir direto ao 27 (hash) ainda abre o slide: é a saída quando a família pergunta');
+  ok(nSlide(await anda(Pu, 'ArrowRight')) === 28, 'e dali a seta pra frente segue pro 28');
+  const Pn = await nav.aba(s.deck + '/?a=' + tn + '#26', { largura: 1920, altura: 1080 });
   await Pn.ate("document.querySelectorAll('#stage > .slide.active').length === 1");
   await espera(800);
-  ok(nSlide(await anda(Pn, 'ArrowRight')) === 25, 'sem nada tirado, do 24 a seta vai pro 25 (o padrão não mudou)');
+  ok(nSlide(await anda(Pn, 'ArrowRight')) === 27, 'sem nada tirado, do 26 a seta vai pro 27 (o padrão não mudou)');
   // na técnica também
   const tt = await cria({ versao: 'tecnica', pular: 'leva' });
-  const Tt = await nav.aba(s.deck + '/?a=' + tt + '#24', { largura: 1920, altura: 1080 });
+  const Tt = await nav.aba(s.deck + '/?a=' + tt + '#26', { largura: 1920, altura: 1080 });
   await Tt.ate("location.pathname === '/variacoes/tecnica/' && document.querySelectorAll('#stage > .slide.active').length === 1", 15000);
   await espera(800);
-  ok(nSlide(await anda(Tt, 'ArrowRight')) === 26, 'na versão técnica, com o 25 tirado, do 24 a seta vai pro 26');
+  ok(nSlide(await anda(Tt, 'ArrowRight')) === 28, 'na versão técnica, com o 27 tirado, do 26 a seta vai pro 28');
   // o apresentador: o "Próximo" pula o tirado
-  const Ap = await nav.aba(s.deck + '/?a=' + tp + '&presenter#24');
+  const Ap = await nav.aba(s.deck + '/?a=' + tp + '&presenter#26');
   await Ap.ate("document.querySelector('#pz-next') && document.querySelector('#pz-next .mini .slide, #pz-next .mini [class]')");
   await espera(800);
   const proxTxt = await Ap.avalia("(document.querySelector('#pz-next .counter') || {}).textContent || ''");
-  ok(/^26\b/.test(proxTxt.trim()), 'no apresentador, a miniatura do Próximo é o 26 (o 25 está fora da sequência): "' + proxTxt.trim() + '"');
+  ok(/^28\b/.test(proxTxt.trim()), 'no apresentador, a miniatura do Próximo é o 28 (o 27 está fora da sequência): "' + proxTxt.trim() + '"');
   // a visão geral marca o slide tirado
   await Pu.avalia("location.hash = '#1'; 1"); await espera(300);
   await tecla(Pu, 'g'); await espera(600);
-  ok(await Pu.avalia("(() => { const it = document.querySelectorAll('#ov-grid .ov-item')[24]; return !!it && it.style.opacity === '0.4'; })()"), 'a visão geral deixa o 25 apagado (fora da sequência) e o 24 normal');
+  ok(await Pu.avalia("(() => { const it = document.querySelectorAll('#ov-grid .ov-item')[26]; return !!it && it.style.opacity === '0.4'; })()"), 'a visão geral deixa o 27 apagado (fora da sequência) e o 26 normal');
 
   // C3. o nome na tela
   const NOMES = [['', 'Lucas Silva'], ['primeiro-sobrenome', 'Lucas Almeida'], ['so-nome', 'Lucas']];
@@ -243,8 +243,8 @@ try {
   await poe('nomeTela', 'primeiro-sobrenome');
   await P.avalia("document.querySelector('#opcionais-lista input[value=leva]').click(); 1");
   ok(await P.avalia("!document.querySelector('#opcionais-lista input[value=leva]').checked && document.querySelector('#ed-salvo').classList.contains('sujo')"), 'desmarcar o slide conta como mudança não salva');
-  await P.avalia("document.querySelector('#ed-salvar').click(); 1");
-  ok(await P.ate("/^#\\/r2\\/[a-z2-7]{26}$/.test(location.hash) && !document.querySelector('#s-link').hidden"), 'salva: o R2 nasce e o endereço vira #/r2/<código>');
+  await P.avalia("document.querySelector('#bt-gerar-link').click(); 1");
+  ok(await P.ate("/^#\\/r2\\/[a-z2-7]{26}$/.test(location.hash) && !document.querySelector('#s-link').hidden"), 'Gerar link do R2: o R2 nasce e o endereço vira #/r2/<código>');
   const tU = (await P.avalia('location.hash')).slice(5);
   const reg = (await le(tU)).registro.ficha;
   ok(reg.versao === 'tecnica' && reg.nomeTela === 'primeiro-sobrenome' && reg.pular === 'leva', 'o R2 criado pela tela grava a versão técnica, o primeiro sobrenome e o "leva" tirado');

@@ -58,7 +58,7 @@
       "crm": [
         "Se a família achava que precisava ser craque pra chegar, com as palavras dela."
       ],
-      "atencao": "O radar é ILUSTRATIVO, com valores fictícios (a tela diz isso): não é do atleta e não tem nome, nota nem percentual. \"Encaixe\" é a ideia, não um fato sobre um clube: nunca diga que um clube específico procura o [atleta], que existe vaga, nem prometa clube, prazo ou contrato; diga \"clubes que procuram esse perfil\" e \"quem decide é o clube\". O Neymar é só contraste: não compare o [atleta] a nenhum jogador nem diga que ele \"pode chegar lá\". Não use \"certo\" como garantia (\"o clube certo\"). Complementa o slide \"O seu lugar em campo\": lá o atleta se vê no campo, aqui o perfil dele encontra o que o clube procura. Slide opcional (painel)."
+      "atencao": "O radar é ILUSTRATIVO, com valores fictícios, e a tela não diz mais isso (pedido do dono, 18/10/2026; se perguntarem, é um exemplo): não é do atleta e não tem nome, nota nem percentual. \"Encaixe\" é a ideia, não um fato sobre um clube: nunca diga que um clube específico procura o [atleta], que existe vaga, nem prometa clube, prazo ou contrato; diga \"clubes que procuram esse perfil\" e \"quem decide é o clube\". O Neymar é só contraste: não compare o [atleta] a nenhum jogador nem diga que ele \"pode chegar lá\". Não use \"certo\" como garantia (\"o clube certo\"). Complementa o slide \"O seu lugar em campo\": lá o atleta se vê no campo, aqui o perfil dele encontra o que o clube procura. Slide opcional (painel)."
     },
     "bloco-registro": {
       "nome": "326 atletas enviados",

@@ -14,7 +14,7 @@ O R2 anterior tem a variação `/variacoes/acompanhamento/`: Scout PRO por R$247
 
 Nessa variação, o R2 preenche a seção **Dossiê do atleta e clubes compatíveis** antes da call: categoria, leitura do perfil, prioridade, nota geral e indicadores opcionais, além de até três clubes com liga, posição, categoria, motivo do encaixe e percentual opcional. Os números vão de 0 a 100 e devem vir do relatório preparado do Zyron. Campos vazios não ganham valores de exemplo.
 
-Em todos os decks, a foto autorizada aparece no slide 02 (a escolha do jogador) e nos quadros de foto que o deck tem: a capa com o “Montado para”, o cartão do atleta, os planos, a garantia e o Bem-vindo, conforme o deck (desde 18/10/2026; de 13 a 17/10 ficava só no slide 02 e os outros quadros mostravam uma inicial solta). Com a foto fora da tela no painel, ou sem foto, os quadros mostram as iniciais do nome e sobrenome (Carlos Eduardo Souza vira CS). Todos os campos da ficha são opcionais: é possível gerar o link vazio e adicionar a foto diretamente no painel antes de preencher qualquer dado. Sem imagem, o slide usa iniciais; sem nome, usa uma chamada genérica.
+Em todos os decks, a foto autorizada aparece no slide 02 (a escolha do jogador) e nos quadros de foto que o deck tem: a capa com o “Montado para”, o cartão do atleta, os planos, a garantia e o Bem-vindo, conforme o deck (desde 18/10/2026; de 13 a 17/10 ficava só no slide 02 e os outros quadros mostravam uma inicial solta). Com a foto fora da tela no painel, ou sem foto, os quadros mostram as iniciais do nome e sobrenome (Carlos Eduardo Souza vira CS). Todos os campos da ficha são opcionais: dá pra salvar o rascunho vazio, subir a foto direto no painel e gerar o link só no fim (desde 18/10/2026, o link só existe depois de "Gerar link da apresentação"). Sem imagem, o slide usa iniciais; sem nome, usa uma chamada genérica.
 
 O plano de entrada agora se chama **Scout PRO** e inclui os **sete módulos de formação**, com um slide dedicado em todas as páginas. A análise do Zyron, a formação e o acompanhamento humano são apresentados com seus respectivos papéis; as entregas humanas seguem o plano escolhido. Os preços foram preservados.
 
@@ -41,12 +41,26 @@ A auditoria de regras da casa (texto de 24 px ou mais, nada fora do palco, texto
 
 ## Nome, foto, validade e Gerados (18/10/2026)
 
-- **Nome e sobrenome em todos os decks.** O R2 anterior (principal, técnica e Acompanhamento) usa a mesma regra do R2 novo: a tela mostra nome e sobrenome (Lucas Almeida da Silva vira Lucas Silva) e segue a escolha "Nome na tela" e o apelido do painel; a fala do apresentador continua com o primeiro nome. As placas ("Montado para", "Apresentação preparada para") são sempre nome e sobrenome, inclusive no R1, que segue chamando pelo primeiro nome nas frases. O código do dossiê é o mesmo em todos os slides (8 caracteres).
-- **A capa da Acompanhamento** mostra a foto, "Montado para", o nome e sobrenome e "Dossiê nº". Era ali o "Montado para Carlos Nº ..." com um "C" no lugar da foto.
+- **Nome e sobrenome em todos os decks.** O R2 anterior (principal, técnica e Acompanhamento) usa a mesma regra do R2 novo: a tela mostra nome e sobrenome (Lucas Almeida da Silva vira Lucas Silva) e segue a escolha "Nome na tela" e o apelido do painel; a fala do apresentador continua com o primeiro nome. As placas ("Montado para", "Apresentação preparada para") são sempre nome e sobrenome, inclusive no R1, que segue chamando pelo primeiro nome nas frases. (Na segunda rodada do mesmo dia, o código do dossiê saiu da tela: nenhum slide mostra mais "Nº" nem código do link.)
+- **A capa da Acompanhamento** mostra a foto, "Montado para" e o nome e sobrenome (o "Dossiê nº" saiu na segunda rodada). Era ali o "Montado para Carlos Nº ..." com um "C" no lugar da foto.
 - **Validade escolhida.** No editor, a seção "Validade do link" tem atalhos (2 h depois da call, no fim do dia da call, 1 dia depois da call, em 24 horas, 3, 7 ou 30 dias) e o dia e a hora à mão, de 1 minuto a 60 dias. Escolhida, a validade não segue mais o dia da call; "Automática" volta pra regra da casa. Vale também na hora de gerar. A caixa "apagar tudo quando o link expirar" deixa a limpeza diária (6h) apagar o lead vencido. Rotas: `POST /api/atletas` com `link: { venceEm, apagarAoVencer }` e `POST /api/link?acao=validade`.
 - **Link vencido ou revogado** mostra "Este link não está mais ativo" em todos os decks (o R2 anterior e o R1 antes seguiam com a ficha guardada no navegador). Com a apresentação aberta, ao voltar pra aba do deck, ele busca o painel de novo (nome, foto, validade).
 - **Gerados.** Aba nova no painel com tudo o que foi gerado, o espaço de cada um (ficha, foto e vídeo), filtros (apresentados, expirados ou revogados, ainda não apresentados), "Marcar como apresentado" e exclusão um por um ou em lote (`DELETE /api/atletas` com `{ ts }`, até 50 por pedido). O closer vê os dele; o admin, os de todos.
 - Teste: `testes/teste-validade-gerados.mjs` (74 verificações).
+
+## Dossiê do atleta, inimigo em comum e link no fim (18/10/2026, segunda rodada)
+
+- **O link só nasce no fim.** Salvar no editor guarda um rascunho: a lista mostra "Em preparo · sem link" e a família não acha nada pelo código (a `/api/r2`, a `/api/publico`, a foto, o vídeo e o mapa respondem como se o código não existisse). O link passa a existir no botão "Gerar link da apresentação", no fim do editor (`POST /api/link?acao=gerar`). Enquanto é rascunho, a prévia do painel e o "Abrir" usam uma chave de 3 horas (`&p=`), que os quatro decks repassam em todo pedido ao painel (`FotoAtleta.comChave`).
+- **Fora da tela:** o número do dossiê ("Nº XXXXXXXX", o código do link) e os avisos de "ilustrativo" ("Tela ilustrativa", "Formação ilustrativa", "Ilustração com valores fictícios"). As notas do apresentador que diziam "a tela diz isso" agora dizem que quem fala é o closer.
+- **Campos novos no painel:** onde ele joga hoje e categoria (R1 e R2), "Tenho o vídeo do jogador" (o vídeo que a IA analisou, pela mesma rota do vídeo, e o mapa de calor, em `PUT /api/foto` com `{ mapa }`, guardado em `mapas/<código>/`), oportunidades (até 6 clubes, cada um com um detalhe opcional; na ficha, `Clube~detalhe|Clube~detalhe`) e as peneiras (quantas, quanto gastaram e há quantos anos).
+- **Dois slides novos logo depois da IA na Prática**, nos três decks do R2 (sete páginas; o R1 não muda): o **dossiê do atleta** (o nome em cima da foto e os dados embaixo, o vídeo analisado no centro com o mapa de calor embaixo, as oportunidades e o plano de carreira à direita) e o **inimigo em comum** (o avaliador que olha 22 em vinte minutos, "em algum time, alguém precisa de um jogador exatamente como você", o campo com a luz do avaliador e o quadro "O preço de procurar no escuro" com os números da família, que contam do zero quando o slide entra). O dossiê só aparece com vídeo, mapa ou oportunidades; sem nada disso, as setas passam direto (`data-so-se`). Com o vídeo analisado e sem lances marcados, a IA na Prática vira a ponte (a leitura ao vivo de sempre) e o vídeo entra no dossiê. O código e o estilo moram em `assets/dossie-atleta.js` e `assets/dossie-atleta.css`, iguais nos três decks.
+
+| Deck | Slides | Dossiê e inimigo | O que andou |
+| --- | --- | --- | --- |
+| R2 novo e R2 B (principal e técnica) | 35 (eram 33) | 18 e 19 | do 18 ao 33 de antes, duas casas: os opcionais do bloco viraram 24, 25 e 26, o "leva" 27 e o Bem-vindo 35 |
+| R2 anterior (principal, técnica e Acompanhamento) | 32 (eram 30) | 16 e 17 (origens 107 e 108 no roteiro) | do 16 em diante, duas casas (o roteiro troca os números sozinho, pela origem) |
+
+- Teste: `testes/teste-dossie-inimigo.mjs` (os dois slides nas sete páginas, a sequência que pula o dossiê vazio, o vídeo, o mapa e as oportunidades vindos do painel, a contagem e a prévia com a chave) e `testes/teste-rascunho-link.mjs` (o rascunho, a chave da prévia e o "Gerar link").
 
 ## Testar
 
@@ -62,6 +76,8 @@ node testes/teste-etapas.mjs
 node testes/teste-etapas-telas.mjs
 node testes/teste-bloco.mjs
 node testes/teste-validade-gerados.mjs
+node testes/teste-dossie-inimigo.mjs
+node testes/teste-rascunho-link.mjs
 node testes/teste-igualdade.mjs
 ```
 
