@@ -829,7 +829,7 @@
     $('#ex-call').textContent = f.r2data || f.r2hm ? (r1 ? 'No slide 20: R2 de ' : 'Na capa: Call de ') + callTxt(f.r2data, f.r2hm) + '.' : '';
     $$('.so-legacy').forEach(el => el.classList.toggle('fora', f.plano !== R.LEGACY));
     // seções que só existem com o lead criado (e a leitura, só no R2)
-    ['#s-hist', '#s-perigo'].forEach(x => { $(x).hidden = novo; });
+    ['#s-hist', '#s-perigo', '#ed-lixeira'].forEach(x => { $(x).hidden = novo; });
     $('#s-link').hidden = !gerado; $('#s-gerar').hidden = gerado;
     desenhaFoto(); desenhaVideo(); desenhaChecklist(); desenhaLink(); desenhaValidade(); desenhaHistorico();
   }
@@ -1045,16 +1045,19 @@
     try { const j = await ocupado(e.currentTarget, () => api('atletas?t=' + ed.t, { metodo: 'PUT', dados: { dono: login } })); recebe(Object.assign(j, { emCall: ed.emCall }), false); aviso('Dono trocado.'); }
     catch (err) { aviso(err.message, true); }
   });
-  $('#bt-apagar-tudo').addEventListener('click', async e => {
+  // apagar o lead aberto (o botão da seção Apagar e a lixeira ao lado do "Meus leads"): pede confirmação, apaga em cascata e volta pra lista
+  const apagaLeadAberto = async bt => {
     const nome = (ed.reg && ed.reg.ficha && ed.reg.ficha.nome) || 'este atleta';
     if (!confirm('Apagar tudo do ' + nomeEtapa(etapaEd()) + ' de ' + nome + '? Foto, vídeo, leitura e ficha somem, e o link para de funcionar. Não dá pra desfazer.')) return;
     try {
-      await ocupado(e.currentTarget, () => api('atletas?t=' + ed.t, { metodo: 'DELETE' }));
+      await ocupado(bt, () => api('atletas?t=' + ed.t, { metodo: 'DELETE' }));
       ed.sujo = false;
       aviso(nomeEtapa(etapaEd()) + ' apagado.');
       location.hash = '#/';
     } catch (err) { aviso(err.message, true); }
-  });
+  };
+  $('#bt-apagar-tudo').addEventListener('click', e => apagaLeadAberto(e.currentTarget));
+  $('#ed-lixeira').addEventListener('click', e => apagaLeadAberto(e.currentTarget));
   /* ---------------- validade do link: quem monta escolhe quando o link expira ----------------
      Atalhos (2 h depois da call, no fim do dia da call, em 24 horas...) ou o dia e a hora à mão, de 1 minuto a 60 dias a partir de agora.
      Escolhida, a validade não segue mais o dia da call; "Automática" volta pra regra da casa (7 dias depois da call). Lead já gerado: vale na

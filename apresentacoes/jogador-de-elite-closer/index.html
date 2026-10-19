@@ -160,7 +160,10 @@
   <div id="v-editor" hidden>
     <div class="ed-barra">
       <div class="wrap ed-barra-in">
-        <a class="bt fantasma" href="#/" id="ed-voltar">← Meus R2</a>
+        <div class="ed-voltar-grupo">
+          <a class="bt fantasma" href="#/" id="ed-voltar">← Meus R2</a>
+          <button class="bt lixeira" type="button" id="ed-lixeira" hidden title="Apagar este lead" aria-label="Apagar este lead (ficha, foto, vídeo e link)"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4.5h6V7M6.5 7l.9 12.5h9.2L17.5 7M10 11v5.5M14 11v5.5"/></svg></button>
+        </div>
         <div class="ed-nome"><h1 class="titulo" id="ed-titulo">Novo R2</h1><span class="chip" id="ed-estado"></span><span class="ed-salvo" id="ed-salvo"></span></div>
         <button class="bt ouro" type="button" id="ed-salvar">Salvar</button>
       </div>
@@ -236,7 +239,7 @@
             <label class="campo"><span>Onde joga hoje</span><input class="in" name="clubeAtual" maxlength="60" placeholder="Ex.: Sub-17 do América de Natal"></label>
             <label class="campo"><span>Categoria</span><select class="in" name="categoria"><option value="">escolha</option></select></label>
           </div>
-          <p class="nota">Quem tiver os dados preenche (o SDR no R1, o closer no R2): tudo o que entra aqui vai pro dossiê do atleta na apresentação. Campo vazio não aparece.</p>
+          <p class="nota" data-r1="Aqui no R1, o que aparece na tela é a posição, a idade e a cidade (slide 02). Pé, altura, categoria e onde joga ficam guardados e vão pro closer quando ele importar este R1: no R2 entram no dossiê do atleta.">Quem tiver os dados preenche (o SDR no R1, o closer no R2): tudo o que entra aqui vai pro dossiê do atleta na apresentação. Campo vazio não aparece.</p>
         </section>
 
         <section class="sec" id="s-origem">

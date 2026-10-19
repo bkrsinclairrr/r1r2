@@ -118,6 +118,9 @@ nav.abas{display:flex;gap:6px;margin:20px 0 16px;flex-wrap:wrap}
 
 /* editor */
 .ed-barra{position:sticky;top:64px;z-index:20;background:rgba(7,8,10,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.ed-voltar-grupo{display:flex;align-items:center;gap:8px}
+.bt.lixeira{min-width:44px;padding:0 12px;color:var(--muted)}
+.bt.lixeira:hover,.bt.lixeira:focus-visible{color:var(--red);border-color:rgba(240,138,126,.45);background:rgba(240,138,126,.08)}
 .ed-barra-in{display:flex;align-items:center;gap:14px;min-height:68px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
 .ed-nome{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-right:auto;min-width:0}
 .ed-nome .titulo{font-size:30px;overflow-wrap:anywhere}

@@ -99,6 +99,17 @@ try {
   const reg = (await admin.get('/api/atletas?t=' + tp)).j.registro;
   ok(reg.linkGerado !== false && reg.ficha.oportunidades === 'Ferroviária~Série C|Benfica' && reg.ficha.peneirasFeitas === '6' && reg.ficha.gastoPeneiras === '4800', 'o que estava no editor foi junto (' + reg.ficha.oportunidades + ')');
   ok((await pub.get('/api/r2?t=' + tp)).j.estado === 'ok', 'gerado: a família acha');
+  // a lixeira ao lado do "Meus leads": some no lead novo; no lead salvo apaga tudo (com a confirmação) e volta pra lista
+  ok(!(await P.avalia("document.querySelector('#ed-lixeira').hidden")), 'a lixeira aparece no lead salvo');
+  P.dialogo.aceita = false;
+  await P.avalia("document.querySelector('#ed-lixeira').click(); 1"); await espera(700);
+  ok(P.dialogo.ultimos.some(m => /Apagar tudo/.test(m)) && (await P.avalia('location.hash')) === '#/r2/' + tp && (await admin.get('/api/atletas?t=' + tp)).status === 200, 'a lixeira pergunta antes; dizendo não, nada é apagado');
+  P.dialogo.aceita = true;
+  await P.avalia("document.querySelector('#ed-lixeira').click(); 1");
+  ok(await P.ate("location.hash === '#/'", 10000) && (await admin.get('/api/atletas?t=' + tp)).status === 404, 'confirmando, o lead some do painel e a tela volta pra lista');
+  ok((await pub.get('/api/r2?t=' + tp)).status === 404, 'e o link dele para de funcionar');
+  await P.avalia("location.hash = '#/novo'; 1"); await P.ate("!document.querySelector('#v-editor').hidden");
+  ok(await P.avalia("document.querySelector('#ed-lixeira').hidden"), 'num lead novo (ainda não salvo), a lixeira não aparece');
   P.fecha();
 } finally {
   await nav.fecha();
