@@ -218,7 +218,7 @@
     // o tempo (slide 27, o que ele leva): o que a casa controla, nos prazos da lista fixa
     const comeca = s => (s ? s[0].toUpperCase() + s.slice(1) : '');
     d.tempoContato = (comeca(d.prazoContato) || 'Confirmado') + ', ' + (planoDe(ficha.plano) && planoDe(ficha.plano).id === 'legacy' ? 'o gerente de carreira' : 'a equipe') + ' entra em contato.';
-    d.tempoZyron = (comeca(d.prazoZyron) || 'Em seguida') + ', o Zyron começa.';
+    d.tempoZyron = (comeca(d.prazoZyron) || 'Imediatamente') + ', o Zyron começa.';
     const idade = parseInt(str(ficha.idade), 10);
     d.idade = Number.isFinite(idade) ? String(idade) : '';
     d.idadeMais1 = Number.isFinite(idade) ? String(idade + 1) : '';

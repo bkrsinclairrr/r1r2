@@ -193,8 +193,9 @@
     d.planoExtras = Array.isArray(pl.extras) && pl.extras.length ? '1' : '';
     // cada plano, pra matriz do 23 e o tripé do 05: data-bind="pro.descritor", "legacy.ritmo", "scouting.passo"...
     PLANOS.forEach(p => ['nome', 'curto', 'descritor', 'ritmo', 'preco', 'parcela', 'passo'].forEach(k => { d[p.id + '.' + k] = str(p[k]); }));
-    // o rótulo da parte de cada plano no 23: o primeiro degrau tem tudo, vitalício; os outros, tudo do degrau de baixo, mais
-    PLANOS.forEach((p, i) => { d[p.id + '.mais'] = i ? 'Tudo ' + doPlano(PLANOS[i - 1]) + ', mais' : 'Vitalício, você tem'; });
+    // o rótulo da parte de cada plano no 23: o primeiro degrau tem tudo, vitalício; os outros, tudo do degrau de baixo, mais.
+    // Uma página pode trocar o rótulo pelo do plano (p.mais; vazio = sem rótulo), como o CL0
+    PLANOS.forEach((p, i) => { d[p.id + '.mais'] = typeof p.mais === 'string' ? p.mais : i ? 'Tudo ' + doPlano(PLANOS[i - 1]) + ', mais' : 'Vitalício, você tem'; });
     if (window.R2_PERSONAL) Object.assign(d, window.R2_PERSONAL.derivados(ficha, d, aid, painelDoLead));
     if (window.FotoAtleta) Object.assign(d, window.FotoAtleta.derivados(ficha, d, AID, painelDoLead));
     // o dossiê do atleta e o inimigo em comum (logo depois da IA na Prática): dossie-atleta.js
@@ -384,8 +385,8 @@
     // a parte de cada plano no 23: [cargo, benefício], só o que ele acrescenta ao degrau de baixo
     qsa('[data-plano-vantagens]', root).forEach(e => {
       const p = porId(e.dataset.planoVantagens), v = p && Array.isArray(p.vantagens) ? p.vantagens : [];
-      // [cargo, benefício, chave]: com chave, a linha só aparece se o plano tiver a chave (ex.: turma, P5)
-      e.innerHTML = v.filter(([, , k]) => !k || !!p[k]).map(([c, t]) => '<p><b>' + comZyron(str(c)) + ':</b> ' + comZyron(str(t)) + '</p>').join('');
+      // [cargo, benefício, chave]: com chave, a linha só aparece se o plano tiver a chave (ex.: turma, P5); cargo vazio, só o benefício
+      e.innerHTML = v.filter(([, , k]) => !k || !!p[k]).map(([c, t]) => '<p>' + (str(c) ? '<b>' + comZyron(str(c)) + ':</b> ' : '') + comZyron(str(t)) + '</p>').join('');
     });
     qsa('[data-plano-campo]', root).forEach(e => { e.innerHTML = comZyron(atual ? str(atual[e.dataset.planoCampo]) : ''); });
     qsa('[data-plano-lista]', root).forEach(e => {
@@ -1064,7 +1065,7 @@
       ]],
       ['Equipe', [
         ['gestor', 'Seu nome (Gestor)', 'text', 'Só na mensagem de confirmação'], ['gerente', 'Gerente de carreira', 'text'], ['analista', 'Analista de performance', 'text'],
-        ['prazoContato', 'Quando o gerente entra em contato', 'text', 'Só o que a operação cumpre. Ex.: ainda hoje'], ['prazoZyron', 'Quando o Zyron começa', 'text', 'Ex.: no dia seguinte']
+        ['prazoContato', 'Quando o gerente entra em contato', 'text', 'Só o que a operação cumpre. Ex.: ainda hoje'], ['prazoZyron', 'Quando o Zyron começa', 'text', 'Ex.: imediatamente']
       ]],
       ['Caso espelho (na apresentação da AGN)', [
         ['casoNome', 'Atleta nosso com o mesmo perfil', 'text', 'O "ele me lembra muito você". Só caso real: tabela do CASOS.md ou publicado na AGN. Vazio: o quadro fica fora da apresentação da AGN'],

@@ -266,14 +266,18 @@
             <div class="vd-parte">
               <p class="vd-k">O vídeo que a IA analisou</p>
               <p class="vd-estado" id="va-info">Nenhum vídeo enviado ainda.</p>
-              <div class="acoes"><button class="bt ouro" type="button" id="va-enviar">Enviar o vídeo analisado</button><button class="bt" type="button" id="va-lances" hidden>Marcar lances (opcional)</button></div>
-              <small class="dica">mp4 de preferência, até 5 minutos e 250 MB, com a autorização do responsável. O vídeo vale 90 dias.</small>
+              <div class="acoes"><button class="bt ouro" type="button" id="va-enviar">Enviar o vídeo analisado</button><button class="bt" type="button" id="va-lances" hidden>Marcar lances (opcional)</button><button class="bt" type="button" id="va-renovar" hidden>Renovar por 24 h</button></div>
+              <small class="dica">mp4 de preferência, de qualquer tamanho e duração, com a autorização do responsável. O vídeo fica no ar 24 horas depois do envio e depois é apagado (dá pra renovar por mais 24 horas).</small>
             </div>
             <div class="vd-parte">
               <p class="vd-k">Mapa de calor (fica embaixo do vídeo)</p>
-              <div class="mc-atual" id="mc-atual" hidden><img id="mc-img" alt="Mapa de calor do atleta"><div class="acoes"><button class="bt" type="button" id="mc-trocar">Trocar</button><button class="bt perigo" type="button" id="mc-apagar">Apagar</button></div></div>
-              <div class="acoes" id="mc-zona"><button class="bt" type="button" id="mc-escolher">Escolher o mapa de calor</button><input type="file" id="mc-arquivo" accept="image/*" hidden></div>
-              <small class="dica">A imagem do mapa de calor do jogo dele (PNG ou JPG). Aparece embaixo do vídeo, no mesmo slide.</small>
+              <input type="hidden" name="mapaCalor">
+              <div class="mc-atual" id="mc-atual" hidden><img id="mc-img" alt="Mapa de calor enviado como imagem"><div><p class="dica" style="margin:0 0 8px">Este lead tem um mapa enviado como imagem (antes de 20/10). Ele segue no slide até você trocar por um da lista.</p><div class="acoes"><button class="bt" type="button" id="mc-trocar">Trocar por um da lista</button></div></div></div>
+              <div class="mc-escolha" id="mc-escolha">
+                <div class="mc-grade" id="mc-grade" role="radiogroup" aria-label="Mapa de calor da posição"></div>
+                <div class="mc-previa" id="mc-previa" aria-live="polite"></div>
+              </div>
+              <small class="dica">É o mapa típico da posição, não o do jogo dele: o slide diz "onde atua um zagueiro". A posição da ficha vem sugerida; clique noutro pra trocar, ou em "Sem mapa".</small>
               <p class="erro" id="mc-erro" role="alert"></p>
             </div>
           </div>
@@ -304,10 +308,10 @@
         <section class="sec" id="s-call">
           <h2 class="label" id="call-titulo">A call</h2>
           <div class="grade">
-            <label class="campo"><span>Dia <b>*</b></span><input class="in" name="r2data" type="date"></label>
-            <label class="campo"><span>Hora <b>*</b></span><input class="in" name="r2hm" type="time" step="300"></label>
+            <label class="campo"><span>Dia</span><input class="in" name="r2data" type="date"></label>
+            <label class="campo"><span>Hora</span><input class="in" name="r2hm" type="time" step="300"></label>
             <p class="exemplo largo" id="ex-call"></p><small class="largo" id="call-r1" hidden>A R2 que ficou marcada com o closer: o R1 mostra o dia e a hora no slide 20.</small>
-            <label class="campo largo" data-so="r2"><span>Plano que vai recomendar <b>*</b></span><select class="in" name="plano"><option value="">escolha</option></select><small>A tela destaca este plano no slide dos planos e no Bem-vindo. Turma e vagas só aparecem no Legacy.</small></label>
+            <label class="campo largo" data-so="r2"><span>Plano que vai recomendar</span><select class="in" name="plano"><option value="">escolha</option></select><small>A tela destaca este plano no slide dos planos e no Bem-vindo. Turma e vagas só aparecem no Legacy.</small></label>
             <label class="campo so-legacy"><span>Vagas restantes nesta turma</span><input class="in" name="vagas" type="number" inputmode="numeric" min="1" max="10"><small>Só o número real da semana, de 1 a 10.</small></label>
             <label class="campo so-legacy"><span>Próxima turma abre em</span><input class="in" name="proximaTurma" maxlength="40"></label>
             <label class="campo" data-so="r2"><span>Gerente de carreira</span><input class="in" name="gerente" maxlength="60"></label>
@@ -441,11 +445,12 @@
         <p class="lt-ok" id="lt-autorizado" hidden></p>
       </fieldset>
       <fieldset class="lt-passo off" id="lt-p2"><legend><span class="label">2 · Vídeo</span></legend>
-        <p class="nota">mp4 (H.264) de preferência, até 5 minutos e 250 MB. Vale só pra este atleta e some sozinho em <span id="lt-dias">90</span> dias.</p>
+        <p class="nota">mp4 (H.264) de preferência, de qualquer tamanho e duração. Vale só pra este atleta, fica no ar <span id="lt-horas">24</span> horas depois do envio e depois é apagado. Subiu na véspera da call? Renove por mais 24 horas.</p>
         <div class="lt-linha">
           <input type="file" id="lt-arquivo" accept="video/mp4,video/webm,video/quicktime" hidden>
           <button class="bt ouro" type="button" id="lt-escolher">Enviar vídeo</button>
           <button class="bt" type="button" id="lt-cancelar" hidden>Cancelar envio</button>
+          <button class="bt" type="button" id="lt-renovar" hidden>Renovar por 24 h</button>
           <button class="bt perigo" type="button" id="lt-apagar" hidden>Apagar vídeo e leitura</button>
         </div>
         <div id="lt-progresso" hidden><div class="lt-barra"><i id="lt-barra"></i></div><p class="lt-aviso" id="lt-progresso-txt"></p></div>
@@ -473,7 +478,7 @@
           <label class="campo"><span>Prioridades (até 3)</span><input class="in" maxlength="70" data-prior="0"><input class="in" maxlength="70" data-prior="1"><input class="in" maxlength="70" data-prior="2"></label>
           <div class="campo"><span>Quem fez a leitura</span>
             <div class="lt-escolha"><label><input type="radio" name="lt-origem" value="zyron"> Zyron</label><label><input type="radio" name="lt-origem" value="equipe"> Equipe</label></div>
-            <small>Escolha Zyron só se os lances e os textos vieram do Zyron. Se foram marcados à mão, escolha Equipe.</small></div>
+            <small>Escolha Zyron só se os lances e os textos vieram do Zyron. Se foram marcados à mão, escolha Equipe. Sem a fonte, o relatório não aparece no slide (o vídeo aparece).</small></div>
           <div class="campo"><span>Lances marcados</span>
             <div class="lt-escolha"><label><input type="radio" name="lt-criterio" value="todos"> Todos os lances em que ele participa</label><label><input type="radio" name="lt-criterio" value="selecao"> Uma seleção</label></div>
             <small>Vai escrito no rodapé do slide. Só marque "todos" se marcou todos mesmo.</small></div>
@@ -482,7 +487,7 @@
       <fieldset class="lt-passo off" id="lt-p5"><legend><span class="label">5 · Capa, prévia e JSON (opcional)</span></legend>
         <div class="lt-poster">
           <img id="lt-poster-img" alt="Quadro de capa do vídeo" hidden>
-          <div><button class="bt" type="button" id="lt-poster">Usar o quadro de agora como capa</button><p class="lt-teclas">Pause o vídeo no quadro que você quer. Ele vira a capa do slide 17 e, sem foto do atleta, a capa do deck.</p></div>
+          <div><button class="bt" type="button" id="lt-poster">Usar o quadro de agora como capa</button><p class="lt-teclas">A capa sai sozinha de um quadro do começo do vídeo. Pra outra, pause no quadro que você quer e clique: ela vira a capa do slide 17 e, sem foto do atleta, a capa do deck.</p></div>
         </div>
         <div class="lt-linha" style="margin-top:12px">
           <button class="bt" type="button" id="lt-ver">Ver relatório</button>
@@ -501,6 +506,8 @@
 <div id="aviso" role="status" aria-live="polite"></div>
 
 <script src="/regras.js"></script>
+<!-- os mapas de calor por posição (cópia idêntica de assets/mapa-calor.js dos três decks do R2) -->
+<script src="/mapa-calor.js"></script>
 <!-- o mesmo componente do relatório do slide 17 do R2 (cópia idêntica de jogador-de-elite-r2-novo/assets/relatorio-leitura.js) -->
 <script src="/relatorio-leitura.js"></script>
 <script src="/painel.js"></script>

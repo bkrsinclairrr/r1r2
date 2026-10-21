@@ -263,12 +263,11 @@
     { nome: 'O que ele leva', min: 1.5,
       fala: [
         'Ponte, sem enfeite: "Antes do valor, numa tela só, o que entra pro [atleta] a partir de hoje." Um avanço por linha.',
-        'Leia cada linha uma vez, como está na tela, sem adjetivo: IA, gente, conexões, oportunidades, tempo e garantia. Cada uma segue o plano da ficha; no Scout PRO, conexões e oportunidades começam na Assessoria PRO.',
+        'Leia cada linha uma vez, como está na tela, sem adjetivo: IA, gente, conexões, oportunidades e tempo. Cada uma segue o plano da ficha; no Scout PRO, conexões e oportunidades começam na Assessoria PRO.',
         'Tempo, com precisão: "O contato e o começo do Zyron são prazos que a equipe cumpre." Só no Legacy: "Em até 3 meses, mais de 93% dos nossos estão encaminhados a clubes. É referência dos atletas que a gente acompanha, não prazo de contrato."',
-        'Garantia: "Com [garantia], nos termos do contrato."',
-        'Calibração, pro [pai]: "Desses seis, qual é o gargalo dele hoje?" Espere. E siga pro valor.'
+        'Calibração, pro [pai]: "Desses cinco, qual é o gargalo dele hoje?" Espere. E siga pro valor.'
       ],
-      perguntas: ['Desses seis, qual é o gargalo dele hoje?'],
+      perguntas: ['Desses cinco, qual é o gargalo dele hoje?'],
       crm: ['O gargalo que o [pai] apontou, com as palavras dele.'],
       atencao: (PADRAO.find(r => r.nome === 'O que ele leva') || { atencao: '' }).atencao + ' Variação técnica: leia como inventário, não como vantagem. Família do meio desconfia de lista longa: uma frase por linha e siga.'
     },

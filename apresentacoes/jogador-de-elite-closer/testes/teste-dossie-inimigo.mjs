@@ -1,5 +1,5 @@
-// O dossiê do atleta e o inimigo em comum (18/10/2026): os dois slides logo depois da IA na Prática nas sete páginas do R2 (R2 novo e R2 B,
-// principal e técnica; R2 anterior, principal, técnica e Acompanhamento), com o painel e os decks locais e o driver de arquivo.
+// O dossiê do atleta e o inimigo em comum (18/10/2026): os dois slides logo depois da IA na Prática nas oito páginas do R2 (R2 novo e R2 B,
+// principal e técnica; R2 anterior, principal, técnica, Acompanhamento e CL0, desde 20/10/2026), com o painel e os decks locais e o driver de arquivo.
 // Confere: o vídeo analisado ("Tenho o vídeo do jogador"), o mapa de calor (PUT /api/foto { mapa }) e as oportunidades que vêm do painel;
 // o nome em cima da foto e os dados embaixo; a seta que pula o dossiê vazio; a IA na Prática que vira a ponte (vídeo sem lances); os números
 // das peneiras contando do zero; o roteiro do apresentador; e que nenhuma tela mostra mais o número do dossiê nem "ilustrativo".
@@ -37,7 +37,7 @@ try {
   const versoes = (await admin.get('/api/versoes')).j.versoes; // a primeira leitura sincroniza com os decks
   const PAGINAS = [
     ['principal', 35, 18], ['tecnica', 35, 18], ['r2b-principal', 35, 18], ['r2b-tecnica', 35, 18],
-    ['r2a-principal', 32, 16], ['r2a-tecnica', 32, 16], ['r2a-acompanhamento', 32, 16]
+    ['r2a-principal', 32, 16], ['r2a-tecnica', 32, 16], ['r2a-acompanhamento', 32, 16], ['r2a-cl0', 32, 16]
   ];
   const poeArquivo = (c, origem) => { const p = path.join(s.dados, ...c.split('/')); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.copyFileSync(origem, p); };
   async function sobeVideo(t) {

@@ -121,7 +121,7 @@ try {
 
   /* ---------- a ficha até "Pronto" ---------- */
   for (const [k, v] of [['posicao', 'zagueiro'], ['idade', '15'], ['cidade', 'Natal'], ['pe', 'Destro'], ['altura', '178'], ['origem', 'Zyron'], ['caracteristicas', 'leitura de jogo'],
-    ['sonho', 'jogar na Europa'], ['plano', 'Assessoria de Elite Legacy'], ['vagas', '4'], ['r2data', R2DATA], ['r2hm', '19:30'], ['gerente', 'Rafael'], ['prazoContato', 'ainda hoje'], ['prazoZyron', 'no dia seguinte']]) await poe(k, v);
+    ['sonho', 'jogar na Europa'], ['plano', 'Assessoria de Elite Legacy'], ['vagas', '4'], ['r2data', R2DATA], ['r2hm', '19:30'], ['gerente', 'Rafael'], ['prazoContato', 'ainda hoje'], ['prazoZyron', 'imediatamente']]) await poe(k, v);
   ok(/Reconhecida no campo: ZAG-d/.test(await P.avalia("document.querySelector('#selo-pos').textContent")), 'o selo da posição: "Reconhecida no campo: ZAG-d"');
   ok((await P.avalia("document.querySelector('#ex-call').textContent")) === 'Na capa: Call de ' + R2DIA + ' · 19h30.', 'a call formatada: ' + R2DIA + ' · 19h30');
   await P.avalia("document.querySelector('#c-conferido').click(); 1");

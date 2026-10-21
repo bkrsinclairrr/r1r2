@@ -1,6 +1,8 @@
 // Os leads de cada atleta, um registro por atleta (atletas/<t>.json), de uma etapa: R1 (o SDR) ou R2 (o closer). Precisa de login.
 // GET                 os leads do usuário (o admin vê todos com ?todos=1), com a etiqueta de cada um e a etapa. Com ?gerados=1 (a seção
-//                     Gerados), também o espaço que cada um ocupa na loja (espaco: { ficha, foto, video, total }, em bytes) e o total
+//                     Gerados), também o espaço que cada um ocupa na loja (espaco: { ficha, foto, video, total }, em bytes), o total e o espaço
+//                     de todos os vídeos juntos contra a guarda (videos: { usado, max }). A lista também roda, de vez em quando, a passada de
+//                     limpeza dos vídeos (no máximo uma vez por hora por instância)
 // GET ?t=             o registro inteiro, o link, a etiqueta, o checklist e a presença (dono ou admin)
 // POST                cria { ficha, etapa?, link?: { venceEm?, apagarAoVencer? } } e devolve { t, link, registro }; a personalização é opcional. A
 //                     etapa é a do papel: o SDR cria R1, o closer cria R2; o admin escolhe (R2 se não disser). Pedir a etapa de outro papel dá 403.
@@ -18,7 +20,7 @@
 import {
   exige, manda, corpo, limpaFicha, versaoInvalida, textoLimpo, grava, le, conflito, novoCodigo, caminho, caminhoChamada, leRegistro, mudaRegistro,
   quem, podeMexer, anota, venceDoLink, maisTarde, estadoGuardado, pacote, leVersoesCom, resumo, mudaIndice, poeNoIndice, leIndice, leTodosIndices,
-  emCallAgora, apagaTudo, apagaArquivos, tiraDosIndices, achaUsuario, chavesDaEtapa, etapaDe, podeEtapa, validadePedida, espacoPorLead, PRESENCA_MS, T_OK, R,
+  emCallAgora, apagaTudo, apagaArquivos, tiraDosIndices, achaUsuario, chavesDaEtapa, etapaDe, podeEtapa, validadePedida, espacoPorLead, passadaDeVezEmQuando, videosEspacoMax, PRESENCA_MS, T_OK, R,
   registraErro
 } from './_base.js';
 
@@ -43,6 +45,7 @@ export default async function handler(req, res) {
     if (req.method === 'GET' && !t) {
       const todos = eu.papel === 'admin' && String((req.query && req.query.todos) || '') === '1';
       const gerados = String((req.query && req.query.gerados) || '') === '1';
+      await passadaDeVezEmQuando(); // o vídeo vencido some sem esperar o Cron (antes de medir o espaço)
       const [itens, emCall, espaco] = await Promise.all([todos ? leTodosIndices() : leIndice(eu.login), emCallAgora(), gerados ? espacoPorLead() : null]);
       const vazio = { ficha: 0, foto: 0, video: 0, total: 0 };
       const lista = Object.values(itens).map(it => Object.assign({}, it, {
@@ -51,7 +54,11 @@ export default async function handler(req, res) {
         emCall: emCall.has(it.t)
       }, espaco ? { espaco: espaco[it.t] || vazio } : {}));
       const saida = { itens: lista, hoje: R.hojeSP(), todos };
-      if (espaco) saida.totalBytes = lista.reduce((s, it) => s + it.espaco.total, 0);
+      if (espaco) {
+        saida.totalBytes = lista.reduce((s, it) => s + it.espaco.total, 0);
+        // a guarda é de todos os vídeos da loja (de todos os closers), não só dos da lista
+        saida.videos = { usado: Object.values(espaco).reduce((s, e) => s + (e.video || 0), 0), max: videosEspacoMax() };
+      }
       return manda(res, 200, saida);
     }
 

@@ -192,6 +192,42 @@ const blob = {
   }
 };
 
+// Link assinado de leitura (só com o Blob privado; no driver de arquivo devolve null e quem chama segue em stream): o navegador baixa
+// direto do CDN do Blob, com Range, sem a função no meio (a Vercel não recomenda servir arquivo grande de Blob privado por função).
+// A delegação (issueSignedToken: um pedido à API do Blob, só leitura) fica na memória da instância por até 1 hora; cada link é
+// assinado aqui mesmo, sem rede, e vale "segundos" (curto: revogar o link do lead não derruba o que já está tocando por até esse tempo).
+let delegacao = null;
+export async function linkAssinado(c, { segundos = 600 } = {}) {
+  if (DRIVER !== 'blob') return null;
+  const { issueSignedToken, presignUrl } = await B();
+  const agora = Date.now();
+  if (!delegacao || delegacao.validUntil - agora < (segundos + 120) * 1000) {
+    delegacao = await issueSignedToken({ pathname: '*', operations: ['get'], validUntil: agora + 3600 * 1000 });
+  }
+  const { presignedUrl } = await presignUrl(delegacao, { operation: 'get', pathname: confere(c), access: ACESSO, validUntil: agora + segundos * 1000 });
+  return presignedUrl;
+}
+// O link assinado que já se provou: na primeira vez (e de 10 em 10 minutos por instância), a função pede 1 byte do próprio link antes de
+// mandar o navegador pra lá. Se o CDN recusar (206 ou 200 é o certo), o link assinado fica desligado por 10 minutos e quem chama segue em
+// stream, como antes: o vídeo nunca some da tela por causa do link assinado.
+let assinadoOk = { ate: 0, ok: false };
+export async function linkAssinadoConferido(c, op) {
+  if (DRIVER !== 'blob') return null;
+  const agora = Date.now();
+  if (assinadoOk.ate > agora && !assinadoOk.ok) return null;
+  const url = await linkAssinado(c, op);
+  if (assinadoOk.ate > agora) return url;
+  let ok = false;
+  try {
+    const r = await fetch(url, { headers: { Range: 'bytes=0-0' }, signal: AbortSignal.timeout(3000) });
+    ok = r.status === 206 || r.status === 200;
+    try { await r.body?.cancel(); } catch { /* nada */ }
+  } catch { ok = false; }
+  assinadoOk = { ate: agora + 10 * 60e3, ok };
+  if (!ok) throw new Error('o CDN do Blob recusou o link assinado; o vídeo segue em stream por 10 minutos');
+  return url;
+}
+
 const D = DRIVER === 'arquivo' ? arquivo : blob;
 export const le = c => D.le(c);
 export const grava = (c, dados, op) => D.grava(c, dados, op);

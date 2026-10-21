@@ -1,5 +1,5 @@
 // O que os decks leem do lead: GET ?t=<código>. Sem login, com CORS só pros endereços dos decks do catálogo (e DECK_ORIGINS).
-// 200 { estado: 'ok', t, atualizadoEm, versao: { id, caminho, origem }, ficha, foto?: { ok, versao }, video?: { ok, duracaoS, temPoster }, leitura? }
+// 200 { estado: 'ok', t, atualizadoEm, versao: { id, caminho, origem }, ficha, foto?: { ok, versao }, video?: { ok, duracaoS, temPoster, largura?, altura? }, leitura? }
 //     versao é a página que abre: a da variação escolhida, ou a principal da etapa se aquela saiu do deck ou falhou em duas conferências
 //     seguidas (a última há menos de 15 minutos). origem é o deck dessa página: o deck de entrada (o R1 num endereço, o R2 noutro) leva o
 //     lead pra lá se for outro. A ficha segue a variação escolhida (é ela que diz se o nome e a foto do lead aparecem).
@@ -55,7 +55,7 @@ export default async function handler(req, res) {
     const comVideo = ficha.temVideo === 'sim' && ficha.nomeTela !== 'sem';
     if (comVideo && reg.mapa && reg.mapa.versao) saida.mapa = { ok: true, versao: reg.mapa.versao, largura: reg.mapa.largura || 0, altura: reg.mapa.altura || 0 };
     if (videoValido(v) && (!R.temDossie(ver) || comVideo)) {
-      saida.video = { ok: true, duracaoS: v.duracaoS, temPoster: !!v.poster };
+      saida.video = Object.assign({ ok: true, duracaoS: v.duracaoS, temPoster: !!v.poster }, v.largura && v.altura ? { largura: v.largura, altura: v.altura } : {});
       const l = !R.temDossie(ver) && reg.leitura && limpaLeitura(reg.leitura, v.duracaoS).leitura;
       if (l && l.origem && l.lances.length) saida.leitura = { origem: l.origem, criterio: l.criterio, lances: l.lances, fortes: l.fortes, prioridades: l.prioridades };
     }

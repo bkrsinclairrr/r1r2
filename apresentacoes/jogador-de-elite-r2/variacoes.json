@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "gerado": "2026-10-19T04:13:07.132Z",
+  "gerado": "2026-10-20T23:30:25.207Z",
   "paginas": [
     {
       "id": "principal",
@@ -15,7 +15,7 @@
       },
       "slides": 32,
       "opcionais": [],
-      "hash": "25b1e96df0e7845cc3cf4708181b6cbccaf18501"
+      "hash": "c9d4b7039a7c165b3a4b85474757818688b7324c"
     },
     {
       "id": "acompanhamento",
@@ -30,7 +30,22 @@
       },
       "slides": 32,
       "opcionais": [],
-      "hash": "815f7b1341800fb05612b95287d102979e8f35e6"
+      "hash": "d01c516693a5ef8ff4ca6e737bb59fd8e70a493c"
+    },
+    {
+      "id": "cl0",
+      "caminho": "/variacoes/cl0/",
+      "nome": "CL0",
+      "resumo": "Técnica com os ajustes do closer: planos antes dos preços, faixa de R$ 5 a 30 mil por mês e garantia só no slide da garantia.",
+      "quando": "Mesma indicação da Técnica, quando o closer quiser mostrar os planos antes dos preços.",
+      "validacao": "nao-validada",
+      "lead": {
+        "nome": true,
+        "foto": true
+      },
+      "slides": 32,
+      "opcionais": [],
+      "hash": "f75296dd53e3f417a5a849390432bbd4cbfb53d0"
     },
     {
       "id": "tecnica",
@@ -45,7 +60,7 @@
       },
       "slides": 32,
       "opcionais": [],
-      "hash": "7db4148836d93c3ff30e80c959563b45901018f7"
+      "hash": "264c55eef8b2bb8f1eb3ef4cabb024a89f490ecd"
     }
   ]
 }

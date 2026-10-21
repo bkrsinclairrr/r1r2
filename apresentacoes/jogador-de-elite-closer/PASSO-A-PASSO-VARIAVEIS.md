@@ -62,7 +62,10 @@ Se o `.bat` for bloqueado ou alguma variável falhar, dá pra fazer na mão: ver
 
 ## O que roda sozinho depois
 
-- Todo dia, por volta das 6h de Brasília (9h UTC; no plano gratuito a Vercel escolhe o minuto dentro da hora), a limpeza apaga foto e vídeo com mais de 90 dias, sobras de envio, presença velha e o registro do atleta 180 dias depois do link vencer. O log tem só contagem, nunca nome.
+- Todo dia, por volta das 6h de Brasília (9h UTC; no plano gratuito a Vercel escolhe o minuto dentro da hora), a limpeza apaga foto com mais de 90 dias, sobras de envio, presença velha e o registro do atleta 180 dias depois do link vencer. O log tem só contagem, nunca nome.
+- O vídeo do atleta vence 24 horas depois do envio (desde 20/10/2026; o closer renova por mais 24 no painel). A passada dos vídeos apaga o vencido da loja: na limpeza das 9h, nos Crons leves das 3h, 15h e 21h UTC (/api/limpeza?so=videos) e, no máximo uma vez por hora, quando alguém usa o painel. Sem limite de tamanho por vídeo, mas com uma guarda do espaço de todos os vídeos juntos: VIDEOS_ESPACO_MAX_MB (opcional, padrão 600). Passou dela, o envio é recusado com a mensagem pra apagar vídeos de leads já apresentados na aba Gerados.
+- O vídeo toca pelo link assinado do Blob (10 minutos, direto do CDN). Se algo der errado com ele, o painel volta sozinho pro stream pela função; pra forçar o stream, crie VIDEO_MODO=proxy (Config, Production) e publique de novo.
+- Inventário da loja (espaço por pasta e os vídeos de cada lead, só lista): dois cliques no INVENTARIO-DA-LOJA.bat.
 - O plano gratuito da Vercel aceita 12 funções por projeto. O painel usa as 12: a próxima rota nova precisa entrar dentro de outra.
 - A sincronização com os 4 decks (R2 novo, R2 anterior, R2 B e R1) roda na abertura da lista de variações (se a última foi há mais de 2 minutos), junto da limpeza diária e no botão "Sincronizar agora".
 

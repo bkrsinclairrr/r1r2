@@ -276,7 +276,7 @@
   /* ---------------- Gerados: tudo o que já foi gerado, o espaço de cada um e a exclusão (um por um ou em lote) ----------------
      Depois de apresentar, quem monta exclui o lead: a ficha, a foto e o vídeo saem da loja e o link para de funcionar na hora. O admin vê
      os de todo mundo (com o nome de quem gerou); os outros, só os seus. O espaço vem do servidor (GET /api/atletas?gerados=1). */
-  let gerados = [], gerTotal = 0, gerFiltro = 'todos';
+  let gerados = [], gerTotal = 0, gerVideos = null, gerFiltro = 'todos';
   const gerSel = new Set();
   const peso = n => { n = Number(n) || 0; return n >= 1048576 ? (n / 1048576).toFixed(n >= 104857600 ? 0 : 1).replace('.', ',') + ' MB' : n >= 1024 ? Math.max(1, Math.round(n / 1024)) + ' KB' : n + ' B'; };
   const apresentado = it => it.estado === 'encerrado';
@@ -290,7 +290,7 @@
     if (!gerados.length) $('#ger-lista').innerHTML = '<div class="vazio">Carregando…</div>';
     try {
       const j = await api('atletas?gerados=1' + (eu.papel === 'admin' ? '&todos=1' : ''));
-      gerados = j.itens || []; gerTotal = Number(j.totalBytes) || 0;
+      gerados = j.itens || []; gerTotal = Number(j.totalBytes) || 0; gerVideos = j.videos || null;
       Array.from(gerSel).forEach(t => { if (!gerados.some(g => g.t === t)) gerSel.delete(t); });
       desenhaGerados();
     } catch (err) { if (err.status !== 401) $('#ger-lista').innerHTML = '<div class="vazio">' + esc(err.message) + '</div>'; }
@@ -301,7 +301,9 @@
     const n = gerados.length, feitos = gerados.filter(it => apresentado(it) || foraDoAr(it));
     const pesoFeitos = feitos.reduce((s, it) => s + ((it.espaco && it.espaco.total) || 0), 0);
     $('#ger-resumo').innerHTML = !n ? '' : '<b>' + n + '</b> ' + (n === 1 ? 'apresentação gerada' : 'apresentações geradas') + ' · <b>' + esc(peso(gerTotal)) + '</b> ocupados' +
-      (feitos.length ? ' · ' + feitos.length + ' já ' + (feitos.length === 1 ? 'apresentada ou fora do ar' : 'apresentadas ou fora do ar') + ' (' + esc(peso(pesoFeitos)) + ')' : '');
+      (feitos.length ? ' · ' + feitos.length + ' já ' + (feitos.length === 1 ? 'apresentada ou fora do ar' : 'apresentadas ou fora do ar') + ' (' + esc(peso(pesoFeitos)) + ')' : '') +
+      // os vídeos de todos os closers juntos, contra a guarda de espaço (cheio, o envio de vídeo novo é recusado)
+      (gerVideos ? ' · vídeos (de todos): <b' + (gerVideos.usado > gerVideos.max * .85 ? ' class="alerta"' : '') + '>' + esc(peso(gerVideos.usado)) + '</b> de ' + esc(peso(gerVideos.max)) : '');
     const selVis = vis.filter(it => gerSel.has(it.t));
     $('#ger-todos').checked = !!vis.length && selVis.length === vis.length;
     $('#ger-todos').indeterminate = !!selVis.length && selVis.length < vis.length;
@@ -577,7 +579,7 @@
   const F = $('#f-editor');
   const campo = n => F.elements.namedItem(n);
   // os campos que são um valor só do formulário; a variação (radio) e os slides desmarcados (checkbox) têm funções próprias
-  const CHAVES = ['nome', 'apelido', 'nomeTela', 'posicao', 'idade', 'cidade', 'pe', 'altura', 'clubeAtual', 'categoria', 'peneirasFeitas', 'gastoPeneiras', 'anosTentando', 'origem', 'sonho', 'caracteristicas', 'experiencia', 'r2data', 'r2hm', 'plano', 'vagas', 'proximaTurma', 'gerente', 'prazoContato', 'prazoZyron', ...R.CAMPOS_DOSSIE.map(c => c.chave)];
+  const CHAVES = ['nome', 'apelido', 'nomeTela', 'posicao', 'idade', 'cidade', 'pe', 'altura', 'clubeAtual', 'categoria', 'peneirasFeitas', 'gastoPeneiras', 'anosTentando', 'origem', 'sonho', 'caracteristicas', 'experiencia', 'r2data', 'r2hm', 'plano', 'vagas', 'proximaTurma', 'gerente', 'prazoContato', 'prazoZyron', 'mapaCalor', ...R.CAMPOS_DOSSIE.map(c => c.chave)];
   const campoDossie = c => `<label class="campo${c.area ? ' largo' : ''}"><span>${esc(c.nome)}</span>${c.area
     ? `<textarea class="in" name="${c.chave}" rows="2" maxlength="${c.max}"></textarea>`
     : `<input class="in" name="${c.chave}" ${c.numero ? `type="number" min="${c.numero[0]}" max="${c.numero[1]}" step="1" placeholder="0 a 100"` : `maxlength="${c.max}"`}>`}</label>`;
@@ -617,13 +619,18 @@
   function poeFicha(f) {
     desenhaNomeTela(true);
     opcoes(campo('plano'), R.planosDaVersao(versaoPor(f && f.versao, etapaEd())).slice().reverse());
-    CHAVES.forEach(k => { campo(k).value = f && f[k] != null ? (k === 'plano' ? R.PLANOS_ANTIGOS[f[k]] || f[k] : f[k]) : ''; });
+    CHAVES.forEach(k => { campo(k).value = f && f[k] != null ? (k === 'plano' ? R.PLANOS_ANTIGOS[f[k]] || f[k] : k === 'prazoZyron' ? R.prazoDeHoje('zyron', f[k]) : f[k]) : ''; });
+    // "Quando o Zyron começa" só tem uma opção (imediatamente): vem marcada, como no deck sem prazo
+    if (!campo('prazoZyron').value) campo('prazoZyron').value = R.PRAZOS.zyron[0];
     campo('nota').value = '';
     $('#c-foto-tela').checked = !(f && f.semFoto === 'sim');
     montaVersoes(f && f.versao); // a variação que o R2 já usa aparece mesmo arquivada
     marcaVersao(f && f.versao);
     desenhaOpcionais(String((f && f.pular) || '').split(',').filter(Boolean));
     $('#c-tem-video').checked = !!(f && f.temVideo === 'sim');
+    // o mapa de calor: o que a ficha tem; sem escolha ainda, o da posição (sugerido, e segue a posição até alguém escolher)
+    if (ed) ed.mapaAuto = !(f && f.mapaCalor);
+    sugereMapa();
     if (ed) ed.oportunidades = R.oportunidadesDe((f && f.oportunidades) || '');
     $('#op-clube').value = ''; $('#op-detalhe').value = ''; $('#op-erro').textContent = '';
     desenhaOportunidades();
@@ -838,6 +845,7 @@
   F.addEventListener('input', e => {
     if (!ed || !daFicha(e.target)) return;
     if (e.target.name === 'nome' && $('#c-conferido').checked) $('#c-conferido').checked = false; // mudou o nome: conferir de novo
+    if (e.target.name === 'posicao') sugereMapa(); // o mapa de calor segue a posição enquanto ninguém escolheu outro
     ed.sujo = true; desenhaEditor();
   });
   F.addEventListener('change', e => {
@@ -980,12 +988,12 @@
     ];
     // a prévia só é item nos decks que abrem no quadro de prévia (nos outros ela abre em outra aba e não há o que marcar); segue a variação marcada,
     // como a foto e o nome (o servidor, que dá a etiqueta, usa a salva: depois de salvar, as duas são a mesma)
-    if ($('#c-tem-video').checked) itensCk.push(['Vídeo analisado enviado', !!(ed.check && ed.check.video !== false && ed.reg && ed.reg.video), 'Envie o vídeo na seção Vídeo analisado (ou desmarque "Tenho o vídeo do jogador").']);
+    if ($('#c-tem-video').checked) itensCk.push(['Vídeo analisado enviado', !!(ed.check && ed.check.video !== false && ed.reg && ed.reg.video), 'Opcional: o vídeo entra no dossiê quando você enviar (seção Vídeo analisado).']);
     const obrigatorios = itensCk.length; // a prévia não entra na etiqueta Pronto
     if (!(ver.recursos && ver.recursos.previa === false)) itensCk.push(['Prévia olhada', !!(ed.check && ed.check.previa && !ed.sujo), 'Abra na prévia os slides marcados com •.']);
     const pronto = itensCk.slice(0, obrigatorios).every(x => x[1]);
     $('#checklist').innerHTML = itensCk.map(([t, ok, dica]) => `<li class="${ok ? 'ok' : ''}"><i>${ok ? '✓' : ''}</i><span><b>${esc(t)}</b><small>${esc(ok && !/^(Some|Não precisa)/.test(dica) ? '' : dica)}</small></span></li>`).join('') +
-      `<li><span class="nota" style="margin:0">${pronto ? 'Com ' + (obrigatorios === 5 ? 'os cinco primeiros' : 'os seis primeiros') + ' feitos, a etiqueta é <b>Pronto</b>' + (ed.sujo ? ' (depois de salvar)' : '') + '.' : 'Preencha o que quiser personalizar. O link só nasce no "Gerar link", no fim da página.'}</span></li>`;
+      `<li><span class="nota" style="margin:0">${pronto ? 'Com ' + (obrigatorios === 5 ? 'os cinco primeiros' : 'os seis primeiros') + ' feitos, a etiqueta é <b>Pronto</b>' + (ed.sujo ? ' (depois de salvar)' : '') + '.' : 'Nada aqui é obrigatório: salve e gere o link com o que tiver. O que falta só deixa a etiqueta sem o Pronto. O link nasce no "Gerar link", no fim da página.'}</span></li>`;
   }
 
   /* ---------------- link ---------------- */
@@ -1212,7 +1220,7 @@
   function dossieTemConteudo() {
     const reg = (ed && ed.reg) || {}, f = reg.ficha || {}, v = reg.video;
     const video = !!(v && v.arquivo && v.venceEm && Date.parse(v.venceEm) > Date.now());
-    return (f.temVideo === 'sim' && (video || !!(reg.mapa && reg.mapa.versao))) || !!String(f.oportunidades || '').trim();
+    return (f.temVideo === 'sim' && (video || !!(reg.mapa && reg.mapa.versao) || R.MAPAS_CALOR.includes(f.mapaCalor))) || !!String(f.oportunidades || '').trim();
   }
   const pvJanela = () => { const fr = $('#pv'); return fr && fr.contentWindow; };
   function atualizaPrevia() {
@@ -1253,61 +1261,72 @@
   const cv = $('#ft-canvas');
   /* ---------------- vídeo analisado e mapa de calor (o centro do slide do dossiê) ----------------
      "Tenho o vídeo do jogador" liga a parte: o vídeo (o mesmo diálogo de antes: autorização, envio e, se quiser, os lances) e o mapa de
-     calor (uma imagem, normalizada aqui em JPEG e guardada pela rota da foto). Desmarcado, o centro do slide mostra o plano de carreira. */
+     calor, escolhido numa lista por posição (desde 20/10/2026: o mapa-calor.js desenha o mesmo SVG aqui e no slide; fica na ficha, campo
+     mapaCalor). O mapa enviado como imagem antes disso segue valendo até o closer trocar por um da lista. Desmarcado, o centro do slide
+     mostra o plano de carreira. */
   function desenhaVideo() {
     if (!ed) return;
     const tem = $('#c-tem-video').checked, reg = ed.reg || {}, v = reg.video;
     $('#vd-bloco').hidden = !tem;
     const ok = !!(v && v.arquivo && v.venceEm && Date.parse(v.venceEm) > Date.now());
-    $('#va-info').textContent = ok ? 'Vídeo enviado: ' + RL.mmss(v.duracaoS) + ', ' + (v.bytes / 1048576).toFixed(1).replace('.', ',') + ' MB. Sai do ar em ' + R.dataCurta(v.venceEm) + '.'
+    $('#va-info').textContent = ok ? 'Vídeo enviado: ' + RL.mmss(v.duracaoS) + ', ' + (v.bytes / 1048576).toFixed(1).replace('.', ',') + ' MB. Sai do ar ' + R.diaEHora(v.venceEm) + '.'
       : 'Nenhum vídeo enviado ainda.' + (ed.t ? '' : ' Ao enviar, a apresentação fica salva como rascunho (o link continua sem existir).');
     $('#va-info').classList.toggle('ok', ok);
     $('#va-enviar').textContent = ok ? 'Trocar o vídeo' : 'Enviar o vídeo analisado';
+    $('#va-renovar').hidden = !ok;
     // marcar lances só onde eles aparecem (a IA na Prática); a Acompanhamento não tem esse slide (recursos.leitura falso)
     $('#va-lances').hidden = !ok || !recursosDe(versaoMarcada()).leitura;
     const m = reg.mapa, temMapa = !!(m && m.versao && ed.t);
-    $('#mc-atual').hidden = !temMapa; $('#mc-zona').hidden = temMapa;
+    $('#mc-atual').hidden = !temMapa; $('#mc-escolha').hidden = temMapa;
     if (temMapa) { const src = fotoUrl(ed.t, 'mapa', m.versao); if ($('#mc-img').getAttribute('src') !== src) $('#mc-img').src = src; }
+    desenhaMapa();
   }
-  // a imagem do mapa de calor em JPEG: de 300 a 1600 px de lado (sem distorcer), fundo escuro onde for transparente, até ~880 KB
-  async function mapaEmJpeg(arq) {
-    const url = URL.createObjectURL(arq);
-    try {
-      const img = await new Promise((ok, erro) => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => erro(new Error('Essa imagem não abriu aqui. Mande o mapa de calor em PNG ou JPG.')); i.src = url; });
-      let w = img.naturalWidth, h = img.naturalHeight;
-      if (!w || !h) throw new Error('Essa imagem não abriu aqui. Mande o mapa de calor em PNG ou JPG.');
-      const reduz = Math.min(1, 1600 / Math.max(w, h)); w *= reduz; h *= reduz;
-      const amplia = Math.max(1, 300 / Math.min(w, h)); w = Math.round(w * amplia); h = Math.round(h * amplia);
-      if (Math.max(w, h) > 2400) throw new Error('Essa imagem é estreita demais pra um mapa de calor. Use a imagem inteira do mapa.');
-      const c = document.createElement('canvas'); c.width = w; c.height = h;
-      const x = c.getContext('2d'); x.fillStyle = '#0B1517'; x.fillRect(0, 0, w, h); x.drawImage(img, 0, 0, w, h);
-      for (let q = .9; q > .35; q -= .1) { const b = await jpeg(c, q); if (b && b.size <= 880 * 1024) return b; }
-      throw new Error('O mapa de calor ficou grande demais. Tente uma imagem menor.');
-    } finally { URL.revokeObjectURL(url); }
+  // o mapa de calor da lista: a grade (Sem mapa e as 11 posições), a marca "sugerido" na posição da ficha e a prévia grande com o que o slide diz
+  const MC = window.MapaCalor;
+  const mapaSugerido = () => R.posicaoNoCampo(campo('posicao').value);
+  function sugereMapa() {
+    if (!ed || !ed.mapaAuto) { desenhaMapa(); return; }
+    campo('mapaCalor').value = MC && MC.temId(mapaSugerido()) ? mapaSugerido() : '';
+    desenhaMapa();
   }
-  async function enviaMapa(arq) {
-    $('#mc-erro').textContent = '';
-    const bt = $('#mc-atual').hidden ? $('#mc-escolher') : $('#mc-trocar');
-    try {
-      const j = await ocupado(bt, async () => {
-        const b = await mapaEmJpeg(arq);
-        if (!(await garanteRascunho())) throw new Error($('#ed-erro').textContent || 'Não consegui salvar o rascunho. Tente de novo.');
-        return api('foto?t=' + ed.t, { metodo: 'PUT', dados: { mapa: await emBase64(b) } });
-      });
-      recebe(Object.assign(j, { emCall: ed.emCall }), false);
-      aviso('Mapa de calor salvo: aparece embaixo do vídeo, no slide do dossiê.');
-      atualizaPrevia();
-    } catch (err) { $('#mc-erro').textContent = err.message; }
+  function desenhaMapa() {
+    if (!MC || !ed) return;
+    const atual = campo('mapaCalor').value, sug = mapaSugerido(), g = $('#mc-grade');
+    if (!g.dataset.feito) {
+      g.dataset.feito = '1';
+      g.innerHTML = '<button type="button" class="mc-op sem" role="radio" data-mapa="sem">Sem mapa</button>' +
+        MC.lista.map(x => `<button type="button" class="mc-op" role="radio" data-mapa="${esc(x.id)}" title="${esc(x.nome)}: ${esc(x.sub)}">${MC.svg(x.id)}<span>${esc(x.nome)}</span></button>`).join('');
+    }
+    $$('#mc-grade [data-mapa]').forEach(b => {
+      const id = b.dataset.mapa, marcado = id === atual || (id === 'sem' && !MC.temId(atual));
+      b.setAttribute('aria-checked', String(marcado));
+      const tinha = b.querySelector('.sug');
+      if (id === sug && !tinha) b.insertAdjacentHTML('beforeend', '<i class="sug">sugerido</i>');
+      if (id !== sug && tinha) tinha.remove();
+    });
+    const p = $('#mc-previa');
+    if (p.dataset.id === atual) return;
+    p.dataset.id = atual;
+    p.innerHTML = MC.temId(atual)
+      ? MC.svg(atual) + `<p>No slide: <b>Mapa de calor · ${esc(MC.sub(atual))}</b>${atual === sug ? '' : ' (a posição da ficha sugere outro)'}</p>`
+      : '<div class="vazio">Sem mapa de calor. O dossiê mostra o vídeo sozinho.</div>';
   }
-  $('#mc-escolher').addEventListener('click', () => $('#mc-arquivo').click());
-  $('#mc-trocar').addEventListener('click', () => $('#mc-arquivo').click());
-  $('#mc-arquivo').addEventListener('change', e => { const a = e.target.files && e.target.files[0]; e.target.value = ''; if (a) enviaMapa(a); });
-  $('#mc-apagar').addEventListener('click', async e => {
-    if (!ed || !ed.t || !confirm('Apagar o mapa de calor deste atleta? O slide do dossiê fica só com o vídeo.')) return;
+  $('#mc-grade').addEventListener('click', e => {
+    const b = e.target.closest('[data-mapa]'); if (!b || !ed) return;
+    ed.mapaAuto = false; // escolhido: a posição não troca mais o mapa
+    campo('mapaCalor').value = b.dataset.mapa;
+    campo('mapaCalor').dispatchEvent(new Event('input', { bubbles: true }));
+    desenhaMapa();
+  });
+  // o mapa enviado como imagem antes de 20/10/2026: "Trocar por um da lista" apaga o arquivo e abre a lista (a rota PUT /api/foto { mapa } segue
+  // existindo, só sem botão aqui)
+  $('#mc-trocar').addEventListener('click', async e => {
+    if (!ed || !ed.t || !confirm('Apagar o mapa de calor enviado como imagem e escolher um da lista?')) return;
     try {
       const j = await ocupado(e.currentTarget, () => api('foto?t=' + ed.t + '&v=mapa', { metodo: 'DELETE' }));
       if (j.registro) recebe(Object.assign(j, { emCall: ed.emCall }), false);
-      aviso('Mapa de calor apagado.'); atualizaPrevia();
+      else if (ed.reg) { ed.reg.mapa = null; desenhaVideo(); }
+      aviso('Mapa antigo apagado. Escolha um da lista e salve.'); atualizaPrevia();
     } catch (err) { $('#mc-erro').textContent = err.message; }
   });
 
@@ -1586,8 +1605,14 @@
   const abreVideo = async bt => { $('#mc-erro').textContent = ''; if (!(await ocupado(bt, garanteRascunho))) return; abreLeitura(ed.t); };
   $('#va-enviar').addEventListener('click', e => abreVideo(e.currentTarget));
   $('#va-lances').addEventListener('click', e => abreVideo(e.currentTarget));
+  $('#va-renovar').addEventListener('click', async e => {
+    if (!ed || !ed.t) return;
+    try { const j = await renovaVideo(e.currentTarget, ed.t); if (ed.reg) ed.reg.video = j.video; desenhaVideo(); confereDeFora(); }
+    catch (err) { $('#mc-erro').textContent = err.message; }
+  });
   async function abreLeitura(t) {
     $('#lt-erro').textContent = ''; $('#lt-video-erro').textContent = ''; $('#lt-json-erros').hidden = true; $('#lt-previa').hidden = true;
+    $('#lt-renovar').hidden = true; $('#lt-autoriza').disabled = true; // até carregar o vídeo deste lead
     $('#leitura').showModal();
     try {
       const j = await api('leitura?t=' + t);
@@ -1595,7 +1620,8 @@
       lt = { t, nome: j.nome, apelido: j.apelido, video: j.video, valido: j.valido, vencido: j.vencido, regras: j.regras, sujo: false, ultima: 'bom',
         leitura: { origem: l.origem || '', criterio: l.criterio || 'selecao', lances: (l.lances || []).slice(), fortes: (l.fortes || []).slice(), prioridades: (l.prioridades || []).slice() } };
       $('#lt-titulo').textContent = 'Vídeo analisado · ' + (j.nome || '');
-      $('#lt-dias').textContent = j.regras.validadeDias;
+      $('#lt-horas').textContent = j.regras.validadeHoras;
+      lt.espaco = j.espaco || null; lt.salva = assinatura(j.leitura);
       $('#lt-tipo').innerHTML = j.regras.tipos.map(x => `<option>${esc(x)}</option>`).join('');
       desenhaLeitura(true);
     } catch (err) { $('#lt-erro').textContent = err.message; }
@@ -1613,10 +1639,12 @@
     if (lt.regras && lt.regras.envio === false && !temVideo) $('#lt-video-erro').textContent = 'O envio de vídeo só funciona no painel publicado (loja de Blob).';
     $('#lt-apagar').hidden = !temVideo && !autorizado;
     $('#lt-video-info').hidden = !temVideo;
-    if (temVideo) $('#lt-video-info').textContent = 'Vídeo no painel: ' + RL.mmss(v.duracaoS) + ', ' + (v.bytes / MB).toFixed(1).replace('.', ',') + ' MB. Sai do ar em ' + vencimento(v.venceEm) + '.';
+    $('#lt-renovar').hidden = !temVideo;
+    if (temVideo) $('#lt-video-info').textContent = 'Vídeo no painel: ' + RL.mmss(v.duracaoS) + ', ' + (v.bytes / MB).toFixed(1).replace('.', ',') + ' MB. Sai do ar ' + R.diaEHora(v.venceEm) + '.';
     else if (lt.vencido) $('#lt-video-erro').textContent = 'O vídeo deste atleta passou da validade e saiu do ar. Envie de novo, se ainda tiver a autorização.';
     if (trocaVideo) {
       const vid = $('#lt-video');
+      proporcao(vid, v.largura, v.altura);
       if (urlLocal) vid.src = urlLocal; else if (temVideo) vid.src = '/api/video?t=' + lt.t; else vid.removeAttribute('src');
       $('#lt-poster-img').hidden = !(temVideo && v.poster);
       if (temVideo && v.poster) $('#lt-poster-img').src = '/api/video?t=' + lt.t + '&poster=1&v=' + encodeURIComponent(v.poster.slice(-12));
@@ -1688,6 +1716,7 @@
     return { origem: l.origem, criterio: l.criterio, lances: l.lances.map(x => ({ t: x.t, tipo: x.tipo, leitura: x.leitura, nota: (x.nota || '').trim() })), fortes: l.fortes, prioridades: l.prioridades };
   }
   $('#lt-autoriza').addEventListener('change', async e => {
+    if (!lt) { e.target.checked = false; return; }
     if (!e.target.checked) return;
     try { const j = await api('leitura?t=' + lt.t, { metodo: 'PUT', dados: { autorizar: true } }); lt.video = j.video; lt.valido = j.valido; desenhaLeitura(false); }
     catch (err) { e.target.checked = false; $('#lt-erro').textContent = err.message; }
@@ -1696,59 +1725,136 @@
     if (lt.leitura.lances.length && !confirm('Trocar o vídeo apaga os lances marcados neste (eles eram deste vídeo). Seguir?')) return;
     $('#lt-arquivo').click();
   });
-  function confereVideo(arq) {
+  // a caixa do vídeo na proporção dele (em pé ou deitado): --ar pro aspect-ratio e --arn pra largura caber na altura da tela
+  function proporcao(vid, w, h) {
+    if (w > 0 && h > 0) { vid.style.setProperty('--ar', w + ' / ' + h); vid.style.setProperty('--arn', (w / h).toFixed(4)); }
+    else { vid.style.removeProperty('--ar'); vid.style.removeProperty('--arn'); }
+  }
+  $('#lt-video').addEventListener('loadedmetadata', e => { const v = e.target; if (v.videoWidth && v.videoHeight) proporcao(v, v.videoWidth, v.videoHeight); });
+  // a medição do envio (?perf=1 no endereço do painel): o tempo de cada parte, no console e no fim do progresso
+  const PERF = /[?&]perf=1\b/.test(location.search);
+  function medidor() {
+    const t0 = performance.now(), marcas = [];
+    return {
+      marca(nome, extra) { marcas.push(Object.assign({ parte: nome, segundos: +((performance.now() - t0) / 1000).toFixed(2) }, extra || {})); },
+      fim() { if (PERF) { console.table(marcas); try { console.log('perf servidor', performance.getEntriesByType('resource').filter(r => /\/api\/(leitura|video)/.test(r.name)).map(r => [r.name.split('/api/')[1], Math.round(r.duration), (r.serverTiming || []).map(s => s.name + '=' + s.duration).join(' ')])); } catch (err) { /* sem a API */ } } return marcas; }
+    };
+  }
+  // o arquivo escolhido, antes de subir: o formato, o teto técnico (2 GB) e o espaço dos vídeos. Sem limite de tamanho nem de tempo
+  function confereArquivo(arq) {
+    if (!EXT[arq.type]) return 'Envie mp4 (de preferência), webm ou mov.';
+    const r = lt.regras || {};
+    if (r.tetoBytes && arq.size > r.tetoBytes) return 'O arquivo tem ' + Math.round(arq.size / MB) + ' MB e passa do teto do envio (2 GB). Exporte o vídeo menor e envie de novo.';
+    const e = lt.espaco;
+    if (e && e.max && typeof e.usado === 'number' && e.usado + arq.size > e.max) return 'O espaço dos vídeos está cheio (' + Math.round(e.usado / MB) + ' MB de ' + Math.round(e.max / MB) + ' MB; este arquivo tem ' + Math.round(arq.size / MB) + ' MB). Apague vídeos de leads já apresentados na aba Gerados.';
+    if (!document.createElement('video').canPlayType(arq.type)) return 'O Chrome não abre esse formato. Exporte em mp4 (H.264).';
+    return '';
+  }
+  // o vídeo aberto aqui mesmo, sem rede: a duração, a largura e a altura, e a capa automática (um quadro perto do começo, em JPEG).
+  // Celular às vezes grava em HEVC, que o Chrome pode não tocar: em 8 segundos sem abrir, avisa (o envio, que já começou, é cancelado)
+  function leVideoLocal(url) {
     return new Promise(resolve => {
-      if (!EXT[arq.type]) return resolve({ erro: 'Envie mp4 (de preferência), webm ou mov.' });
-      if (arq.size > lt.regras.maxBytes) return resolve({ erro: 'O vídeo tem ' + Math.round(arq.size / MB) + ' MB. O limite é 250 MB.' });
-      const teste = document.createElement('video');
-      if (!teste.canPlayType(arq.type)) return resolve({ erro: 'O Chrome não abre esse formato. Exporte em mp4 (H.264).' });
-      const url = URL.createObjectURL(arq);
-      let feito = false;
-      const fim = r => { if (feito) return; feito = true; clearTimeout(tempo); resolve(Object.assign(r, { url })); };
       const HEVC = 'O vídeo não abriu. Celular às vezes grava em HEVC, que o Chrome não toca: exporte em mp4 (H.264) e envie de novo.';
-      const tempo = setTimeout(() => fim({ erro: HEVC }), 20000);
-      teste.preload = 'metadata'; teste.muted = true;
-      teste.onloadedmetadata = () => {
-        if (!(teste.duration > 0) || !teste.videoWidth) return fim({ erro: HEVC });
-        if (teste.duration > lt.regras.maxSegundos + 1) return fim({ erro: 'O vídeo tem ' + RL.mmss(teste.duration) + '. O limite é 5 minutos: corte o vídeo e envie de novo.' });
-        fim({ duracaoS: Math.round(teste.duration * 10) / 10 });
+      const v = document.createElement('video');
+      let feito = false, info = null;
+      const fim = r => { if (feito) return; feito = true; clearTimeout(tempo); v.removeAttribute('src'); try { v.load(); } catch (err) { /* nada */ } resolve(r); };
+      const tempo = setTimeout(() => fim(info && info.duracaoS ? Object.assign(info, { capa: null }) : { erro: info ? 'Não consegui ler a duração do vídeo. Exporte em mp4 (H.264) e envie de novo.' : HEVC }), 8000);
+      v.preload = 'auto'; v.muted = true; v.playsInline = true;
+      let buscandoFim = false;
+      const capaEm = () => { try { v.currentTime = Math.min(0.5, v.duration * 0.1); } catch (err) { fim(Object.assign(info, { capa: null })); } };
+      v.onloadedmetadata = () => {
+        if (!(v.duration > 0) || !v.videoWidth) return fim({ erro: HEVC });
+        info = { duracaoS: 0, largura: v.videoWidth, altura: v.videoHeight };
+        // arquivo sem a duração no cabeçalho (webm gravado no navegador, alguns exportadores): o Chrome só sabe depois de ir até o fim
+        if (!Number.isFinite(v.duration)) { buscandoFim = true; try { v.currentTime = 1e9; } catch (err) { fim({ erro: HEVC }); } return; }
+        info.duracaoS = Math.round(v.duration * 10) / 10;
+        capaEm();
       };
-      teste.onerror = () => fim({ erro: HEVC });
-      teste.src = url;
+      v.ondurationchange = () => {
+        if (!buscandoFim || !Number.isFinite(v.duration) || !(v.duration > 0)) return;
+        buscandoFim = false; info.duracaoS = Math.round(v.duration * 10) / 10; capaEm();
+      };
+      v.onseeked = () => {
+        if (buscandoFim) return;
+        try {
+          const k = Math.min(1, 960 / Math.max(v.videoWidth, v.videoHeight)), c = document.createElement('canvas');
+          c.width = Math.round(v.videoWidth * k); c.height = Math.round(v.videoHeight * k);
+          c.getContext('2d').drawImage(v, 0, 0, c.width, c.height);
+          c.toBlob(b => fim(Object.assign(info, { capa: b && b.size <= 2 * MB ? b : null })), 'image/jpeg', .86);
+        } catch (err) { fim(Object.assign(info, { capa: null })); }
+      };
+      v.onerror = () => fim(info && info.duracaoS ? Object.assign(info, { capa: null }) : { erro: HEVC });
+      v.src = url;
     });
+  }
+  // "Enviando: 45% de 120 MB · 3,2 MB/s · falta 1 min"
+  const duracaoTxt = s => s < 60 ? Math.max(1, Math.round(s)) + ' s' : Math.round(s / 60) + ' min';
+  function mostraProgresso(p, total, t0) {
+    $('#lt-barra').style.width = p.percentage + '%';
+    const seg = (performance.now() - t0) / 1000, feitos = total * p.percentage / 100, vel = seg > .5 ? feitos / seg : 0;
+    const falta = vel > 0 ? (total - feitos) / vel : 0;
+    $('#lt-progresso-txt').textContent = 'Enviando: ' + Math.round(p.percentage) + '% de ' + Math.max(1, Math.round(total / MB)) + ' MB' +
+      (vel > 0 ? ' · ' + (vel / MB).toFixed(1).replace('.', ',') + ' MB/s' + (p.percentage < 99 && falta >= 1 ? ' · falta ' + duracaoTxt(falta) : '') : '');
   }
   $('#lt-arquivo').addEventListener('change', async e => {
     const arq = e.target.files && e.target.files[0]; e.target.value = '';
     if (!arq) return;
     $('#lt-video-erro').textContent = ''; $('#lt-erro').textContent = '';
-    const c = await confereVideo(arq);
-    if (c.erro) { URL.revokeObjectURL(c.url); $('#lt-video-erro').textContent = c.erro; return; }
+    const erro0 = confereArquivo(arq);
+    if (erro0) { $('#lt-video-erro').textContent = erro0; return; }
     let upload;
     try { ({ upload } = await import('/vendor/blob-client.js')); }
-    catch (err) { URL.revokeObjectURL(c.url); $('#lt-video-erro').textContent = 'Não consegui abrir o envio. Recarregue o painel.'; return; }
-    envio = new AbortController();
+    catch (err) { $('#lt-video-erro').textContent = 'Não consegui abrir o envio. Recarregue o painel.'; return; }
+    const url = URL.createObjectURL(arq), med = medidor(), t = lt.t;
+    const ctl = envio = new AbortController();
+    let erroLocal = '';
     $('#lt-progresso').hidden = false; $('#lt-cancelar').hidden = false; $('#lt-escolher').disabled = true;
     $('#lt-barra').style.width = '0%'; $('#lt-progresso-txt').textContent = 'Enviando: 0%';
+    const t0 = performance.now();
+    // o envio começa já; o arquivo é aberto aqui mesmo ao mesmo tempo (duração, tamanho da imagem e a capa)
+    const sobe = upload('videos/' + t + '/' + nomeAleatorio() + '.' + EXT[arq.type], arq, {
+      access: 'private', handleUploadUrl: '/api/leitura', contentType: arq.type,
+      clientPayload: JSON.stringify({ t, tipo: 'video', bytes: arq.size }), multipart: arq.size > 8 * MB, abortSignal: ctl.signal,
+      onUploadProgress: p => mostraProgresso(p, arq.size, t0)
+    }).then(r => { med.marca('envio do vídeo', { MBs: +(arq.size / MB / ((performance.now() - t0) / 1000)).toFixed(2), MB: +(arq.size / MB).toFixed(1) }); return r; });
     try {
-      const r = await upload('videos/' + lt.t + '/' + nomeAleatorio() + '.' + EXT[arq.type], arq, {
-        access: 'private', handleUploadUrl: '/api/leitura', contentType: arq.type,
-        clientPayload: JSON.stringify({ t: lt.t, tipo: 'video' }), multipart: arq.size > 8 * MB, abortSignal: envio.signal,
-        onUploadProgress: p => { $('#lt-barra').style.width = p.percentage + '%'; $('#lt-progresso-txt').textContent = 'Enviando: ' + Math.round(p.percentage) + '% de ' + Math.round(arq.size / MB) + ' MB'; }
-      });
+      const info = await leVideoLocal(url);
+      med.marca('vídeo aberto aqui (duração e capa)');
+      if (info.erro) { erroLocal = info.erro; ctl.abort(); }
+      // a capa sobe em paralelo com o resto do vídeo (é pequena); sem capa, o vídeo segue sem ela
+      const capa = !info.erro && info.capa ? upload('videos/' + t + '/' + nomeAleatorio() + '.jpg', info.capa, {
+        access: 'private', handleUploadUrl: '/api/leitura', contentType: 'image/jpeg', clientPayload: JSON.stringify({ t, tipo: 'poster' }), abortSignal: ctl.signal
+      }).then(r => { med.marca('capa automática'); return r; }).catch(() => null) : Promise.resolve(null);
+      const [r, rc] = await Promise.all([sobe, capa]);
       $('#lt-progresso-txt').textContent = 'Registrando o vídeo…';
-      const j = await api('leitura?t=' + lt.t, { metodo: 'PUT', dados: { video: { arquivo: r.pathname, tipo: arq.type, bytes: arq.size, duracaoS: c.duracaoS } } });
+      const j = await api('leitura?t=' + t, { metodo: 'PUT', dados: { video: { arquivo: r.pathname, tipo: arq.type, bytes: arq.size, duracaoS: info.duracaoS, largura: info.largura, altura: info.altura, poster: rc ? rc.pathname : '' } } });
+      med.marca('registro');
       if (urlLocal) URL.revokeObjectURL(urlLocal);
-      urlLocal = c.url;
-      lt.video = j.video; lt.valido = j.valido; lt.vencido = false; lt.leitura.lances = j.leitura ? j.leitura.lances : [];
+      urlLocal = url;
+      lt.video = j.video; lt.valido = j.valido; lt.vencido = false; lt.leitura.lances = j.leitura ? j.leitura.lances : []; lt.salva = assinatura(j.leitura);
+      if (lt.espaco) lt.espaco.usado += arq.size;
       desenhaLeitura(true);
-      aviso('Vídeo enviado. Agora marque os lances.');
+      const marcas = med.fim();
+      aviso('Vídeo enviado' + (j.video && j.video.poster ? ', com a capa' : '') + '. Sai do ar ' + R.diaEHora(j.video.venceEm) + '.' + (PERF ? ' ' + marcas.map(m => m.parte + ' ' + m.segundos + ' s').join(' · ') : ''));
     } catch (err) {
-      URL.revokeObjectURL(c.url);
-      $('#lt-video-erro').textContent = envio && envio.signal.aborted ? 'Envio cancelado. Nada foi salvo.' : (/client token/i.test(err.message) ? 'O painel não liberou o envio. Confira a autorização e tente de novo.' : err.message || 'O envio falhou. Tente de novo.');
+      URL.revokeObjectURL(url);
+      sobe.catch(() => {}); // o envio cancelado não vira erro solto
+      $('#lt-video-erro').textContent = erroLocal || (ctl.signal.aborted ? 'Envio cancelado. Nada foi salvo.' : (/client token/i.test(err.message) ? 'O painel não liberou o envio. Confira a autorização e tente de novo.' : err.message || 'O envio falhou. Tente de novo.'));
     } finally {
       envio = null; $('#lt-cancelar').hidden = true; $('#lt-escolher').disabled = false;
       setTimeout(() => { $('#lt-progresso').hidden = true; }, 600);
     }
+  });
+  // mais 24 horas pro vídeo, sem enviar de novo (quem sobe na véspera da call não perde o vídeo antes dela)
+  async function renovaVideo(bt, t) {
+    const j = await ocupado(bt, () => api('leitura?t=' + t, { metodo: 'PUT', dados: { renovar: true } }));
+    aviso('Vídeo renovado: sai do ar ' + R.diaEHora(j.video.venceEm) + '.');
+    return j;
+  }
+  $('#lt-renovar').addEventListener('click', async e => {
+    if (!lt) return;
+    try { const j = await renovaVideo(e.currentTarget, lt.t); lt.video = j.video; lt.valido = j.valido; desenhaLeitura(false); }
+    catch (err) { $('#lt-erro').textContent = err.message; }
   });
   $('#lt-cancelar').addEventListener('click', () => { if (envio) envio.abort(); });
   $('#lt-apagar').addEventListener('click', async e => {
@@ -1760,15 +1866,33 @@
       desenhaLeitura(true); aviso('Vídeo e leitura apagados.');
     } catch (err) { $('#lt-erro').textContent = err.message; }
   });
+  // o quadro de um vídeo num JPEG (até 960 px no lado maior). Vídeo de outro endereço "suja" a cópia (SecurityError): quem chama tenta pelo painel
+  const quadroEmJpeg = v => new Promise((ok, erro) => {
+    try {
+      const k = Math.min(1, 960 / Math.max(v.videoWidth, v.videoHeight)), c = document.createElement('canvas');
+      c.width = Math.round(v.videoWidth * k); c.height = Math.round(v.videoHeight * k);
+      c.getContext('2d').drawImage(v, 0, 0, c.width, c.height);
+      c.toBlob(b => (b ? ok(b) : erro(new Error('Não consegui copiar o quadro.'))), 'image/jpeg', .86);
+    } catch (err) { erro(err); }
+  });
+  // o mesmo quadro, com o vídeo vindo do próprio painel (?via=proxy): o navegador deixa copiar
+  const quadroPeloPainel = (t, seg) => new Promise((ok, erro) => {
+    const v = document.createElement('video');
+    const fim = (f, x) => { clearTimeout(tempo); v.removeAttribute('src'); try { v.load(); } catch (err) { /* nada */ } f(x); };
+    const tempo = setTimeout(() => fim(erro, new Error('O vídeo demorou pra abrir. Tente de novo.')), 30000);
+    v.muted = true; v.preload = 'auto';
+    v.onloadedmetadata = () => { try { v.currentTime = seg; } catch (err) { fim(erro, err); } };
+    v.onseeked = () => quadroEmJpeg(v).then(b => fim(ok, b), err => fim(erro, err));
+    v.onerror = () => fim(erro, new Error('Não consegui abrir o vídeo pra tirar a capa.'));
+    v.src = '/api/video?t=' + t + '&via=proxy';
+  });
   $('#lt-poster').addEventListener('click', async e => {
     const vid = $('#lt-video');
     if (!vid.videoWidth) { $('#lt-erro').textContent = 'Dê o play e pause no quadro que você quer.'; return; }
     try {
       await ocupado(e.currentTarget, async () => {
-        const k = Math.min(1, 960 / vid.videoWidth), c = document.createElement('canvas');
-        c.width = Math.round(vid.videoWidth * k); c.height = Math.round(vid.videoHeight * k);
-        c.getContext('2d').drawImage(vid, 0, 0, c.width, c.height);
-        const blob = await new Promise(r => c.toBlob(r, 'image/jpeg', .86));
+        let blob;
+        try { blob = await quadroEmJpeg(vid); } catch (err) { blob = await quadroPeloPainel(lt.t, vid.currentTime); }
         const { upload } = await import('/vendor/blob-client.js');
         const r = await upload('videos/' + lt.t + '/' + nomeAleatorio() + '.jpg', blob, { access: 'private', handleUploadUrl: '/api/leitura', contentType: 'image/jpeg', clientPayload: JSON.stringify({ t: lt.t, tipo: 'poster' }) });
         const j = await api('leitura?t=' + lt.t, { metodo: 'PUT', dados: { poster: r.pathname } });
@@ -1787,7 +1911,7 @@
       <p class="rl-pe">O primeiro foco do slide vem da ficha do apresentador (campo Primeiro foco); sem ele, a primeira prioridade.</p></div>`;
   });
   function confereImportado(e) {
-    const erros = [], dur = (lt.video && lt.video.duracaoS) || lt.regras.maxSegundos, tipos = lt.regras.tipos;
+    const erros = [], dur = (lt.video && lt.video.duracaoS) || lt.regras.tetoSegundos, tipos = lt.regras.tipos;
     const limpo = s => String(s == null ? '' : s).replace(/<[^>]*>/g, ' ').replace(/[<>]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 70);
     if (!e || typeof e !== 'object') return { erros: ['O arquivo não é um JSON de leitura.'] };
     const origem = e.origem === 'zyron' || e.origem === 'equipe' ? e.origem : '';
@@ -1819,15 +1943,22 @@
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'leitura-' + lt.t.slice(0, 8) + '.json'; a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 2000);
   });
+  // o que o slide mostra da leitura (sem quem salvou nem quando): a prévia só recarrega quando isso muda
+  function assinatura(l) { if (!l) return ''; const { origem, criterio, lances, fortes, prioridades } = l; return JSON.stringify({ origem, criterio, lances, fortes, prioridades }); }
   $('#lt-salvar').addEventListener('click', async e => {
     $('#lt-erro').textContent = '';
-    const l = leituraDaTela();
-    if (!l.origem) { $('#lt-erro').textContent = 'Escolha quem fez a leitura: Zyron ou Equipe (passo 4).'; return; }
-    if (!l.lances.length) { $('#lt-erro').textContent = 'Marque pelo menos um lance antes de salvar.'; return; }
+    // nada mudou: fecha, sem ir ao servidor
+    if (!lt.sujo) { fechaLeitura(); return; }
+    const l = leituraDaTela(), med = medidor();
     try {
       const j = await ocupado(e.currentTarget, () => api('leitura?t=' + lt.t, { metodo: 'PUT', dados: { leitura: l } }));
+      med.marca('salvar leitura'); med.fim();
       lt.video = j.video; lt.leitura = Object.assign(lt.leitura, j.leitura); lt.sujo = false;
-      desenhaLances(); aviso('Leitura salva. Ela já aparece no slide 17.'); atualizaPrevia();
+      desenhaLances();
+      const avisos = j.avisos || [], semFonte = !(j.leitura && j.leitura.origem);
+      aviso(avisos.length ? 'Leitura salva. Ficou de fora: ' + avisos.slice(0, 3).join(' ') : semFonte ? 'Leitura salva. Sem a fonte (Zyron ou Equipe), o relatório não aparece no slide: só o vídeo.' : 'Leitura salva. Ela já aparece no slide 17.', !!avisos.length);
+      const nova = assinatura(j.leitura);
+      if (nova !== lt.salva) { lt.salva = nova; atualizaPrevia(); }
     } catch (err) { $('#lt-erro').textContent = err.message; }
   });
   function fechaLeitura() {

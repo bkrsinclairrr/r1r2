@@ -62,6 +62,20 @@ A auditoria de regras da casa (texto de 24 px ou mais, nada fora do palco, texto
 
 - Teste: `testes/teste-dossie-inimigo.mjs` (os dois slides nas sete páginas, a sequência que pula o dossiê vazio, o vídeo, o mapa e as oportunidades vindos do painel, a contagem e a prévia com a chave) e `testes/teste-rascunho-link.mjs` (o rascunho, a chave da prévia e o "Gerar link").
 
+## CL0, vídeo de 24 horas e mapa de calor por posição (20/10/2026)
+
+O plano é o `docs/superpowers/plans/2026-10-20-cl0-e-video-do-painel.md` (blocos A a F).
+
+- **CL0** (`/variacoes/cl0/` do R2 anterior, `r2a-cl0` no painel, "Não validada"): a Técnica com os ajustes de um closer. O 27 diz "fecha ganhando de R$ 5 a 30 mil por mês" (a mãe do áudio do 18 diz "ofereceram 5 mil por mês", conferido no áudio); o 28 e o 32 dizem "imediatamente" e falam do assessor de carreira; o 29 ("Vocês não estão mais sozinhos") mostra os três planos com o texto do closer e sem preço nos avanços 1 a 3, os três preços juntos no 4 e a recomendação e a chamada "Escolha o acompanhamento para o seu atleta" no 5, com o rodapé "Encaminhamentos representam oportunidades reais, sem garantia de aprovação ou contratação." sempre na tela; o 30 não tem a linha da garantia e usa a mesma faixa do 27. A garantia aparece só no 31. Os preços não mudaram (R$ 997, R$ 1.497 e R$ 2.997, vitalícios, em 10x sem juros). O nome é David Willer, como no resto da casa (o closer escreveu "Davi"; a mãe do áudio diz "David"). O roteiro do CL0 fica em `assets/variacoes/cl0.js` (só o que muda em relação à Técnica) e o estilo em `assets/variacoes/cl0.css` (só essa página carrega); o `deck.js` do R2 anterior ganhou dois ajustes que não mudam as outras páginas (conferido por captura): o rótulo da lista do plano pode vir do plano (`mais`) e linha sem cargo sai sem negrito. Atenção no roteiro: o `ordem-garantia.js` troca número depois de "o " (até no fim de "avanço"), então os avanços vão por extenso ("o quarto avanço").
+- **"O que ele leva" no R2 novo e no R2 B**: saiu a linha "Garantia" (seis linhas viraram cinco). A garantia segue no slide dela.
+- **Vídeo do atleta**: sem limite de tamanho e de tempo (só o teto técnico de 2 GB por arquivo e uma guarda do espaço de todos os vídeos juntos, `VIDEOS_ESPACO_MAX_MB`, padrão 600). Vence 24 horas depois do envio (era 90 dias), com o dia e a hora na tela e o botão "Renovar por 24 h". Vencido, ele sai da loja: a passada dos vídeos (uma listagem de `videos/`) roda na limpeza das 9h, em três Crons leves (3h, 15h e 21h UTC, `/api/limpeza?so=videos`) e, no máximo uma vez por hora, quando alguém usa o painel; ela também tira sobra de envio com mais de 2 horas e arquivo de lead que não existe mais. A limpeza diária lista cada pasta uma vez só (eram duas listagens por lead). O envio ficou mais rápido: o arquivo começa a subir enquanto o painel lê a duração e as medidas, a capa sai sozinha de um quadro do começo do vídeo e sobe junto, o progresso mostra a velocidade e o tempo que falta, e o HEVC que não abre é avisado em 8 segundos (eram 20). O vídeo toca pelo link assinado do Blob (10 minutos, direto do CDN, com Range); o link se confere sozinho e, se o CDN recusar, o vídeo segue em stream pela função (`VIDEO_MODO=proxy` força o stream). O painel e os decks mostram o vídeo na proporção dele: em pé, o dossiê põe o mapa de calor do lado (com o campo em pé) e a IA na Prática encolhe a caixa na largura (antes o vídeo em pé saía cortado). `?perf=1` no endereço do painel mostra o tempo de cada parte do envio no console, e as rotas `leitura` e `video` mandam `Server-Timing`.
+- **"Salvar leitura"**: nada é obrigatório (sem a fonte, o slide só não mostra o relatório; sem lances, também). Sem mudança, fecha sem ir ao servidor; linha estragada fica de fora com aviso e o resto é salvo.
+- **Mapa de calor por posição**: o closer escolhe numa grade com as 11 posições do campo (Goleiro, Laterais, Zagueiros e Volantes de cada lado, Meia central, Pontas e Centroavante), mais "Sem mapa". A posição da ficha vem sugerida. O desenho é um SVG do `mapa-calor.js` (sem imagem e sem rede), igual no painel e nos três decks (`node copia-mapa-calor.mjs` na pasta do painel copia; o `teste-igualdade` confere). O slide diz "Mapa de calor · onde atua um zagueiro": é o mapa típico da posição, não do jogo dele, e a nota do apresentador avisa. O mapa enviado como imagem antes disso segue valendo até o closer trocar por um da lista. Fica na ficha (`mapaCalor`).
+- **Nenhum campo obrigatório** no editor (Dia, Hora e Plano perderam o asterisco); o checklist só dá a etiqueta Pronto.
+- **"Quando o Zyron começa"**: só "imediatamente", que já vem marcado. Lead salvo antes com "no dia seguinte" ou "em até 48 horas" passa a mostrar "imediatamente".
+- **Inventário da loja**: `INVENTARIO-DA-LOJA.bat` (dois cliques na pasta do painel) lista o espaço por pasta e os vídeos de cada lead, sem apagar nada. O `limpa-videos-da-loja.mjs --apagar` apaga os vídeos de antes das 24 horas (mais de 25 horas) e os órfãos; rode só depois de conferir o inventário.
+- Testes novos: `teste-cl0.mjs`, `teste-mapa-calor.mjs`, `teste-video.mjs` (o envio de ponta a ponta no Chrome, com um Blob de mentira no servidor de teste) e as capturas `telas-cl0.mjs` e `telas-mapa-video.mjs`.
+
 ## Testar
 
 Na pasta `jogador-de-elite-closer`:
@@ -79,6 +93,10 @@ node testes/teste-validade-gerados.mjs
 node testes/teste-dossie-inimigo.mjs
 node testes/teste-rascunho-link.mjs
 node testes/teste-igualdade.mjs
+node testes/teste-leitura.mjs
+node testes/teste-cl0.mjs
+node testes/teste-mapa-calor.mjs
+node testes/teste-video.mjs
 ```
 
 Os testes usam armazenamento temporário e não acessam os leads de produção. Os testes de navegador usam o Chrome instalado, configurável pela variável `CHROME`.

@@ -1,0 +1,14 @@
+/* CL0 (20/10/2026): só a página variacoes/cl0/ carrega este arquivo. O 29 com os planos antes dos preços.
+   Cabeçalho da coluna enxuto (sem a linha de ritmo e passo) e com a altura do conteúdo: o preço entra num avanço depois (data-step,
+   opacity 0 até lá), mas o lugar dele já está reservado, então nada pula quando ele aparece. */
+.cl0-planos .pl-hd{height:auto;padding-bottom:4px}
+.cl0-planos .pl-hd .pl-ds{height:58px}
+.cl0-planos .cl0-preco{margin-top:2px}
+/* o Scout PRO não tem rótulo em cima da lista (texto do closer): sem a linha e sem o espaço */
+.cl0-planos .pl-mais:empty{display:none}
+.cl0-planos .pl-mais{letter-spacing:.14em}
+.cl0-planos .pl-vant p{margin-top:8px!important}
+/* a chamada do último avanço, no canto de cima, à direita do título */
+.cl0-chamada{margin:0;font-family:var(--f-title);font-weight:800;font-size:34px;line-height:1.06;text-transform:uppercase;color:var(--sand-l);text-align:right;text-wrap:balance}
+/* o rodapé legal fica sempre na tela, à esquerda do contador */
+.cl0-planos .cl0-legal{margin:0;white-space:nowrap}

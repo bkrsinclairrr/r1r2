@@ -7,7 +7,12 @@
    oportunidades, sozinho à direita ou no centro.
    O inimigo em comum: o avaliador que não olha todo mundo, e o tempo e o dinheiro que a família contou no painel (peneiras, gasto e
    anos tentando). Sem os números, o quadro mostra a conta sem números: nada é inventado.
-   Tudo que vem do painel entra escapado. O vídeo, o quadro dele e o mapa que não carregam somem da tela, sem ícone quebrado. */
+   Tudo que vem do painel entra escapado. O vídeo, o quadro dele e o mapa que não carregam somem da tela, sem ícone quebrado.
+   Desde 20/10/2026: o mapa de calor também pode vir da lista do painel (ficha.mapaCalor, o id da posição): o SVG sai do mapa-calor.js, sem
+   arquivo, e o subtítulo diz a verdade ("onde atua um zagueiro": é o mapa típico da posição, não um dado do jogo dele). O arquivo enviado
+   antes, quando existe, tem prioridade. E o vídeo segue a proporção dele (largura e altura vêm do painel; sem elas, do próprio vídeo quando
+   carrega): deitado, a largura do centro; quadrado ou em pé, mais alto e centralizado; em pé com o mapa, o mapa vai pro lado, com o campo em
+   pé. Na IA na Prática, a caixa do vídeo encolhe na largura pra caber o vídeo em pé inteiro (antes ele saía cortado). */
 (function () {
   'use strict';
   const str = v => (typeof v === 'string' ? v.trim() : v == null ? '' : String(v));
@@ -49,12 +54,21 @@
       const mp = comVideo && f._mapa && typeof f._mapa === 'object' && f._mapa.ok ? f._mapa : null;
       const mv = mp ? parseInt(mp.versao, 10) || 0 : 0;
       const msrc = mp ? (aid ? (mv ? comChave(painel + '/api/foto?t=' + encodeURIComponent(aid) + '&v=mapa&n=' + mv) : '') : str(mp.src)) : '';
+      // o mapa da lista (a posição que o closer escolheu no painel); o arquivo enviado antes, quando carrega, vale mais
+      const MC = window.MapaCalor;
+      const mid = comVideo && MC && MC.temId(str(f.mapaCalor)) && !ok(msrc) ? str(f.mapaCalor) : '';
       const ops = semNome ? [] : oportunidades(f.oportunidades);
-      const V = ok(vsrc), M = ok(msrc), O = ops.length > 0;
+      const V = ok(vsrc), M = ok(msrc) || !!mid, O = ops.length > 0;
+      // a proporção do vídeo (largura sobre altura): do painel; sem ela, a que o vídeo mostrou quando carregou
+      const vv = f._video && typeof f._video === 'object' ? f._video : null;
+      const ar = vv && vv.largura > 0 && vv.altura > 0 ? vv.largura / vv.altura : (vistos[vsrc] || 0);
       const r = {
         dsV: V ? '1' : '', dsM: M ? '1' : '', dsO: O ? '1' : '',
         dsMostra: !semNome && (V || M || O) ? '1' : '',
-        dsVideoSrc: V ? vsrc : '', dsPosterUrl: V && ok(psrc) ? psrc : '', dsMapaUrl: M ? msrc : '',
+        dsVideoSrc: V ? vsrc : '', dsPosterUrl: V && ok(psrc) ? psrc : '', dsMapaUrl: M && !mid ? msrc : '', dsMapaId: mid,
+        // o subtítulo do mapa: o da lista diz de que posição ele é (verdade); o arquivo de antes segue com o texto de sempre
+        dsMapaSub: '· ' + (mid ? MC.sub(mid) : 'onde o seu jogo acontece'),
+        dsAr: ar,
         // o plano de carreira: no centro, quando só tem as oportunidades; senão, à direita (embaixo delas, ou sozinho)
         dsPlanoCentro: !V && !M ? '1' : '', dsPlanoLado: V || M ? '1' : '',
         dsNome: str(d.nomeAssinatura || d.nome),
@@ -88,9 +102,32 @@
     /* o que não dá pra fazer só com data-bind: as listas, o nome em até duas linhas e o vídeo do dossiê (som, erro, espaço do teclado) */
     atualiza(root, d) {
       ultimo = d;
+      const ar = d.dsAr > 0 ? d.dsAr : 0;
+      ajustaIA(ar);
       root.querySelectorAll('.ds-slide').forEach(s => {
         s.classList.toggle('ds-com-v', !!d.dsV);
         s.classList.toggle('ds-com-m', !!d.dsM);
+        // a proporção do vídeo: em pé (mais alto que largo) e quadrado mudam o desenho do centro
+        const emPe = !!d.dsV && ar > 0 && ar < .8, quadrado = !!d.dsV && ar >= .8 && ar < 1.25;
+        s.classList.toggle('ds-em-pe', emPe);
+        s.classList.toggle('ds-quadrado', quadrado);
+        const pl = s.querySelector('.ds-player');
+        if (pl) {
+          if (ar > 0) { pl.style.setProperty('--ds-ar', String(ar)); pl.style.setProperty('--ds-arn', ar.toFixed(4)); }
+          else { pl.style.removeProperty('--ds-ar'); pl.style.removeProperty('--ds-arn'); }
+        }
+        // o mapa da lista: o SVG do mapa-calor.js (em pé quando o vídeo em pé deixa o mapa do lado)
+        const caixa = s.querySelector('.ds-mapa-img');
+        if (caixa) {
+          let alvo = caixa.querySelector('.ds-mapa-svg');
+          const chave = d.dsMapaId && window.MapaCalor ? d.dsMapaId + (emPe ? ':v' : ':h') : '';
+          if (chave && !alvo) { alvo = document.createElement('div'); alvo.className = 'ds-mapa-svg'; caixa.appendChild(alvo); }
+          if (alvo && alvo.dataset.chave !== chave) {
+            alvo.dataset.chave = chave;
+            alvo.innerHTML = chave ? window.MapaCalor.svg(d.dsMapaId, { vertical: emPe }) : '';
+          }
+          caixa.classList.toggle('com-svg', !!chave);
+        }
         s.classList.toggle('ds-com-o', !!d.dsO);
         s.classList.toggle('ds-muitas', (d.dsOps || []).length >= 5); // cinco ou seis clubes: o plano ao lado fica mais curto
         // o vídeo do dossiê é o vídeo do slide (o espaço dá play e pausa) só quando ele está na tela
@@ -118,6 +155,7 @@
           for (let i = 0; i < 24 && fs * .94 >= 32 && (nm.scrollHeight > lh / base * fs * 2 + 2 || nm.scrollWidth > nm.clientWidth + 1); i++) { fs *= .94; nm.style.fontSize = fs.toFixed(1) + 'px'; }
         }
         const v = s.querySelector('video[data-src="dsVideoSrc"]');
+        if (v) ouveProporcao(v);
         if (v && !v.dataset.dsLigado) {
           v.dataset.dsLigado = '1';
           const pl = v.closest('.player');
@@ -157,6 +195,36 @@
       });
     }
   };
+  /* a proporção que o vídeo mostrou quando carregou (o vídeo de antes de 20/10/2026 não tem largura e altura no painel): guarda pelo endereço
+     e redesenha uma vez. Vale pro vídeo do dossiê e pro da IA na Prática */
+  const vistos = {};
+  function ouveProporcao(v) {
+    if (v.dataset.dsAr) return;
+    v.dataset.dsAr = '1';
+    v.addEventListener('loadedmetadata', () => {
+      const u = v.getAttribute('src');
+      if (!u || !(v.videoWidth > 0 && v.videoHeight > 0) || vistos[u]) return;
+      vistos[u] = v.videoWidth / v.videoHeight;
+      if (ultimo && !(ultimo.dsAr > 0)) window.dispatchEvent(new Event('je-dossie'));
+    });
+  }
+  /* a IA na Prática (o vídeo dele lance a lance): a caixa do player tem 16:9 marcado na página. Com o vídeo em pé, ela encolhe na largura, no
+     mesmo lugar e centralizada, pro vídeo caber inteiro (o player do deck corta o que sobra); os cantos (.brackets) acompanham. Sem proporção,
+     a caixa de sempre */
+  function ajustaIA(ar) {
+    const p = document.getElementById('p-atleta');
+    if (!p) return;
+    const v = p.querySelector('video');
+    if (v) ouveProporcao(v);
+    const proporcao = ar > 0 ? ar : (v && vistos[v.getAttribute('src')]) || 0;
+    const br = p.nextElementSibling && p.nextElementSibling.classList.contains('brackets') ? p.nextElementSibling : null;
+    if (!p.dataset.caixa) p.dataset.caixa = ['left', 'top', 'width', 'height'].map(k => parseFloat(p.style[k]) || 0).join(',');
+    const [l, t, w, h] = p.dataset.caixa.split(',').map(Number);
+    if (!w || !h) return;
+    const larg = proporcao > 0 ? Math.min(w, Math.round(h * proporcao)) : w, esq = l + Math.round((w - larg) / 2);
+    [p, br].forEach(e => { if (e) { e.style.left = esq + 'px'; e.style.width = larg + 'px'; } });
+    p.classList.toggle('ia-proporcao', proporcao > 0);
+  }
   /* a contagem: de 0 ao número da família em 1,2 s, com o formato dele (R$ 4.800, 6, 3). "Reduzir movimento": o número já pronto */
   let reduz = false;
   try { reduz = matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { /* sem matchMedia */ }

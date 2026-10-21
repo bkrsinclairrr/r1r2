@@ -70,7 +70,8 @@ export default async function handler(req, res) {
     // os prazos de lá são texto livre: entram só se baterem com a lista fixa (promessa travada)
     ['prazoContato', 'prazoZyron'].forEach(k => {
       if (!entrada[k]) return;
-      const achou = R.PRAZOS[k === 'prazoContato' ? 'contato' : 'zyron'].find(p => R.semAcento(p) === R.semAcento(entrada[k]));
+      const lista = k === 'prazoContato' ? 'contato' : 'zyron', valor = R.prazoDeHoje(lista, entrada[k]);
+      const achou = R.PRAZOS[lista].find(p => R.semAcento(p) === R.semAcento(valor));
       if (achou) entrada[k] = achou;
     });
     if (f.r2dia) entrada.r2data = leData(f.r2dia);

@@ -22,9 +22,10 @@ export const etapaDe = reg => ((reg && reg.etapa) === 'r1' ? 'r1' : 'r2');
 export { DECK_URL };
 const DIA = 864e5;
 // D6: o link vale até 7 dias depois da call (sem data, 7 dias depois de criado), renovável até 60 dias a partir de hoje;
-// foto e vídeo, 90 dias; o registro é apagado 180 dias depois que o link vence
+// foto, 90 dias; o vídeo, 24 horas contadas do envio, renováveis por mais 24 (pedido do dono, 20/10/2026; eram 90 dias); o registro é
+// apagado 180 dias depois que o link vence
 // r1SemData: o R1 vem antes da R2 e muitas vezes ainda sem dia marcado: o link dele vale 30 dias a partir de quando foi criado
-export const VALIDADE = { linkDepoisDaCall: 7, r1SemData: 30, linkMax: 60, fotoDias: 90, videoDias: 90, registroDepoisDoLink: 180 };
+export const VALIDADE = { linkDepoisDaCall: 7, r1SemData: 30, linkMax: 60, fotoDias: 90, videoHoras: 24, registroDepoisDoLink: 180 };
 export const FOTO = { retrato: { largura: 960, altura: 1280, maxBytes: 600 * 1024 }, avatar: { largura: 400, altura: 400, maxBytes: 150 * 1024 } };
 // o mapa de calor do atleta (fica embaixo do vídeo no slide do dossiê): JPEG sem EXIF, normalizado no navegador, de 300 a 2400 px de lado
 export const MAPA = { min: 300, max: 2400, maxBytes: 900 * 1024 };
@@ -51,6 +52,12 @@ export async function corpo(req) {
   try { const j = JSON.parse(texto || '{}'); return j && typeof j === 'object' ? j : {}; } catch { return {}; }
 }
 export const espera = ms => new Promise(r => setTimeout(r, ms));
+// Server-Timing: quanto a rota levou (o painel mostra com ?perf=1 no endereço; a medição do vídeo, 20/10/2026). Só o tempo, nada do lead
+export function mede(res, nome) {
+  // no writeHead (que o end e o primeiro pedaço do stream também chamam): é a última hora em que dá pra pôr cabeçalho
+  const t0 = Date.now(), cab = res.writeHead;
+  res.writeHead = function (...a) { try { if (!res.headersSent) res.setHeader('Server-Timing', nome + ';dur=' + (Date.now() - t0)); } catch { /* nada */ } return cab.apply(this, a); };
+}
 export const ehJson = req => String(req.headers['content-type'] || '').toLowerCase().includes('application/json');
 // texto que vem do painel ou de um JSON: sem HTML, sem quebra, aparado e com tamanho máximo
 export function textoLimpo(v, max) {
@@ -170,7 +177,7 @@ const CAMPOS = {
   origem: { opcoes: R.ORIGENS }, caracteristicas: { max: 160 }, experiencia: { max: 160 }, sonho: { max: 120 },
   r2data: { data: true }, r2hm: { hora: true },
   plano: { opcoes: R.PLANOS, antigos: R.PLANOS_ANTIGOS }, vagas: { numero: [1, 10] }, proximaTurma: { max: 40 },
-  gerente: { max: 60 }, prazoContato: { opcoes: R.PRAZOS.contato }, prazoZyron: { opcoes: R.PRAZOS.zyron },
+  gerente: { max: 60 }, prazoContato: { opcoes: R.PRAZOS.contato }, prazoZyron: { opcoes: R.PRAZOS.zyron, antigos: R.PRAZOS_ANTIGOS.zyron },
   // a versão do R2 (R.VERSOES), como o nome aparece na tela (R.NOMES_TELA), a foto do lead fora da tela (semFoto: "sim") e os
   // slides opcionais tirados da sequência (ids separados por vírgula, dos opcionais da versão escolhida). Só o que sai do
   // padrão fica gravado.
@@ -178,6 +185,8 @@ const CAMPOS = {
   // 18/10/2026: os dados do atleta pro dossiê (onde joga hoje e a categoria), o custo das peneiras (o slide do inimigo comum), "tenho o
   // vídeo do jogador" (liga o vídeo analisado e o mapa de calor no slide do dossiê) e as oportunidades (os clubes, "Clube~detalhe|...", até 6)
   clubeAtual: { max: 60 }, categoria: { opcoes: R.CATEGORIAS },
+  // 20/10/2026: o mapa de calor escolhido na lista (a posição; 'sem' é sem mapa). Fica no rascunho, sem envio de arquivo
+  mapaCalor: { opcoes: R.MAPAS_CALOR.concat(['sem']) },
   peneirasFeitas: { numero: [0, 200] }, gastoPeneiras: { numero: [0, 5000000] }, anosTentando: { numero: [0, 30] },
   temVideo: { opcoes: ['sim'] }, oportunidades: { oportunidades: true }
 };
@@ -202,7 +211,7 @@ export function limpaFicha(entrada, versoes, etapa) {
     const v = textoLimpo(e[k], 300);
     if (!v) continue;
     if (regra.dinamica) { if (ids.includes(v)) f[k] = v; continue; } // a variação: uma das que existem agora nesta etapa
-    if (regra.opcoes) { const o = (regra.antigos && regra.antigos[v]) || v; if (regra.opcoes.includes(o)) f[k] = o; continue; }
+    if (regra.opcoes) { const o = (regra.antigos && regra.antigos[v]) || (k === 'prazoZyron' ? R.prazoDeHoje('zyron', v) : v); if (regra.opcoes.includes(o)) f[k] = o; continue; }
     if (regra.numero) {
       const n = parseInt(v, 10);
       if (/^\d+$/.test(v) && n >= regra.numero[0] && n <= regra.numero[1]) f[k] = String(n);
@@ -351,6 +360,8 @@ export const versaoDoReg = (reg, lista) => R.versaoPor(((reg && reg.ficha) || {}
 export function fichaEfetiva(f, ver) {
   const out = Object.assign({}, f);
   if (out.plano) out.plano = R.PLANOS_ANTIGOS[out.plano] || out.plano;
+  // o prazo do Zyron de antes ("no dia seguinte", "em até 48 horas") vira o de hoje: o lead salvo antes de 20/10/2026 não perde o prazo
+  if (out.prazoZyron) out.prazoZyron = R.prazoDeHoje('zyron', out.prazoZyron);
   const lead = (ver && ver.lead) || { nome: true, foto: true };
   if (!lead.nome) out.nomeTela = 'sem';
   if (!lead.foto || out.nomeTela === 'sem') out.semFoto = 'sim';
@@ -359,7 +370,7 @@ export function fichaEfetiva(f, ver) {
 // o que a família vê (o deck lê pela /api/r2): o dia e a hora já no formato da tela. O R1 só leva a ficha do atleta e o que vai pro CRM
 // (o deck dele não usa apelido, plano nem escolha do formato do nome); o R2, tudo
 const PUBLICOS_R2 = ['nome', 'apelido', 'idade', 'posicao', 'cidade', 'pe', 'altura', 'origem', 'caracteristicas', 'experiencia', 'sonho', 'plano', 'gerente', 'prazoContato', 'prazoZyron', 'nomeTela', 'semFoto', 'pular',
-  'clubeAtual', 'categoria', 'peneirasFeitas', 'gastoPeneiras', 'anosTentando', 'temVideo', 'oportunidades'];
+  'clubeAtual', 'categoria', 'peneirasFeitas', 'gastoPeneiras', 'anosTentando', 'temVideo', 'oportunidades', 'mapaCalor'];
 const PUBLICOS_R1 = ['semFoto', 'nome', 'idade', 'posicao', 'cidade', 'pe', 'altura', 'clubeAtual', 'categoria', 'origem', 'caracteristicas', 'experiencia'];
 export function fichaPublica(f0, ver) {
   const f = fichaEfetiva(f0, ver), out = {};
@@ -488,7 +499,7 @@ export function resumo(reg) {
     t: reg.t, etapa: etapaDe(reg), nome: f.nome || '', apelido: f.apelido || '', posicao: f.posicao || '', plano: f.plano || '', versao: f.versao || '',
     r2data: f.r2data || '', r2hm: f.r2hm || '', estado: reg.estado || 'rascunho', venceEm: reg.venceEm || '',
     venceManual: !!reg.venceManual, apagarAoVencer: !!reg.apagarAoVencer, encerradoEm: reg.encerradoEm || '',
-    foto: fotoValida(reg.foto) ? reg.foto.versao : 0, video: videoValido(reg.video), linkGerado: linkGerado(reg), mapa: !!(reg.mapa && reg.mapa.versao),
+    foto: fotoValida(reg.foto) ? reg.foto.versao : 0, video: videoValido(reg.video), linkGerado: linkGerado(reg), mapa: !!(reg.mapa && reg.mapa.versao) || R.MAPAS_CALOR.includes(f.mapaCalor),
     donoLogin: reg.donoLogin, donoNome: (reg.dono && reg.dono.nome) || (reg.criadoPor && reg.criadoPor.nome) || '',
     criadoEm: reg.criadoEm, atualizadoEm: reg.atualizadoEm, rev: reg.rev || 0
   };
@@ -627,20 +638,26 @@ export const TIPOS_LANCE = ['Passe', 'Condução', 'Drible', 'Finalização', 'D
 export const ORIGENS_LEITURA = ['zyron', 'equipe'];
 export const CRITERIOS = ['todos', 'selecao'];
 export const PASTA_VIDEO = 'videos/';
-export const VIDEO_MAX_BYTES = 250 * 1024 * 1024; // até 250 MB
-export const VIDEO_MAX_S = 300; // até 5 minutos
+// Sem limite de tamanho nem de tempo por vídeo (pedido do dono, 20/10/2026; eram 250 MB e 5 minutos). Ficam só um teto técnico (o token
+// de envio do Blob precisa de um número) e a guarda do espaço de todos os vídeos juntos (VIDEOS_ESPACO_MAX_MB, padrão 600 MB): a loja do
+// plano gratuito tem 1 GB pra tudo (fichas, índices, usuários) e passar dele trava o painel inteiro até 30 dias.
+export const VIDEO_TETO_BYTES = 2 * 1024 * 1024 * 1024; // 2 GB por arquivo, teto técnico do envio
+export const VIDEO_TETO_S = 6 * 3600; // 6 horas: só pra recusar duração absurda (arquivo estragado)
 export const POSTER_MAX_BYTES = 2 * 1024 * 1024;
 export const TIPOS_VIDEO = { 'video/mp4': 'mp4', 'video/webm': 'webm', 'video/quicktime': 'mov' };
+export const videosEspacoMax = () => { const mb = Number(process.env.VIDEOS_ESPACO_MAX_MB); return Math.round((Number.isFinite(mb) && mb > 0 ? mb : 600) * 1024 * 1024); };
 const LANCES_MAX = 200, TEXTO_MAX = 70, LISTA_MAX = 3;
 // o caminho do arquivo é sempre videos/<t>/<nome aleatório>.<ext>; o navegador escolhe o nome, o servidor confere
 export const caminhoVideoOk = (t, p, poster) => T_OK.test(String(t || '')) && typeof p === 'string' && p.startsWith(PASTA_VIDEO + t + '/') &&
   new RegExp('^' + PASTA_VIDEO + t + '/[a-z0-9]{12,40}\\.' + (poster ? 'jpg' : '(mp4|webm|mov)') + '$').test(p);
 
-// confere a leitura inteira; devolve a leitura limpa e a lista do que ficou de fora (pra importação mostrar)
+// confere a leitura inteira; devolve a leitura limpa e a lista do que ficou de fora (desde 20/10/2026 são avisos: o resto é salvo mesmo
+// assim). Nada é obrigatório: sem fonte, o deck só não mostra o relatório; sem lances, também. O minuto que passa do fim do vídeo por até
+// 2 segundos (o player arredonda) vai pro fim; mais que isso, a linha fica de fora
 export function limpaLeitura(entrada, duracaoS) {
   const e = entrada && typeof entrada === 'object' ? entrada : {};
   const erros = [];
-  const dur = Number(duracaoS) > 0 ? Number(duracaoS) : VIDEO_MAX_S;
+  const dur = Number(duracaoS) > 0 ? Number(duracaoS) : VIDEO_TETO_S;
   const origem = ORIGENS_LEITURA.includes(e.origem) ? e.origem : '';
   if (e.origem != null && e.origem !== '' && !origem) erros.push('Fonte inválida: use "zyron" ou "equipe".');
   const criterio = CRITERIOS.includes(e.criterio) ? e.criterio : 'selecao';
@@ -649,7 +666,8 @@ export function limpaLeitura(entrada, duracaoS) {
     const n = i + 1;
     if (lances.length >= LANCES_MAX) { erros.push('Lance ' + n + ': passou de ' + LANCES_MAX + ' lances.'); return; }
     if (!l || typeof l !== 'object') { erros.push('Lance ' + n + ': formato inválido.'); return; }
-    const t = Number(l.t);
+    let t = Number(l.t);
+    if (Number.isFinite(t) && t > dur && t <= dur + 2) t = dur;
     if (!Number.isFinite(t) || t < 0 || t > dur) { erros.push('Lance ' + n + ': o minuto (' + textoLimpo(l.t, 12) + ') está fora do vídeo.'); return; }
     const tipo = TIPOS_LANCE.find(x => x.toLowerCase() === String(l.tipo || '').trim().toLowerCase());
     if (!tipo) { erros.push('Lance ' + n + ': tipo "' + textoLimpo(l.tipo, 30) + '" fora da lista.'); return; }
@@ -665,21 +683,76 @@ export function limpaLeitura(entrada, duracaoS) {
   };
   return { leitura: { origem, criterio, lances, fortes: listaDe(e.fortes, 'Pontos fortes'), prioridades: listaDe(e.prioridades, 'Prioridades') }, erros };
 }
-// os dados do vídeo que o navegador manda depois do upload (o servidor completa quem autorizou e a validade)
+// os dados do vídeo que o navegador manda depois do upload (o servidor completa quem autorizou e a validade). largura e altura (do
+// próprio arquivo, lidas no navegador) deixam o painel e os decks mostrarem o vídeo na proporção dele, em pé ou deitado
 export function limpaVideo(t, entrada) {
   const e = entrada && typeof entrada === 'object' ? entrada : {};
   const tipo = TIPOS_VIDEO[e.tipo] ? e.tipo : '';
   const bytes = Math.round(Number(e.bytes));
   const duracaoS = Math.round(Number(e.duracaoS) * 10) / 10;
   if (!caminhoVideoOk(t, e.arquivo, false) || !tipo) return { erro: 'Vídeo inválido: envie mp4, webm ou mov.' };
-  if (!(bytes > 0 && bytes <= VIDEO_MAX_BYTES)) return { erro: 'O vídeo passa de 250 MB.' };
-  if (!(duracaoS > 0 && duracaoS <= VIDEO_MAX_S + 1)) return { erro: 'O vídeo passa de 5 minutos.' };
+  if (!(bytes > 0)) return { erro: 'O tamanho do vídeo não chegou certo. Envie de novo.' };
+  if (bytes > VIDEO_TETO_BYTES) return { erro: 'O arquivo passa de 2 GB, o teto do envio. Exporte o vídeo menor e envie de novo.' };
+  if (!(duracaoS > 0 && duracaoS <= VIDEO_TETO_S)) return { erro: 'A duração do vídeo não chegou certa. Envie de novo.' };
   const poster = e.poster && caminhoVideoOk(t, e.poster, true) ? e.poster : '';
-  return { video: { arquivo: e.arquivo, tipo, bytes, duracaoS, poster } };
+  const lado = v => { const n = Math.round(Number(v)); return n >= 16 && n <= 16384 ? n : 0; };
+  const largura = lado(e.largura), altura = lado(e.altura);
+  return { video: Object.assign({ arquivo: e.arquivo, tipo, bytes, duracaoS, poster }, largura && altura ? { largura, altura } : {}) };
 }
 // o vídeo só existe pra fora com autorização registrada, dentro da validade
 export const videoValido = v => !!(v && v.arquivo && v.autorizadoEm && v.venceEm && Date.parse(v.venceEm) > Date.now());
 export const videoVencido = v => !!(v && v.arquivo && v.venceEm && Date.parse(v.venceEm) <= Date.now());
-export const venceVideo = () => new Date(Date.now() + VALIDADE.videoDias * DIA).toISOString();
+export const venceVideo = () => new Date(Date.now() + VALIDADE.videoHoras * 3600e3).toISOString();
+
+/* ---------------- o espaço e a limpeza dos vídeos (20/10/2026) ---------------- */
+// O espaço usado por todos os vídeos e capas: uma listagem de videos/ (operação avançada do Blob), guardada na memória da instância por
+// 2 minutos (fresco: lista de novo). A passada atualiza o número.
+let espacoGuardado = null;
+// o que já se sabe do espaço, sem listar (usado: null quando esta instância ainda não listou nas últimas 2 horas)
+export const espacoSabido = () => ({ usado: espacoGuardado && Date.now() - espacoGuardado.em < 2 * H_MS ? espacoGuardado.usado : null, max: videosEspacoMax() });
+const H_MS = 3600e3;
+export async function espacoVideos({ fresco = false } = {}) {
+  if (!fresco && espacoGuardado && Date.now() - espacoGuardado.em < 2 * 60e3) return { usado: espacoGuardado.usado, max: videosEspacoMax() };
+  const itens = await lista(PASTA_VIDEO);
+  espacoGuardado = { usado: itens.reduce((s, a) => s + (Number(a.tamanho) || 0), 0), em: Date.now() };
+  return { usado: espacoGuardado.usado, max: videosEspacoMax() };
+}
+// A passada dos vídeos: uma listagem de videos/ e, só pros leads que têm arquivo lá, a leitura do registro. Apaga (o del do Blob é de
+// graça) o vídeo e a capa vencidos, o arquivo que não é o vídeo nem a capa de agora e tem mais de 2 horas (envio interrompido, trocado ou
+// que nunca registrou) e o arquivo de lead que não existe mais. O registro não é regravado (o vencido já não é servido e o próximo
+// salvamento limpa), pra não gastar operação. Devolve só contagem e o espaço que sobrou (nunca nome).
+export const SOBRA_VIDEO_MS = 2 * 3600e3;
+export async function passadaVideos(agora = Date.now()) {
+  const itens = await lista(PASTA_VIDEO);
+  const porLead = new Map();
+  for (const it of itens) {
+    const t = it.caminho.slice(PASTA_VIDEO.length).split('/')[0];
+    if (!porLead.has(t)) porLead.set(t, []);
+    porLead.get(t).push(it);
+  }
+  const fora = new Set(), conta = { vencidos: 0, sobras: 0, orfaos: 0 };
+  for (const [t, arqs] of porLead) {
+    const r = T_OK.test(t) ? await le(caminho(t)) : null;
+    if (!r || !r.dados) { arqs.forEach(a => fora.add(a)); conta.orfaos += arqs.length; continue; }
+    const v = r.dados.video;
+    if (v && v.arquivo && v.venceEm && Date.parse(v.venceEm) <= agora) { arqs.forEach(a => fora.add(a)); conta.vencidos++; continue; }
+    const atuais = v ? [v.arquivo, v.poster].filter(Boolean) : [];
+    arqs.forEach(a => { if (!atuais.includes(a.caminho) && agora - Date.parse(a.enviadoEm) > SOBRA_VIDEO_MS) { fora.add(a); conta.sobras++; } });
+  }
+  if (fora.size) await apaga([...fora].map(a => a.caminho));
+  const usado = itens.filter(a => !fora.has(a)).reduce((s, a) => s + (Number(a.tamanho) || 0), 0);
+  espacoGuardado = { usado, em: Date.now() };
+  return Object.assign(conta, { apagados: fora.size, usado });
+}
+// a passada quando alguém usa o painel: no máximo uma vez por hora por instância (o horário fica na memória da função), sem nunca derrubar
+// o pedido de quem chamou. Uma hora, e não menos: cada passada é uma listagem (operação avançada do Blob, 2.000 por mês no plano gratuito),
+// e os Crons (9h, 3h, 15h e 21h UTC) já garantem que o vencido não passa de umas 7 horas na loja
+let ultimaPassada = 0;
+export const PASSADA_INTERVALO_MS = 60 * 60e3;
+export async function passadaDeVezEmQuando() {
+  if (Date.now() - ultimaPassada < PASSADA_INTERVALO_MS) return null;
+  ultimaPassada = Date.now();
+  try { return await passadaVideos(); } catch (e) { registraErro('passada-videos', e); return null; }
+}
 export const venceFoto = () => new Date(Date.now() + VALIDADE.fotoDias * DIA).toISOString();
 export { grava, le, apaga, apagaPasta, lista, DIA };

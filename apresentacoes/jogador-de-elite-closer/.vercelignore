@@ -8,3 +8,6 @@ dados-teste
 gera-segredos.mjs
 envia-variaveis.mjs
 .gitattributes
+copia-mapa-calor.mjs
+limpa-videos-da-loja.mjs
+inventario-da-loja.txt

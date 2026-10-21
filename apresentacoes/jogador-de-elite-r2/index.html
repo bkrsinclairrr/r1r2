@@ -386,7 +386,7 @@
     </div>
     <p class="ds-legal" data-if="dsV">Vídeo usado com autorização expressa do responsável legal.</p>
     <div class="ds-mapa" data-if="dsM">
-      <p class="ds-h ice">Mapa de calor <span>· onde o seu jogo acontece</span></p>
+      <p class="ds-h ice">Mapa de calor <span data-bind="dsMapaSub">· onde o seu jogo acontece</span></p>
       <div class="ds-mapa-img"><img data-src="dsMapaUrl" alt="Mapa de calor do atleta"></div>
     </div>
     <div class="ds-plano" data-if="dsPlanoCentro">
@@ -648,8 +648,8 @@
     <p class="t t-130 rise" data-ifnot="planoTurma" style="margin:48px 0 0 -4px!important">O começo do <span data-bind="nome" data-fb="atleta"></span>.</p>
     <div class="rise" style="margin-top:56px;width:840px;--d:.1s">
       <p class="b b-40" data-if="vagas&planoTurma" style="color:var(--white);margin-bottom:24px!important">Dessa turma de 10, <span data-bind="vagasFrase2"></span><span data-if="proximaTurma"> A próxima abre em <span data-bind="proximaTurma"></span>.</span></p>
-      <p class="b b-40" data-if="planoId=legacy" style="color:var(--white)">Confirmando hoje, o gerente de carreira entra em contato <span data-bind="prazoContato" data-fb="assim que a vaga é confirmada"></span>, e o <span class="ice">Zyron</span> começa a acompanhar o <span data-bind="nome" data-fb="atleta"></span> <span data-bind="prazoZyron" data-fb="em seguida"></span>.</p>
-      <p class="b b-40" data-ifnot="planoId=legacy" style="color:var(--white)">Confirmando hoje, a equipe entra em contato com vocês, e o <span class="ice">Zyron</span> começa a ler o jogo do <span data-bind="nome" data-fb="atleta"></span> <span data-bind="prazoZyron" data-fb="em seguida"></span>.</p>
+      <p class="b b-40" data-if="planoId=legacy" style="color:var(--white)">Confirmando hoje, o gerente de carreira entra em contato <span data-bind="prazoContato" data-fb="assim que a vaga é confirmada"></span>, e o <span class="ice">Zyron</span> começa a acompanhar o <span data-bind="nome" data-fb="atleta"></span> <span data-bind="prazoZyron" data-fb="imediatamente"></span>.</p>
+      <p class="b b-40" data-ifnot="planoId=legacy" style="color:var(--white)">Confirmando hoje, a equipe entra em contato com vocês, e o <span class="ice">Zyron</span> começa a ler o jogo do <span data-bind="nome" data-fb="atleta"></span> <span data-bind="prazoZyron" data-fb="imediatamente"></span>.</p>
     </div>
   </div>
   <div class="a turma rise" id="turma" data-if="planoTurma" style="left:1080px;top:150px;width:740px;--d:.06s"></div>
@@ -840,6 +840,7 @@
 <script src="assets/ordem-garantia.js"></script>
 <script>window.VARIACAO_NOME = "R2 · Roteiro clássico completo";</script>
 <script src="assets/foto-atleta.js"></script>
+<script src="assets/mapa-calor.js"></script>
 <script src="assets/dossie-atleta.js"></script>
 <script src="assets/deck.js"></script>
 <script src="assets/bloco.js"></script>

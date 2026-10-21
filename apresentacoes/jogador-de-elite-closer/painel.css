@@ -217,7 +217,8 @@ legend{padding:0 8px}
 .lt-linha{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .lt-linha select.in{width:auto}
 .lt-grade{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}
-.lt-video{width:100%;max-width:780px;max-height:440px;aspect-ratio:16/9;background:#000;border-radius:10px;display:block}
+/* o vídeo na proporção dele (em pé ou deitado), do tamanho que cabe na tela: --ar e --arn vêm do painel.js (16:9 enquanto não sabe) */
+.lt-video{display:block;aspect-ratio:var(--ar,16/9);width:min(100%,780px,calc(62vh * var(--arn,1.7778)));height:auto;margin:0 auto;background:#000;border-radius:10px;object-fit:contain}
 .lt-teclas{color:var(--muted);font-size:13px;margin:6px 0 0}
 .lt-teclas kbd{font-family:var(--f-label);font-weight:600;color:var(--white);border:1px solid var(--line2);border-radius:4px;padding:0 5px}
 .lt-tab{width:100%;border-collapse:collapse;font-size:14px}
@@ -235,7 +236,7 @@ legend{padding:0 8px}
 .lt-escolha label{display:flex;gap:7px;align-items:center;font-size:15px;color:var(--white);cursor:pointer;min-height:40px}
 .lt-erros{margin:8px 0 0;padding-left:18px;color:var(--red);font-size:14px}
 .lt-poster{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.lt-poster img{width:200px;aspect-ratio:16/9;object-fit:cover;border-radius:8px;border:1px solid var(--line2);background:#000}
+.lt-poster img{width:200px;aspect-ratio:16/9;object-fit:contain;border-radius:8px;border:1px solid var(--line2);background:#000}
 .lt-previa{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:18px;background:#0A0D12;border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:12px}
 .rl-linha{position:relative;height:46px;margin-top:6px}
 .rl-trilho{position:absolute;left:0;right:0;top:12px;height:4px;border-radius:2px;background:var(--line2)}
@@ -361,6 +362,8 @@ legend{padding:0 8px}
 /* Gerados: o que já foi gerado, o espaço de cada um e a exclusão em lote */
 .ger-resumo{margin:0 0 10px;font-size:15px;color:var(--white)}
 .ger-resumo b{color:var(--gold-l);font-weight:600}
+/* o espaço dos vídeos perto da guarda (mais de 85%): o envio de vídeo novo logo vai ser recusado */
+.ger-resumo b.alerta{color:var(--red)}
 .ger-barra{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
 .ger-barra #ger-excluir{margin-left:auto}
 #ger-filtros{flex-wrap:wrap;max-width:100%}
@@ -390,6 +393,20 @@ legend{padding:0 8px}
 .vd-estado.ok{color:var(--green)}
 .mc-atual{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:6px 0}
 .mc-atual img{width:220px;max-height:150px;object-fit:contain;border-radius:8px;border:1px solid var(--line2);background:#0A0D12}
+/* o mapa de calor da lista (20/10/2026): a grade das posições e a prévia grande, com o que o slide vai dizer */
+.mc-escolha{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px;align-items:start;margin:6px 0 8px}
+.mc-grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:8px}
+.mc-op{position:relative;display:flex;flex-direction:column;gap:4px;padding:6px;border:1px solid var(--line2);border-radius:8px;background:#0A0D12;color:var(--body);font:600 12.5px/1.2 var(--f-body, inherit);text-align:left;cursor:pointer}
+.mc-op svg{display:block;width:100%;height:auto;border-radius:4px}
+.mc-op:hover{border-color:var(--gold)}
+.mc-op[aria-checked="true"]{border-color:var(--gold-l);box-shadow:0 0 0 2px rgba(230,219,184,.25);color:var(--white)}
+.mc-op .sug{position:absolute;top:4px;right:4px;padding:2px 6px;border-radius:999px;background:var(--gold);color:#0A0D12;font-size:11px;letter-spacing:.04em}
+.mc-op.sem{justify-content:center;align-items:center;min-height:78px;text-align:center}
+.mc-previa svg{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--line2)}
+.mc-previa p{margin:6px 0 0;font-size:13.5px;color:var(--body)}
+.mc-previa p b{color:var(--white)}
+.mc-previa .vazio{padding:28px 12px;border:1px dashed var(--line2);border-radius:8px;text-align:center;color:var(--muted)}
+@media (max-width:760px){.mc-escolha{grid-template-columns:1fr}}
 .op-nova{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) auto;gap:10px;align-items:end}
 .op-lista{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
 .op-lista li{display:flex;align-items:center;gap:10px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 10px}

@@ -133,5 +133,31 @@ ok(Buffer.compare(a, b) === 0, 'relatorio-leitura.js igual byte a byte no painel
     ok(['jogador-de-elite-r2-b', 'jogador-de-elite-r2'].every(d => le(d, a) === base), a + ' igual no R2 novo, no R2 B e no R2 anterior');
   }
 }
+// o mapa de calor por posição (20/10/2026): o mapa-calor.js igual byte a byte no painel e nos três decks do R2 (node copia-mapa-calor.mjs copia),
+// as posições da lista do painel (regras.js) iguais às do módulo e às do campo do deck, e cada SVG pequeno e sem nada de fora
+{
+  const mc = fs.readFileSync(path.join(RAIZ_PAINEL, 'mapa-calor.js'));
+  const copias = ['jogador-de-elite-r2-novo', 'jogador-de-elite-r2-b', 'jogador-de-elite-r2'].filter(d => {
+    const p = path.join(RAIZ_PAINEL, '..', d, 'assets', 'mapa-calor.js');
+    return !fs.existsSync(p) || Buffer.compare(fs.readFileSync(p), mc) !== 0;
+  });
+  ok(!copias.length, 'mapa-calor.js igual byte a byte no painel e nos três decks do R2' + (copias.length ? ' (diferente: ' + copias.join(', ') + '; rode node copia-mapa-calor.mjs)' : ''));
+  const cm = { window: {} }; cm.window = cm; vm.createContext(cm);
+  vm.runInContext(mc.toString('utf8'), cm);
+  const M = cm.MapaCalor;
+  ok(JSON.stringify(M.ids) === JSON.stringify(R.MAPAS_CALOR), 'as posições do mapa de calor iguais no painel e no módulo (' + M.ids.join(', ') + ')');
+  const marcadores = [...new Set(ENTRADAS.map(e => R.posicaoNoCampo(e)).filter(Boolean))];
+  ok(marcadores.every(id => M.temId(id)), 'toda posição que o campo do deck reconhece tem mapa (' + marcadores.length + ' marcadores)');
+  const ruins = [];
+  M.ids.forEach(id => [false, true].forEach(vertical => {
+    const s = M.svg(id, { vertical });
+    const fora = s.replace('xmlns="http://www.w3.org/2000/svg"', '');
+    if (!/^<svg [^>]*viewBox="0 0 (1050 680|680 1050)"/.test(s) || !s.endsWith('</svg>') || /https?:|href=|<script|<image/i.test(fora) || s.length > 6144) ruins.push(id + (vertical ? ' em pé' : '') + ' (' + s.length + ' bytes)');
+  }));
+  ok(!ruins.length, 'os 11 mapas, deitados e em pé: SVG fechado, sem referência de fora e com menos de 6 KB' + (ruins.length ? ': ' + ruins.join(', ') : ''));
+  ok(M.svg('xx') === '' && M.sub('ZAG-e') === 'onde atua um zagueiro' && M.sub('ALE') === 'onde atua um ponta esquerda', 'id que não existe não desenha nada; o subtítulo diz a posição');
+  const a1 = M.svg('MC'), a2 = M.svg('MC');
+  ok(a1 !== a2 && a1.replace(/mc\d+_/g, '') === a2.replace(/mc\d+_/g, ''), 'o mesmo mapa sai igual toda vez (sem sorteio), só com ids próprios pra conviver na mesma página');
+}
 
 fim();

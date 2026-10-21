@@ -19,7 +19,7 @@ const fotos = fotosDeTeste(RAIZ_DECK);
 const F = n => path.join(fotos, n);
 const admin = new Cliente(s.painel);
 await admin.entra(s.adminLogin, s.adminSenha);
-const base = { nome: 'Lucas Almeida da Silva', posicao: 'zagueiro', idade: '15', cidade: 'Natal', pe: 'Destro', altura: '178', origem: 'Zyron', caracteristicas: 'leitura de jogo e saída de bola', sonho: 'jogar na Europa', r2data: '2026-10-15', r2hm: '19:30', prazoContato: 'ainda hoje', prazoZyron: 'no dia seguinte', gerente: 'Rafael' };
+const base = { nome: 'Lucas Almeida da Silva', posicao: 'zagueiro', idade: '15', cidade: 'Natal', pe: 'Destro', altura: '178', origem: 'Zyron', caracteristicas: 'leitura de jogo e saída de bola', sonho: 'jogar na Europa', r2data: '2026-10-15', r2hm: '19:30', prazoContato: 'ainda hoje', prazoZyron: 'imediatamente', gerente: 'Rafael' };
 async function atleta(ficha, foto) {
   const r = await admin.post('/api/atletas', { ficha });
   if (foto) await admin.put('/api/foto?t=' + r.j.t, { retrato: b64(F('retrato-' + foto + '.jpg')), avatar: b64(F('avatar-' + foto + '.jpg')), autorizo: true });

@@ -3,7 +3,8 @@
 // Leitura: com o driver de arquivo, a rota do envio responde 501 (o envio direto pro Blob só existe no ar). O teste põe o
 // vídeo na pasta dos dados no mesmo caminho que o navegador usaria na loja (videos/<código>/<nome aleatório>.mp4) e segue
 // pelas rotas de verdade: autorização, registro do vídeo, lances, /api/r2, /api/video com Range, outro closer, link
-// revogado, vídeo vencido, trocar e apagar. No Chrome: o 17 do deck pelo link e a Leitura no painel (abrir, importar o
+// revogado, vídeo vencido, trocar e apagar. Desde 20/10/2026: sem limite de tamanho e de tempo (só o teto técnico), o vídeo vence em
+// 24 horas e a leitura salva sem nada obrigatório (linha estragada vira aviso). O envio pelo navegador está no teste-video.mjs. No Chrome: o 17 do deck pelo link e a Leitura no painel (abrir, importar o
 // JSON, salvar). O vídeo é o filme do Zyron que já está no deck: nenhum vídeo de atleta de verdade.
 // Importação: as rotas rodam neste processo, então o fetch do painel atual é trocado aqui dentro. Nada sai pra internet.
 import fs from 'node:fs';
@@ -69,9 +70,10 @@ try {
   /* ---------- a leitura pelas rotas ---------- */
   const buf = fs.readFileSync(VIDEO);
   const dur = duracaoMp4(buf);
-  ok(dur > 0 && dur <= 300, 'o vídeo de teste tem ' + dur + ' s (até 5 minutos) e ' + (buf.length / 1048576).toFixed(1) + ' MB');
+  ok(dur > 0, 'o vídeo de teste tem ' + dur + ' s e ' + (buf.length / 1048576).toFixed(1) + ' MB');
   const g0 = await admin.get('/api/leitura?t=' + t);
-  ok(g0.status === 200 && g0.j.video === null && g0.j.regras.envio === false && g0.j.regras.validadeDias === 90, 'GET da leitura: sem vídeo, validade de 90 dias, e o envio marcado como só no ar');
+  ok(g0.status === 200 && g0.j.video === null && g0.j.regras.envio === false && g0.j.regras.validadeHoras === 24 && !('maxBytes' in g0.j.regras) && !('maxSegundos' in g0.j.regras),
+    'GET da leitura: sem vídeo, validade de 24 horas, sem limite de tamanho e de tempo, e o envio marcado como só no ar');
   const env = await admin.post('/api/leitura', { type: 'blob.generate-client-token', payload: { pathname: 'videos/' + t + '/' + nomeAleatorio() + '.mp4', clientPayload: JSON.stringify({ t, tipo: 'video' }) } });
   ok(env.status === 501, 'o token de envio pro Blob, com o driver de arquivo: 501 (' + env.status + ')');
 
@@ -83,12 +85,16 @@ try {
   const aut = await admin.put('/api/leitura?t=' + t, { autorizar: true });
   ok(aut.status === 200 && /\(admin\)/.test(aut.j.video.autorizadoPor) && Date.now() - Date.parse(aut.j.video.autorizadoEm) < 60000, 'a autorização fica registrada: quem (' + aut.j.video.autorizadoPor + ') e quando');
   const outraPasta = await admin.put('/api/leitura?t=' + t, { video: Object.assign({}, dadosVideo, { arquivo: 'videos/' + 'b'.repeat(26) + '/' + nomeAleatorio() + '.mp4' }) });
-  const longo = await admin.put('/api/leitura?t=' + t, { video: Object.assign({}, dadosVideo, { duracaoS: 400 }) });
+  const absurdo = await admin.put('/api/leitura?t=' + t, { video: Object.assign({}, dadosVideo, { duracaoS: 7 * 3600 }) });
+  const teto = await admin.put('/api/leitura?t=' + t, { video: Object.assign({}, dadosVideo, { bytes: 3 * 1024 * 1024 * 1024 }) });
   const tipo = await admin.put('/api/leitura?t=' + t, { video: Object.assign({}, dadosVideo, { tipo: 'text/html' }) });
-  ok(outraPasta.status === 400 && longo.status === 400 && /5 minutos/.test(longo.j.erro) && tipo.status === 400, 'recusados: vídeo na pasta de outro código, com mais de 5 minutos ou de tipo fora da lista');
+  ok(outraPasta.status === 400 && absurdo.status === 400 && teto.status === 400 && /2 GB/.test(teto.j.erro) && tipo.status === 400,
+    'recusados: vídeo na pasta de outro código, duração absurda (mais de 6 horas, arquivo estragado), acima do teto técnico de 2 GB ou de tipo fora da lista');
+  const grande = await admin.put('/api/leitura?t=' + t, { video: Object.assign({}, dadosVideo, { bytes: 600 * 1024 * 1024, duracaoS: 20 * 60 }) });
+  ok(grande.status === 200 && grande.j.video.bytes === 600 * 1024 * 1024 && grande.j.video.duracaoS === 1200, 'sem limite por vídeo: 600 MB e 20 minutos são aceitos pelo servidor');
   const reg = await admin.put('/api/leitura?t=' + t, { video: dadosVideo });
   const vence = reg.j && reg.j.video && Date.parse(reg.j.video.venceEm);
-  ok(reg.status === 200 && reg.j.valido === true && Math.abs(vence - (Date.now() + 90 * 864e5)) < 120000, 'o vídeo é registrado e vence sozinho em 90 dias');
+  ok(reg.status === 200 && reg.j.valido === true && Math.abs(vence - (Date.now() + 24 * 3600e3)) < 120000, 'o vídeo é registrado e vence sozinho em 24 horas');
 
   const lances = [
     { t: 8, tipo: 'Passe', leitura: 'bom', nota: 'Passe vertical <b>entre</b> as linhas' },
@@ -100,10 +106,16 @@ try {
   ];
   const leitura = { origem: 'zyron', criterio: 'selecao', lances, fortes: ['Passe vertical', 'Leitura de espaço'], prioridades: ['Proteção de bola', 'Tempo do bote'] };
   const semFonte = await admin.put('/api/leitura?t=' + t, { leitura: Object.assign({}, leitura, { origem: '' }) });
-  const depoisDoFim = await admin.put('/api/leitura?t=' + t, { leitura: Object.assign({}, leitura, { lances: lances.concat([{ t: dur + 30, tipo: 'Passe', leitura: 'bom' }]) }) });
+  const pubSemFonte = await anon.get('/api/r2?t=' + t, { origem: s.deck });
+  ok(semFonte.status === 200 && semFonte.j.leitura.origem === '' && semFonte.j.leitura.lances.length === 6 && pubSemFonte.j.video && !pubSemFonte.j.leitura,
+    'leitura sem a fonte é salva (nada é obrigatório) e o deck recebe só o vídeo, sem o relatório');
+  const vazia = await admin.put('/api/leitura?t=' + t, { leitura: { origem: '', lances: [] } });
+  ok(vazia.status === 200 && vazia.j.leitura.lances.length === 0, 'leitura vazia (nenhum lance) também é salva');
+  const depoisDoFim = await admin.put('/api/leitura?t=' + t, { leitura: Object.assign({}, leitura, { lances: lances.concat([{ t: dur + 30, tipo: 'Passe', leitura: 'bom' }, { t: dur + 1, tipo: 'Drible', leitura: 'bom' }]) }) });
   const tipoRuim = await admin.put('/api/leitura?t=' + t, { leitura: Object.assign({}, leitura, { lances: lances.concat([{ t: 10, tipo: 'Golaço', leitura: 'bom' }]) }) });
-  ok(semFonte.status === 400 && /Zyron ou Equipe/.test(semFonte.j.erro) && depoisDoFim.status === 400 && /fora do vídeo/.test(depoisDoFim.j.erro) && tipoRuim.status === 400,
-    'leitura recusada sem a fonte, com lance depois do fim do vídeo ou com tipo fora da lista');
+  ok(depoisDoFim.status === 200 && depoisDoFim.j.leitura.lances.length === 7 && depoisDoFim.j.avisos.length === 1 && /fora do vídeo/.test(depoisDoFim.j.avisos[0]) && depoisDoFim.j.leitura.lances.some(l => Math.abs(l.t - Math.round(dur * 10) / 10) < 0.11),
+    'lance muito depois do fim do vídeo fica de fora com aviso, o resto é salvo; o que passa por 1 segundo vai pro fim do vídeo');
+  ok(tipoRuim.status === 200 && tipoRuim.j.leitura.lances.length === 6 && /Golaço/.test(tipoRuim.j.avisos[0]), 'lance com tipo fora da lista fica de fora com aviso, os outros 6 são salvos');
   const sal = await admin.put('/api/leitura?t=' + t, { leitura });
   ok(sal.status === 200 && sal.j.leitura.lances.length === 6 && sal.j.leitura.lances.every(l => !/[<>]/.test(l.nota)), 'a leitura é salva com os 6 lances, e a nota perde a marcação HTML ("' + sal.j.leitura.lances[0].nota + '")');
 
@@ -209,7 +221,7 @@ try {
   const depois = await admin.get('/api/leitura?t=' + t);
   ok(del.status === 200 && !fs.existsSync(p3) && depois.j.video === null && depois.j.leitura === null, 'apagar leva o vídeo, a capa e a leitura, os arquivos também');
   const hist = ((await admin.get('/api/atletas?t=' + t)).j.registro.historico || []).map(h => h.o);
-  ok(['registrou a autorização do vídeo', 'enviou o vídeo', 'salvou a leitura (6 lances)', 'apagou o vídeo e a leitura'].every(x => hist.includes(x)), 'o histórico do R2 anota autorização, envio, leitura e apagar');
+  ok(['registrou a autorização do vídeo', 'enviou o vídeo (sai do ar em 24 horas)', 'salvou a leitura (6 lances)', 'salvou a leitura (6 lances, sem a fonte)', 'apagou o vídeo e a leitura'].every(x => hist.includes(x)), 'o histórico do R2 anota autorização, envio, leitura (com e sem a fonte) e apagar');
 
   /* ---------- importar do painel atual ---------- */
   const listaT = async () => ((await admin.get('/api/atletas')).j.itens || []).map(a => a.t).sort().join(',');

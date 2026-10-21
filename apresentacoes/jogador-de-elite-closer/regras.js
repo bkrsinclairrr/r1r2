@@ -33,9 +33,17 @@
   const LEGACY = 'Assessoria de Elite Legacy';
   // nome de antes de um plano que mudou de nome (o Scouting PRO virou Assessoria PRO em 07/10/2026)
   const PLANOS_ANTIGOS = { 'Scouting': 'Scout PRO', 'Scouting PRO': 'Assessoria PRO' };
+  // "Quando o Zyron começa" só tem "imediatamente" desde 20/10/2026 (pedido do dono), e é o padrão do campo
   const PRAZOS = {
     contato: ['ainda hoje', 'em até 24 horas', 'em até 48 horas'],
-    zyron: ['no dia seguinte', 'em até 48 horas']
+    zyron: ['imediatamente']
+  };
+  // os prazos de antes que um lead salvo ainda pode ter: viram o de hoje na leitura (não somem)
+  const PRAZOS_ANTIGOS = { zyron: { 'no dia seguinte': 'imediatamente', 'em até 48 horas': 'imediatamente' } };
+  const prazoDeHoje = (campo, v) => {
+    const s = String(v == null ? '' : v).trim(), antigos = PRAZOS_ANTIGOS[campo] || {};
+    const achou = Object.keys(antigos).find(k => semAcento(k) === semAcento(s));
+    return achou ? antigos[achou] : s;
   };
   const PES = ['Destro', 'Canhoto', 'Ambidestro'];
   const ORIGENS = ['Zyron', 'Formulário do Instagram', 'Frio, sem vídeo', 'Outro'];
@@ -255,6 +263,16 @@
     if (!Number.isFinite(t)) return '';
     return new Intl.DateTimeFormat('pt-BR', { timeZone: 'America/Sao_Paulo', day: '2-digit', month: '2-digit' }).format(new Date(t));
   }
+  // o dia e a hora (São Paulo) de uma data ISO, perto de agora: "hoje às 14h32", "amanhã às 9h", "24/10 às 21h05" (o vencimento do vídeo)
+  function diaEHora(iso, agora) {
+    const t = Date.parse(str(iso));
+    if (!Number.isFinite(t)) return '';
+    const p = {};
+    new Intl.DateTimeFormat('pt-BR', { timeZone: 'America/Sao_Paulo', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date(t)).forEach(x => { p[x.type] = x.value; });
+    const hora = Number(p.hour) + 'h' + (p.minute === '00' ? '' : p.minute);
+    const dia = hojeSP(new Date(t)), hoje = hojeSP(agora || new Date()), amanha = hojeSP(new Date((agora || new Date()).getTime() + 864e5));
+    return (dia === hoje ? 'hoje' : dia === amanha ? 'amanhã' : dataCurta(iso)) + ' às ' + hora;
+  }
   /* Os nomes do atleta, a partir do nome completo. primeiro: como se fala (o primeiro nome; os dois primeiros, se for
      composto e comum, como João Pedro). tela: nome e sobrenome, o que aparece nos títulos, nas frases e no carimbo do
      dossiê. Por padrão é o último sobrenome (com Júnior, Filho ou Neto junto); com regra 'primeiro' (a escolha "Nome e
@@ -312,6 +330,9 @@
      texto só, "Clube~detalhe|Clube~detalhe" (até 6, na ordem escolhida): o clube é o nome como aparece no slide e o detalhe, opcional,
      é a liga, o país ou a categoria (Série B, Portugal, Sub-20...). */
   const OPORTUNIDADES_MAX = 6;
+  // o mapa de calor da lista do painel (20/10/2026): os mesmos marcadores do campo (posicaoNoCampo) e do mapa-calor.js, e 'sem' quando o closer
+  // escolheu não mostrar mapa (vazio é "ainda não escolheu": o editor sugere o da posição)
+  const MAPAS_CALOR = ['GOL', 'LD', 'LE', 'ZAG-d', 'ZAG-e', 'VOL-d', 'VOL-e', 'MC', 'ALE', 'ADD', 'CA'];
   const normClube = s => semAcento(s).replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
   const limpaParte = (s, max) => str(s).replace(/<[^>]*>/g, ' ').replace(/[<>|~]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, max);
   // o texto da ficha em lista: [{ clube, detalhe }]
@@ -341,9 +362,9 @@
     return textoOportunidades(out);
   }
 
-  raiz.R2_REGRAS = { PLANOS, planosDaVersao, temDossie, recursosDaPagina, CAMPOS_DOSSIE, INDICADORES, LEGACY, PLANOS_ANTIGOS, PRAZOS, PES, ORIGENS, SUGESTOES, CAMPO_POSICOES, DATA_OK, HORA_OK,
+  raiz.R2_REGRAS = { PLANOS, planosDaVersao, temDossie, recursosDaPagina, CAMPOS_DOSSIE, INDICADORES, LEGACY, PLANOS_ANTIGOS, PRAZOS, PRAZOS_ANTIGOS, prazoDeHoje, PES, ORIGENS, SUGESTOES, CAMPO_POSICOES, DATA_OK, HORA_OK,
     VERSOES, VERSAO_PADRAO, VALIDACOES, VALIDACAO_PADRAO, SLUG_OK, NOMES_TELA, versaoPor, ordenaVersoes,
     ETAPAS, DECKS, RESERVA, RESERVA_TODAS, deckPor, entradaDe, padraoDe, comoVariacao,
-    semAcento, posicaoNoCampo, diaDaCall, horaDaCall, hojeSP, dataCurta, nomeDossie, comoChama, comoFala, nomesDoAtleta,
-    CATEGORIAS, OPORTUNIDADES_MAX, normClube, oportunidadesDe, textoOportunidades, limpaOportunidades, siglaClube };
+    semAcento, posicaoNoCampo, diaDaCall, horaDaCall, hojeSP, dataCurta, diaEHora, nomeDossie, comoChama, comoFala, nomesDoAtleta,
+    CATEGORIAS, OPORTUNIDADES_MAX, MAPAS_CALOR, normClube, oportunidadesDe, textoOportunidades, limpaOportunidades, siglaClube };
 })(typeof window !== 'undefined' ? window : globalThis);

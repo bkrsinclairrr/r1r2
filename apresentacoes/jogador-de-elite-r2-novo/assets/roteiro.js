@@ -244,20 +244,20 @@ window.ROTEIRO = [
     silencio: '"[pai], [mãe], o que vocês sentiram vendo o jogo dele lido assim?" E pare. Deixe a família falar primeiro.',
     perguntas: ['[atleta], alguém já tinha olhado o teu jogo desse jeito?', '[pai], [mãe], o que vocês sentiram vendo o jogo dele lido assim?', 'Qual lance vocês querem que eu comente?'],
     crm: ['Reação do atleta e da família à leitura, com as palavras deles.', 'O lance que a família escolheu e o que disseram dele.'],
-    atencao: 'Com vídeo no painel, o slide só mostra o que o painel guardou, na fonte que o painel diz (Zyron ou Equipe). Não diga nada que os lances e os textos não mostram: nada de nota geral, ranking, percentil ou comparação com outros atletas. Com "Leitura da equipe", nada na sua fala atribui a leitura ao Zyron. A rosca é só a conta dos lances marcados: leia pontos fortes e prioridades, os dois, sem inflar. O relatório da call é deste vídeo: não prometa que é o relatório do plano (o plano entrega a leitura de cada vídeo novo, no ritmo dele). Privacidade: vídeo de menor, só com a autorização do responsável registrada no painel, só pelo link da apresentação dele, e ele sai do ar sozinho em 90 dias; nunca mostre o vídeo de um atleta a quem não é da família dele. Sem vídeo no painel, com o painel fora do ar ou com o vídeo que não carrega, o slide volta sozinho pra leitura ao vivo (o apresentador avisa) e vale a regra de sempre: o slide não mostra resultado, quem fala é quem conduz a leitura, ao vivo, no Meet. Teste antes da call: play, som e pular pelos lances. Vem logo depois do 16 de propósito: a virada "o olhômetro pode não ter visto você" vira prova na hora, com o jogo dele. Depois da pergunta, o silêncio: aperte S (aqui conta sem trocar de slide).'
+    atencao: 'Com vídeo no painel, o slide só mostra o que o painel guardou, na fonte que o painel diz (Zyron ou Equipe). Não diga nada que os lances e os textos não mostram: nada de nota geral, ranking, percentil ou comparação com outros atletas. Com "Leitura da equipe", nada na sua fala atribui a leitura ao Zyron. A rosca é só a conta dos lances marcados: leia pontos fortes e prioridades, os dois, sem inflar. O relatório da call é deste vídeo: não prometa que é o relatório do plano (o plano entrega a leitura de cada vídeo novo, no ritmo dele). Privacidade: vídeo de menor, só com a autorização do responsável registrada no painel, só pelo link da apresentação dele, e ele sai do ar sozinho 24 horas depois do envio (o painel renova por mais 24); nunca mostre o vídeo de um atleta a quem não é da família dele. Sem vídeo no painel, com o painel fora do ar ou com o vídeo que não carrega, o slide volta sozinho pra leitura ao vivo (o apresentador avisa) e vale a regra de sempre: o slide não mostra resultado, quem fala é quem conduz a leitura, ao vivo, no Meet. Teste antes da call: play, som e pular pelos lances. Vem logo depois do 16 de propósito: a virada "o olhômetro pode não ter visto você" vira prova na hora, com o jogo dele. Depois da pergunta, o silêncio: aperte S (aqui conta sem trocar de slide).'
   },
   { nome: 'O dossiê do atleta', min: 3,
     fala: [
       'Ponte, logo depois do 17: "[atleta], agora é o teu jogo na tela, do jeito que nenhum avaliador parou pra olhar."',
       'Com o vídeo analisado na tela ("Tenho o vídeo do jogador" ligado no painel): dê o play (espaço ou o botão; o vídeo começa mudo e o Som liga o áudio) e deixe a análise falar. Depois do vídeo: "Isso aqui é o teu jogo lido pela IA. Ninguém numa peneira para pra fazer isso."',
-      'O mapa de calor, embaixo do vídeo, se estiver na tela: "E esse é o teu mapa de calor: onde o teu jogo acontece. É assim que um clube enxerga um [posição]."',
+      'O mapa de calor, embaixo do vídeo (ou ao lado, com o vídeo em pé), se estiver na tela. O da lista do painel, que a tela chama "onde atua um [posição]", é o mapa típico da posição: "Esse é o mapa de onde atua um [posição]: é nessa faixa do campo que um clube procura esse perfil." Só o mapa enviado como imagem antes de 20/10, que a tela chama "onde o seu jogo acontece", é do jogo dele: "E esse é o teu mapa de calor."',
       'As oportunidades, à direita: "Aqui estão clubes que procuram um perfil como o teu, mapeados pela nossa equipe a partir do teu jogo: [oportunidades]. Quem decide é o clube. O nosso trabalho é colocar o teu perfil na frente de quem procura."',
       'O plano de carreira, embaixo das oportunidades: "E o caminho é este: agora, a leitura e o primeiro foco; depois, a vitrine; e o destino é o teu: [sonho]."',
       'Pro atleta, olhando pra ele: "[atleta], em algum lugar tem um clube precisando de um jogador exatamente como você. A gente vai trabalhar pra colocar o teu jogo na frente dele."'
     ],
     perguntas: ['[atleta], qual dessas oportunidades mais mexeu com você?', '[pai], [mãe], vocês já tinham visto o jogo dele lido desse jeito?'],
     crm: ['A oportunidade que mais animou o atleta e a reação da família ao vídeo analisado e ao mapa, com as palavras deles.'],
-    atencao: 'Só aparece com "Tenho o vídeo do jogador" ligado no painel (o vídeo analisado ou o mapa de calor) ou com oportunidades preenchidas; sem nada disso, as setas passam direto. Com o vídeo analisado e sem lances marcados, o 17 é a ponte e o vídeo entra aqui. As oportunidades são clubes que a equipe mapeou pro perfil: nunca diga que o clube já pediu o [atleta], que existe vaga, nem prometa clube, prazo ou contrato; diga "clubes que procuram esse perfil" e "quem decide é o clube". No Scout PRO, o encaminhamento pra clubes vem a partir da Assessoria PRO: fale da estrutura, não do plano. Leia o vídeo como ele é: não acrescente nota, ranking ou comparação que a análise não mostra. Vídeo de menor: só com a autorização do responsável registrada no painel. Teste antes da call: play, som e o mapa.'
+    atencao: 'Só aparece com "Tenho o vídeo do jogador" ligado no painel (o vídeo analisado ou o mapa de calor) ou com oportunidades preenchidas; sem nada disso, as setas passam direto. Com o vídeo analisado e sem lances marcados, o 17 é a ponte e o vídeo entra aqui. As oportunidades são clubes que a equipe mapeou pro perfil: nunca diga que o clube já pediu o [atleta], que existe vaga, nem prometa clube, prazo ou contrato; diga "clubes que procuram esse perfil" e "quem decide é o clube". No Scout PRO, o encaminhamento pra clubes vem a partir da Assessoria PRO: fale da estrutura, não do plano. Leia o vídeo como ele é: não acrescente nota, ranking ou comparação que a análise não mostra. Vídeo de menor: só com a autorização do responsável registrada no painel. Teste antes da call: play, som e o mapa. O mapa de calor da lista do painel é referência da posição, não dado do jogo dele (a tela diz "onde atua um [posição]"): nunca diga "o teu mapa", nem leia a mancha como o que ele fez.'
   },
   { nome: 'O inimigo em comum', min: 2,
     fala: [
@@ -359,12 +359,11 @@ window.ROTEIRO = [
       'Conexões: no Legacy, "relação direta com a AGN Football e mais de 250 clubes"; na Assessoria PRO, "o teu perfil encaminhado a clubes do Brasil e do mundo"; no Scout PRO, "isso vem a partir da Assessoria PRO".',
       'Oportunidades: no Legacy, "pelo menos 15 encaminhamentos de oportunidades por mês"; na Assessoria PRO, "pelo menos 5 por mês"; no Scout PRO, "a partir da Assessoria PRO".',
       'Tempo, lendo a linha da tela (ela sai dos prazos que a equipe cumpre, escolhidos no painel): "Vocês não esperam no escuro." Só no Legacy: "Em até 3 meses, mais de 93% dos nossos já estão encaminhados a clubes. É a referência dos atletas que a gente acompanha, não prazo de contrato."',
-      'Garantia: "E com [garantia], nos termos do contrato."',
       'Fecho, apontando o retrato: "Isso é do [atleta]. Agora pensa comigo: quanto custaria montar isso por conta?" E avance.'
     ],
-    perguntas: ['Desses seis, qual pesa mais pra vocês hoje?'],
-    crm: ['O que a família disse que pesa mais (IA, gente, conexões, oportunidades, tempo ou garantia), com as palavras deles.'],
-    atencao: 'Junta numa tela só, com o rosto e o nome dele, o que ele leva no plano da ficha: cada linha muda com o plano. Diga só o que está na tela: no Scout PRO, conexões e oportunidades começam na Assessoria PRO. Só a IA fica ligada 24 horas; a parte humana segue o ritmo do plano. O tempo é o que a casa controla (contato e começo do Zyron, da lista fixa de prazos) e, só no Legacy, a referência dos 93% em até 3 meses, com a legenda na tela: nunca prazo de contrato, clube ou renda pra ele. A garantia é do investimento, nos termos do contrato (o rodapé do 34 diz a condição): não diga "incondicional". O retrato é o que a família autorizou: não comente a foto nem a aparência dele, fale do plano. Vem antes do "quanto custaria montar isso por conta?" de propósito: o "isso" já está na tela, com o nome dele.'
+    perguntas: ['Desses cinco, qual pesa mais pra vocês hoje?'],
+    crm: ['O que a família disse que pesa mais (IA, gente, conexões, oportunidades ou tempo), com as palavras deles.'],
+    atencao: 'Junta numa tela só, com o rosto e o nome dele, o que ele leva no plano da ficha: cada linha muda com o plano. Diga só o que está na tela: no Scout PRO, conexões e oportunidades começam na Assessoria PRO. Só a IA fica ligada 24 horas; a parte humana segue o ritmo do plano. O tempo é o que a casa controla (contato e começo do Zyron, da lista fixa de prazos) e, só no Legacy, a referência dos 93% em até 3 meses, com a legenda na tela: nunca prazo de contrato, clube ou renda pra ele. A garantia não entra nesta tela (desde 20/10/2026, pelo pedido de um closer: a garantia só no slide dela): ela vem no 34, depois do número. Se perguntarem aqui, diga que já chega lá. O retrato é o que a família autorizou: não comente a foto nem a aparência dele, fale do plano. Vem antes do "quanto custaria montar isso por conta?" de propósito: o "isso" já está na tela, com o nome dele.'
   },
   { nome: 'O valor real', min: 3.5,
     fala: [
@@ -780,7 +779,7 @@ window.GARANTIA = {
    só esses (texto fora da lista não vai pra tela). O painel tem uma cópia (regras.js), conferida por testes/teste-igualdade.mjs. */
 window.PRAZOS = {
   contato: ['ainda hoje', 'em até 24 horas', 'em até 48 horas'],
-  zyron: ['no dia seguinte', 'em até 48 horas']
+  zyron: ['imediatamente']
 };
 
 window.CHECKLIST = [
@@ -797,6 +796,7 @@ window.CHECKLIST = [
   'Conferi posição, pé e altura do atleta (o campo do slide 12 depende da posição)',
   'Testei o vídeo do Zyron (slide 07) e o depoimento da mãe (slide 20) com o áudio no compartilhamento de tela',
   'Subi o vídeo do atleta no painel (Leitura do atleta), com a autorização do responsável, marquei os lances e olhei a prévia',
+  'O vídeo do atleta sai do ar 24 horas depois do envio: se subi antes da véspera da call, cliquei em "Renovar por 24 h" no painel',
   'Testei o vídeo no deck (play, som, pular pelos lances no apresentador)',
   'Conferi se a fonte do relatório é Zyron ou Equipe, de verdade',
   'Se não subi o vídeo, deixei o vídeo do atleta aberto pra leitura ao vivo no Meet (IA na Prática, slide 17)',

@@ -38,8 +38,21 @@
 
 /* o centro: o video analisado e o mapa de calor embaixo dele */
 .ds-centro{display:flex;flex-direction:column;justify-content:center;gap:16px}
-.ds-video{position:relative;flex:none}
-.ds-centro .player.ds-player{position:relative;width:100%;aspect-ratio:16/9;border:1px solid rgba(127,196,234,.4);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 70px rgba(127,196,234,.08)}
+.ds-video{position:relative;flex:none;align-self:center}
+/* o video na proporcao dele (20/10/2026; --ds-ar e --ds-arn vem do dossie-atleta.js, 16:9 enquanto nao sabe). Deitado: a largura do centro,
+   ate 480 px de altura; quadrado: ate 560; em pe sem o mapa: 740 de altura, centralizado; em pe com o mapa: o mapa vai pro lado */
+.ds-centro .player.ds-player{position:relative;width:min(780px,calc(480px * var(--ds-arn,1.7778)));aspect-ratio:var(--ds-ar,16/9);border:1px solid rgba(127,196,234,.4);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 70px rgba(127,196,234,.08)}
+.ds-quadrado .ds-centro .player.ds-player{width:min(780px,calc(560px * var(--ds-arn,1)))}
+.ds-em-pe .ds-centro .player.ds-player{width:calc(740px * var(--ds-arn,.5625))}
+.ds-em-pe.ds-com-m .ds-centro{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto;column-gap:26px;row-gap:12px;align-content:center}
+.ds-em-pe.ds-com-m .ds-video{grid-column:1;grid-row:1}
+.ds-em-pe.ds-com-m .ds-centro .player.ds-player{width:calc(700px * var(--ds-arn,.5625))}
+.ds-em-pe.ds-com-m .ds-centro .ds-legal{grid-column:1;grid-row:2;width:calc(700px * var(--ds-arn,.5625));margin:0}
+.ds-em-pe.ds-com-m .ds-mapa{grid-column:2;grid-row:1 / 3;align-self:stretch}
+.ds-em-pe.ds-com-m .ds-mapa .ds-h span{display:block;margin-top:6px}
+/* em pe o player e estreito: o selo desce pro pe do video (no alto ele bate no botao do som) e a linha legal acompanha o video, centralizada */
+.ds-em-pe .ds-chip{top:auto;bottom:18px}
+.ds-quadrado .ds-centro .ds-legal,.ds-em-pe:not(.ds-com-m) .ds-centro .ds-legal{text-align:center}
 /* o video que a IA fez pode ter textos nas bordas: inteiro na tela, sem corte */
 .ds-player video{object-fit:contain}
 .ds-player .play .disc{width:132px;height:132px}
@@ -53,9 +66,16 @@
 .ds-mapa{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:10px}
 .ds-mapa-img{position:relative;flex:1 1 auto;min-height:200px;border:1px solid var(--line);background-color:#0A1422;background-image:linear-gradient(rgba(127,196,234,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(127,196,234,.06) 1px,transparent 1px);background-size:40px 40px;overflow:hidden}
 .ds-mapa-img>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+/* o mapa da lista do painel (o SVG do mapa-calor.js): o campo inteiro, sem a grade de fundo */
+.ds-mapa-img>.ds-mapa-svg{position:absolute;inset:0}
+.ds-mapa-svg svg{display:block;width:100%;height:100%}
+.ds-mapa-img.com-svg{background:none;border-color:transparent}
+.ds-mapa-img.com-svg>img{display:none}
 /* o calor se espalha do centro quando o slide entra */
-.slide.active .ds-mapa-img>img{animation:ds-calor 1.4s cubic-bezier(.2,.7,.2,1) .6s both}
+.slide.active .ds-mapa-img>img,.slide.active .ds-mapa-img>.ds-mapa-svg{animation:ds-calor 1.4s cubic-bezier(.2,.7,.2,1) .6s both}
 @keyframes ds-calor{from{clip-path:circle(0% at 50% 50%);filter:saturate(.3) brightness(.7)}to{clip-path:circle(75% at 50% 50%);filter:none}}
+/* a IA na Pratica com a proporcao do video conhecida: a caixa ja tem o tamanho dele, inteiro na tela (o dossie-atleta.js ajusta a caixa) */
+.player.ia-proporcao video{object-fit:contain}
 /* so o mapa (sem o video): ele ocupa o centro */
 .ds-slide:not(.ds-com-v) .ds-mapa{flex:none;height:620px}
 
@@ -193,7 +213,7 @@
 .in-conta .in-pe{margin:28px 0 0;font:600 30px/1.3 var(--f-body);color:var(--sand-l)}
 
 @media (prefers-reduced-motion:reduce){
-  .slide.active .ds-scan,.slide.active .ds-dados>div,.slide.active .ds-br i,.slide.active .ds-mapa-img>img,.slide.active .ds-lista li,
+  .slide.active .ds-scan,.slide.active .ds-dados>div,.slide.active .ds-br i,.slide.active .ds-mapa-img>img,.slide.active .ds-mapa-img>.ds-mapa-svg,.slide.active .ds-lista li,
   .slide.active .ds-escudo path,.slide.active .ds-nota,.slide.active .ds-plano li,.slide.active .ds-plano li::after,.slide.active .in-luz,
   .slide.active .in-frase b,.slide.active .in-lista li,.slide.active .in-lista li::after,.slide.active .in-sem li{animation:none!important}
 }

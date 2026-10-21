@@ -11,6 +11,10 @@
 //   comando, aparece no console). Não lê .env.local: pra usar o do painel, rode com node --env-file=.env.local.
 // - Quais decks o painel conhece neste teste: só os que sobem aqui (DECKS_ATIVOS), cada um com o endereço local (DECKS_ORIGENS). Sem
 //   pedir decks, só o R2 novo (como era antes do R1 entrar no painel).
+// - Envio de vídeo (envioDeTeste: true): um Blob de mentira (s.blobFalso.url) recebe o PUT /?pathname=... que o upload() do navegador
+//   manda e grava o arquivo na pasta dos dados, no mesmo caminho (como a loja faria); a rota POST /api/leitura assina o token com uma chave
+//   de mentira (ENVIO_DE_TESTE=1). O navegador do teste aponta pra ele com window.process = { env: { VERCEL_BLOB_API_URL } }. Sem multipart:
+//   o teste usa arquivo pequeno. Cada envio fica anotado em s.blobFalso.envios.
 // Uso em teste:  const s = await sobe({ deck: true, decks: ['r1'] }); ... await s.fecha();
 // Linha de comando:  node testes/servidor.mjs [--porta 4310] [--deck-porta 4320] [--dados <pasta>] [--sem-deck] [--todos-os-decks]
 import http from 'node:http';
@@ -135,7 +139,7 @@ function reescreveRota(rewrites, pathname) {
   return pathname;
 }
 
-export async function sobe({ porta = 0, deckPorta = 0, dados = '', deck = true, deckExterno = '', decks = [], decksExternos = {}, log = false } = {}) {
+export async function sobe({ porta = 0, deckPorta = 0, dados = '', deck = true, deckExterno = '', decks = [], decksExternos = {}, log = false, envioDeTeste = false } = {}) {
   // a pasta dos dados: --dados, ou ARMAZENAMENTO_DIR do ambiente (o .env.local de desenvolvimento), ou uma temporária
   const fixa = dados || process.env.ARMAZENAMENTO_DIR || '';
   const pasta = fixa ? path.resolve(RAIZ_PAINEL, fixa) : fs.mkdtempSync(path.join(os.tmpdir(), 'closer-dados-'));
@@ -158,6 +162,35 @@ export async function sobe({ porta = 0, deckPorta = 0, dados = '', deck = true, 
     res.end(JSON.stringify(Object.assign({ id, atualizadoEm: new Date().toISOString() }, lead)));
   });
   antigo.url = 'http://127.0.0.1:' + await escuta(srvAntigo, 0);
+
+  // o Blob de mentira do envio de vídeo (só com envioDeTeste)
+  const blobFalso = { url: '', envios: [] };
+  let srvBlob = null;
+  if (envioDeTeste) {
+    srvBlob = http.createServer(async (req, res) => {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Methods', 'PUT, POST, OPTIONS');
+      res.setHeader('Access-Control-Allow-Headers', String(req.headers['access-control-request-headers'] || 'authorization, content-type'));
+      if (req.method === 'OPTIONS') { res.statusCode = 204; return res.end(); }
+      const u = new URL(req.url, 'http://x'), pn = u.searchParams.get('pathname') || '';
+      res.setHeader('Content-Type', 'application/json');
+      if (req.method !== 'PUT' || u.pathname !== '/' || !/^videos\/[a-z2-7]{26}\/[a-z0-9]{12,40}\.(mp4|webm|mov|jpg)$/.test(pn) || !/^Bearer vercel_blob_client_/.test(String(req.headers.authorization || ''))) {
+        res.statusCode = 400; return res.end(JSON.stringify({ error: { code: 'bad_request', message: 'pedido não aceito pelo Blob de mentira' } }));
+      }
+      const partes = [];
+      for await (const p of req) partes.push(p);
+      const buf = Buffer.concat(partes);
+      const destino = path.join(pasta, ...pn.split('/'));
+      await fsp.mkdir(path.dirname(destino), { recursive: true });
+      await fsp.writeFile(destino, buf);
+      blobFalso.envios.push({ pathname: pn, bytes: buf.length, tipo: String(req.headers['x-content-type'] || '') });
+      res.end(JSON.stringify({ url: blobFalso.url + '/' + pn, downloadUrl: blobFalso.url + '/' + pn + '?download=1', pathname: pn, contentType: String(req.headers['x-content-type'] || 'application/octet-stream'), contentDisposition: 'inline' }));
+    });
+    // em localhost (não 127.0.0.1): o upload() do Blob só usa o XHR (HTTP/1.1, com progresso) quando o endereço começa com http://localhost;
+    // fora disso ele manda em stream, que o Chrome só aceita em HTTP/2 (é o que a API do Blob de verdade fala)
+    blobFalso.url = 'http://localhost:' + await escuta(srvBlob, 0);
+    process.env.ENVIO_DE_TESTE = '1';
+  } else delete process.env.ENVIO_DE_TESTE;
 
   // os outros decks (os de antes e o R1), cada um no seu servidor
   const outros = {};
@@ -195,7 +228,12 @@ export async function sobe({ porta = 0, deckPorta = 0, dados = '', deck = true, 
     return rotas.get(nome);
   };
   const frames = Object.values(origens).join(' ');
-  const cabPainel = await cabecalhosDoVercel(RAIZ_PAINEL, (k, v) => (k === 'Content-Security-Policy' && frames ? v.replace(/frame-src [^;]+/, 'frame-src ' + frames) : v));
+  const cabPainel = await cabecalhosDoVercel(RAIZ_PAINEL, (k, v) => {
+    if (k !== 'Content-Security-Policy') return v;
+    let o = frames ? v.replace(/frame-src [^;]+/, 'frame-src ' + frames) : v;
+    if (blobFalso.url) o = o.replace(/connect-src ([^;]+)/, 'connect-src $1 ' + blobFalso.url); // o envio vai pro Blob de mentira
+    return o;
+  });
   const rewrites = (await leVercelJson(RAIZ_PAINEL)).rewrites || [];
 
   srvPainel.on('request', async (req, res) => {
@@ -251,12 +289,12 @@ export async function sobe({ porta = 0, deckPorta = 0, dados = '', deck = true, 
   for (const [id, o] of Object.entries(outros)) await servidorDeDeck(o.srv, id);
 
   const fecha = async () => {
-    const todos = [srvPainel, srvDeck, srvAntigo, ...Object.values(outros).map(o => o.srv)].filter(Boolean);
+    const todos = [srvPainel, srvDeck, srvAntigo, srvBlob, ...Object.values(outros).map(o => o.srv)].filter(Boolean);
     await Promise.all(todos.map(x => new Promise(r => x.close(r))));
     todos.forEach(x => x.closeAllConnections && x.closeAllConnections());
     if (temp) { try { fs.rmSync(pasta, { recursive: true, force: true }); } catch { /* nada */ } }
   };
-  return { painel: painelUrl, deck: deckUrl, decks: origens, painelAntigo: antigo, adminLogin: process.env.PAINEL_ADMIN_LOGIN || 'admin', adminSenha, dados: pasta, cronSecret: process.env.CRON_SECRET, fecha };
+  return { painel: painelUrl, deck: deckUrl, decks: origens, painelAntigo: antigo, blobFalso, adminLogin: process.env.PAINEL_ADMIN_LOGIN || 'admin', adminSenha, dados: pasta, cronSecret: process.env.CRON_SECRET, fecha };
 }
 
 // linha de comando
