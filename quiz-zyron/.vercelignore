@@ -1,0 +1,7 @@
+testes
+capturas
+ferramentas
+docs
+*.md
+node_modules
+.env*

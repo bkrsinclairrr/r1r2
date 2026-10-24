@@ -1,0 +1,31 @@
+# QUIZ_PRE_QUALIFICACAO_PROGRESSO.md
+
+Atualizado em 24/10/2026 (madrugada). O quiz de pré-qualificação está CONSTRUÍDO, testado e publicado como PRÉVIA, já com a segunda rodada de pedidos do dono (noite de 23/10). Este arquivo diz onde está cada coisa e o que ainda é do dono, pra qualquer conta ou sessão retomar sem reler a conversa.
+
+## Estado
+- **Código:** `C:\Users\Me\Desktop\mnkk\quiz-zyron\` (estático, sem build e sem npm). Comece pelo `quiz-zyron\README.md` e pelos documentos em `quiz-zyron\docs\` (decisões 1 a 47, contrato, dados, integração, mapa de persuasão, riscos assumidos, guia visual, copy, contraste).
+- **Prévia no ar (Vercel, projeto `quiz-zyron`, conta bkrsinclairrr):** https://quiz-zyron-90ul5e4im-ls-projects-d9965387.vercel.app (pede login da Vercel; logado na conta, abre). Produção NÃO publicada: `quiz-zyron.vercel.app` responde 404.
+- **Vercel:** o projeto está com a atribuição automática do domínio de produção desligada (`autoAssignCustomDomains: false`). Ligada, a Vercel transformava a implantação em produção pública mesmo sem `--prod` (aconteceu duas vezes em 23/10; as duas foram removidas). Desligada, `npx --yes vercel deploy --yes` sai como prévia. Pra produção: `--prod` e depois `vercel promote <url> --yes` (ver `docs/integracao.md`).
+- **Sem commit e sem push** (o briefing proíbe git). Tudo está como arquivo novo, não rastreado, em `quiz-zyron/`.
+- **Modo de ensaio:** sem `endpoint` no `config/geral.json`, o lead fica só no navegador; nada é coletado de verdade até o dono ligar o destino.
+
+## Segunda rodada (pedidos do dono na noite de 23/10/2026)
+T02 sem o bloco do responsável; T01 com "Selecione", a luz direcionada e a legenda das siglas; CA virou AT (Atacante); T05 com o cartão "O adversário que ninguém te mostrou: o olhômetro"; T06 com "Você não precisa ser o novo Neymar" e dois números da FIFA; T07 e T08 rolando sozinhas; "Inicialmente R$ 30 mil+ por mês"; foto da mãe na T10; T12 virou "a chance" (avaliação gratuita, nada de venda); "Número do WhatsApp" na T13; diagnóstico sem investimento e com o botão "Continuar". Detalhes em `quiz-zyron/docs/decisoes.md`, itens 36 a 47.
+
+## Resultado (24/10/2026)
+- Suíte local: 257 de 257 verificações em 10 testes (`node testes/roda-tudo.mjs`). LCP mediano de 1,74 s com 4G lento e CPU 4 vezes mais lenta.
+- Links das provas: 35 de 36 abrem (5 só pelo navegador); a PEN-07 (doi.org) responde 403 a robô.
+- Prévia: 6 de 6 (`teste-publicacao.mjs`): 82 arquivos no ar idênticos aos locais, noindex, MP3 com pedido parcial, robots.txt. Conferida também no Chrome do dono (T01, T05 e T06), sem erro no console.
+
+## O que falta do dono
+1. `endpoint` (destino dos leads) e `landingUrl` (a landing com a VSL) no `quiz-zyron/config/geral.json`. O `docs/integracao.md` traz um webhook pronto pra planilha do Google (já com a coluna `chance`).
+2. IDs do pixel (Meta e Utmify), se quiser rastreamento (só adulto, depois do aceite de cookies).
+3. Os escudos que a casa não tem (Chelsea, Liverpool, Leverkusen, Brentford); até lá entra selo de texto.
+4. Ouvir o áudio e aprovar as legendas (desligadas) e dizer de que site é o print do Cambridge United (o cartão cita o anúncio oficial do clube).
+5. Decidir a proteção da prévia (pede login) e, quando quiser, a produção (`--prod` e `promote`).
+6. Os pontos de advogado listados em `docs/riscos-assumidos.md`.
+
+## Como seguir
+- Ajustar copy: `quiz-zyron/config/copy.pt-BR.json`, e rodar `node testes/teste-regras-da-casa.mjs`. Se mexer no selo, no título ou no apoio da capa, mude também o topo da T01 no `quiz-zyron/index.html` (o teste avisa).
+- Ligar o que está desligado: `docs/integracao.md`.
+- Republicar a prévia: dentro de `quiz-zyron`, `npx --yes vercel deploy --yes`, conferir que o JSON diz `"target": null` (prévia) e rodar `node testes/teste-publicacao.mjs <url>` (no Git Bash, com `MSYS_NO_PATHCONV=1` antes).
