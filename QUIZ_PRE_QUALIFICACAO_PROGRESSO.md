@@ -9,6 +9,13 @@ Atualizado em 24/10/2026 (madrugada). O quiz de pré-qualificação está CONSTR
 - **Sem commit e sem push** (o briefing proíbe git). Tudo está como arquivo novo, não rastreado, em `quiz-zyron/`.
 - **Modo de ensaio:** sem `endpoint` no `config/geral.json`, o lead fica só no navegador; nada é coletado de verdade até o dono ligar o destino.
 
+## Onde o quiz vai ao ar de verdade: aizyron.com/quiz/ (24/10/2026)
+- O destino é o projeto da Vercel `vide-match` (domínio `aizyron.com`), NÃO o projeto `quiz-zyron` (esse foi só a prévia de desenvolvimento). Repositório: `bkrsinclairrr/vide-match`; a cópia atual fica em `C:\Users\Me\Downloads\voxen\vide-match` (a de `Desktop\VOXEN\vide-match` está parada em 16/10).
+- O quiz entra como arquivos estáticos em `public/quiz/` (cópia do deployável de `mnkk/quiz-zyron`: index.html, css, js, config, assets) e 3 blocos novos no `vercel.json` (noindex em `/quiz/`, cache dos assets e o redirecionamento de `/quiz` para `/quiz/`). A fonte e os testes continuam em `mnkk/quiz-zyron`: edite lá e copie de volta.
+- Branch `feat/quiz-pre-qualificacao` (commit `111579e`, a partir da `main` de 24/10), enviada ao GitHub, SEM merge. Prévia pela integração do GitHub: https://vide-match-5d932oobd-ls-projects-d9965387.vercel.app/quiz/ (conferida no Chrome: sem violação de CSP e sem erro no console). Produção = mergear essa branch na `main`.
+- A implantação pela CLI foi bloqueada pela Vercel ("commit author doesn't have permission"); o push da branch funciona.
+- Ao ligar o `endpoint` do lead em `public/quiz/config/geral.json`, incluir o domínio dele no `connect-src` do CSP do `vercel.json` do site, senão o navegador bloqueia o envio.
+
 ## Segunda rodada (pedidos do dono na noite de 23/10/2026)
 T02 sem o bloco do responsável; T01 com "Selecione", a luz direcionada e a legenda das siglas; CA virou AT (Atacante); T05 com o cartão "O adversário que ninguém te mostrou: o olhômetro"; T06 com "Você não precisa ser o novo Neymar" e dois números da FIFA; T07 e T08 rolando sozinhas; "Inicialmente R$ 30 mil+ por mês"; foto da mãe na T10; T12 virou "a chance" (avaliação gratuita, nada de venda); "Número do WhatsApp" na T13; diagnóstico sem investimento e com o botão "Continuar". Detalhes em `quiz-zyron/docs/decisoes.md`, itens 36 a 47.
 
