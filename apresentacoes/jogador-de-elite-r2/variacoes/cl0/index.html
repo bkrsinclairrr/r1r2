@@ -542,6 +542,23 @@
 <script src="../../assets/ordem-garantia.js"></script>
 <script>window.VARIACAO_NOME = "CL0";</script>
 <script src="../../assets/foto-atleta.js"></script>
+<!-- CL0 (30/10/2026): o foto-atleta.js nomeia o slide de formação com o plano de antes (Scout PRO); aqui é a Assessoria Start -->
+<script>
+(function () {
+  var f = document.querySelector('#stage > .formacao-atleta');
+  if (!f || !window.ROTEIRO) return;
+  var i = Array.prototype.indexOf.call(document.querySelectorAll('#stage > .slide'), f);
+  window.ROTEIRO[i] = Object.assign({}, window.ROTEIRO[i], {
+    nome: 'Assessoria Start: sete módulos para evoluir',
+    fala: [
+      '"[atleta], entender o seu jogo é o começo. Evoluir também pede formação: saber o que trabalhar, aplicar na rotina e acompanhar o que mudou."',
+      '"A Assessoria Start reúne a leitura do Zyron, o relatório do analista a cada 15 dias e os sete módulos de formação. Performance, psicologia, nutrição, comportamento e imagem fazem parte dessa trilha."',
+      '"Na Assessoria Pro e na Elite, o acompanhamento humano acrescenta orientação no ritmo de cada plano. Os módulos já fazem parte da Assessoria Start."'
+    ],
+    atencao: 'Sete módulos incluídos na Assessoria Start. Orientação humana e oportunidades seguem os planos. Não prometa resultado esportivo ou contratação.'
+  });
+})();
+</script>
 <script src="../../assets/mapa-calor.js"></script>
 <script src="../../assets/dossie-atleta.js"></script>
 <script src="../../assets/deck.js"></script>

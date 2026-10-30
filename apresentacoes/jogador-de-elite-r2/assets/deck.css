@@ -155,7 +155,8 @@ body.show-hud .progress{opacity:.8}
 /* visão geral */
 .overview{position:fixed;inset:0;background:rgba(6,11,20,.97);z-index:200;display:none;overflow:auto;padding:40px 48px}
 .overview.on{display:block}
-.overview h2{font:600 22px var(--f-label);letter-spacing:.3em;text-transform:uppercase;color:var(--sand);margin:0 0 24px}
+/* só o título da visão geral: as miniaturas são clones dos slides, e o h2 deles (slides 1 e de formação) herdava o espaçamento de letras */
+.overview>h2{font:600 22px var(--f-label);letter-spacing:.3em;text-transform:uppercase;color:var(--sand);margin:0 0 24px}
 .ov-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
 .ov-item{cursor:pointer}
 .ov-item .th{position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line);background:var(--bg)}

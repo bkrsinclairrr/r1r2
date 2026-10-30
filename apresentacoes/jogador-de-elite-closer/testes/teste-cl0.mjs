@@ -67,6 +67,10 @@ try {
   const tudo = normal(await a.avalia(`[...document.querySelectorAll('#stage > .slide')].map(s => s.textContent).join(' ')`));
   ok(!/Quem banca a operação|Bem-vindo,|inimigo em comum|Quem já esteve aí/i.test(tudo) || /A decisão/.test(tudo), 'nada dos slides removidos sobrou no texto (Até lá, Bem-vindo, inimigo em comum, depoimento da mãe, A decisão)');
   ok(await a.avalia(`${slide(DOSSIE)}.classList.contains('ds-slide')`), 'o dossiê do atleta é o ' + DOSSIE);
+  ok((await a.avalia('window.ROTEIRO[12].nome')) === 'Assessoria Start: sete módulos para evoluir' && /Assessoria Start/.test(await a.avalia('window.ROTEIRO[12].fala.join(" ")')) && !/Scout PRO/.test(await a.avalia('JSON.stringify(window.ROTEIRO[12])')), 'o slide 13 (formação) tem o nome certo no apresentador e na visão geral, sem Scout PRO');
+  const css = await a.avalia("(() => { document.dispatchEvent(new KeyboardEvent('keydown', { key: 'g', bubbles: true })); return 1; })()"); // a visão geral: a miniatura do 13 sem o espaçamento de letras do título dela
+  ok(await a.ate("document.querySelector('#overview.on .ov-item:nth-child(13) .th h2')", 6000) && (await a.avalia("getComputedStyle(document.querySelector('#overview.on .ov-item:nth-child(13) .th h2')).letterSpacing")) === 'normal', 'a miniatura do slide 13 na visão geral não herda o espaçamento de letras do título da visão geral');
+  await a.avalia("document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true })); 1");
   ok(!/Scout PRO|Legacy|Assessoria PRO/.test(normal(await a.avalia(`[...document.querySelectorAll('#stage > .slide')].map(s => s.innerText).join(' ')`))), 'nenhum slide fala em Scout PRO, Legacy ou Assessoria PRO (é Start, Pro e Elite)');
 
   /* ---------- o 18: a lista de profissionais e a soma ---------- */
