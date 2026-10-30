@@ -9,6 +9,22 @@ Atualizado em 24/10/2026 (madrugada). O quiz de pré-qualificação está CONSTR
 - **Sem commit e sem push** (o briefing proíbe git). Tudo está como arquivo novo, não rastreado, em `quiz-zyron/`.
 - **Modo de ensaio:** sem `endpoint` no `config/geral.json`, o lead fica só no navegador; nada é coletado de verdade até o dono ligar o destino.
 
+## ATENÇÃO: a fonte do quiz mudou de lugar (24/10/2026)
+O quiz está em PRODUÇÃO em https://aizyron.com/quiz/ (PR #48 mergeado). Daqui pra frente se trabalha direto em `C:\Users\Me\Downloads\voxen\vide-match\public\quiz\`, numa sessão do Claude Code aberta nesse projeto (contexto no CLAUDE.md de lá). Esta pasta `quiz-zyron` vira histórico. Não edite o quiz aqui.
+
+## Sincronizado em 30/10/2026: o que aconteceu no vide-match depois da cópia daqui
+Esta pasta ficou parada no estado de 24/10 (commits 998109f e 323f026). A `main` do vide-match chegou a `15cc79a` em 26/10. Docs, testes (`node quiz/testes/roda-tudo.mjs`) e ferramentas agora moram em `vide-match\quiz\` (fora do `public/`), então as cópias de `docs/`, `testes/` e `ferramentas/` daqui estão DESATUALIZADAS: use as de lá.
+- #48 (24/10): quiz entra em produção em `public/quiz/`.
+- #51: selo "Selecione" da primeira tela centralizado, em caixa alta, com o dedo pra baixo.
+- #52: escudos dos 11 clubes, dica de arrastar que pisca e sai, conversa do Fernando na T07, fim no WhatsApp da equipe; traz `quiz/` (docs, testes, ferramentas) pra `main`.
+- #53: um atleta por posição na conversa da T07; "Estrategista Esportivo" no lugar de "Scout".
+- #54: T11 sem apertar e segurar (um toque e segue).
+- #55 e #56: dica de rolar piscando (da T05 em diante), dica do trilho dura mais, chat do Fernando mais diferente, "Está nos jornais!" em destaque.
+- #57: "mano" vira "Fernando" e "Me belisca" vira "Tô até sem palavras" na T07.
+- Fora do quiz (#43 a #47, #49, #50): oportunidades com proposta na ficha, importados do CRM em Jogadores, filtros e notas de iniciante, ficha com foto em pé, perfil pelo formulário do `/avaliacao/perfil`, Comparativo só depois do vídeo.
+- Continua pendente (do dono): `endpoint` do webhook de leads e `landingUrl` da VSL no `config/geral.json`; sem isso o quiz segue em modo de ensaio.
+- Git daqui: `main` está 2 commits à frente de `r1r2/main` (998109f e 323f026), sem push. O checkout local do vide-match está na branch `fix/quiz-selecione-posicao` (já mesclada, atrás da `main`): antes de trabalhar lá, criar branch nova a partir de `origin/main`.
+
 ## Onde o quiz vai ao ar de verdade: aizyron.com/quiz/ (24/10/2026)
 - O destino é o projeto da Vercel `vide-match` (domínio `aizyron.com`), NÃO o projeto `quiz-zyron` (esse foi só a prévia de desenvolvimento). Repositório: `bkrsinclairrr/vide-match`; a cópia atual fica em `C:\Users\Me\Downloads\voxen\vide-match` (a de `Desktop\VOXEN\vide-match` está parada em 16/10).
 - O quiz entra como arquivos estáticos em `public/quiz/` (cópia do deployável de `mnkk/quiz-zyron`: index.html, css, js, config, assets) e 3 blocos novos no `vercel.json` (noindex em `/quiz/`, cache dos assets e o redirecionamento de `/quiz` para `/quiz/`). A fonte e os testes continuam em `mnkk/quiz-zyron`: edite lá e copie de volta.
