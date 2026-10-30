@@ -6,6 +6,8 @@
   const slides = Array.from(document.querySelectorAll('#stage > .slide'));
   const mapa = {};
   slides.forEach((s, i) => { if (s.dataset.slideOrigem) mapa[Number(s.dataset.slideOrigem)] = i + 1; });
+  // o CL0 (30/10/2026) acaba na garantia, sem o Bem-vindo (origem 25): o texto não promete um slide que não existe
+  const aposGarantia = mapa[25] ? ' e antes do Bem-vindo' : ', no fim da apresentação';
   // 101 a 106 são as origens dos seis slides do bloco da página institucional (bloco-roteiro.js), 107 a do dossiê do atleta e 108 a do
   // inimigo em comum (18/10/2026, logo depois da IA na Prática): entram na aba Ler antes
   const numeros = t => t.replace(/\b(10[1-8]|0?[1-9]|1\d|2[0-5])\b/g,
@@ -17,7 +19,7 @@
     .replace(/\b(slides? |no |do |pro |ao |o |e o )((?:0?[1-9]|1\d|2[0-5])(?:\b(?:, | e | a | ao | até )(?:0?[1-9]|1\d|2[0-5]))*)\b/gi,
       (m, p, ns) => p + numeros(ns))
     .replace(/garantia antes do número/gi, 'garantia depois dos preços')
-    .replace(/A garantia vem antes do número de propósito[^.]*\./g, 'A garantia vem depois dos preços e antes do Bem-vindo.')
+    .replace(/A garantia vem antes do número de propósito[^.]*\./g, 'A garantia vem depois dos preços' + aposGarantia + '.')
     .replace(/se vocês aplicarem o método e (?:entenderem que )?não (?:faz|fizer) sentido/gi, 'se não fizer sentido')
     .replace(/aplicou o método e não fez sentido/gi, 'não fez sentido')
     .replace(/Pra acionar, a família comprova que aplicou o método[^.]*\./g, 'A devolução não exige comprovar aplicação do método.')
@@ -30,14 +32,14 @@
       '"Não precisa provar treino, resultado ou aplicação do método. A garantia é do investimento, não de contratação por um clube."',
       'Se o prazo estiver preenchido: "O prazo é [prazo da garantia]." Confira o prazo efetivo antes da call.'],
     perguntas: ['Ficou claro como funciona a devolução?'], crm: [],
-    atencao: 'Depois dos preços, antes do Bem-vindo. Informe o prazo da operação. Sem prazo confirmado, não invente um. Não condicione a devolução à aplicação do método e não prometa contratação.'
+    atencao: 'Depois dos preços' + (mapa[25] ? ', antes do Bem-vindo' : ', no fim da apresentação') + '. Informe o prazo da operação. Sem prazo confirmado, não invente um. Não condicione a devolução à aplicação do método e não prometa contratação.'
   };
   window.ROTEIRO = slides.map(s => s.dataset.slideOrigem === '21' ? garantia :
     adapta(s.dataset.roteiro ? (window.ROTEIROS_EXTRAS || {})[s.dataset.roteiro] : antigos[Number(s.dataset.slideOrigem) - 1]));
   window.ETAPAS = (window.ETAPAS || []).map(e => ({ ...e, slides: e.slides.map(n => mapa[n]).filter(Boolean) }));
   window.OBJECOES = (window.OBJECOES || []).map(o => ({ ...adapta(o), slides: [...new Set(o.slides.map(n => mapa[n]).filter(Boolean))] }));
   const obj = window.OBJECOES.find(o => /Tem garantia/.test(o.q));
-  if (obj) { obj.prev = 'Garantia incondicional depois dos preços e antes do Bem-vindo.';
+  if (obj) { obj.prev = 'Garantia incondicional depois dos preços' + aposGarantia + '.';
     obj.resposta = garantia.fala.slice(0, 2); }
   // A aba Ler antes usa só números de slide, sem números comerciais.
   window.R2_REFERENCIA = t => numeros(String(t));

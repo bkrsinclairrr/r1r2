@@ -44,7 +44,7 @@ try {
   ];
   for (const [nome, ficha, clipe, dims] of CENAS) {
     const t = await lead(ficha, clipe, dims);
-    for (const [deck, caminho, n] of [['r2', '/', 18], ['r2-anterior', '/variacoes/cl0/', 16]]) {
+    for (const [deck, caminho, n] of [['r2', '/', 18], ['r2-anterior', '/variacoes/tecnica/', 16]]) {
       const a = await nav.aba(s.decks[deck] + caminho + '?a=' + t + '#' + n, { largura: 1920, altura: 1080 });
       await a.ate("document.querySelector('#stage > .slide.active')", 10000);
       await espera(1500); await a.avalia(sem); await espera(400);

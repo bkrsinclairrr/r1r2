@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "gerado": "2026-10-20T23:30:25.207Z",
+  "gerado": "2026-10-30T04:04:52.382Z",
   "paginas": [
     {
       "id": "principal",
@@ -36,16 +36,16 @@
       "id": "cl0",
       "caminho": "/variacoes/cl0/",
       "nome": "CL0",
-      "resumo": "Técnica com os ajustes do closer: planos antes dos preços, faixa de R$ 5 a 30 mil por mês e garantia só no slide da garantia.",
+      "resumo": "Técnica enxuta (22 slides) com os ajustes do closer: planos Start, Pro e Elite com os preços um por vez em 12x, faixa de R$ 5 a 30 mil por mês e a garantia no fim.",
       "quando": "Mesma indicação da Técnica, quando o closer quiser mostrar os planos antes dos preços.",
       "validacao": "nao-validada",
       "lead": {
         "nome": true,
         "foto": true
       },
-      "slides": 32,
+      "slides": 22,
       "opcionais": [],
-      "hash": "f75296dd53e3f417a5a849390432bbd4cbfb53d0"
+      "hash": "5ac6548dbbedf8a53b4756e750b76b3ac449129c"
     },
     {
       "id": "tecnica",

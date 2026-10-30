@@ -20,7 +20,9 @@
   const ROT = window.ROTEIRO || [];
   const AID = (new URLSearchParams(location.search).get('a') || '').trim();
   const FKEY = window.R2_PERSONAL ? 'je-r2-dossie-ficha-' + (AID || 'exemplo') : 'je-r2-ficha' + (AID ? '-' + AID : '');
-  const SILENCE_SLIDE = slides.findIndex(s => s.id === 'silencio');
+  // CL0 (30/10/2026): sem o slide do investimento, o número é dito nos planos (data-silencio-aqui), com as parcelas em window.PARCELAS_N
+  const SILENCE_SLIDE = (i => i >= 0 ? i : slides.findIndex(s => s.hasAttribute('data-silencio-aqui')))(slides.findIndex(s => s.id === 'silencio'));
+  const PARCELAS_N = window.PARCELAS_N || 10;
   const VAGA = SILENCE_SLIDE; // slide do número: Silêncio, "fale o número e pare" e o fechamento
   const TURMA = slides.findIndex(s => s.querySelector('#turma')); // a vaga (turma de 10, só no Legacy; nos outros, o começo)
   const MATRIZ = slides.findIndex(s => s.id === 'planos' || s.hasAttribute('data-oferta')); // os planos: os três com o investimento de cada um, e o da ficha destacado no último avanço
@@ -930,11 +932,11 @@
       if (cur <= 1) h = `<div class="pz-ctl"><p class="pz-h">Origem do lead (muda o texto na tela)</p><div class="pz-mode">${[['Zyron', 'Zyron'], ['Formulário do Instagram', 'Formulário'], ['Frio, sem vídeo', 'Sem contexto']].map(([v, l]) => `<button data-origem="${esc(v)}" class="${o === v ? 'on' : ''}">${l}</button>`).join('')}</div></div>`;
       // os planos: a recomendação é o plano da ficha, destacado no último avanço; trocar aqui move o destaque na tela
       if (cur === MATRIZ) h = planoCtl('Plano da ficha (o último avanço destaca na tela como a sua recomendação)');
-      if (cur === VAGA) {
+      if (cur === VAGA && VAGA !== MATRIZ) {
         // a tela e a fala vêm do mesmo plano, o da ficha, sem link no deck
         const p = planoDe(ficha.plano) || {};
-        const fala = fill('"[pai], [mãe], o investimento no [plano] é de [preço], em 10x sem juros de [parcela]."');
-        h = `<div class="pz-ctl"><p class="pz-h">Fale o número e pare</p><p class="pz-say">${fala}</p><p class="pz-small"><b>Na tela, um plano só:</b> ${esc(p.nome || '')}, ${esc(p.preco || '')} vitalício e 10x sem juros de ${esc(p.parcela || '')}. Link de pagamento: fora do deck, pelo WhatsApp, só depois do sim.</p></div>` +
+        const fala = fill(`"[pai], [mãe], o investimento no [plano] é de [preço], em ${PARCELAS_N}x sem juros de [parcela]."`);
+        h = `<div class="pz-ctl"><p class="pz-h">Fale o número e pare</p><p class="pz-say">${fala}</p><p class="pz-small"><b>Na tela, um plano só:</b> ${esc(p.nome || '')}, ${esc(p.preco || '')} vitalício e ${PARCELAS_N}x sem juros de ${esc(p.parcela || '')}. Link de pagamento: fora do deck, pelo WhatsApp, só depois do sim.</p></div>` +
           planoCtl('Trocar de plano, pelo escopo (a tela da família troca junto)');
       }
       // o dossiê do atleta: o que está na tela agora; vazio, as setas passam direto. O inimigo em comum: os números da família
@@ -1274,9 +1276,9 @@
       const r = ROT[VAGA] || {};
       const p = planoDe(ficha.plano) || {}, n2 = i => String(i + 1).padStart(2, '0');
       qs('#tab-fech').innerHTML = `
-        <div class="pz-chips">${TURMA >= 0 ? `<button data-go="${TURMA}">${p.turma ? 'A vaga' : 'O começo'} (${n2(TURMA)})</button>` : ''}${MATRIZ >= 0 ? `<button data-go="${MATRIZ}">Os planos (${n2(MATRIZ)})</button>` : ''}<button data-go="${VAGA}">O investimento (${n2(VAGA)})</button><button data-a="silence">Silêncio (S)</button><button data-go="${N - 1}">Bem-vindo (${n2(N - 1)})</button></div>
+        <div class="pz-chips">${TURMA >= 0 ? `<button data-go="${TURMA}">${p.turma ? 'A vaga' : 'O começo'} (${n2(TURMA)})</button>` : ''}${MATRIZ >= 0 ? `<button data-go="${MATRIZ}">Os planos (${n2(MATRIZ)})</button>` : ''}${VAGA >= 0 && VAGA !== MATRIZ ? `<button data-go="${VAGA}">O investimento (${n2(VAGA)})</button>` : ''}<button data-a="silence">Silêncio (S)</button><button data-go="${N - 1}">${esc((ROT[N - 1] && ROT[N - 1].nome) || 'Bem-vindo')} (${n2(N - 1)})</button></div>
         ${PLANOS.length ? `<div class="pz-sec plano"><p class="pz-h">Plano na tela da família</p>
-          <div class="pz-plan on"><div class="pz-plan-hd"><p class="pz-plan-nm">${esc(p.nome || '')}</p><b class="pz-plan-tk">${esc(p.ticket || '')}</b></div><p class="pz-plan-ds">${esc(p.descritor || '')} · ${/^A cada \d+ dias$/i.test(p.ritmo || '') ? '' : esc(p.ritmo || '') + ' · '}${esc(p.preco || '')} vitalício, 10x sem juros de ${esc(p.parcela || '')}</p></div>
+          <div class="pz-plan on"><div class="pz-plan-hd"><p class="pz-plan-nm">${esc(p.nome || '')}</p><b class="pz-plan-tk">${esc(p.ticket || '')}</b></div><p class="pz-plan-ds">${esc(p.descritor || '')} · ${/^A cada \d+ dias$/i.test(p.ritmo || '') ? '' : esc(p.ritmo || '') + ' · '}${esc(p.preco || '')} vitalício, ${PARCELAS_N}x sem juros de ${esc(p.parcela || '')}</p></div>
           ${planoCtl('Trocar de plano, pelo escopo (a tela da família troca junto)')}
           <p class="pz-small">Link de pagamento: fora do deck. Depois do sim, mande no WhatsApp o link do plano fechado, na própria call, e acompanhe o pagamento na linha. Antes do sim, link nenhum.</p></div>` : ''}
         <div class="pz-sec"><p class="pz-h">Modo A: fechar na call</p>${list(r.fala || [])}</div>
