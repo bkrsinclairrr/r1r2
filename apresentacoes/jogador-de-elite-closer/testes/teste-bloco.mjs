@@ -23,7 +23,7 @@ const DECKS = [
     { caminho: '/', total: 35, pos: R2 }, { caminho: '/variacoes/tecnica/', total: 35, pos: R2, tecnica: true }] },
   { id: 'r2-anterior', nome: 'R2 anterior', opcionais: false, paginas: [
     { caminho: '/', total: 32, pos: ANT }, { caminho: '/variacoes/tecnica/', total: 32, pos: ANT, tecnica: true },
-    { caminho: '/variacoes/acompanhamento/', total: 32, pos: Object.assign({}, ANT, { encaixe: 10, campo: 12 }) }] },
+    { caminho: '/variacoes/acompanhamento/', total: 24, pos: { metodo: 6, campo: 7, registro: 13, clubes: 14, rostos: 15 } }] }, // desde 03/11/2026, sem o encaixe
   { id: 'r1', nome: 'R1', opcionais: false, r1: true, paginas: [
     { caminho: '/', total: 20, pos: { campo: 7, registro: 13, clubes: 14, rostos: 18 } }] }
 ];
@@ -120,9 +120,9 @@ try {
         const P = await nav.aba(origem + pg.caminho + '?presenter#1', { largura: 1500, altura: 1000 });
         await P.ate("document.querySelector('#tab-ler') && document.querySelector('#tab-ler').textContent.includes('Nome do atleta')", 15000);
         const dois = n => String(n).padStart(2, '0');
-        const lista = SEIS.map(id => dois(pg.pos[id]));
+        const lista = ids.map(id => dois(pg.pos[id]));
         const esperado = lista.slice(0, -1).join(', ') + ' e ' + lista[lista.length - 1];
-        ok((await P.avalia("document.querySelector('#tab-ler').textContent")).includes(esperado), rotulo + ': a aba Ler antes lista os seis slides do bloco entre os que mostram o nome (' + esperado + ')');
+        ok((await P.avalia("document.querySelector('#tab-ler').textContent")).includes(esperado), rotulo + ': a aba Ler antes lista os slides do bloco entre os que mostram o nome (' + esperado + ')');
       }
     }
   }

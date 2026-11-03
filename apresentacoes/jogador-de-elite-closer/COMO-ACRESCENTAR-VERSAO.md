@@ -29,7 +29,7 @@ O painel só oferece, na tela, o que o deck faz de verdade. Está no `regras.js`
 | Deck | Escolher "Nome na tela" | "Como a gente chama ele" (apelido) | Foto do lead | Tirar slide opcional | Vídeo e leitura do atleta | Prévia dentro do painel | O que aparece do lead |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | R2 novo | sim | sim | sim | sim | sim | sim | nome e sobrenome, e a foto |
-| R2 anterior | sim (desde 18/10/2026) | sim (desde 18/10/2026) | sim (slide 02; na Acompanhamento, também a capa e os quadros do dossiê) | não | sim | não (abre em outra aba) | nome e sobrenome (ou a escolha do painel), e a foto |
+| R2 anterior | sim (desde 18/10/2026) | sim (desde 18/10/2026) | sim (slide 02; na Acompanhamento, que abre nele desde 03/11/2026, também os quadros do dossiê) | não | sim | não (abre em outra aba) | nome e sobrenome (ou a escolha do painel), e a foto |
 | R2 B | não | sim | sim | não | sim | sim | nome e primeiro sobrenome, e a foto |
 | R1 | não | não (o deck ignora) | sim (slide 02) | não | não | não (abre em outra aba) | primeiro nome nas frases, nome e sobrenome na placa do slide 02, a foto e a ficha (posição, idade, cidade) |
 

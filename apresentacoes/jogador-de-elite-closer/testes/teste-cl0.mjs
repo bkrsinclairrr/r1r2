@@ -193,10 +193,11 @@ try {
   /* ---------- as outras páginas seguem como eram ---------- */
   for (const [pid, caminho] of [['r2a-principal', '/'], ['r2a-tecnica', '/variacoes/tecnica/'], ['r2a-acompanhamento', '/variacoes/acompanhamento/']]) {
     const t = (await admin.post('/api/atletas', { ficha: { nome: 'Lucas Almeida da Silva', plano: 'Assessoria de Elite Legacy', versao: pid } })).j.t;
-    await a.vai('about:blank'); await a.vai(s.decks['r2-anterior'] + caminho + '?a=' + t + '#27');
-    await a.ate(`${ativo} === 27 && /Lucas/.test(document.body.textContent)`, 10000);
-    const o = await a.avalia(`(() => { const ss = document.querySelectorAll('#stage > .slide'); return { n: ss.length, v: window.VARIACAO_NOME, t27: ss[26].textContent.replace(/\\s+/g, ' '), t29: (ss[28].querySelector('.t') || {}).textContent || '', cl0: !!document.querySelector('.cl0-planos, link[href*="cl0.css"]'), p: window.PARCELAS_N || 10 }; })()`);
-    ok(o.n === 32 && !o.cl0 && o.v !== 'CL0' && o.p === 10, pid + ': 32 slides, 10x e nada do CL0 na página');
+    const acomp = pid === 'r2a-acompanhamento', total = acomp ? 24 : 32, alvo = acomp ? 1 : 27; // a Acompanhamento enxuta (03/11/2026) tem 24 slides: o 27 e o 29 só existem nas outras
+    await a.vai('about:blank'); await a.vai(s.decks['r2-anterior'] + caminho + '?a=' + t + '#' + alvo);
+    await a.ate(`${ativo} === ${alvo} && /Lucas/.test(document.body.textContent)`, 10000);
+    const o = await a.avalia(`(() => { const ss = document.querySelectorAll('#stage > .slide'); return { n: ss.length, v: window.VARIACAO_NOME, t27: ss[26] ? ss[26].textContent.replace(/\\s+/g, ' ') : '', t29: ss[28] ? (ss[28].querySelector('.t') || {}).textContent || '' : '', cl0: !!document.querySelector('.cl0-planos, link[href*="cl0.css"]'), p: window.PARCELAS_N || 10 }; })()`);
+    ok(o.n === total && !o.cl0 && o.v !== 'CL0' && o.p === 10, pid + ': ' + total + ' slides, 10x e nada do CL0 na página');
     if (pid !== 'r2a-acompanhamento') ok(/por volta de/.test(o.t27) && /R\$ 20 a 30 mil\+/.test(o.t27) && (pid === 'r2a-principal' ? /Você não fica mais sozinho/ : /Vocês não operam mais sozinhos/).test(o.t29), pid + ': o 27 e o 29 de sempre');
   }
   const exc = a.console_.filter(m => /^EXC/.test(m));

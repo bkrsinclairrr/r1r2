@@ -10,7 +10,7 @@ test('a sequência sem o alinhamento mantém a oferta, a garantia e os atalhos s
   const nav=await abreNavegador();
   try {
     const admin=new Cliente(s.painel);await admin.entra(s.adminLogin,s.adminSenha);
-    const versoes=(await admin.get('/api/versoes')).j.versoes.filter(v=>!v.criada&&v.id!=='r2a-cl0'); // o CL0 (22 slides, desde 30/10/2026) tem o teste-cl0
+    const versoes=(await admin.get('/api/versoes')).j.versoes.filter(v=>!v.criada&&v.id!=='r2a-cl0'&&v.id!=='r2a-acompanhamento'); // o CL0 (22 slides, desde 30/10/2026) tem o teste-cl0, e a Acompanhamento (24, desde 03/11/2026) o teste-acompanhamento-enxuto
     for(const v of versoes) {
       const a=await nav.aba(s.decks[v.deck]+v.caminho+'#3',{largura:1920,altura:1080});
       assert.ok(await a.ate(`document.querySelectorAll('#stage>.slide.active').length===1`),v.id);

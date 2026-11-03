@@ -56,7 +56,7 @@ try {
   ok(item && item.mapa === true, 'a lista do painel conta o mapa da lista como mapa do lead');
 
   /* ---------- as oito páginas: o SVG embaixo do vídeo, o subtítulo e o dossiê só com o mapa ---------- */
-  const PAGINAS = [['principal', 18], ['tecnica', 18], ['r2b-principal', 18], ['r2b-tecnica', 18], ['r2a-principal', 16], ['r2a-tecnica', 16], ['r2a-acompanhamento', 16], ['r2a-cl0', 12]]; // o CL0 enxuto (30/10/2026) tem o dossiê no 12
+  const PAGINAS = [['principal', 18], ['tecnica', 18], ['r2b-principal', 18], ['r2b-tecnica', 18], ['r2a-principal', 16], ['r2a-tecnica', 16], ['r2a-acompanhamento', 9], ['r2a-cl0', 12]]; // o CL0 enxuto (30/10/2026) tem o dossiê no 12
   for (const [id, ds] of PAGINAS) {
     const ver = versoes.find(v => v.id === id);
     if (!ok(!!ver, id + ': no catálogo')) continue;

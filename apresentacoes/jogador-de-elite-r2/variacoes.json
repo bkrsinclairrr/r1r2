@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "gerado": "2026-11-03T16:21:29.772Z",
+  "gerado": "2026-11-03T19:37:05.343Z",
   "paginas": [
     {
       "id": "principal",
@@ -21,16 +21,16 @@
       "id": "acompanhamento",
       "caminho": "/variacoes/acompanhamento/",
       "nome": "R2 · Oferta R$247,90 e R$500",
-      "resumo": "R2 com Scout PRO por R$ 247,90 e Legacy por R$ 500, dossiê com o nome, o sobrenome e a foto do lead, relatório do Zyron e clubes compatíveis. Garantia antes do Bem-vindo.",
+      "resumo": "R2 enxuto de 24 slides, com Scout PRO por R$ 247,90 e Legacy por R$ 500: abertura única com o nome, o sobrenome e a foto do lead, o Zyron e o vídeo dele no mesmo slide, dossiê e relatório do Zyron. Garantia antes do Bem-vindo.",
       "quando": "Quando esta oferta de dois planos for a aprovada para a família. O nome do atleta continua na apresentação.",
       "validacao": "nao-validada",
       "lead": {
         "nome": true,
         "foto": true
       },
-      "slides": 32,
+      "slides": 24,
       "opcionais": [],
-      "hash": "a9b67d2f06b993a0acc24236af5bfb9ca7d8dcb9"
+      "hash": "e1bdfd4f00fae437f2a54ca89c0ae3c45472905b"
     },
     {
       "id": "cl0",

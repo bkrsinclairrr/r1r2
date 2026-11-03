@@ -37,7 +37,7 @@ try {
   const versoes = (await admin.get('/api/versoes')).j.versoes; // a primeira leitura sincroniza com os decks
   const PAGINAS = [
     ['principal', 35, 18], ['tecnica', 35, 18], ['r2b-principal', 35, 18], ['r2b-tecnica', 35, 18],
-    ['r2a-principal', 32, 16], ['r2a-tecnica', 32, 16], ['r2a-acompanhamento', 32, 16]
+    ['r2a-principal', 32, 16], ['r2a-tecnica', 32, 16], ['r2a-acompanhamento', 24, 9] // a Acompanhamento enxuta (03/11/2026): 24 slides, o dossiê no 9
   ];
   const poeArquivo = (c, origem) => { const p = path.join(s.dados, ...c.split('/')); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.copyFileSync(origem, p); };
   async function sobeVideo(t) {

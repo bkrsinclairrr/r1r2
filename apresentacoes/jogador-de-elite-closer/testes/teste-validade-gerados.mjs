@@ -84,27 +84,28 @@ try {
     await Promise.race([a.envia('Page.close').catch(() => {}), espera(700)]);
   }
 
-  /* ---------------- 5. a capa da Acompanhamento: Montado para, foto, nome e sobrenome ---------------- */
-  console.log('\n5. a capa da Acompanhamento');
+  /* ---------------- 5. a abertura da Acompanhamento: o slide de escolha, com a foto, o nome e o sobrenome ---------------- */
+  // (a capa saiu em 03/11/2026: o slide de escolha, que já levava o nome, a foto e o perfil, virou o primeiro)
+  console.log('\n5. a abertura da Acompanhamento');
   const ac = await ana.post('/api/atletas', { ficha: { nome: 'Carlos Eduardo de Souza', versao: 'r2a-acompanhamento' } });
   ok((await ana.put('/api/foto?t=' + ac.j.t, ft)).status === 200, 'foto enviada');
   const verAc = lista.find(x => x.id === 'r2a-acompanhamento');
   const capa = await nav.aba(s.decks[verAc.deck] + verAc.caminho + '?a=' + ac.j.t + '#1', { largura: 1920, altura: 1080 });
-  ok(await capa.ate(`document.querySelector('.zx-retrato>img')?.naturalWidth>0`, 12000), 'a foto aparece no quadro do "Montado para"');
-  const cap = await capa.avalia(`document.querySelector('.zx-retrato-caption').innerText.replace(/\\s+/g,' ')`);
-  ok(/Montado para CARLOS EDUARDO SOUZA/i.test(cap) && !/Dossiê nº|nº [A-Z2-7]{8}/i.test(cap), 'a placa: "Montado para" e nome e sobrenome, sem o número do dossiê (' + cap + ')');
-  ok(await capa.avalia(`(()=>{const e=document.querySelector('.zx-retrato-caption strong');return e.scrollWidth<=e.parentElement.clientWidth+1&&parseFloat(getComputedStyle(e).fontSize)>=24})()`), 'o nome cabe na placa, em 24 px ou mais');
-  ok(/CARLOS EDUARDO SOUZA,/i.test(await capa.avalia(`document.querySelector('#stage>.slide.active h1').innerText.replace(/\\s+/g,' ')`)), 'o título da capa chama pelo nome e sobrenome');
+  ok(await capa.ate(`document.querySelector('#stage>.slide.active img[data-src="selecaoFotoUrl"]')?.naturalWidth>0`, 12000), 'a foto aparece no quadro da abertura');
+  const cap = await capa.avalia(`document.querySelector('.escolha-retrato-rodape').innerText.replace(/\\s+/g,' ')`);
+  ok(/Apresentação preparada para CARLOS EDUARDO SOUZA/i.test(cap) && !/Dossiê nº|nº [A-Z2-7]{8}/i.test(cap), 'a placa: "Apresentação preparada para" e nome e sobrenome, sem o número do dossiê (' + cap + ')');
+  ok(await capa.avalia(`(()=>{const e=document.querySelector('.escolha-retrato-rodape strong');return e.scrollWidth<=e.parentElement.clientWidth+1&&parseFloat(getComputedStyle(e).fontSize)>=24})()`), 'o nome cabe na placa, em 24 px ou mais');
+  ok(/CARLOS EDUARDO SOUZA,/i.test(await capa.avalia(`document.querySelector('#stage>.slide.active h2').innerText.replace(/\\s+/g,' ')`)), 'o título da abertura chama pelo nome e sobrenome');
   const fotoEm = await capa.avalia(`[...document.querySelectorAll('#stage>.slide')].flatMap((sl,i)=>[...sl.querySelectorAll('img')].some(img=>/api\\/foto/.test(img.getAttribute('src')||''))?[i+1]:[])`);
-  ok(fotoEm.includes(1) && fotoEm.includes(2) && fotoEm.length >= 5, 'a foto vai pros quadros do deck, não só pro slide 02 (' + fotoEm.join(', ') + ')');
+  ok(fotoEm.includes(1) && fotoEm.length >= 4, 'a foto vai pros quadros do deck, não só pro slide de abertura (' + fotoEm.join(', ') + ')');
   // o número do dossiê (o fim do código do link) não aparece em slide nenhum (pedido do dono, 18/10/2026)
   const todoTexto = await capa.avalia(`[...document.querySelectorAll('#stage>.slide')].map(sl=>sl.innerText).join(' ')`);
   ok(!todoTexto.toUpperCase().includes(ac.j.t.slice(-8).toUpperCase()) && !/Dossiê nº/i.test(todoTexto), 'nenhum slide mostra o número do dossiê');
-  // a foto fora da tela: os quadros mostram as iniciais do nome e sobrenome
+  // a foto fora da tela: o quadro mostra as iniciais do nome e sobrenome
   let rr = (await ana.get('/api/atletas?t=' + ac.j.t)).j.registro;
   await ana.put('/api/atletas?t=' + ac.j.t, { base: rr.fichaEm, ficha: Object.assign({}, rr.ficha, { semFoto: 'sim' }) });
   await capa.avalia('location.reload();1'); await espera(600);
-  ok(await capa.ate(`document.querySelector('.zx-retrato>b')?.textContent==='CS' && getComputedStyle(document.querySelector('.zx-retrato>b')).display!=='none'`, 12000), 'sem a foto na tela: o quadro mostra CS');
+  ok(await capa.ate(`document.querySelector('#stage>.slide.active .escolha-inicial span')?.textContent==='CS' && getComputedStyle(document.querySelector('#stage>.slide.active .escolha-inicial')).display!=='none'`, 12000), 'sem a foto na tela: o quadro mostra CS');
   await Promise.race([capa.envia('Page.close').catch(() => {}), espera(700)]);
 
   /* ---------------- 6. Gerados: o espaço de cada um ---------------- */

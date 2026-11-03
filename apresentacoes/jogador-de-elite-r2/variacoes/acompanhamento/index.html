@@ -17,7 +17,7 @@
 <script type="application/json" id="r2-variacao">
 {
   "nome": "R2 · Oferta R$247,90 e R$500",
-  "resumo": "R2 com Scout PRO por R$ 247,90 e Legacy por R$ 500, dossiê com o nome, o sobrenome e a foto do lead, relatório do Zyron e clubes compatíveis. Garantia antes do Bem-vindo.",
+  "resumo": "R2 enxuto de 24 slides, com Scout PRO por R$ 247,90 e Legacy por R$ 500: abertura única com o nome, o sobrenome e a foto do lead, o Zyron e o vídeo dele no mesmo slide, dossiê e relatório do Zyron. Garantia antes do Bem-vindo.",
   "quando": "Quando esta oferta de dois planos for a aprovada para a família. O nome do atleta continua na apresentação.",
   "validacao": "nao-validada",
   "lead": {
@@ -34,14 +34,6 @@
 <body>
 <div class="viewport" id="viewport">
 <div class="stage" id="stage">
-
-<!-- ============ 01 CAPA ============ -->
-<!-- O gancho é o inimigo comum: o olhômetro (laranja-sinal, só nele). A segunda linha segue a origem do lead.
-     O selo de dossiê leva o nome e, com o link do painel (?a=<id>), o código do registro dele (dossieCod). -->
-<section class="slide desk" data-slide-origem="1"><div class="fill grain"></div><div class="fill" style="background:radial-gradient(50% 75% at 80% 45%,rgba(200,184,138,.14),transparent)"></div>
-<div class="a" style="left:120px;top:160px;width:930px"><p class="label">Planejamento de carreira · Dossiê pessoal</p><h1 class="t" style="font-size:116px;line-height:.96;margin-top:42px!important"><span class="sand-l" data-bind="nome" data-fb="Você"></span>,<br>este plano<br>é seu.</h1>
-<p class="b" style="font-size:42px;line-height:1.25;margin-top:42px!important">O que a equipe viu no seu perfil, o que vale desenvolver e onde o seu jogo pode fazer sentido. Tudo reunido para esta conversa.</p><p class="zx-frase">Seu nome. Seu perfil. Seu próximo passo.</p></div>
-<div class="a" style="left:1170px;top:115px;width:570px;height:790px"><div class="zx-retrato"><img data-if="fotoOk" data-src="fotoUrl" alt="Foto do atleta"><b data-ifnot="fotoOk" data-bind="fotoIni" data-fb="JE"></b><div class="zx-retrato-caption"><span>Montado para</span><strong data-bind="nomeAssinatura" data-fb="você" data-fit="486" style="white-space:nowrap"></strong></div></div></div></section>
 
 <section class="slide escolha-atleta" data-slide-origem="2" data-foto-slide="escolha"><div class="escolha-texto"><p class="escolha-selo"><i></i> Por que você · Jogador de Elite</p><h2 class="escolha-titulo"><span class="escolha-nome" data-if="nome"><span data-bind="nome"></span>,</span><br><span data-ifnot="nome">Você</span><span data-if="nome">você</span> foi escolhido<br>para esta conversa.</h2><p class="escolha-abertura">Esta apresentação parte do seu perfil e do próximo passo que você busca no futebol. O plano ganha sentido quando começa em você.</p><div class="escolha-contexto" data-if="selecaoContexto"><span>O que chamou atenção no seu perfil</span><p data-bind="selecaoContexto"></p></div><div class="escolha-direcao"><div><b>Entender seu jogo</b><small>O Zyron transforma os lances em uma leitura do seu perfil.</small></div><div><b>Construir evolução</b><small>No Scout PRO, sete módulos conectam conhecimento e rotina.</small></div><div><b>Definir direção</b><small>O escopo do plano orienta o acompanhamento e os próximos passos.</small></div></div><p class="escolha-assinatura">Seu perfil. Sua evolução. Uma direção para seguir.</p></div><div class="escolha-retrato"><img data-src="selecaoFotoUrl" data-if="selecaoFotoOk" alt="Foto do jogador escolhido para esta apresentação"><div class="escolha-inicial" data-ifnot="selecaoFotoOk"><span data-bind="selecaoInicial"></span></div><div class="escolha-retrato-rodape"><span>Apresentação preparada para</span><strong><span data-if="selecaoNome" data-bind="selecaoNome"></span><span data-ifnot="selecaoNome">Seu próximo passo</span></strong><p data-bind="selecaoPerfil" data-if="selecaoPerfil"></p></div></div></section>
 
@@ -93,60 +85,31 @@
   <p class="a b b-44 rise" style="left:120px;top:618px;width:760px;color:#DDE2E8;--d:.14s">Cada decisão. Cada movimento sem a bola. E levasse tudo isso a quem procura um jogador como você.</p>
 </section>
 
-<section class="slide" data-slide-origem="7">
+<section class="slide zy-slide" data-slide-origem="7" data-video="v-zyron">
   <div class="fill zgrid" style="-webkit-mask-image:linear-gradient(90deg,transparent 30%,#000 60%);mask-image:linear-gradient(90deg,transparent 30%,#000 60%)"></div>
   <div class="fill" style="background:radial-gradient(46% 58% at 72% 48%,rgba(127,196,234,.12),rgba(6,11,20,0) 70%)"></div>
-  <p class="a label ice" style="left:120px;top:150px">A resposta ao olhômetro</p>
-  <p class="a t rise" style="left:108px;top:236px;font-size:272px;line-height:.84;letter-spacing:.03em">Zyron</p>
-  <p class="a sub ice rise" style="left:120px;top:498px;font-size:66px;--d:.1s">O olheiro que não pisca.</p>
-  <p class="a white rise" style="left:120px;top:600px;width:820px;font-size:44px;line-height:1.28;font-weight:600;--d:.16s">Não olha pro lado.<br>Não cansa. Não esquece.</p>
-  <p class="a b b-40 rise" style="left:120px;top:762px;width:800px;--d:.22s">Inteligência artificial que lê cada lance do seu vídeo, com o mesmo critério pra todo atleta.</p>
-  <div class="a" style="left:968px;top:250px;width:840px;height:472px;overflow:hidden;border:1px solid rgba(127,196,234,.3)">
-    <img src="../../assets/zyron-leitura.jpg" alt="Trecho da demonstração do Zyron" style="width:100%;height:100%;object-fit:cover;filter:saturate(.8) brightness(.88)">
-    <div class="fill" style="background:linear-gradient(180deg,rgba(6,11,20,0) 55%,rgba(6,11,20,.45))"></div>
-    <div class="scan"></div>
-  </div>
-  <div class="brackets" style="left:968px;top:250px;width:840px;height:472px"><i></i><i></i><i></i><i></i></div>
-
-</section>
-
-<section class="slide" data-slide-origem="8" data-video="v-zyron">
-  <div class="fill" style="background:radial-gradient(60% 70% at 36% 56%,rgba(127,196,234,.08),rgba(6,11,20,0) 70%)"></div>
-  <p class="a t t-96" style="left:116px;top:66px">Veja o Zyron trabalhando.</p>
-  <p class="a b b-40" style="left:120px;top:176px">Dois minutos que explicam mais que qualquer slide.</p>
-  <div class="player" id="p-zyron" style="left:120px;top:268px;width:1180px;height:664px">
+  <p class="a label ice" style="left:120px;top:84px">A resposta ao olhômetro</p>
+  <p class="a t rise" style="left:108px;top:166px;font-size:220px;line-height:.84;letter-spacing:.03em">Zyron</p>
+  <p class="a sub ice rise" style="left:120px;top:378px;font-size:56px;--d:.1s">O olheiro que não pisca.</p>
+  <p class="a white rise" style="left:120px;top:476px;width:640px;font-size:40px;line-height:1.28;font-weight:600;--d:.16s">Não olha pro lado.<br>Não cansa. Não esquece.</p>
+  <p class="a b b-40 rise" style="left:120px;top:628px;width:640px;--d:.22s">Inteligência artificial que lê cada lance do seu vídeo, com o mesmo critério pra todo atleta.</p>
+  <p class="a label ice" style="left:820px;top:84px">Veja o Zyron trabalhando</p>
+  <div class="player" id="p-zyron" style="left:820px;top:170px;width:980px;height:551px">
     <video id="v-zyron" controls preload="metadata" playsinline poster="../../assets/video/poster-zyron-filme.jpg">
       <source src="../../assets/video/zyron-filme.mp4" type="video/mp4">
     </video>
     <button class="play" type="button" aria-label="Reproduzir o vídeo do Zyron"><span class="disc"><svg width="54" height="62" viewBox="0 0 54 62"><path d="M0 0 L54 31 L0 62 Z" fill="#7FC4EA"/></svg></span></button>
   </div>
-  <div class="brackets" style="left:120px;top:268px;width:1180px;height:664px"><i></i><i></i><i></i><i></i></div>
-  <div class="a" style="left:1376px;top:262px;width:440px">
-    <p class="label ice bare" style="font-size:26px;margin-bottom:16px">No vídeo</p>
-    <ul class="chapters" data-for="v-zyron">
-      <li data-t="0"><span class="tm">0:00</span><span class="ct">O olhômetro</span></li>
-      <li data-t="24"><span class="tm">0:24</span><span class="ct">A leitura lance a lance</span></li>
-      <li data-t="36"><span class="tm">0:36</span><span class="ct">O relatório: o que treinar</span></li>
-      <li data-t="40"><span class="tm">0:40</span><span class="ct">A IA e o seu estrategista de carreiras</span></li>
-      <li data-t="60"><span class="tm">1:00</span><span class="ct">A base de clubes</span></li>
-      <li data-t="81"><span class="tm">1:21</span><span class="ct">O plano até o grande clube</span></li>
-      <li data-t="97"><span class="tm">1:37</span><span class="ct">O Zyron na prática</span></li>
-    </ul>
-  </div>
-
-</section>
-
-<section class="slide" data-slide-origem="9">
-  <div class="fill zgrid" style="opacity:.7;-webkit-mask-image:linear-gradient(180deg,transparent,#000 40%,transparent);mask-image:linear-gradient(180deg,transparent,#000 40%,transparent)"></div>
-  <p class="a t t-110" style="left:116px;top:128px">O Zyron em cinco verbos.</p>
-  <div class="a beam rise" style="left:120px;top:414px;width:1690px;height:3px"></div>
-  <div class="a steps rise" style="left:0;top:0;width:1920px;height:1080px;--d:.12s">
-    <div class="a step" style="left:120px"><i></i><p class="v">Recebe</p><p class="d">Sua ficha e o vídeo do seu jogo. Com autorização expressa do responsável.</p></div>
-    <div class="a step" style="left:464px"><i></i><p class="v">Analisa</p><p class="d">Cada lance do vídeo: movimento, escolha e execução.</p></div>
-    <div class="a step" style="left:808px"><i></i><p class="v">Relata</p><p class="d">Relatório de performance: pontos fortes, prioridades e a evidência em vídeo de cada ponto.</p></div>
-    <div class="a step" style="left:1152px"><i></i><p class="v">Acompanha</p><p class="d">Um estrategista de carreiras do Zyron só seu, a cada vídeo novo. Vídeo novo, relatório novo.</p></div>
-    <div class="a step g" style="left:1496px"><i></i><p class="v">Conecta</p><p class="d">Seu perfil cruzado com o que os clubes procuram. A ponte é com a gente.</p></div>
-  </div>
+  <div class="brackets" style="left:820px;top:170px;width:980px;height:551px"><i></i><i></i><i></i><i></i></div>
+  <ul class="a chapters zy-cap" data-for="v-zyron" style="left:820px;top:768px;width:980px">
+    <li data-t="0"><span class="tm">0:00</span><span class="ct">O olhômetro</span></li>
+    <li data-t="24"><span class="tm">0:24</span><span class="ct">A leitura lance a lance</span></li>
+    <li data-t="36"><span class="tm">0:36</span><span class="ct">O relatório: o que treinar</span></li>
+    <li data-t="40"><span class="tm">0:40</span><span class="ct">A IA e o seu estrategista de carreiras</span></li>
+    <li data-t="60"><span class="tm">1:00</span><span class="ct">A base de clubes</span></li>
+    <li data-t="81"><span class="tm">1:21</span><span class="ct">O plano até o grande clube</span></li>
+    <li data-t="97"><span class="tm">1:37</span><span class="ct">O Zyron na prática</span></li>
+  </ul>
 </section>
 
 <!-- ============ 9 O MÉTODO: A IA ENCONTRA, A GENTE CONDUZ (novo, 17/10/2026: da página /institucional) ============ -->
@@ -173,34 +136,6 @@
   </div>
 </section>
 
-<!-- ============ 10 O ENCAIXE: VOCÊ NÃO PRECISA SER O PRÓXIMO NEYMAR (novo, 17/10/2026: da página /institucional) ============ -->
-<!-- A cadeia desce (uma linha por avanço, a linha de gelo cresce de uma bolinha à outra) e o radar acompanha: no 1 o perfil do atleta
-     abre em areia, no 2 o contorno do que o clube procura se desenha, no 3 e no 4 o fecho. Radar ilustrativo, valores fictícios,
-     sem nome, sem nota e sem percentual na tela (BLOCO.numeros = true devolve o percentual). Nenhum clube nomeado: quem decide é o
-     clube, a gente encaminha. Opcional. -->
-<section class="slide bl-slide bl-encaixe" data-slide-origem="103" data-roteiro="bloco-encaixe">
-  <div class="fill" style="background:radial-gradient(40% 64% at 78% 52%,rgba(127,196,234,.09),rgba(6,11,20,0) 72%)"></div>
-  <p class="a dtag" data-if="nome">O encaixe · <span data-bind="nome"></span></p>
-  <i class="bl-f bl-f1" data-step="1"></i><i class="bl-f bl-f2" data-step="2"></i><i class="bl-f bl-f3" data-step="3"></i><i class="bl-f bl-f4" data-step="4"></i>
-  <p class="a t rise" style="left:116px;top:84px;width:940px;font-size:104px;--d:.04s">Você não precisa ser<br>o próximo <span class="sand-l">Neymar</span>.</p>
-  <p class="bl-sub rise" style="left:120px;top:306px;width:930px;--d:.1s">Precisa ser o atleta que <b>um clube</b> está procurando.</p>
-  <ol class="bl-cadeia" style="left:120px;top:452px;width:930px">
-    <li data-step="1"><span class="n">1</span><div><h4>A IA coleta.</h4><p>Cada lance vira dado: dez indicadores individuais do seu jogo.</p></div></li>
-    <li data-step="2"><span class="n">2</span><div><h4>O perfil encontra o clube.</h4><p>As suas características são cruzadas com o que cada clube da nossa rede precisa.</p></div></li>
-    <li data-step="3"><span class="n">3</span><div><h4>A gente conecta.</h4><p>O seu perfil é encaminhado a clubes que procuram esse perfil. Quem decide é o clube.</p></div></li>
-    <li class="fim" data-step="4"><span class="n">✓</span><div><h4>O encaixe é método.</h4><p>Não é sorte.</p></div></li>
-  </ol>
-  <div class="bl-radar rise" style="left:1060px;top:200px;width:740px;height:640px;--d:.14s"><svg viewBox="-370 -320 740 640" aria-hidden="true"><polygon class="bl-r-grade" points="0.0,-47.5 27.9,-38.4 45.2,-14.7 45.2,14.7 27.9,38.4 0.0,47.5 -27.9,38.4 -45.2,14.7 -45.2,-14.7 -27.9,-38.4"/><polygon class="bl-r-grade" points="0.0,-95.0 55.8,-76.9 90.4,-29.4 90.4,29.4 55.8,76.9 0.0,95.0 -55.8,76.9 -90.4,29.4 -90.4,-29.4 -55.8,-76.9"/><polygon class="bl-r-grade" points="0.0,-142.5 83.8,-115.3 135.5,-44.0 135.5,44.0 83.8,115.3 0.0,142.5 -83.8,115.3 -135.5,44.0 -135.5,-44.0 -83.8,-115.3"/><polygon class="bl-r-grade" points="0.0,-190.0 111.7,-153.7 180.7,-58.7 180.7,58.7 111.7,153.7 0.0,190.0 -111.7,153.7 -180.7,58.7 -180.7,-58.7 -111.7,-153.7"/><line class="bl-r-eixo" x1="0" y1="0" x2="0.0" y2="-190.0"/><line class="bl-r-eixo" x1="0" y1="0" x2="111.7" y2="-153.7"/><line class="bl-r-eixo" x1="0" y1="0" x2="180.7" y2="-58.7"/><line class="bl-r-eixo" x1="0" y1="0" x2="180.7" y2="58.7"/><line class="bl-r-eixo" x1="0" y1="0" x2="111.7" y2="153.7"/><line class="bl-r-eixo" x1="0" y1="0" x2="0.0" y2="190.0"/><line class="bl-r-eixo" x1="0" y1="0" x2="-111.7" y2="153.7"/><line class="bl-r-eixo" x1="0" y1="0" x2="-180.7" y2="58.7"/><line class="bl-r-eixo" x1="0" y1="0" x2="-180.7" y2="-58.7"/><line class="bl-r-eixo" x1="0" y1="0" x2="-111.7" y2="-153.7"/><polygon class="bl-r-clube" points="0.0,-144.4 89.3,-123.0 130.1,-42.3 122.9,39.9 82.6,113.7 0.0,114.0 -89.3,123.0 -101.2,32.9 -94.0,-30.5 -55.8,-76.9" pathLength="1"/><polygon class="bl-r-atleta" points="0.0,-159.6 96.0,-132.2 148.2,-48.1 144.6,47.0 87.1,119.9 0.0,136.8 -78.2,107.6 -122.9,39.9 -108.4,-35.2 -64.8,-89.2"/></svg><p class="rot cima" style="left:370.0px;top:102.0px">Leitura de jogo</p><p class="rot dir" style="left:498.1px;top:143.6px">Passe</p><p class="rot dir" style="left:577.3px;top:252.6px">Domínio</p><p class="rot dir" style="left:577.3px;top:387.4px">Drible</p><p class="rot dir" style="left:498.1px;top:496.4px">Ataque</p><p class="rot baixo" style="left:370.0px;top:538.0px">Finalização</p><p class="rot esq" style="left:241.9px;top:496.4px">Velocidade</p><p class="rot esq" style="left:162.7px;top:387.4px">Chute</p><p class="rot esq" style="left:162.7px;top:252.6px">Defesa</p><p class="rot esq" style="left:241.9px;top:143.6px">Marcação</p></div>
-  <p class="bl-legenda-radar" style="left:1100px;top:858px"><span><i class="at"></i>Perfil do atleta</span><span><i class="cl"></i>O que o clube procura</span></p>
-  <p class="bl-encaixe-sel" data-step="2" style="left:1100px;top:908px"><i></i>Encaixe encontrado<span class="bl-n">96%</span></p>
-</section>
-
-<section class="slide" data-slide-origem="10"><div class="fill" style="background:radial-gradient(55% 75% at 70% 50%,rgba(107,123,69,.14),transparent)"></div>
-<div class="a" style="left:120px;top:110px;width:770px"><p class="label">O seu perfil em campo</p><h2 class="t" style="font-size:96px;line-height:.96;margin-top:24px!important"><span class="sand-l" data-bind="nome" data-fb="Você"></span>,<br>talento precisa<br>de encaixe.</h2><div class="zx-card zx-player" style="margin-top:28px" data-dossie="identidade"></div>
-<p class="b" style="font-size:32px;line-height:1.3;margin-top:22px!important">Não se trata de servir para qualquer time. É encontrar o contexto em que o seu perfil pode contribuir.</p><div class="zx-card" style="margin-top:16px" data-dossie="destaque"></div></div>
-<div class="a zx-card zx-tatica" style="left:980px;top:115px;width:820px"><div class="zx-tatica-h"><span>Encaixe tático · perfil</span><b>4-2-3-1</b></div><div data-dossie="campo"></div></div>
-</section>
-
 <!-- ============ 12 O CAMPO: OLHÔMETRO SEGUE A BOLA, A IA VÊ OS 22 (novo, 17/10/2026: da página /institucional) ============ -->
 <!-- O campo animado da institucional (bloco.js): 22 jogadores se movendo e a bola passando. Abre no olhômetro: o foco (laranja-sinal,
      que é só do olhômetro) chega atrasado na bola e só quem está perto fica aceso ("3 de 22 observados"). Os dois botões do lado (clique) trocam
@@ -220,39 +155,6 @@
     </div>
   </div>
   <p class="bl-veredito" style="left:1330px;top:836px;width:470px;font-size:38px">O problema nunca foi o talento. <span class="sig">Sempre foi o método.</span></p>
-</section>
-
-<section class="slide" data-slide-origem="11">
-  <div class="fill" style="background:radial-gradient(40% 70% at 82% 50%,rgba(127,196,234,.08),rgba(6,11,20,0) 70%)"></div>
-  <p class="a dtag" data-if="nome">Dossiê · <span data-bind="nome"></span></p>
-  <p class="a t t-110" style="left:116px;top:92px">O <span class="sig">olhômetro</span> olha. O <span class="ice">Zyron</span> mede.</p>
-  <table class="vs rise" style="left:120px;top:246px;width:1680px">
-    <colgroup><col style="width:440px"><col style="width:580px"><col style="width:660px"></colgroup>
-    <tr><th></th><th class="c2"><svg class="olho" viewBox="0 0 48 32" aria-hidden="true"><path d="M2 16 C10 4 38 4 46 16 C38 28 10 28 2 16 Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><circle cx="24" cy="16" r="8" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M24 16 V10.5 M24 16 L28 18.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Olhômetro</th><th class="c3">Zyron</th></tr>
-    <tr><td class="c1">Quanto do seu jogo é visto</td><td class="c2">Os lances que calharem de ser vistos</td><td class="c3">Todos os lances do vídeo</td></tr>
-    <tr><td class="c1">Atenção</td><td class="c2">Dividida entre 22</td><td class="c3">Só em você</td></tr>
-    <tr><td class="c1">O que fica registrado</td><td class="c2">A memória do avaliador</td><td class="c3">Relatório com a evidência em vídeo</td></tr>
-    <tr><td class="c1">Depois</td><td class="c2">“A gente te liga”</td><td class="c3">Acompanhamento da sua evolução</td></tr>
-    <tr><td class="c1">Quem fica sabendo de você</td><td class="c2">Um clube, num dia</td><td class="c3">Quem procura o seu perfil</td></tr>
-  </table>
-  <p class="a b b-40" style="left:120px;top:888px;width:1480px;color:var(--white);font-weight:500">Os grandes clubes já escolhem jogador com dados há anos, por dentro. <span class="ice">Agora essa leitura joga do seu lado.</span></p>
-</section>
-
-<section class="slide" data-slide-origem="12">
-  <div class="fill" style="background:radial-gradient(40% 60% at 86% 60%,rgba(127,196,234,.07),rgba(6,11,20,0) 70%)"></div>
-  <p class="a dtag" data-if="nome">Dossiê · <span data-bind="nome"></span></p>
-  <p class="a label" style="left:120px;top:100px">O que ninguém mais tem</p>
-  <p class="a t rise" style="left:116px;top:180px;width:1700px;font-size:96px;white-space:nowrap">Peneira decide no <span class="sig">olhômetro</span>. Aqui, não.</p>
-  <div class="a cmp tight rise" style="left:120px;top:340px;width:1680px;--d:.1s">
-    <div class="hd"><p></p><p class="op">Sozinho, na peneira</p><p class="us">Com a gente</p></div>
-    <div><p class="k">Quem analisa</p><p>Um avaliador, vinte minutos de coletivo</p><p class="us">O <span class="ice">Zyron</span>, com dados reais do jogo dele</p></div>
-    <div><p class="k">Quem acompanha</p><p>Ninguém, depois que a peneira acaba</p><p class="us">O gerente de carreira, todo dia</p></div>
-    <div><p class="k">Quem leva aos clubes</p><p>Vocês, torcendo pra alguém olhar</p><p class="us">A gente: +250 clubes na rede</p></div>
-    <div><p class="k">Quem corre o risco</p><p>Vocês, sozinhos</p><p class="us">A gente, que só ganha quando ele fecha</p></div>
-  </div>
-  <!-- escopo: o "Com a gente" é a estrutura completa (Legacy); o 23 volta a estas linhas, plano por plano -->
-
-  <p class="a rise" style="left:120px;top:940px;width:1600px;font-size:44px;line-height:1.2;font-weight:600;color:var(--sand-l);--d:.2s">O <span class="sig">olhômetro</span> pode não ter visto você. O <span class="ice">Zyron</span> viu.</p>
 </section>
 
 <section class="slide" data-slide-origem="13"><div class="fill" style="background:radial-gradient(50% 90% at 80% 50%,rgba(200,184,138,.09),transparent)"></div>
@@ -383,12 +285,6 @@
 </section>
 
 <section class="slide formacao-atleta" data-slide-origem="15"><div class="formacao-intro"><p class="label">Scout PRO · Formação incluída</p><h2><span data-bind="nome" data-fb="Você"></span>, seu jogo tem leitura.<br><span>Sua evolução tem método.</span></h2></div><div class="formacao-grid"><div class="formacao-sete"><b>7</b><strong>Módulos de formação</strong><p>Uma trilha para conectar conhecimento, rotina e desenvolvimento.</p></div><div class="formacao-corpo"><h3>Não basta entender o que melhorar.<br>É preciso aprender a trabalhar nisso.</h3><p>Conteúdos organizados em sete módulos para desenvolver o atleta além do lance isolado. A formação já faz parte do Scout PRO.</p><div class="formacao-temas"><span>Performance</span><span>Psicologia</span><span>Nutrição</span><span>Comportamento</span><span>Imagem</span></div><div class="formacao-pilares"><div><b>O Zyron lê</b><p>Os lances enviados viram uma leitura do seu jogo.</p></div><div><b>O analista acompanha</b><p>Relatório de evolução a cada 15 dias no Scout PRO.</p></div><div><b>Você desenvolve</b><p>Os sete módulos apoiam o aprendizado e a aplicação na sua rotina.</p></div></div></div></div><p class="formacao-fecho">Scout PRO: análise do seu jogo + acompanhamento da evolução + sete módulos de formação.</p></section>
-
-<section class="slide" data-slide-origem="16"><i class="s18-longo" data-if="nome18Longo" aria-hidden="true"></i><div class="fill grain"></div><div class="fill" style="background:radial-gradient(45% 85% at 75% 48%,rgba(200,184,138,.14),transparent)"></div>
-<div class="a" style="left:120px;top:115px;width:740px"><p class="label">Oportunidades do seu perfil</p><h2 class="t" style="font-size:96px;line-height:.98;margin-top:32px!important"><span class="sand-l" data-bind="nome" data-fb="Você"></span>,<br>seu jogo tem<br>um contexto.</h2><div class="zx-oportunidade-atleta" style="margin-top:30px"><span class="zx-avatar"><img data-if="avatarOk" data-src="avatarUrl" alt="Foto do atleta"><b data-ifnot="avatarOk" data-bind="fotoIni" data-fb="JE"></b></span><p>Essa lista parte do seu perfil.<br><strong>Foi preparada para você.</strong></p></div><p class="b" style="font-size:32px;line-height:1.3;margin-top:24px!important">O match transforma uma busca genérica em direção: clubes onde posição, categoria e características do seu jogo fazem sentido juntos.</p>
-<p class="zx-frase" style="font-size:28px">A oportunidade começa no encaixe.<br>O próximo passo é trabalhar por ele.</p><p class="zx-escopo">No Scout PRO, a leitura orienta seu desenvolvimento. No Legacy, a equipe também acompanha os encaminhamentos e a apresentação aos clubes.</p></div>
-<div class="a zx-oportunidades" style="left:950px;top:126px;width:850px"><p class="zx-k">Compatibilidades do seu relatório</p><div class="zx-clubes" data-dossie="clubes"></div><div class="zx-proximo"><span>O próximo passo</span><p>Validar o cenário de cada clube, orientar sua preparação e definir com a equipe o caminho de apresentação.</p></div></div>
-</section>
 
 <!-- ============ 21 326 ATLETAS ENVIADOS (novo, 17/10/2026: da página /institucional) ============ -->
 <!-- O cartão creme da institucional: o número sobe de 0 a 326 e a arte (a mesma publicada no Instagram da casa) cai do lado. "Enviados" é a
@@ -631,7 +527,7 @@
 
 <div class="hud" id="hud" style="width:max-content">
   <button type="button" data-act="prev" aria-label="Slide anterior">◀</button>
-  <span class="pos" id="hud-pos">1 / 32</span>
+  <span class="pos" id="hud-pos">1 / 24</span>
   <button type="button" data-act="next" aria-label="Próximo slide">▶</button>
   <button type="button" data-act="overview">Slides</button>
   <button type="button" data-act="variacoes">Variações</button>
@@ -648,7 +544,28 @@
 <script src="../../assets/variacoes/dossie-acompanhamento.js"></script>
 <script src="../../assets/dossie-roteiro.js"></script>
 <script src="../../assets/bloco-roteiro.js"></script>
+<script>
+/* Os avanços do método vão por extenso: o ordem-garantia.js troca o número depois de "o " (até no fim de "Avanço"), e "Avanço 2" viraria
+   "Avanço 1" porque o slide 2 passou a ser o 1. */
+(function () { var m = (window.ROTEIROS_EXTRAS || {})['bloco-metodo'];
+  if (m && m.fala) m.fala = m.fala.map(function (f) { return f.replace(/Avanço ([1-3])/g, function (_, n) { return ['Primeiro', 'Segundo', 'Terceiro'][n - 1] + ' avanço'; }); }); })();
+</script>
 <script src="../../assets/ordem-garantia.js"></script>
+<script>
+/* A aba "Ler antes" do apresentador lista, por origem de slide, onde cada dado do lead aparece. Os slides que saíram desta página
+   (03/11/2026) saem da lista, em vez de ficar com o número velho. */
+(function () {
+  var base = window.R2_REFERENCIA, tem = {};
+  if (!base) return;
+  [].forEach.call(document.querySelectorAll('#stage > .slide'), function (s) { if (s.dataset.slideOrigem) tem[Number(s.dataset.slideOrigem)] = 1; });
+  window.R2_REFERENCIA = function (t) {
+    var m = String(t).match(/^(\d{2,3}(?:(?:, | e )\d{2,3})*)([\s\S]*)$/);
+    if (!m) return base(t);
+    var n = m[1].split(/, | e /).filter(function (x) { return tem[Number(x)]; });
+    return base((n.length > 1 ? n.slice(0, -1).join(', ') + ' e ' + n[n.length - 1] : n[0] || '') + m[2]);
+  };
+})();
+</script>
 <script>window.VARIACAO_NOME = "R2 · Oferta R$247,90 e R$500";</script>
 <script src="../../assets/foto-atleta.js"></script>
 <script src="../../assets/mapa-calor.js"></script>

@@ -21,14 +21,14 @@ test('todas as páginas aceitam foto, ficha vazia e exibem a imagem no slide de 
       const publico=await admin.get('/api/publico?id='+t); assert.equal(publico.j.foto.ok,true,v.id);
       const antes=(await admin.get('/api/atletas?t='+t)).j.registro;
       assert.equal((await admin.put('/api/atletas?t='+t,{base:antes.fichaEm,ficha:{nome:'Gabriel Rocha da Silva',versao:v.id,caracteristicas:'Atleta com boa leitura de jogo, domínio em espaços curtos e presença no meio-campo. Busca desenvolver a tomada de decisão e a consistência em cada partida.'}})).status,200);
-      const esc=v.id==='r2a-cl0'?1:2, dsn=v.id==='r2a-cl0'?12:16; // o CL0 enxuto (30/10/2026) abre direto na escolha (1) e tem o dossiê no 12
+      const esc=['r2a-cl0','r2a-acompanhamento'].includes(v.id)?1:2, dsn=v.id==='r2a-cl0'?12:16; // o CL0 (30/10/2026) e a Acompanhamento (03/11/2026) abrem direto na escolha (1); o dossiê do CL0 é o 12
       const a=await nav.aba(s.decks[v.deck]+v.caminho+'?a='+t+'#'+esc,{largura:1920,altura:1080});
       assert.ok(await a.ate(`document.querySelector('#stage>.slide.active img[data-src="selecaoFotoUrl"]')?.naturalWidth>0`),v.id+': foto no slide de escolha');
       const fotoEm=await a.avalia(`[...document.querySelectorAll('#stage>.slide')].flatMap((sl,i)=>[...sl.querySelectorAll('img')].some(img=>/api\\/foto/.test(img.src))?[i+1]:[])`);
       // desde 18/10/2026 a foto vai pro slide 02 e pros quadros de foto que o deck tem (o R2 novo, o B e a Acompanhamento têm; o R1 e as
       // outras páginas do R2 anterior só têm o slide 02)
       const comQuadros = v.deck === 'r2' || v.deck === 'r2-b' || v.id === 'r2a-acompanhamento';
-      if (comQuadros) assert.ok(fotoEm.includes(1) && fotoEm.includes(2) && fotoEm.length >= 5, v.id + ': foto na capa, no slide 2 e nos quadros (' + fotoEm.join(', ') + ')');
+      if (comQuadros) assert.ok(fotoEm.includes(esc) && (v.id === 'r2a-acompanhamento' || (fotoEm.includes(1) && fotoEm.includes(2))) && fotoEm.length >= 5, v.id + ': foto na escolha' + (v.id === 'r2a-acompanhamento' ? '' : ', na capa') + ' e nos quadros (' + fotoEm.join(', ') + ')');
       // e desde a segunda rodada de 18/10/2026, o dossiê do atleta (logo depois da IA na Prática) também tem o quadro da foto: o 16 no R2 anterior
       else assert.deepEqual(fotoEm, v.deck === 'r1' ? [2] : [esc, dsn], v.id + ': foto no slide ' + esc + (v.deck === 'r1' ? ' (o único quadro de foto deste deck)' : ' e no dossiê do atleta (' + dsn + ')'));
       assert.match(await a.avalia(`document.querySelector('#stage>.slide.active').innerText`),/Gabriel|GABRIEL/);

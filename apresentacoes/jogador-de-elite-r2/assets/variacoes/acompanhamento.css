@@ -132,3 +132,11 @@ div.a:has(> .zx-player) > h2.t{margin-bottom:24px!important}
 .zx-compacto .zx-percent small{font-size:24px}
 .zx-compacto .zx-proximo{margin-top:18px}
 .zx-compacto .zx-proximo p{font-size:24px}
+
+/* O Zyron e o vídeo num slide só (03/11/2026, pedido do closer Pedro): o texto à esquerda, o player à direita e os capítulos embaixo, em duas colunas */
+.zy-slide .zy-cap{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,auto);grid-auto-flow:column;column-gap:44px;align-content:start}
+.zy-slide .zy-cap li{padding:10px 0;gap:18px}
+.zy-slide .zy-cap li:last-child{border-bottom:0}
+.zy-slide .zy-cap li:nth-child(4),.zy-slide .zy-cap li:nth-child(7){border-bottom:1px solid var(--line)}
+.zy-slide .zy-cap .tm{font-size:26px;min-width:54px}
+.zy-slide .zy-cap .ct{font-size:28px;line-height:1.2}
