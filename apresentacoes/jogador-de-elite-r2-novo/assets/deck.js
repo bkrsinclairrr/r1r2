@@ -4,7 +4,7 @@
    a dor (03, o olhômetro), o plano (04, com o tripé), o bloco do Zyron (05 a 08: e se, Zyron, vídeo, cinco verbos), a plataforma (09, tela ilustrativa),
    quem olha por ele (11), o seu lugar em campo (12, o campo e o cartão do atleta), olhômetro contra Zyron (15), o que ninguém mais tem, IA na Prática (17, a leitura ao
    vivo), o dossiê do atleta (18: a foto e os dados, o vídeo analisado pela IA, o mapa de calor, as oportunidades e o plano de carreira; só
-   com dado do painel) e o inimigo em comum (19: o avaliador que não olha todo mundo, e o que as peneiras custam), o depoimento de uma mãe (20, áudio), nem tudo é talento, AGN, a rede (23: AGN, clubes e o David), valor real (revelado item a item), até lá a gente investe,
+   com dado do painel) e o inimigo em comum (19: o avaliador que não olha todo mundo, e o que as peneiras custam), o depoimento de uma mãe (20, áudio), nem tudo é talento, os atletas que fecharam, a rede (23: clubes e o David), valor real (revelado item a item), até lá a gente investe,
    o filtro e a escada do sim, contrato, a vaga (o começo, fora do Legacy), os planos e o número (33, os três com o investimento de cada um, o da
    ficha destacado e o Silêncio), a garantia com os três valores na tela (34) e boas-vindas (35, com a miniatura do campo). Três planos (window.PLANOS, roteiro.js): o da
    ficha muda o 33 e o 35, e turma e vaga só aparecem no Legacy. Sem link de pagamento no deck. Elementos com data-step
@@ -44,7 +44,7 @@
   const MATRIZ = slides.findIndex(s => s.id === 'planos'); // os planos: os três com o investimento de cada um, e o da ficha destacado no último avanço
 
   /* <dados> da operação: vazios contam como vazios e nunca viram texto na tela */
-  const DADOS = { gerente: '', analista: '', prazoContato: '', prazoZyron: '', faixaContrato: 'R$ 20 a 30 mil+', linkAgn: '', duracao: 50 };
+  const DADOS = { gerente: '', analista: '', prazoContato: '', prazoZyron: '', faixaContrato: 'R$ 20 a 30 mil+', duracao: 50 };
   const ORIGENS = ['', 'Zyron', 'Formulário do Instagram', 'Frio, sem vídeo', 'Outro'];
 
   // no quadro da prévia, a ficha fica só na memória (nada do atleta é guardado no navegador do painel)
@@ -217,7 +217,7 @@
     const PRZ = window.PRAZOS || {};
     if (Array.isArray(PRZ.contato) && d.prazoContato && PRZ.contato.indexOf(d.prazoContato) < 0) d.prazoContato = '';
     if (Array.isArray(PRZ.zyron) && d.prazoZyron && PRZ.zyron.indexOf(d.prazoZyron) < 0) d.prazoZyron = '';
-    ['gerente', 'analista', 'prazoContato', 'prazoZyron', 'faixaContrato', 'linkAgn'].forEach(k => { if (!filled(d[k])) d[k] = DADOS[k]; });
+    ['gerente', 'analista', 'prazoContato', 'prazoZyron', 'faixaContrato'].forEach(k => { if (!filled(d[k])) d[k] = DADOS[k]; });
     // o nome: o da tela (o apelido; sem apelido, nome e sobrenome do nome completo), o falado (o apelido, ou o primeiro
     // nome: a fala do apresentador e a mensagem de confirmação), o completo (montado para) e o do dossiê (o mesmo nome e
     // sobrenome em caixa alta: carimbo da capa, contrato, anúncio e cartão do plano)
@@ -1022,7 +1022,7 @@
         '[idade]': d.idade, '[idade + 1]': d.idadeMais1, '[característica]': d.caracteristicas, '[experiência]': d.experiencia, '[sonho]': d.sonho,
         '[primeiro foco]': d.trabalhar, '[locomoção]': d.locomocao, '[dor]': d.dor, '[peneiras]': d.peneiras || d.inPeneirasTxt, '[investido]': d.investido || d.inGasto,
         '[nº de peneiras]': d.inPeneirasTxt, '[gasto com peneiras]': d.inGasto, '[anos tentando]': d.inAnosTxt, '[oportunidades]': (d.dsOps || []).map(o => o.clube).join(', ').replace(/, ([^,]*)$/, ' e $1'), '[vagas]': d.vagas,
-        '[faixa]': d.faixaContrato, '[link AGN]': d.linkAgn,
+        '[faixa]': d.faixaContrato,
         '[caso]': str(ficha.casoNome), '[clube do caso]': str(ficha.casoClube), '[país do caso]': str(ficha.casoPais), '[link do caso]': str(ficha.casoLink),
         '[hora]': str(ficha.horaRetorno), '[posição]': str(ficha.posicao).toLowerCase(),
         '[nome completo]': d.nomeCompleto, '[dia da call]': str(ficha.r2dia), '[hora da call]': str(ficha.r2hora),
@@ -1054,7 +1054,7 @@
         const sai = PLANOS.slice(b, a).reverse().reduce((t, p) => t.concat(p.sai || []), []);
         return `<p class="pz-say" style="margin-top:10px">${fill('"' + (troca.para.descer || 'Existe um formato mais enxuto, ' + comArtigo(troca.para)) + '. O que muda: sai ' + emLista(sai) + '."')}</p>` +
           (troca.para.id === 'scouting' ? '<p class="pz-small"><b>Diga em voz alta:</b> o encaminhamento pra clubes vem a partir da Assessoria PRO.</p>'
-            : troca.de.id === 'legacy' ? '<p class="pz-small"><b>Diga em voz alta:</b> a conexão direta com clubes e AGN e os 15 encaminhamentos por mês são do Legacy; na Assessoria PRO, são pelo menos 5.</p>' : '');
+            : troca.de.id === 'legacy' ? '<p class="pz-small"><b>Diga em voz alta:</b> a conexão direta com clubes e os 15 encaminhamentos por mês são do Legacy; na Assessoria PRO, são pelo menos 5.</p>' : '');
       }
       // subir: entra o que cada degrau de cima acrescenta (diferenca de cada degrau de baixo)
       const entra = PLANOS.slice(a, b).map(p => p.diferenca).filter(Boolean);
@@ -1260,14 +1260,13 @@
         ['prazoZyron', 'Quando o Zyron começa', 'select', 'Lista fixa: só o que a operação cumpre', [''].concat((window.PRAZOS || {}).zyron || [])]
       ]],
       ['Caso espelho (a família vê no 22)', [
-        ['casoNome', 'Atleta nosso com o mesmo perfil', 'text', 'O "ele me lembra muito você". Só caso real: tabela do CASOS.md ou publicado na AGN. Vazio: o quadro some do 22'],
+        ['casoNome', 'Atleta nosso com o mesmo perfil', 'text', 'O "ele me lembra muito você". Só caso real: tabela do CASOS.md. Vazio: o quadro some do 22'],
         ['casoClube', 'Clube que ele fechou', 'text', 'Ex.: Wigan Athletic'], ['casoPais', 'País do clube', 'text', 'Ex.: Inglaterra'],
-        ['casoLink', 'Link da publicação dele na AGN', 'text', 'Pra mandar no WhatsApp na hora em que você fala o nome']
+        ['casoLink', 'Link do caso dele', 'text', 'Pra mandar no WhatsApp na hora em que você fala o nome']
       ]],
-      ['Contrato, garantia e AGN', [
+      ['Contrato e garantia', [
         ['faixaContrato', 'Quanto um atleta nosso fecha', 'text', 'Aparece no 31, seguido de "por mês". Padrão: R$ 20 a 30 mil+. Só o que vocês comprovam com contrato'],
-        ['garantiaPrazo', 'Prazo da garantia (se houver)', 'text', 'Ex.: nos primeiros 7 dias. Vazio: a linha some do 34'],
-        ['linkAgn', 'Link da AGN Football', 'text', 'Pra mandar no WhatsApp durante os slides 22 e 23']
+        ['garantiaPrazo', 'Prazo da garantia (se houver)', 'text', 'Ex.: nos primeiros 7 dias. Vazio: a linha some do 34']
       ]],
       ['Turma e investimento', [
         ['vagas', 'Vagas restantes (número real da semana)', 'number', 'Só no Legacy (20, 30 e 32)'], ['proximaTurma', 'Próxima turma abre em', 'text', 'Só no Legacy (32)'],
@@ -1435,7 +1434,7 @@
       ['O dossiê do atleta (painel)', 'dsResumo', '18: o vídeo analisado pela IA, o mapa de calor embaixo dele e as oportunidades; vazio, as setas passam direto pelo 18. Com o vídeo analisado e sem lances marcados, o 17 fica de ponte'],
       ['Peneiras, gasto e anos tentando (painel)', 'inPeneirasTxt|inGasto|inAnosTxt', '19 (o preço de procurar no escuro, contando do zero na tela); vazio: a conta sem números'],
       ['Peneiras que ele fez', 'peneiras', '03, 15, 16 e 19, só falado'], ['Caso espelho (nome, clube, país)', 'casoNome&casoClube', '02 (plantar), 22 (tela), 31 e 35'], ['Link do caso espelho', 'casoLink', '22, no WhatsApp'],
-      ['Link da AGN', 'linkAgn', '22 e 23, no WhatsApp'], ['Já investiram (régua)', 'investido', '28, só falado'],
+      ['Já investiram (régua)', 'investido', '28, só falado'],
       ['Não faz sentido lucrar em cima', 'lucro', '31, só falado'], ['Quanto um atleta nosso fecha', 'faixaContrato', '31'], ['Prazo da garantia', 'garantiaPrazo', '34 (vazio: some)'],
       ['Plano que vou recomendar', 'plano', '11 (o selo "O seu plano"), 23 (a linha do plano e o "pronto pra encaminhar"), 27 (o que ele leva), 33 (o investimento de cada um, o destaque no último avanço e o número falado), 34 (os três valores de uma vez) e 35; turma e vaga (20, 30 e 32) só no Legacy; vazio mostra o Legacy'],
       ['Vagas e próxima turma', 'vagas', '32, só no Legacy'], ['Gerente de carreira', 'gerente', '35, só no Legacy (e falado no 32 e no 33)'],

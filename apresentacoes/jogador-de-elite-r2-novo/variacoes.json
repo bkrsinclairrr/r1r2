@@ -1,12 +1,12 @@
 {
   "v": 1,
-  "gerado": "2026-10-20T23:26:15.888Z",
+  "gerado": "2026-11-03T15:55:59.341Z",
   "paginas": [
     {
       "id": "principal",
       "caminho": "/",
       "nome": "R2 · Apresentação completa com foto",
-      "resumo": "O deck completo: explica o caminho do começo, com o olhômetro, o Zyron e a AGN.",
+      "resumo": "O deck completo: explica o caminho do começo, com o olhômetro e o Zyron.",
       "quando": "Na dúvida, esta.",
       "validacao": "em-validacao",
       "lead": {
@@ -58,14 +58,14 @@
           "ajuda": "Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai direto para \"O valor real\"."
         }
       ],
-      "hash": "2a50b4ae7ea65801afa665e6752a0113fd93935d"
+      "hash": "5604c197766b81aaab10847ab075799ee70e888b"
     },
     {
       "id": "tecnica",
       "caminho": "/variacoes/tecnica/",
       "nome": "R2 · Técnica para quem conhece futebol",
-      "resumo": "Fala de par pra par: não explica o básico, a AGN aparece uma vez só e o foco é a operação e o interesse alinhado.",
-      "quando": "Citou a AGN pelo nome, tem vivência no meio (base de clube, federado, ex-jogador, técnico, contato com empresário) ou fez pergunta técnica na R1.",
+      "resumo": "Fala de par pra par: não explica o básico, o foco é a operação e o interesse alinhado.",
+      "quando": "Tem vivência no meio (base de clube, federado, ex-jogador, técnico, contato com empresário) ou fez pergunta técnica na R1.",
       "validacao": "em-validacao",
       "lead": {
         "nome": true,
@@ -116,7 +116,7 @@
           "ajuda": "Resume o que ele recebe, com o nome e a foto dele. Sem ele, a apresentação vai direto para \"O valor real\"."
         }
       ],
-      "hash": "6a284d47009dd04db54711462645016d119a2b75"
+      "hash": "0e436313ad68fca9afc638139086e1d277b8cb8e"
     }
   ]
 }

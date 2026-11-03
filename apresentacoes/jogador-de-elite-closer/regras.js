@@ -102,7 +102,7 @@
   const VERSOES = [
     {
       id: 'principal', nome: 'R2 · Apresentação completa com foto', caminho: '/',
-      resumo: 'O deck completo: explica o caminho do começo, com o olhômetro, o Zyron e a AGN.',
+      resumo: 'O deck completo: explica o caminho do começo, com o olhômetro e o Zyron.',
       quando: 'Na dúvida, esta.',
       validacao: 'em-validacao', lead: { nome: true, foto: true },
       opcionais: [
@@ -117,8 +117,8 @@
     },
     {
       id: 'tecnica', nome: 'R2 · Técnica para quem conhece futebol', caminho: '/variacoes/tecnica/',
-      resumo: 'Fala de par pra par: não explica o básico, a AGN aparece uma vez só e o foco é a operação e o interesse alinhado.',
-      quando: 'Citou a AGN pelo nome, tem vivência no meio (base de clube, federado, ex-jogador, técnico, contato com empresário) ou fez pergunta técnica na R1.',
+      resumo: 'Fala de par pra par: não explica o básico, o foco é a operação e o interesse alinhado.',
+      quando: 'Tem vivência no meio (base de clube, federado, ex-jogador, técnico, contato com empresário) ou fez pergunta técnica na R1.',
       validacao: 'em-validacao', lead: { nome: true, foto: true },
       opcionais: [
         { id: 'metodo', rotulo: 'O método: a IA encontra, a gente conduz', slide: 10, ajuda: 'Mostra como a IA lê dez indicadores e o que a equipe faz com a leitura. Sem ele, a apresentação passa da plataforma direto para "Quem olha por ele".' },

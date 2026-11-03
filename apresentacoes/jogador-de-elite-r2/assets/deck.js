@@ -3,7 +3,7 @@
    Vinte e quatro slides, na ordem da Bíblia das Vendas (processo-r2): conexão (capa com o inimigo comum, por que você),
    a dor (04, o olhômetro), o plano (05, com o tripé), o bloco do Zyron (06 a 09: e se, Zyron, vídeo, cinco verbos), o seu lugar
    em campo (10, o campo e o cartão do atleta), olhômetro contra Zyron (11), o que ninguém mais tem, IA na Prática (13, a leitura ao
-   vivo), o depoimento de uma mãe (14, áudio), nem tudo é talento, AGN, valor real (revelado item a item), até lá a gente investe,
+   vivo), o depoimento de uma mãe (14, áudio), nem tudo é talento, os atletas que fecharam, valor real (revelado item a item), até lá a gente investe,
    o filtro e a escada do sim, contrato, garantia, a vaga (o começo, fora do Legacy), os planos (23), o investimento do plano da
    ficha (24, o número e o Silêncio) e boas-vindas (25, com a miniatura do campo). Três planos (window.PLANOS, roteiro.js): o da
    ficha muda o 23, o 24 e o 25, e turma e vaga só aparecem no Legacy. Sem link de pagamento no deck. Elementos com data-step
@@ -28,7 +28,7 @@
   const MATRIZ = slides.findIndex(s => s.id === 'planos' || s.hasAttribute('data-oferta')); // os planos: os três com o investimento de cada um, e o da ficha destacado no último avanço
 
   /* <dados> da operação: vazios contam como vazios e nunca viram texto na tela */
-  const DADOS = { gerente: '', analista: '', prazoContato: '', prazoZyron: '', faixaContrato: 'R$ 20 a 30 mil+', linkAgn: '', duracao: 50 };
+  const DADOS = { gerente: '', analista: '', prazoContato: '', prazoZyron: '', faixaContrato: 'R$ 20 a 30 mil+', duracao: 50 };
   const ORIGENS = ['', 'Zyron', 'Formulário do Instagram', 'Frio, sem vídeo', 'Outro'];
 
   const store = {
@@ -128,7 +128,7 @@
   function derived() {
     const d = {};
     Object.keys(ficha).forEach(k => { d[k] = typeof ficha[k] === 'boolean' ? ficha[k] : str(ficha[k]); });
-    ['gerente', 'analista', 'prazoContato', 'prazoZyron', 'faixaContrato', 'linkAgn'].forEach(k => { if (!filled(d[k])) d[k] = DADOS[k]; });
+    ['gerente', 'analista', 'prazoContato', 'prazoZyron', 'faixaContrato'].forEach(k => { if (!filled(d[k])) d[k] = DADOS[k]; });
     // o nome, com a mesma regra do R2 novo: o da tela segue a escolha "Nome na tela" do painel (vazio: nome e último sobrenome;
     // 'primeiro-sobrenome'; 'so-nome', só o primeiro nome nos títulos; 'sem', a apresentação sem nome e sem foto) e o apelido manda por
     // cima. O falado (nomeCurto: a fala do apresentador e a mensagem de confirmação) é o apelido ou o primeiro nome. A placa e o dossiê
@@ -837,7 +837,7 @@
         '[idade]': d.idade, '[idade + 1]': d.idadeMais1, '[característica]': d.caracteristicas, '[experiência]': d.experiencia, '[sonho]': d.sonho,
         '[primeiro foco]': d.trabalhar, '[locomoção]': d.locomocao, '[dor]': d.dor, '[peneiras]': d.peneiras || d.inPeneirasTxt, '[investido]': d.investido || d.inGasto,
         '[nº de peneiras]': d.inPeneirasTxt, '[gasto com peneiras]': d.inGasto, '[anos tentando]': d.inAnosTxt, '[oportunidades]': (d.dsOps || []).map(o => o.clube).join(', ').replace(/, ([^,]*)$/, ' e $1'), '[vagas]': d.vagas,
-        '[faixa]': d.faixaContrato, '[link AGN]': d.linkAgn,
+        '[faixa]': d.faixaContrato,
         '[caso]': str(ficha.casoNome), '[clube do caso]': str(ficha.casoClube), '[país do caso]': str(ficha.casoPais), '[link do caso]': str(ficha.casoLink),
         '[hora]': str(ficha.horaRetorno), '[posição]': str(ficha.posicao).toLowerCase(),
         // do plano da ficha (vazio ou nome antigo: Legacy)
@@ -866,7 +866,7 @@
         const sai = PLANOS.slice(b, a).reverse().reduce((t, p) => t.concat(p.sai || []), []);
         return `<p class="pz-say" style="margin-top:10px">${fill('"' + (troca.para.descer || 'Existe um formato mais enxuto, ' + comArtigo(troca.para)) + '. O que muda: sai ' + emLista(sai) + '."')}</p>` +
           (troca.para.id === 'scouting' ? '<p class="pz-small"><b>Diga em voz alta:</b> o encaminhamento pra clubes vem a partir da Assessoria PRO.</p>'
-            : troca.de.id === 'legacy' ? '<p class="pz-small"><b>Diga em voz alta:</b> a conexão direta com clubes e AGN e os 15 encaminhamentos por mês são do Legacy; na Assessoria PRO, são pelo menos 5.</p>' : '');
+            : troca.de.id === 'legacy' ? '<p class="pz-small"><b>Diga em voz alta:</b> a conexão direta com clubes e os 15 encaminhamentos por mês são do Legacy; na Assessoria PRO, são pelo menos 5.</p>' : '');
       }
       // subir: entra o que cada degrau de cima acrescenta (diferenca de cada degrau de baixo)
       const entra = PLANOS.slice(a, b).map(p => p.diferenca).filter(Boolean);
@@ -1069,15 +1069,14 @@
         ['gestor', 'Seu nome (Gestor)', 'text', 'Só na mensagem de confirmação'], ['gerente', 'Gerente de carreira', 'text'], ['analista', 'Analista de performance', 'text'],
         ['prazoContato', 'Quando o gerente entra em contato', 'text', 'Só o que a operação cumpre. Ex.: ainda hoje'], ['prazoZyron', 'Quando o Zyron começa', 'text', 'Ex.: imediatamente']
       ]],
-      ['Caso espelho (na apresentação da AGN)', [
-        ['casoNome', 'Atleta nosso com o mesmo perfil', 'text', 'O "ele me lembra muito você". Só caso real: tabela do CASOS.md ou publicado na AGN. Vazio: o quadro fica fora da apresentação da AGN'],
+      ['Caso espelho (na apresentação)', [
+        ['casoNome', 'Atleta nosso com o mesmo perfil', 'text', 'O "ele me lembra muito você". Só caso real: tabela do CASOS.md. Vazio: o quadro fica fora da apresentação'],
         ['casoClube', 'Clube que ele fechou', 'text', 'Ex.: Wigan Athletic'], ['casoPais', 'País do clube', 'text', 'Ex.: Inglaterra'],
-        ['casoLink', 'Link da publicação dele na AGN', 'text', 'Pra mandar no WhatsApp na hora em que você fala o nome']
+        ['casoLink', 'Link do caso dele', 'text', 'Pra mandar no WhatsApp na hora em que você fala o nome']
       ]],
-      ['Contrato, garantia e AGN', [
+      ['Contrato e garantia', [
         ['faixaContrato', 'Quanto um atleta nosso fecha', 'text', 'Aparece no contrato, seguido de "por mês". Padrão: R$ 20 a 30 mil+. Só o que vocês comprovam com contrato'],
-        ['garantiaPrazo', 'Prazo da garantia (se houver)', 'text', 'Prazo real da garantia incondicional. Vazio: a linha do prazo fica fora da tela'],
-        ['linkAgn', 'Link da AGN Football', 'text', 'Pra mandar no WhatsApp durante a apresentação da AGN']
+        ['garantiaPrazo', 'Prazo da garantia (se houver)', 'text', 'Prazo real da garantia incondicional. Vazio: a linha do prazo fica fora da tela']
       ]],
       ['Turma e investimento', [
         ['vagas', 'Vagas restantes (número real da semana)', 'number', 'Só no Legacy, na turma e no começo'], ['proximaTurma', 'Próxima turma abre em', 'text', 'Só no Legacy, no começo'],
@@ -1243,7 +1242,7 @@
       ['O dossiê do atleta (painel)', 'dsResumo', '107: o vídeo analisado pela IA, o mapa de calor embaixo dele e as oportunidades; vazio, as setas passam direto pelo 107'],
       ['Peneiras, gasto e anos tentando (painel)', 'inPeneirasTxt|inGasto|inAnosTxt', '108 (o preço de procurar no escuro, contando do zero na tela); vazio: a conta sem números'],
       ['Peneiras que ele fez', 'peneiras', '04, 11, 12 e 108, só falado'], ['Caso espelho (nome, clube, país)', 'casoNome&casoClube', '02 (plantar), 16 (tela), 20 e 25'], ['Link do caso espelho', 'casoLink', '16, no WhatsApp'],
-      ['Link da AGN', 'linkAgn', '16, no WhatsApp'], ['Já investiram (régua)', 'investido', '17, só falado'],
+      ['Já investiram (régua)', 'investido', '17, só falado'],
       ['Não faz sentido lucrar em cima', 'lucro', '20, só falado'], ['Quanto um atleta nosso fecha', 'faixaContrato', '20'], ['Prazo da garantia', 'garantiaPrazo', 'Garantia, depois dos preços (vazio: some)'],
       ['Plano que vou recomendar', 'plano', '23 (destaque no último avanço), 24 (o número e o que inclui) e 25; turma e vaga (14, 19 e 22) só no Legacy; vazio mostra o Legacy'],
       ['Vagas e próxima turma', 'vagas', '22, só no Legacy'], ['Gerente de carreira', 'gerente', '25, só no Legacy (e falado no 22 e no 24)'],

@@ -1,4 +1,4 @@
-/* Variação técnica da R2: família que já conhece a AGN e entende de futebol.
+/* Variação técnica da R2: família que entende de futebol.
    Carrega depois de assets/roteiro.js e antes de assets/deck.js (ver variacoes/tecnica/index.html).
    Troca o roteiro (window.ROTEIRO), põe as objeções de quem conhece o meio na frente das do padrão
    (window.OBJECOES) e acrescenta itens ao checklist (window.CHECKLIST). Os três planos (window.PLANOS),
@@ -7,11 +7,10 @@
    Os 24 slides seguem as mesmas posições do padrão após remover o alinhamento, pra aba Ler antes (números fixos no deck.js)
    continuar certa, inclusive os dois da reformulação de 08/10/2026: o 04 (o que a avaliação por observação
    deixa passar, o inimigo comum na voz de quem conhece o meio) e o 10 (o perfil dele em campo). Muda a copy e a persuasão:
-   - Conversa de par pra par: nunca explicar o básico (peneira, olhômetro, o que é a AGN).
+   - Conversa de par pra par: nunca explicar o básico (peneira, olhômetro).
    - Insight central: informação a família já tem; o que falta é operação todo dia, com dado e acesso.
    - Perguntas de calibração: o pai mostra o que sabe e chega sozinho à conclusão.
    - Precisão no lugar de entusiasmo: cada número uma vez, sem adjetivo, "encaminhado" definido.
-   - A AGN aparece uma vez (slide 16), como referência que eles já têm, não como prova.
    - Interesse alinhado (a gente só lucra no contrato) contra o ceticismo de quem já viu promessa no meio.
    Mesma doutrina do PLAYBOOK_CLOSER: combinado de decidir hoje, necessidade explícita, ancoragem antes
    do número, garantia antes do número, silêncio, Modo A e Modo B. */
@@ -58,8 +57,8 @@
         'A pauta, dita de cara: "Hoje eu mostro o plano, como a gente opera e quanto custa. No fim, vocês me dizem se faz sentido. Se não fizer, me falem onde não fez."'
       ],
       perguntas: [],
-      crm: ['Quem está na call (pai, mãe, atleta) e se algum decisor falta.', 'O que a família já conhece do meio (base de clube, federação, empresário, AGN), com as palavras deles.'],
-      atencao: 'Variação técnica: família que já conhece a AGN e entende de futebol. Aqui vende competência e precisão, não entusiasmo. Não explique peneira, olhômetro nem o que é a AGN: pra quem é do meio, explicar o básico é perder autoridade. Fale menos, pergunte mais e deixe o [pai] mostrar o que sabe. Decisor fora da call: pare e reagende. Se a ficha mostra uma família que não conhece o meio, troque pro deck padrão antes de começar.'
+      crm: ['Quem está na call (pai, mãe, atleta) e se algum decisor falta.', 'O que a família já conhece do meio (base de clube, federação, empresário), com as palavras deles.'],
+      atencao: 'Variação técnica: família que entende de futebol. Aqui vende competência e precisão, não entusiasmo. Não explique peneira nem olhômetro: pra quem é do meio, explicar o básico é perder autoridade. Fale menos, pergunte mais e deixe o [pai] mostrar o que sabe. Decisor fora da call: pare e reagende. Se a ficha mostra uma família que não conhece o meio, troque pro deck padrão antes de começar.'
     },
     { nome: 'Por que você', min: 1.5,
       fala: [
@@ -139,14 +138,14 @@
     },
     { nome: 'Antes do post', min: 2.5,
       fala: [
-        'A AGN uma vez, e só: "Vocês já conhecem a AGN e já viram quem fecha. O post mostra a assinatura. O caminho até ela fica fora da foto."',
+        'Sem explicar: "Vocês já viram quem fecha. O post mostra a assinatura. O caminho até ela fica fora da foto."',
         'Aponte os casos: "O Joãozinho, no Grêmio. O Kaio, no Internacional. O que ninguém vê no post é o que veio antes: o vídeo lido com dado, o gerente todo dia, o perfil na mesa de quem tinha a carência."',
         'O espelho, com o caso da ficha: "[atleta], lembra do atleta que eu falei? É o [caso]. Mesmo perfil que o teu. Fechou com o [clube do caso], [país do caso]." Mande o link na hora: [link do caso]',
         '"O último quadro é o próximo. É o do [atleta]."'
       ],
       perguntas: ['Pelo que vocês conhecem do meio, o que separa quem fecha de quem fica parado?'],
       crm: [],
-      atencao: 'Variação técnica: a AGN aparece uma vez, como referência que eles já têm, não como prova. Link da AGN só se pedirem. A prova aqui é o processo e o caso espelho mais parecido em posição, idade e nível. Só caso real e nosso, com link: família do meio confere na hora. A AGN divulga: não diga que ela contrata ou garante clube.'
+      atencao: 'Variação técnica: a prova aqui é o processo e o caso espelho mais parecido em posição, idade e nível. Só caso real e nosso, com link: família do meio confere na hora.'
     },
     { nome: 'O valor real', min: 3.5,
       fala: [
@@ -223,7 +222,7 @@
         'Ponte, sem falar de dinheiro, lendo o título: "Hoje quem opera a carreira dele são vocês, no tempo que sobra do trabalho. Com a gente, vocês não operam mais sozinhos. O que muda de um plano pro outro é quanto dessa operação passa pra gente, e com que frequência. A leitura do Zyron é a mesma nos três."',
         'Um avanço por coluna (→ ou espaço), sem enfeite. Cada coluna é a parte de um plano, cargo por cargo. Scout PRO: "Leitura do Zyron a cada vídeo novo, com pontos fortes e prioridades, relatório do analista de performance, relatório de entrada, histórico, o guia da peneira e sete módulos de formação para trabalhar a evolução."',
         'Assessoria PRO: "Tudo do Scout PRO, e uma equipe do lado dele toda semana: o estrategista de carreiras liga, ele tem os sete módulos de aulas, conta com um estrategista esportivo, entra no networking com outros atletas e nas aulas extras, e a gestão de carreiras faz pelo menos 5 encaminhamentos de oportunidades por mês, pra clubes do Brasil e do mundo. Por metade do Legacy."',
-        'Assessoria de Elite Legacy, a coluna em destaque: "Tudo da Assessoria PRO, e a operação completa, a ideal: o estrategista de carreiras e o gerente de carreira todo dia, assessoria individual com o David Willer todo mês e acompanhamento direto no WhatsApp, pelo menos 15 encaminhamentos de oportunidades por mês, mundo afora, conexão direta com clubes e com a AGN, o estrategista esportivo ligando toda semana em cima dos relatórios, o plano de carreira, contato com clube, vídeo e avaliação por nossa conta, as seletivas acompanhadas, com a logística planejada, e a turma de 10."',
+        'Assessoria de Elite Legacy, a coluna em destaque: "Tudo da Assessoria PRO, e a operação completa, a ideal: o estrategista de carreiras e o gerente de carreira todo dia, assessoria individual com o David Willer todo mês e acompanhamento direto no WhatsApp, pelo menos 15 encaminhamentos de oportunidades por mês, mundo afora, conexão direta com clubes, o estrategista esportivo ligando toda semana em cima dos relatórios, o plano de carreira, contato com clube, vídeo e avaliação por nossa conta, as seletivas acompanhadas, com a logística planejada, e a turma de 10."',
         'O investimento tá no topo de cada coluna, com a parcela em destaque, sem enfeite: "R$ 997, R$ 1.497 e R$ 2.997, todos vitalícios, em 10x sem juros." E volte pro ritmo.',
         'Calibração, no idioma deles: "Pelo que vocês conhecem do jogo dele, que ritmo ele pede? Relatório, alguém ligando toda semana ou alguém em cima todo dia?" Espere. "Um estrategista junto para aplicar a formação e orientar a rotina faz diferença pra ele agora?" Espere. "E o David Willer de perto, com assessoria individual todo mês e as conexões e os clubes dele: é o que vocês querem agora?" Espere.',
         'Recomende um, com as palavras do [pai]: "Pelo que você me falou, eu recomendo o [plano]." Se a resposta apontou outro, troque o plano no apresentador antes do último avanço. Último avanço: o [plano] aparece destacado.',
@@ -231,7 +230,7 @@
       ],
       perguntas: ['Que acompanhamento o jogo dele pede: relatório, equipe semanal ou acompanhamento diário?', 'Um estrategista junto para orientar a rotina faz diferença pra ele agora?', 'O David Willer de perto, com assessoria individual todo mês, é o que vocês querem agora?'],
       crm: ['O ritmo que a família escolheu, com as palavras do [pai], e o plano que você recomendou.'],
-      atencao: 'O 23 mostra cada plano na sua parte, com o investimento no topo da coluna (decisão do dono, 06/10/2026). Cada coluna é a parte de um plano, com o que ele acrescenta ao de baixo, cargo por cargo: aponte o que muda, não leia tudo. O Legacy vem em destaque, como o ideal: é a operação completa, com a lista mais longa. Se a ficha recomendar outro plano, diga com franqueza que o ideal é o Legacy e que o PRO coloca uma equipe do lado dele toda semana, por metade do valor. Apresente pelo ritmo, não pelo preço; o número falado com silêncio é o do 24, o do plano recomendado. Família do meio compara linha por linha: deixe o [pai] ler as colunas e opinar antes de recomendar. Ordem da casa: o Legacy abre (a operação que eles viram até o 22 é a dele), a Assessoria PRO entra como o formato mais enxuto: uma equipe do lado dele toda semana, por metade do Legacy, e o Scout PRO só se o caixa realmente pedir. A conexão direta com clubes e AGN, os 15 encaminhamentos por mês, a turma e os 93% são do Legacy: não atribua ao PRO nem ao Scout PRO. O encaminhamento vem a partir da Assessoria PRO, com pelo menos 5 por mês. Nunca "o mais barato", "o mais vendido" ou "o mais escolhido".'
+      atencao: 'O 23 mostra cada plano na sua parte, com o investimento no topo da coluna (decisão do dono, 06/10/2026). Cada coluna é a parte de um plano, com o que ele acrescenta ao de baixo, cargo por cargo: aponte o que muda, não leia tudo. O Legacy vem em destaque, como o ideal: é a operação completa, com a lista mais longa. Se a ficha recomendar outro plano, diga com franqueza que o ideal é o Legacy e que o PRO coloca uma equipe do lado dele toda semana, por metade do valor. Apresente pelo ritmo, não pelo preço; o número falado com silêncio é o do 24, o do plano recomendado. Família do meio compara linha por linha: deixe o [pai] ler as colunas e opinar antes de recomendar. Ordem da casa: o Legacy abre (a operação que eles viram até o 22 é a dele), a Assessoria PRO entra como o formato mais enxuto: uma equipe do lado dele toda semana, por metade do Legacy, e o Scout PRO só se o caixa realmente pedir. A conexão direta com clubes, os 15 encaminhamentos por mês, a turma e os 93% são do Legacy: não atribua ao PRO nem ao Scout PRO. O encaminhamento vem a partir da Assessoria PRO, com pelo menos 5 por mês. Nunca "o mais barato", "o mais vendido" ou "o mais escolhido".'
     },
     { nome: 'O investimento', min: 4,
       silencio: 'O número, uma vez, com a parcela. E silêncio: quem fala primeiro depois do preço perde.',
@@ -246,7 +245,7 @@
         'Fechamento (Modo A, 08): "Confirmando hoje, eu já aviso o [gerente]. Fica melhor no Pix ou no cartão?" No PRO e no Scout PRO: "eu já aviso a equipe".',
         'Depois do "Pix ou cartão?": mande no WhatsApp o link de pagamento do [plano], na própria call, e faça o pagamento com a família na linha. O link não está no deck: tenha o de cada plano à mão.',
         'Objeção: acolha, isole e volte: "Resolvido isso, eu confirmo agora. Pix ou cartão?"',
-        'Trocar de plano, pelo escopo e nunca por desconto: "Existe um formato mais enxuto, a Assessoria PRO, e o que muda é isto." / "Se vocês quiserem a operação completa, o Legacy acrescenta isto." Use os botões de plano no apresentador: a tela do 24 troca junto, e o apresentador mostra o que sai ou o que entra. Descendo pro Scout PRO: "o encaminhamento pra clubes vem a partir da Assessoria PRO." Saindo do Legacy: "a conexão direta com clubes e AGN e os 15 encaminhamentos por mês são do Legacy; na Assessoria PRO, são pelo menos 5."',
+        'Trocar de plano, pelo escopo e nunca por desconto: "Existe um formato mais enxuto, a Assessoria PRO, e o que muda é isto." / "Se vocês quiserem a operação completa, o Legacy acrescenta isto." Use os botões de plano no apresentador: a tela do 24 troca junto, e o apresentador mostra o que sai ou o que entra. Descendo pro Scout PRO: "o encaminhamento pra clubes vem a partir da Assessoria PRO." Saindo do Legacy: "a conexão direta com clubes e os 15 encaminhamentos por mês são do Legacy; na Assessoria PRO, são pelo menos 5."',
         '"Vocês combinaram de decidir hoje, lembra? Pode ser não, tudo bem. O que tá faltando pro sim?"'
       ],
       modoB: VAGA_PADRAO.modoB || [],
@@ -277,11 +276,11 @@
       'Responder, com o Legacy na tela: "Contato vocês têm. O que a gente soma é operação todo dia, o Zyron lendo o jogo dele com dado e a rede de mais de 250 clubes dizendo o que precisa. Contato abre uma porta. Operação abre a certa, na hora certa." Com a Assessoria PRO na tela: "Contato vocês têm. O que a gente soma é uma equipe do lado dele toda semana, com dado do jogo dele: o estrategista de carreiras, os sete módulos de aulas, um estrategista e a gestão de carreiras, com pelo menos 5 encaminhamentos por mês."',
       'Conduzir: "Então a pergunta é se vocês querem continuar operando sozinhos ou ter essa operação do lado dele. Eu confirmo a vaga?"'
     ], proibido: 'Diminuir o que a família sabe ou os contatos que ela tem.' },
-    { q: 'A gente já conhece a AGN, a gente mesmo manda o vídeo', slides: [16, 12], prev: 'O "antes do post" (16): o post mostra a assinatura, não o caminho até ela.', resposta: [
-      '"A AGN é a vitrine de quem já fechou. O que leva até ali vem antes do post: o vídeo lido com dado, o gerente todo dia e o perfil apresentado a quem tem a carência." Gerente todo dia e perfil apresentado aos clubes são do Legacy: com o PRO ou o Scout PRO na tela, fique no vídeo lido com dado e no ritmo do plano.',
+    { q: 'A gente mesmo manda o vídeo pros clubes', slides: [16, 12], prev: 'O "antes do post" (16): o post mostra a assinatura, não o caminho até ela.', resposta: [
+      '"O post mostra quem já fechou. O que leva até ali vem antes do post: o vídeo lido com dado, o gerente todo dia e o perfil apresentado a quem tem a carência." Gerente todo dia e perfil apresentado aos clubes são do Legacy: com o PRO ou o Scout PRO na tela, fique no vídeo lido com dado e no ritmo do plano.',
       '"Mandar o vídeo é a parte fácil. Difícil é saber pra quem, quando, e o que acompanhar depois. É isso que a gente opera."',
       'Conduzir: "Faz sentido ter isso do lado do [atleta]?"'
-    ], proibido: 'Falar mal da AGN ou dizer que ela contrata, garante clube ou depende da gente.' },
+    ], proibido: 'Diminuir o que a família já faz por conta própria.' },
     { q: 'Empresário só cobra quando sai o contrato. Por que pagar antes?', slides: [20, 18, 21, 24], prev: 'O custo da operação (18), o interesse alinhado (20) e a garantia (21) antes do número.', resposta: [
       '"Faz sentido perguntar. A gente também ganha no contrato: nesse ponto, o modelo é o mesmo."',
       '"A diferença é o que acontece até o contrato. Quem só ganha no fim não tem como bancar estrutura antes disso. Aqui tem gente e o Zyron trabalhando nele desde hoje. Isso tem custo, e o investimento cobre só esse custo mínimo." No Legacy, nomeie: o gerente de carreira todo dia e as sete frentes. Na Assessoria PRO: o estrategista de carreiras toda semana, o estrategista esportivo e os sete módulos de aulas.',
@@ -297,7 +296,7 @@
   window.OBJECOES = OBJ_TECNICA.concat(window.OBJECOES || []);
 
   window.CHECKLIST = (window.CHECKLIST || []).concat([
-    'Variação técnica: confirmei na ficha que a família já conhece a AGN e o meio do futebol (se não, uso o deck padrão)',
+    'Variação técnica: confirmei na ficha que a família já conhece o meio do futebol (se não, uso o deck padrão)',
     'Separei duas leituras do jogo dele pra falar de igual pra igual: o que o jogo já resolve e o primeiro foco'
   ]);
 })();

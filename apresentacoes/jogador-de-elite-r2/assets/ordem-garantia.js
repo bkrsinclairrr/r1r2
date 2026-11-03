@@ -14,7 +14,7 @@
     n => mapa[Number(n)] ? String(mapa[Number(n)]).padStart(Math.min(n.length, 2), '0') : n);
   const texto = t => String(t)
     // Só os títulos de telas identificam referências entre parênteses. Seções do playbook permanecem intactas.
-    .replace(/\b(campo|resposta ao olhômetro|olhômetro|bloco do Zyron|Zyron trabalhando|cinco verbos|seu lugar em campo|olhômetro contra Zyron|leitura ao vivo do jogo dele|vídeo do Zyron|depoimento de uma mãe|números|AGN|garantia|vaga|planos|número|até lá e filtro|como o Zyron funciona") \(([\d ,ea]+)\)/gi,
+    .replace(/\b(campo|resposta ao olhômetro|olhômetro|bloco do Zyron|Zyron trabalhando|cinco verbos|seu lugar em campo|olhômetro contra Zyron|leitura ao vivo do jogo dele|vídeo do Zyron|depoimento de uma mãe|números|atletas que fecharam|garantia|vaga|planos|número|até lá e filtro|como o Zyron funciona") \(([\d ,ea]+)\)/gi,
       (m, titulo, ns) => titulo + ' (slide' + (/[,ea]/.test(ns) ? 's ' : ' ') + ns + ')')
     .replace(/\b(slides? |no |do |pro |ao |o |e o )((?:0?[1-9]|1\d|2[0-5])(?:\b(?:, | e | a | ao | até )(?:0?[1-9]|1\d|2[0-5]))*)\b/gi,
       (m, p, ns) => p + numeros(ns))

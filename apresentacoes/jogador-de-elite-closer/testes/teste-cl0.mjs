@@ -27,7 +27,7 @@ const COLUNAS = {
     'Oportunidades: pelo menos 5 oportunidades direcionadas por trimestre conforme planejamento de carreira do atleta.', 'Comunidade e aulas extras: troca com outros atletas e conteúdos complementares.'],
   legacy: ['Assessor de carreira: acompanhamento diário, com relatório e ligação semanal.', 'David Willer: encontro individual mensal e acompanhamento direto pelo WhatsApp.',
     'Plano de carreira personalizado: metas e próximos passos definidos para o atleta.',
-    'Mais oportunidades: pelo menos 10 oportunidades direcionadas por trimestre conforme planejamento de carreira do atleta e apresentação do perfil do atleta para a AGN Football.',
+    'Mais oportunidades: pelo menos 10 oportunidades direcionadas por trimestre conforme planejamento de carreira do atleta.',
     'Suporte para seletivas: organização de vídeos, avaliações e planejamento da logística com a família.', 'Grupo limitado a dez atletas.']
 };
 const CABECALHOS = {

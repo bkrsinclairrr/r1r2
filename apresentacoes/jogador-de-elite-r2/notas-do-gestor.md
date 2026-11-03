@@ -74,7 +74,7 @@ Etapa da Bíblia: O plano.
 - Potencial, apontando a frase da tela: "E repara numa coisa: esse plano só existe porque o [atleta] tem potencial. A parte difícil, que é ter o que é preciso, ele já tem. O resto é método."
 - Agora: "O Zyron e o gerente de carreira leem o teu jogo e definem o que evoluir primeiro. No teu caso: [primeiro foco]."
 - Todo dia: "Você treina com direção. O gerente de carreira acompanha, e o Zyron olha o teu jogo como um estrategista de carreiras só teu."
-- Vitrine: "O teu perfil vai pra quem procura um jogador como você: os mais de 250 clubes da nossa rede e a AGN Football, onde estão publicados os atletas nossos que já fecharam."
+- Vitrine: "O teu perfil vai pra quem procura um jogador como você: os mais de 250 clubes da nossa rede."
 - Quando o clube chamar: "O gerente organiza a ida com vocês. Vocês me falaram: [locomoção]."
 - Destino: "E tudo isso existe pra uma coisa: [sonho]."
 - O tripé, apontando a faixa de baixo: "Pra chegar no clube, todo atleta precisa de três coisas: ser visto, ser preparado e ser apresentado. Talento sem os três fica parado em casa. A gente cuida dos três."
@@ -84,7 +84,7 @@ Etapa da Bíblia: O plano.
 **Pergunte**
 - Faz sentido esse caminho pra vocês?
 
-**Atenção:** Amarre cada etapa ao que eles disseram no alinhamento. Não prometa prazo, clube ou contrato. O tripé da Bíblia fica escrito na tela: Ser visto, Ser preparado e Ser apresentado são o passo de cada plano do 21, um por degrau. Previne "ele não pode ir pra outro estado": hoje ele não vai pra lugar nenhum, isso só acontece quando o clube chamar. O caminho da tela é a estrutura completa, a do Legacy: gerente de carreira, vitrine com clubes e AGN e a ida organizada. Com o PRO ou o Scout PRO na ficha, não diga que o plano dele entrega isso: o 21 mostra o que cada plano entrega.
+**Atenção:** Amarre cada etapa ao que eles disseram no alinhamento. Não prometa prazo, clube ou contrato. O tripé da Bíblia fica escrito na tela: Ser visto, Ser preparado e Ser apresentado são o passo de cada plano do 21, um por degrau. Previne "ele não pode ir pra outro estado": hoje ele não vai pra lugar nenhum, isso só acontece quando o clube chamar. O caminho da tela é a estrutura completa, a do Legacy: gerente de carreira, vitrine com clubes e a ida organizada. Com o PRO ou o Scout PRO na ficha, não diga que o plano dele entrega isso: o 21 mostra o que cada plano entrega.
 
 
 ## 05 · E se?
@@ -261,7 +261,7 @@ Etapa da Bíblia: Dor e sonho; O plano.
 - Volte ao olhômetro do 03, agora pelo serviço inteiro: "Vocês já me contaram como foi nas peneiras. Agora olha o resto: quem acompanha, quem leva aos clubes e quem corre o risco."
 - Linha por linha: "Na peneira, quem analisa é um avaliador em vinte minutos. Aqui, é o Zyron, com dados reais do jogo dele. Hoje, com inteligência artificial, os clubes estão cada vez mais escolhendo atleta assim."
 - "Depois da peneira, ninguém acompanha. Aqui, o gerente de carreira olha pra ele todo dia."
-- "Na peneira, quem leva ele pros clubes são vocês, torcendo pra alguém olhar. Aqui, somos nós, com mais de 250 clubes na rede e a AGN Football."
+- "Na peneira, quem leva ele pros clubes são vocês, torcendo pra alguém olhar. Aqui, somos nós, com mais de 250 clubes na rede."
 - "E o risco: na peneira, é todo de vocês. Aqui, a gente só ganha quando ele fecha."
 - A virada, pro atleta: "[atleta], o olhômetro pode não ter te visto. O Zyron viu. Se não tivesse visto, você não estaria nessa conversa."
 - Pro atleta (6.3), com o Legacy na ficha: "Gerente de carreira todo dia e um agente só teu. Isso é estrutura de atleta profissional. Você vai começar a viver como um."
@@ -335,26 +335,23 @@ Etapa da Bíblia: O plano.
 **Atenção:** Sete módulos incluídos no Scout PRO. Orientação humana e encaminhamentos seguem os planos. Não prometa resultado esportivo ou contratação.
 
 
-## 18 · AGN Football
+## 18 · Os que fecharam
 
 Tempo: 2.5 min (acumulado: 34 min)
 
 Etapa da Bíblia: O plano.
 
 **Fale**
-- "E quando dá certo, é aqui que aparece. A gente tem relação direta com a AGN Football, o canal que o mercado do futebol olha pra ver quem tá fechando. Não é só divulgação: é lá que estão publicados os atletas nossos que foram pra clubes do Brasil, da América do Sul e da Europa."
+- "E quando dá certo, é assim que fica: atletas nossos que foram pra clubes do Brasil, da América do Sul e da Europa."
 - Aponte na tela: "Olha o Joãozinho, assinando com o Grêmio. O Kaio fechou com o Internacional. E não são só eles."
-- O espelho, com o caso da ficha: "[atleta], lembra que eu falei que você me lembrou um atleta nosso? É o [caso]. Mesmo perfil que o teu. Ele fechou com o [clube do caso], [país do caso]. Tá publicado na AGN, te mando agora." Mande na hora: [link do caso]
-- "Quando o [atleta] fechar, é lá que ele aparece. Esse último quadro é dele."
-- Mande o link da AGN no WhatsApp: "Abre aí enquanto a gente conversa." [link AGN]
-- Avanço (→ ou espaço): a arte dos jogadores que passaram pela AGN entra grande na tela. "E pra vocês terem noção do nível: esses são jogadores que passaram pela AGN Football. É nesse mesmo canal que estão publicados os atletas nossos que fecharam."
-- "Não precisa acreditar em mim: vocês conferem no link que eu acabei de mandar."
+- O espelho, com o caso da ficha: "[atleta], lembra que eu falei que você me lembrou um atleta nosso? É o [caso]. Mesmo perfil que o teu. Ele fechou com o [clube do caso], [país do caso]. Te mando o link agora." Mande na hora: [link do caso]
+- "Quando o [atleta] fechar, é aqui que ele entra. Esse último quadro é dele."
+- "Não precisa acreditar em mim: se quiserem, eu mando o link de cada um."
 
 **Pergunte**
 - [atleta], se imagina aí, do lado deles?
-- [atleta], conhece algum desses jogadores?
 
-**Atenção:** Como ser sagaz com o espelho: fale como quem acabou de perceber, não como quem leu. Plante no 02 ("você me lembrou um atleta nosso"), revele aqui com nome, clube e link, e retome no 25 ("igual o [caso]") e no 30. Escolha o perfil mais parecido em posição, idade e nível, na tabela do CASOS.md ou nos publicados da AGN: é a semelhança que faz o atleta se enxergar ali. Só caso real e nosso: a família abre o link na hora, e um caso inventado derruba a venda e a empresa. Quanto mais nomes, com o link de cada um, mais a família entende que não é sorte, é método (14). A AGN divulga: não diga que ela contrata ou garante clube. A arte do avanço mostra jogadores que passaram pela AGN, não atletas da Jogador de Elite: nunca diga que são nossos e não cite clube, valor ou história de nenhum deles além do que está na tela. Se a família reconhecer alguém, deixe ela falar.
+**Atenção:** Como ser sagaz com o espelho: fale como quem acabou de perceber, não como quem leu. Plante no 02 ("você me lembrou um atleta nosso"), revele aqui com nome, clube e link, e retome no 25 ("igual o [caso]") e no 30. Escolha o perfil mais parecido em posição, idade e nível, na tabela do CASOS.md: é a semelhança que faz o atleta se enxergar ali. Só caso real e nosso: a família abre o link na hora, e um caso inventado derruba a venda e a empresa. Quanto mais nomes, com o link de cada um, mais a família entende que não é sorte, é método (14).
 
 
 ## 19 · 326 atletas enviados
@@ -421,7 +418,7 @@ Etapa da Bíblia: Fechamento.
 - Um avanço por frente (→ ou espaço), falando o nome e o valor anual: "Performance e desenvolvimento atlético: R$ 6.500 por ano." / "Análise de dados e inteligência, o Zyron: R$ 5.000." / "Psicologia esportiva: R$ 2.500." / "Nutrição: R$ 3.000." / "Comportamento: R$ 3.500." / "Imagem e posicionamento: R$ 3.000." / "Acompanhamento e direcionamento: R$ 6.500."
 - A soma da direita sobe a cada frente (6.500, 11.500, 14.000, 17.000, 20.500, 23.500 e 30.000). Aponte o número subindo, sem pressa: "Já tá em R$ 14.000 por ano, e ainda falta coisa."
 - Último avanço, o total em destaque, com tudo na tela: "Somando, montar isso por conta custa R$ 30.000 por ano."
-- Sem certeza: "E mesmo pagando tudo isso, ele ia continuar dependendo do olhômetro de um avaliador de peneira. Ninguém garante que ele seria encaminhado, e nenhum deles tem o Zyron, nem a rede de clubes, nem a AGN."
+- Sem certeza: "E mesmo pagando tudo isso, ele ia continuar dependendo do olhômetro de um avaliador de peneira. Ninguém garante que ele seria encaminhado, e nenhum deles tem o Zyron nem a rede de clubes."
 - Versão mais emocional, se o clima pedir: "Vocês gastariam muito mais se precisassem fazer por conta própria. A gente tem a fórmula e tem o potencial do [atleta]."
 
 **Pergunte**
@@ -474,7 +471,7 @@ Etapa da Bíblia: Fechamento.
 **Fale**
 - "E aqui é onde a gente ganha. Hoje, um atleta que a gente coloca num clube fecha ganhando por volta de [faixa] por mês, no mínimo."
 - "É nesse momento, e só nele, que a gente lucra: sobre o contrato profissional do [atleta]. Vocês mesmos disseram pro estrategista esportivo que não faz sentido a gente lucrar em cima de vocês. E não lucra."
-- O espelho de volta: "Foi assim com o [caso]: hoje ele tá no [clube do caso]. É esse dia que a gente espera pro [atleta]. E quando ele assinar, sai na AGN, com o nome dele."
+- O espelho de volta: "Foi assim com o [caso]: hoje ele tá no [clube do caso]. É esse dia que a gente espera pro [atleta]. E quando ele assinar, sai o anúncio, com o nome dele."
 - O olhômetro de volta, se a família lembrar da peneira: "Na peneira, o risco era todo de vocês. Aqui, a gente só lucra quando ele assina."
 - Cenário (05): "[pai], o que muda na vida de vocês quando o [atleta] estiver ganhando isso?" Silêncio.
 - "Imagina ele te ligando do clube pra contar que assinou. Qual a primeira coisa que vocês fazem?"
@@ -511,7 +508,7 @@ Etapa da Bíblia: Fechamento.
 - Ponte, sem falar de dinheiro, lendo o título: "[atleta], na peneira você ficou sozinho. Daqui pra frente, não fica mais. O que muda de um plano pro outro é quem fica do teu lado, e o acompanhamento que você recebe. O Zyron tá nos três."
 - Um avanço por coluna (→ ou espaço). Cada coluna é a parte de um plano: o ritmo, o investimento e o que ele tem, cargo por cargo. Scout PRO: "Pra começar: o Zyron lê cada vídeo novo e aponta os teus pontos fortes e prioridades, o analista de performance manda o relatório da tua evolução, e você tem o relatório de entrada, o histórico e o guia da peneira."
 - Assessoria PRO: "Tudo do Scout PRO, e uma equipe do teu lado toda semana: o teu estrategista de carreiras liga, você tem os sete módulos de aulas (performance, psicologia, nutrição, comportamento e imagem), conta com um estrategista esportivo, entra no networking com outros atletas e nas aulas extras, e a gestão de carreiras faz pelo menos 5 encaminhamentos de oportunidades por mês, pra clubes do Brasil e do mundo. Tudo isso por metade do Legacy."
-- Assessoria de Elite Legacy, a coluna em destaque: "Tudo da Assessoria PRO, e o ideal, o completo: o teu estrategista de carreiras e o gerente de carreira de perto todo dia, assessoria individual com o David Willer todo mês e acompanhamento direto com ele no WhatsApp. A gestão de carreiras faz pelo menos 15 encaminhamentos de oportunidades por mês, mundo afora, com conexão direta com clubes e com a AGN. O estrategista esportivo liga toda semana, em cima dos teus relatórios e do teu desenvolvimento, você tem um plano de carreira feito pro teu jogo, e quem corre atrás de clube, vídeo e avaliação é a gente. Nas seletivas, a gente acompanha e planeja a logística com vocês. E a turma é de 10: atenção máxima, de perto."
+- Assessoria de Elite Legacy, a coluna em destaque: "Tudo da Assessoria PRO, e o ideal, o completo: o teu estrategista de carreiras e o gerente de carreira de perto todo dia, assessoria individual com o David Willer todo mês e acompanhamento direto com ele no WhatsApp. A gestão de carreiras faz pelo menos 15 encaminhamentos de oportunidades por mês, mundo afora, com conexão direta com clubes. O estrategista esportivo liga toda semana, em cima dos teus relatórios e do teu desenvolvimento, você tem um plano de carreira feito pro teu jogo, e quem corre atrás de clube, vídeo e avaliação é a gente. Nas seletivas, a gente acompanha e planeja a logística com vocês. E a turma é de 10: atenção máxima, de perto."
 - O investimento tá no topo de cada coluna, com a parcela em destaque. Leia uma vez, apontando, sem fazer conta: "O Scout PRO fica em R$ 997, a Assessoria PRO em R$ 1.497 e o Legacy em R$ 2.997, todos vitalícios, em 10x sem juros." E volte pro ritmo.
 - As perguntas que acertam o plano, sem falar de dinheiro: "Qual ritmo faz sentido pro [atleta]? Um relatório, alguém ligando toda semana ou alguém do lado dele todo dia?" Espere. "Vocês querem os sete módulos de aulas e um estrategista junto?" Espere. "E o David Willer de perto, com assessoria individual todo mês e as conexões e os clubes dele: é o que vocês querem agora?" Espere.
 - Recomende um, em voz alta, com as palavras deles: "Pelo que vocês me falaram, eu recomendo o [plano]." Se a resposta apontou outro, troque o plano no apresentador antes do último avanço. Último avanço: o [plano] aparece destacado na tela, como a sua recomendação.
@@ -525,7 +522,7 @@ Etapa da Bíblia: Fechamento.
 **Anote no CRM**
 - O ritmo que a família escolheu, com as palavras deles, e o plano que você recomendou.
 
-**Atenção:** O título volta ao 11 ("Sozinho, na peneira"): é a dor que a família já contou, e cada coluna responde com quem fica do lado do atleta. Deixe o título pesar um segundo antes da primeira coluna. Ao lado do ritmo, o passo do tripé do 04 (Ser visto, Ser preparado, Ser apresentado), um por degrau. O 21 mostra cada plano na sua parte, com o investimento no topo da coluna, pra família ver tudo (decisão do dono, 06/10/2026). Cada coluna é a parte de um plano: o topo com o ritmo e o investimento, embaixo o que ele acrescenta ao degrau de baixo, cargo por cargo. Não leia tudo: aponte o que muda de um degrau pro outro. O Legacy aparece em destaque, com a moldura que brilha e o rótulo "O ideal": é o completo e tem a lista mais longa. Se a ficha recomendar outro plano, fale com franqueza: "o ideal é o Legacy; pro momento de vocês, a Assessoria PRO coloca uma equipe do lado dele toda semana, por metade do valor". Apresente pelo ritmo, não pelo preço: o número falado com silêncio é o do 22, o do plano recomendado. Ordem da casa: o Legacy abre (tudo o que a família viu até o 20 é a estrutura dele), a Assessoria PRO entra como o formato mais enxuto: uma equipe do lado dele toda semana, por metade do Legacy, e o Scout PRO só se o caixa realmente pedir. BANT não é interrogatório: as perguntas são de ritmo, não de dinheiro. A conexão direta com clubes e AGN, os 15 encaminhamentos por mês, a turma e os 93% são do Legacy: não atribua ao PRO nem ao Scout PRO. O encaminhamento vem a partir da Assessoria PRO, com pelo menos 5 por mês. Nunca "o mais barato", "o mais vendido" ou "o mais escolhido". Se perguntarem qual compensa, responda pelo ritmo, não pela diferença de preço.
+**Atenção:** O título volta ao 11 ("Sozinho, na peneira"): é a dor que a família já contou, e cada coluna responde com quem fica do lado do atleta. Deixe o título pesar um segundo antes da primeira coluna. Ao lado do ritmo, o passo do tripé do 04 (Ser visto, Ser preparado, Ser apresentado), um por degrau. O 21 mostra cada plano na sua parte, com o investimento no topo da coluna, pra família ver tudo (decisão do dono, 06/10/2026). Cada coluna é a parte de um plano: o topo com o ritmo e o investimento, embaixo o que ele acrescenta ao degrau de baixo, cargo por cargo. Não leia tudo: aponte o que muda de um degrau pro outro. O Legacy aparece em destaque, com a moldura que brilha e o rótulo "O ideal": é o completo e tem a lista mais longa. Se a ficha recomendar outro plano, fale com franqueza: "o ideal é o Legacy; pro momento de vocês, a Assessoria PRO coloca uma equipe do lado dele toda semana, por metade do valor". Apresente pelo ritmo, não pelo preço: o número falado com silêncio é o do 22, o do plano recomendado. Ordem da casa: o Legacy abre (tudo o que a família viu até o 20 é a estrutura dele), a Assessoria PRO entra como o formato mais enxuto: uma equipe do lado dele toda semana, por metade do Legacy, e o Scout PRO só se o caixa realmente pedir. BANT não é interrogatório: as perguntas são de ritmo, não de dinheiro. A conexão direta com clubes, os 15 encaminhamentos por mês, a turma e os 93% são do Legacy: não atribua ao PRO nem ao Scout PRO. O encaminhamento vem a partir da Assessoria PRO, com pelo menos 5 por mês. Nunca "o mais barato", "o mais vendido" ou "o mais escolhido". Se perguntarem qual compensa, responda pelo ritmo, não pela diferença de preço.
 
 
 ## 28 · O investimento
@@ -545,7 +542,7 @@ Etapa da Bíblia: Fechamento.
 - Fechamento (Modo A, 08): "Confirmando hoje, eu já aviso o [gerente]. Fica melhor no Pix ou no cartão?" No PRO e no Scout PRO: "eu já aviso a equipe".
 - Depois do "Pix ou cartão?": mande no WhatsApp o link de pagamento do [plano], na própria call, e faça o pagamento com a família na linha. O link não está no deck: tenha o de cada plano à mão.
 - Objeção: acolha, isole e volte: "Resolvido isso, eu confirmo agora. Pix ou cartão?"
-- Trocar de plano, pelo escopo e nunca por desconto. Pra descer: "Existe um formato mais enxuto, a Assessoria PRO, e o que muda é isto." Pra subir: "Se vocês quiserem o completo, o Legacy acrescenta isto." Use os botões de plano no apresentador: a tela do 22 troca junto, e o apresentador mostra o que sai ou o que entra. Descendo pro Scout PRO, diga em voz alta: "o encaminhamento pra clubes vem a partir da Assessoria PRO." Saindo do Legacy: "a conexão direta com clubes e AGN e os 15 encaminhamentos por mês são do Legacy; na Assessoria PRO, são pelo menos 5."
+- Trocar de plano, pelo escopo e nunca por desconto. Pra descer: "Existe um formato mais enxuto, a Assessoria PRO, e o que muda é isto." Pra subir: "Se vocês quiserem o completo, o Legacy acrescenta isto." Use os botões de plano no apresentador: a tela do 22 troca junto, e o apresentador mostra o que sai ou o que entra. Descendo pro Scout PRO, diga em voz alta: "o encaminhamento pra clubes vem a partir da Assessoria PRO." Saindo do Legacy: "a conexão direta com clubes e os 15 encaminhamentos por mês são do Legacy; na Assessoria PRO, são pelo menos 5."
 - "Vocês combinaram de decidir hoje, lembra? Pode ser não, tudo bem. O que tá faltando pro sim?"
 
 **Pergunte**
@@ -597,7 +594,7 @@ Etapa da Bíblia: Próximo passo.
 - A indicação.
 - O dia do primeiro contato (no Legacy, do gerente).
 
-**Atenção:** A imaginação sela a decisão: quem descreve o dia da assinatura em voz alta não volta atrás no dia seguinte. O post da tela é ilustrativo: diga "imagina", nunca "vai ser". Com caso espelho, feche com ele: "igual o [caso]". Na indicação, peça o contato do responsável do colega, não do menino. Só prometa prazo confirmado. No PRO e no Scout PRO, a tela não tem post, contrato nem AGN: fique no ritmo do plano e no próximo passo, sem prazo. A miniatura do campo só aparece com posição reconhecida na ficha.
+**Atenção:** A imaginação sela a decisão: quem descreve o dia da assinatura em voz alta não volta atrás no dia seguinte. O post da tela é ilustrativo: diga "imagina", nunca "vai ser". Com caso espelho, feche com ele: "igual o [caso]". Na indicação, peça o contato do responsável do colega, não do menino. Só prometa prazo confirmado. No PRO e no Scout PRO, a tela não tem post nem contrato: fique no ritmo do plano e no próximo passo, sem prazo. A miniatura do campo só aparece com posição reconhecida na ficha.
 
 ## Como falar de cada plano
 
@@ -634,13 +631,13 @@ A Assessoria PRO é uma equipe do lado do [atleta] toda semana, por cerca de met
 
 R$ 2.997 vitalício, em 10x sem juros de R$ 299,70.
 
-O Legacy é o completo, o ideal: tudo da Assessoria PRO, o estrategista de carreiras do lado do [atleta] todo dia, o gerente de carreira, assessoria individual com o David Willer todo mês, com acompanhamento direto no WhatsApp, o estrategista esportivo ligando toda semana, pelo menos 15 encaminhamentos de oportunidades por mês, mundo afora, conexão direta com clubes e AGN e as seletivas acompanhadas, com a logística planejada.
+O Legacy é o completo, o ideal: tudo da Assessoria PRO, o estrategista de carreiras do lado do [atleta] todo dia, o gerente de carreira, assessoria individual com o David Willer todo mês, com acompanhamento direto no WhatsApp, o estrategista esportivo ligando toda semana, pelo menos 15 encaminhamentos de oportunidades por mês, mundo afora, conexão direta com clubes e as seletivas acompanhadas, com a logística planejada.
 
 **Vitalício, você tem**
 - Estrategista de carreiras e gerente de carreira, todo dia.
 - Assessoria individual com o David Willer, todo mês.
 - Pelo menos 15 encaminhamentos por mês, mundo afora.
-- Conexão direta com clubes e AGN Football.
+- Conexão direta com clubes.
 - Seletivas acompanhadas, com a logística planejada com vocês.
 
 **Base**
@@ -752,7 +749,7 @@ Prevenção: Sinais de budget da ficha pra escolher o plano antes do 21: Legacy 
 **Resposta**
 - "Se tivesse, ele começava hoje?"
 - "Então o problema é só a forma. Dá pra fazer em 10x sem juros, ou num formato mais enxuto. Qual cabe melhor?"
-- Do Legacy pra Assessoria PRO, pelo escopo: "Existe um formato mais enxuto, a Assessoria PRO: o estrategista de carreiras liga toda semana em vez de estar do lado dele todo dia, e saem o gerente de carreira, a assessoria individual com o David Willer, a ligação semanal do estrategista esportivo, a conexão direta com clubes e AGN e o acompanhamento das seletivas. O encaminhamento continua: pelo menos 5 oportunidades por mês, pra clubes do Brasil e do mundo, em vez de 15." Troque no apresentador: o 22 mostra o PRO.
+- Do Legacy pra Assessoria PRO, pelo escopo: "Existe um formato mais enxuto, a Assessoria PRO: o estrategista de carreiras liga toda semana em vez de estar do lado dele todo dia, e saem o gerente de carreira, a assessoria individual com o David Willer, a ligação semanal do estrategista esportivo, a conexão direta com clubes e o acompanhamento das seletivas. O encaminhamento continua: pelo menos 5 oportunidades por mês, pra clubes do Brasil e do mundo, em vez de 15." Troque no apresentador: o 22 mostra o PRO.
 - Da Assessoria PRO pro Scout PRO, só se o caixa não comporta o PRO: "O Scout PRO é o começo: o Zyron lendo cada vídeo novo e o relatório do analista de performance a cada 15 dias. Os sete módulos continuam no Scout PRO. Saem a ligação do estrategista de carreiras e o estrategista esportivo, o networking e as aulas extras, os encontros com a equipe e o encaminhamento pra clubes."
 - "Assim que resolver a forma, a equipe já entra em contato. Isso não espera."
 
@@ -785,11 +782,11 @@ Prevenção: A janela de idade no plano (slide 04).
 
 ### Isso é confiável? (slides 16, 17, 18, 29, 08)
 
-Prevenção: O depoimento de uma mãe (slide 16), os números (slide 17), a AGN (slide 18), a garantia (slide 29) e a autorização expressa do responsável no "como o Zyron funciona" (slide 08) antes da pergunta.
+Prevenção: O depoimento de uma mãe (slide 16), os números (slide 17), os atletas que fecharam (slide 18), a garantia (slide 29) e a autorização expressa do responsável no "como o Zyron funciona" (slide 08) antes da pergunta.
 
 **Resposta**
 - "Vocês ouviram a mãe. E mais de 93% dos nossos são encaminhados em até três meses."
-- "A gente tem relação direta com a AGN Football, com jogador nosso publicado lá. O Joãozinho fechou com o Grêmio, o Kaio com o Internacional. Te mando o link agora." [link AGN]
+- "A gente tem atleta nosso que já fechou: o Joãozinho com o Grêmio, o Kaio com o Internacional."
 - Com caso espelho: "E o [caso], que tem o perfil do [atleta], tá lá também: [link do caso]."
 - "E tem garantia total: não fez sentido, todo o valor investido volta."
 - "E aqui tá o nosso [site, Instagram ou CNPJ]."
@@ -807,7 +804,7 @@ Prevenção: O olhômetro (slide 03) e a comparação do slide 14 já fizeram as
 
 **Resposta**
 - "Compara mesmo. Pergunta pra eles: analisam o atleta com dados reais ou no olhômetro? Tem alguém acompanhando de verdade, no ritmo que vocês escolheram? Tem um agente como o Zyron? Leem o jogo do atleta ao vivo, na frente de vocês? E como eles ganham: em cima de vocês, ou só quando o atleta fecha?"
-- Com o Legacy na tela, some: "Tem gerente de carreira todo dia? Levam o atleta aos clubes? Têm relação direta com a AGN?" E, com turma: "Só lembra que a vaga do [atleta] aqui não fica aberta pra sempre. A turma é de 10."
+- Com o Legacy na tela, some: "Tem gerente de carreira todo dia? Levam o atleta aos clubes?" E, com turma: "Só lembra que a vaga do [atleta] aqui não fica aberta pra sempre. A turma é de 10."
 - Com a Assessoria PRO na tela, a acessível: "E vê quem coloca uma equipe do lado dele toda semana, com sete módulos de aulas, um estrategista esportivo e pelo menos 5 encaminhamentos por mês, por esse investimento."
 
 ### Qual a diferença entre os planos? (slides 27, 14)
@@ -818,10 +815,10 @@ Prevenção: A matriz do 21 responde antes da pergunta: as linhas do 11, em trê
 - O ritmo, antes do valor: "A diferença é com que frequência tem alguém olhando pro [atleta]: a cada 15 dias, toda semana ou todo dia. O Zyron tá nos três."
 - Scout PRO: "Pra começar: o Zyron lê cada vídeo novo, e um analista de performance manda relatório a cada 15 dias."
 - Assessoria PRO: "Tudo isso e uma equipe do lado dele toda semana: o estrategista de carreiras liga, ele tem os sete módulos de aulas, conta com um estrategista esportivo, entra no networking com outros atletas e nas aulas extras, e a gestão de carreiras faz pelo menos 5 encaminhamentos de oportunidades por mês, pra clubes do Brasil e do mundo. Por metade do Legacy."
-- Legacy: "O completo: tudo do PRO, o estrategista de carreiras do lado dele todo dia, o gerente de carreira e assessoria individual com o David Willer todo mês, com acompanhamento direto no WhatsApp. E pelo menos 15 encaminhamentos de oportunidades por mês, mundo afora, com conexão direta com clubes e com a AGN, e as seletivas acompanhadas, com a logística planejada."
+- Legacy: "O completo: tudo do PRO, o estrategista de carreiras do lado dele todo dia, o gerente de carreira e assessoria individual com o David Willer todo mês, com acompanhamento direto no WhatsApp. E pelo menos 15 encaminhamentos de oportunidades por mês, mundo afora, com conexão direta com clubes, e as seletivas acompanhadas, com a logística planejada."
 - Conduzir: "Pelo que vocês me falaram, eu recomendo o [plano]. Faz sentido?"
 
-Proibido: Responder pela diferença de preço em vez do ritmo, chamar o PRO de "o mais barato" ou de "o mais vendido", atribuir ao PRO o que é do Legacy (conexão direta com clubes e AGN, os 15 encaminhamentos por mês) ou encaminhamento ao Scout PRO.
+Proibido: Responder pela diferença de preço em vez do ritmo, chamar o PRO de "o mais barato" ou de "o mais vendido", atribuir ao PRO o que é do Legacy (conexão direta com clubes, os 15 encaminhamentos por mês) ou encaminhamento ao Scout PRO.
 
 ### Isso de inteligência artificial funciona mesmo? (slides 07, 08, 10, 13, 15, 02)
 
@@ -845,7 +842,7 @@ O Gestor volta sempre com motivo (retorno da equipe, um caso, o plano do atleta)
 
 - **Mesmo dia:** "[pai], resumo da nossa conversa: vocês me falaram que [dor]. O [plano] resolve isso: o Zyron e a nossa equipe olhando pro [atleta], [ritmo]. Amanhã às [hora] eu te trago o retorno da equipe."
 - **Data combinada:** Liga na hora marcada, com o retorno da equipe ou com todos os decisores. Retoma o plano e conduz a decisão.
-- **+1 dia:** O caso espelho com o link da AGN ("lembra do atleta que eu falei que tem o perfil do [atleta]?"), ou outro caso parecido.
+- **+1 dia:** O caso espelho com o link do caso ("lembra do atleta que eu falei que tem o perfil do [atleta]?"), ou outro caso parecido.
 - **+3 dias:** Só no Legacy: "A vaga do [atleta] ainda tá separada, mas a turma tá fechando." Só se a vaga realmente estiver separada.
 - **+7 dias:** O plano de novo: idade, janela, o que muda na vida da família.
 - **+14 dias:** Só no Legacy, e só se a equipe realmente vai liberar a vaga: "A equipe vai liberar a vaga do [atleta] pros próximos aprovados amanhã. Se quiserem garantir, me responde hoje."
@@ -856,11 +853,10 @@ O Gestor volta sempre com motivo (retorno da equipe, um caso, o plano do atleta)
 - [ ] Li a ficha e o Contexto do lead no CRM (origem, o que chamou atenção no Zyron, o que ele contou no formulário)
 - [ ] Vi o vídeo do atleta
 - [ ] Separei sonho, dor, peneiras e o que falta, com as palavras deles
-- [ ] Escolhi o caso espelho: atleta nosso de verdade, mesmo perfil (posição, idade, nível), do CASOS.md ou publicado na AGN, com o link
+- [ ] Escolhi o caso espelho: atleta nosso de verdade, mesmo perfil (posição, idade, nível), do CASOS.md, com o link
 - [ ] Defini o primeiro foco e escolhi na ficha o plano que vou recomendar: Legacy se a ficha não mostra aperto financeiro, Assessoria PRO se a dor financeira é forte, Scout PRO só se o caixa não comporta o PRO
 - [ ] Tenho à mão, fora do deck, o link de pagamento de cada plano (vai no WhatsApp só depois do sim)
 - [ ] Conferi a faixa de contrato que posso citar e o prazo da garantia
-- [ ] Link da AGN pronto pra mandar no WhatsApp
 - [ ] Conferi posição, pé e altura do atleta (o campo do slide 10 depende da posição)
 - [ ] Testei o vídeo do Zyron (slide 07) e o depoimento da mãe (slide 16) com o áudio no compartilhamento de tela
 - [ ] Subi o vídeo do atleta no painel (Leitura do atleta), com a autorização do responsável, marquei os lances e olhei a prévia
@@ -871,4 +867,4 @@ O Gestor volta sempre com motivo (retorno da equipe, um caso, o plano do atleta)
 - [ ] Confirmei pai, mãe e atleta na call
 - [ ] Deck aberto em tela cheia e apresentador em outra janela
 
-Proibido: começar do zero com quem já tem contexto; perguntar de novo o que está na ficha; prometer contrato, clube ou valor de contrato; inventar caso, clube ou número; trocar "encaminhado" por "contratado"; desconto; proposta por WhatsApp; correr atrás da família; pôr o perfil do atleta em dúvida; vender pela diferença de preço em vez do ritmo; atribuir ao PRO o que é do Legacy (conexão direta com clubes e AGN, os 15 encaminhamentos por mês) ou encaminhamento ao Scout PRO; descer de plano por desconto; mandar o link antes do sim; dar nota ou atributo ao atleta; dizer que o Zyron tem percentual de acerto; chamar o avaliador de incompetente; citar clube como quem usa dados; dizer que existe vaga num clube específico; dizer que o Zyron leu um relatório marcado à mão; dar nota geral, ranking, percentil ou comparação com outros atletas; mostrar o vídeo de um atleta a quem não é da família dele; prometer que o relatório da call é o do plano (o plano entrega a leitura de cada vídeo novo, no ritmo dele).
+Proibido: começar do zero com quem já tem contexto; perguntar de novo o que está na ficha; prometer contrato, clube ou valor de contrato; inventar caso, clube ou número; trocar "encaminhado" por "contratado"; desconto; proposta por WhatsApp; correr atrás da família; pôr o perfil do atleta em dúvida; vender pela diferença de preço em vez do ritmo; atribuir ao PRO o que é do Legacy (conexão direta com clubes, os 15 encaminhamentos por mês) ou encaminhamento ao Scout PRO; descer de plano por desconto; mandar o link antes do sim; dar nota ou atributo ao atleta; dizer que o Zyron tem percentual de acerto; chamar o avaliador de incompetente; citar clube como quem usa dados; dizer que existe vaga num clube específico; dizer que o Zyron leu um relatório marcado à mão; dar nota geral, ranking, percentil ou comparação com outros atletas; mostrar o vídeo de um atleta a quem não é da família dele; prometer que o relatório da call é o do plano (o plano entrega a leitura de cada vídeo novo, no ritmo dele).
